@@ -8,5 +8,11 @@ public enum ResultMessage {
 	Login_Success,
 	Login_unmatchpassword,
 	Login_unexitusername,
-	Logout_Success
+	Logout_Success,
+	Add_Success,
+	Add_Failure,
+	Modify_Success,
+	Modify_Failure,
+	Delete_Success,
+	Delete_Failure
 }
