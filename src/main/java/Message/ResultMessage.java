@@ -1,4 +1,4 @@
-package vo;
+package Message;
 
 public enum ResultMessage {
 	SUCCESS, FAILURE, EXIST, NOTEXIST,
