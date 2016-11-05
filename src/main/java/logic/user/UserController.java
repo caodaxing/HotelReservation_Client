@@ -10,48 +10,53 @@ import vo.WebBusinessVO;
 
 public class UserController {
 	
+	User user = new User();
+	HotelManager hm = new HotelManager();
+	WebBusiness webBusiness = new WebBusiness();
+	WebManager webManager = new WebManager();
+	
 	public UserVO getUserInfo(String user_ID){
-		return null;
+		return user.getUserInfo(user_ID);
 	}
 	
 	public boolean updateUserInfo(UserVO new_userInfo , String user_ID){
-		return false;
+		return user.updateUserInfo(new_userInfo);
 	}
 	
-	public boolean setVIP(UserVO VIPInfo , String user_ID){
-		return false;
+	public boolean setVIP(VIPInfoVO VIPInfo , String user_ID){
+		return user.setVIP(VIPInfo, user_ID);
 	}
 	
 	public VIPInfoVO getVIPInfo (String user_ID){
-		return null;
+		return user.getVIPInfo(user_ID);
 	}
 	
 	public ArrayList<HotelInfoVO> getHistoryHotelInfo(String user_ID){
-		return null;
+		return user.getHistoryHotelInfo(user_ID);
 	}
 	
 	public boolean addHotelManagerInfo(HotelManagerVO hotelManager ,String hotel_ID){
-		return false;
+		return hm.addHotelManagerInfo(hotelManager , hotel_ID);
 	}
 	
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID){
-		return null;
+		return hm.getHotelManagerInfo(hotel_ID);
 	}
 	
 	public boolean updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_ID){
-		return false;
+		return hm.updateHotelManagerInfo(hotelManagerInfo, hotel_ID);
 	}
 	
 	public boolean addWebBusiness(WebBusinessVO  webBusinessInfo){
-		return false;
+		return webBusiness.addWebBusiness(webBusinessInfo);
 	}
 	
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID){
-		return null;
+		return webBusiness.getWebBusinessInfo(webBusiness_ID);
 	}
 	
 	public boolean updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
-		return false;
+		return webBusiness.updateWebBusinessInfo(webBusinessInfo, webBusiness_ID);
 	}
 	
 }

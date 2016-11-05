@@ -1,5 +1,7 @@
 package logic.credit;
 
+import Message.EvaluationChange;
+
 public class Credit {
 	
 	public int getCredit(String user_ID){

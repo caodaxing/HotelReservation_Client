@@ -1,22 +1,27 @@
 package logic.credit;
 
 import java.util.ArrayList;
+import Message.EvaluationChange;
 
 import vo.CreditVO;
 
 public class CreditController {
+	
+	Credit credit = new Credit();
+	CreditHistoryList chl = new CreditHistoryList();
+	
 	public boolean changeCredit(String user_ID , EvaluationChange change , int number ){
-		return false;
+		return credit.changeCredit(user_ID, change, number);
 	}
 	public int getCredit(String user_ID){
-		return 0;
+		return credit.getCredit(user_ID);
 	}
 	
 	public ArrayList<CreditVO> getHistoryList(String user_ID){
-		return null;
+		return chl.getHistoryList(user_ID);
 	}
 	
 	public boolean setVIPCredit(int credit_num){
-		return false;
+		return credit.setVIPCredit(credit_num);
 	}
 }
