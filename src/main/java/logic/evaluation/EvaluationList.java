@@ -1,5 +1,11 @@
 package logic.evaluation;
 
-public class EvaluationList {
+import java.util.ArrayList;
 
+import vo.EvaluationVO;
+
+public class EvaluationList {
+	public ArrayList<EvaluationVO> show(String hotelId){
+		return null;
+	}
 }
