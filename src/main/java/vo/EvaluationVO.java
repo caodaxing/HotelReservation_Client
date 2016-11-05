@@ -2,10 +2,10 @@ package vo;
 
 public class EvaluationVO {
 	
-	String evaContent;
+	String evaContent;//∆¿º€ƒ⁄»›
 	String hotelID;
 	String orderID;
-	int star;
+	int star;//æ∆µÍ–«º∂
 	
 	public EvaluationVO(String evaContent, String hotelID, String orderID, int star) {
 		super();
