@@ -1,5 +1,14 @@
 package logic.order;
 
-public class UnExecutedFilter {
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
+import vo.OrderVO;
+
+public class UnExecutedFilter implements OrderListFilter{
+
+	public ArrayList<OrderVO> filterList(OrderListCondition condition) {
+		return null;
+	}
 
 }

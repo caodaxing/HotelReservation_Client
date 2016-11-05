@@ -1,5 +1,9 @@
 package logic.orderManagement;
 
-public class ManageOrder {
+import Message.ResultMessage;
 
+public class ManageOrder {
+	public ResultMessage undoUnnormalOrder(String order_id){
+		return ResultMessage.SUCCESS;
+	}
 }

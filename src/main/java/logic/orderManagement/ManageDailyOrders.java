@@ -1,5 +1,11 @@
 package logic.orderManagement;
 
-public class ManageDailyOrders {
+import java.util.ArrayList;
 
+import vo.OrderVO;
+
+public class ManageDailyOrders {
+	public ArrayList<OrderVO> getDailyOrderList(){
+		return null;
+	}
 }

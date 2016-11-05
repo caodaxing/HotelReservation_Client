@@ -2,7 +2,7 @@ package logic.order;
 
 import vo.OrderVO;
 
-public class MockOrder {
+public class MockOrder extends Order{
 	
 	String orderid;
 	

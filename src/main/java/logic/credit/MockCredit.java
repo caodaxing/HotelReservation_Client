@@ -9,11 +9,11 @@ public class MockCredit extends Credit{
 		this.VIPCredit = 100;
 	}
 	
-	int getCredit(String uer_ID){
+	public int getCredit(String uer_ID){
 		return credit;
 	}
 	
-	int getVIPCredit(){
+	public int getVIPCredit(){
 		return VIPCredit;
 	}
 	

@@ -1,6 +1,6 @@
 package logic.credit;
 
-import Message.EvaluationChange;
+import Message.CreditChange;
 
 public class Credit {
 	
@@ -8,7 +8,7 @@ public class Credit {
 		return 0;
 	}
 	
-	public boolean changeCredit(String user_ID , EvaluationChange change , int number){
+	public boolean changeCredit(String user_ID , CreditChange change , int number){
 		return false;
 	}
 	
