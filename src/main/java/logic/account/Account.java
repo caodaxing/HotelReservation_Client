@@ -1,28 +1,31 @@
 package logic.account;
 
-import vo.AccountVO;
 import Message.Identity;
 import Message.ResultMessage;
-public class AccountController {
-	Account account;
+import vo.AccountVO;
+
+public class Account {
+	String user_id;
+	String password;
+	Identity identity;
 	
 	public ResultMessage register(AccountVO accountVO){
-		return account.register(accountVO);
+		return ResultMessage.Add_Success;
 	}
 	
 	public ResultMessage login(AccountVO accountVO) {
-		return account.login(accountVO);
+		return ResultMessage.Login_Success;
 	}
 	
 	public ResultMessage logout(AccountVO accountVO){
-		return account.logout(accountVO);
+		return ResultMessage.Logout_Success;
 	}
 	
 	public ResultMessage modify(AccountVO accountVO){
-		return account.modify(accountVO);
+		return ResultMessage.Modify_Success;
 	}
 	
 	public Identity getIdentity (AccountVO accountVO){
-		return account.getIdentity(accountVO);
+		return Identity.Client;
 	}
 }
