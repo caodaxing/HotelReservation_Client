@@ -1,4 +1,4 @@
-package data.Order;
+package data.order;
 
 public class OrderDaoImpl {
 
