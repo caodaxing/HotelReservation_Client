@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import logicService.order.Order;
 
-public class MockCalculatePromotion {
+public class MockCalculatePromotion extends CalculatePromotion{
 	double price;
 	public MockCalculatePromotion (double p){
 		p = price;

@@ -2,7 +2,7 @@ package logic.hotel;
 
 import vo.RoomVO;
 
-public class MockHotel {
+public class MockHotel extends Hotel{
 	boolean stateOfRoom;
 	public MockHotel(boolean signal){
 		stateOfRoom = signal;
