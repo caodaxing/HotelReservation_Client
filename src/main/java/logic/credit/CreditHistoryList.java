@@ -1,7 +1,8 @@
 package logic.credit;
 
-import java.util.*;
+import java.util.ArrayList;
 
+import Message.SortCondition;
 import vo.CreditVO;
 
 public class CreditHistoryList {

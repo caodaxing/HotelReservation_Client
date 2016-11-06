@@ -1,8 +1,8 @@
 package logic.credit;
 
 import java.util.ArrayList;
-import Message.EvaluationChange;
 
+import Message.CreditChange;
 import vo.CreditVO;
 
 public class CreditController {
@@ -10,7 +10,7 @@ public class CreditController {
 	Credit credit = new Credit();
 	CreditHistoryList chl = new CreditHistoryList();
 	
-	public boolean changeCredit(String user_ID , EvaluationChange change , int number ){
+	public boolean changeCredit(String user_ID , CreditChange change , int number ){
 		return credit.changeCredit(user_ID, change, number);
 	}
 	public int getCredit(String user_ID){
