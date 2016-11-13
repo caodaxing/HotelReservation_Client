@@ -7,6 +7,9 @@ import vo.OrderVO;
 
 public class AbnormaledFilter implements OrderListFilter{
 
+	/**
+	 * 
+	 */
 	public ArrayList<OrderVO> filterList(OrderListCondition condition) {
 		return null;
 	}
