@@ -6,63 +6,113 @@ import vo.UserVO;
 import vo.VIPInfoVO;
 import vo.HotelInfoVO;
 import vo.OrderVO;
-import vo.AccountVO;
 import logic.credit.*;
 import logic.order.*;
-import logic.account.*;
-import Message.Identity;
 
+/**
+ * 管理客户信息的类
+ * @author Xue.W
+ */
 public class User {
+	
 	String user_ID;
+	String orderID;
 	UserVO userVO ;
 	
 	Order order = new Order();
 	Credit credit = new Credit();
-	Account account = new Account();
-	AccountVO accountVO ;
 	
 	public User(){
 		
 	}
 	
+	/**
+	 * User的构造函数
+	 * @param userVO 传入的客户资料信息
+	 * @author Xue.W
+	 */
 	public User(UserVO userVO){
 		this.userVO = userVO;
 	}
 	
+	/**
+	 * 获得用户信息
+	 * @param user_ID 传入的用户ID信息
+	 * @return 返回用户信息
+	 * @author Xue.W
+	 */
 	public UserVO getUserInfo (String user_ID){
 		return null;
 	}
 	
-	public boolean updateUserInfo(UserVO new_userInfo){
+	/**
+	 * 修改用户信息
+	 * @param  userInfo 传入的用户信息
+	 * @return 返回是否修改成功
+	 * @author Xue.W
+	 */
+	public boolean updateUserInfo(UserVO userInfo){
 		return false;
 	}
 	
+	/**
+	 * 注册会员
+	 * @param VIPInfo 传入的注册会员信息
+	 * @param user_ID 传入的用户ID信息
+	 * @return 返回是否注册成功
+	 * @author Xue.W
+	 */
 	public boolean setVIP(VIPInfoVO VIPInfo , String user_ID){
 		return false;
 	}
 	
+	/**
+	 * 获得注册会员资料
+	 * @param user_ID 传入的用户ID信息
+	 * @return 返回会员资料信息
+	 * @author Xue.W
+	 */
 	public VIPInfoVO getVIPInfo(String user_ID){
 		return null;
 	}
 	
+	/**
+	 * 获得用户历史酒店信息
+	 * @param user_ID 传入的用户ID信息
+	 * @return 返回用户历史酒店列表
+	 * @author Xue.W
+	 */
 	public ArrayList<HotelInfoVO> getHistoryHotelInfo(String user_ID){
 		return null;
 	}
 	
+	/**
+	 * 获得信用信息
+	 * @param user_ID 传入的用户ID信息
+	 * @return 返回用户信用
+	 * @author Xue.W
+	 */
 	public int getCredit(){
 		return credit.getCredit(user_ID);
 	}
 	
+	/**
+	 * 获得订单信息
+	 * @param orderID 传入的订单ID信息
+	 * @return 返回订单信息
+	 * @author Xue.W
+	 */
 	public OrderVO getOrderInfo(){
-		return order.getOrderInfo(user_ID);
+		return order.getOrderInfo(orderID);
 	}
 	
+	/**
+	 * 获得VIP升级信用值
+	 * @return 返回升级所需信用
+	 * @author Xue.W
+	 */
 	public int getVIPCredit(){
 		return credit.getVIPCredit();
-	}
-	
-	public Identity getAccountIdentity(){
-		return account.getIdentity(accountVO);
 	}
 	
 }

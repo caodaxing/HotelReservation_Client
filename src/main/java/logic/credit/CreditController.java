@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import Message.CreditChange;
 import vo.CreditVO;
 
+/**
+ * CreditController负责Credit包与界面层的交互
+ * @author Xue.W
+ */
 public class CreditController {
 	
 	Credit credit = new Credit();

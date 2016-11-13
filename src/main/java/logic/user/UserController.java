@@ -2,18 +2,26 @@ package logic.user;
 
 import java.util.*;
 
+import Message.Identity;
+import logic.account.Account;
 import vo.UserVO;
 import vo.HotelManagerVO;
 import vo.VIPInfoVO;
+import vo.AccountVO;
 import vo.HotelInfoVO;
 import vo.WebBusinessVO;
 
+/**
+ * UserController
+ * @author Xue.W
+ */
 public class UserController {
 	
 	User user = new User();
 	HotelManager hm = new HotelManager();
 	WebBusiness webBusiness = new WebBusiness();
 	WebManager webManager = new WebManager();
+	Account account = new Account();
 	
 	public UserVO getUserInfo(String user_ID){
 		return user.getUserInfo(user_ID);
@@ -57,6 +65,16 @@ public class UserController {
 	
 	public boolean updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
 		return webBusiness.updateWebBusinessInfo(webBusinessInfo, webBusiness_ID);
+	}
+	
+	/**
+	 * 获得用户种类
+	 * @param accountVO 传入的账户信息
+	 * @return 返回用户类型
+	 * @author Xue.W
+	 */
+	public Identity getAccountIdentity(AccountVO accountVO){
+		return account.getIdentity(accountVO);
 	}
 	
 }

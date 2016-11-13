@@ -1,5 +1,9 @@
 package logic.credit;
 
+/**
+ * Credit的mock类
+ * @author Xue.W
+ */
 public class MockCredit extends Credit{
 	int credit;
 	int VIPCredit;

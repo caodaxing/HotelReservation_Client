@@ -2,6 +2,10 @@ package logic.user;
 
 import vo.UserVO;
 
+/**
+ * User的mock类
+ * @author Xue.W
+ */
 public class MockUser extends User {
 
 	UserVO userVO;
