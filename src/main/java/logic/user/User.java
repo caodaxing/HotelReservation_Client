@@ -14,11 +14,16 @@ import Message.Identity;
 
 public class User {
 	String user_ID;
+	UserVO userVO ;
 	
 	Order order = new Order();
 	Credit credit = new Credit();
 	Account account = new Account();
 	AccountVO accountVO ;
+	
+	public User(UserVO userVO){
+		this.userVO = userVO;
+	}
 	
 	public UserVO getUserInfo (String user_ID){
 		return null;
