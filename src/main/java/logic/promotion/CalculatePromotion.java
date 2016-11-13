@@ -7,7 +7,7 @@ import vo.OrderVO;
 
 public class CalculatePromotion {
 	
-	public HashMap<String,String> judge(String webPromotion,String promotionid){
+	public HashMap<String,String> judge(String webPromotion, String promotionid){
 		return null;
 	}
 	

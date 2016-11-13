@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class HotelPromotion {
 	
-	public HashMap<String,String> setPromotion(String promotionid,String hotelPromotion){
+	public HashMap<String, String> setPromotion(String promotionid, String hotelPromotion){
 		return null;
 	}
 	
@@ -12,15 +12,15 @@ public class HotelPromotion {
 		return null;
 	}
 	
-	public HashMap<String,String> addPromotion(String promtionid,String content){
+	public HashMap<String, String> addPromotion(String promtionid, String content){
 		return null;
 	}
 	
-	public HashMap<String,String> deletePromotion(String promtionid){
+	public HashMap<String, String> deletePromotion(String promtionid){
 		return null;
 	}
 	
-	public HashMap<String,String> updatePromotion(String promtionid,String content){
+	public HashMap<String, String> updatePromotion(String promtionid, String content){
 		return null;
 	}
 	
