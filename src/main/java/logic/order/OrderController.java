@@ -8,6 +8,11 @@ import Message.ResultMessage;
 import vo.EvaluationVO;
 import vo.OrderVO;
 
+/**
+ * order处理的controller
+ * @author Mark.W
+ *
+ */
 public class OrderController {
 
 	Order order;
@@ -25,7 +30,7 @@ public class OrderController {
 		return order.getOrderInfo(order_id);
 	}
 	
-	public ArrayList<EvaluationVO> getEvaluation(String order_id){
+	public EvaluationVO getEvaluation(String order_id){
 		return order.getEvaluation(order_id);
 	}
 	
@@ -37,8 +42,8 @@ public class OrderController {
 		return order.changeCredit(user_id, change, number);
 	}
 	
-	public ArrayList<OrderVO> filterList(OrderListCondition condition){
-		return filter.filterList(condition);
+	public ArrayList<OrderVO> filterList(){
+		return filter.filterList();
 	}
 	
 }
