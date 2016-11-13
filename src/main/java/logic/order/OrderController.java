@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Message.CreditChange;
 import Message.OrderListCondition;
 import Message.ResultMessage;
+import vo.EvaluationVO;
 import vo.OrderVO;
 
 public class OrderController {
@@ -24,7 +25,7 @@ public class OrderController {
 		return order.getOrderInfo(order_id);
 	}
 	
-	public String getEvaluation(String order_id){
+	public ArrayList<EvaluationVO> getEvaluation(String order_id){
 		return order.getEvaluation(order_id);
 	}
 	
