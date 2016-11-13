@@ -8,6 +8,11 @@ import vo.HotelInfoVO;
 import vo.HotelSearchVO;
 import vo.RoomVO;
 
+/**
+ * Hotel的Controller
+ * @author d
+ *
+ */
 public class HotelController {
 	Hotel hotel;
 	SearchHotel searchhotel;
