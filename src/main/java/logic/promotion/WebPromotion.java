@@ -18,4 +18,8 @@ public class WebPromotion {
 	public HashMap<String,String>updatepromotion(String promtionid,String content){
 		return null;
 	}
+	
+	public double calculate() {
+		return 0;
+	}
 }

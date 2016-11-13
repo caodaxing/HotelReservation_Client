@@ -9,6 +9,7 @@ public class OrderVO {
 	int state;
 	int numOfPeople;
 	boolean hasChild;
+	int price;
 	
 	/**
 	 * orderVO
@@ -21,7 +22,7 @@ public class OrderVO {
 	 * @param hasChild  有无儿童
 	 */
 	public OrderVO(String orderId, String startTime, RoomVO room, String endTime, 
-			int state, int numOfPeople,boolean hasChild) {
+			int state, int numOfPeople,boolean hasChild, int price) {
 		super();
 		this.orderId = orderId;
 		this.startTime = startTime;
@@ -30,6 +31,7 @@ public class OrderVO {
 		this.state = state;
 		this.numOfPeople = numOfPeople;
 		this.hasChild = hasChild;
+		this.price = price;
 	}
 
 }
