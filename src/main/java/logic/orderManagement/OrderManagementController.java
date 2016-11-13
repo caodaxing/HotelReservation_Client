@@ -14,8 +14,8 @@ public class OrderManagementController {
 		return manageDailyOrder.getDailyOrderList();
 	}
 	
-	public ResultMessage undoUnnormalOrder(String order_id){
-		return manageOrder.undoUnnormalOrder(order_id);
+	public ResultMessage undoUnnormalOrder(OrderVO orderVO){
+		return manageOrder.undoUnnormalOrder(orderVO);
 	}
 	
 	public ResultMessage normalExecute(String order_id){
