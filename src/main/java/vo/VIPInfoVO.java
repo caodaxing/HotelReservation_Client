@@ -2,9 +2,15 @@ package vo;
 
 public class VIPInfoVO {
 	
-	String typeOfVIP;//VIPÀàÐÍ
-	String levelOfVIP;//VIPµÈ¼¶
+	String typeOfVIP;
+	String levelOfVIP;
 	
+	/**
+	 * å®¢æˆ·VIPçš„VOç±»
+	 * @param typeOfVIP VIPçš„ç±»åž‹
+	 * @param levelOfVIP VIPçš„ç­‰çº§
+	 * @author Rukawa
+	 */
 	public VIPInfoVO(String typeOfVIP,String levelOfVIP){
 		super();
 		this.typeOfVIP = typeOfVIP;

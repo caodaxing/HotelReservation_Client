@@ -2,11 +2,19 @@ package vo;
 
 public class EvaluationVO {
 	
-	String evaContent;//ÆÀ¼ÛÄÚÈİ
+	String evaContent;
 	String hotelID;
 	String orderID;
-	int star;//¾ÆµêĞÇ¼¶
+	int star;
 	
+	/**
+	 * è¯„ä»·çš„VOç±»
+	 * @param evaContent è¯„ä»·å†…å®¹
+	 * @param hotelID é…’åº—Id
+	 * @param orderID è®¢å•Id
+	 * @param star ç”¨æˆ·æ˜Ÿçº§
+	 * @author Rukawa
+	 */
 	public EvaluationVO(String evaContent, String hotelID, String orderID, int star) {
 		super();
 		this.evaContent = evaContent;
