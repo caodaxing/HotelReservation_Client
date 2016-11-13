@@ -2,6 +2,8 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
+import Message.ResultMessage;
+import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.HotelSearchVO;
 import vo.RoomVO;
@@ -9,10 +11,10 @@ import vo.RoomVO;
 public class HotelController {
 	Hotel hotel;
 	SearchHotel searchhotel;
-	public boolean updateRoom (RoomVO room){
+	public ResultMessage updateRoom (RoomVO room){
 		return hotel.updateRoom(room);
 	}
-	public HotelInfoVO getHotelInfo (String hotelName){
+	public ArrayList<EvaluationVO> getHotelInfo (String hotelName){
 		return hotel.getHotelInfo(hotelName);
 	}
 	public HotelInfoVO getHotelItemInfo (String hotel_id){

@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import Message.CreditChange;
 import Message.ResultMessage;
+import logic.evaluation.EvaluationList;
+import vo.EvaluationVO;
 import vo.OrderVO;
 
 public class Order {
 	
 	CreateOrder createOrder;
-//	EvaluationInfo evaluation;
+	EvaluationList evaluationlist;
 //	CreditInfo credit;
 	
 	public ResultMessage undoOrder(String order_id){
@@ -20,9 +22,8 @@ public class Order {
 		return null;
 	}
 	
-	public String getEvaluation(String order_id){
-//		return evaluation.getEvaluatino(order_id);
-		return null;
+	public ArrayList<EvaluationVO> getEvaluation(String order_id){
+		return evaluationlist.show(order_id);
 	}
 	
 	public int getCredit(String user_id){

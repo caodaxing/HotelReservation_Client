@@ -1,23 +1,36 @@
 package logic.hotel;
 
+import java.util.ArrayList;
+
+import Message.ResultMessage;
+import logic.order.Order;
+import logic.promotion.HotelPromotion;
+import logic.room.Room;
+import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.RoomVO;
 
 public class Hotel {
 	HotelItem hotelitem;
-	public boolean updateRoom (RoomVO room){
-		return false;
+	Room r;
+	HotelPromotion hotelpro;
+	Order o;
+	
+	public ResultMessage updateRoom (RoomVO room){
+		return r.updateRoomInfo(room);
 	}
-	public HotelInfoVO getHotelInfo (String hotelName){
-		return null;
+	public ArrayList<EvaluationVO> getHotelInfo (String hotelName){
+		String orderlist = null;
+		return o.getEvaluation(orderlist);
+		
 	}
 	public HotelInfoVO getHotelItemInfo (String hotel_id){
 		return hotelitem.getHotelItemInfo(hotel_id);
 	}
-	public boolean updateHotelInfo (HotelInfoVO hotel){
-		return false;
+	public ResultMessage updateHotelInfo (HotelInfoVO hotel){
+		return ResultMessage.SUCCESS;
 	}
-	public double calculate(Hotel hotel){
-		return 0;
+	public String getPromotion(String hotelid){
+		return hotelpro.getromotion(hotelid);
 	}
 }

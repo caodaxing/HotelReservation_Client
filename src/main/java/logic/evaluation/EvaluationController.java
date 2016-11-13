@@ -17,7 +17,7 @@ public class EvaluationController {
 	public ResultMessage evaluate (String orderId){
 		return evaluation.evaluate(orderId);
 	}
-	public ArrayList<EvaluationVO> show(String hotelId){
-		return evaluationList.show(hotelId);
+	public ArrayList<EvaluationVO> show(String orderid){
+		return evaluationList.show(orderid);
 	}
 }
