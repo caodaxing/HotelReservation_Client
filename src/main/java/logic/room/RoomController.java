@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import vo.RoomVO;
 
+/**
+ * Room的Controller
+ * @author bcy
+ *
+ */
 public class RoomController {
 
 	Room room;

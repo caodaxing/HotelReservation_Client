@@ -3,6 +3,12 @@ package logic.account;
 import vo.AccountVO;
 import Message.Identity;
 import Message.ResultMessage;
+
+/**
+ * Account的controller
+ * @author bcy
+ *
+ */
 public class AccountController {
 	Account account;
 	
