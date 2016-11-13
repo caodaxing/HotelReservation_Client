@@ -1,6 +1,5 @@
 package po;
 
-import java.util.ArrayList;
 
 public class HotelPO {
 	String nameOfhotel;
@@ -12,6 +11,17 @@ public class HotelPO {
 	String introductionOfHotel;
 	EvaluationPO evaluation;
 	
+	/**
+	 * 
+	 * @param nameOfhotel  酒店号
+	 * @param tradingAreaOfHotel  商圈
+	 * @param levelOfHotel   星级
+	 * @param priceOfhotel   价格
+	 * @param locationOfHotel  地址
+	 * @param discount    酒店折扣
+	 * @param introductionOfHotel 酒店简介
+	 * @param evaluation     酒店评价
+	 */
 	public HotelPO(String nameOfhotel,String tradingAreaOfHotel,int levelOfHotel,int priceOfhotel,String locationOfHotel,String discount,String introductionOfHotel,EvaluationPO evaluation) {
 		super();
 		this.nameOfhotel=nameOfhotel;
