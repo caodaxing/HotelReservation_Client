@@ -21,6 +21,10 @@ public class User {
 	Account account = new Account();
 	AccountVO accountVO ;
 	
+	public User(){
+		
+	}
+	
 	public User(UserVO userVO){
 		this.userVO = userVO;
 	}
