@@ -27,23 +27,23 @@ public class PromotionController {
 	}
 	
 	public HashMap<String,String> webSetPromotion(String promotionid,String webPromotion){
-		return webPro.setpromotion(promotionid, webPromotion);
+		return webPro.setPromotion(promotionid, webPromotion);
 	}
 	
 	public String webGetPromotion(String promotionid){
-		return webPro.getromotion(promotionid);
+		return webPro.getPromotion(promotionid);
 	}
 	
 	public HashMap<String,String> webAddPromotion(String promtionid,String content){
-		return webPro.addpromotion(promtionid, content);
+		return webPro.addPromotion(promtionid, content);
 	}
 	
 	public HashMap<String,String> webDeletePromotion(String promtionid){
-		return webPro.deletepromotion(promtionid);
+		return webPro.deletePromotion(promtionid);
 	}
 	
 	public HashMap<String,String> webUpdatePromotion(String promtionid,String content){
-		return webPro.updatepromotion(promtionid, content);
+		return webPro.updatePromotion(promtionid, content);
 	}
 	
 }

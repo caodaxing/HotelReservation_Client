@@ -30,7 +30,7 @@ public class Hotel implements HotelItem{
 	}
 	
 	public String getPromotion(String hotelid){
-		return hotelpro.getromotion(hotelid);
+		return hotelpro.getPromotion(hotelid);
 	}
 	
 	public HotelInfoVO getHotelItemInfo(String hotel_id) {
