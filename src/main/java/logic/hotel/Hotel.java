@@ -10,7 +10,7 @@ import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.RoomVO;
 
-public class Hotel {
+public class Hotel implements HotelItem{
 	HotelItem hotelitem;
 	Room r;
 	HotelPromotion hotelpro;
@@ -24,13 +24,16 @@ public class Hotel {
 		return o.getEvaluation(orderlist);
 		
 	}
-	public HotelInfoVO getHotelItemInfo (String hotel_id){
-		return hotelitem.getHotelItemInfo(hotel_id);
-	}
+	
 	public ResultMessage updateHotelInfo (HotelInfoVO hotel){
 		return ResultMessage.SUCCESS;
 	}
+	
 	public String getPromotion(String hotelid){
 		return hotelpro.getromotion(hotelid);
+	}
+	
+	public HotelInfoVO getHotelItemInfo(String hotel_id) {
+		return null;
 	}
 }
