@@ -29,8 +29,8 @@ public class OrderController {
 		return order.getEvaluation(order_id);
 	}
 	
-	public int getCredit (String user_id){
-		return order.getCredit(user_id);
+	public ResultMessage judgeCredit (String user_id){
+		return order.judgeCredit(user_id);
 	}
 	
 	public ResultMessage changeCredit(String user_id, CreditChange change, int number){

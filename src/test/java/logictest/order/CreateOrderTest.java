@@ -3,15 +3,22 @@ package logictest.order;
 import org.junit.Test;
 
 import logic.order.CreateOrder;
+import logic.order.MockCreateOrder;
+import logic.user.MockUser;
+import logic.user.User;
 import vo.OrderVO;
 import vo.RoomVO;
+import vo.UserVO;
 
 public class CreateOrderTest {
 
 	@Test
 	public void test1() {
-		CreateOrder createOrder = new CreateOrder();
-		
+		UserVO uservo = new UserVO("dddddd", "wyy", "13338031126", 100, null);
+		CreateOrder createOrder = new MockCreateOrder();
+		User user = new MockUser(uservo);
+		createOrder.judgeCredit("zyddsb");
+//		asssertEquals()
 	}
 	
 	@Test

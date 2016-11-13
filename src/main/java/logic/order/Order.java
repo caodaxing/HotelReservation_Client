@@ -26,9 +26,9 @@ public class Order {
 		return evaluationlist.show(order_id);
 	}
 	
-	public int getCredit(String user_id){
+	public ResultMessage judgeCredit(String user_id){
 //		return credit.getCredit;
-		return 0;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage changeCredit(String user_id, CreditChange change, int number){

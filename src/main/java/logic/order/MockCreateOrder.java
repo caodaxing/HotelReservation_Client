@@ -3,7 +3,8 @@ package logic.order;
 import Message.ResultMessage;
 import vo.OrderVO;
 
-public class CreateOrder {
+public class MockCreateOrder extends CreateOrder {
+	
 	public OrderVO createOrder(OrderVO order){
 		return null;
 	}

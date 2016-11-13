@@ -4,12 +4,14 @@ import vo.UserVO;
 
 public class MockUser extends User {
 
+	UserVO userVO;
+	
 	public MockUser (UserVO vo){
 		userVO = vo;
 	}
 	
 	public int getCredit(){
-		return 0;
+		return userVO.credit;
 	}
 	
 }
