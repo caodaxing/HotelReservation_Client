@@ -13,8 +13,8 @@ public class WebmarketstaffPO {
 	 * 
 	 * @param nameOfUser  用户编号
 	 * @param password  密码
-	 * @param canCheck  
-	 * @param canModify  
+	 * @param canCheck  浏览权限
+	 * @param canModify  可修改客户信息的权限
 	 * @param trueName   真实姓名
 	 * @param phoneNumber  联系方式
 	 * @param numberOfIdentityCard   身份证号
