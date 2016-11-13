@@ -1,5 +1,8 @@
 package logic.order;
 
-public interface JudgePromotion {
+import Message.ResultMessage;
+import vo.OrderVO;
 
+public interface JudgePromotion {
+	public ResultMessage judge(OrderVO order);
 }

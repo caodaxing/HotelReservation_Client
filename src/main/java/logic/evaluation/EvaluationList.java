@@ -17,7 +17,7 @@ public class EvaluationList {
 	 * @return 评价的arraylist
 	 * @author Rukawa
 	 */
-	public ArrayList<EvaluationVO> show(String hotelid){
+	public ArrayList<EvaluationVO> getEvaluations(String hotelid){
 		return null;
 	}
 }

@@ -38,8 +38,8 @@ public class Hotel implements HotelItem{
 	 * @author all
 	 */
 	public ArrayList<EvaluationVO> getHotelInfo (String hotel_id){
-		String orderlist = null;
-		return o.getEvaluation(orderlist);
+		//获取酒店所属订单后，由订单获取评价
+		return null;
 		
 	}
 	

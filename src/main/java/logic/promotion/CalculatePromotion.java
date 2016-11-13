@@ -1,8 +1,7 @@
 package logic.promotion;
 
-import java.util.HashMap;
-
-import logicService.order.Order;
+import Message.ResultMessage;
+import logic.order.JudgePromotion;
 import vo.OrderVO;
 /**
  * 根据促销策略计算价格
@@ -11,14 +10,15 @@ import vo.OrderVO;
  */
 public class CalculatePromotion implements JudgePromotion{
 	
+	
+	
 	/**
 	 * 判断是否满足促销策略
-	 * @param webPromotion 网站营销策略
-	 * @param promotionid 策略名称
-	 * @return 满足的促销策略
+	 * @param ordervo
+	 * @return ResultMessage
 	 * @author Rukawa
 	 */
-	public HashMap<String,String> judge(String webPromotion, String promotionid){
+	public ResultMessage judge(OrderVO order){
 		return null;
 	}
 	

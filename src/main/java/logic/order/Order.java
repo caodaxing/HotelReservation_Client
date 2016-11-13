@@ -19,6 +19,8 @@ public class Order implements OrderInfo{
 	EvaluationInfo evaluation;
 	CreditInfo credit;
 	
+	public Order(){}
+	
 	public Order(CreateOrder createOrder, EvaluationInfo evaluation, CreditInfo credit) {
 		this.createOrder = createOrder;
 		this.evaluation = evaluation;
@@ -58,7 +60,8 @@ public class Order implements OrderInfo{
 	 * @return ResultMessage
 	 */
 	public ResultMessage judgeCredit(String user_id){
-		return credit.getCredit(user_id);
+		credit.getCredit(user_id);
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**

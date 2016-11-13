@@ -1,12 +1,13 @@
 package logic.credit;
 
 import Message.CreditChange;
+import logic.order.CreditInfo;
 
 /**
  * 用户信用信息及VIP升级所需信用的管理
  * @author Xue.W
  */
-public class Credit {
+public class Credit implements CreditInfo{
 	
 	/**
 	 * 获得信用值

@@ -1,6 +1,7 @@
 package logic.evaluation;
 
 import Message.ResultMessage;
+import logic.order.EvaluationInfo;
 import vo.EvaluationVO;
 
 /**
@@ -8,7 +9,7 @@ import vo.EvaluationVO;
  * @author Rukawa
  *
  */
-public class Evaluation {
+public class Evaluation implements EvaluationInfo{
 	
 	/**
 	 * 获取酒店的评价信息

@@ -23,7 +23,7 @@ public class CreateOrderTest {
 	@Test
 	public void test1() {
 		UserVO uservo = new UserVO("dddddd", "wyy", "13338031126", 0, null);
-		CreateOrder createOrder = new CreateOrder();
+		CreateOrder createOrder = new CreateOrder(null);
 		User user = new MockUser(uservo);
 		assertEquals(createOrder.judgeCredit("dddddd"), ResultMessage.FAILURE);
 	}
@@ -35,16 +35,15 @@ public class CreateOrderTest {
 	@Test
 	public void test2() {
 		UserVO uservo = new UserVO("dddddd", "wyy", "13338031126", 1000, null);
-		CreateOrder createOrder = new CreateOrder();
+		CalculatePromotion promotion = new MockCalculatePromotion();
+		CreateOrder createOrder = new CreateOrder(promotion);
 		User user = new MockUser(uservo);
 		
 		assertEquals(createOrder.judgeCredit("dddddd"), ResultMessage.SUCCESS);
 		
 		OrderVO order = new OrderVO("2-1611111112", "20161111", 
 				new RoomVO(0,299,0,"1109"),"20161112", 1, 2, false, 299);
-		
-		CalculatePromotion promotion = new MockCalculatePromotion();
-		
+	
 		assertEquals(promotion.calculate(order),  "299");
 		
 	}

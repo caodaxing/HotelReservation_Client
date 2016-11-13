@@ -1,5 +1,7 @@
 package logic.order;
 
-public interface EvaluationInfo {
+import vo.EvaluationVO;
 
+public interface EvaluationInfo {
+	public EvaluationVO getEvaluationInfo (String orderId);
 }
