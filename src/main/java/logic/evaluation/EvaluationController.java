@@ -6,13 +6,18 @@ import Message.ResultMessage;
 import vo.EvaluationVO;
 
 public class EvaluationController {
+	Evaluation evaluation;
+	EvaluationList evaluationList;
 	public EvaluationVO getEvaluationInfo (String orderId){
-		return null;
+		return evaluation.getEvaluationInfo(orderId);
 	}
 	public ArrayList<EvaluationVO> getEvaluations (String hotelId){
-		return null;
+		return evaluation.getEvaluations(hotelId);
 	}
 	public ResultMessage evaluate (String orderId){
-		return null;
+		return evaluation.evaluate(orderId);
+	}
+	public ArrayList<EvaluationVO> show(String hotelId){
+		return evaluationList.show(hotelId);
 	}
 }

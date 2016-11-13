@@ -3,31 +3,34 @@ package logic.hotel;
 import java.util.ArrayList;
 
 import vo.HotelInfoVO;
+import vo.HotelSearchVO;
 import vo.RoomVO;
 
 public class HotelController {
+	Hotel hotel;
+	SearchHotel searchhotel;
 	public boolean updateRoom (RoomVO room){
-		return false;
+		return hotel.updateRoom(room);
 	}
 	public HotelInfoVO getHotelInfo (String hotelName){
-		return null;
+		return hotel.getHotelInfo(hotelName);
 	}
 	public HotelInfoVO getHotelItemInfo (String hotel_id){
-		return null;
+		return hotel.getHotelItemInfo(hotel_id);
 	}
 	public ArrayList<String> getTradingArea (String location){
-		return null;
+		return searchhotel.getTradingArea(location);
 	}
 	public ArrayList<HotelInfoVO>getInitialHotelList (String location,String tradingArea ){
-		return null;
+		return searchhotel.getInitialHotelList(location, tradingArea);
 	}
 	public ArrayList<HotelInfoVO>getSortedList (){
-		return null;
+		return searchhotel.getSortedList();
 	}
 	public ArrayList< HotelInfoVO >getBookedHotelList (String user_id){
-		return null;
+		return searchhotel.getBookedHotelList(user_id);
 	}
-	public HotelInfoVO search (String hotelName){
-		return null;
+	public HotelInfoVO search (HotelSearchVO search){
+		return searchhotel.search(search);
 	}
 }

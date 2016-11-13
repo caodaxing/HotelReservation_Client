@@ -4,6 +4,7 @@ import vo.HotelInfoVO;
 import vo.RoomVO;
 
 public class Hotel {
+	HotelItem hotelitem;
 	public boolean updateRoom (RoomVO room){
 		return false;
 	}
@@ -11,7 +12,7 @@ public class Hotel {
 		return null;
 	}
 	public HotelInfoVO getHotelItemInfo (String hotel_id){
-		return null;
+		return hotelitem.getHotelItemInfo(hotel_id);
 	}
 	public boolean updateHotelInfo (HotelInfoVO hotel){
 		return false;

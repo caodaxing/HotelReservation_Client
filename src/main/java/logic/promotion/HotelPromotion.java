@@ -3,7 +3,7 @@ package logic.promotion;
 import java.util.HashMap;
 
 public class HotelPromotion {
-	public HashMap<String,String>setpromotion(String promotionid,String hotelPromotion){
+	public HashMap<String,String> setpromotion(String promotionid,String hotelPromotion){
 		return null;
 	}
 	public String getromotion(String promtionid){
