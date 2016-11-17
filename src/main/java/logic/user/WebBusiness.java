@@ -8,6 +8,16 @@ import vo.WebBusinessVO;
  */
 public class WebBusiness {
 	
+	WebBusinessVO wbv ;
+	
+	public WebBusiness(WebBusinessVO wbv){
+		this.wbv = wbv ;
+	}
+	
+	public WebBusiness(){
+		
+	}
+	
 	/**
 	 * 新增网站营销人员
 	 * @param webBusineInfo 传入的网站营销人员信息

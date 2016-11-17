@@ -8,6 +8,16 @@ import vo.HotelManagerVO;
  */
 public class HotelManager {
 	
+	HotelManagerVO hmv ;
+	
+	public HotelManager (HotelManagerVO hmv){
+		this.hmv = hmv;
+	}
+	
+	public HotelManager(){
+		
+	}
+	
 	/**
 	 * 新增酒店工作人员
 	 * @param hotel_ID 传入的酒店（酒店工作人员）ID信息
