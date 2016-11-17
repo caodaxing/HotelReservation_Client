@@ -16,27 +16,35 @@ import vo.RoomVO;
 public class HotelController {
 	Hotel hotel;
 	SearchHotel searchhotel;
-	public ResultMessage updateRoom (RoomVO room){
+	
+	public ResultMessage updateRoom(RoomVO room){
 		return hotel.updateRoom(room);
 	}
-	public ArrayList<EvaluationVO> getHotelInfo (String hotelName){
+	
+	public ArrayList<EvaluationVO> getHotelInfo(String hotelName){
 		return hotel.getHotelInfo(hotelName);
 	}
-	public HotelInfoVO getHotelItemInfo (String hotel_id){
+	
+	public HotelInfoVO getHotelItemInfo(String hotel_id){
 		return hotel.getHotelItemInfo(hotel_id);
 	}
-	public ArrayList<String> getTradingArea (String location){
+	
+	public ArrayList<String> getTradingArea(String location){
 		return searchhotel.getTradingArea(location);
 	}
-	public ArrayList<HotelInfoVO>getInitialHotelList (String location,String tradingArea ){
+	
+	public ArrayList<HotelInfoVO>getInitialHotelList(String location,String tradingArea ){
 		return searchhotel.getInitialHotelList(location, tradingArea);
 	}
-	public ArrayList<HotelInfoVO>getSortedList (){
+	
+	public ArrayList<HotelInfoVO>getSortedList(){
 		return searchhotel.getSortedList();
 	}
-	public ArrayList< HotelInfoVO >getBookedHotelList (String user_id){
+	
+	public ArrayList< HotelInfoVO >getBookedHotelList(String user_id){
 		return searchhotel.getBookedHotelList(user_id);
 	}
+	
 	public HotelInfoVO search (HotelSearchVO search){
 		return searchhotel.search(search);
 	}
