@@ -2,8 +2,8 @@ package logic.user;
 
 import java.util.*;
 
-import Message.Identity;
 import logic.account.Account;
+import message.Identity;
 import vo.UserVO;
 import vo.HotelManagerVO;
 import vo.VIPInfoVO;

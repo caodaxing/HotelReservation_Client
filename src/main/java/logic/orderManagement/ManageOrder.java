@@ -1,6 +1,6 @@
 package logic.orderManagement;
 
-import Message.ResultMessage;
+import message.ResultMessage;
 import vo.OrderVO;
 
 /**

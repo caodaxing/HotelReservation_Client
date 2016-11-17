@@ -2,7 +2,7 @@ package logic.credit;
 
 import java.util.ArrayList;
 
-import Message.CreditChange;
+import message.CreditChange;
 import vo.CreditVO;
 
 /**

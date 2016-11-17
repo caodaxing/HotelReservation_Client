@@ -2,7 +2,7 @@ package logic.credit;
 
 import java.util.ArrayList;
 
-import Message.SortCondition;
+import message.SortCondition;
 import vo.CreditVO;
 
 /**

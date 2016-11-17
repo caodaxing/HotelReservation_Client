@@ -1,6 +1,6 @@
 package logic.account;
 
-import Message.Identity;
+import message.Identity;
 
 public class MockAccount extends Account{
 	String user_id;

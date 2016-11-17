@@ -2,7 +2,7 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.ResultMessage;
+import message.ResultMessage;
 import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.HotelSearchVO;
