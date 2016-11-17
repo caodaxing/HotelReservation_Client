@@ -2,8 +2,8 @@ package logic.order;
 
 import java.util.ArrayList;
 
+import logicService.OrderService;
 import message.CreditChange;
-import message.OrderListCondition;
 import message.ResultMessage;
 import vo.EvaluationVO;
 import vo.OrderVO;
@@ -13,7 +13,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class OrderController {
+public class OrderController implements OrderService{
 
 	Order order;
 	OrderListFilter filter;
