@@ -2,9 +2,9 @@ package logic.order;
 
 import java.util.ArrayList;
 
+import Message.CreditChange;
+import Message.ResultMessage;
 import logicService.OrderService;
-import message.CreditChange;
-import message.ResultMessage;
 import vo.EvaluationVO;
 import vo.OrderVO;
 

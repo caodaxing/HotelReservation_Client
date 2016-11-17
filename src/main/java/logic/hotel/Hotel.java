@@ -2,10 +2,10 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
+import Message.ResultMessage;
 import logic.order.Order;
 import logic.promotion.HotelPromotion;
 import logic.room.Room;
-import message.ResultMessage;
 import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.RoomVO;

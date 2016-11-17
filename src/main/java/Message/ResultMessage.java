@@ -1,4 +1,4 @@
-package message;
+package Message;
 
 public enum ResultMessage {
 	SUCCESS, FAILURE, EXIST, NOTEXIST,

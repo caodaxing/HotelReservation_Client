@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import message.OrderListCondition;
+import Message.OrderListCondition;
 import vo.OrderVO;
 
 /**

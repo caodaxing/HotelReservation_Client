@@ -1,7 +1,7 @@
 package logic.credit;
 
+import Message.CreditChange;
 import logic.order.CreditInfo;
-import message.CreditChange;
 
 /**
  * 用户信用信息及VIP升级所需信用的管理

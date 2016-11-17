@@ -3,12 +3,12 @@ package logictest.orderManagement;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import Message.CreditChange;
+import Message.ResultMessage;
 import logic.credit.MockCredit;
 import logic.orderManagement.ExecuteOrder;
 import logic.orderManagement.ManageOrder;
 import logic.room.MockRoom;
-import message.CreditChange;
-import message.ResultMessage;
 import vo.OrderVO;
 import vo.RoomVO;
 

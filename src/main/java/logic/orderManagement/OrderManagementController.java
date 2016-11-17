@@ -2,7 +2,7 @@ package logic.orderManagement;
 
 import java.util.ArrayList;
 
-import message.ResultMessage;
+import Message.ResultMessage;
 import vo.OrderVO;
 
 public class OrderManagementController {

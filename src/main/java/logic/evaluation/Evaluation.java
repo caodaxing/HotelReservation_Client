@@ -1,7 +1,7 @@
 package logic.evaluation;
 
+import Message.ResultMessage;
 import logic.order.EvaluationInfo;
-import message.ResultMessage;
 import vo.EvaluationVO;
 
 /**

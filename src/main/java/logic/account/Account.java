@@ -1,7 +1,7 @@
 package logic.account;
 
-import message.Identity;
-import message.ResultMessage;
+import Message.Identity;
+import Message.ResultMessage;
 import vo.AccountVO;
 
 /**

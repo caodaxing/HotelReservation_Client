@@ -1,6 +1,6 @@
 package vo;
 
-import message.Identity;
+import Message.Identity;
 
 public class AccountVO {
 

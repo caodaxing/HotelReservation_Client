@@ -2,7 +2,7 @@ package logic.room;
 
 import java.util.ArrayList;
 
-import message.ResultMessage;
+import Message.ResultMessage;
 import vo.RoomVO;
 
 /**

@@ -1,4 +1,4 @@
-package message;
+package Message;
 
 public class EvaluationChange {
 

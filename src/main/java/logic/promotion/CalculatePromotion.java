@@ -1,7 +1,7 @@
 package logic.promotion;
 
+import Message.ResultMessage;
 import logic.order.JudgePromotion;
-import message.ResultMessage;
 import vo.OrderVO;
 /**
  * 根据促销策略计算价格

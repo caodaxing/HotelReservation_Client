@@ -4,12 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import Message.ResultMessage;
 import logic.order.CreateOrder;
 import logic.promotion.CalculatePromotion;
 import logic.promotion.MockCalculatePromotion;
 import logic.user.MockUser;
 import logic.user.User;
-import message.ResultMessage;
 import vo.OrderVO;
 import vo.RoomVO;
 import vo.UserVO;
