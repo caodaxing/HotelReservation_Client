@@ -1,7 +1,7 @@
 package logic.orderManagement;
 
 import Message.ResultMessage;
-import logicService.room.Room;
+import logic.room.Room;
 
 /**
  * 更新房间信息
