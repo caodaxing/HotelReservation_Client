@@ -1,5 +1,10 @@
 package vo;
 
+/**
+ * 搜索酒店的VO类
+ * @author Rukawa
+ *
+ */
 public class HotelSearchVO {
 	
 	String Location;

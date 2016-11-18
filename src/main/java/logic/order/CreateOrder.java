@@ -1,6 +1,7 @@
 package logic.order;
 
 import Message.ResultMessage;
+import logic.promotion.JudgePromotion;
 import vo.OrderVO;
 
 /**

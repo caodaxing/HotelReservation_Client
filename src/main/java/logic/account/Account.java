@@ -21,7 +21,7 @@ public class Account {
 	 * @author bcy
 	 */
 	public ResultMessage register(AccountVO accountVO){
-		return ResultMessage.Add_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	
@@ -32,7 +32,7 @@ public class Account {
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
-		return ResultMessage.Login_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	
@@ -43,7 +43,7 @@ public class Account {
 	 * @author bcy
 	 */
 	public ResultMessage logout(AccountVO accountVO){
-		return ResultMessage.Logout_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class Account {
 	 * @author bcy
 	 */
 	public ResultMessage modify(AccountVO accountVO){
-		return ResultMessage.Modify_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package logic.hotel;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
+import logicService.HotelService;
 import vo.EvaluationVO;
 import vo.HotelInfoVO;
 import vo.HotelSearchVO;
@@ -13,7 +14,7 @@ import vo.RoomVO;
  * @author d
  *
  */
-public class HotelController {
+public class HotelController implements HotelService{
 	Hotel hotel;
 	SearchHotel searchhotel;
 	
@@ -33,11 +34,11 @@ public class HotelController {
 		return searchhotel.getTradingArea(location);
 	}
 	
-	public ArrayList<HotelInfoVO>getInitialHotelList(String location,String tradingArea ){
+	public ArrayList<HotelInfoVO> getInitialHotelList(String location,String tradingArea ){
 		return searchhotel.getInitialHotelList(location, tradingArea);
 	}
 	
-	public ArrayList<HotelInfoVO>getSortedList(){
+	public ArrayList<HotelInfoVO> getSortedList(){
 		return searchhotel.getSortedList();
 	}
 	
@@ -45,7 +46,7 @@ public class HotelController {
 		return searchhotel.getBookedHotelList(user_id);
 	}
 	
-	public HotelInfoVO search (HotelSearchVO search){
+	public HotelInfoVO search(HotelSearchVO search){
 		return searchhotel.search(search);
 	}
 }

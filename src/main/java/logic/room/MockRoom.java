@@ -19,11 +19,11 @@ public class MockRoom extends Room{
 	
 	public ResultMessage updateRoomInfo(RoomVO room){
 		System.out.println("updateRoomInfo调用成功");
-		return ResultMessage.Modify_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage addRoomInfo(RoomVO room){
 		System.out.println("addRoomInfo调用成功");
-		return ResultMessage.Add_Success;
+		return ResultMessage.SUCCESS;
 	}
 }

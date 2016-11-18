@@ -1,8 +1,13 @@
-package logic.order;
+package logic.promotion;
 
 import Message.ResultMessage;
 import vo.OrderVO;
 
+/**
+ * 给order提供的接口，判断生成订单时能否优惠
+ * @author Mark.W
+ *
+ */
 public interface JudgePromotion {
 	public ResultMessage judge(OrderVO order);
 }

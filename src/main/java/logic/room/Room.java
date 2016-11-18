@@ -41,7 +41,7 @@ public class Room {
 	 * @author bcy
 	 */
 	public ResultMessage updateRoomInfo(RoomVO room){
-		return ResultMessage.Modify_Success;
+		return ResultMessage.SUCCESS;
 	}
 	
 	/**
@@ -51,6 +51,6 @@ public class Room {
 	 * @author bcy
 	 */
 	public ResultMessage addRoomInfo(RoomVO room){
-		return ResultMessage.Add_Success;
+		return ResultMessage.SUCCESS;
 	}
 }

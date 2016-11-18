@@ -22,7 +22,7 @@ public class SearchHotel {
 	}
 	
 	/**
-	 * 获取指定地址指定商圈符合条件的酒店
+	 * 获取指定地址指定商圈符合条件的酒店列表
 	 * @param location 传入酒店地址
 	 * @param tradingArea 传入商圈
 	 * @return ArrayList<HotelInfoVO> 返回酒店列表
@@ -37,7 +37,7 @@ public class SearchHotel {
 	 * @return ArrayList<HotelInfoVO> 返回按一定方式排序的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelInfoVO> getSortedList (){
+	public ArrayList<HotelInfoVO> getSortedList(){
 		return null;
 	}
 	
