@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import Message.CreditChange;
 import Message.ResultMessage;
-import logic.orderManagement.OrderInfo;
+import logic.credit.CreditInfo;
+import logic.evaluation.EvaluationInfo;
 import vo.EvaluationVO;
 import vo.OrderVO;
 

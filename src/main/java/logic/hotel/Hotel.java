@@ -15,20 +15,44 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements HotelItem{
-	HotelItem hotelitem;
-	Room r;
-	HotelPromotion hotelpro;
-	Order o;
+public class Hotel implements HotelItem, HotelUpdateRoom{
+	private ArrayList<Room> rooms;
+	private HotelPromotion hotelPromotion;
+	private ArrayList<Order> orders;
 	
 	/**
-	 * 更新房间信息
+	 * 空的构造方法
+	 * @author Mark.W
+	 */
+	public Hotel(){}
+	
+	/**
+	 * 以酒店促销策略构造酒店
+	 * @param hotelPromotion 酒店促销策略
+	 * @author Mark.W
+	 */
+	public Hotel(HotelPromotion hotelPromotion) {
+		this.hotelPromotion = hotelPromotion;
+	}
+	
+	/**
+	 * 订单执行时调用，更新房间信息
+	 * @param room 传入的room对象信息
+	 * @return ResultMessage 返回是否更新成功（成功/失败）
+	 * @author Mark.W
+	 */
+	public ResultMessage updateRoom(Room room) {
+		return ResultMessage.SUCCESS;
+	}
+	
+	/**
+	 * 酒店工作人员更新房间信息，从界面调用
 	 * @param roomVO 传入的VO信息
 	 * @return ResultMessage 返回是否更新成功（成功/失败）
 	 * @author all
 	 */
-	public ResultMessage updateRoom (RoomVO roomVO){
-		return r.updateRoomInfo(roomVO);
+	public ResultMessage updateRoom(RoomVO roomVO){
+		return rooms.get(0).updateRoomInfo(roomVO);
 	}
 	
 	/**
@@ -60,7 +84,7 @@ public class Hotel implements HotelItem{
 	 * @author all
 	 */
 	public String getPromotion(String hotel_id){
-		return hotelpro.getPromotion(hotel_id);
+		return hotelPromotion.getPromotion(hotel_id);
 	}
 	
 	/**

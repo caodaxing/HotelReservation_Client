@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author Rukawa
  *
  */
-public class HotelPromotion {
+public class HotelPromotion implements Promotion, PromotionInfo{
 	
 	/**
 	 * 设置酒店促销策略

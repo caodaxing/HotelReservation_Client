@@ -1,6 +1,9 @@
 package logic.orderManagement;
 
 import Message.ResultMessage;
+import logic.hotel.HotelUpdateRoom;
+import logic.order.OrderInfo;
+import logic.room.Room;
 
 /**
  * 执行订单
@@ -9,12 +12,16 @@ import Message.ResultMessage;
  */
 public class ExecuteOrder {
 	
-	UpdateRoom updateRoom;
+	HotelUpdateRoom hotelUpdateRoom;
 	OrderInfo orderInfo;
 	
-	public ExecuteOrder(UpdateRoom updateRoom, OrderInfo orderInfo) {
-		this.updateRoom = updateRoom;
+	public ExecuteOrder(HotelUpdateRoom updateRoom, OrderInfo orderInfo) {
+		this.hotelUpdateRoom = updateRoom;
 		this.orderInfo = orderInfo;
+	}
+	
+	public ResultMessage updateRoom(Room room) {
+		return hotelUpdateRoom.updateRoom(room);
 	}
 	
 	/**

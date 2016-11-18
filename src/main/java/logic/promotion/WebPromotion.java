@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author Rukawa
  *
  */
-public class WebPromotion {
+public class WebPromotion implements Promotion, PromotionInfo {
 	
 	/**
 	 * 设置网站促销策略

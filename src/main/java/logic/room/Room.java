@@ -10,7 +10,7 @@ import vo.RoomVO;
  * @author d
  *
  */
-public class Room {
+public class Room implements RoomInfo{
 
 	RoomList roomList;
 	

@@ -1,7 +1,6 @@
 package logic.evaluation;
 
 import Message.ResultMessage;
-import logic.order.EvaluationInfo;
 import vo.EvaluationVO;
 
 /**

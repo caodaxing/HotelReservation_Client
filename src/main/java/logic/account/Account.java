@@ -9,7 +9,7 @@ import vo.AccountVO;
  * @author bcy
  *
  */
-public class Account {
+public class Account implements AccountInfo{
 	String user_id;
 	String password;
 	Identity identity;
@@ -62,7 +62,7 @@ public class Account {
 	 * @return Identity 返回账户的身份
 	 * @author bcy
 	 */
-	public Identity getIdentity (AccountVO accountVO){
-		return Identity.Client;
+	public Identity getIdentity(AccountVO accountVO){
+		return Identity.ClIENT;
 	}
 }

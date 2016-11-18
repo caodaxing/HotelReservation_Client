@@ -1,4 +1,4 @@
-package logic.order;
+package logic.credit;
 
 public interface CreditInfo {
 	
