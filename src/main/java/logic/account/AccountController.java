@@ -2,6 +2,7 @@ package logic.account;
 
 import Message.Identity;
 import Message.ResultMessage;
+import logicService.AccountService;
 import vo.AccountVO;
 
 /**
@@ -9,9 +10,13 @@ import vo.AccountVO;
  * @author bcy
  *
  */
-public class AccountController {
+public class AccountController implements AccountService{
 	Account account;
 	
+	public AccountController(Account account) {
+		this.account = account;
+	}
+
 	public ResultMessage register(AccountVO accountVO){
 		return account.register(accountVO);
 	}

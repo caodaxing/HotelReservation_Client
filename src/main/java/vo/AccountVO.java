@@ -4,9 +4,9 @@ import Message.Identity;
 
 public class AccountVO {
 
-	String user_id;
-	String password;
-	Identity identity;
+	public String user_id;
+	public String password;
+	public Identity identity;
 	
 	/**
 	 * 账户的VO类

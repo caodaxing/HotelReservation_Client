@@ -17,11 +17,19 @@ import vo.WebBusinessVO;
  */
 public class UserController {
 	
-	User user = new User();
-	HotelManager hm = new HotelManager();
-	WebBusiness webBusiness = new WebBusiness();
-	WebManager webManager = new WebManager();
-	Account account = new Account();
+	User user;
+	HotelManager hm;
+	WebBusiness webBusiness;
+	WebManager webManager;
+	Account account;
+	
+	public UserController() {
+		user = new User();
+		hm = new HotelManager();
+		webBusiness = new WebBusiness();
+		webManager = new WebManager();
+		account = new Account();
+	}
 	
 	public UserVO getUserInfo(String user_ID){
 		return user.getUserInfo(user_ID);

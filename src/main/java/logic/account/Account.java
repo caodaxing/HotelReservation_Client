@@ -13,7 +13,9 @@ public class Account implements AccountInfo{
 	String user_id;
 	String password;
 	Identity identity;
-	
+		
+	public Account(){}
+
 	/**
 	 * 注册账户
 	 * @param accountVO 传入的VO信息
@@ -32,7 +34,10 @@ public class Account implements AccountInfo{
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
+		this.user_id = accountVO.user_id;
+		
 		return ResultMessage.SUCCESS;
+		
 	}
 	
 	
