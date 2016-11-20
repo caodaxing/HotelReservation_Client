@@ -13,10 +13,10 @@ public class Evaluation implements EvaluationInfo{
 	/**
 	 * 获取酒店的评价信息
 	 * @param orderId 订单Id
-	 * @return 评价的VO类
+	 * @return 评价的String类
 	 * @author Rukawa
 	 */
-	public EvaluationVO getEvaluationInfo (String orderId){
+	public String getEvaluationInfo (String orderId){
 		return null;
 	}
 	

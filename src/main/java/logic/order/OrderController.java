@@ -30,7 +30,7 @@ public class OrderController implements OrderService{
 		return order.getOrderInfo(order_id);
 	}
 	
-	public EvaluationVO getEvaluation(String order_id){
+	public String getEvaluation(String order_id){
 		return order.getEvaluation(order_id);
 	}
 	

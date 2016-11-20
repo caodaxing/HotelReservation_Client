@@ -47,11 +47,11 @@ public class Order implements OrderInfo{
 	}
 	
 	/**
-	 * 撤销订单 
+	 * 得到评价
 	 * @param order_id 订单id
-	 * @return ResultMessage
+	 * @return 评价String类
 	 */
-	public EvaluationVO getEvaluation(String order_id){
+	public String getEvaluation(String order_id){
 		return evaluation.getEvaluationInfo(order_id);
 	}
 	

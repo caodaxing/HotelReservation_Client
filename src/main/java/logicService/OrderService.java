@@ -14,7 +14,7 @@ public interface OrderService {
 	
 	public OrderVO getOrderInfo(String order_id);
 	
-	public EvaluationVO getEvaluation(String order_id);
+	public String getEvaluation(String order_id);
 	
 	public ResultMessage judgeCredit (String user_id);
 	

@@ -10,7 +10,7 @@ public class EvaluationController {
 	Evaluation evaluation;
 	EvaluationList evaluationList;
 	
-	public EvaluationVO getEvaluationInfo (String orderId){
+	public String getEvaluationInfo (String orderId){
 		return evaluation.getEvaluationInfo(orderId);
 	}
 	
