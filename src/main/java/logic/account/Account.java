@@ -50,6 +50,7 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage logout(AccountVO accountVO){
+		
 		return ResultMessage.SUCCESS;
 	}
 	
