@@ -2,6 +2,7 @@ package logic.account;
 
 import Message.Identity;
 import Message.ResultMessage;
+import logicService.AccountService;
 import vo.AccountVO;
 
 /**
@@ -9,7 +10,7 @@ import vo.AccountVO;
  * @author bcy
  *
  */
-public class Account implements AccountInfo{
+public class Account implements AccountInfo, AccountService{
 	String user_id;
 	String password;
 	Identity identity;
