@@ -12,7 +12,8 @@ import logic.user.UserController;
 
 /**
  * 创建logic service实例的工厂类
- * 采用单例模式，工厂类只有一个，所有包的controller实例也只有一个
+ * 同时单例模式
+ * 工厂类只有一个，所有包的controller实例也只有一个
  * @author Mark.W
  *
  */

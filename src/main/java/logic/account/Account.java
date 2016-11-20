@@ -29,14 +29,15 @@ public class Account implements AccountInfo, AccountService{
 	
 	
 	/**
-	 * 登录
+	 * 登录，并在调用时给成员变量赋值
 	 * @param accountVO 传入的VO信息
 	 * @return RusultMessage 返回登录的结果（成功/失败）
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
 		this.user_id = accountVO.user_id;
-		
+		this.password = accountVO.password;
+		this.identity = accountVO.identity;
 		return ResultMessage.SUCCESS;
 		
 	}
