@@ -3,6 +3,7 @@ package logic.user;
 import java.util.*;
 
 import Message.Identity;
+import Message.ResultMessage;
 import logic.account.Account;
 import vo.UserVO;
 import vo.HotelManagerVO;
@@ -35,11 +36,11 @@ public class UserController {
 		return user.getUserInfo(user_ID);
 	}
 	
-	public boolean updateUserInfo(UserVO new_userInfo , String user_ID){
+	public ResultMessage updateUserInfo(UserVO new_userInfo , String user_ID){
 		return user.updateUserInfo(new_userInfo);
 	}
 	
-	public boolean setVIP(VIPInfoVO VIPInfo , String user_ID){
+	public ResultMessage setVIP(VIPInfoVO VIPInfo , String user_ID){
 		return user.setVIP(VIPInfo, user_ID);
 	}
 	
@@ -51,7 +52,7 @@ public class UserController {
 		return user.getHistoryHotelInfo(user_ID);
 	}
 	
-	public boolean addHotelManagerInfo(HotelManagerVO hotelManager ,String hotel_ID){
+	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager ,String hotel_ID){
 		return hm.addHotelManagerInfo(hotelManager , hotel_ID);
 	}
 	
@@ -59,11 +60,11 @@ public class UserController {
 		return hm.getHotelManagerInfo(hotel_ID);
 	}
 	
-	public boolean updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_ID){
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_ID){
 		return hm.updateHotelManagerInfo(hotelManagerInfo, hotel_ID);
 	}
 	
-	public boolean addWebBusiness(WebBusinessVO  webBusinessInfo){
+	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessInfo){
 		return webBusiness.addWebBusiness(webBusinessInfo);
 	}
 	
@@ -71,7 +72,7 @@ public class UserController {
 		return webBusiness.getWebBusinessInfo(webBusiness_ID);
 	}
 	
-	public boolean updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
 		return webBusiness.updateWebBusinessInfo(webBusinessInfo, webBusiness_ID);
 	}
 	

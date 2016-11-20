@@ -2,6 +2,7 @@ package logic.user;
 
 import java.util.*;
 
+import Message.ResultMessage;
 import vo.UserVO;
 import vo.VIPInfoVO;
 import vo.HotelInfoVO;
@@ -51,8 +52,8 @@ public class User {
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public boolean updateUserInfo(UserVO userInfo){
-		return false;
+	public ResultMessage updateUserInfo(UserVO userInfo){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**
@@ -62,8 +63,8 @@ public class User {
 	 * @return 返回是否注册成功
 	 * @author Xue.W
 	 */
-	public boolean setVIP(VIPInfoVO VIPInfo , String user_ID){
-		return false;
+	public ResultMessage setVIP(VIPInfoVO VIPInfo , String user_ID){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**

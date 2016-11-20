@@ -1,5 +1,6 @@
 package logic.user;
 
+import Message.ResultMessage;
 import vo.WebBusinessVO;
 
 /**
@@ -24,8 +25,8 @@ public class WebBusiness {
 	 * @return 返回是否新增成功
 	 * @author Xue.W
 	 */
-	public boolean addWebBusiness (WebBusinessVO webBusinessInfo){
-		return false;
+	public ResultMessage addWebBusiness (WebBusinessVO webBusinessInfo){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**
@@ -45,8 +46,8 @@ public class WebBusiness {
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public boolean updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
-		return false;
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
+		return ResultMessage.FAILURE;
 	}
 	
 }

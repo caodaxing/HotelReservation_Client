@@ -1,6 +1,7 @@
 package logic.credit;
 
 import Message.CreditChange;
+import Message.ResultMessage;
 
 /**
  * 用户信用信息及VIP升级所需信用的管理
@@ -26,8 +27,8 @@ public class Credit implements CreditInfo{
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public boolean changeCredit(String user_ID , CreditChange change , int number){
-		return false;
+	public ResultMessage changeCredit(String user_ID , CreditChange change , int number){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**
@@ -36,8 +37,8 @@ public class Credit implements CreditInfo{
 	 * @return 返回是否成功
 	 * @author Xue.W
 	 */
-	public boolean setVIPCredit(int credit_num){
-		return false;
+	public ResultMessage setVIPCredit(int credit_num){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**

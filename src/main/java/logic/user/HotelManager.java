@@ -1,5 +1,6 @@
 package logic.user;
 
+import Message.ResultMessage;
 import vo.HotelManagerVO;
 
 /**
@@ -25,8 +26,8 @@ public class HotelManager {
 	 * @return 返回是否新增成功
 	 * @author Xue.W
 	 */
-	public boolean addHotelManagerInfo(HotelManagerVO hotelManager , String hotel_ID){
-		return false;
+	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager , String hotel_ID){
+		return ResultMessage.FAILURE;
 	}
 	
 	/**
@@ -46,8 +47,8 @@ public class HotelManager {
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public boolean updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_Id){
-		return false;
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_Id){
+		return ResultMessage.FAILURE;
 	}
 	
 }
