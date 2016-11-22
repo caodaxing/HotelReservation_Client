@@ -1,10 +1,10 @@
 package viewController.order;
 
 /**
- * Order界面层Controller
+ * Check界面层Controller
  * @author XueWang
  *
  */
-public class OrderUIContorller {
+public class CheckUIController {
 
 }
