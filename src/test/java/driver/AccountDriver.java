@@ -40,7 +40,7 @@ public class AccountDriver {
 		Identity id = accountService.getIdentity(vo);
 		System.out.println("This is a " + id);
 		
-		ResultMessage result2 = accountService.modify(vo);
+		ResultMessage result2 = accountService.modifyPassword(vo);
 		if(result2 == ResultMessage.SUCCESS){
 			System.out.println("Modify success");
 		}else if(result2 == ResultMessage.FAILURE){
@@ -49,7 +49,7 @@ public class AccountDriver {
 			System.out.println("Error");
 		}
 		
-		ResultMessage result3 = accountService.modify(vo);
+		ResultMessage result3 = accountService.modifyPassword(vo);
 		if(result3 == ResultMessage.SUCCESS){
 			System.out.println("Logout success");
 		}else if(result3 == ResultMessage.FAILURE){

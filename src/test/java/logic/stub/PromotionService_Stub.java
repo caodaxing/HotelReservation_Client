@@ -1,4 +1,4 @@
-package logictest.stub;
+package logic.stub;
 
 import java.util.HashMap;
 

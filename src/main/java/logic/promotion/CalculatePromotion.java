@@ -1,5 +1,7 @@
 package logic.promotion;
 
+import java.util.ArrayList;
+
 import Message.ResultMessage;
 import vo.OrderVO;
 /**
@@ -9,7 +11,7 @@ import vo.OrderVO;
  */
 public class CalculatePromotion implements JudgePromotion{
 	
-	
+	ArrayList<Promotion> promotions;
 	
 	/**
 	 * 判断是否满足促销策略

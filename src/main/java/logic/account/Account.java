@@ -55,22 +55,25 @@ public class Account implements AccountInfo, AccountService{
 	}
 	
 	/**
-	 * 修改账户信息
+	 * 修改账户密码信息
 	 * @param accountVO 传入的VO信息
 	 * @return RusultMessage 返回修改的结果（成功/失败）
 	 * @author bcy
 	 */
-	public ResultMessage modify(AccountVO accountVO){
+	public ResultMessage modifyPassword(AccountVO accountVO){
 		return ResultMessage.SUCCESS;
 	}
 	
-	/**
-	 * 获取身份
-	 * @param accountVO 传入的VO信息
-	 * @return Identity 返回账户的身份
-	 * @author bcy
-	 */
 	public Identity getIdentity(AccountVO accountVO){
 		return Identity.ClIENT;
 	}
+	
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 }
+

@@ -20,12 +20,7 @@ public class Order implements OrderInfo{
 	EvaluationInfo evaluation;
 	CreditInfo credit;
 	
-	public Order(){}
-	
-	public Order(CreateOrder createOrder, EvaluationInfo evaluation, CreditInfo credit) {
-		this.createOrder = createOrder;
-		this.evaluation = evaluation;
-		this.credit = credit;
+	public Order(){
 	}
 	
 	/**

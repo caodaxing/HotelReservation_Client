@@ -7,7 +7,7 @@ import org.junit.Test;
 public class CreditTest {
 
 	@Test
-	public void test() {
+	public void testGetCredit() {
 		fail("Not yet implemented");
 	}
 

@@ -1,4 +1,4 @@
-package logictest.stub;
+package logic.stub;
 
 import Message.Identity;
 import Message.ResultMessage;
@@ -48,7 +48,7 @@ public class AccountService_Stub implements AccountService{
 		return null;
 	}
 
-	public ResultMessage modify(AccountVO accountVO) {
+	public ResultMessage modifyPassword(AccountVO accountVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

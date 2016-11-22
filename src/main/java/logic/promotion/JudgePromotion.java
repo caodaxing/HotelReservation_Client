@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import Message.ResultMessage;
 import vo.OrderVO;
 
 /**
@@ -9,5 +8,5 @@ import vo.OrderVO;
  *
  */
 public interface JudgePromotion {
-	public ResultMessage judge(OrderVO order);
+	public double calculate(OrderVO order);
 }

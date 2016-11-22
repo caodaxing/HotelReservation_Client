@@ -1,6 +1,7 @@
 package logic.order;
 
 import Message.ResultMessage;
+import logic.credit.CreditInfo;
 import logic.promotion.JudgePromotion;
 import vo.OrderVO;
 
@@ -10,10 +11,12 @@ import vo.OrderVO;
  *
  */
 public class CreateOrder {
-	JudgePromotion promotion;
+	private JudgePromotion promotion;
+	private CreditInfo credit;
 	
-	public CreateOrder(JudgePromotion promotion){
+	public CreateOrder(JudgePromotion promotion, CreditInfo credit){
 		this.promotion = promotion;
+		this.credit = credit;
 	}
 	
 	/**
@@ -32,8 +35,8 @@ public class CreateOrder {
 	 * @return 计算完成后的订单价钱
 	 * @author Mark.W
 	 */
-	public double calculate(Order order){
-		return 0;
+	public double calculate(OrderVO order){
+		return promotion.calculate(order);
 	}
 	
 	/**
@@ -43,6 +46,8 @@ public class CreateOrder {
 	 * @author Mark.W
 	 */
 	public ResultMessage judgeCredit(String user_id){
+		int cre = credit.getCredit(user_id);
+		
 		return ResultMessage.SUCCESS;
 	}
 }

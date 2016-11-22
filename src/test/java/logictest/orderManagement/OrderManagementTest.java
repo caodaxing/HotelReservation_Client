@@ -27,7 +27,7 @@ public class OrderManagementTest {
 		execute.autoSetUnnormal("2016111300001");
 		MockRoom room=new MockRoom();
 		room.updateRoomInfo(roomVO);
-		MockCredit credit=new MockCredit();
+		MockCredit credit=new MockCredit(100, 1);
 		credit.changeCredit("伟大的源哥哥", CreditChange.DECREASE, 888);
 		
 		assertEquals(ResultMessage.SUCCESS, manageOrder.undoUnnormalOrder(orderVO));

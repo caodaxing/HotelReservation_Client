@@ -9,6 +9,7 @@ import Message.ResultMessage;
  */
 public class Credit implements CreditInfo{
 	
+	
 	/**
 	 * 获得信用值
 	 * @param user_ID 传入的用户ID信息

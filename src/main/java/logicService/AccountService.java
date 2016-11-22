@@ -18,7 +18,7 @@ public interface AccountService {
 	
 	public ResultMessage logout(AccountVO accountVO);
 	
-	public ResultMessage modify(AccountVO accountVO);
+	public ResultMessage modifyPassword(AccountVO accountVO);
 	
 	public Identity getIdentity (AccountVO accountVO);
 	
