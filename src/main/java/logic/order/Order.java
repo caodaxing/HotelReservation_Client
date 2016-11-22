@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import Message.CreditChange;
 import Message.ResultMessage;
 import logic.credit.CreditInfo;
-import logic.evaluation.EvaluationInfo;
-import vo.EvaluationVO;
+import logic.evaluation.Evaluation;
 import vo.OrderVO;
 
 /**
@@ -17,7 +16,7 @@ import vo.OrderVO;
 public class Order implements OrderInfo{
 	
 	CreateOrder createOrder;
-	EvaluationInfo evaluation;
+	Evaluation evaluation;
 	CreditInfo credit;
 	
 	public Order(){

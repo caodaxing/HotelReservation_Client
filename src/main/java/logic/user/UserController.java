@@ -5,7 +5,7 @@ import java.util.*;
 import Message.Identity;
 import Message.ResultMessage;
 import logic.account.Account;
-import vo.UserVO;
+import vo.ClientVO;
 import vo.HotelManagerVO;
 import vo.VIPInfoVO;
 import vo.AccountVO;
@@ -18,38 +18,38 @@ import vo.WebBusinessVO;
  */
 public class UserController {
 	
-	User user;
+	Client client;
 	HotelManager hm;
 	WebBusiness webBusiness;
 	WebManager webManager;
 	Account account;
 	
 	public UserController() {
-		user = new User();
+		client = new Client();
 		hm = new HotelManager();
 		webBusiness = new WebBusiness();
 		webManager = new WebManager();
 		account = new Account();
 	}
 	
-	public UserVO getUserInfo(String user_ID){
-		return user.getUserInfo(user_ID);
+	public ClientVO getUserInfo(String user_ID){
+		return client.getUserInfo(user_ID);
 	}
 	
-	public ResultMessage updateUserInfo(UserVO new_userInfo , String user_ID){
-		return user.updateUserInfo(new_userInfo);
+	public ResultMessage updateUserInfo(ClientVO new_userInfo , String user_ID){
+		return client.updateUserInfo(new_userInfo);
 	}
 	
 	public ResultMessage setVIP(VIPInfoVO VIPInfo , String user_ID){
-		return user.setVIP(VIPInfo, user_ID);
+		return client.setVIP(VIPInfo, user_ID);
 	}
 	
 	public VIPInfoVO getVIPInfo (String user_ID){
-		return user.getVIPInfo(user_ID);
+		return client.getVIPInfo(user_ID);
 	}
 	
 	public ArrayList<HotelInfoVO> getHistoryHotelInfo(String user_ID){
-		return user.getHistoryHotelInfo(user_ID);
+		return client.getHistoryHotelInfo(user_ID);
 	}
 	
 	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager ,String hotel_ID){

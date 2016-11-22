@@ -16,7 +16,7 @@ public class Evaluation implements EvaluationInfo{
 	 * @return 评价的String类
 	 * @author Rukawa
 	 */
-	public String getEvaluationInfo (String orderId){
+	public String getEvaluationInfo(String orderId){
 		return null;
 	}
 	
@@ -26,7 +26,7 @@ public class Evaluation implements EvaluationInfo{
 	 * @return enum类型
 	 * @author Rukawa
 	 */
-	public ResultMessage evaluate (String orderId){
+	public ResultMessage evaluate(String orderId){
 		return null;
 	}
 }

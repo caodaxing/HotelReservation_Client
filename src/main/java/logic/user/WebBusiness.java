@@ -7,7 +7,7 @@ import vo.WebBusinessVO;
  * 管理网站营销人员信息的类
  * @author Xue.W
  */
-public class WebBusiness {
+public class WebBusiness extends User{
 	
 	WebBusinessVO wbv ;
 	

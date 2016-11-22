@@ -2,14 +2,14 @@ package vo;
 
 public class OrderVO {
 	
-	String orderId;
-	String startTime;
-	RoomVO room;
-	String endTime;
-	int state;
-	int numOfPeople;
-	boolean hasChild;
-	int price;
+	public String orderId;
+	public String startTime;
+	public RoomVO room;
+	public String endTime;
+	public int state;
+	public int numOfPeople;
+	public boolean hasChild;
+	public int price;
 	
 	/**
 	 * orderVO

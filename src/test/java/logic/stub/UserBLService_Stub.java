@@ -8,7 +8,7 @@ import logicService.UserService;
 import vo.AccountVO;
 import vo.HotelInfoVO;
 import vo.HotelManagerVO;
-import vo.UserVO;
+import vo.ClientVO;
 import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 
@@ -40,12 +40,12 @@ public class UserBLService_Stub implements UserService {
 //		return ResultMessage.SUCCESS;
 //	}
 
-	public UserVO getUserInfo(String user_ID) {
+	public ClientVO getUserInfo(String user_ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage updateUserInfo(UserVO new_userInfo, String user_ID) {
+	public ResultMessage updateUserInfo(ClientVO new_userInfo, String user_ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

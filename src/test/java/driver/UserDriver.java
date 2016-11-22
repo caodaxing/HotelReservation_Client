@@ -6,7 +6,7 @@ import Message.ResultMessage;
 import logicService.UserService;
 import vo.HotelInfoVO;
 import vo.HotelManagerVO;
-import vo.UserVO;
+import vo.ClientVO;
 import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 
@@ -20,10 +20,10 @@ public class UserDriver {
 		
 		System.out.println("This is userServiceDriver");
 		
-		UserVO uvo =  userService.getUserInfo("123");
+		ClientVO uvo =  userService.getUserInfo("123");
 		System.out.println(uvo);
 	
-		UserVO user = new UserVO("128","习近平", "13894858311" , 8888 , null);
+		ClientVO user = new ClientVO("128","习近平", "13894858311" , 8888 , null);
 		ResultMessage result0 = userService.updateUserInfo(user , "128");
 		if(result0 == ResultMessage.SUCCESS){
 			System.out.println("Updae User success");
