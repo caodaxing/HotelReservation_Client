@@ -9,14 +9,10 @@ import Message.ResultMessage;
 import logic.credit.CreditInfo;
 import logic.credit.MockCredit;
 import logic.order.CreateOrder;
-import logic.promotion.CalculatePromotion;
 import logic.promotion.JudgePromotion;
 import logic.promotion.MockCalculatePromotion;
-import logic.user.MockClient;
-import logic.user.Client;
 import vo.OrderVO;
 import vo.RoomVO;
-import vo.ClientVO;
 
 public class CreateOrderTest {
 
