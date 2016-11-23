@@ -2,11 +2,11 @@ package po;
 
 public class CreditPO {
 	
-	String userID;
-	String time;
-	String orderID;
-	int action;
-	int cerditChange;
-	int nowCredit;
+	private String userID;
+	private String time;
+	private String orderID;
+	private int action;
+	private int cerditChange;
+	private int nowCredit;
 	
 }
