@@ -3,9 +3,10 @@ package logic.order;
 import java.util.ArrayList;
 
 import Message.CreditChange;
+import Message.OrderListCondition;
 import Message.ResultMessage;
+import factories.OrderListFilterFactory;
 import logicService.OrderService;
-import vo.EvaluationVO;
 import vo.OrderVO;
 
 /**
@@ -42,8 +43,10 @@ public class OrderController implements OrderService{
 		return order.changeCredit(user_id, change, number);
 	}
 	
-	public ArrayList<OrderVO> filterList(){
-		return filter.filterList();
+	public ArrayList<OrderVO> filterList(String userID, OrderListCondition condition){
+		OrderListFilterFactory orderListFilterFactory = OrderListFilterFactory.getInstance();
+		filter = orderListFilterFactory.createFilter(condition);
+		return filter.filterList(userID);
 	}
 	
 }

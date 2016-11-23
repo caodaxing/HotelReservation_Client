@@ -3,10 +3,10 @@ package logic.stub;
 import java.util.ArrayList;
 
 import Message.CreditChange;
+import Message.OrderListCondition;
 import Message.ResultMessage;
 import logicService.OrderService;
 import vo.OrderVO;
-import vo.RoomVO;
 
 public class OrderService_Stub implements OrderService {
 
@@ -40,7 +40,7 @@ public class OrderService_Stub implements OrderService {
 		return null;
 	}
 
-	public ArrayList<OrderVO> filterList() {
+	public ArrayList<OrderVO> filterList(String userID, OrderListCondition condition) {
 		// TODO Auto-generated method stub
 		return null;
 	}

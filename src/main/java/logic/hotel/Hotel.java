@@ -18,7 +18,7 @@ import vo.RoomVO;
 public class Hotel implements HotelItem, HotelUpdateRoom{
 	private ArrayList<Room> rooms;
 	private HotelPromotion hotelPromotion;
-	private ArrayList<Order> orders;
+	private ArrayList<Order> hotelOrders;
 	
 	/**
 	 * 空的构造方法

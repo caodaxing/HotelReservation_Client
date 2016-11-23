@@ -2,6 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
+import po.OrderPO;
 import vo.OrderVO;
 
 /**
@@ -17,7 +18,7 @@ public class UndoedFilter implements OrderListFilter{
 	 * @author Mark.W
 	 *
 	 */
-	public ArrayList<OrderVO> filterList() {
+	public ArrayList<OrderVO> filterList(String userID) {
 		return null;
 	}
 

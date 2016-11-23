@@ -19,8 +19,7 @@ public class Order implements OrderInfo{
 	Evaluation evaluation;
 	CreditInfo credit;
 	
-	public Order(){
-	}
+	public Order(){}
 	
 	/**
 	 * 撤销订单 

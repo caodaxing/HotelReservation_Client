@@ -1,14 +1,15 @@
 package logic.user;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import Message.ResultMessage;
+import logic.credit.Credit;
+import logic.order.OrderListFilter;
+import po.OrderPO;
 import vo.ClientVO;
-import vo.VIPInfoVO;
 import vo.HotelInfoVO;
 import vo.OrderVO;
-import logic.credit.*;
-import logic.order.*;
+import vo.VIPInfoVO;
 
 /**
  * 管理客户信息的类
@@ -16,16 +17,14 @@ import logic.order.*;
  */
 public class Client extends User{
 	
-	String user_ID;
-	String orderID;
-	ClientVO clientVO ;
+	private String user_ID;
+	private String orderID;
+	private ClientVO clientVO ;
 	
-	Order order = new Order();
-	Credit credit = new Credit();
+	private ArrayList<OrderPO> clientOrders;
+	private Credit credit;
 	
-	public Client(){
-		
-	}
+	public Client(){}	
 	
 	/**
 	 * User的构造函数
@@ -33,7 +32,7 @@ public class Client extends User{
 	 * @author Xue.W
 	 */
 	public Client(ClientVO clientVO){
-		this.clientVO = clientVO;
+		this.clientVO = clientVO; 
 	}
 	
 	/**
@@ -98,22 +97,22 @@ public class Client extends User{
 	}
 	
 	/**
-	 * 获得订单信息
-	 * @param orderID 传入的订单ID信息
-	 * @return 返回订单信息
-	 * @author Xue.W
-	 */
-	public OrderVO getOrderInfo(){
-		return order.getOrderInfo(orderID);
-	}
-	
-	/**
 	 * 获得VIP升级信用值
 	 * @return 返回升级所需信用
 	 * @author Xue.W
 	 */
 	public int getVIPCredit(){
 		return credit.getVIPCredit();
+	}
+	
+	/**
+	 * 获得订单信息
+	 * @param orderID 传入的订单ID信息
+	 * @return 返回订单信息
+	 * @author Xue.W
+	 */
+	public OrderVO getOrderInfo(String orderID){
+		return null;
 	}
 	
 }

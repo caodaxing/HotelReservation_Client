@@ -1,15 +1,16 @@
 package logic.user;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import Message.Identity;
 import Message.ResultMessage;
 import logic.account.Account;
+import logic.account.AccountInfo;
+import vo.AccountVO;
 import vo.ClientVO;
+import vo.HotelInfoVO;
 import vo.HotelManagerVO;
 import vo.VIPInfoVO;
-import vo.AccountVO;
-import vo.HotelInfoVO;
 import vo.WebBusinessVO;
 
 /**
@@ -22,7 +23,7 @@ public class UserController {
 	HotelManager hm;
 	WebBusiness webBusiness;
 	WebManager webManager;
-	Account account;
+	AccountInfo account;
 	
 	public UserController() {
 		client = new Client();

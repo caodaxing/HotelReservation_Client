@@ -1,6 +1,8 @@
 package logic.order;
 
 import java.util.ArrayList;
+
+import po.OrderPO;
 import vo.OrderVO;
 
 /**
@@ -15,7 +17,7 @@ public class ExecutedFilter implements OrderListFilter{
 	 * @return 指定条件的订单列表
 	 * @author Mark.W
 	 */
-	public ArrayList<OrderVO> filterList() {
+	public ArrayList<OrderVO> filterList(String userID) {
 		return null;
 	}
 

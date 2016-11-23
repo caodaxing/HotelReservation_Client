@@ -3,9 +3,9 @@ package driver;
 import java.util.ArrayList;
 
 import Message.CreditChange;
+import Message.OrderListCondition;
 import Message.ResultMessage;
 import logicService.OrderService;
-import vo.EvaluationVO;
 import vo.OrderVO;
 import vo.RoomVO;
 
@@ -57,7 +57,7 @@ public class OrderDriver {
 			System.out.println("Error");
 		}
 		
-		ArrayList<OrderVO> list = orderService.filterList();
+		ArrayList<OrderVO> list = orderService.filterList("hhh", OrderListCondition.ABNORMALED);
 		for(OrderVO o :list){
 			System.out.println(o);
 		}
