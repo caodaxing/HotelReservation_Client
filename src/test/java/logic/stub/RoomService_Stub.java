@@ -10,35 +10,32 @@ public class RoomService_Stub implements RoomService {
 
 	public ArrayList<RoomVO> getRoomList(String hotel_id) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<RoomVO> List = new ArrayList<RoomVO>();
+		RoomVO room1 = new RoomVO(0, 288, 0, "1109");
+		RoomVO room2 = new RoomVO(0, 388, 0, "0304");
+		List.add(room1);
+		List.add(room2);
+		
+		return List;
 	}
 
 	public RoomVO getRoomInfo(String hotel_id, String room_id) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return new RoomVO(0, 288, 0, "1109");
 	}
 
 	public ResultMessage updateRoomInfo(RoomVO roomVO) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage addRoomInfo(RoomVO roomVO) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return ResultMessage.FAILURE;
 	}
-//	public RoomVO getRoomInfo(int hotelId, int roomId){
-//		return new RoomVO(1, 299, 0, 1123);
-//	}
-//	
-//	public ResultMessage retupdateRoomInfo(ArrayList<RoomVO> rooms, int hotelId) {
-//		return ResultMessage.SUCCESS;
-//	}
-//	
-//	public ArrayList<RoomVO> returnHotelRooms(int hotelId) {
-//		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-//		rooms.add(new RoomVO(1, 299, 0, 1123));
-//		rooms.add(new RoomVO(2, 299, 0, 1124));
-//		return rooms;
-//	}
+	
 }
