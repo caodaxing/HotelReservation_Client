@@ -1,4 +1,4 @@
-package view.left.vistor;
+package view.left;
 
 /**
  * 游客左侧导航栏
@@ -7,4 +7,8 @@ package view.left.vistor;
  */
 public class VistorUI {
 
+	public void refreshLeft(){
+		
+	}
+	
 }

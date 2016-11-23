@@ -1,4 +1,4 @@
-package viewController.order;
+package viewController;
 
 /**
  * Promotion界面层Controller

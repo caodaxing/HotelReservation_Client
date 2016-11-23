@@ -1,4 +1,4 @@
-package view.left.user;
+package view.left;
 
 /**
  * 客户的左侧导航栏
@@ -6,5 +6,9 @@ package view.left.user;
  *
  */
 public class UserUI {
-
+	
+	public void refreshLeft(){
+		
+	}
+	
 }

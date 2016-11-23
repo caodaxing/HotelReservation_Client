@@ -1,4 +1,4 @@
-package viewController.order;
+package viewController;
 
 /**
  * Order界面层Controller

@@ -1,4 +1,4 @@
-package view.right.info;
+package view.right.user;
 
 /**
  * 临时类,占个位先

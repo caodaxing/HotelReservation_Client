@@ -1,4 +1,4 @@
-package view.left.webBusiness;
+package view.left;
 
 /**
  * 网站营销人员的左侧导航栏
@@ -7,4 +7,8 @@ package view.left.webBusiness;
  */
 public class WebBusinessUI {
 
+	public void refreshLeft(){
+		
+	}
+	
 }

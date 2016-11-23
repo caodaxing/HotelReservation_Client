@@ -1,4 +1,4 @@
-package view.left.webManager;
+package view.left;
 
 /**
  * 网站管理人员的左侧导航栏
@@ -7,4 +7,8 @@ package view.left.webManager;
  */
 public class WebManagerUI {
 
+	public void refreshLeft(){
+		
+	}
+	
 }
