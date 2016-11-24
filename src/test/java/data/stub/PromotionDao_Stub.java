@@ -1,14 +1,36 @@
 package data.stub;
 
+import java.util.ArrayList;
+
 import dataDao.PromotionDao;
+import po.PromotionPO;
 
 public class PromotionDao_Stub implements PromotionDao {
 
-//	public  AccountPO returnVipLevel(String username,String password) {
-//		return new AccountPO("user", "Bcy", "123", true, "2000.0.0", null, "bcy", null, null, "123445");
-//	}
-//
-//	public double returnVipDiscount(String username,String tradingarea,String date,int number) {
-//		return 0.8;
-//	}
+	public ArrayList<PromotionPO> getHotelPromotions(String hotel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public PromotionPO getPromotion(String promotionID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<PromotionPO> getWebPromotions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean addPromotion(PromotionPO promotionPO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean updatePromotion(PromotionPO promotionPO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 }

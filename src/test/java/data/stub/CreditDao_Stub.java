@@ -1,17 +1,25 @@
 package data.stub;
 
+import java.util.ArrayList;
+
 import dataDao.CreditDao;
+import po.CreditHistoryPO;
 
 public class CreditDao_Stub implements CreditDao{
-//	public ResultMessage add(CreditPO po) {
-//		return ResultMessage.SUCCESS;
-//	}
-//	
-//	public ResultMessage modify(CreditPO po) {
-//		return ResultMessage.SUCCESS;
-//	}
-//	
-//	public CreditPO find(String userId) {
-//		return new CreditPO("Bcy", 100, null);
-//	}
+
+	public boolean changeCredit(CreditHistoryPO po) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<CreditHistoryPO> getCreditHistory(String userID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getCredit(String userID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

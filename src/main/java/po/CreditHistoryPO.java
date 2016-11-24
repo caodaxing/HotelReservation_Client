@@ -4,13 +4,13 @@ package po;
  * @param userID 用户ID
  * @param time 信用修改时间
  * @param orderID 订单ID
- * @param action 操作
+ * @param action 操作  0:正常执行订单增加 1:异常订单扣除 2.撤销订单扣除 3.充值
  * @param cerditChange 信用变化值
  * @param nowCredit 当前信用
  * @author bcy
  *
  */
-public class CreditPO {
+public class CreditHistoryPO {
 	
 	private String userID;
 	private String time;
@@ -19,7 +19,7 @@ public class CreditPO {
 	private int cerditChange;
 	private int nowCredit;
 	
-	public CreditPO(String userID , String time , String orderID , 
+	public CreditHistoryPO(String userID , String time , String orderID , 
 			int action , int cerditChange , int nowCredit) {
 		this.userID=userID;
 		this.time=time;

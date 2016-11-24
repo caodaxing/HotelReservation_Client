@@ -7,6 +7,7 @@ package po;
  * @param birthdayOfMember 会员生日
  * @param trueName 真实姓名
  * @param credit 信用
+ * @param bussiness 所属企业
  * @author bcy
  *
  */
@@ -18,15 +19,25 @@ public class ClientPO {
 	private String birthdayOfMember;
 	private String trueName;
 	private int credit;
+	private String bussiness;
 	
 	public ClientPO(String nameOfUser,String phoneNumber,boolean isMember,
-			String birthdayOfMember,String trueName,int credit) {
+			String birthdayOfMember,String trueName,int credit, String bussiness) {
 		this.nameOfUser=nameOfUser;
 		this.phoneNumber=phoneNumber;
 		this.isMember=isMember;
 		this.birthdayOfMember=birthdayOfMember;
 		this.trueName=trueName;
 		this.credit=credit;
+		this.bussiness = bussiness;
+	}
+	
+	public String getBussiness() {
+		return bussiness;
+	}
+
+	public void setBussiness(String bussiness) {
+		this.bussiness = bussiness;
 	}
 
 	public String getNameOfUser() {

@@ -27,23 +27,35 @@ public class OrderDao_Stub implements OrderDao {
 		orders.add(o8);
 		return orders;
 	}
-	
-//	public ArrayList<OrderPO> getOrderList(int[] orderId) {
-//		ArrayList<OrderPO> orders=new ArrayList<>();
-//		orders.add(new OrderPO("2135", "2016.10.16", "234", "2016.10.17", 1, false, 2));
-//		return orders;
-//	}
-//	
-//	public OrderPO getOrder(int orderId) {
-//		return new OrderPO("2135", "2016.10.16", "234", "2016.10.17", 1, false, 2);
-//	}
-//	
-//	public ResultMessage undoOrder(int orderId) {
-//		return ResultMessage.SUCCESS;
-//	}
-//	
-//	public ResultMessage generateOrder(OrderPO order){
-//		return ResultMessage.Add_Success;
-//	}
+
+	public ArrayList<OrderPO> getOrderListByHotelID(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<OrderPO> getHotelDailyOrders(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<OrderPO> getAllDailyOrders(String time) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean updateOrder(OrderPO orderPO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean addOrder(OrderPO orderPO) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public OrderPO getOrderByOrderID(String orderID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
