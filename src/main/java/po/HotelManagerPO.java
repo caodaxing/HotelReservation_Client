@@ -24,4 +24,56 @@ public class HotelManagerPO {
 		this.trueName=trueName;
 		this.numberOfIdentityCard=numberOfIdentityCard;
 	}
+
+
+	public String getUserID() {
+		return userID;
+	}
+
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+
+	public String getHotelID() {
+		return hotelID;
+	}
+
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
+	}
+
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public String getTrueName() {
+		return trueName;
+	}
+
+
+	public void setTrueName(String trueName) {
+		this.trueName = trueName;
+	}
+
+
+	public String getNumberOfIdentityCard() {
+		return numberOfIdentityCard;
+	}
+
+
+	public void setNumberOfIdentityCard(String numberOfIdentityCard) {
+		this.numberOfIdentityCard = numberOfIdentityCard;
+	}
+	
+	
 }
