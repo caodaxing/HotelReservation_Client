@@ -14,6 +14,10 @@ public class ColorAndFont {
 	
 	final public static Color green = new Color(62,201,168);
 	
+	final public static Color buttonDarkGrey = new Color(67,67,67);
+	
+	final public static Color buttonLightGrey = new Color(83,83,83);
+	
 	final public static Color darkGrey = new Color(51,51,51);
 	
 	final public static Color lightGrey = new Color(204,204,204);
