@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import Message.Identity;
 import Message.ResultMessage;
 import vo.AccountVO;
+import vo.ClientVO;
 import vo.HotelInfoVO;
 import vo.HotelManagerVO;
-import vo.ClientVO;
 import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 

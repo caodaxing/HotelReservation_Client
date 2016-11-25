@@ -2,7 +2,10 @@ package logic.account;
 
 import Message.Identity;
 import Message.ResultMessage;
+import data.stub.AccountDao_Stub;
+import dataDao.AccountDao;
 import logicService.AccountService;
+import po.AccountPO;
 import vo.AccountVO;
 
 /**
@@ -11,11 +14,11 @@ import vo.AccountVO;
  *
  */
 public class Account implements AccountInfo, AccountService{
-	String user_id;
-	String password;
-	Identity identity;
+	private AccountDao accountDao;
 		
-	public Account(){}
+	public Account(){
+		accountDao = new AccountDao_Stub();
+	}
 
 	/**
 	 * 注册账户
@@ -24,21 +27,47 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage register(AccountVO accountVO){
-		return ResultMessage.SUCCESS;
+		if(accountVO == null) 
+			return ResultMessage.FAILURE;
+		
+		if(accountVO.password != null && accountVO.accountId != null 
+				&& accountVO.confirmedPassword != null && accountVO.identity != null) {
+			
+			if(accountVO.password != accountVO.confirmedPassword) {
+				return ResultMessage.UNMATCHED_PASSWORD;
+			} else {
+				if(accountDao.addAccount(transToPO(accountVO))) {
+					return ResultMessage.SUCCESS;
+				}
+			}	
+		}
+		
+		return ResultMessage.FAILURE;	
 	}
 	
-	
 	/**
-	 * 登录，并在调用时给成员变量赋值
+	 * 登录
 	 * @param accountVO 传入的VO信息
 	 * @return RusultMessage 返回登录的结果（成功/失败）
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
-		this.user_id = accountVO.user_id;
-		this.password = accountVO.password;
-		this.identity = accountVO.identity;
-		return ResultMessage.SUCCESS;
+		if(accountVO == null || accountVO.accountId == null ||
+				accountVO.identity == null || accountVO.password == null) {
+			return ResultMessage.FAILURE;
+		}
+	
+		AccountPO po = accountDao.getAccountInfo(accountVO.accountId);
+		
+		if(po == null) {
+			return ResultMessage.USERNAME_NOT_EXIST;
+		}
+		
+		if(!po.getPassword().equals(accountVO.password)) {
+			return ResultMessage.UNMATCHED_PASSWORD;
+		} else {
+			return ResultMessage.SUCCESS;
+		}
 		
 	}
 	
@@ -48,9 +77,13 @@ public class Account implements AccountInfo, AccountService{
 	 * @param accountVO 传入的VO信息
 	 * @return RusultMessage 返回登出的结果（成功/失败）
 	 * @author bcy
-	 */
-	public ResultMessage logout(AccountVO accountVO){
-		
+	 */ 
+	public ResultMessage logout(AccountVO accountVO) {	
+		if(accountVO == null || accountVO.accountId == null ||
+				accountVO.identity == null || accountVO.password == null) {
+			return ResultMessage.FAILURE;
+		}
+			
 		return ResultMessage.SUCCESS;
 	}
 	
@@ -61,19 +94,29 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage modifyPassword(AccountVO accountVO){
-		return ResultMessage.SUCCESS;
+		if(accountVO == null || accountVO.accountId == null || accountVO.confirmedPassword == null ||
+				accountVO.identity == null || accountVO.password == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		if(accountVO.password != accountVO.confirmedPassword) {
+			return ResultMessage.UNMATCHED_PASSWORD;
+		} 
+			
+		if(accountDao.modifyPassword(transToPO(accountVO))) {
+			return ResultMessage.SUCCESS;
+		} 
+		
+		return ResultMessage.FAILURE;
 	}
 	
 	public Identity getIdentity(AccountVO accountVO){
-		return Identity.ClIENT;
+		return Identity.CLIENT;
 	}
 	
-	public String getUser_id() {
-		return user_id;
+	public AccountPO transToPO(AccountVO accountVO) {
+		return new AccountPO(accountVO.accountId, accountVO.password, accountVO.identity.getIndex());
 	}
-
-	public String getPassword() {
-		return password;
-	}
+	
 }
 

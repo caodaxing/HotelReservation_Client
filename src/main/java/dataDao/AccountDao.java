@@ -7,5 +7,5 @@ public interface AccountDao {
 	
 	public boolean modifyPassword(AccountPO po);
 	
-	public AccountPO getAccountInfo(AccountPO po);
+	public AccountPO getAccountInfo(String accountID);
 }

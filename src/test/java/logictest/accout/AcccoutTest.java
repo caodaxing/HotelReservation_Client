@@ -12,49 +12,69 @@ import vo.AccountVO;
 
 public class AcccoutTest {
 
-	private AccountVO accountVO;
 	private Account account;
 	
 	@Before
 	public void setUp(){
-		accountVO = new AccountVO("curry", "currycurry", Identity.ClIENT);
 		account = new Account();
 	}	
 	
 	@Test
 	public void testLogin1() {
 		assertEquals(ResultMessage.UNMATCHED_PASSWORD, 
-				account.login(new AccountVO("curry", "curryc", Identity.ClIENT)));
-		assertEquals(ResultMessage.USERNAME_NOT_EXIST, 
-				account.login(new AccountVO("curr", "currycurry", Identity.ClIENT)));	
+				account.login(new AccountVO("curry", "currycurry", Identity.CLIENT)));
 	}
 	
 	@Test
 	public void testLogin2() {
-		assertEquals(ResultMessage.SUCCESS, account.login(accountVO));
-		assertEquals(accountVO.user_id, account.getUser_id());
-		assertEquals(accountVO.password, account.getPassword());
-		assertEquals(accountVO.identity, account.getIdentity(accountVO));	
+		assertEquals(ResultMessage.SUCCESS, account.login(new AccountVO("curry",
+				"e80b5017098950fc58aad83c8c14978e", Identity.CLIENT)));
 	}
 	
+//	@Test
+//	public void testLogin3() {
+//		assertEquals(ResultMessage.USERNAME_NOT_EXIST, 
+//			account.login(new AccountVO("curr", "currycurry", Identity.ClIENT)));
+//	}
 
 	@Test
-	public void testLogout() {
+	public void testLogout1() {
+		assertEquals(ResultMessage.FAILURE, account.login(new AccountVO(null, null, null)));
 	}
 	
 	@Test
-	public void testRegister() {
-		AccountVO vo1 = new AccountVO("curry", "ccccc", Identity.ClIENT);
-		AccountVO vo2 = new AccountVO("mark", "mmmmm", Identity.ClIENT);
-		assertEquals(ResultMessage.FAILURE, account.register(vo1));
+	public void testLogout2() {
+		assertEquals(ResultMessage.SUCCESS, account.login(new AccountVO("curry", 
+				"e80b5017098950fc58aad83c8c14978e", Identity.CLIENT)));
+	}
+	
+	@Test
+	public void testRegister1() {
+		AccountVO vo1 = new AccountVO("curry", "ccccc", "cc", Identity.CLIENT);
+		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.register(vo1));
+	}
+	
+	@Test
+	public void testRegister2() {
+		AccountVO vo2 = new AccountVO("mark", "mmmmm", "mmmmm", Identity.CLIENT);
 		assertEquals(ResultMessage.SUCCESS, account.register(vo2));
 	}
 	
+	
 	@Test
-	public void testModifyPassword() {
-		AccountVO vo1 = new AccountVO("curry", "ccccc", Identity.ClIENT);
-		AccountVO vo2 = new AccountVO("curry", "currycurry", "cuuu", Identity.ClIENT);
-		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.modifyPassword(vo1));
-		assertEquals(ResultMessage.SUCCESS, account.modifyPassword(vo2));
+	public void testModifyPassword1() {
+		assertEquals(ResultMessage.FAILURE, account.modifyPassword(new AccountVO(null, null, null, null)));
+	}
+	
+	@Test
+	public void testModifyPassword2() {
+		AccountVO vo2 = new AccountVO("curry", "currycurry", "cuuu", Identity.CLIENT);
+		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.modifyPassword(vo2));
+	}
+	
+	@Test
+	public void testModifyPassword3() {
+		AccountVO vo1 = new AccountVO("curry", "ccccc", "ccccc", Identity.CLIENT);
+		assertEquals(ResultMessage.SUCCESS, account.modifyPassword(vo1));
 	}
 }

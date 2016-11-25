@@ -11,7 +11,7 @@ import vo.AccountVO;
  */
 public class AccountDriver {
 	
-	AccountVO vo = new AccountVO("123" , "123456" , Identity.ClIENT);
+	AccountVO vo = new AccountVO("123" , "123456" , Identity.CLIENT);
 	
 	public void drive(AccountService accountService){
 		
