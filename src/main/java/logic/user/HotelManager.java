@@ -26,7 +26,7 @@ public class HotelManager {
 	 * @return 返回是否新增成功
 	 * @author Xue.W
 	 */
-	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager , String hotel_ID){
+	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager){
 		return ResultMessage.FAILURE;
 	}
 	
@@ -47,7 +47,7 @@ public class HotelManager {
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_Id){
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
 		return ResultMessage.FAILURE;
 	}
 	

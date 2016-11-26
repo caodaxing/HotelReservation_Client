@@ -7,12 +7,12 @@ import vo.WebBusinessVO;
  * 管理网站营销人员信息的类
  * @author Xue.W
  */
-public class WebBusiness extends User{
+public class WebBusiness{
 	
-	WebBusinessVO wbv ;
+	private String webBussinessID;
 	
 	public WebBusiness(WebBusinessVO wbv){
-		this.wbv = wbv ;
+		this.webBussinessID = wbv.id;
 	}
 	
 	public WebBusiness(){
@@ -41,12 +41,11 @@ public class WebBusiness extends User{
 	
 	/**
 	 * 获得用户信息
-	 * @param webBusiness_ID 传入的网站营销人员ID信息
 	 * @param webBusinessInfo 传入的网站营销人员信息
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
 		return ResultMessage.FAILURE;
 	}
 	

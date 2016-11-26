@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import logicService.HotelService;
 import vo.EvaluationVO;
-import vo.HotelInfoVO;
 import vo.HotelSearchVO;
+import vo.HotelVO;
 import vo.RoomVO;
 
 public class HotelService_Stub implements HotelService{
@@ -31,7 +31,7 @@ public class HotelService_Stub implements HotelService{
 		return List;
 	}
 
-	public HotelInfoVO getHotelItemInfo(String hotel_id) {
+	public HotelVO getHotelItemInfo(String hotel_id) {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list = new ArrayList<Image>();
@@ -40,7 +40,7 @@ public class HotelService_Stub implements HotelService{
 		list.add(image1);
 		list.add(image2);
 		
-		return new HotelInfoVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+		return new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 				, "288", "房间整洁，好评！", list);
 	}
 
@@ -58,7 +58,7 @@ public class HotelService_Stub implements HotelService{
 		return list;
 	}
 
-	public ArrayList<HotelInfoVO> getInitialHotelList(String location, String tradingArea) {
+	public ArrayList<HotelVO> getInitialHotelList(String location, String tradingArea) {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list1 = new ArrayList<Image>();
@@ -66,7 +66,7 @@ public class HotelService_Stub implements HotelService{
 		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
 		list1.add(image1);
 		list1.add(image2);
-		HotelInfoVO info1 = new HotelInfoVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 				, "288", "房间整洁，好评！", list1);
 		
 		ArrayList<Image> list2 = new ArrayList<Image>();
@@ -74,17 +74,17 @@ public class HotelService_Stub implements HotelService{
 		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
 		list2.add(image3);
 		list2.add(image4);
-		HotelInfoVO info2 = new HotelInfoVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
+		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
 				, "388", "房间整洁，好评！", list2);
 		
-		ArrayList<HotelInfoVO> List = new ArrayList<HotelInfoVO>();
+		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
 		List.add(info1);
 		List.add(info2);
 		
 		return List;
 	}
 
-	public ArrayList<HotelInfoVO> getSortedList() {
+	public ArrayList<HotelVO> getSortedList() {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list1 = new ArrayList<Image>();
@@ -92,33 +92,31 @@ public class HotelService_Stub implements HotelService{
 		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
 		list1.add(image1);
 		list1.add(image2);
-		HotelInfoVO info1 = new HotelInfoVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 				, "288", "房间整洁，好评！", list1);
 		
-		ArrayList<HotelInfoVO> List = new ArrayList<HotelInfoVO>();
+		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
 		List.add(info1);
 		
 		return List;
 	}
 
-	public ArrayList<HotelInfoVO> getBookedHotelList(String user_id) {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<HotelVO> getBookedHotelList(String user_id) {
 		ArrayList<Image> list2 = new ArrayList<Image>();
 		Image image3 = Toolkit.getDefaultToolkit().createImage("index2.jpg");
 		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
 		list2.add(image3);
 		list2.add(image4);
-		HotelInfoVO info2 = new HotelInfoVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
+		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
 				, "388", "房间整洁，好评！", list2);
 		
-		ArrayList<HotelInfoVO> List = new ArrayList<HotelInfoVO>();
+		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
 		List.add(info2);
 		
 		return List;
 	}
 
-	public HotelInfoVO search(HotelSearchVO search) {
+	public HotelVO search(HotelSearchVO search) {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list = new ArrayList<Image>();
@@ -127,7 +125,7 @@ public class HotelService_Stub implements HotelService{
 		list.add(image1);
 		list.add(image2);
 		
-		return  new HotelInfoVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+		return  new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 				, "288", "房间整洁，好评！", list);
 	}
 }

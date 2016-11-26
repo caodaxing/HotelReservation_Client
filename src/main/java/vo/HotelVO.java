@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class HotelInfoVO {
+public class HotelVO {
 	
 	String hotelName;
 	String hotelLocation;
@@ -24,7 +24,7 @@ public class HotelInfoVO {
 	 * @param image 酒店图片
 	 * @author Rukawa
 	 */
-	public HotelInfoVO(String hotelName, String hotelLocation, String briefing, String price, String evaluation,ArrayList<Image> hotelImage){
+	public HotelVO(String hotelName, String hotelLocation, String briefing, String price, String evaluation,ArrayList<Image> hotelImage){
 		super();
 		this.hotelName = hotelName;
 		this.hotelLocation = hotelLocation;

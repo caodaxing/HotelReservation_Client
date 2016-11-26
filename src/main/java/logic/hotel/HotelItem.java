@@ -1,6 +1,6 @@
 package logic.hotel;
 
-import vo.HotelInfoVO;
+import vo.HotelVO;
 
 /**
  * 给order提供的获取酒店信息的接口
@@ -8,5 +8,5 @@ import vo.HotelInfoVO;
  *
  */
 public interface HotelItem {
-	public HotelInfoVO getHotelItemInfo (String hotel_id);
+	public HotelVO getHotelItemInfo (String hotel_id);
 }

@@ -6,85 +6,84 @@ import Message.Identity;
 import Message.ResultMessage;
 import logic.account.Account;
 import logic.account.AccountInfo;
+import logicService.UserService;
 import vo.AccountVO;
 import vo.ClientVO;
-import vo.HotelInfoVO;
 import vo.HotelManagerVO;
+import vo.HotelVO;
 import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 
-/**
- * UserController
- * @author Xue.W
- */
-public class UserController {
+public class UserController implements UserService{
 	
-	Client client;
-	HotelManager hm;
-	WebBusiness webBusiness;
-	WebManager webManager;
-	AccountInfo account;
+	private Client client;
+	private HotelManager hotelManager;
+	private WebBusiness webBusiness;
+	private WebManager webManager;
+	private AccountInfo account;
 	
 	public UserController() {
 		client = new Client();
-		hm = new HotelManager();
+		hotelManager = new HotelManager();
 		webBusiness = new WebBusiness();
 		webManager = new WebManager();
 		account = new Account();
 	}
 	
-	public ClientVO getUserInfo(String user_ID){
-		return client.getUserInfo(user_ID);
+	@Override
+	public ClientVO getClientInfo(String user_ID){
+		return client.getClientInfo(user_ID);
 	}
 	
-	public ResultMessage updateUserInfo(ClientVO new_userInfo , String user_ID){
+	public ResultMessage updateClientInfo(ClientVO new_userInfo){
 		return client.updateUserInfo(new_userInfo);
 	}
 	
-	public ResultMessage setVIP(VIPInfoVO VIPInfo , String user_ID){
-		return client.setVIP(VIPInfo, user_ID);
+	public ResultMessage setVIP(VIPInfoVO VIPInfo ){
+		return client.setVIP(VIPInfo);
 	}
 	
 	public VIPInfoVO getVIPInfo (String user_ID){
 		return client.getVIPInfo(user_ID);
 	}
 	
-	public ArrayList<HotelInfoVO> getHistoryHotelInfo(String user_ID){
-		return client.getHistoryHotelInfo(user_ID);
+	public ArrayList<HotelVO> getHistoryHotels(String user_ID){
+		return client.getHistoryHotels(user_ID);
 	}
 	
-	public ResultMessage addHotelManagerInfo(HotelManagerVO hotelManager ,String hotel_ID){
-		return hm.addHotelManagerInfo(hotelManager , hotel_ID);
+	public ResultMessage addHotel(HotelVO hotelVO){
+		return webManager.addHotel(hotelVO);
 	}
+	
+	public ResultMessage addHotelManager(HotelManagerVO hotelManager){
+		return webManager.addHotelManager(hotelManager);
+	}
+	
+	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessVO){
+		return webManager.addWebBusiness(webBusinessVO);
+	}
+	
+	
 	
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID){
-		return hm.getHotelManagerInfo(hotel_ID);
+		return hotelManager.getHotelManagerInfo(hotel_ID);
 	}
 	
-	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo , String hotel_ID){
-		return hm.updateHotelManagerInfo(hotelManagerInfo, hotel_ID);
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
+		return hotelManager.updateHotelManagerInfo(hotelManagerInfo);
 	}
 	
-	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessInfo){
-		return webBusiness.addWebBusiness(webBusinessInfo);
-	}
 	
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID){
 		return webBusiness.getWebBusinessInfo(webBusiness_ID);
 	}
 	
-	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo , String webBusiness_ID){
-		return webBusiness.updateWebBusinessInfo(webBusinessInfo, webBusiness_ID);
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
+		return webBusiness.updateWebBusinessInfo(webBusinessInfo);
 	}
 	
-	/**
-	 * 获得用户种类
-	 * @param accountVO 传入的账户信息
-	 * @return 返回用户类型
-	 * @author Xue.W
-	 */
 	public Identity getAccountIdentity(AccountVO accountVO){
 		return account.getIdentity(accountVO);
 	}
-	
+
 }

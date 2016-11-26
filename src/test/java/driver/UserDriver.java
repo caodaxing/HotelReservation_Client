@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import logicService.UserService;
-import vo.HotelInfoVO;
-import vo.HotelManagerVO;
 import vo.ClientVO;
+import vo.HotelManagerVO;
+import vo.HotelVO;
 import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 
@@ -20,11 +20,11 @@ public class UserDriver {
 		
 		System.out.println("This is userServiceDriver");
 		
-		ClientVO uvo =  userService.getUserInfo("123");
+		ClientVO uvo =  userService.getClientInfo("123");
 		System.out.println(uvo);
 	
 		ClientVO user = new ClientVO("128","习近平", "13894858311" , 8888 , null);
-		ResultMessage result0 = userService.updateUserInfo(user , "128");
+		ResultMessage result0 = userService.updateClientInfo(user);
 		if(result0 == ResultMessage.SUCCESS){
 			System.out.println("Updae User success");
 		}else if(result0 == ResultMessage.FAILURE){
@@ -34,7 +34,7 @@ public class UserDriver {
 		}
 		
 		VIPInfoVO vipVO = new VIPInfoVO("总书记" , "8");
-		ResultMessage result1 = userService.setVIP(vipVO, "126");
+		ResultMessage result1 = userService.setVIP(vipVO);
 		if(result1 == ResultMessage.SUCCESS){
 			System.out.println("SetVIP success");
 		}else if(result1 == ResultMessage.FAILURE){
@@ -46,13 +46,13 @@ public class UserDriver {
 		VIPInfoVO vipVO1 = userService.getVIPInfo("126");
 		System.out.println(vipVO1);
 		
-		ArrayList<HotelInfoVO> list = userService.getHistoryHotelInfo("123");
-		for(HotelInfoVO h : list){
+		ArrayList<HotelVO> list = userService.getHistoryHotels("123");
+		for(HotelVO h : list){
 			System.out.println(h);
 		}
 		
 		HotelManagerVO hotelManager = new HotelManagerVO( "119" , "王浩然" , "哈哈哈");
-		ResultMessage result2 = userService.addHotelManagerInfo(hotelManager, "119");
+		ResultMessage result2 = userService.addHotelManager(hotelManager);
 		if(result2 == ResultMessage.SUCCESS){
 			System.out.println("add HotelManager success");
 		}else if(result2 == ResultMessage.FAILURE){
@@ -64,7 +64,7 @@ public class UserDriver {
 		HotelManagerVO h1 = userService.getHotelManagerInfo("119");
 		System.out.println(h1);
 		
-		ResultMessage result3 = userService.updateHotelManagerInfo(hotelManager, "119");
+		ResultMessage result3 = userService.updateHotelManagerInfo(hotelManager);
 		if(result3 == ResultMessage.SUCCESS){
 			System.out.println("Update hotelManager success");
 		}else if(result3 == ResultMessage.FAILURE){
@@ -86,7 +86,7 @@ public class UserDriver {
 		WebBusinessVO w1 = userService.getWebBusinessInfo("222");
 		System.out.println(w1);
 		
-		ResultMessage result5 = userService.updateWebBusinessInfo(webBusiness, "333");
+		ResultMessage result5 = userService.updateWebBusinessInfo(webBusiness);
 		if(result5 == ResultMessage.SUCCESS){
 			System.out.println("Update webBusiness success");
 		}else if(result5 == ResultMessage.FAILURE){

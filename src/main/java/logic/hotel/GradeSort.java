@@ -2,7 +2,8 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import vo.HotelInfoVO;
+import vo.HotelVO;
+
 
 /**
  * 按评分排序
@@ -17,7 +18,7 @@ public class GradeSort {
 	 * @return ArrayList<String> 返回按评分排序好的酒店名称列表
 	 * @author all
 	 */
-	public ArrayList<HotelInfoVO> getSortedList(double startGrade,double endGrade){
+	public ArrayList<HotelVO> getSortedList(double startGrade,double endGrade){
 		return null;
 	}
 }

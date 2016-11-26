@@ -3,9 +3,9 @@ package logic.user;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logic.credit.CreditInfo;
+import logic.credit.Credit;
 import vo.ClientVO;
-import vo.HotelInfoVO;
+import vo.HotelVO;
 import vo.OrderVO;
 import vo.VIPInfoVO;
 
@@ -13,12 +13,12 @@ import vo.VIPInfoVO;
  * 管理客户信息的类
  * @author Xue.W
  */
-public class Client extends User{
+public class Client{
 	
 	private String userID;
 	private String orderID;
 	private ClientVO clientVO;
-	private CreditInfo creditInfo;
+	private Credit creditInfo;
 	
 	public Client(){}	
 	
@@ -37,7 +37,7 @@ public class Client extends User{
 	 * @return 返回用户信息
 	 * @author Xue.W
 	 */
-	public ClientVO getUserInfo (String user_ID){
+	public ClientVO getClientInfo (String user_ID){
 		return null;
 	}
 	
@@ -54,11 +54,10 @@ public class Client extends User{
 	/**
 	 * 注册会员
 	 * @param VIPInfo 传入的注册会员信息
-	 * @param user_ID 传入的用户ID信息
 	 * @return 返回是否注册成功
 	 * @author Xue.W
 	 */
-	public ResultMessage setVIP(VIPInfoVO VIPInfo , String user_ID){
+	public ResultMessage setVIP(VIPInfoVO VIPInfo){
 		return ResultMessage.FAILURE;
 	}
 	
@@ -78,7 +77,7 @@ public class Client extends User{
 	 * @return 返回用户历史酒店列表
 	 * @author Xue.W
 	 */
-	public ArrayList<HotelInfoVO> getHistoryHotelInfo(String user_ID){
+	public ArrayList<HotelVO> getHistoryHotels(String user_ID){
 		return null;
 	}
 	
@@ -89,7 +88,7 @@ public class Client extends User{
 	 * @author Xue.W
 	 */
 	public int getCredit(){
-		return credit.getCredit(userID);
+		return creditInfo.getCredit(userID);
 	}
 	
 	/**
@@ -98,7 +97,7 @@ public class Client extends User{
 	 * @author Xue.W
 	 */
 	public int getVIPCredit(){
-		return credit.getVIPCredit();
+		return creditInfo.getVIPCredit();
 	}
 	
 	/**

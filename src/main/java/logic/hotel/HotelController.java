@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import logicService.HotelService;
 import vo.EvaluationVO;
-import vo.HotelInfoVO;
 import vo.HotelSearchVO;
+import vo.HotelVO;
 import vo.RoomVO;
 
 /**
@@ -26,7 +26,7 @@ public class HotelController implements HotelService{
 		return hotel.getHotelInfo(hotelName);
 	}
 	
-	public HotelInfoVO getHotelItemInfo(String hotel_id){
+	public HotelVO getHotelItemInfo(String hotel_id){
 		return hotel.getHotelItemInfo(hotel_id);
 	}
 	
@@ -34,19 +34,19 @@ public class HotelController implements HotelService{
 		return searchhotel.getTradingArea(location);
 	}
 	
-	public ArrayList<HotelInfoVO> getInitialHotelList(String location,String tradingArea ){
+	public ArrayList<HotelVO> getInitialHotelList(String location,String tradingArea ){
 		return searchhotel.getInitialHotelList(location, tradingArea);
 	}
 	
-	public ArrayList<HotelInfoVO> getSortedList(){
+	public ArrayList<HotelVO> getSortedList(){
 		return searchhotel.getSortedList();
 	}
 	
-	public ArrayList< HotelInfoVO >getBookedHotelList(String user_id){
+	public ArrayList< HotelVO >getBookedHotelList(String user_id){
 		return searchhotel.getBookedHotelList(user_id);
 	}
 	
-	public HotelInfoVO search(HotelSearchVO search){
+	public HotelVO search(HotelSearchVO search){
 		return searchhotel.search(search);
 	}
 }

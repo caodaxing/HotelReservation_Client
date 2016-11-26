@@ -7,7 +7,7 @@ import logic.order.Order;
 import logic.promotion.HotelPromotion;
 import logic.room.Room;
 import vo.EvaluationVO;
-import vo.HotelInfoVO;
+import vo.HotelVO;
 import vo.RoomVO;
 
 /**
@@ -73,7 +73,7 @@ public class Hotel implements HotelItem, HotelUpdateRoom{
 	 * @return ResultMessage 返回是否更新成功（成功/失败）
 	 * @author all
 	 */
-	public ResultMessage updateHotelInfo (HotelInfoVO hotelVO){
+	public ResultMessage updateHotelInfo (HotelVO hotelVO){
 		return ResultMessage.SUCCESS;
 	}
 	
@@ -90,10 +90,10 @@ public class Hotel implements HotelItem, HotelUpdateRoom{
 	/**
 	 * 给order提供的获取酒店信息的接口
 	 * @param hotel_id 传入的酒店id
-	 * @return HotelInfoVO 返回部分酒店信息
+	 * @return HotelVO 返回部分酒店信息
 	 * @author all
 	 */
-	public HotelInfoVO getHotelItemInfo(String hotel_id) {
+	public HotelVO getHotelItemInfo(String hotel_id) {
 		return null;
 	}
 }

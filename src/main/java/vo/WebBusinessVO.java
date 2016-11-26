@@ -2,9 +2,9 @@ package vo;
 
 public class WebBusinessVO {
 	
-	String id;
-	String name;
-	String info;
+	public String id;
+	public String name;
+	public String info;
 	
 	/**
 	 * 网站营销人员的VO类
