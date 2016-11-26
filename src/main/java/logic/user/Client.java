@@ -3,9 +3,7 @@ package logic.user;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logic.credit.Credit;
-import logic.order.OrderListFilter;
-import po.OrderPO;
+import logic.credit.CreditInfo;
 import vo.ClientVO;
 import vo.HotelInfoVO;
 import vo.OrderVO;
@@ -17,12 +15,10 @@ import vo.VIPInfoVO;
  */
 public class Client extends User{
 	
-	private String user_ID;
+	private String userID;
 	private String orderID;
-	private ClientVO clientVO ;
-	
-	private ArrayList<OrderPO> clientOrders;
-	private Credit credit;
+	private ClientVO clientVO;
+	private CreditInfo creditInfo;
 	
 	public Client(){}	
 	
@@ -93,7 +89,7 @@ public class Client extends User{
 	 * @author Xue.W
 	 */
 	public int getCredit(){
-		return credit.getCredit(user_ID);
+		return credit.getCredit(userID);
 	}
 	
 	/**
