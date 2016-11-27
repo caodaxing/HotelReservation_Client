@@ -33,40 +33,60 @@ public class HotelManagerUI extends Application implements Left{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("Image\\index.jpg");
+		Image image = new Image("Image\\index3.jpg", 200, 180, false, true);
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);
 		
-		Button hotelInfo = new Button("酒店信息");
-		grid.add(hotelInfo, 0, 1);
+		Button HotelInfo = new Button("酒店信息");
+		HotelInfo.setId("light-button");
+		HotelInfo.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(HotelInfo, 0, 1);
 		
-		Button order = new Button("管理订单");
-		grid.add(order, 0, 2);
+		Button manageOrder = new Button("管理订单");
+		manageOrder.setId("light-button");
+		manageOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(manageOrder, 0, 2);
 		
 		Button allOrder = new Button("全部订单");
+		allOrder.setId("dark-button");
+		allOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(allOrder, 0, 3);
 		
-		Button executeOrder = new Button("已执行订单");
-		grid.add(executeOrder, 0, 4);
+		Button hasExecuteOrder = new Button("已执行订单");
+		hasExecuteOrder.setId("dark-button");
+		hasExecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(hasExecuteOrder, 0, 4);
 		
 		Button unexecuteOrder = new Button("未执行订单");
+		unexecuteOrder.setId("dark-button");
+		unexecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(unexecuteOrder, 0, 5);
 		
 		Button undoOrder = new Button("已撤销订单");
+		undoOrder.setId("dark-button");
+		undoOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(undoOrder, 0, 6);
 		
 		Button abnormalOrder = new Button("异常订单");
+		abnormalOrder.setId("dark-button");
+		abnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(abnormalOrder, 0, 7);
 		
-		Button roomInfo = new Button("客房信息");
-		grid.add(roomInfo, 0, 8);
+		Button orderedHotel = new Button("客房信息");
+		orderedHotel.setId("dark-button");
+		orderedHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(orderedHotel, 0, 8);
 		
-		Button promotionStrategy = new Button("促销策略");
-		grid.add(promotionStrategy, 0, 9);
+		Button changePassword = new Button("促销策略");
+		changePassword.setId("light-button");
+		changePassword.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(changePassword, 0, 9);
 		
-		Button signOut = new Button("注销");
-		grid.add(signOut, 0, 11);
+		Button signOut = new Button("注 销");
+		signOut.setId("light-button");
+		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(signOut, 0, 10);
 		
 		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		primaryStage.setScene(scene);

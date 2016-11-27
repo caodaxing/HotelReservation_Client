@@ -33,42 +33,49 @@ public class WebManagerUI extends Application{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("Image\\index.jpg");
+		Image image = new Image("Image\\index2.jpg", 200, 180, false, true);
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);
 		
-		Button webBusinessInfo = new Button("网站营销人员管理");
-		webBusinessInfo.setId("LightButton");
-		grid.add(webBusinessInfo, 0, 1);
+		Button manageWebbusiness = new Button("网站营销人员管理");
+		manageWebbusiness.setId("light-button");
+		manageWebbusiness.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(manageWebbusiness, 0, 1);
 		
-		Button hotelManagerInfo = new Button("酒店工作人员管理");
-		hotelManagerInfo.setId("LightButton");
-		grid.add(hotelManagerInfo, 0, 2);
+		Button manageHotelManager = new Button("酒店工作人员管理");
+		manageHotelManager.setId("light-button");
+		manageHotelManager.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(manageHotelManager, 0, 2);
 		
-		Button userInfo = new Button("客户信息管理");
-		userInfo.setId("LightButton");
-		grid.add(userInfo, 0, 3);
+		Button manageUserInfo = new Button("客户信息管理");
+		manageUserInfo.setId("light-button");
+		manageUserInfo.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(manageUserInfo, 0, 3);
 		
-		Button hotelInfo = new Button("酒店管理");
-		hotelInfo.setId("LightButton");
-		grid.add(hotelInfo, 0, 4);
+		Button manageHotel = new Button("酒店管理");
+		manageHotel.setId("light-button");
+		manageHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(manageHotel, 0, 4);
 		
 		Button addHotel = new Button("添加酒店");
-		addHotel.setId("DarkButton");
+		addHotel.setId("dark-button");
+		addHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(addHotel, 0, 5);
 		
 		Button addHotelManager = new Button("添加酒店工作人员");
-		addHotelManager.setId("DarkButton");
+		addHotelManager.setId("dark-button");
+		addHotelManager.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(addHotelManager, 0, 6);
 		
-		Button signOut = new Button("注销");
-		signOut.setId("LightButton");
-		grid.add(signOut, 0, 11);
+		Button signOut = new Button("注 销");
+		signOut.setId("light-button");
+		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(signOut, 0, 7);
 		
 		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("wb.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		
 	}

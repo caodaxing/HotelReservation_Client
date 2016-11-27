@@ -12,7 +12,7 @@ import view.helpTools.DefaultNums;
  * @author XueWang
  *
  */
-public class SignInUI extends Application {
+public class SignInUi extends Application {
 
 	public void start (Stage stage){
 		
@@ -34,7 +34,7 @@ public class SignInUI extends Application {
 	}
 	
 	public static void main(String[] args) {
-		Application.launch(SignInUI.class,args);
+		Application.launch(SignInUi.class,args);
 	}
 	
 	
