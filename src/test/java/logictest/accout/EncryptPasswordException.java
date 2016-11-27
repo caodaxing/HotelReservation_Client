@@ -1,24 +1,33 @@
 package logictest.accout;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import logic.account.EncryptPassword;
+import logic.account.Encryption;
 
 public class EncryptPasswordException {
 
+	private Encryption encryption;
+	
+	@Before
+	public void setUp() {
+		encryption = Encryption.getInstance();
+	}
+	
+	
 	@Test
 	public void test() {
 		String pass1 = "abcdef";
 		String pass2 = "abcdef";
-		System.out.println(EncryptPassword.toMD5(pass1));
-		assertEquals(EncryptPassword.toMD5(pass1), EncryptPassword.toMD5(pass2));
+		System.out.println(encryption.encryptPassword(pass1));
+		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
 		
 		pass1 = "123QWEASDZXC";
 		pass2 = "123QWEASDZXC";
-		System.out.println(EncryptPassword.toMD5(pass1));
-		assertEquals(EncryptPassword.toMD5(pass1), EncryptPassword.toMD5(pass2));
+		System.out.println(encryption.encryptPassword(pass1));
+		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
 	}
 
 }
