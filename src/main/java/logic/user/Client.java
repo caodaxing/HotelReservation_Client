@@ -1,13 +1,12 @@
 package logic.user;
 
-import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logic.credit.Credit;
+import data.stub.ClientDao_Stub;
+import dataDao.ClientDao;
+import po.ClientPO;
 import vo.ClientVO;
-import vo.HotelVO;
-import vo.OrderVO;
-import vo.VIPInfoVO;
+import vo.VipVO;
 
 /**
  * 管理客户信息的类
@@ -15,39 +14,58 @@ import vo.VIPInfoVO;
  */
 public class Client{
 	
-	private String userID;
-	private String orderID;
-	private ClientVO clientVO;
-	private Credit creditInfo;
+	private String clientID;
+	private ClientPO clientPO;
+	private ClientDao clientDao;
+
+	public Client(){}
 	
-	public Client(){}	
+	public Client(String clientID){
+		this.clientID = clientID;
+		clientDao = new ClientDao_Stub();
+		this.initClientPO();
+	}	
 	
-	/**
-	 * User的构造函数
-	 * @param clientVO 传入的客户资料信息
-	 * @author Xue.W
-	 */
-	public Client(ClientVO clientVO){
-		this.clientVO = clientVO; 
+	//初始化成员变量clientpo
+	private void initClientPO() {
+		ClientPO po = clientDao.getClientInfo(this.clientID);
+		if(po != null) {
+			this.clientPO = po;
+		}
 	}
 	
+	
 	/**
-	 * 获得用户信息
-	 * @param user_ID 传入的用户ID信息
+	 * 获得用户（会员）信息
+	 * @param clientID 传入的用户ID信息
 	 * @return 返回用户信息
 	 * @author Xue.W
 	 */
-	public ClientVO getClientInfo (String user_ID){
-		return null;
+	public ClientVO getClientInfo (String clientID){
+		ClientPO po = clientDao.getClientInfo(clientID);
+		return new ClientVO(po.getUserID(),po.getPhoneNumber(), po.getTrueName(), 
+				po.getCredit(), po.getVipType(), po.getVipLevel(), po.getVipInfo());
 	}
 	
 	/**
 	 * 修改用户信息
-	 * @param  userInfo 传入的用户信息
+	 * @param  clientInfo 传入的用户信息
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
-	public ResultMessage updateUserInfo(ClientVO userInfo){
+	public ResultMessage updateClientInfo(ClientVO clientVO){
+		if(clientVO == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		ClientPO po = new ClientPO(clientVO.userID, clientVO.phoneNumber, clientVO.trueName,
+				clientVO.credit, clientVO.vipType, clientVO.vipLevel, clientVO.vipInfo);
+		
+		if(clientDao.updateClientInfo(po)){
+			this.clientPO = po;					//同时更新类中的成员变量po
+			return ResultMessage.SUCCESS;
+		}
+		
 		return ResultMessage.FAILURE;
 	}
 	
@@ -57,57 +75,26 @@ public class Client{
 	 * @return 返回是否注册成功
 	 * @author Xue.W
 	 */
-	public ResultMessage setVIP(VIPInfoVO VIPInfo){
+	public ResultMessage registerVIP(VipVO vipVO){
+		
+		if(!isVIP(vipVO.userID)) {
+			ClientPO po = this.clientPO;
+			po.setVipType(vipVO.type);
+			po.setVipLevel(vipVO.level);
+			po.setVipInfo(vipVO.info);
+			
+			if(clientDao.updateClientInfo(po)){
+				return ResultMessage.SUCCESS;
+			}
+		}
+		
 		return ResultMessage.FAILURE;
 	}
 	
-	/**
-	 * 获得注册会员资料
-	 * @param user_ID 传入的用户ID信息
-	 * @return 返回会员资料信息
-	 * @author Xue.W
-	 */
-	public VIPInfoVO getVIPInfo(String user_ID){
-		return null;
+	public boolean isVIP(String userID) {
+		if(this.clientPO != null && this.clientPO.getVipType() != 0) {
+			return true;
+		}
+		return false;
 	}
-	
-	/**
-	 * 获得用户历史酒店信息
-	 * @param user_ID 传入的用户ID信息
-	 * @return 返回用户历史酒店列表
-	 * @author Xue.W
-	 */
-	public ArrayList<HotelVO> getHistoryHotels(String user_ID){
-		return null;
-	}
-	
-	/**
-	 * 获得信用信息
-	 * @param user_ID 传入的用户ID信息
-	 * @return 返回用户信用
-	 * @author Xue.W
-	 */
-	public int getCredit(){
-		return creditInfo.getCredit(userID);
-	}
-	
-	/**
-	 * 获得VIP升级信用值
-	 * @return 返回升级所需信用
-	 * @author Xue.W
-	 */
-	public int getVIPCredit(){
-		return creditInfo.getVIPCredit();
-	}
-	
-	/**
-	 * 获得订单信息
-	 * @param orderID 传入的订单ID信息
-	 * @return 返回订单信息
-	 * @author Xue.W
-	 */
-	public OrderVO getOrderInfo(String orderID){
-		return null;
-	}
-	
 }

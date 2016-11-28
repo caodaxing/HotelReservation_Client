@@ -32,7 +32,7 @@ public class CreditDriver {
 			System.out.println(c);
 		}
 		
-		ResultMessage result1 = creditService.setVIPCredit(200);
+		ResultMessage result1 = creditService.setVIPCredit();
 		if(result1 == ResultMessage.SUCCESS){
 			System.out.println("SetVIPCredit success");
 		}else if(result1 == ResultMessage.FAILURE){

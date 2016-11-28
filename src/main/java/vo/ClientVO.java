@@ -1,28 +1,34 @@
 package vo;
 
-import java.util.ArrayList;
-
+/**
+ * @param userID 用户名
+ * @param phoneNumber 电话
+ * @param trueName 真实姓名
+ * @param credit 信用
+ * @param vipType 会员类型 0:不是会员 1:普通会员 2:企业会员 
+ * @param vipLevel 会员等级 0:不是会员 
+ * @param vipInfo 若memberType为0则为空，否则为相应的生日或者企业信息
+ * @author bcy
+ *
+ */
 public class ClientVO {
 	
-	String id;
-	String name,contact;
+	public String userID;
+	public String phoneNumber;
+	public String trueName;
 	public int credit;
-	ArrayList<OrderVO> orderVO;
+	public int vipType;
+	public int vipLevel;
+	public String vipInfo;
 	
-	/**
-	 * 客户的VO类
-	 * @param id 客户Id
-	 * @param name 客户姓名
-	 * @param contact 客户联系方式
-	 * @param credit 信用值
-	 * @param orderVO 订单的VO类
-	 * @author Rukawa
-	 */
-	public ClientVO(String id, String name, String contact, int credit, ArrayList<OrderVO> orderVO) {
-		this.id = id;
-		this.name = name;
-		this.contact = contact;
+	public ClientVO(String userID, String phoneNumber, String trueName, int credit, int vipType, int vipLevel,
+			String vipInfo) {
+		this.userID = userID;
+		this.phoneNumber = phoneNumber;
+		this.trueName = trueName;
 		this.credit = credit;
-		this.orderVO = orderVO;
+		this.vipType = vipType;
+		this.vipLevel = vipLevel;
+		this.vipInfo = vipInfo;
 	}
 }

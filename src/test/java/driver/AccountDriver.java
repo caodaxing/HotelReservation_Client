@@ -37,9 +37,6 @@ public class AccountDriver {
 			System.out.println("Wrong username");
 		}
 		
-		Identity id = accountService.getIdentity(vo);
-		System.out.println("This is a " + id);
-		
 		ResultMessage result2 = accountService.modifyPassword(vo);
 		if(result2 == ResultMessage.SUCCESS){
 			System.out.println("Modify success");

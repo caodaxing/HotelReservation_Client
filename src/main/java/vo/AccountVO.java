@@ -4,7 +4,7 @@ import Message.Identity;
 
 /**
  * 账户的VO类
- * @param accountId 用户Id
+ * @param userId 用户Id
  * @param password 密码
  * @param confirmedPassword 确认的密码
  * @param identity 用户身份
@@ -12,13 +12,13 @@ import Message.Identity;
  */
 public class AccountVO {
 
-	public String accountId;
+	public String userId;
 	public String password;
 	public String confirmedPassword;
 	public Identity identity;
 	
 	public AccountVO(String user_id, String password,Identity identity) {
-		this.accountId=user_id;
+		this.userId=user_id;
 		this.password=password;
 		this.identity=identity;
 	}

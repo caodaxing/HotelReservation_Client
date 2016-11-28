@@ -7,6 +7,6 @@ import vo.HotelVO;
  * @author all
  *
  */
-public interface HotelItem {
+public interface HotelItemInfo {
 	public HotelVO getHotelItemInfo (String hotel_id);
 }

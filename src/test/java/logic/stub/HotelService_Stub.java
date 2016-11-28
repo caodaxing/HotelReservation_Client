@@ -19,8 +19,7 @@ public class HotelService_Stub implements HotelService{
 		return ResultMessage.FAILURE;
 	}
 
-	public ArrayList<EvaluationVO> getHotelInfo(String hotelName) {
-		// TODO Auto-generated method stub
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelName) {
 		
 		ArrayList<EvaluationVO> List = new ArrayList<EvaluationVO>();
 		EvaluationVO evaluation1 = new EvaluationVO("房间很乱，差评！！", "00102", "161222001021033", 0);
@@ -32,7 +31,6 @@ public class HotelService_Stub implements HotelService{
 	}
 
 	public HotelVO getHotelItemInfo(String hotel_id) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list = new ArrayList<Image>();
 		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
@@ -45,7 +43,6 @@ public class HotelService_Stub implements HotelService{
 	}
 
 	public ArrayList<String> getTradingArea(String location) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<String> list = new ArrayList<String>();
 		String location1 = "玄武区";
@@ -59,7 +56,6 @@ public class HotelService_Stub implements HotelService{
 	}
 
 	public ArrayList<HotelVO> getInitialHotelList(String location, String tradingArea) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list1 = new ArrayList<Image>();
 		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
@@ -85,7 +81,6 @@ public class HotelService_Stub implements HotelService{
 	}
 
 	public ArrayList<HotelVO> getSortedList() {
-		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list1 = new ArrayList<Image>();
 		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
@@ -117,7 +112,6 @@ public class HotelService_Stub implements HotelService{
 	}
 
 	public HotelVO search(HotelSearchVO search) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<Image> list = new ArrayList<Image>();
 		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");

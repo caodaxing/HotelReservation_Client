@@ -48,7 +48,7 @@ public class HotelDriver {
 		HotelVO hivo1 = hotelService.getHotelItemInfo("119");
 		System.out.println(hivo1);
 		
-		ArrayList<EvaluationVO> evaList = hotelService.getHotelInfo("119");
+		ArrayList<EvaluationVO> evaList = hotelService.getHotelEvaluations("119");
 		for(EvaluationVO e: evaList){
 			System.out.println(e);
 		}

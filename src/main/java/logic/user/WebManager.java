@@ -1,6 +1,7 @@
 package logic.user;
 
 import Message.ResultMessage;
+import dataDao.WebManagerDao;
 import vo.HotelManagerVO;
 import vo.HotelVO;
 import vo.WebBusinessVO;
@@ -10,6 +11,10 @@ import vo.WebBusinessVO;
  * @author Xue.W
  */
 public class WebManager{
+	
+	WebManagerDao webManagerDao;
+	
+	public WebManager(){}
 
 	public ResultMessage addHotel(HotelVO hotelVO){
 		return ResultMessage.SUCCESS;

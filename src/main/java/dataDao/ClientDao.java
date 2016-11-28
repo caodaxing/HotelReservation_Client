@@ -9,5 +9,4 @@ public interface ClientDao {
 	public ClientPO getClientInfo(String clientID);
 	
 	public boolean updateClientInfo(ClientPO clientPO);
-	
 }

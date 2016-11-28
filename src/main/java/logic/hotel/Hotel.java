@@ -15,7 +15,7 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements HotelItem, HotelUpdateRoom{
+public class Hotel implements HotelItemInfo, HotelUpdateRoom{
 	private ArrayList<Room> rooms;
 	private HotelPromotion hotelPromotion;
 	private ArrayList<Order> hotelOrders;

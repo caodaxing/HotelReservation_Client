@@ -1,7 +1,6 @@
 package logic.account;
 
 import Message.Identity;
-import vo.AccountVO;
 
 
 /**
@@ -11,5 +10,5 @@ import vo.AccountVO;
  */
 public interface AccountInfo {
 
-	public Identity getIdentity (AccountVO accountVO);
+	public Identity getIdentity (String userID);
 }

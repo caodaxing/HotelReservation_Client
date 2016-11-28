@@ -13,6 +13,9 @@ public interface CreditService {
 	
 	public ArrayList<CreditVO> getHistoryList(String user_ID);
 	
-	public ResultMessage setVIPCredit(int credit_num);
+	public ResultMessage setVIPCredit();
+	
+	//获得VIP升级信用值
+	public int getVIPCredit(String userId);
 	
 }

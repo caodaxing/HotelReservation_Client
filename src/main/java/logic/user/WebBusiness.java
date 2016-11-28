@@ -20,16 +20,6 @@ public class WebBusiness{
 	}
 	
 	/**
-	 * 新增网站营销人员
-	 * @param webBusineInfo 传入的网站营销人员信息
-	 * @return 返回是否新增成功
-	 * @author Xue.W
-	 */
-	public ResultMessage addWebBusiness (WebBusinessVO webBusinessInfo){
-		return ResultMessage.FAILURE;
-	}
-	
-	/**
 	 * 获得网站营销人员信息
 	 * @param webBusin_ID 传入的网站营销人员ID
 	 * @return 返回网站营销人员信息

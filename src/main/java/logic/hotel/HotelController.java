@@ -22,7 +22,7 @@ public class HotelController implements HotelService{
 		return hotel.updateRoom(room);
 	}
 	
-	public ArrayList<EvaluationVO> getHotelInfo(String hotelName){
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelName){
 		return hotel.getHotelInfo(hotelName);
 	}
 	

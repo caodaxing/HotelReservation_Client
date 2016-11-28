@@ -4,16 +4,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
-import Message.Identity;
 import Message.ResultMessage;
 import logicService.UserService;
-import vo.AccountVO;
 import vo.ClientVO;
 import vo.HotelManagerVO;
 import vo.HotelVO;
 import vo.OrderVO;
 import vo.RoomVO;
-import vo.VIPInfoVO;
+import vo.VipVO;
 import vo.WebBusinessVO;
 
 public class UserBLService_Stub implements UserService {
@@ -26,7 +24,7 @@ public class UserBLService_Stub implements UserService {
 		List.add(order1);
 		List.add(order2);
 		
-		return new ClientVO("27873shkj", "王友运", "18378474456", 0,List);
+		return new ClientVO("27873shkj", "13333333333", "王友运", 100, 0, 0, null);
 	}
 
 	public ResultMessage updateClientInfo(ClientVO new_userInfo) {
@@ -34,14 +32,20 @@ public class UserBLService_Stub implements UserService {
 		return ResultMessage.FAILURE;
 	}
 
-	public ResultMessage setVIP(VIPInfoVO VIPInfo) {
+	public ResultMessage registerVIP(VipVO VIPInfo) {
 		
 		return ResultMessage.SUCCESS;
 	}
+	
+	@Override
+	public boolean isVIP(String userID) {
+		return false;
+	}
 
-	public VIPInfoVO getVIPInfo(String user_ID) {
+
+	public VipVO getVIPInfo(String user_ID) {
 		
-		return new VIPInfoVO("普通会员", "3");
+		return new VipVO("27873shkj", 1, 1, "20160101");
 	}
 
 	public ArrayList<HotelVO> getHistoryHotels(String user_ID) {
@@ -94,10 +98,6 @@ public class UserBLService_Stub implements UserService {
 
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo) {
 		return ResultMessage.FAILURE;
-	}
-
-	public Identity getAccountIdentity(AccountVO accountVO) {
-		return Identity.HOTELMANAGER;
 	}
 
 }

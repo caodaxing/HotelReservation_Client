@@ -12,7 +12,7 @@ public interface HotelService {
 
 	public ResultMessage updateRoom(RoomVO room);
 	
-	public ArrayList<EvaluationVO> getHotelInfo(String hotelName);
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelid);
 	
 	public HotelVO getHotelItemInfo(String hotel_id);
 	
@@ -22,7 +22,7 @@ public interface HotelService {
 	
 	public ArrayList<HotelVO> getSortedList();
 	
-	public ArrayList<HotelVO> getBookedHotelList(String user_id);
+	public ArrayList<HotelVO> getBookedHotelList(String userID);
 	
 	public HotelVO search(HotelSearchVO search);
 }

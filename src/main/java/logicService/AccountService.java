@@ -20,6 +20,6 @@ public interface AccountService {
 	
 	public ResultMessage modifyPassword(AccountVO accountVO);
 	
-	public Identity getIdentity (AccountVO accountVO);
+	public Identity getIdentity (String accountID);
 	
 }

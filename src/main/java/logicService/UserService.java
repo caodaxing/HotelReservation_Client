@@ -1,14 +1,10 @@
 package logicService;
 
-import java.util.ArrayList;
-
-import Message.Identity;
 import Message.ResultMessage;
-import vo.AccountVO;
 import vo.ClientVO;
 import vo.HotelManagerVO;
 import vo.HotelVO;
-import vo.VIPInfoVO;
+import vo.VipVO;
 import vo.WebBusinessVO;
 
 public interface UserService {
@@ -18,11 +14,9 @@ public interface UserService {
 	
 	public ResultMessage updateClientInfo(ClientVO new_userInfo);
 	
-	public ResultMessage setVIP(VIPInfoVO VIPInfo);
+	public ResultMessage registerVIP(VipVO VIPInfo);
 	
-	public VIPInfoVO getVIPInfo (String user_ID);
-	
-	public ArrayList<HotelVO> getHistoryHotels(String user_ID);
+	public boolean isVIP(String userID);
 	
 	
 	//网站管理人员
@@ -40,7 +34,5 @@ public interface UserService {
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID);
 	
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo);
-	
-	public Identity getAccountIdentity(AccountVO accountVO);
-	
+		
 }

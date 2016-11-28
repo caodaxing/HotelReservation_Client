@@ -30,7 +30,7 @@ public class Account implements AccountInfo, AccountService{
 		if(accountVO == null) 
 			return ResultMessage.FAILURE;
 		
-		if(accountVO.password != null && accountVO.accountId != null 
+		if(accountVO.password != null && accountVO.userId != null 
 				&& accountVO.confirmedPassword != null && accountVO.identity != null) {
 			
 			if(accountVO.password != accountVO.confirmedPassword) {
@@ -52,12 +52,12 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
-		if(accountVO == null || accountVO.accountId == null ||
+		if(accountVO == null || accountVO.userId == null ||
 				accountVO.identity == null || accountVO.password == null) {
 			return ResultMessage.FAILURE;
 		}
 	
-		AccountPO po = accountDao.getAccountInfo(accountVO.accountId);
+		AccountPO po = accountDao.getAccountInfo(accountVO.userId);
 		
 		if(po == null) {
 			return ResultMessage.USERNAME_NOT_EXIST;
@@ -79,7 +79,7 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */ 
 	public ResultMessage logout(AccountVO accountVO) {	
-		if(accountVO == null || accountVO.accountId == null ||
+		if(accountVO == null || accountVO.userId == null ||
 				accountVO.identity == null || accountVO.password == null) {
 			return ResultMessage.FAILURE;
 		}
@@ -94,7 +94,7 @@ public class Account implements AccountInfo, AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage modifyPassword(AccountVO accountVO){
-		if(accountVO == null || accountVO.accountId == null || accountVO.confirmedPassword == null ||
+		if(accountVO == null || accountVO.userId == null || accountVO.confirmedPassword == null ||
 				accountVO.identity == null || accountVO.password == null) {
 			return ResultMessage.FAILURE;
 		}
@@ -110,12 +110,13 @@ public class Account implements AccountInfo, AccountService{
 		return ResultMessage.FAILURE;
 	}
 	
-	public Identity getIdentity(AccountVO accountVO){
+	//////用户名的分类，暂定
+	public Identity getIdentity(String accountID){
 		return Identity.CLIENT;
 	}
 	
 	public AccountPO transToPO(AccountVO accountVO) {
-		return new AccountPO(accountVO.accountId, accountVO.password, accountVO.identity.getIndex());
+		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.getIndex());
 	}
 	
 }

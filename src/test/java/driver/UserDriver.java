@@ -1,13 +1,9 @@
 package driver;
 
-import java.util.ArrayList;
-
 import Message.ResultMessage;
 import logicService.UserService;
 import vo.ClientVO;
 import vo.HotelManagerVO;
-import vo.HotelVO;
-import vo.VIPInfoVO;
 import vo.WebBusinessVO;
 
 /**
@@ -23,33 +19,33 @@ public class UserDriver {
 		ClientVO uvo =  userService.getClientInfo("123");
 		System.out.println(uvo);
 	
-		ClientVO user = new ClientVO("128","习近平", "13894858311" , 8888 , null);
-		ResultMessage result0 = userService.updateClientInfo(user);
-		if(result0 == ResultMessage.SUCCESS){
-			System.out.println("Updae User success");
-		}else if(result0 == ResultMessage.FAILURE){
-			System.out.println("Update User fail");
-		}else{
-			System.out.println("Error");
-		}
+//		ClientVO user = new ClientVO("128","习近平", "13894858311" , 8888 , null);
+//		ResultMessage result0 = userService.updateClientInfo(user);
+//		if(result0 == ResultMessage.SUCCESS){
+//			System.out.println("Updae User success");
+//		}else if(result0 == ResultMessage.FAILURE){
+//			System.out.println("Update User fail");
+//		}else{
+//			System.out.println("Error");
+//		}
 		
-		VIPInfoVO vipVO = new VIPInfoVO("总书记" , "8");
-		ResultMessage result1 = userService.setVIP(vipVO);
-		if(result1 == ResultMessage.SUCCESS){
-			System.out.println("SetVIP success");
-		}else if(result1 == ResultMessage.FAILURE){
-			System.out.println("SetVIP fail");
-		}else{
-			System.out.println("Error");
-		}
+//		VIPInfoVO vipVO = new VIPInfoVO("总书记" , "8");
+//		ResultMessage result1 = userService.setVIP(vipVO);
+//		if(result1 == ResultMessage.SUCCESS){
+//			System.out.println("SetVIP success");
+//		}else if(result1 == ResultMessage.FAILURE){
+//			System.out.println("SetVIP fail");
+//		}else{
+//			System.out.println("Error");
+//		}
 		
-		VIPInfoVO vipVO1 = userService.getVIPInfo("126");
-		System.out.println(vipVO1);
+//		VIPInfoVO vipVO1 = userService.getVIPInfo("126");
+//		System.out.println(vipVO1);
 		
-		ArrayList<HotelVO> list = userService.getHistoryHotels("123");
-		for(HotelVO h : list){
-			System.out.println(h);
-		}
+//		ArrayList<HotelVO> list = userService.getHistoryHotels("123");
+//		for(HotelVO h : list){
+//			System.out.println(h);
+//		}
 		
 		HotelManagerVO hotelManager = new HotelManagerVO( "119" , "王浩然" , "哈哈哈");
 		ResultMessage result2 = userService.addHotelManager(hotelManager);

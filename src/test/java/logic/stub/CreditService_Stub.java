@@ -9,17 +9,14 @@ import vo.CreditVO;
 public class CreditService_Stub implements CreditService{
 	
 	public ResultMessage changeCredit(String user_ID, CreditChange change, int number) {
-		// TODO Auto-generated method stub
 		return ResultMessage.FAILURE;
 	}
 
 	public int getCredit(String user_ID) {
-		// TODO Auto-generated method stub
 		return 100;
 	}
 
 	public ArrayList<CreditVO> getHistoryList(String user_ID) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<CreditVO> historyList = new ArrayList<CreditVO>();
 		CreditVO credit1 = new CreditVO("100" , 50 , "2726skue");
@@ -30,8 +27,14 @@ public class CreditService_Stub implements CreditService{
 		return historyList;
 	}
 
-	public ResultMessage setVIPCredit(int credit_num) {
-		// TODO Auto-generated method stub
+
+	@Override
+	public ResultMessage setVIPCredit() {
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public int getVIPCredit(String userId) {
+		return 0;
 	}
 }

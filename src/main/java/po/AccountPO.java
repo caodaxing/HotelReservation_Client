@@ -2,7 +2,7 @@ package po;
 
 
 /**
- * @param accountID 帐号ID
+ * @param userID 帐号ID
  * @param password  密码
  * @param identity  帐号身份 0:客户 1:酒店管理人员 2:网站管理人员 3:网站营销人员
  * @author bcy
@@ -10,13 +10,13 @@ package po;
  */
 public class AccountPO {
 	
-	private String accountID;
+	private String userID;
 	private String password;
 	private int identity;
 	
-	public AccountPO(String accountID , String password, int identity) {
+	public AccountPO(String userID , String password, int identity) {
 		this.identity=identity;
-		this.accountID=accountID;
+		this.userID=userID;
 		this.password=password;
 	}
 
@@ -29,11 +29,11 @@ public class AccountPO {
 	}
 
 	public String getAccountID() {
-		return accountID;
+		return userID;
 	}
 
 	public void setAccountID(String accountID) {
-		this.accountID = accountID;
+		this.userID = accountID;
 	}
 
 	public String getPassword() {
