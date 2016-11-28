@@ -25,9 +25,6 @@ public class WebBusinessUI extends Application{
 	@Override
 	public void start(Stage primaryStage) {
 		
-		primaryStage.setTitle("Rookie Travel");
-		primaryStage.show();
-		
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
@@ -75,8 +72,8 @@ public class WebBusinessUI extends Application{
 		
 		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
+		scene.getStylesheets().add(getClass().getResource("left.css").toExternalForm());
+		primaryStage.show();
 		
 	}
 	

@@ -18,7 +18,7 @@ public class SignUpUI extends Application {
 		
 		try{
 			
-			Parent root = FXMLLoader.load( getClass().getResource("登录界面.fxml") );
+			Parent root = FXMLLoader.load( getClass().getResource("注册界面.fxml") );
 			
 			Scene scene = new Scene(root , DefaultNums.WIDTH , DefaultNums.HEIGHT);
 			
