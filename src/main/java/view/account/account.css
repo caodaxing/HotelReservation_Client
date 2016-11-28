@@ -1,0 +1,21 @@
+.SmallButton{
+	-fx-background-color: rgba(43,135,158);
+	-fx-text-fill: white;
+	-fx-font-size:14px ;
+	-fx-text-alignment: CENTER;
+}
+.BigButton{
+	-fx-background-color:rgba(43,135,158);
+	-fx-text-fill: white;
+	-fx-font-size:16px;
+	-fx-text-alignment: CENTER;
+}
+#SignIn{
+	-fx-background-image:url("登录界面.jpg") ;
+}
+#SignUp{
+	-fx-background-image:url("注册界面.jpg");
+}
+#First{
+	-fx-background-image:url("首页背景.jpg")
+}
