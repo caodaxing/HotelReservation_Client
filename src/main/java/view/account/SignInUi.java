@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 
@@ -13,7 +12,7 @@ import view.helpTools.DefaultNums;
  * @author XueWang
  *
  */
-public class SignInUI extends Application {
+public class SignInUi extends Application {
 
 	public void start (Stage stage){
 		
@@ -35,7 +34,7 @@ public class SignInUI extends Application {
 	}
 	
 	public static void main(String[] args) {
-		Application.launch(SignInUI.class,args);
+		Application.launch(SignInUi.class,args);
 	}
 	
 	
