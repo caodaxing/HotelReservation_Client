@@ -1,14 +1,11 @@
 package view.left;
 
-import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 
 /**
@@ -16,14 +13,19 @@ import view.helpTools.DefaultNums;
  * @author XueWang
  *
  */
-public class WebManagerUI extends Application{
+public class WebManagerUI{
 
-	public void refreshLeft(){
-		
+	public Pane pane;
+	
+	public WebManagerUI(){
+		pane = this.initGridPane();
 	}
 	
-	@Override
-	public void start(Stage primaryStage) {
+	public Pane getPane(){
+		return pane;
+	}
+	
+	public GridPane initGridPane(){
 		
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.BASELINE_LEFT);
@@ -70,16 +72,7 @@ public class WebManagerUI extends Application{
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signOut, 0, 7);
 		
-		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("left.css").toExternalForm());
-		primaryStage.show();
-		
+		return grid;
 	}
-	
-	public static void main(String[] args) {
-		launch(args);
-	}
-	
 	
 }

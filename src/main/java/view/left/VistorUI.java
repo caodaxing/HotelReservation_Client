@@ -1,14 +1,11 @@
 package view.left;
 
-import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 
 /**
@@ -16,14 +13,19 @@ import view.helpTools.DefaultNums;
  * @author XueWang
  *
  */
-public class VistorUI extends Application{
-
-	public void refreshLeft(){
-		
+public class VistorUI{
+	
+	private Pane pane;
+	
+	public VistorUI(){
+		pane = this.initGridPane();
 	}
 	
-	@Override
-	public void start(Stage primaryStage) {
+	public Pane getPane(){
+		return pane;
+	}
+	
+	public GridPane initGridPane(){
 		
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.BASELINE_LEFT);
@@ -45,15 +47,7 @@ public class VistorUI extends Application{
 		signUp.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signUp, 0, 2);
 		
-		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("left.css").toExternalForm());
-		primaryStage.show();
-		
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
+		return grid;
 	}
 	
 }

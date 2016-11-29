@@ -1,14 +1,11 @@
 package view.left;
 
-import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 
 /**
@@ -16,17 +13,19 @@ import view.helpTools.DefaultNums;
  * @author XueWang
  *
  */
-public class HotelManagerUI extends Application implements Left{
-
-	public void refreshLeft(){
-		
+public class HotelManagerUI{
+	
+	private Pane pane;
+	
+	public HotelManagerUI(){
+		pane = this.initGridPane();
 	}
 	
-	@Override
-	public void start(Stage primaryStage) {
-		
-		primaryStage.setTitle("Rookie Travel");
-		primaryStage.show();
+	public Pane getPane(){
+		return pane;
+	}
+	
+	public GridPane initGridPane(){
 		
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.BASELINE_LEFT);
@@ -88,15 +87,7 @@ public class HotelManagerUI extends Application implements Left{
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signOut, 0, 10);
 		
-		Scene scene = new Scene(grid, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		primaryStage.setScene(scene);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
+		return grid;
 	}
 	
 }
