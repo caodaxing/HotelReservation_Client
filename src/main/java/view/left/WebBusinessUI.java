@@ -15,13 +15,13 @@ import view.helpTools.DefaultNums;
  */
 public class WebBusinessUI{
 
-	private Pane pane;
+	private GridPane pane;
 	
 	public WebBusinessUI(){
 		pane = this.initGridPane();
 	}
 	
-	public Pane getPane(){
+	public GridPane getPane(){
 		return pane;
 	}
 	

@@ -15,13 +15,13 @@ import view.helpTools.DefaultNums;
  */
 public class HotelManagerUI{
 	
-	private Pane pane;
+	private GridPane pane;
 	
 	public HotelManagerUI(){
 		pane = this.initGridPane();
 	}
 	
-	public Pane getPane(){
+	public GridPane getPane(){
 		return pane;
 	}
 	

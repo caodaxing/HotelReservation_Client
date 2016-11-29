@@ -15,13 +15,13 @@ import view.helpTools.DefaultNums;
  */
 public class VistorUI{
 	
-	private Pane pane;
+	private GridPane pane;
 	
 	public VistorUI(){
 		pane = this.initGridPane();
 	}
 	
-	public Pane getPane(){
+	public GridPane getPane(){
 		return pane;
 	}
 	

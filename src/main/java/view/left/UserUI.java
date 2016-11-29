@@ -15,13 +15,13 @@ import view.helpTools.DefaultNums;
  */
 public class UserUI{
 
-	private Pane pane;
+	private GridPane pane;
 	
 	public UserUI(){
 		pane = this.initGridPane();
 	}
 	
-	public Pane getPane(){
+	public GridPane getPane(){
 		return pane;
 	}
 	
