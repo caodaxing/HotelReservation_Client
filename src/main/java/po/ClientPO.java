@@ -1,10 +1,11 @@
 package po;
 
 /**
- * @param userID 用户名
+ * @param userID 用户id
  * @param phoneNumber 电话
  * @param trueName 真实姓名
- * @param credit 信用
+ * @param identityID 身份证号
+ * @param headImagePath 头像路径
  * @param vipType 会员类型 0:不是会员 1:普通会员 2:企业会员 
  * @param vipLevel 会员等级 0:不是会员 
  * @param vipInfo 若memberType为0则为空，否则为相应的生日或者企业信息
@@ -16,22 +17,23 @@ public class ClientPO {
 	private String userID;
 	private String phoneNumber;
 	private String trueName;
-	private int credit;
-	private int vipType;
+	private String identityID;
+	private String headImagePath;
+	private int vipType; 
 	private int vipLevel;
 	private String vipInfo;
-	
-	public ClientPO(String userID, String phoneNumber, String trueName, int credit, int vipType, int vipLevel,
-			String vipInfo) {
+
+	public ClientPO(String userID, String phoneNumber, String trueName, String identityID, 
+			String headImagePath,int vipType, int vipLevel, String vipInfo) {
 		this.userID = userID;
 		this.phoneNumber = phoneNumber;
 		this.trueName = trueName;
-		this.credit = credit;
+		this.identityID = identityID;
+		this.headImagePath = headImagePath;
 		this.vipType = vipType;
 		this.vipLevel = vipLevel;
 		this.vipInfo = vipInfo;
 	}
-
 
 	public String getUserID() {
 		return userID;
@@ -57,14 +59,22 @@ public class ClientPO {
 		this.trueName = trueName;
 	}
 
-	public int getCredit() {
-		return credit;
+	public String getIdentityID() {
+		return identityID;
 	}
 
-	public void setCredit(int credit) {
-		this.credit = credit;
+	public void setIdentityID(String identityID) {
+		this.identityID = identityID;
 	}
 
+	public String getHeadImagePath() {
+		return headImagePath;
+	}
+
+	public void setHeadImagePath(String headImagePath) {
+		this.headImagePath = headImagePath;
+	}
+	
 	public int getVipType() {
 		return vipType;
 	}
@@ -88,6 +98,4 @@ public class ClientPO {
 	public void setVipInfo(String vipInfo) {
 		this.vipInfo = vipInfo;
 	}
-
-	
 }

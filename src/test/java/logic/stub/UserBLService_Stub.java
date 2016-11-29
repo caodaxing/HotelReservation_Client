@@ -24,7 +24,7 @@ public class UserBLService_Stub implements UserService {
 		List.add(order1);
 		List.add(order2);
 		
-		return new ClientVO("27873shkj", "13333333333", "王友运", 100, 0, 0, null);
+		return new ClientVO("27873shkj", "13333333333", "王友运", "3203221111111111", "image/wyy.jpg");
 	}
 
 	public ResultMessage updateClientInfo(ClientVO new_userInfo) {

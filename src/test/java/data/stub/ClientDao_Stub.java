@@ -6,18 +6,16 @@ import po.ClientPO;
 public class ClientDao_Stub implements ClientDao{
 
 	public boolean addClient(ClientPO po) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	public ClientPO getClientInfo(String clientID) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ClientPO("wyy", "13338031126","王友运", "3203221111111111111", 
+				"image/wyy.jpg", 2, 1, "南京大学");
 	}
 
 	public boolean updateClientInfo(ClientPO clientPO) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 

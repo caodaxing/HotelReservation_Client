@@ -1,9 +1,9 @@
 package vo;
 /**
  * @param userID
- * @param type vip类型 0:不是会员 1:普通会员 2:企业会员 
- * @param level vip等级
- * @param info vip信息
+ * @param vipType 会员类型 0:不是会员 1:普通会员 2:企业会员 
+ * @param vipLevel 会员等级 0:不是会员 
+ * @param vipInfo 若memberType为0则为空，否则为相应的生日或者企业信息
  * @author Mark.W
  *
  */

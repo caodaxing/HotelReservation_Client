@@ -44,7 +44,7 @@ public class Client{
 	public ClientVO getClientInfo (String clientID){
 		ClientPO po = clientDao.getClientInfo(clientID);
 		return new ClientVO(po.getUserID(),po.getPhoneNumber(), po.getTrueName(), 
-				po.getCredit(), po.getVipType(), po.getVipLevel(), po.getVipInfo());
+				po.getIdentityID(), po.getHeadImagePath());
 	}
 	
 	/**
@@ -59,7 +59,8 @@ public class Client{
 		}
 		
 		ClientPO po = new ClientPO(clientVO.userID, clientVO.phoneNumber, clientVO.trueName,
-				clientVO.credit, clientVO.vipType, clientVO.vipLevel, clientVO.vipInfo);
+				clientVO.identityID, clientVO.headImagePath, clientPO.getVipType(), 
+				clientPO.getVipLevel(), clientPO.getVipInfo());
 		
 		if(clientDao.updateClientInfo(po)){
 			this.clientPO = po;					//同时更新类中的成员变量po
@@ -78,12 +79,12 @@ public class Client{
 	public ResultMessage registerVIP(VipVO vipVO){
 		
 		if(!isVIP(vipVO.userID)) {
-			ClientPO po = this.clientPO;
-			po.setVipType(vipVO.type);
-			po.setVipLevel(vipVO.level);
-			po.setVipInfo(vipVO.info);
+			//更新vip信息
+			this.clientPO.setVipType(vipVO.type);
+			this.clientPO.setVipLevel(vipVO.level);
+			this.clientPO.setVipInfo(vipVO.info);
 			
-			if(clientDao.updateClientInfo(po)){
+			if(clientDao.updateClientInfo(clientPO)){
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -91,10 +92,29 @@ public class Client{
 		return ResultMessage.FAILURE;
 	}
 	
+	
+	
 	public boolean isVIP(String userID) {
 		if(this.clientPO != null && this.clientPO.getVipType() != 0) {
 			return true;
 		}
 		return false;
 	}
+	
+	public String getClientID() {
+		return clientID;
+	}
+
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
+	public ClientPO getClientPO() {
+		return clientPO;
+	}
+
+	public void setClientPO(ClientPO clientPO) {
+		this.clientPO = clientPO;
+	}
+
 }

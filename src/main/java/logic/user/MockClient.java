@@ -13,9 +13,6 @@ public class MockClient extends Client {
 	public MockClient (ClientVO vo){
 		clientVO = vo;
 	}
-	
-	public int getCredit(){
-		return clientVO.credit;
-	}
+
 	
 }
