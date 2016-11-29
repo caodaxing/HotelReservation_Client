@@ -7,8 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
@@ -45,11 +43,22 @@ public class ExecuteOrder extends Application {
 	
 	public void start(Stage stage){
 		
+		//初始化左侧Pane
 		leftPane = userUI.getPane() ;
 		leftPane.setPrefSize ( DefaultNums.LEFT_WIDTH , DefaultNums.HEIGHT );
 		
+		//初始化右侧Pane
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
+		
+		//初始化label 
+		orderID = new Label("订单ID");
+		hotelName = new Label("酒店名称");
+		roomType = new Label("房间类型");
+		arriveTime = new Label("入住时间");
+		leaveTime = new Label("退房时间");
+		originalPrice = new Label("原始价格");
+		actualPrice = new Label("实际价格");
 		
 		//设置label大小
 		orderID.setPrefSize(200, 30);
@@ -60,25 +69,17 @@ public class ExecuteOrder extends Application {
 		originalPrice.setPrefSize(200, 30);
 		actualPrice.setPrefSize(200, 30);
 		
-		/*
-		//设置label X
-		orderID.setLayoutX(200);
-		hotelName.setLayoutX(200);
-		roomType.setLayoutX(200);
-		arriveTime.setLayoutX(200);
-		leaveTime.setLayoutX(200);
-		originalPrice.setLayoutX(200);
-		actualPrice.setLayoutX(200);
+		//初始化Button
+		arriveMessage = new Button();
+		leaveMessage = new Button();
+		checkEvaluation = new Button();
+		back = new Button();
 		
-		//设置label Y
-		orderID.setLayoutY(150);
-		hotelName.setLayoutY(200);
-		roomType.setLayoutY(250);
-		arriveTime.setLayoutY(300);
-		leaveTime.setLayoutY(350);
-		originalPrice.setLayoutY(400);
-		actualPrice.setLayoutY(450);
-		*/
+		//设置Button文字
+		arriveMessage.setText("入住信息");
+		leaveMessage.setText("退房信息");
+		checkEvaluation.setText("查看评论");
+		back.setText("返回");
 		
 		//设置Button大小
 		arriveMessage.setPrefSize(100, 40);
@@ -86,22 +87,21 @@ public class ExecuteOrder extends Application {
 		checkEvaluation.setPrefSize(100, 40);
 		back.setPrefSize(100, 40);
 		
-		/*
-		//设置Button位置
-		arriveMessage.setLayoutX(425);
-		arriveMessage.setLayoutY(400);
+		//右侧pane添加组件
+		rightPane.getChildren().add(orderID);
+		rightPane.getChildren().add(hotelName);
+		rightPane.getChildren().add(roomType);
+		rightPane.getChildren().add(arriveTime);
+		rightPane.getChildren().add(leaveTime);
+		rightPane.getChildren().add(originalPrice);
+		rightPane.getChildren().add(actualPrice);
 		
-		leaveMessage.setLayoutX(425);
-		leaveMessage.setLayoutY(450);
+		rightPane.getChildren().add(arriveMessage);
+		rightPane.getChildren().add(leaveMessage);
+		rightPane.getChildren().add(checkEvaluation);
+		rightPane.getChildren().add(back);
 		
-		checkEvaluation.setLayoutX(250);
-		checkEvaluation.setLayoutY(525);
-		
-		back.setLayoutX(425);
-		back.setLayoutY(525);
-		*/
-		
-		//右侧Pane添加组件
+		//右侧Pane设置位置
 		AnchorPane.setLeftAnchor(orderID, 200.0);
 		AnchorPane.setLeftAnchor(hotelName, 200.0);
 		AnchorPane.setLeftAnchor(roomType, 200.0);
@@ -129,12 +129,15 @@ public class ExecuteOrder extends Application {
 		AnchorPane.setLeftAnchor(back, 425.0);
 		AnchorPane.setTopAnchor(back, 525.0);
 		
-		HBox root = new HBox(leftPane , rightPane);
-		HBox.setHgrow(leftPane , Priority.ALWAYS);
-		scene.setRoot(root);
+		HBox root = new HBox(leftPane, rightPane);
+		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		stage.setScene(scene);
 		stage.show();
 		
+	}
+	
+	public static void main(String[] args){
+		Application.launch(ExecuteOrder.class,args);
 	}
 
 }
