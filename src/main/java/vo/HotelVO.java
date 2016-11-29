@@ -1,35 +1,38 @@
 package vo;
 
-import java.awt.Image;
 import java.util.ArrayList;
 
 /**
- * 酒店信息的VO类
- * @param hotelName 酒店名称
- * @param hotelLocation 酒店地址
- * @param briefing 酒店简介
- * @param price 酒店起始价格
- * @param evaluation 过往用户的评价
- * @param image 酒店图片
- * @author Rukawa
+ * @param hoteID 酒店ID
+ * @param tradingArea 所属商圈
+ * @param locationOfHotel 酒店地址
+ * @param levelOfHotel 酒店星级
+ * @param introduction 酒店接受
+ * @param pictures 照片
+ * @param emptyRoomNum 空余房间数量
+ * @param bussiness 合作企业
+ * @author bcy
+ *
  */
 public class HotelVO {
-	
-	String hotelName;
-	String hotelLocation;
-	String briefing;
-	String price;
-	String evaluation;
-	ArrayList<Image> hotelImage;
-	
-	public HotelVO(String hotelName, String hotelLocation, String briefing, String price, String evaluation,ArrayList<Image> hotelImage){
-		super();
-		this.hotelName = hotelName;
-		this.hotelLocation = hotelLocation;
-		this.briefing = briefing;
-		this.price = price;
-		this.evaluation = evaluation;
-		this.hotelImage = hotelImage;
-		
+	public String hoteID;
+	public String tradingArea;
+	public String locationOfHotel;
+	public int levelOfHotel;
+	public String introduction;
+	public ArrayList<String> picturesPath;
+	public int emptyRoomNum;
+	public String bussiness;
+
+	public HotelVO(String hoteID,String tradingArea,String locationOfHotel,int levelOfHotel,
+			String introduction,ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
+		this.hoteID=hoteID;
+		this.tradingArea=tradingArea;
+		this.locationOfHotel=locationOfHotel;
+		this.levelOfHotel=levelOfHotel;
+		this.introduction=introduction;
+		this.picturesPath=pictures;
+		this.emptyRoomNum=emptyRoomNum;
+		this.bussiness = bussiness;
 	}
 }

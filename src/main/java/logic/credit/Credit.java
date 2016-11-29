@@ -9,15 +9,20 @@ import Message.ResultMessage;
  */
 public class Credit implements CreditInfo{
 	
+	private String clientID;
 	
+	public Credit(String clientID) {
+		this.clientID = clientID;
+	}
+
 	/**
-	 * 获得信用值
+	 * 获得信用值， 
 	 * @param user_ID 传入的用户ID信息
 	 * @return 返回用户信用
 	 * @author Xue.W
 	 */
 	public int getCredit(String user_ID){
-		return 0;
+		return 0;					//该方法被其他包调用，不能访问成员变量获得。应该直接拉取数据库。
 	}
 	
 	/**

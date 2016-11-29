@@ -12,8 +12,8 @@ import vo.CreditHistoryVO;
  */
 public class CreditController {
 	
-	Credit credit = new Credit();
 	CreditHistory creditHistory;
+	Credit credit;
 	
 	public ResultMessage changeCredit(String user_ID , CreditChange change , int number ){
 		return credit.changeCredit(user_ID, change, number);

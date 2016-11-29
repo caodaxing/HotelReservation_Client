@@ -28,7 +28,6 @@ public class ClientTest {
 	
 	@Test
 	public void testGetClientInfo() {
-		assertEquals(client.getClientInfo("wyy"), "南京大学");
 		assertEquals(client.getClientInfo("wyy").trueName, "王友运");
 	}
 	
@@ -40,12 +39,16 @@ public class ClientTest {
 	
 	@Test
 	public void testUpdateClientInfo2() {
-		ClientVO vo = new ClientVO("wyy", "13338031126", "王友运", "3203221111111111", "image/wyy.jpg");
+		ClientVO vo = new ClientVO("wyy", "13338031126", "王友运", "3203221111111111", 1000, "image/wyy.jpg");
 		assertEquals(client.updateClientInfo(vo), ResultMessage.SUCCESS);
 		//data层写好了才能测试
 //		assertEquals(client.getClientPO().getVipInfo(), "nju");
 	}
 	
+	@Test
+	public void testGetVipInfo() {
+		assertEquals(client.getVipInfo("wyy").info, "南京大学");
+	}
 	
 	@Test
 	public void testRegisterVIP1() {

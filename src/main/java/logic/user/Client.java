@@ -4,25 +4,32 @@ package logic.user;
 import Message.ResultMessage;
 import data.stub.ClientDao_Stub;
 import dataDao.ClientDao;
+import logic.credit.Credit;
+import logic.credit.CreditInfo;
+import logicService.ClientService;
 import po.ClientPO;
 import vo.ClientVO;
 import vo.VipVO;
 
 /**
  * 管理客户信息的类
+ * 在vo中保存了credit，因为界面上需要credit
+ * po中没有保存credit，以防止credit被更改
  * @author Xue.W
  */
-public class Client{
+public class Client implements ClientService{
 	
 	private String clientID;
 	private ClientPO clientPO;
 	private ClientDao clientDao;
+	private CreditInfo credit;
 
 	public Client(){}
 	
 	public Client(String clientID){
 		this.clientID = clientID;
 		clientDao = new ClientDao_Stub();
+		credit = new Credit(this.clientID);
 		this.initClientPO();
 	}	
 	
@@ -42,9 +49,14 @@ public class Client{
 	 * @author Xue.W
 	 */
 	public ClientVO getClientInfo (String clientID){
-		ClientPO po = clientDao.getClientInfo(clientID);
-		return new ClientVO(po.getUserID(),po.getPhoneNumber(), po.getTrueName(), 
-				po.getIdentityID(), po.getHeadImagePath());
+		if(clientPO != null) {
+			return new ClientVO(clientPO.getUserID(),clientPO.getPhoneNumber(), 
+					clientPO.getTrueName(), clientPO.getIdentityID(), 
+					credit.getCredit(clientID), clientPO.getHeadImagePath());
+		} else {
+			return null;
+		}
+		
 	}
 	
 	/**
@@ -78,13 +90,13 @@ public class Client{
 	 */
 	public ResultMessage registerVIP(VipVO vipVO){
 		
-		if(!isVIP(vipVO.userID)) {
-			//更新vip信息
-			this.clientPO.setVipType(vipVO.type);
-			this.clientPO.setVipLevel(vipVO.level);
-			this.clientPO.setVipInfo(vipVO.info);
+		if(!isVIP(vipVO.userID) && vipVO.userID.equals(this.clientID)) {
 			
 			if(clientDao.updateClientInfo(clientPO)){
+				//同时更新clientpo中的vip信息
+				this.clientPO.setVipType(vipVO.type);
+				this.clientPO.setVipLevel(vipVO.level);
+				this.clientPO.setVipInfo(vipVO.info);
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -92,8 +104,26 @@ public class Client{
 		return ResultMessage.FAILURE;
 	}
 	
+	/**
+	 * 获得VIP信息
+	 * @param userID
+	 * @return
+	 */
+	public VipVO getVipInfo(String userID){
+		if(userID == this.clientID) {
+			return new VipVO(clientPO.getUserID(), clientPO.getVipType(), 
+				clientPO.getVipLevel(), clientPO.getVipInfo());
+		} else {
+			ClientPO po = clientDao.getClientInfo(userID);
+			return new VipVO(po.getUserID(), po.getVipType(), po.getVipLevel(), po.getVipInfo());
+		}
+	}
 	
-	
+	/**
+	 * 判断用户是否是vip
+	 * @param userID
+	 * @return
+	 */
 	public boolean isVIP(String userID) {
 		if(this.clientPO != null && this.clientPO.getVipType() != 0) {
 			return true;

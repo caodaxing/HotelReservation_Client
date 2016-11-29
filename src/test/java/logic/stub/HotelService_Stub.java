@@ -32,14 +32,15 @@ public class HotelService_Stub implements HotelService{
 
 	public HotelVO getHotelItemInfo(String hotel_id) {
 		
-		ArrayList<Image> list = new ArrayList<Image>();
-		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
-		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
-		list.add(image1);
-		list.add(image2);
-		
-		return new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
-				, "288", "房间整洁，好评！", list);
+//		ArrayList<Image> list = new ArrayList<Image>();
+//		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
+//		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
+//		list.add(image1);
+//		list.add(image2);
+//		
+//		return new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+//				, "288", "房间整洁，好评！", list);
+		return null;
 	}
 
 	public ArrayList<String> getTradingArea(String location) {
@@ -57,69 +58,73 @@ public class HotelService_Stub implements HotelService{
 
 	public ArrayList<HotelVO> getInitialHotelList(String location, String tradingArea) {
 		
-		ArrayList<Image> list1 = new ArrayList<Image>();
-		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
-		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
-		list1.add(image1);
-		list1.add(image2);
-		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
-				, "288", "房间整洁，好评！", list1);
-		
-		ArrayList<Image> list2 = new ArrayList<Image>();
-		Image image3 = Toolkit.getDefaultToolkit().createImage("index2.jpg");
-		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
-		list2.add(image3);
-		list2.add(image4);
-		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
-				, "388", "房间整洁，好评！", list2);
-		
-		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
-		List.add(info1);
-		List.add(info2);
-		
-		return List;
+//		ArrayList<Image> list1 = new ArrayList<Image>();
+//		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
+//		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
+//		list1.add(image1);
+//		list1.add(image2);
+//		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+//				, "288", "房间整洁，好评！", list1);
+//		
+//		ArrayList<Image> list2 = new ArrayList<Image>();
+//		Image image3 = Toolkit.getDefaultToolkit().createImage("index2.jpg");
+//		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
+//		list2.add(image3);
+//		list2.add(image4);
+//		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
+//				, "388", "房间整洁，好评！", list2);
+//		
+//		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
+//		List.add(info1);
+//		List.add(info2);
+//		
+//		return List;
+		return null;
 	}
 
 	public ArrayList<HotelVO> getSortedList() {
 		
-		ArrayList<Image> list1 = new ArrayList<Image>();
-		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
-		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
-		list1.add(image1);
-		list1.add(image2);
-		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
-				, "288", "房间整洁，好评！", list1);
-		
-		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
-		List.add(info1);
-		
-		return List;
+//		ArrayList<Image> list1 = new ArrayList<Image>();
+//		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
+//		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
+//		list1.add(image1);
+//		list1.add(image2);
+//		HotelVO info1 = new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+//				, "288", "房间整洁，好评！", list1);
+//		
+//		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
+//		List.add(info1);
+//		
+//		return List;
+		return null;
 	}
 
 	public ArrayList<HotelVO> getBookedHotelList(String user_id) {
-		ArrayList<Image> list2 = new ArrayList<Image>();
-		Image image3 = Toolkit.getDefaultToolkit().createImage("index2.jpg");
-		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
-		list2.add(image3);
-		list2.add(image4);
-		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
-				, "388", "房间整洁，好评！", list2);
-		
-		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
-		List.add(info2);
-		
-		return List;
+//		ArrayList<Image> list2 = new ArrayList<Image>();
+//		Image image3 = Toolkit.getDefaultToolkit().createImage("index2.jpg");
+//		Image image4 = Toolkit.getDefaultToolkit().createImage("index3.jpg");
+//		list2.add(image3);
+//		list2.add(image4);
+//		HotelVO info2 = new HotelVO("雅阁酒店", "江苏省无锡市中山路12号", "提供各式标准间，预定赠早餐券，四星级酒店完美体验"
+//				, "388", "房间整洁，好评！", list2);
+//		
+//		ArrayList<HotelVO> List = new ArrayList<HotelVO>();
+//		List.add(info2);
+//		
+//		return List;
+		return null;
 	}
 
 	public HotelVO search(HotelSearchVO search) {
-		
-		ArrayList<Image> list = new ArrayList<Image>();
-		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
-		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
-		list.add(image1);
-		list.add(image2);
-		
-		return  new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
-				, "288", "房间整洁，好评！", list);
+//		
+//		ArrayList<Image> list = new ArrayList<Image>();
+//		Image image1 = Toolkit.getDefaultToolkit().createImage("index.jpg");
+//		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
+//		list.add(image1);
+//		list.add(image2);
+//		
+//		return  new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
+//				, "288", "房间整洁，好评！", list);
+		return null;
 	}
 }

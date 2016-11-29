@@ -1,42 +1,63 @@
 package logic.user;
 
 import Message.ResultMessage;
+import data.stub.WebBusinessDao_Stub;
+import dataDao.WebBusinessDao;
+import logicService.WebBusinessService;
+import po.WebBusinessPO;
 import vo.WebBusinessVO;
 
-/**
- * 管理网站营销人员信息的类
- * @author Xue.W
- */
-public class WebBusiness{
+public class WebBusiness implements WebBusinessService{
+
+	private String webBusinessID;
+	private WebBusinessPO webBusinessPO;
+	private WebBusinessDao webBusinessDao;
 	
-	private String webBussinessID;
-	
-	public WebBusiness(WebBusinessVO wbv){
-		this.webBussinessID = wbv.id;
+	public WebBusiness(String webBusinessID) {
+		this.webBusinessID = webBusinessID;
+		webBusinessDao = new WebBusinessDao_Stub();
+		this.initWebBusinessPO();
 	}
-	
-	public WebBusiness(){
+
+	private void initWebBusinessPO() {
+		this.webBusinessPO = webBusinessDao.getWebBusinessInfo(this.webBusinessID);
+	}
+
+	@Override
+	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID) {
+		if(this.webBusinessDao != null) {
+			return new WebBusinessVO(webBusinessPO.getUserID(), webBusinessPO.getTrueName(),
+					webBusinessPO.getPhoneNumber(), webBusinessPO.getNumberOfIdentityCard());
+		}
 		
+		WebBusinessPO po = this.webBusinessDao.getWebBusinessInfo(webBusiness_ID);
+		this.webBusinessPO = po;
+		
+		return new WebBusinessVO(po.getUserID(), po.getTrueName(),
+				po.getPhoneNumber(), po.getNumberOfIdentityCard());
 	}
 	
-	/**
-	 * 获得网站营销人员信息
-	 * @param webBusin_ID 传入的网站营销人员ID
-	 * @return 返回网站营销人员信息
-	 * @author Xue.W
-	 */
-	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID){
-		return null;
-	}
 	
-	/**
-	 * 获得用户信息
-	 * @param webBusinessInfo 传入的网站营销人员信息
-	 * @return 返回是否修改成功
-	 * @author Xue.W
-	 */
-	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO vo){
+		WebBusinessPO po = new WebBusinessPO(vo.userID, vo.trueName,
+				vo.phoneNumber, vo.numberOfIdentityCard);
+		
+		if(this.webBusinessDao.updateWebBusinessInfo(po)) {
+			this.webBusinessPO = po;
+			return ResultMessage.SUCCESS;
+		}
+		
 		return ResultMessage.FAILURE;
 	}
 	
+	public String getWebBusinessID() {
+		return webBusinessID;
+	}
+
+
+	public void setWebBusinessID(String webBusinessID) {
+		this.webBusinessID = webBusinessID;
+	}
+
+
 }

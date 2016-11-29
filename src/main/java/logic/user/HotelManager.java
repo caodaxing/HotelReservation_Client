@@ -1,40 +1,60 @@
 package logic.user;
 
 import Message.ResultMessage;
+import data.stub.HotelManagerDao_Stub;
 import dataDao.HotelManagerDao;
+import logicService.HotelManagerService;
+import po.HotelManagerPO;
 import vo.HotelManagerVO;
 
-/**
- * 管理酒店工作人员信息的类
- * @author Xue.W
- */
-public class HotelManager {
+public class HotelManager implements HotelManagerService{
+
+	private String hotelManagerID;
+	private HotelManagerPO hotelManagerPO;
+	private HotelManagerDao hotelManagerDao; 
 	
-	HotelManagerDao hotelManagerDao;
-	
-	public HotelManager(){
+	public HotelManager(String hotelManagerID) {
+		this.hotelManagerID = hotelManagerID;
+		this.hotelManagerDao = new HotelManagerDao_Stub();
+		this.initHotelManagerPO();
 		
 	}
-	
-	/**
-	 * 获得酒店工作人员信息
-	 * @param hotel_ID 传入的酒店ID信息
-	 * @return 返回酒店工作人员信息
-	 * @author Xue.W
-	 */
-	public HotelManagerVO getHotelManagerInfo(String hotel_ID){
-		return null;
+
+	private void initHotelManagerPO() {
+		this.hotelManagerPO = this.hotelManagerDao.getHotelManagerInfo(hotelManagerID);
+	}
+
+	@Override
+	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
+		if(hotelManagerPO != null) {
+			return new HotelManagerVO(hotelManagerPO.getUserID(), hotelManagerPO.getHotelID(), hotelManagerPO.getPhoneNumber(),
+					hotelManagerPO.getTrueName(), hotelManagerPO.getNumberOfIdentityCard());
+		}
+		
+		HotelManagerPO po = hotelManagerDao.getHotelManagerInfo(hotelManager_ID);
+		this.hotelManagerPO = po;
+		return new HotelManagerVO(po.getUserID(), po.getHotelID(), po.getPhoneNumber(),
+				po.getTrueName(), po.getNumberOfIdentityCard());
 	}
 	
-	/**
-	 * 修改酒店工作人员信息
-	 * @param hotel_ID 传入的酒店ID信息
-	 * @param hotelManagerInfo 传入的酒店工作人员信息
-	 * @return 返回是否修改成功
-	 * @author Xue.W
-	 */
-	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO vo){
+		HotelManagerPO po = new HotelManagerPO(vo.userID, vo.hotelID, vo.phoneNumber, 
+				vo.trueName, vo.numberOfIdentityCard);
+		if(hotelManagerDao.updateHotelManagerInfo(po)) {
+			this.hotelManagerPO = po;			//更新成员变量中的po
+			return ResultMessage.SUCCESS;
+		}
+		
 		return ResultMessage.FAILURE;
 	}
+
 	
+	public String getHotelManagerID() {
+		return hotelManagerID;
+	}
+
+	public void setHotelManagerID(String hotelManagerID) {
+		this.hotelManagerID = hotelManagerID;
+	}
+
 }

@@ -1,7 +1,12 @@
 package logic.user;
 
 import Message.ResultMessage;
+import data.stub.WebManagerDao_Stub;
 import dataDao.WebManagerDao;
+import logicService.WebManagerService;
+import po.HotelManagerPO;
+import po.HotelPO;
+import po.WebBusinessPO;
 import vo.HotelManagerVO;
 import vo.HotelVO;
 import vo.WebBusinessVO;
@@ -10,22 +15,93 @@ import vo.WebBusinessVO;
  * 管理网站管理人员信息的类
  * @author Xue.W
  */
-public class WebManager{
+public class WebManager implements WebManagerService {
 	
-	WebManagerDao webManagerDao;
+	private String webManagerID;
+	private WebManagerDao webManagerDao;
+	private WebBusiness webBusiness;
+	private HotelManager hotelManager;
 	
-	public WebManager(){}
-
+	public WebManager(String userID){
+		this.webManagerID = userID;
+		this.webManagerDao = new WebManagerDao_Stub();
+	}
+	
+	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
+		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManager_ID)) {
+			hotelManager = new HotelManager(hotelManager_ID);
+		}
+		
+		return hotelManager.getHotelManagerInfo(hotelManager_ID);
+	}
+	
+	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
+		
+		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManagerInfo.userID)) {
+			hotelManager = new HotelManager(hotelManagerInfo.userID);
+		}
+		
+		return hotelManager.updateHotelManagerInfo(hotelManagerInfo);
+	}
+	
+	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID){
+		if(this.webBusiness == null || !this.webBusiness.getWebBusinessID().equals(webBusiness_ID)){
+			this.webBusiness = new WebBusiness(webBusiness_ID);
+		}
+		
+		return this.webBusiness.getWebBusinessInfo(webBusiness_ID);
+	}
+	
+	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
+		if(this.webBusiness == null || !this.webBusiness.getWebBusinessID().equals(webBusinessInfo.userID)){
+			this.webBusiness = new WebBusiness(webBusinessInfo.userID);
+		}
+		
+		return this.webBusiness.updateWebBusinessInfo(webBusinessInfo);
+	}
+	
 	public ResultMessage addHotel(HotelVO hotelVO){
-		return ResultMessage.SUCCESS;
+		if(hotelVO != null) {
+			HotelPO po = new HotelPO(hotelVO.hoteID, hotelVO.tradingArea, hotelVO.locationOfHotel,hotelVO.levelOfHotel, 
+					hotelVO.introduction, hotelVO.picturesPath, hotelVO.emptyRoomNum, hotelVO.bussiness);	
+			if(this.webManagerDao.addHotel(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		}
+		return ResultMessage.FAILURE;
 	}
 	
 	public ResultMessage addHotelManager(HotelManagerVO hotelManager){
-		return ResultMessage.SUCCESS;
+		
+		
+		if(hotelManager != null) {
+			HotelManagerPO po = new HotelManagerPO(hotelManager.userID, hotelManager.hotelID, 
+					hotelManager.phoneNumber, hotelManager.trueName, hotelManager.numberOfIdentityCard);
+			if(this.webManagerDao.addHotelManager(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		}
+		
+		return ResultMessage.FAILURE;
 	}
 	
 	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessVO){
-		return ResultMessage.SUCCESS;
+		if(webBusinessVO != null){
+			WebBusinessPO po = new WebBusinessPO(webBusinessVO.userID, webBusinessVO.trueName, 
+					webBusinessVO.phoneNumber, webBusinessVO.numberOfIdentityCard);
+			if(this.webManagerDao.addWebBusiness(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		}
+		return ResultMessage.FAILURE;
+	}
+	
+	public String getWebManagerID() {
+		return webManagerID;
+	}
+
+	public void setWebManagerID(String webManagerID) {
+		this.webManagerID = webManagerID;
 	}
 	
 }

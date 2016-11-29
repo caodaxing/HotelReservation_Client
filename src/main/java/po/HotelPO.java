@@ -1,6 +1,5 @@
 package po;
 
-import java.awt.Image;
 import java.util.ArrayList;
 
 /**
@@ -21,18 +20,18 @@ public class HotelPO {
 	private String locationOfHotel;
 	private int levelOfHotel;
 	private String introduction;
-	private ArrayList<Image> pictures;
+	private ArrayList<String> picturesPath;
 	private int emptyRoomNum;
 	private String bussiness;
 
 	public HotelPO(String hoteID,String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction,ArrayList<Image> pictures,int emptyRoomNum, String bussiness) {
+			String introduction,ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
-		this.pictures=pictures;
+		this.picturesPath=pictures;
 		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
@@ -85,12 +84,12 @@ public class HotelPO {
 		this.introduction = introduction;
 	}
 
-	public ArrayList<Image> getPictures() {
-		return pictures;
+	public ArrayList<String> getPictures() {
+		return picturesPath;
 	}
 
-	public void setPictures(ArrayList<Image> pictures) {
-		this.pictures = pictures;
+	public void setPictures(ArrayList<String> pictures) {
+		this.picturesPath = pictures;
 	}
 
 	public int getEmptyRoomNum() {

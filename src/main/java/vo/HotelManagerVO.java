@@ -1,22 +1,29 @@
 package vo;
 
+/**
+ * 
+ * @param hotelManagerID 酒店管理人员号
+ * @param hotel     	所属酒店
+ * @param phoneNumber   联系方式
+ * @param trueName    	真实姓名
+ * @param numberOfIdentityCard    身份证号
+ */
 public class HotelManagerVO {
+	public String userID;
+	public String hotelID;
+	public String phoneNumber;
+	public String trueName;
+	public String numberOfIdentityCard;
 	
-	String id;
-	String name;
-	String info;
-	
-	/**
-	 * 酒店管理人员的VO类
-	 * @param id 酒店管理人员id
-	 * @param name 酒店管理人员姓名
-	 * @param info 酒店管理人员信息
-	 * @author Rukawa
-	 */
-	public HotelManagerVO(String id, String name, String info) {
-		this.id = id ;
-		this.name = name ;
-		this.info = info ;
+	public HotelManagerVO(String userID, String hotelID, String phoneNumber, String trueName,
+			String numberOfIdentityCard) {
+		this.userID = userID;
+		this.hotelID = hotelID;
+		this.phoneNumber = phoneNumber;
+		this.trueName = trueName;
+		this.numberOfIdentityCard = numberOfIdentityCard;
 	}
+	
+	
 	
 }

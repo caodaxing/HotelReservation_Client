@@ -8,7 +8,10 @@ import logic.order.OrderController;
 import logic.orderManagement.OrderManagementController;
 import logic.promotion.PromotionController;
 import logic.room.RoomController;
-import logic.user.UserController;
+import logic.user.Client;
+import logic.user.HotelManager;
+import logic.user.WebBusiness;
+import logic.user.WebManager;
 
 /**
  * 创建logic service实例的工厂类
@@ -28,77 +31,52 @@ public class ServiceFactory {
 		return serviceFactory;
 	}
 	
-	private Account account;
-	private UserController userController;
-	private CreditController creditController;
-	private OrderController orderController;
-	private OrderManagementController orderManagementController; 
-	private RoomController roomController;
-	private HotelController hotelController;
-	private EvaluationController evaluationController;
-	private PromotionController promotionController;
-	
 	public Account createAccount(){
-		if(account == null) {
-			account = new Account();
-		}
-		return account;
+		return new Account();
 	}
 	
-	public UserController createUserController(){
-		if(userController == null) {
-			userController = new UserController();
-		}
-		return userController;
+	public Client createClient(String userID){
+		return new Client(userID);
+	}
+	
+	public HotelManager createHotelManager(String userID){
+		return new HotelManager(userID);
+	}
+	
+	public WebManager createWebManager(String userID){
+		return new WebManager(userID);
+	}
+	
+	public WebBusiness createWebBusiness(String userID){
+		return new WebBusiness(userID);
 	}
 	
 	public CreditController createCreditController(){
-		if(creditController == null) {
-			creditController = new CreditController();
-		}
-		return creditController;
+		return new CreditController();
 	}
 	
 	public OrderController createOrderController(){
-		if(orderController == null) {
-			orderController = new OrderController();
-		}
-		return orderController;
+		return new OrderController();
 	}
 
 	public OrderManagementController createOrderManagementController(){
-		if(orderManagementController == null) {
-			orderManagementController = new OrderManagementController();
-		}
-		return orderManagementController;
+		return new OrderManagementController();
 	}
 	
 	public RoomController createRoomController(){
-		if(roomController == null) {
-			roomController = new RoomController();
-		}
-		return roomController;
+		return new RoomController();
 	}
 	
 	public HotelController createHotelController(){
-		if(hotelController == null) {
-			hotelController = new HotelController();
-		}
-		return hotelController;
+		return new HotelController();
 	}
 
 	public EvaluationController createEvaluationController(){
-		if(evaluationController == null) {
-			evaluationController = new EvaluationController();
-		}
-		return evaluationController;
+		return new EvaluationController();
 	}
 	
 	public PromotionController createPromotionController(){
-		if(promotionController == null) {
-			promotionController = new PromotionController();
-		}
-		return promotionController;
+		return new PromotionController();
 	}
 }
 
