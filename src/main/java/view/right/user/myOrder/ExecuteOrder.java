@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -26,13 +27,13 @@ public class ExecuteOrder extends Application {
 	
 	private AnchorPane rightPane;
 	
-	Label orderID ;
-	Label hotelName ; 
-	Label roomType ;
-	Label arriveTime ;
-	Label leaveTime ;
-	Label originalPrice ;
-	Label actualPrice ;
+	TextField orderID ;
+	TextField hotelName ; 
+	TextField roomType ;
+	TextField arriveTime ;
+	TextField leaveTime ;
+	TextField originalPrice ;
+	TextField actualPrice ;
 	
 	Button arriveMessage ;
 	Button leaveMessage ;
@@ -51,16 +52,25 @@ public class ExecuteOrder extends Application {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
-		//初始化label 
-		orderID = new Label("订单ID");
-		hotelName = new Label("酒店名称");
-		roomType = new Label("房间类型");
-		arriveTime = new Label("入住时间");
-		leaveTime = new Label("退房时间");
-		originalPrice = new Label("原始价格");
-		actualPrice = new Label("实际价格");
+		//初始化textField
+		orderID = new TextField("订单ID");
+		hotelName = new TextField("酒店名称");
+		roomType = new TextField("房间类型");
+		arriveTime = new TextField("入住时间");
+		leaveTime = new TextField("退房时间");
+		originalPrice = new TextField("原始价格");
+		actualPrice = new TextField("实际价格");
 		
-		//设置label大小
+		//设置textField可操作性
+		orderID.setEditable(false);
+		hotelName.setEditable(false);
+		roomType.setEditable(false);
+		arriveTime.setEditable(false);
+		leaveTime.setEditable(false);
+		originalPrice.setEditable(false);
+		actualPrice.setEditable(false);
+		
+		//设置textField大小
 		orderID.setPrefSize(200, 30);
 		hotelName.setPrefSize(200, 30);
 		roomType.setPrefSize(200, 30);
