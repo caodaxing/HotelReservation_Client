@@ -6,7 +6,7 @@ import dataDao.ClientDao;
 import dataDao.stub.ClientDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditInfo;
-import logicService.ClientService;
+import logicService.user.ClientService;
 import po.ClientPO;
 import vo.ClientVO;
 import vo.VipVO;

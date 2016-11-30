@@ -1,9 +1,10 @@
 package logicService.stub;
 
 import java.util.ArrayList;
+
 import Message.CreditChange;
 import Message.ResultMessage;
-import logicService.CreditService;
+import logicService.credit.CreditService;
 import vo.CreditVO;
 
 public class CreditService_Stub implements CreditService{
@@ -28,7 +29,7 @@ public class CreditService_Stub implements CreditService{
 	}
 
 
-	@Override
+	@Override 
 	public ResultMessage setVIPCredit() {
 		return ResultMessage.SUCCESS;
 	}

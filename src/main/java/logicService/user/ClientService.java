@@ -1,4 +1,4 @@
-package logicService;
+package logicService.user;
 
 import Message.ResultMessage;
 import vo.ClientVO;

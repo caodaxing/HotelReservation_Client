@@ -1,12 +1,10 @@
 package logicService.stub;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import Message.Identity;
 import Message.ResultMessage;
-import logicService.ClientService;
+import logicService.user.ClientService;
 import vo.ClientVO;
 import vo.HotelManagerVO;
 import vo.HotelVO;

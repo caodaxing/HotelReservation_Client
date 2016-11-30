@@ -1,4 +1,4 @@
-package logicService;
+package logicService.credit;
 
 import java.util.ArrayList;
 import Message.CreditChange;

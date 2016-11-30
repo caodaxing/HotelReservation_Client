@@ -1,6 +1,6 @@
 package logicService.stub;
 
-import logicService.HotelManagerService;
+import logicService.user.HotelManagerService;
 import vo.HotelManagerVO;
 
 public class HotelManagerService_Stub implements HotelManagerService {

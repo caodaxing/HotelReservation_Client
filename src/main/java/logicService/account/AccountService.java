@@ -1,4 +1,4 @@
-package logicService;
+package logicService.account;
 
 import Message.Identity;
 import Message.ResultMessage;

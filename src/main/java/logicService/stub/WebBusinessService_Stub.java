@@ -1,6 +1,6 @@
 package logicService.stub;
 
-import logicService.WebBusinessService;
+import logicService.user.WebBusinessService;
 import vo.WebBusinessVO;
 
 public class WebBusinessService_Stub implements WebBusinessService{

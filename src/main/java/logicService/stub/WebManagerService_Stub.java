@@ -1,7 +1,7 @@
 package logicService.stub;
 
 import Message.ResultMessage;
-import logicService.WebManagerService;
+import logicService.user.WebManagerService;
 import vo.HotelManagerVO;
 import vo.HotelVO;
 import vo.WebBusinessVO;

@@ -2,7 +2,7 @@ package logicService.stub;
 
 import Message.Identity;
 import Message.ResultMessage;
-import logicService.AccountService;
+import logicService.account.AccountService;
 import vo.AccountVO;
 
 
