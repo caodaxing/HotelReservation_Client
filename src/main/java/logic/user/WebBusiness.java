@@ -54,10 +54,16 @@ public class WebBusiness implements WebBusinessService{
 		return webBusinessID;
 	}
 
-
 	public void setWebBusinessID(String webBusinessID) {
 		this.webBusinessID = webBusinessID;
 	}
 
+	public WebBusinessPO getWebBusinessPO() {
+		return webBusinessPO;
+	}
+
+	public void setWebBusinessPO(WebBusinessPO webBusinessPO) {
+		this.webBusinessPO = webBusinessPO;
+	}
 
 }

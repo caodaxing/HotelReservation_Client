@@ -56,5 +56,14 @@ public class HotelManager implements HotelManagerService{
 	public void setHotelManagerID(String hotelManagerID) {
 		this.hotelManagerID = hotelManagerID;
 	}
+	
+	public HotelManagerPO getHotelManagerPO() {
+		return hotelManagerPO;
+	}
+
+	public void setHotelManagerPO(HotelManagerPO hotelManagerPO) {
+		this.hotelManagerPO = hotelManagerPO;
+	}
+
 
 }
