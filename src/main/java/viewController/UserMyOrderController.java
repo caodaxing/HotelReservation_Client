@@ -25,7 +25,7 @@ public class UserMyOrderController {
 		//初始化依赖
 		accountService = new Account();
 		clientService = new Client();
-		creditService = new CreditController();
+		//creditService = new CreditController();
 	
 	}
 	

@@ -1,12 +1,21 @@
 package main;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.right.user.myOrder.ExecuteOrder;
+import viewController.UserMyOrderController;
 
 public class Main extends Application{
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage stage) {
+		
+		ExecuteOrder executeOrder = new ExecuteOrder(new UserMyOrderController());
+		
+		Scene scene = executeOrder.getScene();
+		stage.setScene(scene);
+		stage.show();
 		
 	}
 	

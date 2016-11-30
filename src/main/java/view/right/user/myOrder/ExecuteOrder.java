@@ -3,6 +3,8 @@ package view.right.user.myOrder;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -157,6 +159,36 @@ public class ExecuteOrder {
 		leaveMessage.setPrefSize(100, 40);
 		checkEvaluation.setPrefSize(100, 40);
 		back.setPrefSize(100, 40);
+		
+		//添加listener
+		arriveMessage.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		leaveMessage.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		checkEvaluation.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		back.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
 		
 		//添加Button组件
 		rightPane.getChildren().add(arriveMessage);

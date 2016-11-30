@@ -1,6 +1,8 @@
 package view.right.hotelManager.promotion;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -9,14 +11,17 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
+import viewController.HMPromotionController;
 
 /**
  * 酒店工作人员界面_促销策略_选择界面（选择制定哪种促销策略）
  * @author XueWang
  *
  */
-public class Choose extends Application{
+public class Choose{
 
+	private HMPromotionController controller ;
+	
 	private Scene scene;
 	
 	private HotelManagerUI hotelManagerUI = new HotelManagerUI();
@@ -30,13 +35,30 @@ public class Choose extends Application{
 	Button specialTimeStrategy ;
 	Button threeRoomsStrategy ;
 	
-	public void start (Stage stage){
+	public Choose (HMPromotionController controller) {
+		
+		this.controller = controller;
 		
 		leftPane = hotelManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		
+		setButton();
+		
+		HBox root = new HBox(leftPane,rightPane);
+		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
+		
+	}
+	
+	public Scene getScene(){
+		
+		return scene;
+		
+	}
+	
+	private void setButton(){
 		
 		//初始化Button
 		birthdayStrategy = new Button();
@@ -55,6 +77,36 @@ public class Choose extends Application{
 		cooperateCompanyStrategy.setPrefSize(150,50);
 		specialTimeStrategy.setPrefSize(150,50);
 		threeRoomsStrategy.setPrefSize(150,50);
+		
+		//设置listener
+		birthdayStrategy.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		cooperateCompanyStrategy.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		specialTimeStrategy.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		threeRoomsStrategy.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
 		
 		//右侧Pane添加组件
 		rightPane.getChildren().add(birthdayStrategy);
@@ -75,16 +127,6 @@ public class Choose extends Application{
 		AnchorPane.setLeftAnchor(threeRoomsStrategy, 350.0);
 		AnchorPane.setTopAnchor(threeRoomsStrategy, 300.0);
 		
-		HBox root = new HBox(leftPane,rightPane);
-		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		stage.setScene(scene);
-		stage.show();
-		
 	}
-	
-	public static void main(String[] args){
-		Application.launch(Choose.class,args);
-	}
-
 	
 }
