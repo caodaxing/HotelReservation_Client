@@ -1,6 +1,5 @@
 package view.right.user.checkHotel;
 
-import javafx.application.Application;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,7 +7,6 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
@@ -18,7 +16,7 @@ import view.left.UserUI;
  * @author XueWang
  *
  */
-public class SearchResultList extends Application{
+public class SearchResultList{
 	
 	private Scene scene;
 	private GridPane leftPane;
@@ -135,14 +133,10 @@ public class SearchResultList extends Application{
 		
 		
 		HBox root = new HBox(leftPane, rightPane);
-		HBox.setHgrow(leftPane, Priority.ALWAYS);
-		scene = new Scene(root);
+		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
 	}
 	
-	public static void main(String args[]){
-		launch(args);
-	}
 }
