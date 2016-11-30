@@ -16,7 +16,7 @@ import view.left.HotelManagerUI;
  * @author XueWang
  *
  */
-public class SearchOrder{
+public class SearchOrder extends Application{
 
 	private Scene scene;
 	private GridPane leftPane;
@@ -68,5 +68,7 @@ public class SearchOrder{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
+	public static void main(String args[]){
+		launch(args);
+	}
 }

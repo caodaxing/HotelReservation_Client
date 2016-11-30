@@ -7,9 +7,9 @@ import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
+import viewController.UserCheckHotelController;
 
 /**
  * 客户界面_查看酒店_搜索结果列表
@@ -18,6 +18,7 @@ import view.left.UserUI;
  */
 public class SearchResultList{
 	
+	private UserCheckHotelController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -33,9 +34,9 @@ public class SearchResultList{
 	
 	ScrollBar scroller;
 	
-	public void start(Stage primaryStage){
+	public SearchResultList(UserCheckHotelController controller){
 		
-		primaryStage.setTitle("Rookie Travel");
+		this.controller = controller;
 		
 		leftPane = userui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -44,6 +45,22 @@ public class SearchResultList{
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
 		//添加按钮
+		setButton();
+				
+		//设置滚动条
+		setScroller();
+		
+		HBox root = new HBox(leftPane, rightPane);
+		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		
+	}
+	
+	public Scene getScene(){
+		return scene;
+	}
+	public void setButton(){
+		
+		//设置按钮
 		ascendingSort = new Button("价格升序");
 		ascendingSort.setId("searchResultList");
 		ascendingSort.setPrefSize(60, 30);
@@ -94,7 +111,35 @@ public class SearchResultList{
 		revert.setLayoutX(650);
 		revert.setLayoutY(550);
 		
-		//设置滚动条
+		//添加组件
+		rightPane.getChildren().add(ascendingSort);
+		rightPane.getChildren().add(dscendingSort);
+		rightPane.getChildren().add(starLevel);
+		rightPane.getChildren().add(evaluation);
+		rightPane.getChildren().add(check);
+		rightPane.getChildren().add(reserve);
+		rightPane.getChildren().add(revert);
+		
+		AnchorPane.setLeftAnchor(ascendingSort, 150.0);
+		AnchorPane.setLeftAnchor(dscendingSort, 250.0);
+		AnchorPane.setLeftAnchor(starLevel, 350.0);
+		AnchorPane.setLeftAnchor(evaluation, 450.0);
+		AnchorPane.setLeftAnchor(check, 435.0);
+		AnchorPane.setLeftAnchor(reserve, 495.0);
+		AnchorPane.setLeftAnchor(revert, 450.0);
+		
+		AnchorPane.setTopAnchor(ascendingSort, 100.0);
+		AnchorPane.setTopAnchor(dscendingSort, 100.0);
+		AnchorPane.setTopAnchor(starLevel, 100.0);
+		AnchorPane.setTopAnchor(evaluation, 100.0);
+		AnchorPane.setTopAnchor(check, 200.0);
+		AnchorPane.setTopAnchor(reserve, 200.0);
+		AnchorPane.setTopAnchor(revert, 550.0);
+	}
+	
+	public void setScroller(){
+		
+		//是指滚动条
 		scroller = new ScrollBar();
 		scroller.setLayoutX(775);
 		scroller.setLayoutY(140);
@@ -104,39 +149,12 @@ public class SearchResultList{
 		scroller.setBlockIncrement(5.0);
 		
 		//添加组件
-		rightPane.getChildren().add(ascendingSort);
-		rightPane.getChildren().add(dscendingSort);
-		rightPane.getChildren().add(starLevel);
-		rightPane.getChildren().add(evaluation);
-		rightPane.getChildren().add(check);
-		rightPane.getChildren().add(reserve);
-		rightPane.getChildren().add(revert);
+		
 		rightPane.getChildren().add(scroller);
 		
-		AnchorPane.setLeftAnchor(ascendingSort, 150.0);
-		AnchorPane.setLeftAnchor(dscendingSort, 250.0);
-		AnchorPane.setLeftAnchor(starLevel, 350.0);
-		AnchorPane.setLeftAnchor(evaluation, 450.0);
-		AnchorPane.setLeftAnchor(check, 435.0);
-		AnchorPane.setLeftAnchor(reserve, 495.0);
-		AnchorPane.setLeftAnchor(revert, 450.0);
 		AnchorPane.setLeftAnchor(scroller, 575.0);
 		
-		AnchorPane.setTopAnchor(ascendingSort, 100.0);
-		AnchorPane.setTopAnchor(dscendingSort, 100.0);
-		AnchorPane.setTopAnchor(starLevel, 100.0);
-		AnchorPane.setTopAnchor(evaluation, 100.0);
-		AnchorPane.setTopAnchor(check, 200.0);
-		AnchorPane.setTopAnchor(reserve, 200.0);
-		AnchorPane.setTopAnchor(revert, 550.0);
 		AnchorPane.setTopAnchor(scroller, 140.0);
-		
-		
-		HBox root = new HBox(leftPane, rightPane);
-		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		
 	}
 	
 }
