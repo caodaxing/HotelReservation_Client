@@ -1,8 +1,8 @@
 package logic.user;
 
 import Message.ResultMessage;
-import data.stub.WebBusinessDao_Stub;
 import dataDao.WebBusinessDao;
+import dataDao.stub.WebBusinessDao_Stub;
 import logicService.WebBusinessService;
 import po.WebBusinessPO;
 import vo.WebBusinessVO;

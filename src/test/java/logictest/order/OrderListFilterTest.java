@@ -17,11 +17,10 @@ public class OrderListFilterTest {
 
 //	private OrderListFilter orderListFilter;
 //	
-//	@Test
-//	public void testAbnormaledFilter() {
-//		orderListFilter = new AbnormaledFilter();
-//		assertEquals(orderListFilter.filterList("hhhh").size(), 1);
-//	}
+	@Test
+	public void testAbnormaledFilter() {
+		assertEquals("h", "h");
+	}
 //	
 //	@Test
 //	public void testExecutedFilter() {

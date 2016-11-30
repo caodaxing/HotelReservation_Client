@@ -2,8 +2,8 @@ package logic.user;
 
 
 import Message.ResultMessage;
-import data.stub.ClientDao_Stub;
 import dataDao.ClientDao;
+import dataDao.stub.ClientDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditInfo;
 import logicService.ClientService;

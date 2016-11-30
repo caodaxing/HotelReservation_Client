@@ -2,8 +2,8 @@ package logic.account;
 
 import Message.Identity;
 import Message.ResultMessage;
-import data.stub.AccountDao_Stub;
 import dataDao.AccountDao;
+import dataDao.stub.AccountDao_Stub;
 import logicService.AccountService;
 import po.AccountPO;
 import vo.AccountVO;
