@@ -2,8 +2,9 @@ package view.right.user.checkHotel;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
@@ -16,22 +17,25 @@ import view.left.UserUI;
 public class SearchResultList extends Application{
 	
 	HBox root;
-	Pane leftPane, rightPane;
+	GridPane leftPane;
+	AnchorPane rightPane;
 	
 	UserUI userui = new UserUI();
 	
 	public void start(Stage primaryStage){
+		
 		primaryStage.setTitle("Rookie Travel");
+		
 		leftPane = userui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
-		
 		
 		
 		root = new HBox(leftPane, rightPane);
 		Scene scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
 	}
 	
 	
