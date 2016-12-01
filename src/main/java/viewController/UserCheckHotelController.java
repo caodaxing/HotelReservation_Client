@@ -1,7 +1,7 @@
 package viewController;
 
 import logic.order.OrderController;
-import logicService.promotion.OrderService;
+import logicService.order.OrderService;
 import view.right.hotelManager.orderManagement.SearchOrder;
 
 public class UserCheckHotelController {

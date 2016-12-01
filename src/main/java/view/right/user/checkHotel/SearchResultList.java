@@ -2,6 +2,8 @@ package view.right.user.checkHotel;
 
 import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -112,6 +114,57 @@ public class SearchResultList{
 		revert.setLayoutX(650);
 		revert.setLayoutY(550);
 		
+		//设置按钮监听
+		ascendingSort.setOnAction(new EventHandler<ActionEvent>(){
+			
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		dscendingSort.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		starLevel.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		evaluation.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		revert.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+			
 		//添加组件
 		rightPane.getChildren().add(ascendingSort);
 		rightPane.getChildren().add(dscendingSort);
@@ -142,6 +195,17 @@ public class SearchResultList{
 		check.setLayoutX(635);
 		check.setLayoutY(200);
 		
+		//设置按钮监听
+		check.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		//添加组件
 		rightPane.getChildren().add(check);
 		
@@ -158,6 +222,17 @@ public class SearchResultList{
 		//设置预定按钮位置
 		reserve.setLayoutX(695);
 		reserve.setLayoutY(200);
+		
+		//设置按钮监听
+		reserve.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		//添加组件
 		rightPane.getChildren().add(reserve);
@@ -182,7 +257,6 @@ public class SearchResultList{
 		rightPane.getChildren().add(scroller);
 		
 		AnchorPane.setLeftAnchor(scroller, 575.0);
-		
 		AnchorPane.setTopAnchor(scroller, 140.0);
 	}
 	
