@@ -1,18 +1,13 @@
 package view.right.user.myOrder;
 
-import java.util.ArrayList;
-
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserMyOrderController;
@@ -86,7 +81,7 @@ public class ExecuteOrder {
 		actualPrice = new TextField();
 		/*
 		//根据Controller设置textField文字
-		orderID.setText(infoList.get(0));
+		roomType.setText(infoList.get(0));
 		hotelName.setText(infoList.get(1));
 		roomType.setText(infoList.get(2));
 		arriveTime.setText(infoList.get(3));
