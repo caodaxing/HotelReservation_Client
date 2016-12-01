@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import Message.CreditChange;
+import Message.CreditChangeType;
 import Message.ResultMessage;
 import logic.credit.CreditInfo;
 import logic.evaluation.Evaluation;
@@ -63,7 +63,7 @@ public class Order implements OrderInfo{
 	 * @param order_id 订单id
 	 * @return ResultMessage
 	 */
-	public ResultMessage changeCredit(String user_id, CreditChange change, int number){
+	public ResultMessage changeCredit(String user_id, CreditChangeType change, int number){
 		return ResultMessage.SUCCESS;
 	}
 	

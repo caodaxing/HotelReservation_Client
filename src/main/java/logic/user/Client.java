@@ -4,8 +4,8 @@ package logic.user;
 import Message.ResultMessage;
 import dataDao.ClientDao;
 import dataDao.stub.ClientDao_Stub;
-import logic.credit.Credit;
 import logic.credit.CreditInfo;
+import logic.credit.MockCredit;
 import logicService.user.ClientService;
 import po.ClientPO;
 import vo.ClientVO;
@@ -29,7 +29,7 @@ public class Client implements ClientService{
 	public Client(String clientID){
 		this.clientID = clientID;
 		clientDao = new ClientDao_Stub();
-		credit = new Credit(this.clientID);
+		credit = new MockCredit();
 		this.initClientPO();
 	}	
 	
@@ -43,16 +43,18 @@ public class Client implements ClientService{
 	
 	
 	/**
-	 * 获得用户（会员）信息
+	 * 获得用户（会员）信息,包括信用值
 	 * @param clientID 传入的用户ID信息
 	 * @return 返回用户信息
 	 * @author Xue.W
 	 */
 	public ClientVO getClientInfo (String clientID){
 		if(clientPO != null) {
+			int cre = credit.getCredit(clientID);
+			
 			return new ClientVO(clientPO.getUserID(),clientPO.getPhoneNumber(), 
 					clientPO.getTrueName(), clientPO.getIdentityID(), 
-					credit.getCredit(clientID), clientPO.getHeadImagePath());
+					cre, clientPO.getHeadImagePath());
 		} else {
 			return null;
 		}

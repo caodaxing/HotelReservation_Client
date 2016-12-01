@@ -2,7 +2,7 @@ package logicService.stub;
 
 import java.util.ArrayList;
 
-import Message.CreditChange;
+import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import logicService.OrderService;
@@ -42,7 +42,7 @@ public class OrderService_Stub implements OrderService {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage changeCredit(String user_id, CreditChange change, int number) {
+	public ResultMessage changeCredit(String user_id, CreditChangeType change, int number) {
 		// TODO Auto-generated method stub
 		
 		return ResultMessage.SUCCESS;

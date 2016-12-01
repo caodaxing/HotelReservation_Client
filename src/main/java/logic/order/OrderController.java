@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import Message.CreditChange;
+import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import factories.OrderListFilterFactory;
@@ -39,7 +39,7 @@ public class OrderController implements OrderService{
 		return order.judgeCredit(user_id);
 	}
 	
-	public ResultMessage changeCredit(String user_id, CreditChange change, int number){
+	public ResultMessage changeCredit(String user_id, CreditChangeType change, int number){
 		return order.changeCredit(user_id, change, number);
 	}
 	

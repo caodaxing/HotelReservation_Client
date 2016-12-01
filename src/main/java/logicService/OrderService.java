@@ -2,7 +2,7 @@ package logicService;
 
 import java.util.ArrayList;
 
-import Message.CreditChange;
+import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import vo.EvaluationVO;
@@ -19,7 +19,7 @@ public interface OrderService {
 	
 	public ResultMessage judgeCredit (String user_id);
 	
-	public ResultMessage changeCredit(String user_id, CreditChange change, int number);
+	public ResultMessage changeCredit(String user_id, CreditChangeType change, int number);
 
 	public ArrayList<OrderVO> filterList(String userID, OrderListCondition conditon);
 	

@@ -3,7 +3,7 @@ package logictest.orderManagement;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import Message.CreditChange;
+import Message.CreditChangeType;
 import Message.ResultMessage;
 import logic.credit.MockCredit;
 import logic.orderManagement.ExecuteOrder;
