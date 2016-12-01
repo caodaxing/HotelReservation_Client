@@ -1,5 +1,7 @@
 package view.right.user.checkHotel;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,6 +36,11 @@ public class SearchResultList{
 	
 	ScrollBar scroller;
 	
+	ArrayList<String> hotelNameList;
+	ArrayList<String> judgeReserve;
+	ArrayList<String> starList;
+	ArrayList<String> evaluationList;
+	
 	public SearchResultList(UserCheckHotelController controller){
 		
 		this.controller = controller;
@@ -44,8 +51,16 @@ public class SearchResultList{
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
-		//添加按钮
-		setButton();
+		//添加排序按钮
+		setSortButton();
+		
+		//添加查看，预定按钮
+		//需要添加获取HotelVO的数据，4个list，列表每一行都需要4个文本框以及判断是否需要预定按钮
+		//需要添加for循环和判断是否添加预定按钮的if语句
+		//for循环中还需要添加文本框组件，此处尚未给出
+		setCheckButton();
+		
+		setReserveButton();
 				
 		//设置滚动条
 		setScroller();
@@ -58,7 +73,7 @@ public class SearchResultList{
 	public Scene getScene(){
 		return scene;
 	}
-	public void setButton(){
+	public void setSortButton(){
 		
 		//设置按钮
 		ascendingSort = new Button("价格升序");
@@ -77,14 +92,6 @@ public class SearchResultList{
 		evaluation.setId("searchList");
 		evaluation.setPrefSize(60, 30);
 		
-		check = new Button("查看");
-		check.setId("searchList");
-		check.setPrefSize(50, 30);
-		
-		reserve = new Button("预定");
-		reserve.setId("searchList");
-		reserve.setPrefSize(50, 30);
-		
 		revert = new Button("返回");
 		revert.setId("searchList");
 		revert.setPrefSize(100, 40);
@@ -102,12 +109,6 @@ public class SearchResultList{
 		evaluation.setLayoutX(650);
 		evaluation.setLayoutY(100);
 		
-		check.setLayoutX(635);
-		check.setLayoutY(200);
-		
-		reserve.setLayoutX(695);
-		reserve.setLayoutY(200);
-		
 		revert.setLayoutX(650);
 		revert.setLayoutY(550);
 		
@@ -116,25 +117,53 @@ public class SearchResultList{
 		rightPane.getChildren().add(dscendingSort);
 		rightPane.getChildren().add(starLevel);
 		rightPane.getChildren().add(evaluation);
-		rightPane.getChildren().add(check);
-		rightPane.getChildren().add(reserve);
 		rightPane.getChildren().add(revert);
 		
 		AnchorPane.setLeftAnchor(ascendingSort, 150.0);
 		AnchorPane.setLeftAnchor(dscendingSort, 250.0);
 		AnchorPane.setLeftAnchor(starLevel, 350.0);
 		AnchorPane.setLeftAnchor(evaluation, 450.0);
-		AnchorPane.setLeftAnchor(check, 435.0);
-		AnchorPane.setLeftAnchor(reserve, 495.0);
 		AnchorPane.setLeftAnchor(revert, 450.0);
 		
 		AnchorPane.setTopAnchor(ascendingSort, 100.0);
 		AnchorPane.setTopAnchor(dscendingSort, 100.0);
 		AnchorPane.setTopAnchor(starLevel, 100.0);
 		AnchorPane.setTopAnchor(evaluation, 100.0);
-		AnchorPane.setTopAnchor(check, 200.0);
-		AnchorPane.setTopAnchor(reserve, 200.0);
 		AnchorPane.setTopAnchor(revert, 550.0);
+	}
+	
+	public void setCheckButton(){
+		//添加查看按钮
+		check = new Button("查看");
+		check.setId("searchList");
+		check.setPrefSize(50, 30);
+		
+		//设置查看按钮位置
+		check.setLayoutX(635);
+		check.setLayoutY(200);
+		
+		//添加组件
+		rightPane.getChildren().add(check);
+		
+		AnchorPane.setLeftAnchor(check, 435.0);
+		AnchorPane.setTopAnchor(check, 200.0);
+	}
+	
+	public void setReserveButton(){
+		//添加预定按钮
+		reserve = new Button("预定");
+		reserve.setId("searchList");
+		reserve.setPrefSize(50, 30);
+		
+		//设置预定按钮位置
+		reserve.setLayoutX(695);
+		reserve.setLayoutY(200);
+		
+		//添加组件
+		rightPane.getChildren().add(reserve);
+		
+		AnchorPane.setLeftAnchor(reserve, 495.0);
+		AnchorPane.setTopAnchor(reserve, 200.0);
 	}
 	
 	public void setScroller(){

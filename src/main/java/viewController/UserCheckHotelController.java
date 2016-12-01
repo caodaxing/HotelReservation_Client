@@ -17,4 +17,9 @@ public class UserCheckHotelController {
 		this.view = view;
 	}
 	
+	public OrderService getOrderService(){
+		
+		return orderService;
+		
+	}
 }
