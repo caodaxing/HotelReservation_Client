@@ -1,4 +1,4 @@
-package logicService;
+package logicService.promotion;
 
 import java.util.HashMap;
 

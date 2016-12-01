@@ -2,7 +2,7 @@ package logicService.stub;
 
 import java.util.HashMap;
 
-import logicService.PromotionService;
+import logicService.promotion.PromotionService;
 
 public class PromotionService_Stub implements PromotionService {
 

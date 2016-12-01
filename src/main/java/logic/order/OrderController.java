@@ -6,7 +6,7 @@ import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import factories.OrderListFilterFactory;
-import logicService.OrderService;
+import logicService.order.OrderService;
 import vo.OrderVO;
 
 /**
@@ -47,6 +47,18 @@ public class OrderController implements OrderService{
 		OrderListFilterFactory orderListFilterFactory = OrderListFilterFactory.getInstance();
 		filter = orderListFilterFactory.createFilter(condition);
 		return filter.filterList(userID);
+	}
+
+	@Override
+	public String getEvaluationInfo(String orderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage evaluate(String orderId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

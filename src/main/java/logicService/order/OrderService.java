@@ -1,4 +1,4 @@
-package logicService;
+package logicService.order;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,10 @@ import vo.EvaluationVO;
 import vo.OrderVO;
 
 public interface OrderService {
+	public EvaluationVO getEvaluationInfo(String orderId);
+	
+	public ResultMessage evaluate(String orderId);
+	
 	public OrderVO createOrder(OrderVO o);
 	
 	public ResultMessage undoOrder(String order_id);
@@ -24,3 +28,4 @@ public interface OrderService {
 	public ArrayList<OrderVO> filterList(String userID, OrderListCondition conditon);
 	
 }
+

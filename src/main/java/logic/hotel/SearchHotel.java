@@ -2,6 +2,7 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
+import logicService.hotel.SearchHotelService;
 import vo.HotelSearchVO;
 import vo.HotelVO;
 
@@ -10,7 +11,7 @@ import vo.HotelVO;
  * @author all
  *
  */
-public class SearchHotel {
+public class SearchHotel implements SearchHotelService{
 	/**
 	 * 获取酒店所在商圈
 	 * @param location 传入酒店地址

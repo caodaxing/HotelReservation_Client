@@ -1,22 +1,21 @@
 package vo;
 
+/**
+ * 评价的VO类
+ * @param star 用户星级
+ * @param evaContent 评价内容
+ * @param hotelID 酒店Id
+ * @param orderID 订单Id
+ * @author Rukawa
+ */
 public class EvaluationVO {
 	
-	String evaContent;
-	String hotelID;
-	String orderID;
-	int star;
+	public int star;
+	public String evaContent;
+	public String hotelID;
+	public String orderID;
 	
-	/**
-	 * 评价的VO类
-	 * @param evaContent 评价内容
-	 * @param hotelID 酒店Id
-	 * @param orderID 订单Id
-	 * @param star 用户星级
-	 * @author Rukawa
-	 */
-	public EvaluationVO(String evaContent, String hotelID, String orderID, int star) {
-		super();
+	public EvaluationVO(int star, String evaContent, String hotelID, String orderID) {
 		this.evaContent = evaContent;
 		this.hotelID = hotelID;
 		this.orderID = orderID;

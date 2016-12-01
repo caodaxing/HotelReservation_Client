@@ -1,4 +1,4 @@
-package logicService;
+package logicService.orderManagement;
 
 import java.util.ArrayList;
 

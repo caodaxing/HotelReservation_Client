@@ -1,4 +1,4 @@
-package logicService;
+package logicService.room;
 
 import java.util.ArrayList;
 import Message.ResultMessage;

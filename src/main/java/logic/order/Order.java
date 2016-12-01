@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import Message.CreditChangeType;
 import Message.ResultMessage;
 import logic.credit.CreditInfo;
-import logic.evaluation.Evaluation;
 import vo.OrderVO;
 
 /**
@@ -16,10 +15,17 @@ import vo.OrderVO;
 public class Order implements OrderInfo{
 	
 	CreateOrder createOrder;
-	Evaluation evaluation;
 	CreditInfo credit;
 	
 	public Order(){}
+	
+	public String getEvaluationInfo(String orderId){
+		return null;
+	}
+	
+	public ResultMessage evaluate(String orderId){
+		return null;
+	}
 	
 	/**
 	 * 撤销订单 
@@ -45,7 +51,7 @@ public class Order implements OrderInfo{
 	 * @return 评价String类
 	 */
 	public String getEvaluation(String order_id){
-		return evaluation.getEvaluationInfo(order_id);
+		return null;
 	}
 	
 	/**

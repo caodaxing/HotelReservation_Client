@@ -6,6 +6,7 @@ import Message.ResultMessage;
 import logic.order.Order;
 import logic.promotion.HotelPromotion;
 import logic.room.Room;
+import logicService.hotel.CheckHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -15,16 +16,16 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements HotelItemInfo, HotelUpdateRoom{
+public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
+	
+	private String hotelID;
 	private ArrayList<Room> rooms;
 	private HotelPromotion hotelPromotion;
 	private ArrayList<Order> hotelOrders;
 	
-	/**
-	 * 空的构造方法
-	 * @author Mark.W
-	 */
-	public Hotel(){}
+	public Hotel(String hotelID){
+		this.hotelID = hotelID;
+	}
 	
 	/**
 	 * 以酒店促销策略构造酒店
@@ -94,6 +95,16 @@ public class Hotel implements HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public HotelVO getHotelItemInfo(String hotel_id) {
+		return null;
+	}
+
+	@Override
+	public HotelVO getHotelnfo(String hotel_id) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelid) {
 		return null;
 	}
 }

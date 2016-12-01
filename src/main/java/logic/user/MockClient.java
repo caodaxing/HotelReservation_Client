@@ -8,11 +8,8 @@ import vo.ClientVO;
  */
 public class MockClient extends Client {
 
-	ClientVO clientVO;
-	
-	public MockClient (ClientVO vo){
-		clientVO = vo;
+	public MockClient(String clientID) {
+		super(clientID);
 	}
-
 	
 }

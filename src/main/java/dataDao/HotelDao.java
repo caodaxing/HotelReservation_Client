@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import po.HotelPO;
 
 public interface HotelDao {
+	
 	public boolean addHotel(HotelPO po);
 	
 	public boolean modifyHotelInfo(HotelPO po);

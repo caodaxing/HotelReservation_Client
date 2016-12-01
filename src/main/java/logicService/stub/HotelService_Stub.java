@@ -1,17 +1,15 @@
 package logicService.stub;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logicService.HotelService;
+import logicService.hotel.UpdateHotelService;
 import vo.EvaluationVO;
 import vo.HotelSearchVO;
 import vo.HotelVO;
 import vo.RoomVO;
 
-public class HotelService_Stub implements HotelService{
+public class HotelService_Stub implements UpdateHotelService{
 	
 	public ResultMessage updateRoom(RoomVO room) {
 		// TODO Auto-generated method stub
@@ -21,13 +19,13 @@ public class HotelService_Stub implements HotelService{
 
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelName) {
 		
-		ArrayList<EvaluationVO> List = new ArrayList<EvaluationVO>();
-		EvaluationVO evaluation1 = new EvaluationVO("房间很乱，差评！！", "00102", "161222001021033", 0);
-		EvaluationVO evaluation2 = new EvaluationVO("房间整洁，好评！", "01729", "161127017290403", 3);
-		List.add(evaluation1);
-		List.add(evaluation2);
+//		ArrayList<EvaluationVO> List = new ArrayList<EvaluationVO>();
+//		EvaluationVO evaluation1 = new EvaluationVO("房间很乱，差评！！", "00102", "161222001021033", 0);
+//		EvaluationVO evaluation2 = new EvaluationVO("房间整洁，好评！", "01729", "161127017290403", 3);
+//		List.add(evaluation1);
+//		List.add(evaluation2);
 		
-		return List;
+		return null;
 	}
 
 	public HotelVO getHotelItemInfo(String hotel_id) {
@@ -125,6 +123,11 @@ public class HotelService_Stub implements HotelService{
 //		
 //		return  new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 //				, "288", "房间整洁，好评！", list);
+		return null;
+	}
+
+	@Override
+	public ResultMessage updateHotelInfo(HotelVO hotelVO) {
 		return null;
 	}
 }

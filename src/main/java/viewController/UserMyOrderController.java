@@ -3,11 +3,11 @@ package viewController;
 import logic.account.Account;
 import logic.credit.CreditController;
 import logic.user.Client;
-import logicService.AccountService;
-import logicService.ClientService;
-import logicService.CreditService;
-import logicService.EvaluationService;
-import logicService.OrderService;
+import logicService.promotion.AccountService;
+import logicService.promotion.ClientService;
+import logicService.promotion.CreditService;
+import logicService.promotion.EvaluationService;
+import logicService.promotion.OrderService;
 import view.right.user.myOrder.ExecuteOrder;
 
 public class UserMyOrderController {

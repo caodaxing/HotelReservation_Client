@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @param hotelName 酒店名称
  * @param city 城市
  * @param tradingArea 所属商圈
+ * 
  * @param locationOfHotel 酒店地址
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍

@@ -3,6 +3,7 @@ package dataDao.stub;
 import java.util.ArrayList;
 
 import dataDao.OrderDao;
+import po.EvaluationPO;
 import po.OrderPO;
 
 public class OrderDao_Stub implements OrderDao {
@@ -29,33 +30,40 @@ public class OrderDao_Stub implements OrderDao {
 	}
 
 	public ArrayList<OrderPO> getOrderListByHotelID(String hotelID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<OrderPO> getHotelDailyOrders(String hotelID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ArrayList<OrderPO> getAllDailyOrders(String time) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean updateOrder(OrderPO orderPO) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean addOrder(OrderPO orderPO) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public OrderPO getOrderByOrderID(String orderID) {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public boolean addEvalution(EvaluationPO po) {
+		return false;
+	}
+
+	public EvaluationPO getEvaluationByOrderID(String order_id) {
+		return null;
+	}
+
+	public ArrayList<EvaluationPO> getEvaluationByHotelID(String hotelID) {
+		return null;
+	}
+
 
 }

@@ -3,7 +3,7 @@ package logicService.stub;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logicService.RoomService;
+import logicService.room.RoomService;
 import vo.RoomVO;
 
 public class RoomService_Stub implements RoomService {

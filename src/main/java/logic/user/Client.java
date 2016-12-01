@@ -24,8 +24,6 @@ public class Client implements ClientService{
 	private ClientDao clientDao;
 	private CreditInfo credit;
 
-	public Client(){}
-	
 	public Client(String clientID){
 		this.clientID = clientID;
 		clientDao = new ClientDao_Stub();

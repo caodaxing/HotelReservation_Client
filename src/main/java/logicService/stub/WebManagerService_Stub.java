@@ -8,6 +8,21 @@ import vo.WebBusinessVO;
 
 public class WebManagerService_Stub implements WebManagerService {
 
+	private String webManagerID;
+	
+	public WebManagerService_Stub(String webManagerID) {
+		super();
+		this.webManagerID = webManagerID;
+	}
+
+	public String getWebManagerID() {
+		return webManagerID;
+	}
+
+	public void setWebManagerID(String webManagerID) {
+		this.webManagerID = webManagerID;
+	}
+
 	@Override
 	public ResultMessage addHotel(HotelVO hotelVO) {
 		return null;

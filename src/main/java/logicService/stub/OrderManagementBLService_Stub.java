@@ -3,7 +3,7 @@ package logicService.stub;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
-import logicService.OrderManagementService;
+import logicService.orderManagement.OrderManagementService;
 import vo.OrderVO;
 import vo.RoomVO;
 

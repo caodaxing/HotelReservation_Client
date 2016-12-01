@@ -15,6 +15,20 @@ import vo.WebBusinessVO;
 
 public class ClientService_Stub implements ClientService {
 	
+	private String clientID;
+	
+	public String getClientID() {
+		return clientID;
+	}
+
+	public void setClientID(String clientID) {
+		this.clientID = clientID;
+	}
+
+	public ClientService_Stub(String clientID) {
+		this.clientID = clientID;
+	}
+
 	public ClientService_Stub(String userID, Identity identity){
 		
 	}

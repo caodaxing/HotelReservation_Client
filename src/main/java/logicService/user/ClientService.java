@@ -7,6 +7,11 @@ import vo.HotelVO;
 import vo.VipVO;
 import vo.WebBusinessVO;
 
+/**
+ * 有关客户基本信息处理的接口
+ * @author Mark.W
+ *
+ */
 public interface ClientService {
 	
 	//客户

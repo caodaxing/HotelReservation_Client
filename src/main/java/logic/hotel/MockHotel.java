@@ -1,16 +1,17 @@
 package logic.hotel;
 
+import logic.promotion.HotelPromotion;
 import vo.HotelVO;
 import vo.RoomVO;
 
 public class MockHotel extends Hotel{
+	
+	public MockHotel(HotelPromotion hotelPromotion) {
+		super(hotelPromotion);
+	}
+
 	boolean stateOfRoom;
 	
-	public MockHotel(){};
-	
-	public MockHotel(boolean signal){
-		stateOfRoom = signal;
-	}
 	public boolean updateRoom(String hotel_id,RoomVO room){
 		return stateOfRoom;
 	}

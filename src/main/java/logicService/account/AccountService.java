@@ -5,11 +5,9 @@ import Message.ResultMessage;
 import vo.AccountVO;
 
 /**
- * Account的logicservice
- * @author XueWang
- *
+ * 有关登录和注册和修改密码的接口
+ * @author Mark.W
  */
-
 public interface AccountService {
 	
 	public ResultMessage register(AccountVO accountVO);
