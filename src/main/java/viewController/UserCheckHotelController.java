@@ -1,20 +1,33 @@
 package viewController;
 
 import logic.order.OrderController;
-import logicService.promotion.OrderService;
-import view.right.hotelManager.orderManagement.SearchOrder;
+import logicService.order.OrderService;
+import view.right.user.checkHotel.*;
 
 public class UserCheckHotelController {
 	
+	//逻辑层接口（先不写）
 	private OrderService orderService;
-	private SearchOrder view;
+	
+	//控制的界面
+	private EvaluationList evaluationListUI;
+	private First firstUI;
+	private HistoryOrderList historyOrderListUI;
+	private HotelInfo hotelInfoUI;
+	private MakeOrder makeOrderUI;
+	private RoomList roomListUI;
+	private SearchResultList searchRessultListUI;
+	private SearchHotel searchHotelUI;
+	
 	
 	public UserCheckHotelController(){
-		orderService = new OrderController();
+		//orderService = new OrderController();
 	}
 	
-	public void setView(SearchOrder view){
-		this.view = view;
+	public void setView(SearchHotel view){
+		this.searchHotelUI = view;
 	}
+	
+	
 	
 }
