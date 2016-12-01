@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * @param tradingArea 所属商圈
  * @param locationOfHotel 酒店地址
  * @param levelOfHotel 酒店星级
- * @param introduction 酒店接受
+ * @param introduction 酒店介绍
+ * @param facilities 酒店设施
  * @param pictures 照片
  * @param emptyRoomNum 空余房间数量
  * @param bussiness 合作企业
@@ -20,21 +21,32 @@ public class HotelPO {
 	private String locationOfHotel;
 	private int levelOfHotel;
 	private String introduction;
+	private String facilities;
 	private ArrayList<String> picturesPath;
 	private int emptyRoomNum;
 	private String bussiness;
 
 	public HotelPO(String hoteID,String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction,ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
+			String introduction, String facilities, ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
+		this.facilities = facilities;
 		this.picturesPath=pictures;
 		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
+	
+	public String getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(String facilities) {
+		this.facilities = facilities;
+	}
+
 	
 	public String getBussiness() {
 		return bussiness;

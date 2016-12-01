@@ -2,6 +2,7 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
+import Message.HotelSearchCondition;
 import logicService.hotel.SearchHotelService;
 import vo.HotelSearchVO;
 import vo.HotelVO;
@@ -12,6 +13,8 @@ import vo.HotelVO;
  *
  */
 public class SearchHotel implements SearchHotelService{
+	
+	
 	/**
 	 * 获取酒店所在商圈
 	 * @param location 传入酒店地址
@@ -38,7 +41,7 @@ public class SearchHotel implements SearchHotelService{
 	 * @return ArrayList<HotelInfoVO> 返回按一定方式排序的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSortedList(){
+	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition){
 		return null;
 	}
 	
@@ -51,14 +54,15 @@ public class SearchHotel implements SearchHotelService{
 	public ArrayList<HotelVO> getBookedHotelList (String user_id){
 		return null;
 	}
-	
+
 	/**
 	 * 返回指定的酒店信息
 	 * @param search 传入的VO信息
 	 * @return HotelInfoVO 返回指定的酒店信息
 	 * @author all
 	 */
-	public HotelVO search(HotelSearchVO search){
+	@Override
+	public ArrayList<HotelVO> search(HotelSearchVO search) {
 		return null;
 	}
 }

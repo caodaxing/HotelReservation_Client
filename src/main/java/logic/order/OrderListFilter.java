@@ -2,7 +2,6 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import po.OrderPO;
 import vo.OrderVO;
 
 /**
@@ -11,5 +10,5 @@ import vo.OrderVO;
  *
  */
 public interface OrderListFilter {
-	public abstract ArrayList<OrderVO> filterList(String userID);
+	public ArrayList<OrderVO> filterList(String userID);
 }

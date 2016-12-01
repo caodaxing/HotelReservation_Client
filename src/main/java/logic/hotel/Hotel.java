@@ -9,6 +9,7 @@ import logic.room.Room;
 import logicService.hotel.CheckHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
+import vo.OrderVO;
 import vo.RoomVO;
 
 /**

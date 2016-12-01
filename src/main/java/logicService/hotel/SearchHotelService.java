@@ -2,6 +2,7 @@ package logicService.hotel;
 
 import java.util.ArrayList;
 
+import Message.HotelSearchCondition;
 import vo.HotelSearchVO;
 import vo.HotelVO;
 
@@ -25,10 +26,10 @@ public interface SearchHotelService {
 	 * @return ArrayList<HotelInfoVO> 返回按一定方式排序的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSortedList();
+	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition);
 	
 	/**
-	 * 获取用户预定过的酒店列表
+	 * 获取用户预定过的酒店列表a
 	 * @param user_id 传入用户id
 	 * @return ArrayList<HotelInfoVO> 返回用户预定过的酒店列表
 	 * @author all
@@ -41,5 +42,5 @@ public interface SearchHotelService {
 	 * @return HotelInfoVO 返回指定的酒店信息
 	 * @author all
 	 */
-	public HotelVO search(HotelSearchVO search);
+	public ArrayList<HotelVO> search(HotelSearchVO search);
 }

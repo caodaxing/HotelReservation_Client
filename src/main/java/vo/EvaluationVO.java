@@ -1,24 +1,34 @@
 package vo;
 
+import Message.RoomType;
+
 /**
- * 评价的VO类
- * @param star 用户星级
- * @param evaContent 评价内容
- * @param hotelID 酒店Id
- * @param orderID 订单Id
- * @author Rukawa
+ * @param hotelID 酒店id
+ * @param orderID 订单id
+ * @param roomType 房间类型 
+ * @param checkInTime 入住时间
+ * @param commentLevel 评分
+ * @param evaluationContent 评价内容
  */
 public class EvaluationVO {
 	
-	public int star;
-	public String evaContent;
 	public String hotelID;
 	public String orderID;
+	public RoomType roomType;
+	public String checkInTime;
+	public int commentLevel;
+	public String evaluationContent;
 	
-	public EvaluationVO(int star, String evaContent, String hotelID, String orderID) {
-		this.evaContent = evaContent;
+	public EvaluationVO(String hotelID, String orderID, RoomType roomType, String checkInTime, int commentLevel,
+			String evaluationContent) {
 		this.hotelID = hotelID;
 		this.orderID = orderID;
-		this.star = star;
+		this.roomType = roomType;
+		this.checkInTime = checkInTime;
+		this.commentLevel = commentLevel;
+		this.evaluationContent = evaluationContent;
 	}
+	
+	
+	
 }

@@ -1,8 +1,8 @@
 package logic.order;
 
-import Message.ResultMessage;
 import logic.credit.CreditInfo;
 import logic.promotion.JudgePromotion;
+import logicService.order.CreateOrderService;
 import vo.OrderVO;
 
 /**
@@ -10,9 +10,9 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class CreateOrder {
-	private JudgePromotion promotion;
+public class CreateOrder implements CreateOrderService{
 	private CreditInfo credit;
+	private JudgePromotion promotion;
 	
 	public CreateOrder(JudgePromotion promotion, CreditInfo credit){
 		this.promotion = promotion;
@@ -38,16 +38,10 @@ public class CreateOrder {
 	public double calculate(OrderVO order){
 		return promotion.calculate(order);
 	}
-	
-	/**
-	 * 判断用户是否能够下单
-	 * @param 用户id
-	 * @return ResultMessage类
-	 * @author Mark.W
-	 */
-	public ResultMessage judgeCredit(String user_id){
+
+	@Override
+	public boolean judgeCreditCanCreateOrder(String user_id) {
 		int cre = credit.getCredit(user_id);
-		
-		return ResultMessage.SUCCESS;
+		return false;
 	}
 }

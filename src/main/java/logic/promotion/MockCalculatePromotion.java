@@ -9,6 +9,6 @@ import vo.OrderVO;
 public class MockCalculatePromotion extends CalculatePromotion{
 	
 	public double calculate(OrderVO order){
-		return order.price - 20;
+		return order.beforePrice - 20;
 	}
 }

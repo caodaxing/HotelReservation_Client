@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @param locationOfHotel 酒店地址
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
+ * @param facilities 酒店设施
  * @param picturesPath 照片
  * @param emptyRoomNum 空余房间数量
  * @param bussiness 合作企业
@@ -25,12 +26,13 @@ public class HotelVO {
 	public String locationOfHotel;
 	public int levelOfHotel;
 	public String introduction;
+	public String facilities;
 	public ArrayList<String> picturesPath;
 	public int emptyRoomNum;
 	public String bussiness;
 
 	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction,ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
+			String introduction, String facilities, ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
@@ -38,6 +40,7 @@ public class HotelVO {
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
+		this.facilities = facilities;
 		this.picturesPath=pictures;
 		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
