@@ -1,5 +1,7 @@
 package view.right.webBusiness.orderManagement;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -59,23 +61,31 @@ public class AbnormalOrder {
 	
 	public void setTextField(){
 		
+		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		orderID = new TextField();
-		orderID.setId("RechargeCredit");
+		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
 		hotelName = new TextField();
-		hotelName.setId("RechargeCredit");
+		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
 		roomType = new TextField();
-		roomType.setId("RechargeCredit");
+		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
 		lastExecuteTime = new TextField();
-		lastExecuteTime.setId("RechargeCredit");
+		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		
+		//设置文本框内容
+		
+		//设置文本框内容不可更改
+		orderID.setEditable(false);
+		hotelName.setEditable(false);
+		roomType.setEditable(false);
+		lastExecuteTime.setEditable(false);
 		
 		//设置文本框位置
 		orderID.setLayoutX(400);
@@ -112,15 +122,15 @@ public class AbnormalOrder {
 		
 		//添加按钮
 		halfCredit = new Button("撤销并恢复一半信用");
-		halfCredit.setId("RechargeCredit");
+		halfCredit.setId("AbnormalOrder");
 		halfCredit.setPrefSize(150, 40);
 		
 		allCredit = new Button("撤销并恢复全部信用");
-		allCredit.setId("RechargeCredit");
+		allCredit.setId("AbnormalOrder");
 		allCredit.setPrefSize(150, 40);
 		
 		revert = new Button("返回");
-		revert.setId("RechargeCredit");
+		revert.setId("AbnormalOrder");
 		revert.setPrefSize(100, 40);
 				
 		//设置按钮位置
@@ -132,6 +142,37 @@ public class AbnormalOrder {
 		
 		revert.setLayoutX(625);
 		revert.setLayoutY(525);
+		
+		//添加按钮监听
+		halfCredit.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		allCredit.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		revert.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		//添加组件
 		rightPane.getChildren().add(halfCredit);

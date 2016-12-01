@@ -1,7 +1,8 @@
 package viewController;
 
-import logic.hotel.HotelController;
-import logicService.promotion.HotelService;
+
+import logic.hotel.UpdateHotel;
+import logicService.hotel.UpdateHotelService;
 import view.right.user.checkHotel.SearchResultList;
 
 public class HMOrderManagementController {
@@ -11,7 +12,7 @@ public class HMOrderManagementController {
 	
 	public HMOrderManagementController(){
 		
-		updateHotelService = new HotelController();
+		updateHotelService = new UpdateHotel();
 	}
 	
 	public void setView(SearchResultList view){

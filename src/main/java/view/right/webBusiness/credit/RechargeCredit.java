@@ -1,5 +1,7 @@
 package view.right.webBusiness.credit;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -100,7 +102,28 @@ public class RechargeCredit {
 		
 		cancel.setLayoutX(550);
 		cancel.setLayoutY(475);
+		
+		//添加按钮监听
+		ok.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
 				
+			}
+			
+		});
+		
+		ok.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		//添加组件
 		rightPane.getChildren().add(ok);
 		rightPane.getChildren().add(cancel);
