@@ -6,5 +6,6 @@ package view.right.webBusiness.orderManagement;
  *
  */
 public class AbnormalOrderList {
-
+	
+	
 }
