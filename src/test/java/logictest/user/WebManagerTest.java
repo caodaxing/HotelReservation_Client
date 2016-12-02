@@ -27,7 +27,7 @@ public class WebManagerTest {
 	
 	@Test
 	public void testAddHotel2() {
-		HotelVO vo = new HotelVO("green", "Green", "nj", "gulou", "nju", 3, null, null, 20, "nju");
+		HotelVO vo = new HotelVO("green", "Green", "nj", "gulou", "nju", 3, null, null, null, 20, "nju");
 		assertEquals(this.webManager.addHotel(vo), ResultMessage.SUCCESS);
 	}
 
