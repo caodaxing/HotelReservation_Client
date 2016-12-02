@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 import Message.RoomType;
 
 /**
@@ -7,7 +9,8 @@ import Message.RoomType;
  * @param roomId
  * @param roomType
  * @param price 小数点保留两位
- * @param state 
+ * @param isEmpty
+ * @param pictures
  */
 public class RoomVO {
 
@@ -15,15 +18,20 @@ public class RoomVO {
 	public String roomId;
 	public RoomType roomType; 
 	public double price;
-	public int state;
+	public boolean isEmpty;
+	public ArrayList<String> pictures;
 	
-	public RoomVO(String hotelId, String roomId, RoomType roomType, double price, int state) {
+	public RoomVO(String hotelId, String roomId, RoomType roomType, double price, boolean isEmpty,
+			ArrayList<String> pictures) {
 		this.hotelId = hotelId;
 		this.roomId = roomId;
 		this.roomType = roomType;
 		this.price = price;
-		this.state = state;
+		this.isEmpty = isEmpty;
+		this.pictures = pictures;
 	}
+	
+	
 	
 	
 }

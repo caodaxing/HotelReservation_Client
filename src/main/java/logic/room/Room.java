@@ -3,6 +3,8 @@ package logic.room;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
+import Message.RoomType;
+import logicService.room.RoomService;
 import vo.RoomVO;
 
 /**
@@ -10,9 +12,8 @@ import vo.RoomVO;
  * @author d
  *
  */
-public class Room implements RoomInfo{
+public class Room implements RoomService{
 
-	RoomList roomList;
 	
 	/**
 	 * 获取酒店房间列表
@@ -21,7 +22,7 @@ public class Room implements RoomInfo{
 	 * @author bcy
 	 */
 	public ArrayList<RoomVO> getRoomList(String hotel_id){
-		return roomList.getRoomList(hotel_id);
+		return null;
 	}
 	
 	/**
@@ -30,7 +31,7 @@ public class Room implements RoomInfo{
 	 * @return RoomVO 酒店指定房间的信息
 	 * @author bcy
 	 */
-	public RoomVO getRoomInfo(String hotel_id,String room_id){
+	public RoomVO getRoomInfo(String hotel_id, String room_id){
 		return null;
 	}
 	
@@ -52,5 +53,10 @@ public class Room implements RoomInfo{
 	 */
 	public ResultMessage addRoomInfo(RoomVO room){
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public int getRemainingRoomNums(String hotelID, RoomType roomType) {
+		return 0;
 	}
 }

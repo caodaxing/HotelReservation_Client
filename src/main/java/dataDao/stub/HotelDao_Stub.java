@@ -26,6 +26,11 @@ public class HotelDao_Stub implements HotelDao {
 	public ArrayList<HotelPO> SearchHotelList(String tradingArea, int level, int priceFloor, int priceCeiling) {
 		return null;
 	}
+
+	@Override
+	public ArrayList<String> getBookedHotelID(String userID) {
+		return null;
+	}
 	
 
 }

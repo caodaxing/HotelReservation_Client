@@ -1,7 +1,9 @@
 package logicService.room;
 
 import java.util.ArrayList;
+
 import Message.ResultMessage;
+import Message.RoomType;
 import vo.RoomVO;
 
 /**
@@ -13,10 +15,12 @@ public interface RoomService {
 	
 	public ArrayList<RoomVO> getRoomList(String hotel_id);
 	
-	public RoomVO getRoomInfo(String hotel_id,String room_id);
+	public RoomVO getRoomInfo(String hotel_id, String room_id);
 	
 	public ResultMessage updateRoomInfo(RoomVO roomVO);
 	
 	public ResultMessage addRoomInfo(RoomVO roomVO);
+	
+	public int getRemainingRoomNums(String hotelID, RoomType roomType);
 	
 }
