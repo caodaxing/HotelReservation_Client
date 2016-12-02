@@ -1,6 +1,7 @@
 package po;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @param hoteID 酒店ID
@@ -10,9 +11,9 @@ import java.util.ArrayList;
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
  * @param pictures 照片
- * @param emptyRoomNum 空余房间数量
+ * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
- * @author bcy
+ * @author Mark.W
  *
  */
 public class HotelPO {
@@ -23,11 +24,12 @@ public class HotelPO {
 	private String introduction;
 	private String facilities;
 	private ArrayList<String> picturesPath;
-	private int emptyRoomNum;
+	private HashMap<Integer, Integer> emptyRoomNum;
 	private String bussiness;
 
 	public HotelPO(String hoteID,String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction, String facilities, ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
+			String introduction, String facilities, ArrayList<String> pictures,
+			HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
@@ -104,11 +106,11 @@ public class HotelPO {
 		this.picturesPath = pictures;
 	}
 
-	public int getEmptyRoomNum() {
+	public HashMap<Integer, Integer> getEmptyRoomNum() {
 		return emptyRoomNum;
 	}
 
-	public void setEmptyRoomNum(int emptyRoomNum) {
+	public void setEmptyRoomNum(HashMap<Integer, Integer> emptyRoomNum) {
 		this.emptyRoomNum = emptyRoomNum;
 	}
 	

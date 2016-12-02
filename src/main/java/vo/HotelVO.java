@@ -1,6 +1,7 @@
 package vo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @param hoteID 酒店ID
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
  * @param picturesPath 照片
- * @param emptyRoomNum 空余房间数量
+ * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
  * @author bcy
  *
@@ -28,11 +29,12 @@ public class HotelVO {
 	public String introduction;
 	public String facilities;
 	public ArrayList<String> picturesPath;
-	public int emptyRoomNum;
+	public HashMap<Integer, Integer> emptyRoomNum;
 	public String bussiness;
 
-	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction, String facilities, ArrayList<String> pictures,int emptyRoomNum, String bussiness) {
+	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,
+			String locationOfHotel,int levelOfHotel,String introduction, String facilities,
+			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;

@@ -16,7 +16,7 @@ public class CreditHistoryPO {
 	private String time;
 	private String orderID;
 	private int action;
-	private int cerditChange;
+	private int creditChange;
 	private int nowCredit;
 	
 	public CreditHistoryPO(String userID , String time , String orderID , 
@@ -25,7 +25,7 @@ public class CreditHistoryPO {
 		this.time=time;
 		this.orderID=orderID;
 		this.action=action;
-		this.cerditChange=cerditChange;
+		this.creditChange=cerditChange;
 		this.nowCredit=nowCredit;
 	}
 
@@ -62,11 +62,11 @@ public class CreditHistoryPO {
 	}
 
 	public int getCerditChange() {
-		return cerditChange;
+		return creditChange;
 	}
 
 	public void setCerditChange(int cerditChange) {
-		this.cerditChange = cerditChange;
+		this.creditChange = cerditChange;
 	}
 
 	public int getNowCredit() {

@@ -3,7 +3,7 @@ package logicService.stub;
 import java.util.HashMap;
 
 import logicService.promotion.PromotionService;
-import vo.PromotionVO;
+import vo.HotelPromotionVO;
 
 public class PromotionService_Stub implements PromotionService {
 
@@ -48,7 +48,7 @@ public class PromotionService_Stub implements PromotionService {
 	}
 
 	@Override
-	public PromotionVO getPromotionInfo(String promotionID) {
+	public HotelPromotionVO getPromotionInfo(String promotionID) {
 		return null;
 	}
 	
