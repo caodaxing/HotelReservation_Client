@@ -2,6 +2,8 @@ package view.right.webBusiness.orderManagement;
 
 import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -130,6 +132,31 @@ public class UnexecuteOrder {
 	}
 	
 	private void setButton(){
+		//添加按钮
+		revert = new Button("返回");
+		revert.setId("CheckVIPAreaStrategy");
+		revert.setPrefSize(100, 40);
+						
+		//设置按钮位置
+		revert.setLayoutX(625);
+		revert.setLayoutY(525);
+						
+		//设置按钮监听
+		revert.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+								
+			}
+							
+		});
+						
+		//右侧pane添加
+		rightPane.getChildren().add(revert);
+						
+		AnchorPane.setLeftAnchor(revert, 425.0);
+		AnchorPane.setTopAnchor(revert, 525.0);
 		
 	}
 	

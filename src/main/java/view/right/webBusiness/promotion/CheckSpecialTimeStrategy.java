@@ -61,19 +61,19 @@ public class CheckSpecialTimeStrategy {
 		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		startDiscount = new TextField();
-		startDiscount.setId("AbnormalOrder");
+		startDiscount.setId("CheckSpecialTimeStrategy");
 		startDiscount.setPrefSize(200, 30);
 				
 		endDiscount = new TextField();
-		endDiscount.setId("AbnormalOrder");
+		endDiscount.setId("CheckSpecialTimeStrategy");
 		endDiscount.setPrefSize(200, 30);
 			
 		discountRange = new TextField();
-		discountRange.setId("AbnormalOrder");
+		discountRange.setId("CheckSpecialTimeStrategy");
 		discountRange.setPrefSize(200, 30);
 				
 		discountName = new TextField();
-		discountName.setId("AbnormalOrder");
+		discountName.setId("CheckSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
 				
 		//设置文本框内容
@@ -118,7 +118,7 @@ public class CheckSpecialTimeStrategy {
 		
 		//添加按钮
 		revert = new Button("撤销并恢复一半信用");
-		revert.setId("AbnormalOrder");
+		revert.setId("CheckSpecialTimeStrategy");
 		revert.setPrefSize(100, 40);
 		
 		//设置按钮位置
