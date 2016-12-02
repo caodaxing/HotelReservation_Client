@@ -24,6 +24,7 @@ public class CreditChange implements CreditChangeService{
 	}
 	
 	public CreditHistoryPO tranToPO(CreditChangeVO vo){
-		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action, vo.cerditChange, vo.nowCredit);
+		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action.ordinal(), vo.cerditChange, vo.nowCredit);
+		return po;
 	}
 }
