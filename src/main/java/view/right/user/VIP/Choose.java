@@ -1,4 +1,4 @@
-package view.right.webManager.webBusinessInfo;
+package view.right.user.VIP;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,34 +8,29 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
-import view.left.WebManagerUI;
-import viewController.WMWebBusinessInfoController;
+import view.left.UserUI;
+import viewController.UserVIPController;
 
-/**
- * 网站管理人员界面_网站营销人员管理_初始界面（选择添加网站营销人员还是查询现有营销人员）
- * @author XueWang
- *
- */
-public class First {
+public class Choose {
 	
-	private WMWebBusinessInfoController controller ;
+	private UserVIPController controller ;
 	
 	private Scene scene;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private UserUI userUI = new UserUI();
 	
 	private GridPane leftPane;
 	
 	private AnchorPane rightPane;
 	
-	Button add ;
-	Button modify ;
+	Button normal ;
+	Button company ;
 	
-	public First(WMWebBusinessInfoController controller) {
+	public Choose(UserVIPController controller) {
 		
 		this.controller = controller;
 		
-		leftPane = webManagerUI.getPane();
+		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();
@@ -57,26 +52,26 @@ public class First {
 	private void setButton(){
 		
 		//初始化Button
-		add = new Button();
-		modify = new Button();
+		normal = new Button();
+		company = new Button();
 		
 		//设置Button文字
-		add.setText("添加网站营销人员");
-		modify.setText("管理网站营销人员");
+		normal.setText("注册普通会员");
+		company.setText("注册企业会员");
 		
 		//设置Button大小
-		add.setPrefSize(150,50);
-		modify.setPrefSize(150,50);
+		normal.setPrefSize(150,50);
+		company.setPrefSize(150,50);
 		
 		//设置listener
-		add.setOnAction(new EventHandler<ActionEvent>(){
+		normal.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
 				
 			}
 			
 		});
-		modify.setOnAction(new EventHandler<ActionEvent>(){
+		company.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
 				
@@ -85,15 +80,15 @@ public class First {
 		});
 		
 		//右侧Pane添加组件
-		rightPane.getChildren().add(add);
-		rightPane.getChildren().add(modify);
+		rightPane.getChildren().add(normal);
+		rightPane.getChildren().add(company);
 		
 		//右侧Pane设置位置
-		AnchorPane.setLeftAnchor(add, 100.0);
-		AnchorPane.setTopAnchor(add, 200.0);
+		AnchorPane.setLeftAnchor(normal, 100.0);
+		AnchorPane.setTopAnchor(normal, 200.0);
 		
-		AnchorPane.setLeftAnchor(modify, 350.0);
-		AnchorPane.setTopAnchor(modify, 200.0);
+		AnchorPane.setLeftAnchor(company, 350.0);
+		AnchorPane.setTopAnchor(company, 200.0);
 		
 	}
 

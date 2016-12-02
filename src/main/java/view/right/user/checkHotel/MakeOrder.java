@@ -65,8 +65,6 @@ public class MakeOrder {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
-		
 		//初始化textField
 		roomType = new TextField();
 		roomNums = new TextField();
@@ -75,16 +73,7 @@ public class MakeOrder {
 		latestTime = new TextField();
 		peopleNums = new TextField();
 		haveChild = new TextField();
-		/*
-		//根据Controller设置textField文字
-		roomType.setText(infoList.get(0));
-		roomNums.setText(infoList.get(1));
-		roomType.setText(infoList.get(2));
-		arriveTime.setText(infoList.get(3));
-		leaveTime.setText(infoList.get(4));
-		originalPrice.setText(infoList.get(5));
-		actualPrice.setText(infoList.get(6));
-		*/
+		
 		//设置textField可操作性
 		roomType.setEditable(true);
 		roomNums.setEditable(true);

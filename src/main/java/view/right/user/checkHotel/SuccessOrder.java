@@ -66,8 +66,6 @@ public class SuccessOrder {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
-		
 		//初始化textField
 		hotelName = new TextField();
 		roomType = new TextField();

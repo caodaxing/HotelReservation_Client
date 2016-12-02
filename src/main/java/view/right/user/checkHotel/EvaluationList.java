@@ -21,9 +21,11 @@ import viewController.UserCheckHotelController;
 public class EvaluationList {
 
 	private UserCheckHotelController controller;
+	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
+	
 	private UserUI userui = new UserUI();
 	
 	Button revert;
@@ -41,13 +43,10 @@ public class EvaluationList {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
-		//添加排序按钮
-		setSortButton();
+		//添加返回按钮
+		setRevertButton();
 		
 		//添加查看按钮
-		//需要添加获取HotelVO的数据，4个list，列表每一行都需要4个文本框以及判断是否需要预定按钮
-		//需要添加for循环和判断是否添加预定按钮的if语句
-		//for循环中还需要添加文本框组件，此处尚未给出
 		setCheckButton();
 		
 				
@@ -65,11 +64,10 @@ public class EvaluationList {
 	
 	}
 	
-	private void setSortButton(){
+	private void setRevertButton(){
 		
 		//设置按钮
 		revert = new Button("返回");
-		revert.setId("searchList");
 		revert.setPrefSize(100, 40);
 		
 		//设置按钮位置
@@ -99,7 +97,7 @@ public class EvaluationList {
 		
 		//添加查看按钮
 		check = new Button("查看");
-		check.setPrefSize(50, 30);
+		check.setPrefSize(100, 30);
 
 		//设置按钮监听
 		check.setOnAction(new EventHandler<ActionEvent>(){

@@ -166,7 +166,7 @@ public class SearchHotel {
 		back = new Button();
 		
 		//设置Button文字
-		search.setText("生成订单");
+		search.setText("搜索");
 		back.setText("返回");
 				
 		//设置Button大小

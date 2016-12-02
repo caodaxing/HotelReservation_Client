@@ -1,0 +1,6 @@
+ .Button{
+ 	-fx-background-color:rgba(43,135,158) ;
+ 	-fx-text-fill: white ;
+	-fx-font-size:14px ;
+	-fx-text-alignment: CENTER ;
+ }
