@@ -2,11 +2,11 @@ package logicService.promotion;
 
 import java.util.HashMap;
 
-import vo.promotion.HotelPromotionVO;
+import vo.promotion.PromotionVO;
 
 public interface PromotionService {
 	
-	public HotelPromotionVO getPromotionInfo(String promotionID);
+	public PromotionVO getPromotionInfo(String promotionID);
 	
 	public HashMap<String, String> hotelSetPromotion(String promotionid, String hotelPromotion);
 	

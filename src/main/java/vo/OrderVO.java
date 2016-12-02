@@ -3,7 +3,6 @@ package vo;
 import java.util.ArrayList;
 
 import Message.OrderState;
-import vo.promotion.HotelPromotionVO;
 import vo.promotion.PromotionVO;
 
 /**

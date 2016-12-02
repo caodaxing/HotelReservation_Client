@@ -25,7 +25,7 @@
 	    <artifactId>jfx8</artifactId>
 	    <version>2.4.0</version>
 	    <scope>system</scope>
-	    <systemPath>${basedir}/lib/org.eclipse.fx.ide.css.jfx2_2.4.0.201605112122.jar</systemPath>
+	    <systemPath>${pom.basedir}/lib/org.eclipse.fx.ide.css.jfx2_2.4.0.201605112122.jar</systemPath>
 	</dependency>
 	
 	<dependency>
@@ -33,7 +33,15 @@
 	    <artifactId>controlsfx</artifactId>
 	    <version>8.0.6_20</version>
 	    <scope>system</scope>
-	    <systemPath>${basedir}/lib/controlsfx-8.0.6_20.jar</systemPath>
+	    <systemPath>${pom.basedir}/lib/controlsfx-8.0.6_20.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org</groupId>
+	    <artifactId>javafx</artifactId>
+	    <version>8.0.65-b17</version>
+	    <scope>system</scope>
+	    <systemPath>${pom.basedir}/lib/javafx-8.0.65-b17.jar</systemPath>
 	</dependency>
 	 
 	

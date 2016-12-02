@@ -3,6 +3,7 @@ package vo.promotion;
 import Message.PromotionType;
 
 /**
+ * 酒店的顾客生日折扣
  * @param promotionID
  * @param promotionType
  * @param promotionName
