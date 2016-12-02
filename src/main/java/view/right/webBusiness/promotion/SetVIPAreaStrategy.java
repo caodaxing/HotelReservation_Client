@@ -139,7 +139,7 @@ public class SetVIPAreaStrategy {
 		ok.setId("SetVIPAreaStrategy");
 		ok.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
 		
-		cancel = new Button("返回");
+		cancel = new Button("取消");
 		cancel.setId("SetVIPAreaStrategy");
 		cancel.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
 		

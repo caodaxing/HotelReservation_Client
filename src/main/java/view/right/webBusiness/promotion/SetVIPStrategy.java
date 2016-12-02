@@ -122,7 +122,7 @@ public class SetVIPStrategy {
 		ok.setId("CheckVIPStrategy");
 		ok.setPrefSize(100, 40);
 		
-		cancel = new Button("返回");
+		cancel = new Button("取消");
 		cancel.setId("CheckVIPStrategy");
 		cancel.setPrefSize(100, 40);
 		
