@@ -19,6 +19,24 @@
 	    <artifactId>metrics-core</artifactId>
 	    <version>3.1.2</version>
 	</dependency>
+	
+		
+	<dependency>
+	    <groupId>org</groupId>
+	    <artifactId>eclipse.ide</artifactId>
+	    <version>1.2.0</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/lib/org.eclipse.fx.ide.css.jfx8_1.2.0.201501301049.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org</groupId>
+	    <artifactId>eclipse</artifactId>
+	    <version>8.20.9</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/lib/controlsfx-8.20.9.jar</systemPath>
+	</dependency>
+
   </dependencies>
       <build>  
         <plugins>  
