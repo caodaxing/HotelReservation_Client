@@ -59,7 +59,7 @@ public class AbnormalOrder {
 		return scene;
 	}
 	
-	public void setTextField(){
+	private void setTextField(){
 		
 		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
@@ -118,7 +118,7 @@ public class AbnormalOrder {
 		
 	}
 	
-	public void setButton(){
+	private void setButton(){
 		
 		//添加按钮
 		halfCredit = new Button("撤销并恢复一半信用");

@@ -114,7 +114,7 @@ public class RechargeCredit {
 			
 		});
 		
-		ok.setOnAction(new EventHandler<ActionEvent>(){
+		cancel.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {

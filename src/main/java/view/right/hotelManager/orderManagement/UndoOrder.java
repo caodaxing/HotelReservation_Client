@@ -6,5 +6,5 @@ package view.right.hotelManager.orderManagement;
  *
  */
 public class UndoOrder {
-
+	
 }
