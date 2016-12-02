@@ -1,6 +1,5 @@
 package logic.user;
 
-import vo.ClientVO;
 
 /**
  * User的mock类

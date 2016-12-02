@@ -17,7 +17,8 @@ public class WebPromotionVO extends PromotionVO {
 	public String startTime;
 	public String endTime;
 	
-	public WebPromotionVO(String promotionID, PromotionType promotionType, String promotionName, double discount,
+	public WebPromotionVO(String promotionID, PromotionType promotionType,
+			String promotionName, double discount,
 			String cooperateBusiness, String startTime, String endTime) {
 		super(promotionID, promotionType, promotionName, discount);
 		this.cooperateBusiness = cooperateBusiness;

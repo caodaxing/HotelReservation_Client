@@ -3,7 +3,7 @@ package logicService.stub;
 import java.util.HashMap;
 
 import logicService.promotion.PromotionService;
-import vo.HotelPromotionVO;
+import vo.promotion.HotelPromotionVO;
 
 public class PromotionService_Stub implements PromotionService {
 
