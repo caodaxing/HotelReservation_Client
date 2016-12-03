@@ -31,7 +31,7 @@ public class AbnormalOrder{
 	TextField lastExecuteTime;
 	
 	Button againRegister;
-	Button cancel;
+	Button revert;
 	
 	public AbnormalOrder(HMOrderManagementController controller){
 		
@@ -124,16 +124,16 @@ public class AbnormalOrder{
 		againRegister.setId("AbnormalOrder");
 		againRegister.setPrefSize(100, 40);
 		
-		cancel = new Button("取消");
-		cancel.setId("AbnormalOrder");
-		cancel.setPrefSize(100, 40);
+		revert = new Button("取消");
+		revert.setId("AbnormalOrder");
+		revert.setPrefSize(100, 40);
 				
 		//设置按钮位置
 		againRegister.setLayoutX(450);
 		againRegister.setLayoutY(525);
 		
-		cancel.setLayoutX(625);
-		cancel.setLayoutY(525);
+		revert.setLayoutX(625);
+		revert.setLayoutY(525);
 		
 		
 		
@@ -148,7 +148,7 @@ public class AbnormalOrder{
 			
 		});
 		
-		cancel.setOnAction(new EventHandler<ActionEvent>(){
+		revert.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {
@@ -160,13 +160,13 @@ public class AbnormalOrder{
 		
 		//添加组件
 		rightPane.getChildren().add(againRegister);
-		rightPane.getChildren().add(cancel);
+		rightPane.getChildren().add(revert);
 		
 		AnchorPane.setLeftAnchor(againRegister, 250.0);
-		AnchorPane.setLeftAnchor(cancel, 425.0);
+		AnchorPane.setLeftAnchor(revert, 425.0);
 		
 		AnchorPane.setTopAnchor(againRegister, 525.0);
-		AnchorPane.setTopAnchor(cancel, 525.0);
+		AnchorPane.setTopAnchor(revert, 525.0);
 		
 	}
 }

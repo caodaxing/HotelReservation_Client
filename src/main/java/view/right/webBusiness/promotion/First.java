@@ -52,11 +52,11 @@ public class First {
 		
 		//添加按钮
 		checkNowName = new Button("查看现有策略");
-		checkNowName.setId("Choose");
+		checkNowName.setId("First");
 		checkNowName.setPrefSize(150, 50);
 		
 		makeNewPromotion = new Button("制定新策略");
-		makeNewPromotion.setId("Choose");
+		makeNewPromotion.setId("First");
 		makeNewPromotion.setPrefSize(150, 50);
 		
 		//设置按钮位置

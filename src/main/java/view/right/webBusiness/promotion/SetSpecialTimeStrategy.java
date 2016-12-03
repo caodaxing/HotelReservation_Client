@@ -79,7 +79,7 @@ public class SetSpecialTimeStrategy {
 				
 		//设置文本框内容
 				
-		//设置文本框内容不可更改
+		//设置文本框内容可更改
 		startDiscount.setEditable(true);
 		endDiscount.setEditable(true);
 		discountRange.setEditable(true);
