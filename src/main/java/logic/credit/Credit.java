@@ -5,7 +5,11 @@ import dataDao.CreditDao;
 import dataDao.stub.CreditDao_Stub;
 import logicService.credit.CreditService;
 
-
+/**
+ * 提供获取信用、设置和获取vip信用等级
+ * @author bcy
+ *
+ */
 public class Credit implements CreditInfo, CreditService{
 	
 	private CreditDao creditDao;

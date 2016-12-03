@@ -7,6 +7,7 @@ import po.CreditHistoryPO;
 
 public class CreditDao_Stub implements CreditDao{
 
+	private ArrayList<CreditHistoryPO> changeList = new ArrayList<>();
 	public boolean changeCredit(CreditHistoryPO po) {
 		// TODO Auto-generated method stub
 		return false;
