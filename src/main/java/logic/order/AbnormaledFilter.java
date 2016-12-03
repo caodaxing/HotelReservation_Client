@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import vo.OrderVO;
+import po.OrderPO;
 
 /**
  * 筛选异常订单
@@ -11,12 +11,8 @@ import vo.OrderVO;
  */
 public class AbnormaledFilter implements OrderListFilter{
 
-	/**
-	 * 筛选异常订单
-	 * @return 返回指定条件下的订单列表
-	 * @author Mark.W
-	 */
-	public ArrayList<OrderVO> filterList(String userID) {
+	@Override
+	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
 		return null;
 	}
 

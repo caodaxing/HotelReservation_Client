@@ -1,4 +1,4 @@
-package logic.orderManagement;
+package logic.order;
 
 import java.util.ArrayList;
 

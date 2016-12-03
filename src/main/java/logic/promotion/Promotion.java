@@ -1,21 +1,15 @@
 package logic.promotion;
 
-import java.util.HashMap;
+import vo.OrderVO;
 
 /**
- * hotelPromotion 和 webpromotion的抽象接口
+ * 所有promotion类的抽象接口 策略模式
  * @author Mark.W
  *
  */
 public interface Promotion {
 
-	public HashMap<String, String> setPromotion(String promotionid, String webPromotion);
-	
-	public HashMap<String, String> addPromotion(String promtionid, String content);
-	
-	public HashMap<String, String> deletePromotion(String promtionid);
-	
-	public HashMap<String, String> updatePromotion(String promtionid, String content);
+	public boolean judgePromotion(OrderVO orderVO);
 	
 	public double calculate();
 }

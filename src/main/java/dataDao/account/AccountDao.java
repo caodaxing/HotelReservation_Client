@@ -1,4 +1,4 @@
-package dataDao;
+package dataDao.account;
 
 import po.AccountPO;
 

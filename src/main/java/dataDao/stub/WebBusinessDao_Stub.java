@@ -1,6 +1,6 @@
 package dataDao.stub;
 
-import dataDao.WebBusinessDao;
+import dataDao.user.WebBusinessDao;
 import po.WebBusinessPO;
 
 public class WebBusinessDao_Stub implements WebBusinessDao {

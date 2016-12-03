@@ -1,19 +1,8 @@
 package logictest.order;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import org.junit.Before;
 import org.junit.Test;
-
-import Message.ResultMessage;
-import logic.credit.CreditInfo;
-import logic.credit.MockCredit;
-import logic.order.CreateOrder;
-import logic.promotion.JudgePromotion;
-import logic.promotion.MockCalculatePromotion;
-import vo.OrderVO;
-import vo.RoomVO;
 
 public class CreateOrderTest {
 

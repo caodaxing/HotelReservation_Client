@@ -1,8 +1,8 @@
 package logic.user;
 
 import Message.ResultMessage;
-import dataDao.HotelManagerDao;
 import dataDao.stub.HotelManagerDao_Stub;
+import dataDao.user.HotelManagerDao;
 import logicService.user.HotelManagerService;
 import po.HotelManagerPO;
 import vo.HotelManagerVO;

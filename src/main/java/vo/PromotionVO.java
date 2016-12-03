@@ -25,7 +25,7 @@ public class PromotionVO {
 	public String promotionName;
 	public double discount;
 	public String startTime;
-	public String endTime;
+	public String endTime; 
 	public String birthDay;
 	public String cooperateBusiness;
 	public double[] roomsAndDiscount;
@@ -38,11 +38,11 @@ public class PromotionVO {
 	 * @param hotelID
 	 * @param promotionName
 	 * @param discount
-	 * @param startTime
+	 * @param startTime 
 	 * @param endTime
 	 */
-	public PromotionVO(String promotionID, String hotelID,  String promotionName, double discount,
-			String startTime, String endTime) {
+	public PromotionVO(String promotionID, String hotelID,  String promotionName,
+			double discount,String startTime, String endTime) {
 		this.promotionType = PromotionType.HOTEL_11_11;
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;

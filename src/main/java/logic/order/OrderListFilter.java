@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import vo.OrderVO;
+import po.OrderPO;
 
 /**
  * 筛选订单的接口
@@ -10,5 +10,6 @@ import vo.OrderVO;
  *
  */
 public interface OrderListFilter {
-	public ArrayList<OrderVO> filterList(String userID);
+	
+	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders);
 }

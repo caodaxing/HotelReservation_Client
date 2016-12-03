@@ -2,7 +2,7 @@ package logic.account;
 
 import Message.Identity;
 import Message.ResultMessage;
-import dataDao.AccountDao;
+import dataDao.account.AccountDao;
 import dataDao.stub.AccountDao_Stub;
 import logicService.account.AccountService;
 import po.AccountPO;

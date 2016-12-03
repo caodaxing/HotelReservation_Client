@@ -1,4 +1,4 @@
-package logic.orderManagement;
+package logic.order;
 
 import Message.ResultMessage;
 import logic.hotel.HotelUpdateRoom;

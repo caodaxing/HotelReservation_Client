@@ -2,26 +2,16 @@ package logic.promotion;
 
 import java.util.ArrayList;
 
-import Message.ResultMessage;
 import vo.OrderVO;
 /**
  * 根据促销策略计算价格
  * @author Rukawa
  *
  */
-public class CalculatePromotion implements JudgePromotion{
+public class CalculatePromotion implements promotionCalculation{
 	
 	ArrayList<Promotion> promotions;
 	
-	/**
-	 * 判断是否满足促销策略
-	 * @param ordervo
-	 * @return ResultMessage
-	 * @author Rukawa
-	 */
-	public ResultMessage judge(OrderVO order){
-		return null;
-	}
 	
 	/**
 	 * 计算订单折扣后的价格

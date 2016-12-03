@@ -1,6 +1,6 @@
 package dataDao.stub;
 
-import dataDao.AccountDao;
+import dataDao.account.AccountDao;
 import po.AccountPO;
 
 

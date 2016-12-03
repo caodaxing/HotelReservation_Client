@@ -1,6 +1,6 @@
 package dataDao.stub;
 
-import dataDao.HotelManagerDao;
+import dataDao.user.HotelManagerDao;
 import po.HotelManagerPO;
 
 public class HotelManagerDao_Stub implements HotelManagerDao {

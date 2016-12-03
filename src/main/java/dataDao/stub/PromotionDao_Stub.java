@@ -2,7 +2,7 @@ package dataDao.stub;
 
 import java.util.ArrayList;
 
-import dataDao.PromotionDao;
+import dataDao.promotion.PromotionDao;
 import po.PromotionPO;
 
 public class PromotionDao_Stub implements PromotionDao {

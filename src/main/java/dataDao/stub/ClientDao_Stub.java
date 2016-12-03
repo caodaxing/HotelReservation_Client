@@ -1,6 +1,6 @@
 package dataDao.stub;
 
-import dataDao.ClientDao;
+import dataDao.user.ClientDao;
 import po.ClientPO;
 
 public class ClientDao_Stub implements ClientDao{

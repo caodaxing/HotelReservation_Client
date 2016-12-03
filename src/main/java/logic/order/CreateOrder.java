@@ -1,7 +1,7 @@
 package logic.order;
 
 import logic.credit.CreditInfo;
-import logic.promotion.JudgePromotion;
+import logic.promotion.promotionCalculation;
 import logicService.order.CreateOrderService;
 import vo.OrderVO;
 
@@ -11,10 +11,11 @@ import vo.OrderVO;
  *
  */
 public class CreateOrder implements CreateOrderService{
-	private CreditInfo credit;
-	private JudgePromotion promotion;
 	
-	public CreateOrder(JudgePromotion promotion, CreditInfo credit){
+	private CreditInfo credit;
+	private promotionCalculation promotion;
+	
+	public CreateOrder(promotionCalculation promotion, CreditInfo credit){
 		this.promotion = promotion;
 		this.credit = credit;
 	}

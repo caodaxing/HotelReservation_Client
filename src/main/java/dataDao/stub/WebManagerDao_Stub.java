@@ -1,6 +1,6 @@
 package dataDao.stub;
 
-import dataDao.WebManagerDao;
+import dataDao.user.WebManagerDao;
 import po.HotelManagerPO;
 import po.HotelPO;
 import po.WebBusinessPO;

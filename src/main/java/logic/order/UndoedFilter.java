@@ -2,7 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
-import vo.OrderVO;
+import po.OrderPO;
 
 /**
  * 筛选撤销的订单列表
@@ -11,13 +11,8 @@ import vo.OrderVO;
  */
 public class UndoedFilter implements OrderListFilter{
 
-	/**
-	 * 筛选撤销的订单列表
-	 * @return 撤销订单列表
-	 * @author Mark.W
-	 *
-	 */
-	public ArrayList<OrderVO> filterList(String userID) {
+	@Override
+	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
 		return null;
 	}
 

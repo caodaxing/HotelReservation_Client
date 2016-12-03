@@ -1,16 +1,8 @@
 package logictest.orderManagement;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import Message.CreditChangeType;
-import Message.ResultMessage;
-import logic.credit.MockCredit;
-import logic.orderManagement.ExecuteOrder;
-import logic.orderManagement.ManageOrder;
-import logic.room.MockRoom;
-import vo.OrderVO;
-import vo.RoomVO;
+import org.junit.Test;
 
 public class OrderManagementTest {
 
