@@ -25,6 +25,6 @@ public interface CreditChangeService {
 	 * @return 返回用户历史信用记录列表
 	 * @author Xue.W
 	 */
-	public ArrayList<CreditChangeVO> getHistoryList(String userID);
+	public ArrayList<CreditChangeVO> getCreditHistory(String userID);
 	
 }

@@ -35,8 +35,6 @@ public class CreditChangeVO {
 		this.orderID=orderID;
 		this.action=action;
 		this.cerditChange=cerditChange;
-	
-		this.nowCredit=0;
 	}
 	
 	/**
@@ -50,11 +48,7 @@ public class CreditChangeVO {
 	 */
 	public CreditChangeVO(String userID , String time , String orderID , 
 			CreditChangeType action , int cerditChange , int nowCredit ){
-		this.userID=userID;
-		this.time=time;
-		this.orderID=orderID;
-		this.action=action;
-		this.cerditChange=cerditChange;
+		this(userID, time, orderID, action, cerditChange);
 		this.nowCredit=nowCredit;
 	}
 	
