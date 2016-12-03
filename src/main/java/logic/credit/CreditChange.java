@@ -26,7 +26,7 @@ public class CreditChange implements CreditChangeService{
 			return ResultMessage.FAILURE;
 		}
 		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
-		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action.getIndex(), vo.cerditChange, nowCredit);
+		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action.ordinal(), vo.cerditChange, nowCredit);
 		creditDao.changeCredit(po);
 		return ResultMessage.FAILURE;
 	}
