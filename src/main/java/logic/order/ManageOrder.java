@@ -1,7 +1,10 @@
 package logic.order;
 
+import java.util.ArrayList;
+
 import Message.ResultMessage;
-import logic.order.OrderInfo;
+import dataDao.order.OrderListDao;
+import logicService.order.ManageOrderService;
 import vo.OrderVO;
 
 /**
@@ -9,20 +12,23 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class ManageOrder{
+public class ManageOrder implements ManageOrderService{
 	
-	public ManageOrder(OrderInfo orderInfo) {
-		this.orderInfo = orderInfo;
+	private OrderListDao orderListDao;
+	
+	// 撤销异常订单
+	@Override
+	public ResultMessage undoUnnormalOrder(String orderID, boolean recoverAllCredit) {
+		return null;
 	}
 
-	OrderInfo orderInfo;
-	
-	/**
-	 * 撤销异常订单
-	 * @param orderVO
-	 * @return ResultMessage
-	 */
-	public ResultMessage undoUnnormalOrder(OrderVO orderVO){
-		return ResultMessage.SUCCESS;
+	@Override
+	public ArrayList<OrderVO> getDailyUnexecutedOrderList() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getDailyAbnormalOrderList() {
+		return null;
 	}
 }

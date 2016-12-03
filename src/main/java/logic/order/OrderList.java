@@ -16,9 +16,9 @@ import vo.OrderVO;
  */
 public class OrderList implements OrderListService{
 	
-	OrderListFilter orderListFilter;
-	OrderListFilterFactory factory = OrderListFilterFactory.getInstance();
-	OrderListDao orderListDao;
+	private OrderListFilter orderListFilter;
+	private OrderListFilterFactory factory = OrderListFilterFactory.getInstance();
+	private OrderListDao orderListDao;
 	
 	public OrderList() {
 		this.orderListDao = new OrderListDao_Stub();
@@ -36,6 +36,7 @@ public class OrderList implements OrderListService{
 		return null;
 	}
 
+	//获取预订过的酒店的历史订单列表
 	@Override
 	public ArrayList<OrderVO> filterOrderList(String userID, String hotelId) {
 		return null;

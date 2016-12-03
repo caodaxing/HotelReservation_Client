@@ -13,4 +13,6 @@ public interface OrderListService {
 	
 	//获取预订过的酒店的历史订单列表
 	public ArrayList<OrderVO> filterOrderList(String userID, String hotelId);
+	
+	
 }
