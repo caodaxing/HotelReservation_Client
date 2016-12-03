@@ -14,7 +14,7 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserVIPController;
 
-public class RegisterNormalVIP {
+public class CheckNormalVIP {
 
 	private UserVIPController controller;
 	
@@ -28,10 +28,7 @@ public class RegisterNormalVIP {
 	
 	DatePicker birthday ;
 	
-	Button confirm ;
-	Button cancel ;
-	
-	public RegisterNormalVIP(UserVIPController controller){
+	public CheckNormalVIP(UserVIPController controller){
 		
 		this.controller = controller;
 		
@@ -45,9 +42,6 @@ public class RegisterNormalVIP {
 		
 		setDatePicker();
 		
-		//设置Button
-		setButton();
-		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
@@ -57,7 +51,7 @@ public class RegisterNormalVIP {
 		
 		birthday = new DatePicker();
 
-		birthday.setEditable(true);
+		birthday.setEditable(false);
 		
 		birthday.setValue(LocalDate.now());
 		
@@ -68,49 +62,6 @@ public class RegisterNormalVIP {
 		AnchorPane.setLeftAnchor(birthday, 200.0);
 		AnchorPane.setTopAnchor(birthday, 150.0);
 		
-	}
-	
-	private void setButton(){
-		
-		//初始化Button
-		confirm = new Button();
-		cancel = new Button();
-		
-		//设置Button文字
-		confirm.setText("确认");
-		cancel.setText("取消");
-				
-		//设置Button大小
-		confirm.setPrefSize(100, 40);
-		cancel.setPrefSize(100, 40);
-		
-		//添加listener
-		confirm.setOnAction(new EventHandler<ActionEvent>(){
-			
-			public void handle(ActionEvent event){
-				
-			}
-			
-		});
-		cancel.setOnAction(new EventHandler<ActionEvent>(){
-			
-			public void handle(ActionEvent event){
-				
-			}
-			
-		});
-		
-		//添加Button组件
-		rightPane.getChildren().add(confirm);
-		rightPane.getChildren().add(cancel);
-		
-		//设置Button位置
-		AnchorPane.setLeftAnchor(confirm, 200.0);
-		AnchorPane.setTopAnchor(confirm, 450.0);
-		
-		AnchorPane.setLeftAnchor(cancel, 400.0);
-		AnchorPane.setTopAnchor(cancel, 450.0);
-	
 	}
 	
 	public Scene getScene(){
