@@ -7,7 +7,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public interface promotionCalculation {
+public interface PromotionCalculation {
 	
-	public double calculate(OrderVO order);
+	public OrderVO calculate(OrderVO order);
 }

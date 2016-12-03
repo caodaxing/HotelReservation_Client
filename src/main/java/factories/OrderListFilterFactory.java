@@ -33,6 +33,9 @@ public class OrderListFilterFactory {
 		case ABNORMALED :
 			filter = new AbnormaledFilter();
 			break;
+		default:
+			System.out.println("factories.OrderListFactory.createFilter参数异常");
+			break;
 		}
 		
 		return filter;

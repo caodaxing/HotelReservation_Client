@@ -8,6 +8,7 @@ import Message.OrderState;
  * @param orderId 订单id
  * @param startTime  订单开始时间
  * @param endTime  结束时间
+ * @param hotelID 酒店id
  * @param room 房间信息
  * @param orderState 状态
  * @param numOfPeople
@@ -20,8 +21,9 @@ public class OrderVO {
 	
 	public String orderId;
 	public String startTime;
-	public RoomVO room;
+	public ArrayList<RoomVO> rooms;
 	public String endTime;
+	public String hotelID;
 	public OrderState orderState;
 	public int numOfPeople;
 	public boolean hasChild;
@@ -29,11 +31,12 @@ public class OrderVO {
 	public double afterPrice;
 	public ArrayList<PromotionVO> promotions;
 	
-	public OrderVO(String orderId, String startTime, String endTime, RoomVO room, OrderState orderState,
+	public OrderVO(String orderId, String startTime, String endTime,String hotelID, ArrayList<RoomVO> rooms, OrderState orderState,
 			int numOfPeople, boolean hasChild, double beforePrice, double afterPrice, ArrayList<PromotionVO> promotions) {
 		this.orderId = orderId;
 		this.startTime = startTime;
-		this.room = room;
+		this.rooms = rooms;
+		this.hotelID = hotelID;
 		this.endTime = endTime;
 		this.orderState = orderState;
 		this.numOfPeople = numOfPeople;

@@ -2,6 +2,7 @@ package logic.order;
 
 import java.util.ArrayList;
 
+import Message.OrderState;
 import po.OrderPO;
 
 /**
@@ -13,7 +14,17 @@ public class UnExecutedFilter implements OrderListFilter{
 
 	@Override
 	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
-		return null;
+		ArrayList<OrderPO> res = new ArrayList<OrderPO>();
+		OrderPO po = null;
+		
+		for(int i=0; i<orders.size(); ++i) {
+			po = orders.get(i);
+			if(po.getState() == OrderState.UNEXECUTED.ordinal()) {
+				res.add(po);
+			}
+		}
+		
+		return res;
 	}
 
 }

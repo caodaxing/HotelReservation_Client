@@ -3,6 +3,8 @@ package logic.user;
 import Message.ResultMessage;
 import dataDao.stub.WebManagerDao_Stub;
 import dataDao.user.WebManagerDao;
+import logic.utility.HotelManagerTransform;
+import logic.utility.WebBusinessTransform;
 import logicService.user.WebManagerService;
 import po.HotelManagerPO;
 import po.HotelPO;
@@ -19,11 +21,16 @@ public class WebManager implements WebManagerService {
 	
 	private String webManagerID;
 	private WebManagerDao webManagerDao;
-	private WebBusiness webBusiness;
 	private HotelManager hotelManager;
+	private WebBusiness webBusiness;
+	private HotelManagerTransform hotelManagerTrans;
+	private WebBusinessTransform webBusinessTrans;
 	
 	public WebManager(String userID){
 		this.webManagerID = userID;
+		this.hotelManagerTrans = new HotelManagerTransform();
+		this.webBusinessTrans = new WebBusinessTransform();
+		
 		this.webManagerDao = new WebManagerDao_Stub();
 	}
 	
@@ -71,12 +78,11 @@ public class WebManager implements WebManagerService {
 		return ResultMessage.FAILURE;
 	}
 	
-	public ResultMessage addHotelManager(HotelManagerVO hotelManager){
+	public ResultMessage addHotelManager(HotelManagerVO hotelManagerVO){
 		
 		
-		if(hotelManager != null) {
-			HotelManagerPO po = new HotelManagerPO(hotelManager.userID, hotelManager.hotelID, 
-					hotelManager.phoneNumber, hotelManager.trueName, hotelManager.numberOfIdentityCard);
+		if(hotelManagerVO != null) {
+			HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(hotelManagerVO);
 			if(this.webManagerDao.addHotelManager(po)) {
 				return ResultMessage.SUCCESS;
 			}
@@ -87,8 +93,7 @@ public class WebManager implements WebManagerService {
 	
 	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessVO){
 		if(webBusinessVO != null){
-			WebBusinessPO po = new WebBusinessPO(webBusinessVO.userID, webBusinessVO.trueName, 
-					webBusinessVO.phoneNumber, webBusinessVO.numberOfIdentityCard);
+			WebBusinessPO po = this.webBusinessTrans.webBusinessTransToPO(webBusinessVO);
 			if(this.webManagerDao.addWebBusiness(po)) {
 				return ResultMessage.SUCCESS;
 			}

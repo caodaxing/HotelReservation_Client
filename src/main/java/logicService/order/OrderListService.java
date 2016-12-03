@@ -12,7 +12,7 @@ public interface OrderListService {
 	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition);
 	
 	//获取预订过的酒店的历史订单列表
-	public ArrayList<OrderVO> filterOrderList(String userID, String hotelId);
+	public ArrayList<OrderVO> filterSpecificUserHotelOrderList(String userID, String hotelId);
 	
 	
 }

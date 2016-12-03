@@ -4,8 +4,7 @@ package logic.user;
 import Message.ResultMessage;
 import dataDao.stub.ClientDao_Stub;
 import dataDao.user.ClientDao;
-import logic.credit.CreditInfo;
-import logic.credit.MockCredit;
+import logic.utility.ClientTransform;
 import logicService.user.ClientService;
 import po.ClientPO;
 import vo.ClientVO;
@@ -22,13 +21,13 @@ public class Client implements ClientService{
 	private String clientID;
 	private ClientPO clientPO;
 	private ClientDao clientDao;
-	private CreditInfo credit;
+	private ClientTransform clientTrans;
 
 	public Client(String clientID){
 		this.clientID = clientID;
-		clientDao = new ClientDao_Stub();
-		credit = new MockCredit();
 		this.initClientPO();
+		this.clientDao = new ClientDao_Stub();
+		this.clientTrans = new ClientTransform();
 	}	
 	
 	//初始化成员变量clientpo
@@ -48,11 +47,7 @@ public class Client implements ClientService{
 	 */
 	public ClientVO getClientInfo (String clientID){
 		if(clientPO != null) {
-			int cre = credit.getCredit(clientID);
-			
-			return new ClientVO(clientPO.getUserID(),clientPO.getPhoneNumber(), 
-					clientPO.getTrueName(), clientPO.getIdentityID(), 
-					cre, clientPO.getHeadImagePath());
+			return this.clientTrans.clientTransToVO(clientPO);
 		} else {
 			return null;
 		}

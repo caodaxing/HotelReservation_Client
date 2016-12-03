@@ -8,7 +8,7 @@ import vo.OrderVO;
  * @author Rukawa
  *
  */
-public class CalculatePromotion implements promotionCalculation{
+public class CalculatePromotion implements PromotionCalculation{
 	
 	ArrayList<Promotion> promotions;
 	
@@ -19,8 +19,8 @@ public class CalculatePromotion implements promotionCalculation{
 	 * @return 折扣后订单价格
 	 * @author Rukawa
 	 */
-	public double calculate(OrderVO order){
-		return 0;
+	public OrderVO calculate(OrderVO order){
+		return null;
 	}
 	
 }

@@ -3,9 +3,10 @@ package po;
 import java.util.ArrayList;
 
 /**
- * @param numberOfOrder 订单号
+ * @param orderID 订单号
  * @param startTime 开始时间
  * @param hotelId 酒店id
+ * @param roomID 酒店房间号
  * @param endTime 结束时间
  * @param numberOfRooms  房间数量
  * @param hasChild  是否有小孩
@@ -13,13 +14,14 @@ import java.util.ArrayList;
  * @param state 0:未执行 1:已执行 2:异常 3:撤销
  * @param beforePromotionPrice 促销前价格
  * @param afterPromotionPrice 促销后价格
- * @param promotions 该订单使用的促销策略
+ * @param promotionIDs 该订单使用的促销策略
  * @author Mark.W
  */
 public class OrderPO {
-	private String numberOfOrder;
+	private String orderID;
 	private String startTime;
 	private String hotelId;
+	private ArrayList<String> roomIDs;
 	private String endTime;
 	private int numberOfRooms;
 	private boolean hasChild;
@@ -27,15 +29,16 @@ public class OrderPO {
 	private int state; 
 	private double beforePromotionPrice;
 	private double afterPromotionPrice;
-	private ArrayList<String> promotions;
+	private ArrayList<String> promotionIDs;
 
 
-	public OrderPO(String numberOfOrder,String startTime,String hotelId,
+	public OrderPO(String orderID,String startTime,String hotelId, ArrayList<String> roomIDs,
 			String endTime,int numberOfRooms,boolean hasChild,int numberOfPeople, int state,
-			double beforePromotionPrice, double afterPromotionPrice, ArrayList<String> promotions) {
-		this.numberOfOrder=numberOfOrder;
+			double beforePromotionPrice, double afterPromotionPrice, ArrayList<String> promotionIDs) {
+		this.orderID=orderID;
 		this.startTime=startTime;
 		this.hotelId=hotelId;
+		this.roomIDs = roomIDs;
 		this.endTime=endTime;
 		this.numberOfRooms=numberOfRooms;
 		this.hasChild=hasChild;
@@ -43,15 +46,23 @@ public class OrderPO {
 		this.state = state;
 		this.beforePromotionPrice = beforePromotionPrice;
 		this.afterPromotionPrice = afterPromotionPrice;
-		this.promotions = promotions;
+		this.promotionIDs = promotionIDs;
 	}
 	
-	public String getNumberOfOrder() {
-		return numberOfOrder;
+	public ArrayList<String> getRoomIDs() {
+		return roomIDs;
 	}
 
-	public void setNumberOfOrder(String numberOfOrder) {
-		this.numberOfOrder = numberOfOrder;
+	public void setRoomIDs(ArrayList<String> roomIDs) {
+		this.roomIDs = roomIDs;
+	}
+	
+	public String getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 
 	public String getStartTime() {
@@ -128,10 +139,10 @@ public class OrderPO {
 	}
 
 	public ArrayList<String> getPromotions() {
-		return promotions;
+		return promotionIDs;
 	}
 
 	public void setPromotions(ArrayList<String> promotions) {
-		this.promotions = promotions;
+		this.promotionIDs = promotions;
 	}
 }

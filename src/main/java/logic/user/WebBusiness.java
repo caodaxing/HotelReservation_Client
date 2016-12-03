@@ -3,6 +3,7 @@ package logic.user;
 import Message.ResultMessage;
 import dataDao.stub.WebBusinessDao_Stub;
 import dataDao.user.WebBusinessDao;
+import logic.utility.WebBusinessTransform;
 import logicService.user.WebBusinessService;
 import po.WebBusinessPO;
 import vo.WebBusinessVO;
@@ -12,9 +13,12 @@ public class WebBusiness implements WebBusinessService{
 	private String webBusinessID;
 	private WebBusinessPO webBusinessPO;
 	private WebBusinessDao webBusinessDao;
+	private WebBusinessTransform webBusinessTrans;
 	
 	public WebBusiness(String webBusinessID) {
 		this.webBusinessID = webBusinessID;
+		this.webBusinessTrans = new WebBusinessTransform();
+		
 		webBusinessDao = new WebBusinessDao_Stub();
 		this.initWebBusinessPO();
 	}
@@ -26,21 +30,18 @@ public class WebBusiness implements WebBusinessService{
 	@Override
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID) {
 		if(this.webBusinessDao != null) {
-			return new WebBusinessVO(webBusinessPO.getUserID(), webBusinessPO.getTrueName(),
-					webBusinessPO.getPhoneNumber(), webBusinessPO.getNumberOfIdentityCard());
+			return this.webBusinessTrans.webBusinessTransToVO(this.webBusinessPO);
 		}
 		
 		WebBusinessPO po = this.webBusinessDao.getWebBusinessInfo(webBusiness_ID);
 		this.webBusinessPO = po;
 		
-		return new WebBusinessVO(po.getUserID(), po.getTrueName(),
-				po.getPhoneNumber(), po.getNumberOfIdentityCard());
+		return this.webBusinessTrans.webBusinessTransToVO(po);
 	}
 	
 	
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO vo){
-		WebBusinessPO po = new WebBusinessPO(vo.userID, vo.trueName,
-				vo.phoneNumber, vo.numberOfIdentityCard);
+		WebBusinessPO po = this.webBusinessTrans.webBusinessTransToPO(vo);
 		
 		if(this.webBusinessDao.updateWebBusinessInfo(po)) {
 			this.webBusinessPO = po;
@@ -49,6 +50,7 @@ public class WebBusiness implements WebBusinessService{
 		
 		return ResultMessage.FAILURE;
 	}
+	
 	
 	public String getWebBusinessID() {
 		return webBusinessID;

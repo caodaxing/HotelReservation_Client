@@ -116,7 +116,7 @@ public class Account implements AccountInfo, AccountService{
 	}
 	
 	public AccountPO transToPO(AccountVO accountVO) {
-		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.getIndex());
+		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.ordinal());
 	}
 	
 }
