@@ -18,7 +18,16 @@ public class CreditChangeVO {
 	public String orderID;
 	public CreditChangeType action;
 	public int cerditChange;
+	public int nowCredit;
 	
+	/**
+	 *  提供ui层的CreditChangeVO构造方法
+	 * @param userID
+	 * @param time
+	 * @param orderID
+	 * @param action
+	 * @param cerditChange
+	 */
 	public CreditChangeVO(String userID , String time , String orderID , 
 			CreditChangeType action , int cerditChange ) {
 		this.userID=userID;
@@ -26,6 +35,27 @@ public class CreditChangeVO {
 		this.orderID=orderID;
 		this.action=action;
 		this.cerditChange=cerditChange;
+	
+		this.nowCredit=0;
+	}
+	
+	/**
+	 * 传回数据的VO构造方法
+	 * @param userID
+	 * @param time
+	 * @param orderID
+	 * @param action
+	 * @param cerditChange
+	 * @param nowCredit
+	 */
+	public CreditChangeVO(String userID , String time , String orderID , 
+			CreditChangeType action , int cerditChange , int nowCredit ){
+		this.userID=userID;
+		this.time=time;
+		this.orderID=orderID;
+		this.action=action;
+		this.cerditChange=cerditChange;
+		this.nowCredit=nowCredit;
 	}
 	
 }
