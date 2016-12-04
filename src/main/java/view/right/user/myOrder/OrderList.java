@@ -27,10 +27,6 @@ public class OrderList {
 	private AnchorPane rightPane;
 	private UserUI userUI = new UserUI();
 	
-	Button revert;
-	
-	Button check;
-	
 	ScrollBar scroller;
 	
 	public OrderList(UserMyOrderController controller){
@@ -43,12 +39,6 @@ public class OrderList {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
-		//添加返回按钮
-		setRevertButton();
-		
-		//添加查看按钮
-		setCheckButton();
-				
 		//设置滚动条
 		setScroller();
 		
@@ -60,60 +50,6 @@ public class OrderList {
 	public Scene getScene(){
 		
 		return scene;
-	
-	}
-	
-	private void setRevertButton(){
-		
-		//设置按钮
-		revert = new Button("返回");
-		revert.setPrefSize(100, 40);
-		
-		//设置按钮位置
-		revert.setLayoutX(650);
-		revert.setLayoutY(550);
-	
-		//添加监听
-		revert.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-			
-		//添加组件
-		rightPane.getChildren().add(revert);
-
-		AnchorPane.setLeftAnchor(revert, 450.0);
-		AnchorPane.setTopAnchor(revert, 550.0);
-	
-	}
-	
-	private void setCheckButton(){
-		
-		//添加查看按钮
-		check = new Button("查看");
-		check.setPrefSize(50, 30);
-
-		//设置按钮监听
-		check.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
-		//添加组件
-		rightPane.getChildren().add(check);
-		
-		AnchorPane.setLeftAnchor(check, 435.0);
-		AnchorPane.setTopAnchor(check, 200.0);
 	
 	}
 	

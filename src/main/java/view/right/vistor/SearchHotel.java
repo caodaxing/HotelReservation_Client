@@ -49,7 +49,6 @@ public class SearchHotel {
 	TextField starRight ;
 	
 	Button search ;
-	Button back ;
 	
 	public SearchHotel(VistorController controller){
 		
@@ -161,15 +160,12 @@ public class SearchHotel {
 		
 		//初始化Button
 		search = new Button();
-		back = new Button();
 		
 		//设置Button文字
 		search.setText("搜索");
-		back.setText("返回");
 				
 		//设置Button大小
 		search.setPrefSize(100, 40);
-		back.setPrefSize(100, 40);
 		
 		//添加listener
 		search.setOnAction(new EventHandler<ActionEvent>(){
@@ -179,24 +175,13 @@ public class SearchHotel {
 			}
 			
 		});
-		back.setOnAction(new EventHandler<ActionEvent>(){
-			
-			public void handle(ActionEvent event){
-				
-			}
-			
-		});
 		
 		//添加Button组件
 		rightPane.getChildren().add(search);
-		rightPane.getChildren().add(back);
 		
 		//设置Button位置
 		AnchorPane.setLeftAnchor(search, 475.0);
-		AnchorPane.setTopAnchor(search, 425.0);
-		
-		AnchorPane.setLeftAnchor(back, 475.0);
-		AnchorPane.setTopAnchor(back, 490.0);
+		AnchorPane.setTopAnchor(search, 490.0);
 				
 	}
 	

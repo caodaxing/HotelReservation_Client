@@ -39,8 +39,10 @@ public class SearchResultList {
 	Button dscendingSort;
 	Button starLevel;
 	Button evaluation;
+	
 	Button check;
 	//游客不能预订
+	
 	Button revert;
 	
 	ScrollBar scroller;

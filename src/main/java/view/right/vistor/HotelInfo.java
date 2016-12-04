@@ -38,7 +38,8 @@ public class HotelInfo {
 	
 	ImageView hotelImage ;
 	
-	//游客没有所有按钮（省事
+	//游客没有其他所有按钮（省事
+	Button back;
 	
 	public HotelInfo(VistorController controller){
 		
@@ -54,6 +55,8 @@ public class HotelInfo {
 		
 		//设置TextField
 		setTextField();
+		
+		setButton();
 		
 		//设置图片域
 		setImage();
@@ -99,6 +102,29 @@ public class HotelInfo {
 		AnchorPane.setTopAnchor(address, 150.0);
 		AnchorPane.setTopAnchor(introduction, 200.0);
 		AnchorPane.setTopAnchor(facility, 280.0);
+		
+	}
+	
+	private void setButton(){
+		
+		back = new Button();
+	
+		back.setText("返回");
+		
+		back.setPrefSize(100, 40);
+		
+		back.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		
+		rightPane.getChildren().add(back);
+		
+		AnchorPane.setLeftAnchor(back, 450.0);
+		AnchorPane.setTopAnchor(back, 510.0);
 		
 	}
 	
