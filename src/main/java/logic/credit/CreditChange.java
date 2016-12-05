@@ -11,6 +11,11 @@ import logicService.credit.CreditChangeService;
 import po.CreditHistoryPO;
 import vo.CreditChangeVO;
 
+/**
+ * 提供修改信用、获取信用记录的方法
+ * @author bcy
+ *
+ */
 public class CreditChange implements CreditChangeService{
 	
 	private String clientID;

@@ -1,10 +1,15 @@
 package logic.room;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
 import Message.RoomType;
+import dataDao.RoomDao;
+import dataDao.stub.RoomDao_Stub;
+import logic.utility.RoomTransform;
 import logicService.room.RoomService;
+import po.RoomPO;
 import vo.RoomVO;
 
 /**
@@ -14,15 +19,24 @@ import vo.RoomVO;
  */
 public class Room implements RoomService{
 
+	RoomDao roomDao;
 	
+	public Room() {
+		roomDao = new RoomDao_Stub();
+	}
 	/**
 	 * 获取酒店房间列表
 	 * @param hotel_id 传入的酒店id
 	 * @return ArrayList<RoomVO> 酒店的房间信息列表
 	 * @author bcy
 	 */
-	public ArrayList<RoomVO> getRoomList(String hotel_id){
-		return null;
+	public ArrayList<RoomVO> getRoomList(String hotelId){
+		ArrayList<RoomPO> roomPOList = roomDao.getHotelRooms(hotelId);
+		ArrayList<RoomVO> roomList = new ArrayList<>();
+		for (RoomPO roomPO : roomPOList) {
+			roomList.add(RoomTransform.roomTransToVO(roomPO));
+		}
+		return roomList;
 	}
 	
 	/**
@@ -31,8 +45,8 @@ public class Room implements RoomService{
 	 * @return RoomVO 酒店指定房间的信息
 	 * @author bcy
 	 */
-	public RoomVO getRoomInfo(String hotel_id, String room_id){
-		return null;
+	public RoomVO getRoomInfo(String hotelId, String roomId){
+		return RoomTransform.roomTransToVO(roomDao.getRoomInfo(hotelId, roomId));
 	}
 	
 	/**
@@ -41,8 +55,16 @@ public class Room implements RoomService{
 	 * @return ResultMessage 返回修改的结果（成功/失败）
 	 * @author bcy
 	 */
-	public ResultMessage updateRoomInfo(RoomVO room){
-		return ResultMessage.SUCCESS;
+	public ResultMessage updateRoomInfo(RoomVO roomVO){
+		if (roomVO==null) {
+			System.out.println("logic.room.Room.updateRoomInfo参数异常");
+			return null;
+		}
+		if (roomDao.updateRoom(RoomTransform.roomTransToPO(roomVO))) {
+			return ResultMessage.SUCCESS;
+		}else {
+			return ResultMessage.FAILURE;
+		}
 	}
 	
 	/**
@@ -51,12 +73,27 @@ public class Room implements RoomService{
 	 * @return ResultMessage 返回增加的结果（成功/失败）
 	 * @author bcy
 	 */
-	public ResultMessage addRoomInfo(RoomVO room){
-		return ResultMessage.SUCCESS;
+	public ResultMessage addRoomInfo(RoomVO roomVO){
+		if (roomVO==null) {
+			System.out.println("logic.room.Room.addRoomInfo参数异常");
+			return null;
+		}
+		if (roomDao.addRoom(RoomTransform.roomTransToPO(roomVO))) {
+			return ResultMessage.SUCCESS;
+		}else {
+			return ResultMessage.FAILURE;
+		}
 	}
 
 	@Override
-	public int getRemainingRoomNums(String hotelID, RoomType roomType) {
-		return 0;
+	public int getRemainingRoomNums(String hotelId, RoomType roomType) {
+		ArrayList<RoomPO> roomList = roomDao.getHotelRooms(hotelId);
+		int remainingRoomNums = 0;
+		for (RoomPO roomPO : roomList) {
+			if (roomPO.getRoomType()==roomType.ordinal()&&roomPO.isEmpty()) {
+				remainingRoomNums++;
+			}
+		}
+		return remainingRoomNums;
 	}
 }

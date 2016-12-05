@@ -17,7 +17,7 @@ public class RoomDao_Stub implements RoomDao {
 		return false;
 	}
 
-	public boolean updateRoom(String hotelId, String roomId) {
+	public boolean updateRoom(RoomPO roomPO) {
 		// TODO Auto-generated method stub
 		return false;
 	}

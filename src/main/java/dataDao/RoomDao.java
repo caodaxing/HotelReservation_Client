@@ -10,7 +10,7 @@ public interface RoomDao {
 	
 	public boolean addRoom(RoomPO roomPO);
 	
-	public boolean updateRoom(String hotelId, String roomId);
+	public boolean updateRoom(RoomPO po);
 	
 	public ArrayList<RoomPO> getHotelRooms(String hotelId);
 }
