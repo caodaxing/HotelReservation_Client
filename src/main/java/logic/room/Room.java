@@ -1,6 +1,5 @@
 package logic.room;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
