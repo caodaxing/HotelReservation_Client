@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import logic.order.Order;
-import logic.promotion.HotelPromotion;
+import logic.promotion.Promotion;
 import logic.room.Room;
 import logicService.hotel.CheckHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
-import vo.OrderVO;
 import vo.RoomVO;
 
 /**
@@ -21,7 +20,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	
 	private String hotelID;
 	private ArrayList<Room> rooms;
-	private HotelPromotion hotelPromotion;
+	private Promotion hotelPromotion;
 	private ArrayList<Order> hotelOrders;
 	
 	public Hotel(String hotelID){
@@ -33,7 +32,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @param hotelPromotion 酒店促销策略
 	 * @author Mark.W
 	 */
-	public Hotel(HotelPromotion hotelPromotion) {
+	public Hotel(Promotion hotelPromotion) {
 		this.hotelPromotion = hotelPromotion;
 	}
 	
@@ -86,7 +85,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public String getPromotion(String hotel_id){
-		return hotelPromotion.getPromotion(hotel_id);
+		return null;
 	}
 	
 	/**

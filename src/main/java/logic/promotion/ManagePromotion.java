@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import Message.PromotionType;
 import Message.ResultMessage;
-import logicService.promotion.ManagePromotionService;
+import logicService.promotion.PromotionService;
 import vo.PromotionVO;
 
-public class ManagePromotion implements ManagePromotionService{
+public class ManagePromotion implements PromotionService{
 	
 	@Override
 	public ResultMessage addPromotion(PromotionVO promotionVO) {

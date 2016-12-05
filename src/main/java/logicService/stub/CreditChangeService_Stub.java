@@ -31,4 +31,9 @@ public class CreditChangeService_Stub implements CreditChangeService{
 		return null;
 	}
 
+	@Override
+	public ArrayList<CreditChangeVO> getCreditHistory(String userID) {
+		return null;
+	}
+
 }
