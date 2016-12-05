@@ -17,7 +17,7 @@ public class HotelManager implements HotelManagerService{
 	
 	public HotelManager(String hotelManagerID) {
 		this.hotelManagerID = hotelManagerID;
-		this.hotelManagerTrans = new HotelManagerTransform();
+		this.hotelManagerTrans = HotelManagerTransform.getInstance();
 		
 		this.hotelManagerDao = new HotelManagerDao_Stub();
 		this.initHotelManagerPO();

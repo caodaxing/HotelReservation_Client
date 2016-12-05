@@ -3,7 +3,6 @@ package logic.order;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
-import Message.OrderState;
 import dataDao.order.OrderListDao;
 import dataDao.stub.OrderListDao_Stub;
 import factories.OrderListFilterFactory;
@@ -13,7 +12,7 @@ import po.OrderPO;
 import vo.OrderVO;
 
 /**
- * 策略模式
+ * 订单列表的筛选类和订单列表接口的实现类
  * @author Mark.W
  *
  */
@@ -30,6 +29,8 @@ public class OrderList implements OrderListService{
 		this.orderTrans = new OrderTransform();
 	}
 
+	
+	//用户订单筛选的方法
 	@Override
 	public ArrayList<OrderVO> filterUserOrderList(String userID, OrderListCondition condition) {
 		
@@ -44,6 +45,8 @@ public class OrderList implements OrderListService{
 		return this.orderTrans.orderListTransToVO(this.orderListFilter.filterList(orders));
 	}
 
+	
+	//酒店订单筛选的方法
 	@Override
 	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition) {
 		

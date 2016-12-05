@@ -6,9 +6,10 @@ import po.EvaluationPO;
 import po.OrderPO;
 
 public interface OrderDao {
-	public boolean updateOrder(OrderPO orderPO);
 	
 	public boolean addOrder(OrderPO orderPO);
+	
+	public boolean updateOrder(OrderPO orderPO);
 	
 	public OrderPO getOrderByOrderID(String orderID);
 	

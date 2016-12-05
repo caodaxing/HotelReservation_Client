@@ -7,8 +7,17 @@ import vo.ClientVO;
 
 public class ClientTransform {
 
+	private static ClientTransform clientTransform;
 	private CreditInfo creditInfo;
-
+	
+	public static ClientTransform getInstance() {
+		if(clientTransform == null) {
+			clientTransform = new ClientTransform();
+		} 
+		return clientTransform;
+	}
+	
+	
 	public ClientTransform() {
 		this.creditInfo = new MockCreditInfo();
 	}

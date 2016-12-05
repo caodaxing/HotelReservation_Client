@@ -28,8 +28,8 @@ public class WebManager implements WebManagerService {
 	
 	public WebManager(String userID){
 		this.webManagerID = userID;
-		this.hotelManagerTrans = new HotelManagerTransform();
-		this.webBusinessTrans = new WebBusinessTransform();
+		this.hotelManagerTrans = HotelManagerTransform.getInstance();
+		this.webBusinessTrans = WebBusinessTransform.getInstance();
 		
 		this.webManagerDao = new WebManagerDao_Stub();
 	}

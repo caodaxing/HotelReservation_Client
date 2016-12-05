@@ -2,6 +2,7 @@ package logicService.order;
 
 
 import Message.ResultMessage;
+import vo.EvaluationVO;
 
 /**
  * 酒店工作人员执行订单
@@ -30,5 +31,8 @@ public interface ExecuteOrderService {
 	 * @return ResultMessage
 	 */
 	public ResultMessage supplyOrder(String order_id);
+	
+	
+	public ResultMessage evaluate(EvaluationVO evaluation);
 	
 }

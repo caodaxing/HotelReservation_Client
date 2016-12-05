@@ -27,7 +27,7 @@ public class Client implements ClientService{
 		this.clientID = clientID;
 		this.initClientPO();
 		this.clientDao = new ClientDao_Stub();
-		this.clientTrans = new ClientTransform();
+		this.clientTrans = ClientTransform.getInstance();
 	}	
 	
 	//初始化成员变量clientpo

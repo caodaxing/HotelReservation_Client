@@ -17,7 +17,7 @@ public class WebBusiness implements WebBusinessService{
 	
 	public WebBusiness(String webBusinessID) {
 		this.webBusinessID = webBusinessID;
-		this.webBusinessTrans = new WebBusinessTransform();
+		this.webBusinessTrans = WebBusinessTransform.getInstance();
 		
 		webBusinessDao = new WebBusinessDao_Stub();
 		this.initWebBusinessPO();

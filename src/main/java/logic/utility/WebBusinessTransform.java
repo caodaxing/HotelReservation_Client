@@ -4,6 +4,15 @@ import po.WebBusinessPO;
 import vo.WebBusinessVO;
 
 public class WebBusinessTransform {
+	
+	private static WebBusinessTransform webBusinessTransform;
+	
+	public static WebBusinessTransform getInstance() {
+		if(webBusinessTransform == null) {
+			webBusinessTransform = new WebBusinessTransform();
+		}
+		return webBusinessTransform;
+	}
 
 	public WebBusinessPO webBusinessTransToPO(WebBusinessVO vo) {
 		return new WebBusinessPO(vo.userID, vo.trueName,

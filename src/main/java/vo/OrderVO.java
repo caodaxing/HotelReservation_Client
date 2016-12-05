@@ -31,8 +31,45 @@ public class OrderVO {
 	public double afterPrice;
 	public ArrayList<PromotionVO> promotions;
 	
-	public OrderVO(String orderId, String startTime, String endTime,String hotelID, ArrayList<RoomVO> rooms, OrderState orderState,
-			int numOfPeople, boolean hasChild, double beforePrice, double afterPrice, ArrayList<PromotionVO> promotions) {
+	/**
+	 * 生成订单调用时给view层用的构造方法
+	 * @param startTime
+	 * @param endTime
+	 * @param hotelID
+	 * @param rooms
+	 * @param numOfPeople
+	 * @param hasChild
+	 * @param beforePrice
+	 */
+	public OrderVO(String startTime, String endTime,String hotelID, 
+			ArrayList<RoomVO> rooms, int numOfPeople, boolean hasChild, double beforePrice) {
+		this.startTime = startTime;
+		this.rooms = rooms;
+		this.hotelID = hotelID;
+		this.endTime = endTime;
+		this.numOfPeople = numOfPeople;
+		this.hasChild = hasChild;
+		this.beforePrice = beforePrice;
+	}
+	
+	/**
+	 * 获得订单信息，logic层用的构造方法
+	 * @param orderId
+	 * @param startTime
+	 * @param endTime
+	 * @param hotelID
+	 * @param rooms
+	 * @param orderState
+	 * @param numOfPeople
+	 * @param hasChild
+	 * @param beforePrice
+	 * @param afterPrice
+	 * @param promotions
+	 */
+	public OrderVO(String orderId, String startTime, String endTime,String hotelID, 
+			ArrayList<RoomVO> rooms, OrderState orderState,
+			int numOfPeople, boolean hasChild, double beforePrice, 
+			double afterPrice, ArrayList<PromotionVO> promotions) {
 		this.orderId = orderId;
 		this.startTime = startTime;
 		this.rooms = rooms;
@@ -46,7 +83,4 @@ public class OrderVO {
 		this.promotions = promotions;
 	}
 	
-	
-	 
-
 }
