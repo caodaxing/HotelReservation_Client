@@ -52,11 +52,12 @@ public class OrderTransform {
 			return null;
 		}
 	
-		return new OrderVO(order.getOrderID(), order.getStartTime(), order.getEndTime(),
+		return new OrderVO(order.getUesrID(), order.getOrderID(), order.getStartTime(), order.getEndTime(),
 				order.getOrderID(),this.getRooms(order.getHotelId(), 
 				order.getRoomIDs()), OrderState.values()[order.getState()],
 				order.getNumberOfPeople(), order.isHasChild(), order.getBeforePromotionPrice(),
-				order.getAfterPromotionPrice(), this.getPromotions(order.getPromotions()));
+				order.getAfterPromotionPrice(), this.getPromotions(order.getPromotions()),
+				order.getExecutedTime(), order.getAbnormalTime(), order.getUndoAbnormalTime());
 		
 	}
 	
@@ -87,9 +88,9 @@ public class OrderTransform {
 			}
 		}
 		
-		OrderPO po = new OrderPO(vo.orderId, vo.startTime, vo.hotelID, roomIDs, 
+		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.startTime, vo.hotelID, roomIDs, 
 				vo.endTime, vo.rooms.size(), vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
-				vo.beforePrice, vo.afterPrice, promotionIDs);
+				vo.beforePrice, vo.afterPrice, promotionIDs, vo.executedTime, vo.abnormalTime, vo.undoAbnormalTime);
 		return null;
 	}
 	

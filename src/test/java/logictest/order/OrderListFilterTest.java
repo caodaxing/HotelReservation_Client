@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import logic.order.AbnormaledFilter;
+import logic.order.AbnormalFilter;
 import logic.order.ExecutedFilter;
 import logic.order.OrderListFilter;
 import logic.order.UnExecutedFilter;

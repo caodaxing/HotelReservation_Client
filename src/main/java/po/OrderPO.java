@@ -3,6 +3,7 @@ package po;
 import java.util.ArrayList;
 
 /**
+ * @param uesrID 用户id
  * @param orderID 订单号
  * @param startTime 开始时间
  * @param hotelId 酒店id
@@ -15,9 +16,13 @@ import java.util.ArrayList;
  * @param beforePromotionPrice 促销前价格
  * @param afterPromotionPrice 促销后价格
  * @param promotionIDs 该订单使用的促销策略
+ * @param executedTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param undoAbnormalTime 订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param abnormalTime 订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss	
  * @author Mark.W
  */
 public class OrderPO {
+	private String uesrID;
 	private String orderID;
 	private String startTime;
 	private String hotelId;
@@ -30,11 +35,16 @@ public class OrderPO {
 	private double beforePromotionPrice;
 	private double afterPromotionPrice;
 	private ArrayList<String> promotionIDs;
+	private String executedTime; //订单执行的时间
+	private String undoAbnormalTime;	//订单撤销的时间
+	private String abnormalTime;	//订单被置为异常的时间
 
 
-	public OrderPO(String orderID,String startTime,String hotelId, ArrayList<String> roomIDs,
+	public OrderPO(String userID, String orderID,String startTime,String hotelId, ArrayList<String> roomIDs,
 			String endTime,int numberOfRooms,boolean hasChild,int numberOfPeople, int state,
-			double beforePromotionPrice, double afterPromotionPrice, ArrayList<String> promotionIDs) {
+			double beforePromotionPrice, double afterPromotionPrice, ArrayList<String> promotionIDs,
+			String executedTime, String abnormalTime, String undoAbnormalTime) {
+		this.uesrID = userID;
 		this.orderID=orderID;
 		this.startTime=startTime;
 		this.hotelId=hotelId;
@@ -47,7 +57,19 @@ public class OrderPO {
 		this.beforePromotionPrice = beforePromotionPrice;
 		this.afterPromotionPrice = afterPromotionPrice;
 		this.promotionIDs = promotionIDs;
+		this.executedTime = executedTime;
+		this.abnormalTime = abnormalTime;
+		this.undoAbnormalTime = undoAbnormalTime;
 	}
+	
+	public String getUesrID() {
+		return uesrID;
+	}
+
+	public void setUesrID(String uesrID) {
+		this.uesrID = uesrID;
+	}
+
 	
 	public ArrayList<String> getRoomIDs() {
 		return roomIDs;
@@ -144,5 +166,37 @@ public class OrderPO {
 
 	public void setPromotions(ArrayList<String> promotions) {
 		this.promotionIDs = promotions;
+	}
+	
+	public ArrayList<String> getPromotionIDs() {
+		return promotionIDs;
+	}
+
+	public void setPromotionIDs(ArrayList<String> promotionIDs) {
+		this.promotionIDs = promotionIDs;
+	}
+
+	public String getExecutedTime() {
+		return executedTime;
+	}
+
+	public void setExecutedTime(String executedTime) {
+		this.executedTime = executedTime;
+	}
+
+	public String getUndoAbnormalTime() {
+		return undoAbnormalTime;
+	}
+
+	public void setUndoAbnormalTime(String undoAbnormalTime) {
+		this.undoAbnormalTime = undoAbnormalTime;
+	}
+	
+	public String getAbnormalTime() {
+		return abnormalTime;
+	}
+
+	public void setAbnormalTime(String abnormalTime) {
+		this.abnormalTime = abnormalTime;
 	}
 }

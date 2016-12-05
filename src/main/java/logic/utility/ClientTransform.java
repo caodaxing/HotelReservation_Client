@@ -1,7 +1,7 @@
 package logic.utility;
 
 import logic.credit.CreditInfo;
-import logic.credit.MockCreditInfo;
+import logic.mockObject.MockCreditInfo;
 import po.ClientPO;
 import vo.ClientVO;
 

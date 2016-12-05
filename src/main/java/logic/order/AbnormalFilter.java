@@ -10,7 +10,7 @@ import po.OrderPO;
  * @author Mark.W
  *
  */
-public class AbnormaledFilter implements OrderListFilter{
+public class AbnormalFilter implements OrderListFilter{
 
 	@Override
 	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
@@ -19,8 +19,9 @@ public class AbnormaledFilter implements OrderListFilter{
 		OrderPO po = null;
 		
 		for(int i=0; i<orders.size(); ++i) {
-			po = orders.get(i);
-			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
+			po = orders.get(i); 		//有两种已经执行的方式
+			if(po.getState() == OrderState.ABNORMAL.ordinal() || 
+					po.getState() == OrderState.ABNORMAL_UNDO_EXECUTED.ordinal()) {
 				res.add(po);
 			}
 		}

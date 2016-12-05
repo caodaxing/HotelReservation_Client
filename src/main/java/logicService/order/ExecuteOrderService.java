@@ -16,21 +16,29 @@ public interface ExecuteOrderService {
 	 * @param order_id 订单id
 	 * @return ResultMessage
 	 */
-	public ResultMessage normalExecute(String order_id);
+	public ResultMessage normalExecute(String orderID);
 	
 	/**
 	 * 自动设置成异常订单
 	 * @param order_id 订单id
 	 * @return ResultMessage
 	 */
-	public ResultMessage autoSetUnnormal(String order_id);
+	public ResultMessage autoSetAbnormal(String orderID);
 	
 	/**
 	 * 客户在最晚执行订单时间后入住，补登记订单
 	 * @param order_id 订单id
 	 * @return ResultMessage
 	 */
-	public ResultMessage supplyOrder(String order_id);
+	public ResultMessage supplyOrder(String orderID);
+	
+	/**
+	 * 网站营销人员撤销异常订单
+	 * @param orderID 
+	 * @param recoverAllDeletedCredit 恢复全部信用与否
+	 * @return
+	 */
+	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit);
 	
 	
 	public ResultMessage evaluate(EvaluationVO evaluation);

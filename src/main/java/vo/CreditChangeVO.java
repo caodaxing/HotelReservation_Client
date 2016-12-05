@@ -7,7 +7,7 @@ import Message.CreditChangeType;
  * @param time 信用修改时间
  * @param orderID 订单ID
  * @param action 操作类型
- * @param cerditChange 信用变化值
+ * @param cerditChange 信用变化值（包含正负号）
  * @author bcy
  *
  */
@@ -25,8 +25,8 @@ public class CreditChangeVO {
 	 * @param userID
 	 * @param time
 	 * @param orderID
-	 * @param action
-	 * @param cerditChange
+	 * @param action 
+	 * @param cerditChange （包含正负号）
 	 */
 	public CreditChangeVO(String userID , String time , String orderID , 
 			CreditChangeType action , int cerditChange ) {

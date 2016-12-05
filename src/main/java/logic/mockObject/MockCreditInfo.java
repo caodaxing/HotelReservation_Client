@@ -1,4 +1,6 @@
-package logic.credit;
+package logic.mockObject;
+
+import logic.credit.CreditInfo;
 
 public class MockCreditInfo implements CreditInfo{
 
