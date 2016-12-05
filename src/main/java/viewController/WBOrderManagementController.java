@@ -24,7 +24,7 @@ public class WBOrderManagementController {
 		//manageOrderService = new ManageOrder();
 	}
 	
-	public void setView(UnexecuteOrder view){
-		this.unexecuteeOrderUI = view;
+	public void setView(AbnormalOrderList view){
+		this.abnormalOrderListUI = view;
 	}
 }
