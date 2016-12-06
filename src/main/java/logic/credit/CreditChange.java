@@ -3,6 +3,7 @@ package logic.credit;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Message.CreditChangeType;
 import Message.ResultMessage;
 import dataDao.CreditDao;
 import dataDao.stub.CreditDao_Stub;
@@ -48,4 +49,14 @@ public class CreditChange implements CreditChangeService{
 		return historyVOList;
 	}
 	
+	public ResultMessage rechargeCredit(CreditChangeVO vo){
+		Credit credit = new Credit();
+		if(vo == null || vo.userID == null || vo.time == null || vo.action !=CreditChangeType.RECHARGE_CREDIT ){
+			return ResultMessage.FAILURE;
+		}
+		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action.ordinal(), vo.cerditChange, nowCredit);
+		creditDao.changeCredit(po);
+		return ResultMessage.FAILURE;
+	}
 }

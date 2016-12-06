@@ -5,12 +5,15 @@ import java.util.HashMap;
 
 /**
  * @param hoteID 酒店ID
+ * @param hotelName 酒店名称
+ * @param city 城市
  * @param tradingArea 所属商圈
+ * 
  * @param locationOfHotel 酒店地址
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
- * @param pictures 照片
+ * @param picturesPath 照片
  * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
  * @author Mark.W
@@ -18,6 +21,8 @@ import java.util.HashMap;
  */
 public class HotelPO {
 	private String hoteID;
+	private String hotelName;
+	private String city;
 	private String tradingArea;
 	private String locationOfHotel;
 	private int levelOfHotel;
@@ -27,10 +32,12 @@ public class HotelPO {
 	private HashMap<Integer, Integer> emptyRoomNum;
 	private String bussiness;
 
-	public HotelPO(String hoteID,String tradingArea,String locationOfHotel,int levelOfHotel,
-			String introduction, String facilities, ArrayList<String> pictures,
-			HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
+			String locationOfHotel,int levelOfHotel,String introduction, String facilities, 
+			ArrayList<String> pictures,	HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
+		this.hotelName=hotelName;
+		this.city=city;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
@@ -41,6 +48,30 @@ public class HotelPO {
 		this.bussiness = bussiness;
 	}
 	
+	public String getHotelName() {
+		return hotelName;
+	}
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public ArrayList<String> getPicturesPath() {
+		return picturesPath;
+	}
+
+	public void setPicturesPath(ArrayList<String> picturesPath) {
+		this.picturesPath = picturesPath;
+	}
+
 	public String getFacilities() {
 		return facilities;
 	}
