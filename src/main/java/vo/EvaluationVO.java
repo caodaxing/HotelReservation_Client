@@ -5,7 +5,7 @@ import Message.RoomType;
 /**
  * @param hotelID 酒店id
  * @param orderID 订单id
- * @param roomType 房间类型 
+ * @param orderId 房间类型 
  * @param checkInTime 入住时间
  * @param commentLevel 评分
  * @param evaluationContent 评价内容

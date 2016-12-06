@@ -6,7 +6,7 @@ import Message.OrderState;
 
 /**
  * @param userID 用户id
- * @param orderId 订单id
+ * @param roomType 订单id
  * @param startTime  订单开始时间
  * @param endTime  结束时间
  * @param hotelID 酒店id

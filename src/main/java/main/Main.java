@@ -3,8 +3,8 @@ package main;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.right.webBusiness.orderManagement.AbnormalOrderList;
-import viewController.WBOrderManagementController;
+import view.right.vistor.SearchResultList;
+import viewController.VistorController;
 
 public class Main extends Application{
 	
@@ -15,8 +15,8 @@ public class Main extends Application{
 //		
 //		Scene scene = executeOrder.getScene();
 		
-		AbnormalOrderList abnormalOrderList = new AbnormalOrderList(new WBOrderManagementController());
-		Scene scene = abnormalOrderList.getScene();
+		SearchResultList roomList = new SearchResultList(new VistorController());
+		Scene scene = roomList.getScene();
 		stage.setScene(scene);
 		stage.show();
 		

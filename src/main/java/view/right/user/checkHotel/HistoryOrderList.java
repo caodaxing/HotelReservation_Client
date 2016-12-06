@@ -2,17 +2,25 @@ package view.right.user.checkHotel;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
+import view.right.user.checkHotel.RoomList.Person;
 import viewController.UserCheckHotelController;
 
 /**
@@ -34,9 +42,19 @@ public class HistoryOrderList {
 	
 	Button revert;
 	
-	Button check;
+	TableView<Person> tableView;
 	
-	ScrollBar scroller;
+	TableColumn<Person, String> orderId;
+	TableColumn<Person, String> roomType;
+	TableColumn<Person, String> orderState;
+	TableColumn<Person, Button> operation;
+	
+	Button button1 = new Button("查看");
+	Button button2 = new Button("查看");
+	
+	private final ObservableList<Person> data = FXCollections.observableArrayList(
+			new Person("1111", "1111", "1111", button1),
+			new Person("2222", "2222", "2222", button2));
 	
 	public HistoryOrderList(UserCheckHotelController controller){
 		
@@ -51,11 +69,8 @@ public class HistoryOrderList {
 		//添加返回按钮
 		setRevertButton();
 		
-		//添加查看按钮
-		setCheckButton();
-				
-		//设置滚动条
-		setScroller();
+		//设置列表
+		setList();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -97,47 +112,91 @@ public class HistoryOrderList {
 	
 	}
 	
-	private void setCheckButton(){
+	private void setList(){
 		
-		//添加查看按钮
-		check = new Button("查看");
-		check.setPrefSize(100, 30);
-
-		//设置按钮监听
-		check.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+		//创建列表对象
+		tableView = new TableView<Person>();
+		tableView.setEditable(false);
+		
+		//添加列表内容
 				
-			}
-			
-		});
+		//添加列
+		orderId = new TableColumn<>("订单号");
+		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderId"));
+		orderId.setMinWidth(125);
 		
-		//添加组件
-		rightPane.getChildren().add(check);
+		roomType = new TableColumn<>("房间类型");
+		roomType.setCellValueFactory(new PropertyValueFactory<Person, String>("roomType"));
+		roomType.setMinWidth(125);
 		
-		AnchorPane.setLeftAnchor(check, 435.0);
-		AnchorPane.setTopAnchor(check, 200.0);
-	
+		orderState = new TableColumn<>("订单状态");
+		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderState"));
+		orderState.setMinWidth(125);
+		
+		operation= new TableColumn<>("操作");
+		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setMinWidth(125);
+		
+		tableView.setItems(data);
+		tableView.getColumns().addAll(orderId, roomType, orderState, operation);
+		
+		//设置列表位置
+		rightPane.getChildren().add(tableView);
+		
+		AnchorPane.setLeftAnchor(tableView, 50.0);
+		
+		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
-	private void setScroller(){
+	/**
+	 * 异常订单列表的内部数据类
+	 */
+	public static class Person{
+		private final SimpleStringProperty orderId;
+		private final SimpleStringProperty roomType;
+		private final SimpleStringProperty orderState;
+		private final SimpleObjectProperty<Object> operation;
 		
-		//设置滚动条
-		scroller = new ScrollBar();
-		scroller.setLayoutX(775);
-		scroller.setLayoutY(140);
-		scroller.setPrefHeight(400);
-		scroller.setOrientation(Orientation.VERTICAL);
-		scroller.setUnitIncrement(10.0);
-		scroller.setBlockIncrement(5.0);
+		private Person(String orderId, String roomType, String orderState, Button operation){
+			
+			this.orderId = new SimpleStringProperty(orderId);
+			this.roomType = new SimpleStringProperty(roomType);
+			this.orderState = new SimpleStringProperty(orderState);
+			this.operation =  new SimpleObjectProperty<Object>(operation);
+			
+		}
 		
-		//添加组件
-		rightPane.getChildren().add(scroller);
+		public String getOrderId(){
+			return orderId.get();
+		}
 		
-		AnchorPane.setLeftAnchor(scroller, 575.0);
-		AnchorPane.setTopAnchor(scroller, 140.0);
+		public void setOrderId(String OrderId){
+			orderId.set(OrderId);
+		}
+		
+		public String getRoomType(){
+			return roomType.get();
+		}
+		
+		public void setRoomType(String RoomType){
+			roomType.set(RoomType);
+		}
+		
+		public String getOrderState(){
+			return orderState.get();
+		}
+		
+		public void setOrderState(String OrderState){
+			orderState.set(OrderState);
+		}
+		
+		public Button getOperation(){
+			return (Button)operation.get();
+		}
+		
+		public void setOperation(Object Operation){
+			operation.set(Operation);
+		}
 		
 	}
 	

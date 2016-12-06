@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * @param hotelId
  * @param roomId
- * @param roomType
+ * @param orderId
  * @param price 小数点保留两位
  * @param isEmpty
  * @param pictures

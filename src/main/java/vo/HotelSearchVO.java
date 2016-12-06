@@ -5,7 +5,7 @@ package vo;
  * @param city 酒店地址
  * @param tradingArea 酒店所属商圈
  * @param hotelName 酒店名称
- * @param roomType 房间类型
+ * @param orderId 房间类型
  * @param priceLow 酒店价格最低值
  * @param priceHigh 酒店价格最高值
  * @param commentLow 酒店评分最低值
