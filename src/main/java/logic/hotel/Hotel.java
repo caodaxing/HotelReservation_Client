@@ -3,6 +3,8 @@ package logic.hotel;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
+import dataDao.HotelDao;
+import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;
 import logic.promotion.Promotion;
 import logic.room.Room;
@@ -19,6 +21,7 @@ import vo.RoomVO;
 public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	
 	private String hotelID;
+	private HotelDao hotelDao;
 	private ArrayList<Room> rooms;
 	private Promotion hotelPromotion;
 	private ArrayList<Order> hotelOrders;
@@ -64,6 +67,8 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 */
 	public ArrayList<EvaluationVO> getHotelInfo (String hotel_id){
 		//获取酒店所属订单后，由订单获取评价
+		hotelDao = new HotelDao_Stub();
+		hotelDao.getHotelInfoByHotelID(hotel_id);
 		return null;
 		
 	}
