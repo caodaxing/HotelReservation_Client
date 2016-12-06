@@ -11,7 +11,9 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChangeInfo;
 import logic.mockObject.MockCreditChangeInfo;
+import logic.utility.EvaluationTransform;
 import logicService.order.ExecuteOrderService;
+import po.EvaluationPO;
 import po.OrderPO;
 import vo.CreditChangeVO;
 import vo.EvaluationVO;
@@ -25,6 +27,8 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	private OrderDao orderDao;
 	private CreditChangeInfo creditChangeInfo;
+	private OrderList orderList;  //每次执行订单必须获得订单列表，
+								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
 	
 	
 	public ExecuteOrder() {
@@ -38,12 +42,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po != null) {
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
-				po.setState(OrderState.EXECUTED.ordinal());
-				
 				Date date=new Date();
 				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				String executedTime=format.format(date);
 				
+				po.setState(OrderState.EXECUTED.ordinal());
 				po.setExecutedTime(executedTime);
 				
 				if(this.orderDao.updateOrder(po)) {
@@ -104,18 +107,54 @@ public class ExecuteOrder implements ExecuteOrderService{
 		return ResultMessage.FAILURE;
 	}
 	
+	
 	@Override
+	public ResultMessage supplyOrder(String orderID) {
+		
+		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		
+		if(po !=  null) {
+			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
+				Date date=new Date();
+				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				String executedTime =format.format(date);
+				
+				po.setState(OrderState.EXECUTED.ordinal());
+				po.setExecutedTime(executedTime);
+				
+				if(this.orderDao.updateOrder(po)) {
+					//更新信用记录和信用值
+					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
+							po.getUesrID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
+					
+					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
+						return ResultMessage.SUCCESS;
+						
+					} else {
+						po.setState(OrderState.ABNORMAL.ordinal());
+						po.setExecutedTime(null);
+						this.orderDao.updateOrder(po);
+					}
+					
+				}
+			}
+		}
+		
+		return ResultMessage.FAILURE;
+	}
+
+	
+	// 撤销异常订单
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {
 		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
 		
 		if(po != null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
-				po.setState(OrderState.ABNORMAL_UNDO_EXECUTED.ordinal());
-				
 				Date date=new Date();
 				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				String undoAbnormalTime =format.format(date);
 				
+				po.setState(OrderState.UNDOED.ordinal());
 				po.setUndoAbnormalTime(undoAbnormalTime);
 				
 				if(this.orderDao.updateOrder(po)) {
@@ -146,17 +185,6 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		return ResultMessage.FAILURE;
 	}
-	
-
-	@Override
-	public ResultMessage supplyOrder(String orderID) {
-		return null;
-	}
-
-	@Override
-	public ResultMessage evaluate(EvaluationVO evaluation) {
 		
-		return null;
-	}
-
+	
 }

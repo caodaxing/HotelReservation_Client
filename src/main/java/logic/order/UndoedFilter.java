@@ -14,6 +14,10 @@ public class UndoedFilter implements OrderListFilter{
 
 	@Override
 	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
+		if(orders == null) {
+			return null;
+		}
+		
 		ArrayList<OrderPO> res = new ArrayList<OrderPO>();
 		OrderPO po = null;
 		

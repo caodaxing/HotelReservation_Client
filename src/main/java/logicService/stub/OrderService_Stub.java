@@ -89,5 +89,11 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	public ResultMessage supplyOrder(String order_id) {
 		return ResultMessage.FAILURE;
 	}
+
+	@Override
+	public ResultMessage evaluate(EvaluationVO evaluation) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

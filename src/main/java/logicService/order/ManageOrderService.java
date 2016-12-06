@@ -11,10 +11,10 @@ import vo.OrderVO;
  */
 public interface ManageOrderService {
 	
-	public ResultMessage undoUnnormalOrder(String orderID, boolean recoverAllCredit);
+	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllCredit);
 	
-	public ArrayList<OrderVO> getDailyUnexecutedOrderList();
+	public ArrayList<OrderVO> getWebDailyUnexecutedOrderList();
 	
-	public ArrayList<OrderVO> getDailyAbnormalOrderList();
+	public ArrayList<OrderVO> getWebDailyAbnormalOrderList();
 	
 }

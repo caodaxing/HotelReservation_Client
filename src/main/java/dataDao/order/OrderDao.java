@@ -11,11 +11,13 @@ public interface OrderDao {
 	
 	public boolean updateOrder(OrderPO orderPO);
 	
+	
 	public OrderPO getOrderByOrderID(String orderID);
+	
 	
 	public boolean addEvalution(EvaluationPO po);
 	
-	public EvaluationPO getEvaluationByOrderID(String order_id);
+	public EvaluationPO getEvaluationByOrderID(String orderID);
 	
 	public ArrayList<EvaluationPO> getEvaluationByHotelID(String hotelID);
 	

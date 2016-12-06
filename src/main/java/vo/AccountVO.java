@@ -4,7 +4,7 @@ import Message.Identity;
 
 /**
  * 账户的VO类
- * @param remainedNum 用户Id
+ * @param userId 用户Id
  * @param password 密码
  * @param confirmedPassword 确认的密码
  * @param identity 用户身份

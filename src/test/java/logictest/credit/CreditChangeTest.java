@@ -37,7 +37,7 @@ public class CreditChangeTest {
 	public void testChangeCredit3(){
 		assertEquals(ResultMessage.SUCCESS, change.changeCredit
 				(new CreditChangeVO("123", "2016-12-03 12:34:00", "20161203000213", 
-						CreditChangeType.UNDO_ORDER_DECREASE, -100)));
+						CreditChangeType.UNDO_ABNORAML_ORDER_RECOVER, -100)));
 	}
 	
 }

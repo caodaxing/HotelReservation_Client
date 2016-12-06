@@ -15,13 +15,16 @@ public class AbnormalFilter implements OrderListFilter{
 	@Override
 	public ArrayList<OrderPO> filterList(ArrayList<OrderPO> orders) {
 
+		if(orders == null) {
+			return null;
+		}
+		
 		ArrayList<OrderPO> res = new ArrayList<OrderPO>();
 		OrderPO po = null;
 		
 		for(int i=0; i<orders.size(); ++i) {
 			po = orders.get(i); 		//有两种已经执行的方式
-			if(po.getState() == OrderState.ABNORMAL.ordinal() || 
-					po.getState() == OrderState.ABNORMAL_UNDO_EXECUTED.ordinal()) {
+			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
 				res.add(po);
 			}
 		}

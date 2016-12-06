@@ -38,9 +38,5 @@ public interface ExecuteOrderService {
 	 * @param recoverAllDeletedCredit 恢复全部信用与否
 	 * @return
 	 */
-	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit);
-	
-	
-	public ResultMessage evaluate(EvaluationVO evaluation);
 	
 }

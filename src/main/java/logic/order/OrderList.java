@@ -1,6 +1,9 @@
 package logic.order;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Message.OrderListCondition;
 import dataDao.order.OrderListDao;
@@ -40,9 +43,8 @@ public class OrderList implements OrderListService{
 		}
 		
 		this.orders = this.orderListDao.getOrderListByUserId(userID);
-		this.orderListFilter = this.factory.createFilter(condition);
 		
-		return this.orderTrans.orderListTransToVO(this.orderListFilter.filterList(orders));
+		return this.filterList(condition);
 	}
 
 	
@@ -56,9 +58,8 @@ public class OrderList implements OrderListService{
 		}
 		
 		this.orders = this.orderListDao.getOrderListByHotelID(hotelID);
-		this.orderListFilter = this.factory.createFilter(condition);
 		
-		return  this.orderTrans.orderListTransToVO(this.orderListFilter.filterList(orders));
+		return this.filterList(condition);
 	}
 
 	//获取预订过的酒店的历史订单列表
@@ -87,6 +88,46 @@ public class OrderList implements OrderListService{
 		return this.orderTrans.orderListTransToVO(res);
 	}
 	
+	
+	/**
+	 * ManagerOrder.getDailyUnexecutedOrderList和getDailyAbnormalOrderList
+	 * 方法的实现在这里方法的实现在这里
+	 * @return
+	 */
+	public ArrayList<OrderVO> filterWebDailyOrderList(OrderListCondition condition) {
+		
+		this.getAllWebDailyOrders(); //拿到web当天的所有订单
+		
+		return this.filterList(condition);
+	}
+	
+	//确定ArrayList<OrderPO>后，筛选订单的方法，为了避免代码重复，所以建立一个私有方法被调用
+	private ArrayList<OrderVO> filterList(OrderListCondition condition) {
+		
+		this.orderListFilter = this.factory.createFilter(condition);
+		
+		ArrayList<OrderPO> pos = this.orderListFilter.filterList(orders);
+		
+		return this.orderTrans.orderListTransToVO(pos);
+	}
+	
+	//获取网站当天所有订单
+	private void getAllWebDailyOrders() {
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyyMMdd");
+		String time =format.format(date);
+		
+		this.orders = this.orderListDao.getAllDailyOrders(time);
+	}
+	
+	public ArrayList<OrderPO> getOrders() {
+		return orders;
+	}
+
+
+	public void setOrders(ArrayList<OrderPO> orders) {
+		this.orders = orders;
+	}
 	
 	
 }

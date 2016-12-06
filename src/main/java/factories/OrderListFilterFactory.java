@@ -2,6 +2,7 @@ package factories;
 
 import Message.OrderListCondition;
 import logic.order.AbnormalFilter;
+import logic.order.AllOrdersFilter;
 import logic.order.ExecutedFilter;
 import logic.order.OrderListFilter;
 import logic.order.UnExecutedFilter;
@@ -32,6 +33,9 @@ public class OrderListFilterFactory {
 			break;
 		case ABNORMALED :
 			filter = new AbnormalFilter();
+			break;
+		case ALL_ORDERS :
+			filter = new AllOrdersFilter();
 			break;
 		default:
 			System.out.println("factories.OrderListFactory.createFilter参数异常");

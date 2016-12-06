@@ -1,11 +1,13 @@
 package logic.order;
 
-import java.util.ArrayList;
-
-import Message.CreditChangeType;
 import Message.ResultMessage;
-import logic.credit.CreditInfo;
+import dataDao.order.OrderDao;
+import dataDao.stub.OrderDao_Stub;
+import logic.utility.EvaluationTransform;
+import logic.utility.OrderTransform;
 import logicService.order.OrderService;
+import po.EvaluationPO;
+import po.OrderPO;
 import vo.EvaluationVO;
 import vo.OrderVO;
 
@@ -16,83 +18,54 @@ import vo.OrderVO;
  */
 public class Order implements OrderService{
 	
-	CreateOrder createOrder;
-	CreditInfo credit;
+	private String orderID;
+	private OrderDao orderDao;
+	private OrderPO orderPO;
+	private EvaluationTransform evaluationTrans;
+	private OrderTransform orderTrans;
 	
-	public Order(){}
-	
-	public EvaluationVO getEvaluationInfo(String orderId){
-		return null;
+	public Order(String orderID) {
+		this.orderID = orderID;
+		this.evaluationTrans = new EvaluationTransform();
+		this.orderTrans = new OrderTransform();
+		this.orderDao = new OrderDao_Stub();
+		this.initOrderPO();
+	}
+
+	private void initOrderPO() {
+		this.orderPO = this.orderDao.getOrderByOrderID(this.orderID);
+	}
+
+	@Override
+	public EvaluationVO getEvaluationInfo(String orderID) {
+		EvaluationPO po = this.orderDao.getEvaluationByOrderID(orderID);
+		return this.evaluationTrans.evalutionTransToVO(po);
+	}
+
+	@Override
+	public OrderVO getOrderInfo(String orderID) {
+		if(this.orderPO != null && this.orderPO.getOrderID() == orderID) {
+			return this.orderTrans.orderTransToVO(this.orderPO);
+		}
+		
+		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		return this.orderTrans.orderTransToVO(po);
+		
 	}
 	
-	public ResultMessage evaluate(String orderId){
-		return null;
+	@Override
+	public ResultMessage evaluate(EvaluationVO evaluation) {
+		
+		if(evaluation != null) {
+			EvaluationPO po = this.evaluationTrans.evalutionTransToPO(evaluation);
+			if(this.orderDao.addEvalution(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		}
+		
+		return ResultMessage.FAILURE;
 	}
-	
-	/**
-	 * 撤销订单 
-	 * @param order_id 订单id
-	 * @return ResultMessage
-	 */
-	public ResultMessage undoOrder(String order_id){
-		return ResultMessage.SUCCESS;
-	}
-	
-	/**
-	 * 获取订单信息 
-	 * @param order_id 订单id
-	 * @return ordervo
-	 */
-	public OrderVO getOrderInfo(String order_id){
-		return null;
-	}
-	
-	/**
-	 * 得到评价
-	 * @param order_id 订单id
-	 * @return 评价String类
-	 */
-	public String getEvaluation(String order_id){
-		return null;
-	}
-	
-	/**
-	 * 判断是否可以下订单
-	 * @param user_id 用户id
-	 * @return ResultMessage
-	 */
-	public ResultMessage judgeCredit(String user_id){
-		credit.getCredit(user_id);
-		return ResultMessage.SUCCESS;
-	}
-	
-	/**
-	 * 改变信用值
-	 * @param order_id 订单id
-	 * @return ResultMessage
-	 */
-	public ResultMessage changeCredit(String user_id, CreditChangeType change, int number){
-		return ResultMessage.SUCCESS;
-	}
-	
-	/**
-	 * 获得指定用户的所有订单
-	 * @param user_id 用户id
-	 * @return ResultMessage
-	 */
-	public ArrayList<Order> getOrderList(String user_id){
-		return null;
-	}
-	
-	/**
-	 * 生成订单
-	 * @param ordervo
-	 * @return ordervo
-	 */
-	public OrderVO createOrder(OrderVO order){
-		return createOrder.createOrder(order);
-	}
-	
+
 }
 
 

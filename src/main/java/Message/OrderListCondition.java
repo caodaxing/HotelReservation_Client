@@ -5,6 +5,5 @@ public enum OrderListCondition {
 	UNDOED, 
 	UNEXECUTED, 
 	EXECUTED, 
-	ABNORMALED,
-	SPECIFIC_USER_HOTEL;
+	ABNORMALED
 }

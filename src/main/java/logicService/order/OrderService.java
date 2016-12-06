@@ -7,13 +7,12 @@ import vo.OrderVO;
 
 public interface OrderService {
 	
-	public EvaluationVO getEvaluationInfo(String orderId);
-	
-	public ResultMessage evaluate(String orderId);
+	public EvaluationVO getEvaluationInfo(String orderID);
 
-	public ResultMessage undoOrder(String order_id);
+	public OrderVO getOrderInfo(String orderID);
 	
-	public OrderVO getOrderInfo(String order_id);
+	public ResultMessage evaluate(EvaluationVO evaluation);
+	
 	
 }
 
