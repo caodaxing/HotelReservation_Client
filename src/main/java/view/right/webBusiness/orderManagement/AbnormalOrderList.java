@@ -37,10 +37,11 @@ public class AbnormalOrderList {
 	TableColumn<Person, String> lastExecuteTime;
 	TableColumn<Person, Button> operation;
 	
-	Button button = new Button("查看");
-	private final ObservableList<Person> data =
-			FXCollections.observableArrayList(
-					new Person("jjjj", "jjj", "jjjj", "jjjj", button));
+	Button button1 = new Button("查看");
+	Button button2 = new Button("查看");
+	private final ObservableList<Person> data = FXCollections.observableArrayList(
+			new Person("1111", "1111", "1111", "1111", button1),
+			new Person("2222", "2222", "2222", "2222", button2));
 	
 	public AbnormalOrderList(WBOrderManagementController controller){
 		
@@ -70,11 +71,10 @@ public class AbnormalOrderList {
 		tableView.setEditable(false);
 		
 		//添加列表内容
-		
 				
 		//添加列
 		orderId = new TableColumn<>("订单号");
-		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("ORDERID"));
+		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
 		orderId.setMinWidth(100);
 		
 		hotel = new TableColumn<>("酒店");
@@ -108,28 +108,28 @@ public class AbnormalOrderList {
 	 * 异常订单列表的内部数据类
 	 */
 	public static class Person{
-		private final SimpleStringProperty ORDERID;
+		private final SimpleStringProperty orderId;
 		private final SimpleStringProperty hotel;
 		private final SimpleStringProperty userid;
 		private final SimpleStringProperty lastexecutetime;
 		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String orderId, String hotel, String userId, String lastExecuteTime, Button operation){
+		private Person(String ORDERID, String hotel, String userid, String lastexecutetime, Button operation){
 			
-			this.ORDERID = new SimpleStringProperty(orderId);
+			this.orderId = new SimpleStringProperty(ORDERID);
 			this.hotel = new SimpleStringProperty(hotel);
-			this.userid = new SimpleStringProperty(userId);
-			this.lastexecutetime =  new SimpleStringProperty(lastExecuteTime);
+			this.userid = new SimpleStringProperty(userid);
+			this.lastexecutetime =  new SimpleStringProperty(lastexecutetime);
 			this.operation =  new SimpleObjectProperty<Object>(operation);
 			
 		}
 		
-		public String getOrderId(){
-			return ORDERID.get();
+		public String getOrderid(){
+			return orderId.get();
 		}
 		
-		public void setOrderId(String orderId){
-			ORDERID.set(orderId);
+		public void setOrderId(String Orderid){
+			orderId.set(Orderid);
 		}
 		
 		public String getHotel(){
@@ -140,7 +140,7 @@ public class AbnormalOrderList {
 			hotel.set(Hotel);
 		}
 		
-		public String getUserId(){
+		public String getUserid(){
 			return userid.get();
 		}
 		
@@ -148,7 +148,7 @@ public class AbnormalOrderList {
 			userid.set(userId);
 		}
 		
-		public String getLastExecuteTime(){
+		public String getLastexecutetime(){
 			return lastexecutetime.get();
 		}
 		
@@ -156,8 +156,8 @@ public class AbnormalOrderList {
 			lastexecutetime.set(LastExecuteTime);
 		}
 		
-		public Object getOperation(){
-			return operation.getBean();
+		public Button getOperation(){
+			return (Button)operation.get();
 		}
 		
 		public void setOperation(Object Operation){
