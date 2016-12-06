@@ -1,18 +1,24 @@
 package viewController;
 
+import java.util.ArrayList;
+
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.credit.CreditChange;
 import logicService.credit.CreditChangeService;
-import logicService.credit.CreditService;
+import logicService.stub.ClientService_Stub;
 import logicService.stub.CreditChangeService_Stub;
 import logicService.user.ClientService;
 import view.right.user.myInfo.CheckMyInfo;
 import view.right.user.myInfo.HistoryCredit;
 import view.right.user.myInfo.ModifyMyInfo;
+import vo.ClientVO;
+import vo.CreditChangeVO;
 
 public class UserMyInfoController {
 
 	private Stage stage ;
+	private String userID;
 	
 	//逻辑层接口
 	private CreditChangeService creditChangeService ;
@@ -23,18 +29,20 @@ public class UserMyInfoController {
 	private HistoryCredit historyCreditUI ;
 	private ModifyMyInfo modifyMyInfoUI ;
 	
-	public UserMyInfoController(Stage stage){		
+	public UserMyInfoController(Stage stage , String userID){		
 		
 		this.stage = stage ;
+		this.userID = userID;
 
-		creditChangeService = new CreditChangeService_Stub("12345");
-		
+		creditChangeService = new CreditChangeService_Stub(userID);
+		clientService = new ClientService_Stub(userID);
 		
 		checkMyInfoUI = new CheckMyInfo(this);
 		historyCreditUI = new HistoryCredit(this);
 		modifyMyInfoUI = new ModifyMyInfo(this);
 		
 	}
+	/*
 	
 	public void setView(int viewIndex){
 		
@@ -50,23 +58,41 @@ public class UserMyInfoController {
 			break;
 		}
 		
-	}
+	}*/
 	
-	private void setCheckMyInfoView(){
+	public void setCheckMyInfoView(){
 		
 		stage.setScene(checkMyInfoUI.getScene());
 		
 	}
 	
-	private void setHistoryCreditView(){
+	public void setHistoryCreditView(){
 		
 		stage.setScene(historyCreditUI.getScene());
 		
 	}
 	
-	private void setModifyMyInfoView(){
+	public void setModifyMyInfoView(){
 		
 		stage.setScene(modifyMyInfoUI.getScene());
+		
+	}
+	
+	private ClientVO getClientInfo(){
+		
+		return clientService.getClientInfo(userID);
+		
+	}
+	
+	private ResultMessage updateClientInfo(ClientVO clientInfo){
+		
+		return clientService.updateClientInfo(clientInfo);
+		
+	}
+	
+	private ArrayList<CreditChangeVO> getHistoryCredit(){
+		
+		return creditChangeService.getCreditHistory(userID);
 		
 	}
 	

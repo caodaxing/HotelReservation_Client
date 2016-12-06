@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
+import viewController.UserCheckHotelController;
 
 /**
  * 客户界面_查看酒店_生成订单成功反馈
@@ -19,7 +19,7 @@ import viewController.UserMyOrderController;
  */
 public class SuccessOrder {
 
-	private UserMyOrderController controller;
+	private UserCheckHotelController controller;
 	
 	private Scene scene ;
 	
@@ -41,7 +41,7 @@ public class SuccessOrder {
 	
 	Button confirm ;
 	
-	public SuccessOrder(UserMyOrderController controller){
+	public SuccessOrder(UserCheckHotelController controller){
 		
 		this.controller = controller;
 		

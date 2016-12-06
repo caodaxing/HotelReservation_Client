@@ -13,8 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
-
+import viewController.UserCheckHotelController;
 /**
  * 客户界面_查看酒店_搜索酒店
  * @author XueWang
@@ -22,7 +21,7 @@ import viewController.UserMyOrderController;
  */
 public class SearchHotel {
 
-	private UserMyOrderController controller;
+	private UserCheckHotelController controller;
 	
 	private Scene scene ;
 	
@@ -51,7 +50,7 @@ public class SearchHotel {
 	Button search ;
 	Button back ;
 	
-	public SearchHotel(UserMyOrderController controller){
+	public SearchHotel(UserCheckHotelController controller){
 		
 		this.controller = controller;
 		

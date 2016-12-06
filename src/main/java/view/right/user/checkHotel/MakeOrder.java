@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
+import viewController.UserCheckHotelController;
 
 /**
  * 客户界面_查看酒店_生成订单
@@ -19,7 +19,7 @@ import viewController.UserMyOrderController;
  */
 public class MakeOrder {
 
-	private UserMyOrderController controller;
+	private UserCheckHotelController controller;
 	
 	private Scene scene ;
 	
@@ -40,7 +40,7 @@ public class MakeOrder {
 	Button makeOrder ;
 	Button back ;
 	
-	public MakeOrder(UserMyOrderController controller){
+	public MakeOrder(UserCheckHotelController controller){
 		
 		this.controller = controller;
 		
