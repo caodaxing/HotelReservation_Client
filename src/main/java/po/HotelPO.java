@@ -8,8 +8,9 @@ import java.util.HashMap;
  * @param hotelName 酒店名称
  * @param city 城市
  * @param tradingArea 所属商圈
- * 
  * @param locationOfHotel 酒店地址
+ * 
+ * @param evaluationGrades 评价等级
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
@@ -20,11 +21,20 @@ import java.util.HashMap;
  *
  */
 public class HotelPO {
+	public double getEvaluationGrades() {
+		return evaluationGrades;
+	}
+
+	public void setEvaluationGrades(double evaluationGrades) {
+		this.evaluationGrades = evaluationGrades;
+	}
+
 	private String hoteID;
 	private String hotelName;
 	private String city;
 	private String tradingArea;
 	private String locationOfHotel;
+	public double evaluationGrades;
 	private int levelOfHotel;
 	private String introduction;
 	private String facilities;

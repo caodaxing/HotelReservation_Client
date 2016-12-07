@@ -22,9 +22,11 @@ public class PriceSort {
 			return null;
 		}
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
-		ArrayList<HotelVO> temp = new ArrayList<>();
-		for (HotelVO hotelVO : temp) {
+		//获取符合排序条件的酒店列表
+		ArrayList<HotelVO> hotelList = new ArrayList<>();
+		for (HotelVO hotelVO : hotelList) {
 		}
+
 		return null;
 	}
 }

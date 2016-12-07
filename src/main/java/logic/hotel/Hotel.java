@@ -7,12 +7,12 @@ import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.mockObject.MockOrderEvaluationInfo;
 import logic.mockObject.MockPromotionInfo;
-import logic.order.Order;
-import logic.promotion.Promotion;
-import logic.room.Room;
-import logic.room.GetRoomInfo;
+import logic.mockObject.MockUpdateRoomInfo;
+import logic.order.OrderEvaluationInfo;
+import logic.room.UpdateRoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
+import logicService.hotel.UpdateHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.PromotionVO;
@@ -23,25 +23,18 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
+public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom,UpdateHotelService{
 	
-	private String hotelID;
 	private HotelDao hotelDao;
-	private ArrayList<Room> rooms;
-	private Promotion hotelPromotion;
-	private ArrayList<Order> hotelOrders;
+	private UpdateRoomInfo updateRoomInfo;
+	private MockPromotionInfo promotionInfo;
+	private OrderEvaluationInfo evaluationInfo;
 	
-	public Hotel(String hotelID){
-		this.hotelID = hotelID;
-	}
-	
-	/**
-	 * 以酒店促销策略构造酒店
-	 * @param hotelPromotion 酒店促销策略
-	 * @author Mark.W
-	 */
-	public Hotel(Promotion hotelPromotion) {
-		this.hotelPromotion = hotelPromotion;
+	public Hotel(){
+		this.hotelDao = new HotelDao_Stub();
+		this.updateRoomInfo = new MockUpdateRoomInfo();
+		this.promotionInfo = new MockPromotionInfo();
+		this.evaluationInfo = new MockOrderEvaluationInfo();
 	}
 	
 	/**
@@ -54,8 +47,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 		if (roomVO!=null || roomVO.hotelId!=null || roomVO.roomId!=null) {
 			return null;
 		}
-		GetRoomInfo roomInfo = new Room();
-		return roomInfo.updateRoomInfo(roomVO);
+		return updateRoomInfo.updateRoomInfo(roomVO);
 	}
 	
 	/**
@@ -68,7 +60,6 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 		if (hotelVO!=null || hotelVO.hoteID!=null ) {
 			return null;
 		}
-		hotelDao = new HotelDao_Stub();
 		if(hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))){
 			return ResultMessage.SUCCESS;
 		}else {
@@ -83,7 +74,6 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public PromotionVO getPromotion(String hotel_id){
-		MockPromotionInfo promotionInfo = new MockPromotionInfo();
 		return promotionInfo.getPromotion(hotel_id);
 	}
 
@@ -94,7 +84,6 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public HotelVO getHotelnfo(String hotel_id) {
-		hotelDao = new HotelDao_Stub();
 		return HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotel_id));
 	}
 
@@ -105,7 +94,6 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
-		MockOrderEvaluationInfo evaluationInfo = new MockOrderEvaluationInfo();
 		return evaluationInfo.getHotelEvaluations(hotelId);
 	}
 }

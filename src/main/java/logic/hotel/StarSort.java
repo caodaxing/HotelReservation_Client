@@ -18,16 +18,35 @@ public class StarSort {
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getSortedList(double starStar,double endStar,ArrayList<HotelVO> hotels){
-		if (hotels==null || starStar>=endStar) {
+		if (hotels==null || starStar>endStar) {
 			return null;
 		}
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
-		ArrayList<HotelVO> temp = new ArrayList<>();
-		for (HotelVO hotelVO : temp) {
+		//获取符合排序条件的酒店列表
+		ArrayList<HotelVO> hotelList = new ArrayList<>();
+		for (HotelVO hotelVO : hotelList) {
 			if (hotelVO.levelOfHotel>=starStar&&hotelVO.levelOfHotel<=endStar) {
-				temp.add(hotelVO);
+				hotelList.add(hotelVO);
 			}
 		}
-		return null;
+		//对符合排序条件的酒店进行排序
+		HotelVO[] hotelArray = new HotelVO[hotelList.size()];
+		for (int i = 0; i < hotelList.size(); i++) {
+			hotelArray[i] = hotelList.get(i);
+		}
+		for (int i = hotelArray.length - 1; i > 0; --i){
+			for (int j = 0; j < i; ++j){
+				if (hotelArray[j].levelOfHotel<=hotelArray[j+1].levelOfHotel) {
+					HotelVO temp = hotelArray[j];
+					hotelArray[j] = hotelArray[j+1];
+					hotelArray[j+1] = temp;
+				}
+			}
+		}
+		
+		for (HotelVO hotelVO : hotelArray) {
+			sortedHotels.add(hotelVO);
+		}
+		return sortedHotels;
 	}
 }
