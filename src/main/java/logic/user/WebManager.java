@@ -69,8 +69,9 @@ public class WebManager implements WebManagerService {
 	
 	public ResultMessage addHotel(HotelVO hotelVO){
 		if(hotelVO != null) {
-			HotelPO po = new HotelPO(hotelVO.hoteID, hotelVO.tradingArea, hotelVO.locationOfHotel,hotelVO.levelOfHotel, 
-					hotelVO.introduction, hotelVO.facilities, hotelVO.picturesPath, hotelVO.emptyRoomNum, hotelVO.bussiness);	
+			HotelPO po = new HotelPO(hotelVO.hoteID, hotelVO.hotelName, hotelVO.city, hotelVO.tradingArea, 
+					hotelVO.locationOfHotel, hotelVO.levelOfHotel, hotelVO.introduction, hotelVO.facilities, 
+					hotelVO.picturesPath, hotelVO.emptyRoomNum, hotelVO.bussiness);	
 			if(this.webManagerDao.addHotel(po)) {
 				return ResultMessage.SUCCESS;
 			}

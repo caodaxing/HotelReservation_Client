@@ -16,7 +16,7 @@ import vo.RoomVO;
  * @author d
  *
  */
-public class Room implements RoomService{
+public class Room implements RoomService , RoomInfo{
 
 	RoomDao roomDao;
 	

@@ -8,7 +8,11 @@ import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;
 import logic.promotion.Promotion;
 import logic.room.Room;
+import logic.room.RoomInfo;
+import logic.utility.HotelTransform;
+import logic.utility.RoomTransform;
 import logicService.hotel.CheckHotelService;
+import po.RoomPO;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -40,31 +44,20 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	}
 	
 	/**
-	 * 订单执行时调用，更新房间信息
-	 * @param room 传入的room对象信息
-	 * @return ResultMessage 返回是否更新成功（成功/失败）
-	 * @author Mark.W
-	 */
-	public ResultMessage updateRoom(Room room) {
-		return ResultMessage.SUCCESS;
-	}
-	
-	/**
 	 * 酒店工作人员更新房间信息，从界面调用
 	 * @param roomVO 传入的VO信息
 	 * @return ResultMessage 返回是否更新成功（成功/失败）
 	 * @author all
 	 */
 	public ResultMessage updateRoom(RoomVO roomVO){
-		return rooms.get(0).updateRoomInfo(roomVO);
+		if (roomVO!=null || roomVO.hotelId!=null || roomVO.roomId!=null) {
+			return null;
+		}
+		RoomInfo roomInfo = new Room();
+		return roomInfo.updateRoomInfo(roomVO);
 	}
 	
-	/**
-	 * 获取酒店评价信息
-	 * @param hotel_id 传入的酒店id
-	 * @return ArrayList<EvaluationVO> 返回评价的列表
-	 * @author all
-	 */
+	
 	public ArrayList<EvaluationVO> getHotelInfo (String hotel_id){
 		//获取酒店所属订单后，由订单获取评价
 		hotelDao = new HotelDao_Stub();
@@ -80,7 +73,15 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public ResultMessage updateHotelInfo (HotelVO hotelVO){
-		return ResultMessage.SUCCESS;
+		if (hotelVO!=null || hotelVO.hoteID!=null ) {
+			return null;
+		}
+		hotelDao = new HotelDao_Stub();
+		if(hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))){
+			return ResultMessage.SUCCESS;
+		}else {
+			return ResultMessage.FAILURE;
+		}
 	}
 	
 	/**
@@ -108,7 +109,12 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 		return null;
 	}
 
-	@Override
+	/**
+	 * 获取酒店评价信息
+	 * @param hotel_id 传入的酒店id
+	 * @return ArrayList<EvaluationVO> 返回评价的列表
+	 * @author all
+	 */
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelid) {
 		return null;
 	}

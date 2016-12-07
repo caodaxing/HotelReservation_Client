@@ -5,6 +5,8 @@ import vo.CreditChangeVO;
 
 public interface CreditChangeInfo {
 	
+	public ResultMessage changeCredit(CreditChangeVO vo);
+	
 	public ResultMessage rechargeCredit(CreditChangeVO vo);
 
 }

@@ -31,6 +31,11 @@ public class HotelDao_Stub implements HotelDao {
 	public ArrayList<String> getBookedHotelID(String userID) {
 		return null;
 	}
+
+	@Override
+	public boolean updateHotel(HotelPO po) {
+		return false;
+	}
 	
 
 }
