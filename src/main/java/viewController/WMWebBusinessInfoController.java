@@ -21,7 +21,7 @@ public class WMWebBusinessInfoController {
 		
 		this.stage = stage ;
 		
-		addWebBuisnessUI = new AddWebBusiness(this);
+		addWebBusinessUI = new AddWebBusiness(this);
 		checkWebBusinessUI = new CheckWebBusiness(this);
 		firstUI = new First(this);
 		modifyWebBusinessUI = new ModifyWebBusiness(this);
