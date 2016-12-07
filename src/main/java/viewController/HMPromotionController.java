@@ -1,5 +1,6 @@
 package viewController;
 
+import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.order.OrderService;
 import logicService.promotion.PromotionService;
@@ -16,6 +17,8 @@ import view.right.hotelManager.promotion.SetSpecialTimeStrategy;
 import view.right.hotelManager.promotion.SetThreeRoomsStrategy;
 
 public class HMPromotionController {
+	
+	private Stage stage;
 	
 	//逻辑层接口
 	private PromotionService promotionService;
@@ -35,16 +38,33 @@ public class HMPromotionController {
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetThreeRoomsStrategy setThreeRoomsStrategyUI;
 	
-	public HMPromotionController(){
+	public HMPromotionController(Stage stage){
 		
+		this.stage = stage;
+		
+		firstUI = new First(this);
+		chooseUI = new Choose(this);
 //		promotionService = new Promotion();
 //		orderService = new Order();
 //		roomService = new Room();
 //		accountService = new Account();
 		
+		
 	}
 	
-	public void setView(First view){
-		this.firstUI = view;
+	public void setFirstView(){
+		stage.setScene(firstUI.getScene());
+	}
+	
+	public Stage getFirstStage(){
+		return stage;
+	}
+	
+	public void setChooseView(){
+		stage.setScene(chooseUI.getScene());
+	}
+	
+	public Stage getChooseStage(){
+		return stage;
 	}
 }

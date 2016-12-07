@@ -3,8 +3,8 @@ package main;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.right.hotelManager.roomInfo.ExistRooms;
-import viewController.HMRoomInfoController;
+import view.right.hotelManager.promotion.First;
+import viewController.HMPromotionController;
 
 public class Main extends Application{
 	
@@ -14,9 +14,8 @@ public class Main extends Application{
 //		ExecuteOrder executeOrder = new ExecuteOrder(new UserMyOrderController());
 //		
 //		Scene scene = executeOrder.getScene();
-		
-		ExistRooms hotelInfo = new ExistRooms(new HMRoomInfoController());
-		Scene scene = hotelInfo.getScene();
+		First first = new First(new HMPromotionController(stage));
+		Scene scene = first.getScene();
 		stage.setScene(scene);
 		stage.show();
 		
