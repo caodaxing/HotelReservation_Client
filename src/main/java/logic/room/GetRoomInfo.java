@@ -8,8 +8,7 @@ import vo.RoomVO;
  * @author Mark.W
  *
  */
-public interface RoomInfo {
+public interface GetRoomInfo {
 	public RoomVO getRoomInfo(String hotel_id,String room_id);
 	
-	public ResultMessage updateRoomInfo(RoomVO roomVO);
 }

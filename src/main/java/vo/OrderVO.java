@@ -11,7 +11,7 @@ import Message.OrderState;
  * @param endTime  结束时间
  * @param hotelID 酒店id
  * @param room 房间信息
- * @param orderState 状态
+ * @param orderState 状态 默认为未执行
  * @param numOfPeople
  * @param hasChild 入住人数
  * @param beforePrice 优惠前价格
@@ -29,7 +29,7 @@ public class OrderVO {
 	public ArrayList<RoomVO> rooms;
 	public String endTime;
 	public String hotelID;
-	public OrderState orderState;
+	public OrderState orderState = OrderState.UNEXECUTED;
 	public int numOfPeople;
 	public boolean hasChild;
 	public double beforePrice;

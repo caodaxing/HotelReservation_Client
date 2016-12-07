@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import Message.OrderState;
 import logic.mockObject.MockPromotionInfo;
-import logic.mockObject.MockRoomInfo;
+import logic.mockObject.MockGetRoomInfo;
 import logic.promotion.PromotionInfo;
-import logic.room.RoomInfo;
+import logic.room.GetRoomInfo;
 import po.OrderPO;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -14,11 +14,11 @@ import vo.RoomVO;
 
 public class OrderTransform {
 	
-	private RoomInfo roomInfo;
+	private GetRoomInfo roomInfo;
 	private PromotionInfo promotionInfo;
 	
 	public OrderTransform() {
-		this.roomInfo = new MockRoomInfo();
+		this.roomInfo = new MockGetRoomInfo();
 		this.promotionInfo = new MockPromotionInfo();
 	}
 
@@ -68,7 +68,7 @@ public class OrderTransform {
 	 * @return orderpo
 	 */
 	public OrderPO orderTransToPO(OrderVO vo) {
-		
+		int roomNum = 0;
 		ArrayList<String> roomIDs = new ArrayList<String>();
 		if(vo.rooms == null) { 
 			roomIDs = null;
@@ -76,9 +76,10 @@ public class OrderTransform {
 			for(int i=0; i<vo.rooms.size(); ++i) {
 				roomIDs.add(vo.rooms.get(i).roomId);
 			}
+			roomNum = roomIDs.size();
 		}
 		
-		
+		int promotionNum = 0;
 		ArrayList<String> promotionIDs = new ArrayList<String>();
 		if(vo.promotions == null) {
 			promotionIDs = null;
@@ -86,11 +87,12 @@ public class OrderTransform {
 			for(int i=0; i<vo.promotions.size(); ++i) {
 				promotionIDs.add(vo.promotions.get(i).promotionID);
 			}
+			promotionNum = promotionIDs.size();
 		}
 		
-		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.startTime, vo.hotelID, roomIDs, 
-				vo.endTime, vo.rooms.size(), vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
-				vo.beforePrice, vo.afterPrice, promotionIDs, vo.executedTime, vo.abnormalTime, vo.undoAbnormalTime);
+		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.hotelID, vo.startTime, vo.endTime,
+				roomNum, roomIDs,  vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
+				vo.beforePrice, vo.afterPrice, promotionNum, promotionIDs, vo.executedTime, vo.abnormalTime, vo.undoAbnormalTime);
 		return null;
 	}
 	

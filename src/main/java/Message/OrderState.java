@@ -1,6 +1,6 @@
 package Message;
 
-//0:撤销（异常）状态 1:异常状态 2:已经执行 3:未执行 
+// 0:未执行  1:已经执行 2:异常状态 3:撤销（异常）状态 
 public enum OrderState {
-	UNDOED, ABNORMAL, EXECUTED, UNEXECUTED
+	 UNEXECUTED, EXECUTED, ABNORMAL, UNDOED
 }

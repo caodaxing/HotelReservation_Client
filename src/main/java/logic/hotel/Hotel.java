@@ -8,7 +8,7 @@ import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;
 import logic.promotion.Promotion;
 import logic.room.Room;
-import logic.room.RoomInfo;
+import logic.room.GetRoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
 import vo.EvaluationVO;
@@ -51,7 +51,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 		if (roomVO!=null || roomVO.hotelId!=null || roomVO.roomId!=null) {
 			return null;
 		}
-		RoomInfo roomInfo = new Room();
+		GetRoomInfo roomInfo = new Room();
 		return roomInfo.updateRoomInfo(roomVO);
 	}
 	

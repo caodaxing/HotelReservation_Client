@@ -1,5 +1,7 @@
 package logic.order;
 
+import java.util.ArrayList;
+
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
@@ -16,7 +18,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class Order implements OrderService{
+public class Order implements OrderService, OrderEvaluationInfo{
 	
 	private String orderID;
 	private OrderDao orderDao;
@@ -64,6 +66,12 @@ public class Order implements OrderService{
 		}
 		
 		return ResultMessage.FAILURE;
+	}
+
+	@Override
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
+		
+		return null;
 	}
 
 }
