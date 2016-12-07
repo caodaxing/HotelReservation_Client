@@ -55,15 +55,6 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 		return roomInfo.updateRoomInfo(roomVO);
 	}
 	
-	
-	public ArrayList<EvaluationVO> getHotelInfo (String hotel_id){
-		//获取酒店所属订单后，由订单获取评价
-		hotelDao = new HotelDao_Stub();
-		hotelDao.getHotelInfoByHotelID(hotel_id);
-		return null;
-		
-	}
-	
 	/**
 	 * 更新酒店信息
 	 * @param hotelVO 传入的VO信息
@@ -91,21 +82,16 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	public String getPromotion(String hotel_id){
 		return null;
 	}
-	
+
 	/**
 	 * 给order提供的获取酒店信息的接口
 	 * @param hotel_id 传入的酒店id
 	 * @return HotelVO 返回部分酒店信息
 	 * @author all
 	 */
-	public HotelVO getHotelItemInfo(String hotel_id) {
+	public HotelVO getHotelnfo(String hotel_id) {
 		hotelDao = new HotelDao_Stub();
 		return HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotel_id));
-	}
-
-	@Override
-	public HotelVO getHotelnfo(String hotel_id) {
-		return null;
 	}
 
 	/**

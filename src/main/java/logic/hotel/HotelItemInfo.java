@@ -8,5 +8,6 @@ import vo.HotelVO;
  *
  */
 public interface HotelItemInfo {
-	public HotelVO getHotelItemInfo (String hotel_id);
+	
+	public HotelVO getHotelnfo(String hotel_id);
 }
