@@ -1,7 +1,6 @@
 package logic.hotel;
 
 import Message.ResultMessage;
-import logic.room.Room;
 import vo.RoomVO;
 
 /**

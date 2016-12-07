@@ -3,6 +3,8 @@ package logic.hotel;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
+import dataDao.HotelDao;
+import dataDao.stub.HotelDao_Stub;
 import logicService.hotel.SearchHotelService;
 import vo.HotelSearchVO;
 import vo.HotelVO;
@@ -14,6 +16,7 @@ import vo.HotelVO;
  */
 public class SearchHotel implements SearchHotelService{
 	
+	HotelDao hotelDao;
 	
 	/**
 	 * 获取酒店所在商圈
@@ -22,7 +25,8 @@ public class SearchHotel implements SearchHotelService{
 	 * @author all
 	 */
 	public ArrayList<String> getTradingArea (String location){
-		return null;
+		hotelDao = new HotelDao_Stub();
+		return hotelDao.getTradingAreas(location);
 	}
 	
 	/**

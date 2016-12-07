@@ -10,9 +10,7 @@ import logic.promotion.Promotion;
 import logic.room.Room;
 import logic.room.RoomInfo;
 import logic.utility.HotelTransform;
-import logic.utility.RoomTransform;
 import logicService.hotel.CheckHotelService;
-import po.RoomPO;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -101,7 +99,8 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public HotelVO getHotelItemInfo(String hotel_id) {
-		return null;
+		hotelDao = new HotelDao_Stub();
+		return HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotel_id));
 	}
 
 	@Override
@@ -111,11 +110,11 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 
 	/**
 	 * 获取酒店评价信息
-	 * @param hotel_id 传入的酒店id
+	 * @param hotelId 传入的酒店id
 	 * @return ArrayList<EvaluationVO> 返回评价的列表
 	 * @author all
 	 */
-	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelid) {
+	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
 		return null;
 	}
 }

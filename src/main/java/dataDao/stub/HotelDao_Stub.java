@@ -11,7 +11,7 @@ public class HotelDao_Stub implements HotelDao {
 		return false;
 	}
 
-	public boolean modifyHotelInfo(HotelPO po) {
+	public boolean updateHotel(HotelPO po) {
 		return false;
 	}
 
@@ -19,6 +19,10 @@ public class HotelDao_Stub implements HotelDao {
 		return null;
 	}
 
+	public ArrayList<String> getBookedHotelID(String userID) {
+		return null;
+	}
+	
 	public ArrayList<String> getTradingAreas(String loaction) {
 		return null;
 	}
@@ -27,15 +31,7 @@ public class HotelDao_Stub implements HotelDao {
 		return null;
 	}
 
-	@Override
-	public ArrayList<String> getBookedHotelID(String userID) {
-		return null;
-	}
 
-	@Override
-	public boolean updateHotel(HotelPO po) {
-		return false;
-	}
 	
 
 }
