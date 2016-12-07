@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
+import logic.mockObject.MockOrderEvaluationInfo;
+import logic.mockObject.MockPromotionInfo;
 import logic.order.Order;
 import logic.promotion.Promotion;
 import logic.room.Room;
@@ -13,6 +15,7 @@ import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
+import vo.PromotionVO;
 import vo.RoomVO;
 
 /**
@@ -79,8 +82,9 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @return String 返回酒店的促销策略
 	 * @author all
 	 */
-	public String getPromotion(String hotel_id){
-		return null;
+	public PromotionVO getPromotion(String hotel_id){
+		MockPromotionInfo promotionInfo = new MockPromotionInfo();
+		return promotionInfo.getPromotion(hotel_id);
 	}
 
 	/**
@@ -101,6 +105,7 @@ public class Hotel implements CheckHotelService, HotelItemInfo, HotelUpdateRoom{
 	 * @author all
 	 */
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
-		return null;
+		MockOrderEvaluationInfo evaluationInfo = new MockOrderEvaluationInfo();
+		return evaluationInfo.getHotelEvaluations(hotelId);
 	}
 }
