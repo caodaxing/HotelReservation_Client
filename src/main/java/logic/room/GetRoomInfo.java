@@ -1,5 +1,7 @@
 package logic.room;
 
+import java.util.ArrayList;
+
 import Message.ResultMessage;
 import vo.RoomVO;
 
@@ -10,5 +12,7 @@ import vo.RoomVO;
  */
 public interface GetRoomInfo {
 	public RoomVO getRoomInfo(String hotel_id,String room_id);
+	
+	public ArrayList<RoomVO> getRoomList(String hotelID);
 	
 }
