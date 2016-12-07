@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -27,10 +28,11 @@ public class ModifyHotelInfo {
 	
 	TextField hotelStar;
 	TextField hotelLocation;
-	TextField hotelBriefing;
-	TextField hotelFacility;
-	TextField HotelImage;
+	TextArea hotelBriefing;
+	TextArea hotelFacility;
+	TextArea HotelImage;
 	
+	Button cancel;
 	Button ok;
 	
 	public ModifyHotelInfo(HMHotelInfoController controller){
@@ -42,6 +44,7 @@ public class ModifyHotelInfo {
 		
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		rightPane.getStylesheets().add(getClass().getResource("hmhotelInfo.css").toExternalForm());
 		
 		//添加文本内容
 		setTextContent();
@@ -65,9 +68,9 @@ public class ModifyHotelInfo {
 		//设置酒店信息的文本信息
 		hotelStar = new TextField();
 		hotelLocation = new TextField();
-		hotelBriefing = new TextField();
-		hotelFacility = new TextField();
-		HotelImage = new TextField();
+		hotelBriefing = new TextArea();
+		hotelFacility = new TextArea();
+		HotelImage = new TextArea();
 		
 		/*
 		//根据Controller设置textField文字
@@ -86,7 +89,7 @@ public class ModifyHotelInfo {
 		hotelLocation.setPrefSize(400, 30);
 		hotelBriefing.setPrefSize(300, 60);
 		hotelFacility.setPrefSize(300, 60);
-		HotelImage.setPrefSize(200, 30);
+		HotelImage.setPrefSize(200, 200);
 		
 		//右侧pane添加组件
 		rightPane.getChildren().add(hotelStar);
@@ -114,10 +117,17 @@ public class ModifyHotelInfo {
 		ok = new Button("确认");
 		ok.setId("ModifyHotelInfo");
 		ok.setPrefSize(100, 40);
+		
+		cancel = new Button("取消");
+		cancel.setId("ModifyHotelInfo");
+		cancel.setPrefSize(100, 40);
 						
 		//设置按钮位置
-		ok.setLayoutX(650);
-		ok.setLayoutY(510);
+		ok.setLayoutX(625);
+		ok.setLayoutY(450);
+		
+		cancel.setLayoutX(650);
+		cancel.setLayoutY(510);
 						
 		//设置按钮监听
 		ok.setOnAction(new EventHandler<ActionEvent>(){
@@ -129,12 +139,26 @@ public class ModifyHotelInfo {
 			}
 							
 		});
+		
+		cancel.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+								
+			}
+							
+		});
 						
 		//右侧pane添加
+		rightPane.getChildren().add(cancel);
 		rightPane.getChildren().add(ok);
 						
 		AnchorPane.setLeftAnchor(ok, 450.0);
-		AnchorPane.setTopAnchor(ok, 510.0);
+		AnchorPane.setLeftAnchor(cancel, 450.0);
+		
+		AnchorPane.setTopAnchor(ok, 450.0);
+		AnchorPane.setTopAnchor(cancel, 510.0);
 		
 	}
 	

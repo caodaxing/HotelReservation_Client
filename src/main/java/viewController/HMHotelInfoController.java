@@ -1,9 +1,12 @@
 package viewController;
 
+import javafx.stage.Stage;
 import logicService.hotel.CheckHotelService;
 import view.right.hotelManager.hotelInfo.ModifyHotelInfo;
 
 public class HMHotelInfoController {
+	
+	private Stage stage;
 	
 	//逻辑层接口
 	private CheckHotelService checkHotelService;
@@ -11,11 +14,16 @@ public class HMHotelInfoController {
 	//控制的界面
 	private ModifyHotelInfo modifyHotelInfoUI;
 	
-	public HMHotelInfoController(){
+	public HMHotelInfoController(Stage stage){
+		
 		//checkHotelService = new CheckHotel();
+		
+		this.stage = stage;
+		
+		
 	}
 	
-	public void setView(ModifyHotelInfo view){
+	public void setModifyControllerView(ModifyHotelInfo view){
 		this.modifyHotelInfoUI = view;
 	}
 }

@@ -100,7 +100,7 @@ public class CheckLeaveInfo {
 		//添加按钮
 		
 		revert = new Button("返回");
-		revert.setId("CheckLeaveInfo");
+		revert.setId("button-css");
 		revert.setPrefSize(100, 40);
 				
 		//设置按钮位置

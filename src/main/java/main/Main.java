@@ -3,8 +3,8 @@ package main;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.right.vistor.SearchResultList;
-import viewController.VistorController;
+import view.right.hotelManager.roomInfo.ExistRooms;
+import viewController.HMRoomInfoController;
 
 public class Main extends Application{
 	
@@ -15,8 +15,8 @@ public class Main extends Application{
 //		
 //		Scene scene = executeOrder.getScene();
 		
-		SearchResultList roomList = new SearchResultList(new VistorController());
-		Scene scene = roomList.getScene();
+		ExistRooms hotelInfo = new ExistRooms(new HMRoomInfoController());
+		Scene scene = hotelInfo.getScene();
 		stage.setScene(scene);
 		stage.show();
 		

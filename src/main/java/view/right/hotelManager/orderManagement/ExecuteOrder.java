@@ -146,19 +146,19 @@ public class ExecuteOrder {
 		//添加按钮
 		
 		arriveInfo = new Button("入住信息");
-		arriveInfo.setId("ExecuteOrder");
+		arriveInfo.setId("button-css");
 		arriveInfo.setPrefSize(100, 40);
 		
 		leaveInfo = new Button("退房信息");
-		leaveInfo.setId("ExecuteOrder");
+		leaveInfo.setId("button-css");
 		leaveInfo.setPrefSize(100, 40);
 		
 		checkEvaluation = new Button("查看评价");
-		checkEvaluation.setId("ExecuteOrder");
+		checkEvaluation.setId("button-css");
 		checkEvaluation.setPrefSize(100, 40);
 		
 		revert = new Button("返回");
-		revert.setId("ExecuteOrder");
+		revert.setId("button-css");
 		revert.setPrefSize(100, 40);
 		
 								

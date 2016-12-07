@@ -121,11 +121,11 @@ public class AbnormalOrder{
 		
 		//添加按钮
 		againRegister = new Button("补登记订单");
-		againRegister.setId("AbnormalOrder");
+		againRegister.setId("button-css");
 		againRegister.setPrefSize(100, 40);
 		
 		revert = new Button("取消");
-		revert.setId("AbnormalOrder");
+		revert.setId("button-css");
 		revert.setPrefSize(100, 40);
 				
 		//设置按钮位置
