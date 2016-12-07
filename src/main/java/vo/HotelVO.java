@@ -51,4 +51,34 @@ public class HotelVO {
 		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
+	
+	/**
+	 * 提供给WebManager的构造方法
+	 * @param hoteID
+	 * @param hotelName
+	 * @param city
+	 * @param tradingArea
+	 * @param locationOfHotel
+	 * @param levelOfHotel
+	 * @param introduction
+	 * @param facilities
+	 * @param pictures
+	 * @param emptyRoomNum
+	 * @param bussiness
+	 */
+	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,
+			String locationOfHotel,int levelOfHotel,String introduction, String facilities,
+			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+		this.hoteID=hoteID;
+		this.hotelName = hotelName;
+		this.city = city;
+		this.tradingArea=tradingArea;
+		this.locationOfHotel=locationOfHotel;
+		this.levelOfHotel=levelOfHotel;
+		this.introduction=introduction;
+		this.facilities = facilities;
+		this.picturesPath=pictures;
+		this.emptyRoomNum=emptyRoomNum;
+		this.bussiness = bussiness;
+	}
 }
