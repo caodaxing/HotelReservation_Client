@@ -51,7 +51,7 @@ public class OrderTransform {
 		if(order == null) {
 			return null;
 		}
-	
+		
 		return new OrderVO(order.getUesrID(), order.getOrderID(), order.getStartTime(), order.getEndTime(),
 				order.getOrderID(),this.getRooms(order.getHotelId(), 
 				order.getRoomIDs()), OrderState.values()[order.getState()],
@@ -93,7 +93,7 @@ public class OrderTransform {
 		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.hotelID, vo.startTime, vo.endTime,
 				roomNum, roomIDs,  vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
 				vo.beforePrice, vo.afterPrice, promotionNum, promotionIDs, vo.executedTime, vo.abnormalTime, vo.undoAbnormalTime);
-		return null;
+		return po;
 	}
 	
 	private ArrayList<RoomVO> getRooms(String hotelID, ArrayList<String> roomIDs) {
