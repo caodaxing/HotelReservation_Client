@@ -1,41 +1,126 @@
 package view.account;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import view.helpTools.DefaultNums;
+import viewController.AccountController;
 
 /**
  * 注册界面
  * @author XueWang
  *
  */
-public class SignUpUI extends Application {
+public class SignUpUI{
 
-	public void start (Stage stage){
+private Scene scene ;
+	
+	private AnchorPane root ;
+	
+	private Button yes ;
+	private Button no ;
+	
+	private TextField name ;
+	
+	private PasswordField password ;
+	private PasswordField rePassword ;
+	
+	public SignUpUI(AccountController controller){
 		
-		try{
-			
-			Parent root = FXMLLoader.load( getClass().getResource("注册界面.fxml") );
-			
-			Scene scene = new Scene(root , DefaultNums.WIDTH , DefaultNums.HEIGHT);
-			
-			stage.setScene(scene);
-			stage.show();
-			
-		}catch(Exception e){
-			
-			e.printStackTrace();
+		root = new AnchorPane();
+		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
-		}
+		setButton();
+		
+		setTextField();
+		
+		setPasswordField();
+		
+		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
 	}
 	
-	public static void main(String[] args) {
-		Application.launch(SignUpUI.class,args);
+	public Scene getScene(){
+		
+		return scene;
+		
 	}
 	
+	private void setButton(){
+		
+		yes = new Button();
+		no = new Button();
+		
+		yes.setText("注册");
+		no.setText("取消");
+		
+		yes.setPrefSize(80.0, 30.0);
+		no.setPrefSize(80.0, 30.0);
+		
+		yes.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		no.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				
+			}
+			
+		});
+		
+		root.getChildren().add(yes);
+		root.getChildren().add(no);
+		
+		AnchorPane.setLeftAnchor(yes, 300.0);
+		AnchorPane.setLeftAnchor(no, 420.0);
+		
+		AnchorPane.setTopAnchor(yes, 480.0);
+		AnchorPane.setTopAnchor(no, 480.0);
+		
+	}
+	
+	private void setTextField(){
+		
+		name = new TextField();
+		
+		name.setEditable(true);
+		
+		name.setPrefSize(150.0, 30.0);
+		
+		root.getChildren().add(name);
+		
+		AnchorPane.setLeftAnchor(name, 350.0);
+		AnchorPane.setTopAnchor(name, 300.0);
+		
+	}
+	
+	private void setPasswordField(){
+		
+		password = new PasswordField();
+		rePassword = new PasswordField();
+		
+		password.setEditable(true);
+		rePassword.setEditable(true);
+		
+		password.setPrefSize(150.0, 30.0);
+		rePassword.setPrefSize(150.0, 30.0);
+		
+		root.getChildren().add(password);
+		
+		AnchorPane.setLeftAnchor(password, 350.0);
+		AnchorPane.setLeftAnchor(rePassword, 350.0);
+		
+		AnchorPane.setTopAnchor(password, 355.0);
+		AnchorPane.setTopAnchor(rePassword, 410.0);
+	
+	}
 	
 }

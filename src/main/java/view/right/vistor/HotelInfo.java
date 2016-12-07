@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,8 +33,8 @@ public class HotelInfo {
 	private AnchorPane rightPane;
 	
 	TextField hotelName ;
-	TextField address ; 
-	TextField introduction ;
+	TextArea address ; 
+	TextArea introduction ;
 	TextField facility ;
 	
 	ImageView hotelImage ;
@@ -54,7 +55,7 @@ public class HotelInfo {
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
 		//设置TextField
-		setTextField();
+		setText();
 		
 		setButton();
 		
@@ -66,12 +67,12 @@ public class HotelInfo {
 		
 	}
 	
-	private void setTextField(){
+	private void setText(){
 		
 		//初始化textField
 		hotelName = new TextField();
-		address = new TextField();
-		introduction = new TextField();
+		address = new TextArea();
+		introduction = new TextArea();
 		facility = new TextField();
 
 		//设置textField可操作性

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,7 +31,7 @@ public class EvaluationInfo {
 	private AnchorPane rightPane;
 	
 	TextField grade ;
-	TextField info ;
+	TextArea info ;
 	
 	Button confirm;
 	Button back ;
@@ -48,7 +49,7 @@ public class EvaluationInfo {
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
 		//设置TextField
-		setTextField();
+		setText();
 		
 		//设置Button
 		setButton();
@@ -58,11 +59,11 @@ public class EvaluationInfo {
 		
 	}
 	
-	private void setTextField(){
+	private void setText(){
 		
 		//初始化textField
 		grade = new TextField();
-		info = new TextField();
+		info = new TextArea();
 
 		//设置textField可操作性
 		grade.setEditable(false);
