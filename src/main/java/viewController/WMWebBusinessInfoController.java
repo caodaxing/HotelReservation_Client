@@ -29,6 +29,10 @@ public class WMWebBusinessInfoController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setAddWebBusinessView(){
 		
 		stage.setScene(addWebBusinessUI.getScene());

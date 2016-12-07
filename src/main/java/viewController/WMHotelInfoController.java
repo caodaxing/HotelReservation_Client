@@ -20,6 +20,10 @@ public class WMHotelInfoController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setAddHotelView(){
 		
 		stage.setScene(addHotelUI.getScene());

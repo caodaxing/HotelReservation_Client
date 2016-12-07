@@ -23,6 +23,10 @@ public class WMUserInfoController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setCheckUserView(){
 		
 		stage.setScene(checkUserUI.getScene());

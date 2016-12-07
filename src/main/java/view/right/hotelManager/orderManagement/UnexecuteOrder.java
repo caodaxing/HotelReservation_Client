@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
-import viewController.WBOrderManagementController;
+import viewController.HMOrderManagementController;
 
 /**
  * 酒店工作人员界面_管理订单_未执行订单详情
@@ -19,7 +19,7 @@ import viewController.WBOrderManagementController;
  */
 public class UnexecuteOrder {
 	
-	private WBOrderManagementController controller;
+	private HMOrderManagementController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -36,7 +36,7 @@ public class UnexecuteOrder {
 	Button doOrder;
 	Button revert;
 	
-	public UnexecuteOrder(WBOrderManagementController controller){
+	public UnexecuteOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
 		

@@ -1,5 +1,6 @@
 package viewController;
 
+import javafx.stage.Stage;
 import logicService.promotion.PromotionService;
 import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
 import view.right.webBusiness.promotion.CheckVIPAreaStrategy;
@@ -12,6 +13,7 @@ import view.right.webBusiness.promotion.SetVIPStrategy;
 
 public class WBPromotionController {
 	
+	private Stage stage;
 	//逻辑层接口
 	private PromotionService promotionService;
 	
@@ -25,11 +27,52 @@ public class WBPromotionController {
 	private SetVIPAreaStrategy setVIPAreaStrategyUI;
 	private SetVIPStrategy setVIPStrategyUI;
 	
-	public WBPromotionController(){
+	public WBPromotionController(Stage stage){
+		
 		//promotionService = new Promotion();
+		this.stage = stage;
+		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
+		checkVIPStrategyUI  = new CheckVIPStrategy(this);
+		chooseUI = new Choose(this);
+		firstUI = new First(this);
+		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
+		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
+		setVIPStrategyUI = new SetVIPStrategy(this);
+		
+	}
+	public Stage getStage(){
+		return stage;
+	}
+	public void setCheckSpecialTimeStrategyView(){
+		stage.setScene(checkSpecialTimeStrategyUI.getScene());
 	}
 	
-	public void setView(First view){
-		this.firstUI = view;
+	public void setCheckVIPAreaStrategyView(){
+		stage.setScene(checkVIPAreaStrategyUI.getScene());
+	}
+
+	public void setCheckVIPStrategyView(){
+		stage.setScene(checkVIPStrategyUI.getScene());
+	}
+
+	public void setChooseView(){
+		stage.setScene(chooseUI.getScene());
+	}
+
+	public void setFirstView(){
+		stage.setScene(firstUI.getScene());
+	}
+
+	public void setSetSpecialTimeStrategyView(){
+		stage.setScene(setSpecialTimeStrategyUI.getScene());
+	}
+
+	public void setSetVIPAreaStrategyView(){
+		stage.setScene(setVIPAreaStrategyUI.getScene());
+	}
+	
+	public void setSetVIPStrategyView(){
+		stage.setScene(setVIPStrategyUI.getScene());
 	}
 }

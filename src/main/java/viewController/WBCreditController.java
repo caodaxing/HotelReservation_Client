@@ -1,5 +1,6 @@
 package viewController;
 
+import javafx.stage.Stage;
 import logic.account.Account;
 import logic.credit.Credit;
 import logicService.account.AccountService;
@@ -8,6 +9,8 @@ import view.right.webBusiness.credit.RechargeCredit;
 
 public class WBCreditController {
 	
+	private Stage stage;
+	
 	//逻辑层接口
 	private CreditService creditService;
 	private AccountService accountService;
@@ -15,13 +18,21 @@ public class WBCreditController {
 	//控制的界面
 	private RechargeCredit rechargeCreditUI;
 	
-	public WBCreditController(){
-		creditService = new Credit();
-		accountService = new Account();
+	public WBCreditController(Stage stage){
+		
+//		creditService = new Credit();
+//		accountService = new Account();
+		this.stage = stage;
+		rechargeCreditUI = new RechargeCredit(this);
+		
 	}
 	
-	public void setView(RechargeCredit view){
-		this.rechargeCreditUI = view;
+	public Stage getStage(){
+		return stage;
+	}
+	
+	public void setRechargeCreditView(){
+		stage.setScene(rechargeCreditUI.getScene());
 	}
 	
 }

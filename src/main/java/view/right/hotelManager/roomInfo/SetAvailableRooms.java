@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import viewController.HMRoomInfoController;
 
 /**
  * 酒店工作人员界面_客房管理_录入可用客房
@@ -19,7 +20,7 @@ import viewController.HMPromotionController;
  */
 public class SetAvailableRooms {
 	
-	private HMPromotionController controller;
+	private HMRoomInfoController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -32,7 +33,7 @@ public class SetAvailableRooms {
 	Button ok;
 	Button cancel;
 	
-	public SetAvailableRooms(HMPromotionController controller){
+	public SetAvailableRooms(HMRoomInfoController controller){
 		
 		this.controller = controller;
 		

@@ -10,6 +10,7 @@ import view.right.hotelManager.promotion.CheckCooperateCompanyStrategy;
 import view.right.hotelManager.promotion.CheckSpecialTimeStrategy;
 import view.right.hotelManager.promotion.CheckThreeRoomsStrategy;
 import view.right.hotelManager.promotion.Choose;
+import view.right.hotelManager.promotion.ExistStrategy;
 import view.right.hotelManager.promotion.First;
 import view.right.hotelManager.promotion.SetBirthdayStrategy;
 import view.right.hotelManager.promotion.SetCooperateCompanyStrategy;
@@ -32,6 +33,7 @@ public class HMPromotionController {
 	private CheckSpecialTimeStrategy checkSpecailTimeStrategyUI;
 	private CheckThreeRoomsStrategy checkThreeRoomsStrategyUI;
 	private Choose chooseUI;
+	private ExistStrategy existStrategyUI;
 	private First firstUI;
 	private SetBirthdayStrategy setBirthdayStrategyUI;
 	private SetCooperateCompanyStrategy setCooperateCompanyStrategyUI;
@@ -42,8 +44,17 @@ public class HMPromotionController {
 		
 		this.stage = stage;
 		
-		firstUI = new First(this);
+		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
+		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
+		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
 		chooseUI = new Choose(this);
+		existStrategyUI = new ExistStrategy(this);
+		firstUI = new First(this);
+		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
+		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
+		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
+		setThreeRoomsStrategyUI = new SetThreeRoomsStrategy(this);
 //		promotionService = new Promotion();
 //		orderService = new Order();
 //		roomService = new Room();
@@ -52,19 +63,52 @@ public class HMPromotionController {
 		
 	}
 	
-	public void setFirstView(){
-		stage.setScene(firstUI.getScene());
-	}
-	
-	public Stage getFirstStage(){
+	public Stage getStage(){
 		return stage;
 	}
 	
+	public void setCheckBirthdayStrategyView(){
+		stage.setScene(checkBirthdayStrategyUI.getScene());
+	}
+	
+	public void setCheckCooperateCompanyStrategyView(){
+		stage.setScene(checkCooperateCompanyStrategyUI.getScene());
+	}
+	
+	public void setCheckSpecialTimeStrategyView(){
+		stage.setScene(checkSpecailTimeStrategyUI.getScene());
+	}
+	
+	public void setCheckThreeRoomsStrategyView(){
+		stage.setScene(checkThreeRoomsStrategyUI.getScene());
+	}
 	public void setChooseView(){
 		stage.setScene(chooseUI.getScene());
 	}
 	
-	public Stage getChooseStage(){
-		return stage;
+	public void setExistStrategy(){
+		stage.setScene(existStrategyUI.getScene());
 	}
+	
+	public void setFirstView(){
+		stage.setScene(firstUI.getScene());
+	}
+	
+	public void setSetBirthdayStrategyView(){
+		stage.setScene(setBirthdayStrategyUI.getScene());
+	}
+	
+	public void setSetCooperateCompanyStrategyView(){
+		stage.setScene(setCooperateCompanyStrategyUI.getScene());
+	}
+	
+	public void setSetSpecialTimeStrategyView(){
+		stage.setScene(setSpecialTimeStrategyUI.getScene());
+	}
+	
+	public void setSetThreeRoomsStrategyView(){
+		stage.setScene(setThreeRoomsStrategyUI.getScene());
+	}
+	
+	
 }

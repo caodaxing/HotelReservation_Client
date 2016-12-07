@@ -30,7 +30,11 @@ public class UserVIPController {
 		registerNormalVIPUI = new RegisterNormalVIP(this);
 		
 	}
-
+	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setCheckCompanyVIPView (){
 		
 		stage.setScene(checkCompanyVIPUI.getScene());

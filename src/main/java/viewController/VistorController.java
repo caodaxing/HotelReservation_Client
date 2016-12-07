@@ -23,6 +23,10 @@ public class VistorController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setHotelInfoView(){
 		
 		stage.setScene(hotelInfoUI.getScene());

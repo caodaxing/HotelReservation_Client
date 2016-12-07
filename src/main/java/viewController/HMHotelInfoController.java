@@ -20,10 +20,15 @@ public class HMHotelInfoController {
 		
 		this.stage = stage;
 		
+		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		
 	}
 	
-	public void setModifyControllerView(ModifyHotelInfo view){
-		this.modifyHotelInfoUI = view;
+	public void setModifyInfoView(){
+		stage.setScene(modifyHotelInfoUI.getScene());
+	}
+	
+	public Stage getStage(){
+		return stage;
 	}
 }

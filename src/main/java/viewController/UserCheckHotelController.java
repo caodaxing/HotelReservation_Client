@@ -41,6 +41,10 @@ public class UserCheckHotelController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setView(int viewIndex){
 		
 	}

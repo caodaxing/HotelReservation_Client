@@ -60,6 +60,10 @@ public class UserMyInfoController {
 		
 	}*/
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setCheckMyInfoView(){
 		
 		stage.setScene(checkMyInfoUI.getScene());

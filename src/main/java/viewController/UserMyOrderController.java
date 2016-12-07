@@ -54,6 +54,10 @@ public class UserMyOrderController {
 	
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setAbnormalOrderView(){
 		
 		stage.setScene(abnormalOrderUI.getScene());

@@ -74,7 +74,7 @@ public class First {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setChooseView();
-				Stage stage = controller.getChooseStage();
+				Stage stage = controller.getStage();
 				stage.show();
 			}
 							

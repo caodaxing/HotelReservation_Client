@@ -14,7 +14,13 @@ public class WMHotelManagerInfoController {
 	public WMHotelManagerInfoController(Stage stage){
 		
 		this.stage = stage ;
+		checkHotelManagerUI = new CheckHotelManager(this);
+		modifyHotelManagerUI = new ModifyHotelManager(this);
 		
+	}
+	
+	public Stage getStage(){
+		return stage;
 	}
 	
 	public void setCheckHotelManagerView(){

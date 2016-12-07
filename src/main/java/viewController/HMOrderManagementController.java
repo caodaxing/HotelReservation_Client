@@ -1,6 +1,7 @@
 package viewController;
 
 
+import javafx.stage.Stage;
 import logicService.order.ExecuteOrderService;
 import logicService.order.ManageOrderService;
 import logicService.order.OrderListService;
@@ -18,6 +19,8 @@ import view.right.hotelManager.orderManagement.UndoOrder;
 import view.right.hotelManager.orderManagement.UnexecuteOrder;
 
 public class HMOrderManagementController {
+	
+	private Stage stage;
 	
 	//逻辑层接口
 	private OrderService orderService;
@@ -38,16 +41,72 @@ public class HMOrderManagementController {
 	private UndoOrder undoOrderUI;
 	private UnexecuteOrder unexecuteOrderUI;
 	
-	public HMOrderManagementController(){
+	public HMOrderManagementController(Stage stage){
 		
 		//orderService = new Order();
 		//orderListService = new OrderList();
 		//executeOrderService = new ExecuteOrder();
 		//manageOrdreService = new ManageOrder();
+		this.stage = stage;
+		abnormalOrderUI = new AbnormalOrder(this);
+		checkArriveInfoUI = new CheckArriveInfo(this);
+		checkLeaveInfoUI = new CheckLeaveInfo(this);
+		evalutionInfoUI = new EvaluationInfo(this);
+		executeOrderUI = new ExecuteOrder(this);
+		orderListUI = new OrderList(this);
+		searchOrderUI = new SearchOrder(this);
+		setArriveInfoUI = new SetArriveInfo(this);
+		setLeaveInfoUI = new SetLeaveInfo(this);
+		undoOrderUI = new UndoOrder(this);
+		unexecuteOrderUI = new UnexecuteOrder(this);
+		
 	}
 	
-	public void setView(AbnormalOrder view){
-		
-		this.abnormalOrderUI = view;
+	public Stage getStage(){
+		return stage;
+	}
+	
+	public void setAbnormalOrderView(){
+		stage.setScene(abnormalOrderUI.getScene());
+	}
+	
+	public void setCheckArriveInfoView(){
+		stage.setScene(checkArriveInfoUI.getScene());
+	}
+	
+	public void setCheckLeaveInfoView(){
+		stage.setScene(checkLeaveInfoUI.getScene());
+	}
+	
+	public void setEvaluationInfoView(){
+		stage.setScene(evalutionInfoUI.getScene());
+	}
+	
+	public void setExecuteOrderView(){
+		stage.setScene(executeOrderUI.getScene());
+	}
+	
+	public void setOrderListView(){
+		stage.setScene(orderListUI.getScene());
+	}
+	
+	public void setSearchOrderView(){
+		stage.setScene(searchOrderUI.getScene());
+	}
+	
+	public void setSetArriveInfoView(){
+		stage.setScene(setArriveInfoUI.getScene());
+	}
+	
+	public void setSetLeaveInfoView(){
+		stage.setScene(setLeaveInfoUI.getScene());
+	}
+	
+	public void setUndoOrderView(){
+		stage.setScene(undoOrderUI.getScene());
+	}
+	
+	public void setUnexecuteOrderView(){
+		stage.setScene(unexecuteOrderUI.getScene());
 	}
 }

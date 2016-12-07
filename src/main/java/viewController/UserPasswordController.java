@@ -19,6 +19,10 @@ public class UserPasswordController {
 		
 	}
 	
+	public Stage getStage(){
+		return stage;
+	}
+	
 	public void setPasswordView(){
 		
 		stage.setScene(modifyPasswordUI.getScene());

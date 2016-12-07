@@ -1,12 +1,16 @@
 package viewController;
 
+import javafx.stage.Stage;
 import logicService.hotel.CheckHotelService;
 import logicService.order.OrderService;
 import logicService.room.RoomService;
+import view.right.hotelManager.roomInfo.ExistRooms;
 import view.right.hotelManager.roomInfo.First;
 import view.right.hotelManager.roomInfo.SetAvailableRooms;
 
 public class HMRoomInfoController {
+	
+	private Stage stage;
 	
 	//逻辑层接口
 	private RoomService roomService;
@@ -16,16 +20,33 @@ public class HMRoomInfoController {
 	//控制界面
 	private First firstUI;
 	private SetAvailableRooms setAvailableRoomsUI;
+	private ExistRooms existRoomsUI;
 	
-	public HMRoomInfoController(){
+	public HMRoomInfoController(Stage stage){
 		
 //		roomService = new Room();
 //		checkHotelService = new CheckHotel();
 //		orderService = new Order();
+		this.stage = stage;
+		firstUI = new First(this);
+		setAvailableRoomsUI = new SetAvailableRooms(this);
+		existRoomsUI = new ExistRooms(this);
 		
 	}
 	
-	public void setView(SetAvailableRooms view){
-		this.setAvailableRoomsUI = view;
+	public Stage getStage(){
+		return stage;
+	}
+	
+	public void setFirstView(){
+		stage.setScene(firstUI.getScene());
+	}
+	
+	public void setSetAvailableRoomsView(){
+		stage.setScene(setAvailableRoomsUI.getScene());
+	}
+	
+	public void setExistRoomsView(){
+		stage.setScene(existRoomsUI.getScene());
 	}
 }
