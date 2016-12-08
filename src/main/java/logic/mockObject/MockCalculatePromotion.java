@@ -2,11 +2,11 @@ package logic.mockObject;
 
 import java.util.ArrayList;
 
-import logic.promotion.PromotionCalculation;
+import logic.promotion.CalculationPromotionInfo;
 import vo.OrderVO;
 import vo.PromotionVO;
 
-public class MockCalculatePromotion implements PromotionCalculation {
+public class MockCalculatePromotion implements CalculationPromotionInfo {
 
 	@Override
 	public OrderVO calculate(OrderVO order) {

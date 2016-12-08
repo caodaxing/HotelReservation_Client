@@ -6,7 +6,7 @@ import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditInfo;
 import logic.mockObject.MockCalculatePromotion;
 import logic.mockObject.MockCreditInfo;
-import logic.promotion.PromotionCalculation;
+import logic.promotion.CalculationPromotionInfo;
 import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
 import po.OrderPO;
@@ -22,7 +22,7 @@ public class CreateOrder implements CreateOrderService{
 	private OrderDao orderDao;
 	private OrderTransform orderTrans;
 	private CreditInfo creditInfo; 
-	private PromotionCalculation caculatePromotion;
+	private CalculationPromotionInfo caculatePromotion;
 	
 	
 	public CreateOrder() {

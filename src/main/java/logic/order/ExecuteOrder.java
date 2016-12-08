@@ -1,9 +1,5 @@
 package logic.order;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import Message.CreditChangeType;
 import Message.OrderState;
 import Message.ResultMessage;
@@ -11,6 +7,7 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChangeInfo;
 import logic.mockObject.MockCreditChangeInfo;
+import logic.utility.Time;
 import logicService.order.ExecuteOrderService;
 import po.OrderPO;
 import vo.CreditChangeVO;
@@ -40,9 +37,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po != null) {
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
-				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String executedTime=format.format(date);
+				String executedTime = Time.getCurrentTime();
 				
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setExecutedTime(executedTime);
@@ -77,9 +72,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 			if(po.getState() != OrderState.ABNORMAL.ordinal()) {
 				po.setState(OrderState.ABNORMAL.ordinal());
 				
-				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String time =format.format(date);
+				String time = Time.getCurrentTime();
 				
 				po.setAbnormalTime(time);
 				
@@ -113,9 +106,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po !=  null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
-				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String executedTime =format.format(date);
+				String executedTime = Time.getCurrentTime();
 				
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setExecutedTime(executedTime);
@@ -148,9 +139,8 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po != null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
-				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String undoAbnormalTime =format.format(date);
+				
+				String undoAbnormalTime = Time.getCurrentTime();
 				
 				po.setState(OrderState.UNDOED.ordinal());
 				po.setUndoAbnormalTime(undoAbnormalTime);

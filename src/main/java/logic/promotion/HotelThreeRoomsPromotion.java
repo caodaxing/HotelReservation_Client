@@ -1,5 +1,17 @@
 package logic.promotion;
 
-public class HotelThreeRoomsPromotion {
+import vo.OrderVO;
+
+public class HotelThreeRoomsPromotion implements Promotion{
+
+	@Override
+	public boolean judgePromotion(OrderVO orderVO) {
+		return false;
+	}
+
+	@Override
+	public double calculate() {
+		return 0;
+	}
 
 }
