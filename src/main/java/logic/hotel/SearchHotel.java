@@ -76,7 +76,6 @@ public class SearchHotel implements SearchHotelService{
 			return priceSort.getSortedList(condition, hotels);
 		case PRICE_UP:
 			return priceSort.getSortedList(condition, hotels);
-			
 		case GRADE_DOWN:
 			return gradeSort.getSortedList(condition, hotels);
 		case GRADE_UP:

@@ -12,12 +12,12 @@ import vo.CreditChangeVO;
 public interface CreditChangeService {
 	
 	/**
-	 * 改变信用值
-	 * @param creditChangeVO 传入的用户信用修改信息，包括信用充值等等
+	 * 充值信用值
+	 * @param creditChangeVO 传入的用户信用充值信息
 	 * @return 返回是否修改成功
 	 * @author Mark.W
 	 */
-	public ResultMessage changeCredit(CreditChangeVO creditChangeVO);
+	public ResultMessage rechargeCredit(CreditChangeVO creditChangeVO);
 	
 	/**
 	 * 获得用户历史信用记录

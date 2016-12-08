@@ -45,11 +45,10 @@ public class CreditChangeVO {
 	 * @param action 
 	 * @param cerditChange （包含正负号）
 	 */
-	public CreditChangeVO(String userID , String time , 
-			CreditChangeType action , int cerditChange ) {
+	public CreditChangeVO(String userID , String time ,  int cerditChange ) {
 		this.userID=userID;
 		this.time=time;
-		this.action=action;
+		this.action=CreditChangeType.RECHARGE_CREDIT;
 		this.cerditChange=cerditChange;
 	}
 	

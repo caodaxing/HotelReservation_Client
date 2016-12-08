@@ -23,7 +23,7 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom,UpdateHotelService{
+public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom{
 	
 	private HotelDao hotelDao;
 	private UpdateRoomInfo updateRoomInfo;
@@ -48,23 +48,6 @@ public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom,Upda
 			return null;
 		}
 		return updateRoomInfo.updateRoomInfo(roomVO);
-	}
-	
-	/**
-	 * 更新酒店信息
-	 * @param hotelVO 传入的VO信息
-	 * @return ResultMessage 返回是否更新成功（成功/失败）
-	 * @author all
-	 */
-	public ResultMessage updateHotelInfo (HotelVO hotelVO){
-		if (hotelVO!=null || hotelVO.hoteID!=null ) {
-			return null;
-		}
-		if(hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))){
-			return ResultMessage.SUCCESS;
-		}else {
-			return ResultMessage.FAILURE;
-		}
 	}
 	
 	/**

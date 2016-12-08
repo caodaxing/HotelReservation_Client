@@ -15,23 +15,10 @@ public class CreditChangeService_Stub implements CreditChangeService{
 		this.clientID = clientID;
 	}
 
-	public ResultMessage changeCredit(CreditChangeVO creditChangeVO) {
+	public ResultMessage rechargeCredit(CreditChangeVO creditChangeVO) {
 		return ResultMessage.FAILURE;
 	}
 
-	public ArrayList<CreditChangeVO> getHistoryList(String user_ID) {
-		
-//		ArrayList<CreditChangeVO> historyList = new ArrayList<CreditChangeVO>();
-//		CreditChangeVO credit1 = new CreditChangeVO("100" , 50 , "2726skue");
-//		CreditChangeVO credit2 = new CreditChangeVO("260" , -40 , "slfie226");
-//		historyList.add(credit1);
-//		historyList.add(credit2);
-//		
-//		return historyList;
-		return null;
-	}
-
-	@Override
 	public ArrayList<CreditChangeVO> getCreditHistory(String userID) {
 		return null;
 	}
