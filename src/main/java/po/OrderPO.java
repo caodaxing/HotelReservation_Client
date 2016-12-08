@@ -44,7 +44,7 @@ public class OrderPO {
 
 
 	public OrderPO(String userID, String orderID,String hotelId, String startTime, String endTime,
-			int roomNum, ArrayList<String> roomIDs,boolean hasChild,int numberOfPeople, int state,
+			int roomNum, ArrayList<String> roomIDs,boolean hasChild, int numberOfPeople, int state,
 			double beforePromotionPrice, double afterPromotionPrice, int promotionNum, 
 			ArrayList<String> promotionIDs,
 			String executedTime, String abnormalTime, String undoAbnormalTime) {

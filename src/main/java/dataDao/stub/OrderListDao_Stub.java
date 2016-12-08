@@ -40,7 +40,7 @@ public class OrderListDao_Stub implements OrderListDao{
 		
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
 		pos.add(po1);
-		pos.add(po1);
+		pos.add(po2);
 		pos.add(po3);
 		pos.add(po4);
 		
@@ -80,7 +80,7 @@ public class OrderListDao_Stub implements OrderListDao{
 		
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
 		pos.add(po1);
-		pos.add(po1);
+		pos.add(po2);
 		pos.add(po3);
 		pos.add(po4);
 		
@@ -120,7 +120,7 @@ public class OrderListDao_Stub implements OrderListDao{
 		
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
 		pos.add(po1);
-		pos.add(po1);
+		pos.add(po2);
 		pos.add(po3);
 		pos.add(po4);
 		

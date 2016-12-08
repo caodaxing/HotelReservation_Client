@@ -115,7 +115,7 @@ public class OrderList implements OrderListService{
 	//获取网站当天所有订单
 	private void getAllWebDailyOrders() {
 		Date date=new Date();
-		DateFormat format=new SimpleDateFormat("yyyyMMdd");
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 		String time =format.format(date);
 		
 		this.orders = this.orderListDao.getAllDailyOrders(time);

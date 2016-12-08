@@ -30,6 +30,7 @@ public class OrderListTest {
 		assertEquals(vos.get(0).orderId, "20161212000041212");
 	}
 	
+	
 	@Test
 	public void testFilterUserOrderList2() {
 		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.EXECUTED);

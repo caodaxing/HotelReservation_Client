@@ -17,7 +17,7 @@ public class UnExecutedFilter implements OrderListFilter{
 		if(orders == null) {
 			return null;
 		}
-		
+
 		ArrayList<OrderPO> res = new ArrayList<OrderPO>();
 		OrderPO po = null;
 		
