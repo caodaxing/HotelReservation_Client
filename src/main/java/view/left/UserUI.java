@@ -31,11 +31,11 @@ public class UserUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		Pane pane = new GridPane();
-		Image image = new Image("Image\\index.jpg", 200, 180, false, true);
-		ImageView headImage = new ImageView(image);
-		pane.getChildren().add(headImage);
-		grid.add(pane, 0, 0);
+		//Pane pane = new GridPane();
+		//Image image = new Image("Image\\index.jpg", 200, 180, false, true);
+		//ImageView headImage = new ImageView(image);
+		//pane.getChildren().add(headImage);
+		//grid.add(pane, 0, 0);
 		
 		Button vip = new Button("会 员");
 		vip.setId("light-button");

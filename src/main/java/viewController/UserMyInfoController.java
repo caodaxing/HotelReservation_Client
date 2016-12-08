@@ -39,6 +39,7 @@ public class UserMyInfoController {
 		creditChangeService = new CreditChangeService_Stub(userID);
 		clientService = new ClientService_Stub(userID);
 		
+		blankUI = new Blank(this);
 		checkMyInfoUI = new CheckMyInfo(this);
 		historyCreditUI = new HistoryCredit(this);
 		modifyMyInfoUI = new ModifyMyInfo(this);
@@ -47,6 +48,12 @@ public class UserMyInfoController {
 	
 	public Stage getStage(){
 		return stage;
+	}
+
+	public void setBlankView(){
+		
+		stage.setScene(blankUI.getScene());
+		
 	}
 	
 	public void setCheckMyInfoView(){

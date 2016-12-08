@@ -17,6 +17,8 @@ public class FirstUI{
 	
 	private Scene scene ;
 	
+	private AccountController controller ;
+	
 	private AnchorPane root ;
 	
 	private Button signIn ;
@@ -26,6 +28,8 @@ public class FirstUI{
 	private Button vistor ;
 	
 	public FirstUI(AccountController controller){
+		
+		this.controller = controller;
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -59,21 +63,24 @@ public class FirstUI{
 		signIn.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSignInView();
+				showStage();
 			}
 			
 		});
 		signUp.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSignUpView();
+				showStage();
 			}
 			
 		});
 		vistor.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setVistorBlankView();
+				showStage();
 			}
 			
 		});
@@ -92,4 +99,8 @@ public class FirstUI{
 		
 	}
 	
+	private void showStage(){
+		controller.getStage().show();
+	}
+
 }

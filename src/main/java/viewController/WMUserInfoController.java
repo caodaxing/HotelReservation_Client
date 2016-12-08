@@ -1,6 +1,7 @@
 package viewController;
 
 import javafx.stage.Stage;
+import view.right.webManager.userInfo.Blank;
 import view.right.webManager.userInfo.CheckUser;
 import view.right.webManager.userInfo.ModifyUser;
 import view.right.webManager.userInfo.SearchUser;
@@ -9,6 +10,7 @@ public class WMUserInfoController {
 
 	private Stage stage ;
 	
+	private Blank blankUI ;
 	private CheckUser checkUserUI ;
 	private ModifyUser modifyUserUI ;
 	private SearchUser searchUserUI;
@@ -17,6 +19,7 @@ public class WMUserInfoController {
 		
 		this.stage = stage;
 		
+		blankUI = new Blank(this);
 		checkUserUI = new CheckUser(this);
 		modifyUserUI = new ModifyUser(this);
 		searchUserUI = new SearchUser(this);
@@ -25,6 +28,12 @@ public class WMUserInfoController {
 	
 	public Stage getStage(){
 		return stage;
+	}
+	
+	public void setBlankView(){
+		
+		stage.setScene(blankUI.getScene());
+		
 	}
 	
 	public void setCheckUserView(){

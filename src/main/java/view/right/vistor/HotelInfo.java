@@ -60,7 +60,7 @@ public class HotelInfo {
 		setButton();
 		
 		//设置图片域
-		setImage();
+		//setImage();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);

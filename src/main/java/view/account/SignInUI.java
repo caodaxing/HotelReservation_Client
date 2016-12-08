@@ -19,6 +19,8 @@ public class SignInUI{
 
 	private Scene scene ;
 	
+	private AccountController controller ;
+	
 	private AnchorPane root ;
 	
 	private Button yes ;
@@ -29,6 +31,8 @@ public class SignInUI{
 	private PasswordField password ;
 	
 	public SignInUI(AccountController controller){
+		
+		this.controller = controller ;
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -47,6 +51,15 @@ public class SignInUI{
 		
 		return scene;
 		
+	}
+	
+	public String getID(){
+		return name.getText();
+		
+	}
+	
+	public String getPassword(){
+		return password.getText();
 	}
 	
 	private void setButton(){
@@ -71,6 +84,9 @@ public class SignInUI{
 			
 			public void handle(ActionEvent event){
 				
+				controller.setFirstView();
+				showStage();
+				
 			}
 			
 		});
@@ -78,7 +94,7 @@ public class SignInUI{
 		root.getChildren().add(yes);
 		root.getChildren().add(no);
 		
-		AnchorPane.setLeftAnchor(yes, 350.0);
+		AnchorPane.setLeftAnchor(yes, 300.0);
 		AnchorPane.setLeftAnchor(no, 420.0);
 		
 		AnchorPane.setTopAnchor(yes, 450.0);
@@ -114,6 +130,10 @@ public class SignInUI{
 		AnchorPane.setLeftAnchor(password, 350.0);
 		AnchorPane.setTopAnchor(password, 375.0);
 		
+	}
+	
+	private void showStage(){
+		controller.getStage().show();
 	}
 	
 }

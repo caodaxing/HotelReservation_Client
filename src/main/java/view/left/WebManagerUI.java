@@ -31,11 +31,11 @@ public class WebManagerUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		Pane pane = new GridPane();
-		Image image = new Image("Image\\index2.jpg", 200, 180, false, true);
-		ImageView headImage = new ImageView(image);
-		pane.getChildren().add(headImage);
-		grid.add(pane, 0, 0);
+		//Pane pane = new GridPane();
+		//Image image = new Image("Image\\index2.jpg", 200, 180, false, true);
+		//ImageView headImage = new ImageView(image);
+		//pane.getChildren().add(headImage);
+		//grid.add(pane, 0, 0);
 		
 		Button manageWebbusiness = new Button("网站营销人员管理");
 		manageWebbusiness.setId("light-button");

@@ -17,7 +17,9 @@ import viewController.AccountController;
  */
 public class SignUpUI{
 
-private Scene scene ;
+	private Scene scene ;
+	
+	private AccountController controller ;
 	
 	private AnchorPane root ;
 	
@@ -30,6 +32,8 @@ private Scene scene ;
 	private PasswordField rePassword ;
 	
 	public SignUpUI(AccountController controller){
+		
+		this.controller = controller;
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -50,6 +54,18 @@ private Scene scene ;
 		
 	}
 	
+	public String getID(){
+		return name.getText();
+	}
+	
+	public String getPassword(){
+		return password.getText();
+	}
+	
+	public String getRePassword(){
+		return rePassword.getText();
+	}
+	
 	private void setButton(){
 		
 		yes = new Button();
@@ -64,14 +80,15 @@ private Scene scene ;
 		yes.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.register();
 			}
 			
 		});
 		no.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setFirstView();
+				showStage();
 			}
 			
 		});
@@ -114,6 +131,7 @@ private Scene scene ;
 		rePassword.setPrefSize(150.0, 30.0);
 		
 		root.getChildren().add(password);
+		root.getChildren().add(rePassword);
 		
 		AnchorPane.setLeftAnchor(password, 350.0);
 		AnchorPane.setLeftAnchor(rePassword, 350.0);
@@ -121,6 +139,10 @@ private Scene scene ;
 		AnchorPane.setTopAnchor(password, 355.0);
 		AnchorPane.setTopAnchor(rePassword, 410.0);
 	
+	}
+	
+	private void showStage(){
+		controller.getStage().show();
 	}
 	
 }
