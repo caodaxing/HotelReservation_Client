@@ -27,6 +27,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	private OrderList orderList;  //每次执行订单必须获得订单列表，
 								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
 	
+	private OrderPO po;
 	
 	public ExecuteOrder() {
 		this.orderDao = new OrderDao_Stub();
@@ -35,12 +36,12 @@ public class ExecuteOrder implements ExecuteOrderService{
 
 	@Override
 	public ResultMessage normalExecute(String orderID) {
-		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		po= this.orderDao.getOrderByOrderID(orderID);
 		
 		if(po != null) {
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
 				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String executedTime=format.format(date);
 				
 				po.setState(OrderState.EXECUTED.ordinal());
@@ -70,14 +71,14 @@ public class ExecuteOrder implements ExecuteOrderService{
 
 	@Override
 	public ResultMessage autoSetAbnormal(String orderID) {
-		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		po = this.orderDao.getOrderByOrderID(orderID);
 		
 		if(po != null) {
 			if(po.getState() != OrderState.ABNORMAL.ordinal()) {
 				po.setState(OrderState.ABNORMAL.ordinal());
 				
 				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String time =format.format(date);
 				
 				po.setAbnormalTime(time);
@@ -108,12 +109,12 @@ public class ExecuteOrder implements ExecuteOrderService{
 	@Override
 	public ResultMessage supplyOrder(String orderID) {
 		
-		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		po = this.orderDao.getOrderByOrderID(orderID);
 		
 		if(po !=  null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
 				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String executedTime =format.format(date);
 				
 				po.setState(OrderState.EXECUTED.ordinal());
@@ -143,12 +144,12 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	// 撤销异常订单
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {
-		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		po = this.orderDao.getOrderByOrderID(orderID);
 		
 		if(po != null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
 				Date date=new Date();
-				DateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String undoAbnormalTime =format.format(date);
 				
 				po.setState(OrderState.UNDOED.ordinal());
@@ -183,5 +184,13 @@ public class ExecuteOrder implements ExecuteOrderService{
 		return ResultMessage.FAILURE;
 	}
 		
+	
+	public OrderPO getPo() {
+		return po;
+	}
+
+	public void setPo(OrderPO po) {
+		this.po = po;
+	}
 	
 }

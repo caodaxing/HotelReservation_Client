@@ -20,14 +20,27 @@ public class OrderDao_Stub implements OrderDao {
 
 	@Override
 	public OrderPO getOrderByOrderID(String orderID) {
-		ArrayList<String> rooms = new ArrayList<String>();
-		rooms.add("1109");
-		
-		ArrayList<String> promotions = new ArrayList<String>();
-		promotions.add("ppp");
-		
-		return new OrderPO("wyy", "20161212000041212", "green", "2016-12-12 12:00:00",
-				"2016-12-13 12:00:00", 1, rooms, false, 1, 0, 300, 240, 1, promotions, null, null, null);
+	
+		if(orderID == "20161212000041212") {
+			ArrayList<String> rooms = new ArrayList<String>();
+			rooms.add("1109");
+			
+			ArrayList<String> promotions = new ArrayList<String>();
+			promotions.add("ppp");
+			
+			return new OrderPO("wyy", "20161212000041212", "green", "2016-12-12 12:00:00",
+					"2016-12-13 12:00:00", 1, rooms, false, 1, 0, 300, 240, 1, promotions, null, null, null);
+		} else {
+			ArrayList<String> rooms = new ArrayList<String>();
+			rooms.add("1109");
+			
+			ArrayList<String> promotions = new ArrayList<String>();
+			promotions.add("ppp");
+			
+			return new OrderPO("wyy", "20160101000240001", "green", "2016-01-01 12:00:00",
+					"2016-01-02 12:00:00", 1, rooms, false, 1, 2, 300, 240, 1, promotions, null, null, null);
+		}
+	
 	}
 
 	@Override

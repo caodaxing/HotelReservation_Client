@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
+import dataDao.order.OrderListDao;
 import dataDao.stub.OrderDao_Stub;
+import dataDao.stub.OrderListDao_Stub;
 import logic.utility.EvaluationTransform;
 import logic.utility.OrderTransform;
 import logicService.order.OrderService;
@@ -71,7 +73,7 @@ public class Order implements OrderService, OrderEvaluationInfo{
 	@Override
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
 		
-		return null;
+		return this.evaluationTrans.evalutionListTransToVO(this.orderDao.getEvaluationByHotelID(hotelID));
 	}
 
 }
