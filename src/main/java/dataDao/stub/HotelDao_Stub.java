@@ -12,8 +12,10 @@ public class HotelDao_Stub implements HotelDao {
 
 	private ArrayList<HotelPO> hotelList = new ArrayList<>();
 	private HashMap<String , String > locationMap;
+	private OrderDao_Stub orderDao_Stub;
 	
 	public HotelDao_Stub() {
+		orderDao_Stub = new OrderDao_Stub();
 		locationMap.put("栖霞区", "马群");
 		locationMap.put("栖霞区", "仙林中心");
 		locationMap.put("栖霞区", "尧化门");
@@ -48,10 +50,6 @@ public class HotelDao_Stub implements HotelDao {
 		return null;
 	}
 
-	public ArrayList<String> getBookedHotelID(String userID) {
-		return null;
-	}
-	
 	public ArrayList<String> getTradingAreas(String loaction) {
 		ArrayList<String> tradingAreas = new ArrayList<>();
 		Iterator iterator = locationMap.entrySet().iterator();
@@ -66,17 +64,11 @@ public class HotelDao_Stub implements HotelDao {
 		return tradingAreas;
 	}
 
-	public ArrayList<HotelPO> SearchHotelList(String city, String distract, String tradingArea, String hotelName) {
+	public ArrayList<HotelPO> SearchHotelList(String city,String distract, String tradingArea) {
 		if (city==null) {
 			System.out.println("dataDao.stub.HotelDar_Stub.SearchHotelList参数异常");
 			return null;
 		}
-		
-		return null;
-	}
-
-	@Override
-	public ArrayList<HotelPO> SearchHotelList(String city,String distract, String tradingArea) {
 		return null;
 	}
 

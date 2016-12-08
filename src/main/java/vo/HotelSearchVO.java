@@ -9,12 +9,12 @@ import Message.RoomType;
  * @param tradingArea 酒店所属商圈
  * @param hotelName 酒店名称
  * @param roomType 房间类型
- * @param priceLow 酒店价格最低值
- * @param priceHigh 酒店价格最高值
- * @param commentLow 酒店评分最低值
- * @param commentHigh 酒店评分最低值
- * @param starLow 酒店星期最低值
- * @param starHigh 酒店星期最低值
+ * @param priceLow 酒店价格最低值 (默认值为-1)
+ * @param priceHigh 酒店价格最高值(默认值为5000)
+ * @param commentLow 酒店评分最低值(默认值为0)
+ * @param commentHigh 酒店评分最高值(默认值为5)
+ * @param starLow 酒店星期最低值(默认值为0)
+ * @param starHigh 酒店星期最低值(默认值为5)
  * @author Mark.W
  */
 public class HotelSearchVO {

@@ -2,21 +2,19 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.ResultMessage;
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.mockObject.MockOrderEvaluationInfo;
 import logic.mockObject.MockPromotionInfo;
 import logic.mockObject.MockUpdateRoomInfo;
 import logic.order.OrderEvaluationInfo;
+import logic.promotion.PromotionInfo;
 import logic.room.UpdateRoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
-import logicService.hotel.UpdateHotelService;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.PromotionVO;
-import vo.RoomVO;
 
 /**
  * 酒店信息，提供更新房间、酒店信息，获取评价，获取促销策略方法
@@ -27,7 +25,7 @@ public class Hotel implements CheckHotelService, HotelInfo{
 	
 	private HotelDao hotelDao;
 	private UpdateRoomInfo updateRoomInfo;
-	private MockPromotionInfo promotionInfo;
+	private PromotionInfo promotionInfo;
 	private OrderEvaluationInfo evaluationInfo;
 	
 	public Hotel(){

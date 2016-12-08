@@ -13,11 +13,7 @@ public interface HotelDao {
 	
 	public HotelPO getHotelInfoByHotelID(String hotelID);
 	
-	public ArrayList<String> getBookedHotelID(String userID);
-
 	public ArrayList<String> getTradingAreas(String loaction);
-	
-	public ArrayList<HotelPO> SearchHotelList(String city,String distract,String tradingArea,String hotelName);
 	
 	public ArrayList<HotelPO> SearchHotelList(String city,String distract,String tradingArea);
 	

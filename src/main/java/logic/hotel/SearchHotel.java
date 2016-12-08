@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Message.HotelSearchCondition;
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
+import logic.mockObject.MockGetBookedHotelList;
 import logic.utility.HotelTransform;
 import logicService.hotel.SearchHotelService;
 import po.HotelPO;
@@ -19,9 +20,11 @@ import vo.HotelVO;
 public class SearchHotel implements SearchHotelService{
 	
 	HotelDao hotelDao;
+	MockGetBookedHotelList getBookedHotelList;
 	
 	public SearchHotel() {
 		hotelDao = new HotelDao_Stub();
+		getBookedHotelList = new MockGetBookedHotelList();
 	}
 	
 	/**
@@ -97,10 +100,10 @@ public class SearchHotel implements SearchHotelService{
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getBookedHotelList (String userID){
-		ArrayList<String> hotelNames = hotelDao.getBookedHotelID(userID);
+		ArrayList<String> hotelIds = getBookedHotelList.getBookedHotelList(userID);
 		ArrayList<HotelVO> bookedHotelList = new ArrayList<>();
-		for (String string : hotelNames) {
-			bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(string)));
+		for (String hotelId : hotelIds) {
+			bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelId)));
 		}
 		return bookedHotelList;
 	}
@@ -113,20 +116,35 @@ public class SearchHotel implements SearchHotelService{
 	 */
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-		if (search==null||search.city==null) {
+		if (search==null||search.city==null||search.city==""||search.starLow>search.starHigh
+				||search.commentLow>search.commentHigh||search.priceLow>search.priceHigh) {
 			System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
-		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(search.city, search.distract,search.tradingArea, search.hotelName);
-		if (hotelPOList==null) {
+		ArrayList<HotelVO> hotelList = getInitialHotelList(search.city, search.distract, search.tradingArea);
+		if (hotelList==null) {
 			return null;
-		}else {
-			ArrayList<HotelVO> hotelList = new ArrayList<>();
-			for (HotelPO hotelPO : hotelPOList) {
-				hotelList.add(HotelTransform.hotelTransToVO(hotelPO));
-			}
-			return  hotelList;
 		}
+		if (search.hotelName!=null||search.hotelName!="") {
+			for (HotelVO hotelVO : hotelList) {
+				if (hotelVO.hotelName!=search.hotelName) {
+					hotelList.remove(hotelVO);
+				}
+			}
+		}
+		if (search.starLow>=0&&search.starHigh<=5&&search.starHigh>=0&&search.starHigh<=5) {
+			StarSort starSort = new StarSort();
+			hotelList = starSort.getSortedList(search.starLow, search.starLow, HotelSearchCondition.STAT_DOWN, hotelList);
+		}
+		if (search.priceLow!=-1) {
+			PriceSort priceSort = new PriceSort();
+			priceSort.getSortedList(search.priceLow, search.priceHigh, HotelSearchCondition.PRICE_UP, hotelList);
+		}
+		if (search.commentLow>=0&&search.commentLow<5||search.commentHigh>0&&search.commentHigh<=5) {
+			GradeSort gradeSort = new GradeSort();
+			gradeSort.getSortedList(search.commentLow, search.commentHigh, HotelSearchCondition.GRADE_DOWN, hotelList);
+		}
+		return hotelList;
 	}
 
 }

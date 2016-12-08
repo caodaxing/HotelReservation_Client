@@ -64,7 +64,7 @@ public class StarSort {
 	 * @return ArrayList<HotelVO> 返回按星级排序好的酒店名称列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSortedList(double starStar,double endStar,HotelSearchCondition condition ,ArrayList<HotelVO> hotels){
+	public ArrayList<HotelVO> getSortedList(int starStar,int endStar,HotelSearchCondition condition ,ArrayList<HotelVO> hotels){
 		if (hotels==null || starStar>endStar ||condition!=HotelSearchCondition.STAR_UP || condition!=HotelSearchCondition.STAT_DOWN) {
 			System.out.println("logic.hotel.starSort.getSortedList参数异常");
 			return null;
