@@ -10,6 +10,11 @@ import logicService.hotel.UpdateHotelService;
 import vo.HotelVO;
 import vo.RoomVO;
 
+/**
+ * 更新酒店信息，提供了添加、修改酒店信息和修改房间信息
+ * @author bcy
+ *
+ */
 public class UpdateHotel implements UpdateHotelService ,HotelUpdateRoom{
 
 	HotelDao hotelDao;
@@ -19,6 +24,18 @@ public class UpdateHotel implements UpdateHotelService ,HotelUpdateRoom{
 		this.hotelDao = new HotelDao_Stub();
 		this.updateRoomInfo = new MockUpdateRoomInfo();
 	}
+	
+	/**
+	 * 增添新的酒店
+	 * @param HotelVO 新的酒店信息
+	 * @return ResultMessage 返回是否添加成功（成功/失败）
+	 * @author bcy
+	 */
+	public ResultMessage addHotel(HotelVO hotelVO) {
+		hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO));
+		return null;
+	}
+	
 	/**
 	 * 更新酒店信息
 	 * @param hotelVO 传入的VO信息
@@ -48,4 +65,5 @@ public class UpdateHotel implements UpdateHotelService ,HotelUpdateRoom{
 		}
 		return updateRoomInfo.updateRoomInfo(roomVO);
 	}
+
 }

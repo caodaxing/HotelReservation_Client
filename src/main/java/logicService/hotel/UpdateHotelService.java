@@ -12,6 +12,8 @@ import vo.RoomVO;
  */
 public interface UpdateHotelService {
 	
+	public ResultMessage addHotel(HotelVO hotelVO);
+	
 	public ResultMessage updateHotelInfo(HotelVO hotelVO);
 	
 	public ResultMessage updateRoom(RoomVO roomVO);

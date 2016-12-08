@@ -1,11 +1,14 @@
 package vo;
 
+import Message.RoomType;
+
 /**
  * 搜索酒店的VO类
- * @param city 酒店地址
+ * @param city 酒店所在城市
+ * @param distract 酒店所在行政区
  * @param tradingArea 酒店所属商圈
  * @param hotelName 酒店名称
- * @param orderId 房间类型
+ * @param roomType 房间类型
  * @param priceLow 酒店价格最低值
  * @param priceHigh 酒店价格最高值
  * @param commentLow 酒店评分最低值
@@ -17,19 +20,21 @@ package vo;
 public class HotelSearchVO {
 	
 	public String city;
+	public String distract;
 	public String tradingArea;
 	public String hotelName;
-	public int roomType;
-	public int priceLow;
-	public int priceHigh;
+	public RoomType roomType;
+	public double priceLow;
+	public double priceHigh;
 	public double commentLow;
 	public double commentHigh;
 	public int starLow;
 	public int starHigh;
 	
-	public HotelSearchVO(String city, String tradingArea, String hotelName, int roomType, int priceLow, int priceHigh,
+	public HotelSearchVO(String city, String distract,String tradingArea, String hotelName, RoomType roomType, double priceLow, double priceHigh,
 			double commentLow, double commentHigh, int starLow, int starHigh) {
 		this.city = city;
+		this.distract = distract;
 		this.tradingArea = tradingArea;
 		this.hotelName = hotelName;
 		this.roomType = roomType;
@@ -40,4 +45,5 @@ public class HotelSearchVO {
 		this.starLow = starLow;
 		this.starHigh = starHigh;
 	}
+	
 }

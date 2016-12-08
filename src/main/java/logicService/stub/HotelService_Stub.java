@@ -130,4 +130,10 @@ public class HotelService_Stub implements UpdateHotelService{
 	public ResultMessage updateHotelInfo(HotelVO hotelVO) {
 		return null;
 	}
+
+	@Override
+	public ResultMessage addHotel(HotelVO hotelVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

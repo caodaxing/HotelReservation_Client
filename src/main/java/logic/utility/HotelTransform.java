@@ -16,7 +16,7 @@ public class HotelTransform {
 	 * @return HotelPO
 	 */
 	public static HotelPO hotelTransToPO(HotelVO vo) {
-		return new HotelPO(vo.hoteID, vo.hotelName, vo.city, vo.tradingArea, vo.locationOfHotel, vo.evaluationGrades,
+		return new HotelPO(vo.hoteID, vo.hotelName, vo.city, vo.distract,vo.tradingArea, vo.locationOfHotel, vo.evaluationGrades,
 				vo.levelOfHotel, vo.introduction, vo.facilities, vo.picturesPath, vo.emptyRoomNum, vo.bussiness);
 	}
 	
@@ -26,7 +26,7 @@ public class HotelTransform {
 	 * @return HotelVO
 	 */
 	public static HotelVO hotelTransToVO(HotelPO po) {
-		return new HotelVO(po.getHoteID(), po.getHotelName(), po.getCity(), po.getTradingArea(), 
+		return new HotelVO(po.getHoteID(), po.getHotelName(), po.getCity(), po.getDistract(),po.getTradingArea(), 
 				po.getLocationOfHotel(), po.getEvaluationGrades(),po.getLevelOfHotel(), po.getIntroduction(), 
 				po.getFacilities(), po.getPictures(), po.getEmptyRoomNum(), po.getBussiness());
 	}

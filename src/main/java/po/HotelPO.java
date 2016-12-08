@@ -7,6 +7,7 @@ import java.util.HashMap;
  * @param hoteID 酒店ID
  * @param hotelName 酒店名称
  * @param city 城市
+ * @param distract 所在行政区
  * @param tradingArea 所属商圈
  * @param locationOfHotel 酒店地址
  * 
@@ -32,6 +33,7 @@ public class HotelPO {
 	private String hoteID;
 	private String hotelName;
 	private String city;
+	private String distract;
 	private String tradingArea;
 	private String locationOfHotel;
 	public double evaluationGrades;
@@ -42,12 +44,13 @@ public class HotelPO {
 	private HashMap<Integer, Integer> emptyRoomNum;
 	private String bussiness;
 
-	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
+	public HotelPO(String hoteID,String hotelName,String city,String distract,String tradingArea,
 			String locationOfHotel,Double evaluationGrades,int levelOfHotel,String introduction, String facilities, 
 			ArrayList<String> pictures,	HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
+		this.distract = distract;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.evaluationGrades=evaluationGrades;
@@ -64,6 +67,7 @@ public class HotelPO {
 	 * @param hoteID
 	 * @param hotelName
 	 * @param city
+	 * @param distract
 	 * @param tradingArea
 	 * @param locationOfHotel
 	 * @param levelOfHotel
@@ -73,12 +77,13 @@ public class HotelPO {
 	 * @param emptyRoomNum
 	 * @param bussiness
 	 */
-	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
+	public HotelPO(String hoteID,String hotelName,String distract,String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities, 
 			ArrayList<String> pictures,	HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
+		this.distract = distract;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
@@ -89,6 +94,14 @@ public class HotelPO {
 		this.bussiness = bussiness;
 	}
 	
+	public String getDistract() {
+		return distract;
+	}
+
+	public void setDistract(String distract) {
+		this.distract = distract;
+	}
+
 	public String getHotelName() {
 		return hotelName;
 	}

@@ -19,15 +19,9 @@ import vo.HotelVO;
 public class SearchHotel implements SearchHotelService{
 	
 	HotelDao hotelDao;
-	PriceSort priceSort;
-	GradeSort gradeSort;
-	StarSort starSort;
 	
 	public SearchHotel() {
 		hotelDao = new HotelDao_Stub();
-		priceSort = new PriceSort();
-		gradeSort = new GradeSort();
-		starSort = new StarSort();
 	}
 	
 	/**
@@ -43,13 +37,14 @@ public class SearchHotel implements SearchHotelService{
 	
 	/**
 	 * 获取指定地址指定商圈符合条件的酒店列表
-	 * @param location 传入酒店地址
+	 * @param city 传入酒店所属城市
+	 * @param distract 传入酒店所属行政区
 	 * @param tradingArea 传入商圈
 	 * @return ArrayList<HotelInfoVO> 返回酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getInitialHotelList (String location,String tradingArea ){
-		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(location, tradingArea);
+	public ArrayList<HotelVO> getInitialHotelList (String city,String distract,String tradingArea ){
+		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(city,distract,tradingArea);
 		ArrayList<HotelVO> hotelVOList = new ArrayList<>();
 		for (HotelPO hotelPO : hotelPOList) {
 			hotelVOList.add(HotelTransform.hotelTransToVO(hotelPO));
@@ -65,7 +60,11 @@ public class SearchHotel implements SearchHotelService{
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition , ArrayList<HotelVO> hotels){
+		PriceSort priceSort = new PriceSort();
+		GradeSort gradeSort = new GradeSort();
+		StarSort starSort = new StarSort();
 		if (condition==null||hotels==null) {
+			System.out.println("logic.hotel.SearchHotel.getSortedList参数错误");
 			return null;
 		}
 		if (hotels.size()==1) {
@@ -114,7 +113,20 @@ public class SearchHotel implements SearchHotelService{
 	 */
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-		return null;
+		if (search==null||search.city==null) {
+			System.out.println("logic.hotel.SearchHotel.search参数错误");
+			return null;
+		}
+		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(search.city, search.distract,search.tradingArea, search.hotelName);
+		if (hotelPOList==null) {
+			return null;
+		}else {
+			ArrayList<HotelVO> hotelList = new ArrayList<>();
+			for (HotelPO hotelPO : hotelPOList) {
+				hotelList.add(HotelTransform.hotelTransToVO(hotelPO));
+			}
+			return  hotelList;
+		}
 	}
 
 }

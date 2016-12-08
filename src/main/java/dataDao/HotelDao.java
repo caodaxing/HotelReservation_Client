@@ -2,6 +2,7 @@ package dataDao;
 
 import java.util.ArrayList;
 
+import Message.RoomType;
 import po.HotelPO;
 
 public interface HotelDao {
@@ -16,8 +17,8 @@ public interface HotelDao {
 
 	public ArrayList<String> getTradingAreas(String loaction);
 	
-	public ArrayList<HotelPO> SearchHotelList(String tradingArea , int level , int priceFloor , int priceCeiling);
+	public ArrayList<HotelPO> SearchHotelList(String city,String distract,String tradingArea,String hotelName);
 	
-	public ArrayList<HotelPO> SearchHotelList(String location,String tradingArea);
+	public ArrayList<HotelPO> SearchHotelList(String city,String distract,String tradingArea);
 	
 }

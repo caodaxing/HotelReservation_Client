@@ -23,7 +23,7 @@ import vo.RoomVO;
  * @author all
  *
  */
-public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom{
+public class Hotel implements CheckHotelService, HotelInfo{
 	
 	private HotelDao hotelDao;
 	private UpdateRoomInfo updateRoomInfo;
@@ -35,19 +35,6 @@ public class Hotel implements CheckHotelService, HotelInfo, HotelUpdateRoom{
 		this.updateRoomInfo = new MockUpdateRoomInfo();
 		this.promotionInfo = new MockPromotionInfo();
 		this.evaluationInfo = new MockOrderEvaluationInfo();
-	}
-	
-	/**
-	 * 酒店工作人员更新房间信息，从界面调用
-	 * @param roomVO 传入的VO信息
-	 * @return ResultMessage 返回是否更新成功（成功/失败）
-	 * @author all
-	 */
-	public ResultMessage updateRoom(RoomVO roomVO){
-		if (roomVO!=null || roomVO.hotelId!=null || roomVO.roomId!=null) {
-			return null;
-		}
-		return updateRoomInfo.updateRoomInfo(roomVO);
 	}
 	
 	/**
