@@ -2,6 +2,7 @@ package logic.promotion;
 
 import logic.utility.Time;
 import vo.OrderVO;
+import vo.PromotionVO;
 
 /**
  * 酒店客户生日折扣 PromotionType.HOTEL_BIRTHDAY
@@ -36,11 +37,26 @@ public class HotelBirthdayPromotion implements Promotion {
 
 	@Override
 	public boolean judgePromotion(OrderVO orderVO) {
+		
 		return false;
 	}
 
 	@Override
-	public double calculate() {
-		return 0;
+	public OrderVO calculate(OrderVO vo) {
+		return null;
 	}
+	
+	@Override
+	public PromotionVO changeToVO() {
+		return null;
+	}
+	
+	public String getPromotionID() {
+		return promotionID;
+	}
+
+	public String getPromotionName() {
+		return promotionName;
+	}
+
 }

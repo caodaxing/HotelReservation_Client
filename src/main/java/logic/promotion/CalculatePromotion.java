@@ -34,14 +34,20 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 			return null;
 		}
 		
-		this.promotions.clear();			//清除原先的promotion,以防止promotion有添加或者改动不一致的现象
+		this.promotions.clear();
+		//清除原先的promotion,以防止promotion有添加或者改动不一致的现象
+		
 		this.initWebPromotions();
 		this.initHoteLPromotions(order.hotelID);
+	
+		for(int i=0; i<this.promotions.size(); ++i) {
+			Promotion p = this.promotions.get(i);
+			if(p.judgePromotion(order)) {
+				order = p.calculate(order);
+			}
+		}
 		
-		
-		
-		
-		return null;
+		return order;
 	}
 	
 	private void initWebPromotions() {

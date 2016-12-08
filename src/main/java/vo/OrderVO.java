@@ -17,9 +17,9 @@ import Message.OrderState;
  * @param beforePrice 优惠前价格
  * @param afterPrice 优惠后价格
  * @param promotions 订单时候的促销信息
- * @param executedTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
- * @param undoAbnormalTime 订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
- * @param abnormalTime 订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param executedTime 订单执行的时间 格式yyyy-MM-dd HH:mm:ss
+ * @param undoAbnormalTime 订单撤销的时间 格式yyyy-MM-dd HH:mm:ss
+ * @param abnormalTime 订单被置为异常的时间 格式yyyy-MM-dd HH:mm:ss
  */
 public class OrderVO {
 	

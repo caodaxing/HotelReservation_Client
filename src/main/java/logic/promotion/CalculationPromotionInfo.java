@@ -10,4 +10,5 @@ import vo.OrderVO;
 public interface CalculationPromotionInfo {
 	
 	public OrderVO calculate(OrderVO order);
+	
 }

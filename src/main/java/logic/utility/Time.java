@@ -19,9 +19,15 @@ public class Time {
 		return t;
 	}
 
+	private int len = "yyyy-MM-dd".length();
+	private String hourMinSec = " 00:00:00";
 	private String time;
 	
 	public Time(String time) {
+		if(time.length() < len) {
+			time = time.trim() + hourMinSec;
+		}
+		
 		this.time = time;
 	}
 	

@@ -114,7 +114,6 @@ public class PromotionVO {
 	 * @param promotionID
 	 * @param hotelID
 	 * @param promotionName
-	 * @param discount
 	 * @param roomsAndDiscount
 	 */
 	public PromotionVO(String promotionID, String hotelID, String promotionName, double[] roomsAndDiscount) {
@@ -185,15 +184,7 @@ public class PromotionVO {
 	/**
 	 * 网站vip等级优惠
 	 * @param promotionID
-	 * @param hotelID
-	 * @param promotionType
 	 * @param promotionName
-	 * @param discount
-	 * @param startTime
-	 * @param endTime
-	 * @param cooperateBusiness
-	 * @param roomsAndDiscount
-	 * @param vipTradeAreaDiscount
 	 * @param vipLevelDiscount
 	 */
 	public PromotionVO(String promotionID, String promotionName, double[] vipLevelDiscount) {
