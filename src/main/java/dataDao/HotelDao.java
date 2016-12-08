@@ -18,4 +18,6 @@ public interface HotelDao {
 	
 	public ArrayList<HotelPO> SearchHotelList(String tradingArea , int level , int priceFloor , int priceCeiling);
 	
+	public ArrayList<HotelPO> SearchHotelList(String location,String tradingArea);
+	
 }

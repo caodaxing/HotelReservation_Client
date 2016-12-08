@@ -22,11 +22,13 @@ public interface SearchHotelService {
 	public ArrayList<String> getTradingArea (String location);
 	
 	/**
-	 * 获取按一定方式排序的酒店列表
+	 * 将搜索到的酒店按一定方式排列
+	 * @param HotelSerchCondition 传入需要排序的标准
+	 * @param ArrayList<HotelVO> 传入需要排序的酒店列表
 	 * @return ArrayList<HotelInfoVO> 返回按一定方式排序的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition);
+	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition, ArrayList<HotelVO> hotels);
 	
 	/**
 	 * 获取用户预定过的酒店列表a

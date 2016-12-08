@@ -31,6 +31,11 @@ public class HotelDao_Stub implements HotelDao {
 		return null;
 	}
 
+	@Override
+	public ArrayList<HotelPO> SearchHotelList(String location, String tradingArea) {
+		return null;
+	}
+
 
 	
 

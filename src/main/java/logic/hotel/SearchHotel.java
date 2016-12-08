@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import Message.HotelSearchCondition;
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
+import logic.utility.HotelTransform;
 import logicService.hotel.SearchHotelService;
+import po.HotelPO;
 import vo.HotelSearchVO;
 import vo.HotelVO;
 
@@ -17,6 +19,16 @@ import vo.HotelVO;
 public class SearchHotel implements SearchHotelService{
 	
 	HotelDao hotelDao;
+	PriceSort priceSort;
+	GradeSort gradeSort;
+	StarSort starSort;
+	
+	public SearchHotel() {
+		hotelDao = new HotelDao_Stub();
+		priceSort = new PriceSort();
+		gradeSort = new GradeSort();
+		starSort = new StarSort();
+	}
 	
 	/**
 	 * 获取酒店所在商圈
@@ -37,26 +49,62 @@ public class SearchHotel implements SearchHotelService{
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getInitialHotelList (String location,String tradingArea ){
-		return null;
+		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(location, tradingArea);
+		ArrayList<HotelVO> hotelVOList = new ArrayList<>();
+		for (HotelPO hotelPO : hotelPOList) {
+			hotelVOList.add(HotelTransform.hotelTransToVO(hotelPO));
+		}
+		return hotelVOList;
 	}
 	
 	/**
-	 * 获取按一定方式排序的酒店列表
+	 * 将搜索到的酒店按一定方式排列
+	 * @param HotelSerchCondition 传入需要排序的标准
+	 * @param ArrayList<HotelVO> 传入需要排序的酒店列表
 	 * @return ArrayList<HotelInfoVO> 返回按一定方式排序的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition){
+	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition , ArrayList<HotelVO> hotels){
+		if (condition==null||hotels==null) {
+			return null;
+		}
+		if (hotels.size()==1) {
+			return hotels;
+		}
+		switch (condition) {
+		case PRICE_DOWN:
+			return priceSort.getSortedList(condition, hotels);
+		case PRICE_UP:
+			return priceSort.getSortedList(condition, hotels);
+			
+		case GRADE_DOWN:
+			return gradeSort.getSortedList(condition, hotels);
+		case GRADE_UP:
+			return gradeSort.getSortedList(condition, hotels);
+		case STAT_DOWN:
+			return starSort.getSortedList(condition, hotels);
+		case STAR_UP:
+			return starSort.getSortedList(condition, hotels);
+		default:
+			System.out.println("logic.hotel.SearchHotel.getSortedList参数错误");
+			break;
+		}
 		return null;
 	}
 	
 	/**
 	 * 获取用户预定过的酒店列表
-	 * @param user_id 传入用户id
+	 * @param userID 传入用户id
 	 * @return ArrayList<HotelInfoVO> 返回用户预定过的酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getBookedHotelList (String user_id){
-		return null;
+	public ArrayList<HotelVO> getBookedHotelList (String userID){
+		ArrayList<String> hotelNames = hotelDao.getBookedHotelID(userID);
+		ArrayList<HotelVO> bookedHotelList = new ArrayList<>();
+		for (String string : hotelNames) {
+			bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(string)));
+		}
+		return bookedHotelList;
 	}
 
 	/**
@@ -69,4 +117,5 @@ public class SearchHotel implements SearchHotelService{
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
 		return null;
 	}
+
 }
