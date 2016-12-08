@@ -101,6 +101,7 @@ public class OrderList implements OrderListService{
 		return this.filterList(condition);
 	}
 	
+	
 	//确定ArrayList<OrderPO>后，筛选订单的方法，为了避免代码重复，所以建立一个私有方法被调用
 	private ArrayList<OrderVO> filterList(OrderListCondition condition) {
 		

@@ -1,9 +1,11 @@
 package logic.order;
 
+import Message.OrderState;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditInfo;
 import logic.mockObject.MockCalculatePromotion;
+import logic.mockObject.MockCreditInfo;
 import logic.promotion.PromotionCalculation;
 import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
@@ -26,6 +28,7 @@ public class CreateOrder implements CreateOrderService{
 	public CreateOrder() {
 		this.orderTrans = new OrderTransform();
 		this.orderDao = new OrderDao_Stub();
+		this.creditInfo = new MockCreditInfo();
 		this.caculatePromotion = new MockCalculatePromotion();
 	}
 
@@ -38,6 +41,8 @@ public class CreateOrder implements CreateOrderService{
 		} 
 		
 		OrderVO vo = this.caculatePromotion.calculate(o);
+		
+		vo.orderState = OrderState.UNEXECUTED;
 		
 		OrderPO po = this.orderTrans.orderTransToPO(vo);
 		

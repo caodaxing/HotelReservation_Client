@@ -10,7 +10,5 @@ public interface OrderListDao {
 	
 	public ArrayList<OrderPO> getOrderListByHotelID(String hotelID);
 	
-	public ArrayList<OrderPO> getHotelDailyOrders(String hotelID);
-	
 	public ArrayList<OrderPO> getAllDailyOrders(String time);
 }

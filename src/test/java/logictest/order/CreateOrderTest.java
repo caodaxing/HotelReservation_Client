@@ -1,45 +1,40 @@
 package logictest.order;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
+import org.junit.Before;
 import org.junit.Test;
+
+import Message.RoomType;
+import logic.order.CreateOrder;
+import vo.OrderVO;
+import vo.RoomVO;
 
 public class CreateOrderTest {
 
-//	private JudgePromotion promotion;
-//	private CreateOrder createOrder;
-//	private CreditInfo credit;
-//	
-//	@Before
-//	public void setUp(){
-//		promotion = new MockCalculatePromotion();
-//		createOrder = new CreateOrder(promotion, credit);
-//		
-//	}
-//	
-	/**
-	 * 测试信用值不足时生成订单
-	 * @author Mark.W
-	 */
-	@Test
-	public void testCreateOrder1() {
-		assertEquals("h", "h");
+	private CreateOrder createOrder;
+	
+	@Before
+	public void setUp() {
+		this.createOrder = new CreateOrder();
 	}
 	
-//	/**
-//	 * 测试正常生成订单
-//	 * @author Mark.W
-//	 */
-//	@Test
-//	public void testCreateOrder2() {
-//		createOrder = new CreateOrder(promotion, new MockCredit(100, 2));
-//		
-//		assertEquals(createOrder.judgeCredit("dddddd"), ResultMessage.SUCCESS);
-//		
-//		OrderVO order = new OrderVO("2-1611111112", "20161111", 
-//				new RoomVO(0,299,0,"1109"), "20161112", 1, 2, false, 299);
-//		
-//		assertEquals(promotion.calculate(order),  "2s79");
-//	}
-
+	@Test
+	public void testCreateOrder() {
+		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
+		rooms.add(new RoomVO("00005", "1109", RoomType.SINGLE_ROOM, 400, false, null));
+		
+		OrderVO vo = new OrderVO("20161225000051234", "2016-12-25 12:00:00", "2016-12-26 12;00:00",
+				"00005", rooms, 1, false, 400);
+		
+		vo = this.createOrder.createOrder(vo);
+		
+		assertEquals(vo.afterPrice, 320.0, 0);
+		
+		assertEquals(vo.promotions.get(0).promotionName, "全网折扣");
+		
+	}
+	
 }
