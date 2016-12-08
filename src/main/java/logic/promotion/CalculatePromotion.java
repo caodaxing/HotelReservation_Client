@@ -2,6 +2,7 @@ package logic.promotion;
 
 import java.util.ArrayList;
 
+import Message.PromotionType;
 import dataDao.promotion.PromotionDao;
 import dataDao.stub.PromotionDao_Stub;
 import factories.PromotionFactory;
@@ -51,7 +52,7 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	}
 	
 	private void initWebPromotions() {
-		ArrayList<PromotionPO> pos = this.promotionDao.getWebPromotions();
+		ArrayList<PromotionPO> pos = this.promotionDao.getWebPromotions(PromotionType.ALL.ordinal());
 		
 		if(pos == null) {
 			return;
@@ -63,7 +64,7 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	}
 
 	private void initHoteLPromotions(String hotelID) {
-		ArrayList<PromotionPO> pos = this.promotionDao.getHotelPromotions(hotelID);
+		ArrayList<PromotionPO> pos = this.promotionDao.getHotelPromotions(hotelID,PromotionType.ALL.ordinal());
 		
 		if(pos == null) {
 			return;

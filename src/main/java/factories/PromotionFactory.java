@@ -1,5 +1,6 @@
 package factories;
 
+import Message.PromotionType;
 import logic.promotion.HotelBirthdayPromotion;
 import logic.promotion.HotelBusinessPromotion;
 import logic.promotion.HotelDoubleElevenPromotion;
@@ -21,29 +22,29 @@ public class PromotionFactory {
 		
 		Promotion result = null;
 		
-		switch(po.getPromotionType()) {
-		case 1 :
+		switch(PromotionType.values()[po.getPromotionType()]) {
+		case HOTEL_BIRTHDAY :
 			result = this.createHotelBirthdayPromotion(po);
 			break;
-		case 2 :
+		case HOTEL_3_ROOMS_OR_MORE:
 			result = this.createHotelThreeRoomsPromotion(po);
 			break;
-		case 3 :
+		case HOTEL_COOPREATE_BUSINESS:
 			result = this.createHotelBusinessPromotion(po);
 			break;
-		case 4 :
+		case HOTEL_11_11 :
 			result = this.createHotelDoubleElevenPromotion(po);
 			break;
-		case 5 :
+		case WEB_11_11 :
 			result = this.createWebDoubleElevenPromotion(po);
 			break;
-		case 6 :
+		case WEB_VIP_TRADINGAREA :
 			result = this.createWebVipTradingAreaPromotion(po);
 			break;
-		case 7 :
+		case WEB_VIP_LEVEL:
 			result = this.createWebVipLevelPromotion(po);
 			break;
-		default :
+		default:
 System.out.println("PromotionFactory.createPromotion参数异常");
 			break;
 		}

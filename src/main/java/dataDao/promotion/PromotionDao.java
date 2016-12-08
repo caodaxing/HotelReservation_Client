@@ -6,9 +6,10 @@ import po.PromotionPO;
 
 public interface PromotionDao {
 
-	public ArrayList<PromotionPO> getHotelPromotions(String hotel);
+	// promotionType 参数若为0，则表示要拿hotel的所有promotion
+	public ArrayList<PromotionPO> getHotelPromotions(String hotel, int promotionType);
 	
-	public ArrayList<PromotionPO> getWebPromotions();
+	public ArrayList<PromotionPO> getWebPromotions(int promotionType);
 	
 	public PromotionPO getPromotion(String promotionID);
 	
