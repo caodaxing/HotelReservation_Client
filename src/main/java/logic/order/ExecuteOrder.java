@@ -11,12 +11,9 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChangeInfo;
 import logic.mockObject.MockCreditChangeInfo;
-import logic.utility.EvaluationTransform;
 import logicService.order.ExecuteOrderService;
-import po.EvaluationPO;
 import po.OrderPO;
 import vo.CreditChangeVO;
-import vo.EvaluationVO;
 
 /**
  * 执行订单

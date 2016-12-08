@@ -72,16 +72,16 @@ public class OrderListTest {
 
 	@Test
 	public void testFilterHotelOrderList1() {
-		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.UNEXECUTED);
+		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.UNEXECUTED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.UNEXECUTED);
-		assertEquals(vos.get(0).orderId, "20161212000061212");
+		assertEquals("20161212000061212",vos.get(0).orderId);
 	}
 	
 	@Test
 	public void testFilterHotelOrderList2() {
-		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.EXECUTED);
+		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.EXECUTED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.EXECUTED);
@@ -91,16 +91,16 @@ public class OrderListTest {
 	
 	@Test
 	public void testFilterHotelOrderList3() {
-		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.ABNORMALED);
+		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.ABNORMALED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.ABNORMAL);
-		assertEquals(vos.get(0).orderId, "20150214000060886");
+		assertEquals("20150214000060886", vos.get(0).orderId);
 	}
 
 	@Test
 	public void testFilterHotelOrderList4() {
-		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.UNDOED);
+		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.UNDOED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.UNDOED);
