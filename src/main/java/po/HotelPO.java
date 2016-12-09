@@ -22,13 +22,6 @@ import java.util.HashMap;
  *
  */
 public class HotelPO {
-	public double getEvaluationGrades() {
-		return evaluationGrades;
-	}
-
-	public void setEvaluationGrades(double evaluationGrades) {
-		this.evaluationGrades = evaluationGrades;
-	}
 
 	private String hoteID;
 	private String hotelName;
@@ -199,5 +192,12 @@ public class HotelPO {
 		this.emptyRoomNum = emptyRoomNum;
 	}
 	
+	public double getEvaluationGrades() {
+		return evaluationGrades;
+	}
+	
+	public void setEvaluationGrades(double evaluationGrades) {
+		this.evaluationGrades = evaluationGrades;
+	}
 	
 }
