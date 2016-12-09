@@ -15,7 +15,7 @@ import Message.PromotionType;
  * @param birthDay
  * @param cooperateBusiness
  * @param roomsAndDiscount
- * @param vipTradeAreaDiscount  用HashMap<String, Double[]> 来存 商圈，double数组下标表示会员等级，值表示折扣，保留两位小数
+ * @param vipTradeAreaDiscount  用HashMap<String, Double[]> 来存 商圈，double数组下标(不包括0，0号位置用0填充)表示会员等级，值表示折扣，保留两位小数
  * @param vipLevelDiscount  
  */
 public class PromotionVO {
@@ -29,7 +29,7 @@ public class PromotionVO {
 	public String birthDay;
 	public String cooperateBusiness;
 	public double[] roomsAndDiscount;
-	public HashMap<String, Double[]> vipTradeAreaDiscount;
+	public HashMap<String, double[]> vipTradeAreaDiscount;
 	public double[] vipLevelDiscount;
 	
 	/**
@@ -162,7 +162,7 @@ public class PromotionVO {
 	 * @param vipTradeAreaDiscount
 	 */
 	public PromotionVO(String promotionID, String promotionName,
-			 HashMap<String, Double[]> vipTradeAreaDiscount) {
+			 HashMap<String, double[]> vipTradeAreaDiscount) {
 		this.promotionID = promotionID;
 		this.promotionType = PromotionType.WEB_VIP_TRADINGAREA;
 		this.promotionName = promotionName;

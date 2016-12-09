@@ -1,7 +1,14 @@
 package logic.promotion;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+import logic.mockObject.MockGetClientVipInfo;
+import logic.user.GetClientVipInfo;
+import logic.utility.DataFormat;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.VipVO;
 
 /**
  * 网站vip等级优惠
@@ -14,6 +21,7 @@ public class WebVipLevelPromotion  implements Promotion{
 	private String promotionID;
 	private String promotionName;
 	private double[] vipLevelDiscount;
+	private GetClientVipInfo clientVip;
 	
 	/**
 	 * @param promotionID
@@ -24,21 +32,44 @@ public class WebVipLevelPromotion  implements Promotion{
 		this.promotionID = promotionID;
 		this.promotionName = promotionName;
 		this.vipLevelDiscount = vipLevelDiscount;
+		this.clientVip = new MockGetClientVipInfo();
 	}
 
 	@Override
-	public boolean judgePromotion(OrderVO orderVO) {
+	public boolean judgePromotion(OrderVO vo) {
+		if(this.clientVip.isVIP(vo.userID)) {
+			return true;
+		}
+		
 		return false;
 	}
 
 	@Override
 	public OrderVO calculate(OrderVO vo) {
-		return null;
+		
+		VipVO v = this.clientVip.getVipInfo(vo.userID);
+		int level = v.level;
+		
+		double discount = 0;
+		if(level <= this.vipLevelDiscount.length) {
+			discount = this.vipLevelDiscount[level];
+		} else {
+			discount = this.vipLevelDiscount[this.vipLevelDiscount.length-1];
+		}
+		
+		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * discount);
+		
+		if(vo.promotions == null) {
+			vo.promotions = new ArrayList<PromotionVO>();
+		}
+		vo.promotions.add(this.changeToVO());
+		
+		return vo;
 	}
 	
 	@Override
 	public PromotionVO changeToVO() {
-		return null;
+		return new PromotionVO(this.promotionID, this.promotionName, this.vipLevelDiscount);
 	}
 	
 	public String getPromotionID() {

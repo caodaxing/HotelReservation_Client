@@ -1,5 +1,9 @@
 package logic.promotion;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+import logic.utility.DataFormat;
 import logic.utility.Time;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -39,18 +43,32 @@ public class WebDoubleElevenPromotion implements Promotion{
 	}
 
 	@Override
-	public boolean judgePromotion(OrderVO orderVO) {
+	public boolean judgePromotion(OrderVO vo) {
+		Time t = new Time(vo.startTime);
+		if(this.startTime.before(t) && this.endTime.after(t)) {
+			return true;
+		}
+		
 		return false;
 	}
 	
 	@Override
 	public OrderVO calculate(OrderVO vo) {
-		return null;
+		
+		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * this.discount);
+	
+		if(vo.promotions == null) {
+			vo.promotions = new ArrayList<PromotionVO>();
+		}
+		vo.promotions.add(this.changeToVO());
+		
+		return vo;
 	}
 	
 	@Override
 	public PromotionVO changeToVO() {
-		return null;
+		return new PromotionVO(this.promotionID, this.promotionName, this.discount, 
+				this.startTime.toString(), this.endTime.toString());
 	}
 	
 	public String getPromotionID() {

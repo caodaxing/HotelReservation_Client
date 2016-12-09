@@ -28,7 +28,7 @@ public class PromotionPO {
 	private String birthDay;
 	private String cooperateBusiness;
 	private double[] roomsAndDiscount;
-	private HashMap<String, Double[]> vipTradeAreaDiscount;
+	private HashMap<String, double[]> vipTradeAreaDiscount;
 	private double[] vipLevelDiscount;
 	
 	/**
@@ -47,7 +47,7 @@ public class PromotionPO {
 	 */
 	public PromotionPO(int promotionType, String promotionID, String hotelID, String promotionName,
 			double discount, String startTime, String endTime, String birthDay, String cooperateBusiness,
-			double[] roomsAndDiscount, HashMap<String, Double[]> vipTradeAreaDiscount, double[] vipLevelDiscount) {
+			double[] roomsAndDiscount, HashMap<String, double[]> vipTradeAreaDiscount, double[] vipLevelDiscount) {
 		this.promotionType = promotionType;
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
@@ -142,11 +142,11 @@ public class PromotionPO {
 		this.roomsAndDiscount = roomsAndDiscount;
 	}
 
-	public HashMap<String, Double[]> getVipTradeAreaDiscount() {
+	public HashMap<String, double[]> getVipTradeAreaDiscount() {
 		return vipTradeAreaDiscount;
 	}
 
-	public void setVipTradeAreaDiscount(HashMap<String, Double[]> vipTradeAreaDiscount) {
+	public void setVipTradeAreaDiscount(HashMap<String, double[]> vipTradeAreaDiscount) {
 		this.vipTradeAreaDiscount = vipTradeAreaDiscount;
 	}
 

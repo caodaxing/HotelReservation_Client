@@ -1,5 +1,9 @@
 package logic.promotion;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+import logic.utility.DataFormat;
 import vo.OrderVO;
 import vo.PromotionVO;
 
@@ -34,20 +38,41 @@ public class HotelThreeRoomsPromotion implements Promotion{
 	}
 
 	@Override
-	public boolean judgePromotion(OrderVO orderVO) {
+	public boolean judgePromotion(OrderVO vo) {
+		if(this.hotelID == vo.hotelID) {
+			if(vo.rooms != null && vo.rooms.size() >= 3) {
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
 	@Override
 	public OrderVO calculate(OrderVO vo) {
-		return null;
+		
+		double discount = 0;
+		if(vo.rooms.size() <= this.roomsAndDiscount.length) {
+			discount = this.roomsAndDiscount[vo.rooms.size()];
+		} else {
+			discount = this.roomsAndDiscount[this.roomsAndDiscount.length-1];
+		}
+		
+		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * discount);
+		
+		if(vo.promotions == null) {
+			vo.promotions = new ArrayList<PromotionVO>();
+		}
+		vo.promotions.add(this.changeToVO());
+		
+		return vo;
 	}
 	
 	@Override
 	public PromotionVO changeToVO() {
-		return null;
+		return new PromotionVO(this.promotionID, this.hotelID, this.promotionID, this.roomsAndDiscount);
 	}
-	
+
 	public String getPromotionID() {
 		return promotionID;
 	}

@@ -1,8 +1,12 @@
 package logic.promotion;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 import Message.VipType;
 import logic.mockObject.MockGetClientVipInfo;
 import logic.user.GetClientVipInfo;
+import logic.utility.DataFormat;
 import logic.utility.Time;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -60,16 +64,21 @@ public class HotelBirthdayPromotion implements Promotion {
 	@Override
 	public OrderVO calculate(OrderVO vo) {
 		
-		vo.afterPrice = vo.beforePrice * this.discount;
+		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * this.discount);
 		
-		return null;
+		if(vo.promotions == null) {
+			vo.promotions = new ArrayList<PromotionVO>();
+		}
+		vo.promotions.add(this.changeToVO());
+		
+		return vo;
 	}
 	
 	@Override
 	public PromotionVO changeToVO() {
-		return null;
+		return new PromotionVO(this.promotionID, this.hotelID, this.promotionName, this.discount);
 	}
-	
+
 	public String getPromotionID() {
 		return promotionID;
 	}

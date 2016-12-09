@@ -39,6 +39,15 @@ public class Time {
 		this.initTime();
 	}
 	
+
+	
+	@Override
+	public String toString() {
+		return this.time;
+	}
+
+
+
 	private void initTime() {
 		this.year = Integer.parseInt(this.time.substring(0, 4));
 		this.month = Integer.parseInt(this.time.substring(5, 7));
