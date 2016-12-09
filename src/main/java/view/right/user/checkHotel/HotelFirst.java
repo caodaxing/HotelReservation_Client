@@ -8,10 +8,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
-import view.left.HotelManagerUI;
 import view.left.UserUI;
-import viewController.HMPromotionController;
-import viewController.UserCheckHotelController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_查看酒店_初始界面（选择查看预定过的酒店还是搜索酒店）
@@ -20,7 +18,7 @@ import viewController.UserCheckHotelController;
  */
 public class HotelFirst {
 	
-	private UserCheckHotelController controller ;
+	private UserLeftController controller ;
 	
 	private Scene scene;
 	
@@ -33,7 +31,7 @@ public class HotelFirst {
 	Button checkHistoryHotel ;
 	Button searchNewHotel ;
 	
-	public HotelFirst(UserCheckHotelController controller) {
+	public HotelFirst(UserLeftController controller) {
 		
 		this.controller = controller;
 		

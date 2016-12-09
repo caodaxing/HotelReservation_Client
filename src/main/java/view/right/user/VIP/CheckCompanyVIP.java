@@ -7,11 +7,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserVIPController;
+import viewController.UserLeftController;
+import vo.VipVO;
 
 public class CheckCompanyVIP {
 
-	private UserVIPController controller;
+	private UserLeftController controller;
 	
 	private Scene scene ;
 	
@@ -23,7 +24,7 @@ public class CheckCompanyVIP {
 	
 	TextField company;
 	
-	public CheckCompanyVIP(UserVIPController controller){
+	public CheckCompanyVIP(UserLeftController controller){
 		
 		this.controller = controller;
 		
@@ -46,6 +47,10 @@ public class CheckCompanyVIP {
 	private void setTextField(){
 		
 		company = new TextField();
+		
+		//根据controller显示数据
+		VipVO vo = controller.getVIPInfo();
+		company.setText(vo.info);
 		
 		company.setEditable(false);
 		

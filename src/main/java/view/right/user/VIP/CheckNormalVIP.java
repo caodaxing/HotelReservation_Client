@@ -2,21 +2,20 @@ package view.right.user.VIP;
 
 import java.time.LocalDate;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserVIPController;
+import viewController.UserLeftController;
+import vo.VipVO;
 
 public class CheckNormalVIP {
 
-	private UserVIPController controller;
+	private UserLeftController controller;
 	
 	private Scene scene ;
 	
@@ -26,9 +25,9 @@ public class CheckNormalVIP {
 	
 	private AnchorPane rightPane;
 	
-	DatePicker birthday ;
+	TextField birthday ;
 	
-	public CheckNormalVIP(UserVIPController controller){
+	public CheckNormalVIP(UserLeftController controller){
 		
 		this.controller = controller;
 		
@@ -40,20 +39,20 @@ public class CheckNormalVIP {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
-		setDatePicker();
+		setTextField();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
 	}
 	
-	private void setDatePicker(){
+	private void setTextField(){
 		
-		birthday = new DatePicker();
-
-		birthday.setEditable(false);
+		birthday = new TextField();
 		
-		birthday.setValue(LocalDate.now());
+		//根据controller显示数据
+		VipVO vo = controller.getVIPInfo();
+		birthday.setText(vo.info);
 		
 		birthday.setPrefSize(200, 30);
 		

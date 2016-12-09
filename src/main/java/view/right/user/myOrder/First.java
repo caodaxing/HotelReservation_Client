@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_我的订单_初始界面（查询订单）
@@ -19,7 +19,7 @@ import viewController.UserMyOrderController;
  */
 public class First {
 
-	private UserMyOrderController controller;
+	private UserLeftController controller;
 	
 	private Scene scene;
 	
@@ -33,7 +33,7 @@ public class First {
 	
 	Button inquiry;
 	
-	public First(UserMyOrderController controller){
+	public First(UserLeftController controller){
 		
 		this.controller = controller;
 		

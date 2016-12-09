@@ -12,7 +12,7 @@ import view.right.user.myOrder.OrderList;
 import view.right.user.myOrder.UndoOrder;
 import view.right.user.myOrder.UnexecuteOrder;
 
-public class UserMyOrderController {
+public class UserMyOrderController extends UserLeftController {
 	
 	private Stage stage;
 	private String userID;
@@ -31,8 +31,6 @@ public class UserMyOrderController {
 	private Evaluate evaluateUI ;
 	private EvaluationInfo evaluationInfoUI ;
 	private ExecuteOrder executeOrderUI ;
-	private First firstUI ;
-	private OrderList orderListUI ;
 	private UndoOrder undoOrderUI ;
 	private UnexecuteOrder unexecuteOrderUI ;
 	
@@ -47,8 +45,6 @@ public class UserMyOrderController {
 		evaluateUI = new Evaluate(this);
 		evaluationInfoUI = new EvaluationInfo(this);
 		executeOrderUI = new ExecuteOrder(this);
-		firstUI = new First(this);
-		orderListUI = new OrderList(this);
 		undoOrderUI = new UndoOrder(this);
 		unexecuteOrderUI = new UnexecuteOrder(this);
 	
@@ -91,18 +87,6 @@ public class UserMyOrderController {
 	public void setExecuteOrderView(){
 		
 		stage.setScene(executeOrderUI.getScene());
-		
-	}
-	
-	public void setFirstView(){
-		
-		stage.setScene(firstUI.getScene());
-	
-	}
-
-	public void setOrderListView(){
-		
-		stage.setScene(orderListUI.getScene());
 		
 	}
 	

@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_我的订单_订单列表
@@ -20,7 +20,7 @@ import viewController.UserMyOrderController;
  */
 public class OrderList {
 	
-	private UserMyOrderController controller;
+	private UserLeftController controller;
 	
 	private Scene scene;
 	private GridPane leftPane;
@@ -29,7 +29,7 @@ public class OrderList {
 	
 	ScrollBar scroller;
 	
-	public OrderList(UserMyOrderController controller){
+	public OrderList(UserLeftController controller){
 		
 		this.controller = controller;
 		

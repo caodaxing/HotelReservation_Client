@@ -10,7 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyInfoController;
+import viewController.UserLeftController;
+import vo.ClientVO;
 
 /**
  * 客户界面_我的信息_查看基本信息（初始界面）
@@ -19,7 +20,7 @@ import viewController.UserMyInfoController;
  */
 public class CheckMyInfo {
 	
-	private UserMyInfoController controller ;
+	private UserLeftController controller ;
 	
 	private Scene scene ;
 	
@@ -37,7 +38,7 @@ public class CheckMyInfo {
 	Button historyCredit;
 	Button modify;
 	
-	public CheckMyInfo(UserMyInfoController controller){
+	public CheckMyInfo(UserLeftController controller){
 		
 		this.controller = controller;
 		
@@ -62,6 +63,13 @@ public class CheckMyInfo {
 		phone = new TextField();
 		id = new TextField();
 		credit = new TextField();
+		
+		ClientVO vo = controller.getMyInfo();
+		//根据controller设置text
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		credit.setText(Integer.toString(vo.credit));
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);

@@ -9,11 +9,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserVIPController;
+import viewController.UserLeftController;
 
 public class Choose {
 	
-	private UserVIPController controller ;
+	private UserLeftController controller ;
 	
 	private Scene scene;
 	
@@ -26,7 +26,7 @@ public class Choose {
 	Button normal ;
 	Button company ;
 	
-	public Choose(UserVIPController controller) {
+	public Choose(UserLeftController controller) {
 		
 		this.controller = controller;
 		

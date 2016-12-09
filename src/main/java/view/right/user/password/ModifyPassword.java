@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserPasswordController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_修改密码_修改密码
@@ -19,7 +19,7 @@ import viewController.UserPasswordController;
  */
 public class ModifyPassword {
 
-	private UserPasswordController controller ;
+	private UserLeftController controller ;
 	
 	private Scene scene ;
 	
@@ -36,7 +36,7 @@ public class ModifyPassword {
 	Button yes;
 	Button no;
 	
-	public ModifyPassword(UserPasswordController controller){
+	public ModifyPassword(UserLeftController controller){
 		
 		this.controller = controller;
 		
@@ -54,7 +54,7 @@ public class ModifyPassword {
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 	
 	}
-	
+
 	private void setTextField (){
 		
 		oldPassword = new TextField();
