@@ -37,6 +37,7 @@ public class SignUpUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setId("SignUp");
 		
 		setButton();
 		
@@ -66,6 +67,12 @@ public class SignUpUI{
 		return rePassword.getText();
 	}
 	
+	public void setBlank(){
+		name.setText("");
+		password.setText("");
+		rePassword.setText("");
+	}
+	
 	private void setButton(){
 		
 		yes = new Button();
@@ -73,6 +80,9 @@ public class SignUpUI{
 		
 		yes.setText("注册");
 		no.setText("取消");
+		
+		yes.setId("SmallButton");
+		no.setId("SmallButton");
 		
 		yes.setPrefSize(80.0, 30.0);
 		no.setPrefSize(80.0, 30.0);

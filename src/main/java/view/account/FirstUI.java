@@ -33,6 +33,7 @@ public class FirstUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setId("First");
 		
 		setButton();
 		
@@ -55,6 +56,10 @@ public class FirstUI{
 		signIn.setText("用户登录");
 		signUp.setText("用户注册");
 		vistor.setText("游客浏览");
+		
+		signIn.setId("BigButton");
+		signUp.setId("BigButton");
+		vistor.setId("BigButton");
 		
 		signIn.setPrefSize(200.0, 50.0);
 		signUp.setPrefSize(200.0, 50.0);

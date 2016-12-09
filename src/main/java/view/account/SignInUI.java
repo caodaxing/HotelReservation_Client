@@ -36,6 +36,7 @@ public class SignInUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setId("SignIn");
 		
 		setButton();
 		
@@ -62,6 +63,11 @@ public class SignInUI{
 		return password.getText();
 	}
 	
+	public void setBlank(){
+		name.setText("");
+		password.setText("");
+	}
+	
 	private void setButton(){
 		
 		yes = new Button();
@@ -70,23 +76,25 @@ public class SignInUI{
 		yes.setText("登录");
 		no.setText("取消");
 		
+		yes.setId("SmallButton");
+		no.setId("SmallButton");
+		
 		yes.setPrefSize(80.0, 30.0);
 		no.setPrefSize(80.0, 30.0);
 		
 		yes.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.login();
+				showStage();
 			}
 			
 		});
 		no.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
 				controller.setFirstView();
 				showStage();
-				
 			}
 			
 		});

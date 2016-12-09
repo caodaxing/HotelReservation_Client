@@ -41,7 +41,7 @@ public class SearchResultList {
 	
 	private AnchorPane rightPane;
 	
-	private VistorUI vistorUI = new VistorUI();
+	private VistorUI leftUI;
 	
 	Button ascendingSort;
 	Button dscendingSort;
@@ -69,7 +69,9 @@ public class SearchResultList {
 		
 		this.controller = controller;
 		
-		leftPane = vistorUI.getPane();
+		leftUI = new VistorUI(controller);
+		
+		leftPane = leftUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

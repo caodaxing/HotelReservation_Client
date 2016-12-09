@@ -26,7 +26,7 @@ public class SearchHotel {
 	
 	private Scene scene ;
 	
-	private VistorUI vistorUI = new VistorUI();
+	private VistorUI leftUI;
 	
 	private GridPane leftPane ;
 	
@@ -54,8 +54,10 @@ public class SearchHotel {
 		
 		this.controller = controller;
 		
+		leftUI = new VistorUI(controller);
+		
 		// 初始化左侧Pane
-		leftPane = vistorUI.getPane() ;
+		leftPane = leftUI.getPane() ;
 		leftPane.setPrefSize ( DefaultNums.LEFT_WIDTH , DefaultNums.HEIGHT );
 		
 		//初始化右侧Pane

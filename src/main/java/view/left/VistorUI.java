@@ -1,12 +1,16 @@
 package view.left;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
+import viewController.VistorLeftController;
 
 /**
  * 游客左侧导航栏
@@ -17,7 +21,11 @@ public class VistorUI{
 	
 	private GridPane pane;
 	
-	public VistorUI(){
+	private VistorLeftController controller;
+	
+	public VistorUI(VistorLeftController controller ){
+		
+		this.controller = controller;
 		pane = this.initGridPane();
 	}
 	
@@ -47,7 +55,23 @@ public class VistorUI{
 		signUp.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signUp, 0, 2);
 		
+		signIn.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				controller.setSignInView();
+			}
+			
+		});
+		signUp.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				controller.setSignUpView();
+			}
+			
+		});
+		
 		return grid;
+		
 	}
 	
 }

@@ -15,11 +15,13 @@ public class Blank {
 	
 	private GridPane leftPane ;
 	
-	private VistorUI vistorUI = new VistorUI();
+	private VistorUI vistorUI ; 
 	
 	public Blank(VistorController controller){
 		
 		this.controller = controller ;
+		
+		vistorUI = new VistorUI(controller);
 		
 		leftPane = vistorUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

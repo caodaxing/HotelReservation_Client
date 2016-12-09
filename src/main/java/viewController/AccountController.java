@@ -113,27 +113,86 @@ public class AccountController {
 			//两次输入密码不一致，弹出“两次密码输入不一致，请重新输入”
 			showDialog("两次密码输入不一致，请重新输入");
 		}else{
-		
 			
 			AccountVO accountVO = new AccountVO(userID,password,Identity.CLIENT);
 			ResultMessage result = accountService.register(accountVO);
 		
 			if(result == ResultMessage.SUCCESS){//注册成功则返回首页
-				//弹出“注册成功”对话框
+				//弹出“注册成功”对话框，清空textfield
 				showDialog("注册成功");
+				signUpUI.setBlank();
 				setFirstView();
 			}else{//调用helpTools里的对话框
 				//“注册失败，请尝试修改用户名”
 				showDialog("注册失败，请尝试修改用户名");
 			}
 		}
+		
+		return;
 	
+	}
+	
+	public void login(){
+		
+		String ID = signInUI.getID();
+		String password = signInUI.getPassword();
+		if(ID.equals("")){
+			//弹出“请输入用户名”
+			showDialog("请输入用户名");
+			return ;
+		}
+		if(password.equals("")){
+			//弹出“请输入密码”
+			showDialog("请输入密码");
+			return ;
+		}
+		Identity identity = accountService.getIdentity(ID);
+		AccountVO accountVO = new AccountVO(ID,password,identity);
+		
+		ResultMessage result = accountService.login(accountVO);
+		if(result == ResultMessage.USERNAME_NOT_EXIST){
+			//弹出"用户名不存在"
+			showDialog("用户名不存在");
+			return ;
+		}else if(result == ResultMessage.UNMATCHED_PASSWORD){
+			//弹出“密码错误”
+			showDialog("密码错误");
+			return ;
+		}else if(result == ResultMessage.FAILURE){
+			//弹出 系统错误，请重试
+			showDialog("系统错误，请重试");
+			return ;
+		}else{
+			//弹出"登陆成功"，清空textfiel，跳入对应用户界面
+			showDialog("登陆成功");
+			signInUI.setBlank();
+			showFirstView(ID,identity);
+		}
+		
 	}
 	
 	//弹出对话框，文字为传入的str
 	private void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
+	}
+	
+	//根据identity跳入各用户界面(userID为UserCOntroller所需
+	private void showFirstView(String userID , Identity identity){
+		
+		if(identity == Identity.CLIENT){
+			userController = new UserMyInfoController(stage, userID);
+			userController.setBlankView();
+		}else if(identity == Identity.HOTELMANAGER){
+			//
+		}else if(identity == Identity.WEBBUSSINESS){
+			//
+		}else if(identity == Identity.WEBMANAGER){
+			webManagerController.setBlankView();
+		}
+		
+		return ;
+	
 	}
 	
 }
