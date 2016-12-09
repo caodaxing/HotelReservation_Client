@@ -40,7 +40,7 @@ public class CreateOrder implements CreateOrderService{
 			return null;
 		} 
 		
-		OrderVO vo = this.caculatePromotion.calculate(o);
+		OrderVO vo = this.caculatePromotion.calculatePromotion(o);
 		
 		vo.orderState = OrderState.UNEXECUTED;
 		

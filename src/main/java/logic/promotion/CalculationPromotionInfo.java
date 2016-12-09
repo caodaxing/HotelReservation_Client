@@ -9,6 +9,6 @@ import vo.OrderVO;
  */
 public interface CalculationPromotionInfo {
 	
-	public OrderVO calculate(OrderVO order);
+	public OrderVO calculatePromotion(OrderVO order);
 	
 }

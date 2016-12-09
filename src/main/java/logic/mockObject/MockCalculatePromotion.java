@@ -9,7 +9,7 @@ import vo.PromotionVO;
 public class MockCalculatePromotion implements CalculationPromotionInfo {
 
 	@Override
-	public OrderVO calculate(OrderVO order) {
+	public OrderVO calculatePromotion(OrderVO order) {
 		
 		ArrayList<PromotionVO> pros = new ArrayList<PromotionVO>();
 		pros.add(new PromotionVO("ppp", "全网折扣", 0.8, "2016-12-09 12:00:00", "2016-12-31 12:00:00"));

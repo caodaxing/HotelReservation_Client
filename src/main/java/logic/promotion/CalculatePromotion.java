@@ -30,7 +30,7 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	 * @return 折扣后订单价格
 	 * @author Rukawa
 	 */
-	public OrderVO calculate(OrderVO order){
+	public OrderVO calculatePromotion(OrderVO order){
 		if(order == null) {
 			return null;
 		}

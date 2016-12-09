@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import logic.mockObject.MockGetClientVipInfo;
