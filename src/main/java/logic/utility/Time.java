@@ -31,12 +31,15 @@ public class Time {
 	
 	
 	public Time(String time) {
-		if(time.length() < minlen) {
+
+		if(time.length() <= minlen) {
 			time = time.trim() + hourMinSec;
 		}
 		
-		this.time = time;
-		this.initTime();
+		if(time.length() == 19) {
+			this.time = time;
+			this.initTime();
+		}
 	}
 	
 
@@ -54,7 +57,7 @@ public class Time {
 		this.day = Integer.parseInt(this.time.substring(8, 10));
 		this.hour = Integer.parseInt(this.time.substring(11, 13));
 		this.min = Integer.parseInt(this.time.substring(14, 16));
-		this.sec = Integer.parseInt(this.time.substring(16, 18));
+		this.sec = Integer.parseInt(this.time.substring(17, 19));
 	}
 
 	public boolean before(Time t) {

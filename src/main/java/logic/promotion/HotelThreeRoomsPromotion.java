@@ -51,8 +51,9 @@ public class HotelThreeRoomsPromotion implements Promotion{
 	public OrderVO calculate(OrderVO vo) {
 		
 		double discount = 0;
-		if(vo.rooms.size() <= this.roomsAndDiscount.length) {
-			discount = this.roomsAndDiscount[vo.rooms.size()];
+		//roomsAndDiscount下标0表示预定3间
+		if(vo.rooms.size() -3 < this.roomsAndDiscount.length) {
+			discount = this.roomsAndDiscount[vo.rooms.size() - 3];
 		} else {
 			discount = this.roomsAndDiscount[this.roomsAndDiscount.length-1];
 		}

@@ -65,7 +65,7 @@ public class WebVipTradingAreaPromotion implements Promotion {
 		
 		double[] dis = this.vipTradeAreaDiscount.get(area);
 		
-		if(l > dis.length) {
+		if(l >= dis.length) {
 			discount = dis[dis.length-1];
 		} else {
 			discount = dis[l];

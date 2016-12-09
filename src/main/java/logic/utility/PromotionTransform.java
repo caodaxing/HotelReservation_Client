@@ -21,13 +21,13 @@ public class PromotionTransform {
 		return vos;
 	}
 	
-	public PromotionPO promotionTransToVO(PromotionVO vo) {
+	public PromotionPO promotionTransToPO(PromotionVO vo) {
 		if(vo == null) {
 			return null;
 		}
 		
 		return new PromotionPO(vo.promotionType.ordinal(), vo.promotionID, vo.hotelID, 
-				vo.promotionName, vo.discount, vo.startTime, vo.endTime, vo.birthDay, 
+				vo.promotionName, vo.discount, vo.startTime, vo.endTime,
 				vo.cooperateBusiness, vo.roomsAndDiscount, vo.vipTradeAreaDiscount, vo.vipLevelDiscount);
 	}
 	

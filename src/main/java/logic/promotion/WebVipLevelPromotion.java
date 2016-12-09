@@ -50,7 +50,7 @@ public class WebVipLevelPromotion  implements Promotion{
 		int level = v.level;
 		
 		double discount = 0;
-		if(level <= this.vipLevelDiscount.length) {
+		if(level < this.vipLevelDiscount.length) {
 			discount = this.vipLevelDiscount[level];
 		} else {
 			discount = this.vipLevelDiscount[this.vipLevelDiscount.length-1];

@@ -11,10 +11,9 @@ import java.util.HashMap;
  * @param discount
  * @param startTime
  * @param endTime
- * @param birthDay
  * @param cooperateBusiness
- * @param roomsAndDiscount
- * @param vipTradeAreaDiscount  用HashMap<String, Double[]> 来存 商圈，double数组下标表示会员等级，值表示折扣，保留两位小数
+ * @param roomsAndDiscount		double数组下标+3(0下标对应值为3间，1下标对应4间)表示房间数量，值表示折扣，保留两位小数
+ * @param vipTradeAreaDiscount  用HashMap<String, Double[]> 来存 商圈，double数组下标(0下标对应值为0)表示会员等级，值表示折扣，保留两位小数
  * @param vipLevelDiscount  
  */
 public class PromotionPO {
@@ -25,7 +24,6 @@ public class PromotionPO {
 	private double discount;
 	private String startTime;
 	private String endTime; 
-	private String birthDay;
 	private String cooperateBusiness;
 	private double[] roomsAndDiscount;
 	private HashMap<String, double[]> vipTradeAreaDiscount;
@@ -46,7 +44,7 @@ public class PromotionPO {
 	 * @param vipLevelDiscount
 	 */
 	public PromotionPO(int promotionType, String promotionID, String hotelID, String promotionName,
-			double discount, String startTime, String endTime, String birthDay, String cooperateBusiness,
+			double discount, String startTime, String endTime, String cooperateBusiness,
 			double[] roomsAndDiscount, HashMap<String, double[]> vipTradeAreaDiscount, double[] vipLevelDiscount) {
 		this.promotionType = promotionType;
 		this.promotionID = promotionID;
@@ -55,7 +53,6 @@ public class PromotionPO {
 		this.discount = discount;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.birthDay = birthDay;
 		this.cooperateBusiness = cooperateBusiness;
 		this.roomsAndDiscount = roomsAndDiscount;
 		this.vipTradeAreaDiscount = vipTradeAreaDiscount;
@@ -116,14 +113,6 @@ public class PromotionPO {
 
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
-	}
-
-	public String getBirthDay() {
-		return birthDay;
-	}
-
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
 	}
 
 	public String getCooperateBusiness() {

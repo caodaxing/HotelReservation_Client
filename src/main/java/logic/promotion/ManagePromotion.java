@@ -23,7 +23,7 @@ public class ManagePromotion implements PromotionService{
 	@Override
 	public ResultMessage addPromotion(PromotionVO vo) {
 		if(vo != null) {
-			PromotionPO po = this.promotionTrans.promotionTransToVO(vo);
+			PromotionPO po = this.promotionTrans.promotionTransToPO(vo);
 			
 			if(this.promotionDao.addPromotion(po)) {
 				return ResultMessage.SUCCESS;

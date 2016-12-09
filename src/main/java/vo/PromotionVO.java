@@ -12,7 +12,6 @@ import Message.PromotionType;
  * @param discount
  * @param startTime
  * @param endTime
- * @param birthDay
  * @param cooperateBusiness
  * @param roomsAndDiscount
  * @param vipTradeAreaDiscount  用HashMap<String, Double[]> 来存 商圈，double数组下标(不包括0，0号位置用0填充)表示会员等级，值表示折扣，保留两位小数
@@ -26,7 +25,6 @@ public class PromotionVO {
 	public double discount;
 	public String startTime;
 	public String endTime; 
-	public String birthDay;
 	public String cooperateBusiness;
 	public double[] roomsAndDiscount;
 	public HashMap<String, double[]> vipTradeAreaDiscount;
@@ -51,7 +49,6 @@ public class PromotionVO {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		
-		this.birthDay = null;
 		this.cooperateBusiness = null;
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
@@ -78,7 +75,6 @@ public class PromotionVO {
 		
 		this.startTime = null;
 		this.endTime = null;
-		this.birthDay = null;
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -123,7 +119,6 @@ public class PromotionVO {
 		this.discount = 0;
 		this.startTime = null;
 		this.endTime = null;
-		this.birthDay = null;
 		this.cooperateBusiness = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -174,7 +169,6 @@ public class PromotionVO {
 		this.cooperateBusiness = null;
 		this.roomsAndDiscount = null;
 		this.hotelID = null;
-		this.birthDay = null;
 		this.vipLevelDiscount = null;
 	}
 	
@@ -190,7 +184,6 @@ public class PromotionVO {
 		this.promotionName = promotionName;
 		this.vipLevelDiscount = vipLevelDiscount;
 		
-		this.birthDay = null;
 		this.hotelID = null;
 		this.discount = 0;
 		this.startTime = null;
