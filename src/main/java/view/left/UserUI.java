@@ -77,7 +77,7 @@ public class UserUI{
 		abnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(abnormalOrder, 0, 8);
 		
-		Button orderedHotel = new Button("预定过的酒店");
+		Button orderedHotel = new Button("查看酒店");
 		orderedHotel.setId("dark-button");
 		orderedHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(orderedHotel, 0, 9);

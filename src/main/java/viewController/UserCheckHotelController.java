@@ -14,7 +14,7 @@ public class UserCheckHotelController {
 	
 	//控制的界面
 	private EvaluationList evaluationListUI;
-	private First firstUI;
+	private HotelFirst firstUI;
 	private HistoryOrderList historyOrderListUI;
 	private HotelInfo hotelInfoUI;
 	private MakeOrder makeOrderUI;
@@ -30,7 +30,7 @@ public class UserCheckHotelController {
 		
 		
 		evaluationListUI = new EvaluationList(this);
-		firstUI = new First(this);
+		firstUI = new HotelFirst(this);
 		historyOrderListUI = new HistoryOrderList(this);
 		hotelInfoUI = new HotelInfo(this);
 		makeOrderUI = new MakeOrder(this);

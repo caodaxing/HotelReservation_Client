@@ -68,7 +68,7 @@ public class AccountController {
 	
 	public void setVistorBlankView(){
 		vistorController = new VistorController(stage);
-		vistorController.setBlankView();
+		vistorController.setSearchHotelView();
 	}
 	
 	public void register(){

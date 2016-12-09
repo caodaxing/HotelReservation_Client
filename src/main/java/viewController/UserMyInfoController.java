@@ -16,9 +16,8 @@ import view.right.user.myInfo.ModifyMyInfo;
 import vo.ClientVO;
 import vo.CreditChangeVO;
 
-public class UserMyInfoController {
+public class UserMyInfoController extends UserLeftController {
 
-	private Stage stage ;
 	private String userID;
 	
 	//逻辑层接口
@@ -27,7 +26,6 @@ public class UserMyInfoController {
 	
 	//控制的界面
 	private Blank blankUI ; 
-	private CheckMyInfo checkMyInfoUI ;
 	private HistoryCredit historyCreditUI ;
 	private ModifyMyInfo modifyMyInfoUI ;
 	
@@ -40,7 +38,6 @@ public class UserMyInfoController {
 		clientService = new ClientService_Stub(userID);
 		
 		blankUI = new Blank(this);
-		checkMyInfoUI = new CheckMyInfo(this);
 		historyCreditUI = new HistoryCredit(this);
 		modifyMyInfoUI = new ModifyMyInfo(this);
 		
@@ -53,12 +50,6 @@ public class UserMyInfoController {
 	public void setBlankView(){
 		
 		stage.setScene(blankUI.getScene());
-		
-	}
-	
-	public void setCheckMyInfoView(){
-		
-		stage.setScene(checkMyInfoUI.getScene());
 		
 	}
 	

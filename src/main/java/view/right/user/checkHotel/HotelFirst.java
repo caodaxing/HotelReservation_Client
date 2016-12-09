@@ -18,7 +18,7 @@ import viewController.UserCheckHotelController;
  * @author XueWang
  *
  */
-public class First {
+public class HotelFirst {
 	
 	private UserCheckHotelController controller ;
 	
@@ -33,7 +33,7 @@ public class First {
 	Button checkHistoryHotel ;
 	Button searchNewHotel ;
 	
-	public First(UserCheckHotelController controller) {
+	public HotelFirst(UserCheckHotelController controller) {
 		
 		this.controller = controller;
 		
