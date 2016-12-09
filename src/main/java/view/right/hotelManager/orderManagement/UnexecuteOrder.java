@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
-import view.left.WebBusinessUI;
+import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 
 /**
@@ -23,7 +23,7 @@ public class UnexecuteOrder {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private HotelManagerUI wbui = new HotelManagerUI();
 	
 	TextField orderID;
 	TextField hotelName;

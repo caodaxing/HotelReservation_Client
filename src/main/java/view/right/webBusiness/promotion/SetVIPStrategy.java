@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_促销策略_制定VIP专属折扣
@@ -20,10 +21,11 @@ import viewController.WBPromotionController;
 public class SetVIPStrategy {
 	
 	private WBPromotionController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TextField VIP1DiscountRange;
 	TextField VIP2DiscountRange;

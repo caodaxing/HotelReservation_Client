@@ -6,7 +6,7 @@ import logicService.account.AccountService;
 import view.right.webBusiness.VIPInfo.Blank;
 import view.right.webBusiness.VIPInfo.SetVIPCredit;
 
-public class WBVIPInfoController {
+public class WBVIPInfoController{
 	
 	private Stage stage;
 	
@@ -38,7 +38,4 @@ public class WBVIPInfoController {
 		stage.setScene(blankUI.getScene());
 	}
 	
-	public Scene getSetVIPCreditScene(){
-		return setVIPCreditUI.getScene();
-	}
 }

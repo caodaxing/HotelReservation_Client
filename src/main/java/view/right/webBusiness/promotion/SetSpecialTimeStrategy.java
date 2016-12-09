@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_促销策略_制定特殊期间促销策略
@@ -20,10 +21,11 @@ import viewController.WBPromotionController;
 public class SetSpecialTimeStrategy {
 	
 	private WBPromotionController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TextField startDiscount;
 	TextField endDiscount;

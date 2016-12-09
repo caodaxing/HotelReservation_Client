@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBOrderManagementController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_订单管理_未执行订单详情
@@ -22,10 +23,11 @@ import viewController.WBOrderManagementController;
 public class UnexecuteOrder {
 	
 	private WBOrderManagementController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TextField orderID;
 	TextField hotelName;

@@ -17,6 +17,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_促销策略_查看现有策略列表
@@ -26,12 +27,13 @@ import viewController.WBPromotionController;
 public class ExistStrategy {
 	
 	private WBPromotionController controller;
+	private WebBusinessLeftController wbController;
 	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	Button revert;
 	

@@ -13,6 +13,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
 import viewController.WBVIPInfoController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_会员_管理会员等级
@@ -22,10 +23,11 @@ import viewController.WBVIPInfoController;
 public class SetVIPCredit {
 	
 	private WBVIPInfoController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TextField updateVIP1;
 	TextField updateVIP2;

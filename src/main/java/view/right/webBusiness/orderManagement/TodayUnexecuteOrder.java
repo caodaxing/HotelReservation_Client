@@ -16,6 +16,7 @@ import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import view.right.webBusiness.orderManagement.AbnormalOrderList.Person;
 import viewController.WBOrderManagementController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_订单管理_今日未执行订单
@@ -25,10 +26,11 @@ import viewController.WBOrderManagementController;
 public class TodayUnexecuteOrder {
 	
 	private WBOrderManagementController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TableView<Person> tableView;
 	

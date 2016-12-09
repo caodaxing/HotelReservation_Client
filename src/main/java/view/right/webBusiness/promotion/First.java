@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_促销策略_初始界面（选择查看现有策略还是制定新策略）
@@ -20,10 +21,11 @@ import viewController.WBPromotionController;
 public class First {
 	
 	private WBPromotionController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	Button checkNowName;
 	Button makeNewPromotion;
@@ -74,8 +76,7 @@ public class First {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setExistStrategyView();
-				Stage stage = controller.getStage();
-				stage.show();
+				controller.getStage().show();
 			}
 							
 		});
@@ -86,8 +87,7 @@ public class First {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setChooseView();
-				Stage stage = controller.getStage();
-				stage.show();
+				controller.getStage().show();
 			}
 							
 		});

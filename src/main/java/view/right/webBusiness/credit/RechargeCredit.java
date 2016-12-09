@@ -8,9 +8,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
 import viewController.WBCreditController;
+import viewController.WBVIPInfoController;
+import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_信用充值_信用充值
@@ -20,10 +24,11 @@ import viewController.WBCreditController;
 public class RechargeCredit {
 	
 	private WBCreditController controller;
+	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI();
+	private WebBusinessUI wbui = new WebBusinessUI(wbController);
 	
 	TextField userID;
 	TextField rechargeAmount;
@@ -109,7 +114,8 @@ public class RechargeCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				OneButtonDialog dialog = new OneButtonDialog("充值成功");
+				dialog.show();
 			}
 			
 		});
@@ -119,7 +125,10 @@ public class RechargeCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				WBVIPInfoController controller = new WBVIPInfoController(new Stage());
+				controller.setBlankView();
+				Stage stage = controller.getStage();
+				stage.show();
 			}
 			
 		});

@@ -7,7 +7,7 @@ import logicService.account.AccountService;
 import logicService.credit.CreditService;
 import view.right.webBusiness.credit.RechargeCredit;
 
-public class WBCreditController {
+public class WBCreditController{
 	
 	private Stage stage;
 	
