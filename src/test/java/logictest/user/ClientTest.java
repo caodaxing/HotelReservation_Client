@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Message.ResultMessage;
+import Message.VipType;
 import logic.user.Client;
 import po.ClientPO;
 import vo.ClientVO;
@@ -58,7 +59,7 @@ public class ClientTest {
 	@Test
 	public void testRegisterVIP2() {
 		client.setClientPO(new ClientPO("wyy", "13338031126", "王友运", "3203221111111111", "image/wyy.jpg", 0, 0, null));
-		assertEquals(client.registerVIP(new VipVO("wyy", 1, 0, "20160101")), ResultMessage.SUCCESS);
+		assertEquals(client.registerVIP(new VipVO("wyy", VipType.BIRTHDAY_VIP, 0, "20160101")), ResultMessage.SUCCESS);
 		assertEquals(client.getClientPO().getVipType(), 1);
 	}
 

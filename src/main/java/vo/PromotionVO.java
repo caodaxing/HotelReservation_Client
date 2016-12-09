@@ -89,16 +89,13 @@ public class PromotionVO {
 	 * @param promotionID
 	 * @param hotelID
 	 * @param promotionName
-	 * @param birthday
 	 * @param discount
 	 */
-	public PromotionVO(String promotionID, String hotelID, String promotionName,
-			String birthDay, double discount) {
+	public PromotionVO(String promotionID, String hotelID, String promotionName, double discount) {
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
 		this.promotionName = promotionName;
 		this.discount = discount;
-		this.birthDay = birthDay;
 		this.promotionType = PromotionType.HOTEL_BIRTHDAY;
 		
 		this.startTime = null;

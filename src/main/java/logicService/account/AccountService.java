@@ -14,7 +14,7 @@ public interface AccountService {
 	
 	public ResultMessage login(AccountVO accountVO) ;
 	
-	public ResultMessage logout(AccountVO accountVO);
+	public ResultMessage logout(String userID);
 	
 	public ResultMessage modifyPassword(AccountVO accountVO);
 	

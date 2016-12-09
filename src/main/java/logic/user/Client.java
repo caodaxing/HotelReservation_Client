@@ -2,6 +2,7 @@ package logic.user;
 
 
 import Message.ResultMessage;
+import Message.VipType;
 import dataDao.stub.ClientDao_Stub;
 import dataDao.user.ClientDao;
 import logic.utility.ClientTransform;
@@ -16,7 +17,7 @@ import vo.VipVO;
  * po中没有保存credit，以防止credit被更改
  * @author Xue.W
  */
-public class Client implements ClientService{
+public class Client implements ClientService, GetClientVipInfo{
 	
 	private String clientID;
 	private ClientPO clientPO;
@@ -37,7 +38,6 @@ public class Client implements ClientService{
 			this.clientPO = po;
 		}
 	}
-	
 	
 	/**
 	 * 获得用户（会员）信息,包括信用值
@@ -89,7 +89,7 @@ public class Client implements ClientService{
 			
 			if(clientDao.updateClientInfo(clientPO)){
 				//同时更新clientpo中的vip信息
-				this.clientPO.setVipType(vipVO.type);
+				this.clientPO.setVipType(vipVO.vipType.ordinal());
 				this.clientPO.setVipLevel(vipVO.level);
 				this.clientPO.setVipInfo(vipVO.info);
 				return ResultMessage.SUCCESS;
@@ -106,11 +106,11 @@ public class Client implements ClientService{
 	 */
 	public VipVO getVipInfo(String userID){
 		if(userID == this.clientID) {
-			return new VipVO(clientPO.getUserID(), clientPO.getVipType(), 
+			return new VipVO(clientPO.getUserID(), VipType.values()[clientPO.getVipType()], 
 				clientPO.getVipLevel(), clientPO.getVipInfo());
 		} else {
 			ClientPO po = clientDao.getClientInfo(userID);
-			return new VipVO(po.getUserID(), po.getVipType(), po.getVipLevel(), po.getVipInfo());
+			return new VipVO(po.getUserID(), VipType.values()[clientPO.getVipType()], po.getVipLevel(), po.getVipInfo());
 		}
 	}
 	

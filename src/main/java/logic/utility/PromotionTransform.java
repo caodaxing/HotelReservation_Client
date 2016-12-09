@@ -64,8 +64,7 @@ public class PromotionTransform {
 	}
 
 	private PromotionVO tranToHotelBirthDayVO(PromotionPO po) {
-		return new PromotionVO(po.getPromotionID(), po.getHotelID(), po.getPromotionName(), 
-				po.getBirthDay(), po.getDiscount());
+		return new PromotionVO(po.getPromotionID(), po.getHotelID(), po.getPromotionName(), po.getDiscount());
 	}
 
 	private PromotionVO tranToHotelThreeRoomsVO(PromotionPO po) {

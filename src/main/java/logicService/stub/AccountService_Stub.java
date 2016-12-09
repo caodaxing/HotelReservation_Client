@@ -15,11 +15,7 @@ public class AccountService_Stub implements AccountService{
 	public ResultMessage login(AccountVO accountVO) {
 		return ResultMessage.FAILURE;
 	}
-
-	public ResultMessage logout(AccountVO accountVO) {
-		return ResultMessage.SUCCESS;
-	}
-
+	
 	public ResultMessage modifyPassword(AccountVO accountVO) {
 		return ResultMessage.FAILURE;
 	}
@@ -27,6 +23,11 @@ public class AccountService_Stub implements AccountService{
 	@Override
 	public Identity getIdentity(String accountID) {
 		return Identity.CLIENT;
+	}
+
+	@Override
+	public ResultMessage logout(String userID) {
+		return ResultMessage.SUCCESS;
 	}
 
 }

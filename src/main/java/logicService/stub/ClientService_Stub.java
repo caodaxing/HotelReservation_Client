@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Message.Identity;
 import Message.ResultMessage;
+import Message.VipType;
 import logicService.user.ClientService;
 import vo.ClientVO;
 import vo.HotelManagerVO;
@@ -67,7 +68,7 @@ public class ClientService_Stub implements ClientService {
 
 	public VipVO getVIPInfo(String user_ID) {
 		
-		return new VipVO("27873shkj", 1, 1, "20160101");
+		return new VipVO("27873shkj", VipType.BIRTHDAY_VIP, 1, "20160101");
 	}
 
 	public ArrayList<HotelVO> getHistoryHotels(String user_ID) {

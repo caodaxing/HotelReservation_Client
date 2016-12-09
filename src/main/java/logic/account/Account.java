@@ -78,12 +78,7 @@ public class Account implements AccountInfo, AccountService{
 	 * @return RusultMessage 返回登出的结果（成功/失败）
 	 * @author bcy
 	 */ 
-	public ResultMessage logout(AccountVO accountVO) {	
-		if(accountVO == null || accountVO.userId == null ||
-				accountVO.identity == null || accountVO.password == null) {
-			return ResultMessage.FAILURE;
-		}
-			
+	public ResultMessage logout(String userID) {	
 		return ResultMessage.SUCCESS;
 	}
 	

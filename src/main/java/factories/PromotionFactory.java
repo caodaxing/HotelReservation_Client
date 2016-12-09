@@ -82,6 +82,6 @@ System.out.println("PromotionFactory.createPromotion参数异常");
 
 	private Promotion createHotelBirthdayPromotion(PromotionPO po) {
 		return new HotelBirthdayPromotion(po.getPromotionID(), po.getHotelID(), 
-				po.getPromotionName(), new Time(po.getBirthDay()), po.getDiscount());
+				po.getPromotionName(), po.getDiscount());
 	}
 }

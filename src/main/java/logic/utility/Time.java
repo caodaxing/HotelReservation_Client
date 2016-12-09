@@ -81,7 +81,7 @@ public class Time {
 	}
 	
 	public boolean sameDay(Time t) {
-		if(this.year == t.getYear() && this.month == t.getMonth() && this.day == t.getDay()) {
+		if(this.month == t.getMonth() && this.day == t.getDay()) {
 			return true;
 		}
 		

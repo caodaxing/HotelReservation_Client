@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.account.Encryption;
+import logic.utility.Encryption;
 
 public class EncryptPasswordException {
 

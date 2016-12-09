@@ -1,4 +1,4 @@
-package logic.account;
+package logic.utility;
 
 import java.security.MessageDigest;
 
@@ -21,7 +21,6 @@ public class Encryption {
 
 	/**
 	 * 给密码进行md5加密
-	 * 
 	 * @param passwordToTrans
 	 *            要转换的密码
 	 * @return
