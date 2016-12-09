@@ -1,11 +1,8 @@
 package main;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.right.hotelManager.promotion.First;
 import viewController.AccountController;
-import viewController.HMPromotionController;
 
 public class Main extends Application{
 	

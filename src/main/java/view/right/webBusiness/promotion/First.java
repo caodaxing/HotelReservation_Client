@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
@@ -72,7 +73,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setExistStrategyView();
+				Stage stage = controller.getStage();
+				stage.show();
 			}
 							
 		});
@@ -82,7 +85,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setChooseView();
+				Stage stage = controller.getStage();
+				stage.show();
 			}
 							
 		});

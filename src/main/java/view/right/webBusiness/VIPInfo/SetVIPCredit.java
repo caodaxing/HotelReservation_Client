@@ -8,9 +8,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
-import viewController.WBPromotionController;
 import viewController.WBVIPInfoController;
 
 /**
@@ -130,7 +131,8 @@ public class SetVIPCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				OneButtonDialog dialog = new OneButtonDialog("设置成功");
+				dialog.show();
 			}
 					
 		});
@@ -140,13 +142,15 @@ public class SetVIPCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setBlankView();
+				Stage stage = controller.getStage();
+				stage.show();
 			}
 					
 		});
 		
 		//添加组件
-		rightPane.getChildren().add(cancel);
+		rightPane.getChildren().add(ok);
 		rightPane.getChildren().add(cancel);
 		
 		AnchorPane.setLeftAnchor(ok, 150.0);

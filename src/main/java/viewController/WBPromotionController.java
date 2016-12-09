@@ -6,6 +6,7 @@ import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
 import view.right.webBusiness.promotion.CheckVIPAreaStrategy;
 import view.right.webBusiness.promotion.CheckVIPStrategy;
 import view.right.webBusiness.promotion.Choose;
+import view.right.webBusiness.promotion.ExistStrategy;
 import view.right.webBusiness.promotion.First;
 import view.right.webBusiness.promotion.SetSpecialTimeStrategy;
 import view.right.webBusiness.promotion.SetVIPAreaStrategy;
@@ -22,6 +23,7 @@ public class WBPromotionController {
 	private CheckVIPAreaStrategy checkVIPAreaStrategyUI;
 	private CheckVIPStrategy checkVIPStrategyUI;
 	private Choose chooseUI;
+	private ExistStrategy existStrategyUI;
 	private First firstUI;
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetVIPAreaStrategy setVIPAreaStrategyUI;
@@ -35,6 +37,7 @@ public class WBPromotionController {
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);
 		chooseUI = new Choose(this);
+		existStrategyUI = new ExistStrategy(this);
 		firstUI = new First(this);
 		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
 		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
@@ -58,6 +61,10 @@ public class WBPromotionController {
 
 	public void setChooseView(){
 		stage.setScene(chooseUI.getScene());
+	}
+	
+	public void setExistStrategyView(){
+		stage.setScene(existStrategyUI.getScene());
 	}
 
 	public void setFirstView(){

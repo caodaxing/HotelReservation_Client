@@ -1,8 +1,9 @@
 package viewController;
 
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import logic.account.Account;
 import logicService.account.AccountService;
+import view.right.webBusiness.VIPInfo.Blank;
 import view.right.webBusiness.VIPInfo.SetVIPCredit;
 
 public class WBVIPInfoController {
@@ -14,10 +15,15 @@ public class WBVIPInfoController {
 	
 	//控制界面
 	private SetVIPCredit setVIPCreditUI;
+	private Blank blankUI;
 	
 	public WBVIPInfoController(Stage stage){
 //		accountService = new Account();
 		this.stage = stage;
+		
+		setVIPCreditUI = new SetVIPCredit(this);
+		blankUI = new Blank(this);
+		
 	}
 	
 	public Stage getStage(){
@@ -26,5 +32,13 @@ public class WBVIPInfoController {
 	
 	public void setSetVIPCreditView(){
 		stage.setScene(setVIPCreditUI.getScene());
+	}
+	
+	public void setBlankView(){
+		stage.setScene(blankUI.getScene());
+	}
+	
+	public Scene getSetVIPCreditScene(){
+		return setVIPCreditUI.getScene();
 	}
 }
