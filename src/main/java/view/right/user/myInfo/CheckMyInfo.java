@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserLeftController;
+import viewController.UserMyInfoController;
 import vo.ClientVO;
 
 /**
@@ -106,20 +107,26 @@ public class CheckMyInfo {
 		historyCredit.setText("查看信用记录");
 		modify.setText("修改");
 		
-		historyCredit.setPrefSize(100, 40);
+		historyCredit.setPrefSize(100, 30);
 		modify.setPrefSize(100, 40);
 		
 		historyCredit.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//查看历史信用记录
+				UserMyInfoController right = new UserMyInfoController(controller.getStage(),controller.getUserID());
+				right.setHistoryCreditView();
+				right.getStage().show();
 			}
 			
 		});
 		modify.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//修改个人信息
+				UserMyInfoController right = new UserMyInfoController(controller.getStage(),controller.getUserID());
+				right.setModifyMyInfoView();
+				right.getStage().show();
 			}
 			
 		});

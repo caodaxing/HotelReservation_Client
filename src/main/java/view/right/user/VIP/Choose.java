@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserLeftController;
+import viewController.UserVIPController;
 
 public class Choose {
 	
@@ -67,14 +68,20 @@ public class Choose {
 		normal.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳至注册普通会员
+				UserVIPController right = new UserVIPController(controller.getStage(),controller.getUserID());
+				right.setRegisterNormalVIPView();
+				right.getStage().show();
 			}
 			
 		});
 		company.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳转注册企业会员界面
+				UserVIPController right = new UserVIPController(controller.getStage(),controller.getUserID());
+				right.setRegisterCompanyVIPView();
+				right.getStage().show();
 			}
 			
 		});

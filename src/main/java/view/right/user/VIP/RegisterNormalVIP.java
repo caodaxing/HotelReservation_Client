@@ -2,6 +2,7 @@ package view.right.user.VIP;
 
 import java.time.LocalDate;
 
+import Message.VipType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -88,14 +89,18 @@ public class RegisterNormalVIP {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//确认修改
+				controller.registerVIP(VipType.BIRTHDAY_VIP);
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消则返回首页
+				controller.setVIPView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -117,6 +122,14 @@ public class RegisterNormalVIP {
 		
 		return scene;
 	
+	}
+	
+	public String getBirthday(){
+		String str = "" ;
+		str+=birthday.getValue().getYear();
+		str+=birthday.getValue().getMonthValue();
+		str+=birthday.getValue().getDayOfMonth();
+		return str;
 	}
 	
 }

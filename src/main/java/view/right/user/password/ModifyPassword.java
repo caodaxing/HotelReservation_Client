@@ -97,18 +97,15 @@ public class ModifyPassword {
 		yes.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.modifyPassword();
 			}
 			
 		});
 		no.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
-				oldPassword.setText("");
-				newPassword.setText("");
-				repeatPassword.setText("");
-				
+				//取消直接清空textfield
+				setBlank();				
 			}
 			
 		});
@@ -124,10 +121,30 @@ public class ModifyPassword {
 		
 	}
 	
+	public void setBlank(){
+
+		oldPassword.setText("");
+		newPassword.setText("");
+		repeatPassword.setText("");
+		
+	}
+	
 	public Scene getScene(){
 		
 		return scene;
 	
+	}
+	
+	public String getOldPassword(){
+		return oldPassword.getText();
+	}
+	
+	public String getNewPassword(){
+		return newPassword.getText();
+	}
+	
+	public String getRepeatPassword(){
+		return repeatPassword.getText();
 	}
 	
 }

@@ -1,5 +1,6 @@
 package view.right.user.VIP;
 
+import Message.VipType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -85,14 +86,17 @@ public class RegisterCompanyVIP {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.registerVIP(VipType.BUSINESS_VIP);
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消则返回首页
+				controller.setVIPView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -114,6 +118,10 @@ public class RegisterCompanyVIP {
 		
 		return scene;
 	
+	}
+	
+	public String getCompany(){
+		return company.getText();
 	}
 	
 }

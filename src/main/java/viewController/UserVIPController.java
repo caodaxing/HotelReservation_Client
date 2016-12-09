@@ -1,20 +1,17 @@
 package viewController;
 
+import Message.ResultMessage;
+import Message.VipType;
 import javafx.stage.Stage;
 import view.right.user.VIP.CheckCompanyVIP;
 import view.right.user.VIP.CheckNormalVIP;
 import view.right.user.VIP.Choose;
 import view.right.user.VIP.RegisterCompanyVIP;
 import view.right.user.VIP.RegisterNormalVIP;
+import vo.VipVO;
 
-public class UserVIPController {
+public class UserVIPController extends UserLeftController {
 
-	private Stage stage ;
-	private String userID;
-	
-	private CheckCompanyVIP checkCompanyVIPUI ;
-	private CheckNormalVIP checkNormalVIPUI ;
-	private Choose chooseUI ;
 	private RegisterCompanyVIP registerCompanyVIPUI ;
 	private RegisterNormalVIP registerNormalVIPUI ;
 	
@@ -23,34 +20,9 @@ public class UserVIPController {
 		this.stage = stage ;
 		this.userID = userID ;
 		
-		checkCompanyVIPUI = new CheckCompanyVIP(this);
-		checkNormalVIPUI = new CheckNormalVIP(this);
-		chooseUI = new Choose(this);
 		registerCompanyVIPUI = new RegisterCompanyVIP(this);
 		registerNormalVIPUI = new RegisterNormalVIP(this);
 		
-	}
-	
-	public Stage getStage(){
-		return stage;
-	}
-	
-	public void setCheckCompanyVIPView (){
-		
-		stage.setScene(checkCompanyVIPUI.getScene());
-		
-	}
-	
-	public void setCheckNormalVIPVIew(){
-		
-		stage.setScene(checkNormalVIPUI.getScene());
-	
-	}
-	
-	public void setChooseView(){
-		
-		stage.setScene(chooseUI.getScene());
-	
 	}
 	
 	public void setRegisterCompanyVIPView(){
@@ -63,6 +35,29 @@ public class UserVIPController {
 		
 		stage.setScene(registerNormalVIPUI.getScene());
 	
+	}
+	
+	public void registerVIP(VipType type){
+		ResultMessage result = null ;
+		if(type == VipType.BIRTHDAY_VIP){
+			//注册普通会员
+			VipVO VIPInfo = new VipVO(userID,type,1,registerNormalVIPUI.getBirthday());
+			result = clientService.registerVIP(VIPInfo);
+		}else{
+			//注册企业会员
+			VipVO vo = new VipVO(userID,type,1,registerCompanyVIPUI.getCompany());
+			result = clientService.registerVIP(vo);
+		}
+		
+		if(result == ResultMessage.FAILURE){
+			showDialog("注册失败，请重试");
+			return;
+		}else if(result == ResultMessage.SUCCESS){
+			//注册成功
+			showDialog("注册成功");
+			setVIPView();
+			stage.show();
+		}
 	}
 
 }

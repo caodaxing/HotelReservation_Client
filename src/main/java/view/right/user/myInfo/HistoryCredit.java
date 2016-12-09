@@ -94,8 +94,9 @@ public class HistoryCredit {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//返回查看基本信息界面
+				controller.setCheckMyInfoView();
+				controller.getStage().show();
 			}
 			
 		});
