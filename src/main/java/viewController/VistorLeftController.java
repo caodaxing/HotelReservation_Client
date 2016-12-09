@@ -4,18 +4,32 @@ import javafx.stage.Stage;
 
 public class VistorLeftController {
 	
-	protected AccountController accountController ;
+	private AccountController accountController ;
 	
-	protected Stage stage ;
+	protected Stage stage;
+	
+	public VistorLeftController(){
+		
+	}
 	
 	public void setSignInView(){
+		stage.close();
+		Stage newStage = new Stage();
+		newStage.centerOnScreen();
+		newStage.setTitle("酒店预订系统");
+		accountController = new AccountController(newStage);
 		accountController.setSignInView();
-		stage.show();
+		newStage.show();
 	}
 	
 	public void setSignUpView(){
-		accountController.setSignInView();
-		stage.show();
+		stage.close();
+		Stage newStage = new Stage();
+		newStage.centerOnScreen();
+		newStage.setTitle("酒店预订系统");
+		accountController = new AccountController(newStage);
+		accountController.setSignUpView();
+		newStage.show();
 	}
 	
 }

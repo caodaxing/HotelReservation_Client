@@ -36,9 +36,6 @@ public class AccountController {
 		
 		accountService = new AccountService_Stub();
 		
-		vistorController = new VistorController(stage);
-		webManagerController = new WMUserInfoController(stage);
-		
 		firstUI = new FirstUI(this);
 		signInUI = new SignInUI(this);
 		signUpUI = new SignUpUI(this);
@@ -69,26 +66,9 @@ public class AccountController {
 	
 	}
 	
-	public void setUserBlankView(){
-		userController.setBlankView();
-	}
-	
 	public void setVistorBlankView(){
+		vistorController = new VistorController(stage);
 		vistorController.setBlankView();
-	}
-	
-	//待补全
-	public void setHotelManagerBlankView(){
-		
-	}
-	
-	//待补全
-	public void setWebBusinessBlankView(){
-		
-	}
-	
-	public void setWebManagerBlankView(){
-		webManagerController.setBlankView();
 	}
 	
 	public void register(){
@@ -188,6 +168,7 @@ public class AccountController {
 		}else if(identity == Identity.WEBBUSSINESS){
 			//
 		}else if(identity == Identity.WEBMANAGER){
+			webManagerController = new WMUserInfoController(stage);
 			webManagerController.setBlankView();
 		}
 		
