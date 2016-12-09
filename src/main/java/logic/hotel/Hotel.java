@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
-import logic.mockObject.MockOrderEvaluationInfo;
+import logic.mockObject.MockOrderHotelInfo;
 import logic.mockObject.MockPromotionInfo;
 import logic.mockObject.MockUpdateRoomInfo;
 import logic.order.OrderHotelInfo;
@@ -32,7 +32,7 @@ public class Hotel implements CheckHotelService, HotelInfo{
 		this.hotelDao = new HotelDao_Stub();
 		this.updateRoomInfo = new MockUpdateRoomInfo();
 		this.promotionInfo = new MockPromotionInfo();
-		this.evaluationInfo = new MockOrderEvaluationInfo();
+		this.evaluationInfo = new MockOrderHotelInfo();
 	}
 	
 	/**

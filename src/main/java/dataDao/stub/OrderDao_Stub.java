@@ -60,4 +60,9 @@ public class OrderDao_Stub implements OrderDao {
 		pos.add(new EvaluationPO("20161010000041001", 4.1, "不错"));
 		return pos;
 	}
+
+	@Override
+	public ArrayList<String> getBookedHotelList(String userID) {
+		return null;
+	}
 }
