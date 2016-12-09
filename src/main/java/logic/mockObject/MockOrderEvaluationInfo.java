@@ -2,10 +2,10 @@ package logic.mockObject;
 
 import java.util.ArrayList;
 
-import logic.order.OrderEvaluationInfo;
+import logic.order.OrderHotelInfo;
 import vo.EvaluationVO;
 
-public class MockOrderEvaluationInfo implements OrderEvaluationInfo {
+public class MockOrderEvaluationInfo implements OrderHotelInfo {
 
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId){
 		return null;

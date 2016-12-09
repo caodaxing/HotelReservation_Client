@@ -18,4 +18,6 @@ public interface OrderDao {
 	public EvaluationPO getEvaluationByOrderID(String orderID);
 	
 	public ArrayList<EvaluationPO> getEvaluationByHotelID(String hotelID);
+	
+	public ArrayList<String> getBookedHotelList (String userID);
 }

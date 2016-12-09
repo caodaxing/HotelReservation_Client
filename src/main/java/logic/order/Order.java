@@ -20,7 +20,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class Order implements OrderService, OrderEvaluationInfo{
+public class Order implements OrderService, OrderHotelInfo{
 	
 	private String orderID;
 	private OrderDao orderDao;
@@ -74,6 +74,11 @@ public class Order implements OrderService, OrderEvaluationInfo{
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
 		
 		return this.evaluationTrans.evalutionListTransToVO(this.orderDao.getEvaluationByHotelID(hotelID));
+	}
+
+	@Override
+	public ArrayList<String> getBookedHotelList(String userID) {
+		return this.orderDao.getBookedHotelList(userID);
 	}
 
 }

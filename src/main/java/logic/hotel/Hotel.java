@@ -7,7 +7,7 @@ import dataDao.stub.HotelDao_Stub;
 import logic.mockObject.MockOrderEvaluationInfo;
 import logic.mockObject.MockPromotionInfo;
 import logic.mockObject.MockUpdateRoomInfo;
-import logic.order.OrderEvaluationInfo;
+import logic.order.OrderHotelInfo;
 import logic.promotion.PromotionInfo;
 import logic.room.UpdateRoomInfo;
 import logic.utility.HotelTransform;
@@ -26,7 +26,7 @@ public class Hotel implements CheckHotelService, HotelInfo{
 	private HotelDao hotelDao;
 	private UpdateRoomInfo updateRoomInfo;
 	private PromotionInfo promotionInfo;
-	private OrderEvaluationInfo evaluationInfo;
+	private OrderHotelInfo evaluationInfo;
 	
 	public Hotel(){
 		this.hotelDao = new HotelDao_Stub();
