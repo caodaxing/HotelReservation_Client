@@ -13,7 +13,7 @@ import vo.AccountVO;
  * @author bcy
  *
  */
-public class Account implements AccountInfo, AccountService{
+public class Account implements AccountService{
 	private AccountDao accountDao;
 		
 	public Account(){

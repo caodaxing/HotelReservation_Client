@@ -2,11 +2,12 @@ package logic.utility;
 
 import java.security.MessageDigest;
 
+import vo.AccountVO;
+
 /**
- * 加密用户账号，姓名，身份证号，联系方式。可以解密 加密用户密码，不可解密 单例模式
- * 
+ * 加密用户账号，姓名，身份证号，联系方式。
+ * 可以解密 加密用户密码，不可解密 单例模式
  * @author Mark.W
- *
  */
 public class Encryption {
 
@@ -19,13 +20,33 @@ public class Encryption {
 		return encryption;
 	}
 
+	public AccountVO encrypt(AccountVO accountVO) {
+		accountVO.userId = this.encryptUserInfo(accountVO.userId);
+		accountVO.password = this.encryptPassword(accountVO.password);
+		accountVO.confirmedPassword = this.encryptPassword(accountVO.confirmedPassword);
+		
+		return accountVO;
+	}
+	
+//	public ClientVO encrypy(ClientVO clientVO) {
+//		clientVO.userID = this.encryptUserInfo(clientVO.userID);
+//		clientVO.trueName = this.encryptUserInfo(clientVO.trueName);
+//		clientVO.phoneNumber = this.encryptUserInfo(clientVO.phoneNumber);
+//		clientVO.identityID = this.encryptUserInfo(clientVO.identityID);
+//		
+//		return clientVO;
+//	}
+	
 	/**
 	 * 给密码进行md5加密
-	 * @param passwordToTrans
-	 *            要转换的密码
+	 * @param passwordToTrans 要转换的密码
 	 * @return
 	 */
 	public String encryptPassword(String passwordToTrans) {
+		
+		if(passwordToTrans == null) {
+			return null;
+		}
 
 		MessageDigest md = null;
 		byte[] b = null;
@@ -58,60 +79,49 @@ public class Encryption {
 		return buf.toString();
 	}
 	
-//	public AccountVO encrypt(AccountVO accountVO) {
-//	accountVO.accountId = this.encryptUserInfo(accountVO.accountId);
-//	accountVO.password = this.encryptPassword(accountVO.password);
-//	accountVO.confirmedPassword = this.encryptPassword(accountVO.confirmedPassword);
-//	return accountVO;
-//}
-//
-//public ClientVO encrypy(ClientVO clientVO) {
-//
-//	return clientVO;
-//}
-//
-//public String decryptUserInfo(String passwordToDecrypt) {
-//	String info = null;
-//	return info;
-//}
-//
-//private String encryptUserInfo(String info) {
-//	String password = null;
-//	return password;
-//}
-
-//private byte[] desEncrypt(byte[] src, byte[] enKey) {
-//	byte[] encryptedData = null;
-//	try {
-//		DESedeKeySpec dks = new DESedeKeySpec(enKey);
-//		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
-//		SecretKey key = keyFactory.generateSecret(dks);
-//		Cipher cipher = Cipher.getInstance("DESede");
-//		cipher.init(Cipher.ENCRYPT_MODE, key);
-//		encryptedData = cipher.doFinal(src);
-//	} catch (Exception e) {
-//		e.printStackTrace();
+	
+	public String decryptUserInfo(String passwordToDecrypt) {
+		return passwordToDecrypt;
+	}
+	
+	private String encryptUserInfo(String info) {
+		return info;
+	}
+	
+//	private byte[] desEncrypt(byte[] src, byte[] enKey) {
+//		byte[] encryptedData = null;
+//		try {
+//			DESedeKeySpec dks = new DESedeKeySpec(enKey);
+//			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
+//			SecretKey key = keyFactory.generateSecret(dks);
+//			Cipher cipher = Cipher.getInstance("DESede");
+//			cipher.init(Cipher.ENCRYPT_MODE, key);
+//			encryptedData = cipher.doFinal(src);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return encryptedData;
 //	}
-//	return encryptedData;
-//}
-//
-//private String deCrypt(byte[] debase64, String spKey) {
-//	String strDe = null;
-//	Cipher cipher = null;
-//	try {
-//		cipher = Cipher.getInstance("DESede");
-//		byte[] key = getEnKey(spKey);
-//		DESedeKeySpec dks = new DESedeKeySpec(key);
-//		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
-//		SecretKey sKey = keyFactory.generateSecret(dks);
-//		cipher.init(Cipher.DECRYPT_MODE, sKey);
-//		byte ciphertext[] = cipher.doFinal(debase64);
-//		strDe = new String(ciphertext, "UTF-16LE");
-//	} catch (Exception ex) {
-//		strDe = "";
-//		ex.printStackTrace();
+//	
+//	private String deCrypt(byte[] debase64, String spKey) {
+//		String strDe = null;
+//		Cipher cipher = null;
+//		try {
+//			cipher = Cipher.getInstance("DESede");
+//			byte[] key = getEnKey(spKey);
+//			DESedeKeySpec dks = new DESedeKeySpec(key);
+//			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
+//			SecretKey sKey = keyFactory.generateSecret(dks);
+//			cipher.init(Cipher.DECRYPT_MODE, sKey);
+//			byte ciphertext[] = cipher.doFinal(debase64);
+//			strDe = new String(ciphertext, "UTF-16LE");
+//		} catch (Exception ex) {
+//			strDe = "";
+//			ex.printStackTrace();
+//		}
+//		return strDe;
 //	}
-//	return strDe;
-//}
+	
+	
 
 }
