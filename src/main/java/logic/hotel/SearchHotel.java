@@ -29,13 +29,13 @@ public class SearchHotel implements SearchHotelService{
 	
 	/**
 	 * 获取酒店所在商圈
-	 * @param location 传入酒店地址
+	 * @param distract 传入酒店所属行政区
 	 * @return ArrayList<String> 返回商圈列表
 	 * @author all
 	 */
-	public ArrayList<String> getTradingArea (String location){
+	public ArrayList<String> getTradingArea (String distract){
 		hotelDao = new HotelDao_Stub();
-		return hotelDao.getTradingAreas(location);
+		return hotelDao.getTradingAreas(distract);
 	}
 	
 	/**

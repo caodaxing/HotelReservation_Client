@@ -10,13 +10,13 @@ import vo.OrderVO;
 public class MockOrderHotelInfo implements OrderHotelInfo {
 
 	ArrayList<OrderVO> orders = new ArrayList<>();
+	ArrayList<EvaluationVO> evaluationVOs = new ArrayList<>();
 	
 	public MockOrderHotelInfo() {
 		orders.add(new OrderVO("bcy", "1234", null, null, "123", null, null, 2, false, 200, 150, null, null, null, null));
+		evaluationVOs.add(new EvaluationVO("1234", 5, "棒极了"));
 	}
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId){
-		ArrayList<EvaluationVO> evaluationVOs = new ArrayList<>();
-		evaluationVOs.add(new EvaluationVO("123", 5, "棒极了"));
 		ArrayList<EvaluationVO> returnEvaluations = new ArrayList<>();
 		for (OrderVO orderVO : orders) {
 			if (orderVO.hotelID==hotelId) {
@@ -33,7 +33,13 @@ public class MockOrderHotelInfo implements OrderHotelInfo {
 
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {
-		return null;
+		ArrayList<String> bookedHotels  = new ArrayList<>();
+		for (OrderVO orderVO : orders) {
+			if (orderVO.userID==userID) {
+				bookedHotels.add(orderVO.hotelID);
+			}
+		}
+		return bookedHotels;
 	}
 	
 }

@@ -32,7 +32,13 @@ public class UpdateHotel implements UpdateHotelService ,HotelUpdateRoom{
 	 * @author bcy
 	 */
 	public ResultMessage addHotel(HotelVO hotelVO) {
-		hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO));
+		if (hotelVO==null) {
+			System.out.println("logic.hotel.UpdateHotel.addHotel参数异常");
+			return null;
+		}
+		if(hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO))){
+			return ResultMessage.SUCCESS;
+		}
 		return null;
 	}
 	

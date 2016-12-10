@@ -67,11 +67,17 @@ public class HotelDao_Stub implements HotelDao {
 	}
 
 	public ArrayList<HotelPO> SearchHotelList(String city,String distract, String tradingArea) {
-		if (city==null) {
-			System.out.println("dataDao.stub.HotelDar_Stub.SearchHotelList参数异常");
-			return null;
-		}
-		return null;
+//		ArrayList<HotelPO> hotels = new ArrayList<>();
+//		if (city==null) {
+//			System.out.println("dataDao.stub.HotelDar_Stub.SearchHotelList参数异常");
+//			return null;
+//		}
+//		for (HotelPO hotelPO : hotelList) {
+//			if (hotelPO.getCity()==city&&hotelPO.getDistract()==distract&&hotelPO.getTradingArea()==tradingArea) {
+//				hotels.add(hotelPO);
+//			}
+//		}
+		return hotelList;
 	}
 
 }
