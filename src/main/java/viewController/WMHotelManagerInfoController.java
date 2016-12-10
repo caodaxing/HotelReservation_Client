@@ -4,16 +4,16 @@ import javafx.stage.Stage;
 import view.right.webManager.hotelManagerInfo.CheckHotelManager;
 import view.right.webManager.hotelManagerInfo.ModifyHotelManager;
 
-public class WMHotelManagerInfoController {
-	
-	private Stage stage ;
+public class WMHotelManagerInfoController extends WebManagerLeftController{
 	
 	private CheckHotelManager checkHotelManagerUI ;
 	private ModifyHotelManager modifyHotelManagerUI ;
 
-	public WMHotelManagerInfoController(Stage stage){
+	public WMHotelManagerInfoController(Stage stage ,String userID){
 		
 		this.stage = stage ;
+		this.userID = userID ;
+		
 		checkHotelManagerUI = new CheckHotelManager(this);
 		modifyHotelManagerUI = new ModifyHotelManager(this);
 		

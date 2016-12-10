@@ -168,7 +168,7 @@ public class AccountController {
 		}else if(identity == Identity.WEBBUSSINESS){
 			//
 		}else if(identity == Identity.WEBMANAGER){
-			webManagerController = new WMUserInfoController(stage);
+			webManagerController = new WMUserInfoController(stage ,userID);
 			webManagerController.setBlankView();
 		}
 		

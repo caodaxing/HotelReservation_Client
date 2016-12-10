@@ -27,7 +27,7 @@ public class SearchWebBusiness {
 	
 	private AnchorPane rightPane;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 	
 	TextField webBusinessID;
 	
@@ -36,6 +36,8 @@ public class SearchWebBusiness {
 	public SearchWebBusiness(WMWebBusinessInfoController controller){
 		
 		this.controller = controller;
+
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

@@ -14,11 +14,13 @@ public class Blank {
 	
 	private GridPane root ;
 	
-	private WebManagerUI leftUI = new WebManagerUI();
+	private WebManagerUI leftUI ;
 	
 	public Blank(WMUserInfoController controller){
 		
 		this.controller = controller ;
+
+		leftUI = new WebManagerUI(controller);
 		
 		root = leftUI.getPane();
 		root.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

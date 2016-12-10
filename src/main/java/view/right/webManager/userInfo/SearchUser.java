@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMUserInfoController;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员界面_客户管理_查询界面
@@ -19,7 +20,7 @@ import viewController.WMUserInfoController;
  */
 public class SearchUser {
 	
-	private WMUserInfoController controller;
+	private WebManagerLeftController controller;
 	
 	private Scene scene;
 	
@@ -27,15 +28,17 @@ public class SearchUser {
 	
 	private AnchorPane rightPane;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 
 	TextField userID;
 	
 	Button inquiry;
 	
-	public SearchUser(WMUserInfoController controller){
+	public SearchUser(WebManagerLeftController controller){
 		
 		this.controller = controller;
+		
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

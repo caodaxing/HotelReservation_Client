@@ -13,9 +13,6 @@ import view.right.user.myOrder.UndoOrder;
 import view.right.user.myOrder.UnexecuteOrder;
 
 public class UserMyOrderController extends UserLeftController {
-	
-	private Stage stage;
-	private String userID;
 
 	/*
 	private AccountService accountService;

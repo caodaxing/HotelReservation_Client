@@ -6,23 +6,20 @@ import view.right.webManager.userInfo.CheckUser;
 import view.right.webManager.userInfo.ModifyUser;
 import view.right.webManager.userInfo.SearchUser;
 
-public class WMUserInfoController {
+public class WMUserInfoController extends WebManagerLeftController{
 
-	private Stage stage ;
-	
 	private Blank blankUI ;
 	private CheckUser checkUserUI ;
 	private ModifyUser modifyUserUI ;
-	private SearchUser searchUserUI;
 	
-	public WMUserInfoController(Stage stage){
+	public WMUserInfoController(Stage stage ,String userID){
 		
 		this.stage = stage;
+		this.userID = userID;
 		
 		blankUI = new Blank(this);
 		checkUserUI = new CheckUser(this);
 		modifyUserUI = new ModifyUser(this);
-		searchUserUI = new SearchUser(this);
 		
 	}
 	
@@ -45,12 +42,6 @@ public class WMUserInfoController {
 	public void setModifyUserUI(){
 		
 		stage.setScene(modifyUserUI.getScene());
-	
-	}
-	
-	public void setSearchUserUI(){
-		
-		stage.setScene(searchUserUI.getScene());
 	
 	}
 	

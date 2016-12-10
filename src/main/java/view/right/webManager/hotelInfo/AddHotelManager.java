@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
-import viewController.WMHotelInfoController;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员界面_酒店管理_添加酒店工作人员
@@ -19,11 +19,11 @@ import viewController.WMHotelInfoController;
  */
 public class AddHotelManager {
 	
-	private WMHotelInfoController controller ;
+	private WebManagerLeftController controller ;
 	
 	private Scene scene ;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 
 	private GridPane leftPane ;
 	
@@ -38,9 +38,11 @@ public class AddHotelManager {
 	Button confirm;
 	Button cancel;
 	
-	public AddHotelManager(WMHotelInfoController controller){
+	public AddHotelManager(WebManagerLeftController controller){
 		
 		this.controller = controller;
+		
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -55,6 +57,11 @@ public class AddHotelManager {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 	
+	}
+	//addhotel后跳入对应酒店添加工作人员的界面
+	public AddHotelManager(WebManagerLeftController controller, String ID){
+		this(controller);
+		hotelID.setText(ID);
 	}
 	
 	private void setTextField (){
@@ -111,14 +118,17 @@ public class AddHotelManager {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//确认添加
+				controller.addHotelManager();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消添加，清空输入框
+				setBlank();
 			}
 			
 		});
@@ -138,6 +148,34 @@ public class AddHotelManager {
 		
 		return scene;
 	
+	}
+	
+	public String getHotelID(){
+		return hotelID.getText();
+	}
+	
+	public String getName(){
+		return name.getText();
+	}
+	
+	public String getPhone(){
+		return phone.getText();
+	}
+	
+	public String getId(){
+		return id.getText();
+	}
+	
+	public String getPassword(){
+		return password.getText();
+	}
+	
+	public void setBlank(){
+		hotelID.setText("");
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+		password.setText("");
 	}
 	
 }

@@ -15,8 +15,6 @@ import vo.ClientVO;
 import vo.CreditChangeVO;
 
 public class UserMyInfoController extends UserLeftController {
-
-	private String userID;
 	
 	//逻辑层接口
 	private CreditChangeService creditChangeService ;

@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import view.helpTools.DefaultNums;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员的左侧导航栏
@@ -15,11 +16,15 @@ import view.helpTools.DefaultNums;
  */
 public class WebManagerUI{
 
-	public GridPane pane;
+	private WebManagerLeftController controller ;
 	
-	public WebManagerUI(){
+	private GridPane pane;
+	
+	public WebManagerUI(WebManagerLeftController controller){
+		this.controller = controller;
 		pane = this.initGridPane();
 	}
+	
 	
 	public GridPane getPane(){
 		return pane;

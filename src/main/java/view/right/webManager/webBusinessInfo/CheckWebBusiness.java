@@ -24,7 +24,7 @@ public class CheckWebBusiness {
 	
 	private Scene scene ;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 
 	private GridPane leftPane ;
 	
@@ -41,6 +41,8 @@ public class CheckWebBusiness {
 	public CheckWebBusiness(WMWebBusinessInfoController controller){
 		
 		this.controller = controller;
+
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

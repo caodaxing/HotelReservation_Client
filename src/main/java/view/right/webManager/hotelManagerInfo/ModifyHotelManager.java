@@ -24,7 +24,7 @@ public class ModifyHotelManager {
 	
 	private Scene scene ;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI;
 
 	private GridPane leftPane ;
 	
@@ -41,6 +41,8 @@ public class ModifyHotelManager {
 	public ModifyHotelManager(WMHotelManagerInfoController controller){
 		
 		this.controller = controller;
+		
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

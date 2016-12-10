@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMHotelInfoController;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员界面_酒店管理_添加酒店
@@ -19,11 +20,11 @@ import viewController.WMHotelInfoController;
  */
 public class AddHotel {
 
-	private WMHotelInfoController controller ;
+	private WebManagerLeftController controller ;
 	
 	private Scene scene ;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 
 	private GridPane leftPane ;
 	
@@ -37,9 +38,11 @@ public class AddHotel {
 	Button confirm;
 	Button cancel;
 	
-	public AddHotel(WMHotelInfoController controller){
+	public AddHotel(WebManagerLeftController controller){
 		
 		this.controller = controller;
+		
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -104,14 +107,17 @@ public class AddHotel {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//确认添加
+				controller.addHotel();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消，清空textfield
+				setBlank();
 			}
 			
 		});
@@ -133,4 +139,26 @@ public class AddHotel {
 	
 	}
 	
+	public String getHotelID(){
+		return hotelID.getText();
+	}
+	
+	public String getHotelName(){
+		return hotelName.getText();
+	}
+	
+	public String getCity(){
+		return city.getText();
+	}
+	
+	public String getArea(){
+		return area.getText();
+	}
+	
+	public void setBlank(){
+		hotelID.setText("");
+		hotelName.setText("");
+		city.setText("");
+		area.setText("");
+	}
 }

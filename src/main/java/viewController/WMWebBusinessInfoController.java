@@ -7,26 +7,22 @@ import view.right.webManager.webBusinessInfo.First;
 import view.right.webManager.webBusinessInfo.ModifyWebBusiness;
 import view.right.webManager.webBusinessInfo.SearchWebBusiness;
 
-public class WMWebBusinessInfoController {
-
-	private Stage stage ;
+public class WMWebBusinessInfoController extends WebManagerLeftController {
 	
 	private AddWebBusiness addWebBusinessUI;
 	private CheckWebBusiness checkWebBusinessUI;
-	private First firstUI;
 	private ModifyWebBusiness modifyWebBusinessUI;
-	private SearchWebBusiness searchWebBusinessUI;
+	private SearchWebBusiness searchWebBusinessUI ;
 	
-	public WMWebBusinessInfoController(Stage stage){
+	public WMWebBusinessInfoController(Stage stage,String userID){
 		
 		this.stage = stage ;
+		this.userID = userID;
 		
 		addWebBusinessUI = new AddWebBusiness(this);
 		checkWebBusinessUI = new CheckWebBusiness(this);
-		firstUI = new First(this);
 		modifyWebBusinessUI = new ModifyWebBusiness(this);
 		searchWebBusinessUI = new SearchWebBusiness(this);
-		
 	}
 	
 	public Stage getStage(){
@@ -45,19 +41,13 @@ public class WMWebBusinessInfoController {
 		
 	}
 	
-	public void setFirstView(){
-		
-		stage.setScene(firstUI.getScene());
-		
-	}
-	
 	public void setModifyWebBusinessView(){
 		
 		stage.setScene(modifyWebBusinessUI.getScene());
 		
 	}
 	
-	public void setSearchWebBusiness(){
+	public void setSearchWebBusinessView(){
 		
 		stage.setScene(searchWebBusinessUI.getScene());
 		

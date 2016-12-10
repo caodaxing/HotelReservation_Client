@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMHotelManagerInfoController;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员界面_酒店工作人员管理_查询界面
@@ -19,7 +20,7 @@ import viewController.WMHotelManagerInfoController;
  */
 public class SearchHotelManager {
 
-	private WMHotelManagerInfoController controller;
+	private WebManagerLeftController controller;
 	
 	private Scene scene;
 	
@@ -27,15 +28,17 @@ public class SearchHotelManager {
 	
 	private AnchorPane rightPane;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 
 	TextField hotelManagerID;
 	
 	Button inquiry;
 	
-	public SearchHotelManager(WMHotelManagerInfoController controller){
+	public SearchHotelManager(WebManagerLeftController controller){
 		
 		this.controller = controller;
+
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

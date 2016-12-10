@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMWebBusinessInfoController;
+import viewController.WebManagerLeftController;
 
 /**
  * 网站管理人员界面_网站营销人员管理_初始界面（选择添加网站营销人员还是查询现有营销人员）
@@ -18,11 +19,11 @@ import viewController.WMWebBusinessInfoController;
  */
 public class First {
 	
-	private WMWebBusinessInfoController controller ;
+	private WebManagerLeftController controller ;
 	
 	private Scene scene;
 	
-	private WebManagerUI webManagerUI = new WebManagerUI();
+	private WebManagerUI webManagerUI ;
 	
 	private GridPane leftPane;
 	
@@ -31,9 +32,11 @@ public class First {
 	Button add ;
 	Button modify ;
 	
-	public First(WMWebBusinessInfoController controller) {
+	public First(WebManagerLeftController controller) {
 		
 		this.controller = controller;
+
+		webManagerUI = new WebManagerUI(controller);
 		
 		leftPane = webManagerUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -72,14 +75,20 @@ public class First {
 		add.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//添加
+				WMWebBusinessInfoController right = new WMWebBusinessInfoController(controller.getStage(),controller.getUserID());
+				right.setAddWebBusinessView();
+				right.getStage().show();
 			}
 			
 		});
 		modify.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//修改,跳至search界面
+				WMWebBusinessInfoController right = new WMWebBusinessInfoController(controller.getStage(),controller.getUserID());
+				right.setSearchWebBusinessView();
+				right.getStage().show();
 			}
 			
 		});
