@@ -65,9 +65,9 @@ public class PromotionDao_Stub implements PromotionDao {
 		double[] d1 = {0, 0.80}; 
 		double[] d2 = {0, 1, 0.70}; 
 		double[] d3 = {0, 0.8, 0.50}; 
-		vipTrading.put("鼓楼区", d1);
-		vipTrading.put("栖霞区", d2);
-		vipTrading.put("江宁区", d3);
+		vipTrading.put("仙林中心", d1);
+		vipTrading.put("马群", d2);
+		vipTrading.put("新街口", d3);
 		PromotionPO p3 = new PromotionPO(PromotionType.WEB_VIP_TRADINGAREA.ordinal(), "666666", null, "网站vip等级商圈折扣", 
 				0, null, null, null, null, vipTrading, null);
 		

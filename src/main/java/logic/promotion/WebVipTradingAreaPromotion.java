@@ -3,9 +3,9 @@ package logic.promotion;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import logic.hotel.GetHotelTradingAreaInfo;
-import logic.mockObject.MockGetClientVipInfo;
-import logic.mockObject.MockGetHotelTradingArea;
+import logic.hotel.Hotel;
+import logic.hotel.HotelTradingAreaInfo;
+import logic.user.Client;
 import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import vo.OrderVO;
@@ -24,7 +24,7 @@ public class WebVipTradingAreaPromotion implements Promotion {
 	private String promotionName;
 	private HashMap<String, double[]> vipTradeAreaDiscount;
 	private ClientVipInfo clientVip;
-	private GetHotelTradingAreaInfo getHotelTradingAreaInfo;
+	private HotelTradingAreaInfo getHotelTradingAreaInfo;
 	
 	/**
 	 * @param promotionID
@@ -36,8 +36,8 @@ public class WebVipTradingAreaPromotion implements Promotion {
 		this.promotionID = promotionID;
 		this.promotionName = promotionName;
 		this.vipTradeAreaDiscount = vipTradeAreaDiscount;
-		this.clientVip = new MockGetClientVipInfo();
-		this.getHotelTradingAreaInfo = new MockGetHotelTradingArea();
+		this.clientVip = new Client();
+		this.getHotelTradingAreaInfo = new Hotel();
 	}
 
 	@Override

@@ -16,15 +16,18 @@ public class MockGetClientVipInfo implements ClientVipInfo{
 			DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 			String t =format.format(new Date());
 			return new VipVO("wyy", VipType.BIRTHDAY_VIP, 2, t);
-		}
-		
+		} 
+			
 		return new VipVO("bcy", VipType.BUSINESS_VIP, 2, "南京大学");
-		
 	}
-
+	
 	@Override
 	public boolean isVIP(String userID) {
-		return true;
+		if(userID == "wyy" || userID == "bcy") {
+			return true;
+		}
+		
+		return false;
 	}
 
 }

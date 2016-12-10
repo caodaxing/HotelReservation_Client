@@ -3,7 +3,7 @@ package logic.promotion;
 import java.util.ArrayList;
 
 import Message.VipType;
-import logic.mockObject.MockGetClientVipInfo;
+import logic.user.Client;
 import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import vo.OrderVO;
@@ -41,7 +41,7 @@ public class HotelBusinessPromotion implements Promotion {
 		this.promotionName = promotionName;
 		this.discount = discount;
 		this.cooperateBusiness = cooperateBusiness;
-		this.clientVip = new MockGetClientVipInfo();
+		this.clientVip = new Client();
 	}
 
 	@Override

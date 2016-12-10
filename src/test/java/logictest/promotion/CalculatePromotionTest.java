@@ -83,5 +83,35 @@ public class CalculatePromotionTest {
 		
 		assertEquals(179.20, 0.00, order.afterPrice);
 	}
+	
+	//Web11 + Hotel11
+	@Test
+	public void testCalculatePromotion5() {
+		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
+		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400, false, null));
+		OrderVO vo = new OrderVO("zdy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
+		
+		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
+		
+		assertEquals(2, order.promotions.size());
+		
+		assertEquals(400, 0.00, order.beforePrice);
+		
+		assertEquals(196, 0.00, order.afterPrice);
+	}
+	
+	//不使用任何prmotion
+	@Test
+	public void testCalculatePromotion6() {
+		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
+		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400, false, null));
+		OrderVO vo = new OrderVO("zdy", "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001", rooms, 2, false, 400);
+		
+		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
+		
+		assertEquals(null, order.promotions);
+		
+		assertEquals(400, 0.00, order.beforePrice);
+	}
 
 }

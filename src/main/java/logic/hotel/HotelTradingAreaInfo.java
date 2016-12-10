@@ -1,5 +1,6 @@
 package logic.hotel;
 
-public interface GetHotelTradingAreaInfo {
+public interface HotelTradingAreaInfo {
+	
 	public String getHotelTradingArea(String hotelID);
 }

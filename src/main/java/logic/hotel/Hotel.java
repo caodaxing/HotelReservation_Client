@@ -12,6 +12,7 @@ import logic.promotion.PromotionInfo;
 import logic.room.UpdateRoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
+import po.HotelPO;
 import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.PromotionVO;
@@ -21,7 +22,7 @@ import vo.PromotionVO;
  * @author all
  *
  */
-public class Hotel implements CheckHotelService, HotelInfo{
+public class Hotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo{
 	
 	private HotelDao hotelDao;
 	private UpdateRoomInfo updateRoomInfo;
@@ -63,5 +64,11 @@ public class Hotel implements CheckHotelService, HotelInfo{
 	 */
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
 		return evaluationInfo.getHotelEvaluations(hotelId);
+	}
+
+	@Override
+	public String getHotelTradingArea(String hotelID) {
+		HotelPO po = this.hotelDao.getHotelInfoByHotelID(hotelID);
+		return po.getTradingArea();
 	}
 }
