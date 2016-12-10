@@ -16,10 +16,12 @@ public class HotelDao_Stub implements HotelDao {
 	
 	public HotelDao_Stub() {
 		orderDao_Stub = new OrderDao_Stub();
+		locationMap = new HashMap<>();
 		locationMap.put("栖霞区", "马群");
 		locationMap.put("栖霞区", "仙林中心");
 		locationMap.put("栖霞区", "尧化门");
 		locationMap.put("秦淮区", "新街口");
+		hotelList.add(new HotelPO("123", "汉庭", "123", "123", "123", "123", 1, "", null, null, null, null));
 	}
 	
 	public boolean addHotel(HotelPO po) {
