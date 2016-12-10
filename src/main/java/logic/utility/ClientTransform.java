@@ -1,7 +1,7 @@
 package logic.utility;
 
+import logic.credit.Credit;
 import logic.credit.CreditInfo;
-import logic.mockObject.MockCreditInfo;
 import po.ClientPO;
 import vo.ClientVO;
 
@@ -19,7 +19,7 @@ public class ClientTransform {
 	
 	
 	public ClientTransform() {
-		this.creditInfo = new MockCreditInfo();
+		this.creditInfo = new Credit();
 	}
 	
 	public ClientVO clientTransToVO(ClientPO clientPO) {

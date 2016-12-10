@@ -6,11 +6,18 @@ import java.util.HashMap;
 import Message.PromotionType;
 import dataDao.promotion.PromotionDao;
 import po.PromotionPO;
+import vo.PromotionVO;
 
 public class PromotionDao_Stub implements PromotionDao {
 
 
 	public PromotionPO getPromotion(String promotionID) {
+		
+		if(promotionID == "ppp") {
+			return new PromotionPO(PromotionType.WEB_11_11.ordinal(), "ppp", null, "全网折扣",
+					0.8, "2016-09-09 12:00:00", "2016-12-12 12:00:00", null, null, null, null);
+		}
+		
 		return new PromotionPO(PromotionType.WEB_11_11.ordinal(), "55555", null, "网站双11折扣", 
 				0.70, null, null, null, null, null, null);
 	}

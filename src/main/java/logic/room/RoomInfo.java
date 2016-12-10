@@ -10,7 +10,7 @@ import vo.RoomVO;
  * @author Mark.W
  *
  */
-public interface GetRoomInfo {
+public interface RoomInfo {
 	public RoomVO getRoomInfo(String hotel_id,String room_id);
 	
 	public ArrayList<RoomVO> getRoomList(String hotelID);

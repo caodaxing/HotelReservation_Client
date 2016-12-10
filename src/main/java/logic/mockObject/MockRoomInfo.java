@@ -3,10 +3,10 @@ package logic.mockObject;
 import java.util.ArrayList;
 
 import Message.RoomType;
-import logic.room.GetRoomInfo;
+import logic.room.RoomInfo;
 import vo.RoomVO;
 
-public class MockGetRoomInfo implements GetRoomInfo{
+public class MockRoomInfo implements RoomInfo{
 
 	@Override
 	public RoomVO getRoomInfo(String hotel_id, String room_id) {

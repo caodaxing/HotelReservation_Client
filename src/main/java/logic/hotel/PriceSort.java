@@ -3,7 +3,7 @@ package logic.hotel;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
-import logic.room.GetRoomInfo;
+import logic.room.RoomInfo;
 import logic.room.Room;
 import vo.HotelVO;
 import vo.RoomVO;
@@ -135,7 +135,7 @@ public class PriceSort implements HotelSort{
 
 		public LowestPrice(HotelVO hotelVO) {
 			this.hotelVO = hotelVO;
-			GetRoomInfo roomInfo = new Room();
+			RoomInfo roomInfo = new Room();
 			ArrayList<RoomVO> roomList = roomInfo.getRoomList(hotelVO.hoteID);
 			LowestPrice = roomList.get(0).price;
 			for (RoomVO roomVO : roomList) {

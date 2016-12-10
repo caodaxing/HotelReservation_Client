@@ -8,7 +8,7 @@ import Message.VipType;
 import logic.user.ClientVipInfo;
 import vo.VipVO;
 
-public class MockGetClientVipInfo implements ClientVipInfo{
+public class MockClientVipInfo implements ClientVipInfo{
 
 	@Override
 	public VipVO getVipInfo(String userID) {

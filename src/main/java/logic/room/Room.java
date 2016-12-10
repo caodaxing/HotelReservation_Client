@@ -16,9 +16,9 @@ import vo.RoomVO;
  * @author d
  *
  */
-public class Room implements RoomService , GetRoomInfo{
+public class Room implements RoomService , RoomInfo{
 
-	RoomDao roomDao;
+	private RoomDao roomDao;
 	
 	public Room() {
 		roomDao = new RoomDao_Stub();

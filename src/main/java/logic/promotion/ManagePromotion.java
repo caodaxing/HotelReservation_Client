@@ -11,12 +11,13 @@ import logicService.promotion.PromotionService;
 import po.PromotionPO;
 import vo.PromotionVO;
 
-public class ManagePromotion implements PromotionService{
+public class ManagePromotion implements PromotionService, PromotionInfo{
 	private PromotionDao promotionDao;
 	private PromotionTransform promotionTrans;
 	
 	public ManagePromotion() {
 		this.promotionDao = new PromotionDao_Stub();
+		
 		this.promotionTrans = new PromotionTransform();
 	}
 

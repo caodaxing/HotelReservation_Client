@@ -3,10 +3,10 @@ package logic.utility;
 import java.util.ArrayList;
 
 import Message.OrderState;
-import logic.mockObject.MockPromotionInfo;
-import logic.mockObject.MockGetRoomInfo;
+import logic.mockObject.MockRoomInfo;
+import logic.promotion.ManagePromotion;
 import logic.promotion.PromotionInfo;
-import logic.room.GetRoomInfo;
+import logic.room.RoomInfo;
 import po.OrderPO;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -14,12 +14,13 @@ import vo.RoomVO;
 
 public class OrderTransform {
 	
-	private GetRoomInfo roomInfo;
+	private RoomInfo roomInfo;
 	private PromotionInfo promotionInfo;
 	
 	public OrderTransform() {
-		this.roomInfo = new MockGetRoomInfo();
-		this.promotionInfo = new MockPromotionInfo();
+		this.roomInfo = new MockRoomInfo();
+		
+		this.promotionInfo = new ManagePromotion();
 	}
 
 	/**
