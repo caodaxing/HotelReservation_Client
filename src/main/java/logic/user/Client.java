@@ -17,27 +17,13 @@ import vo.VipVO;
  * po中没有保存credit，以防止credit被更改
  * @author Xue.W
  */
-public class Client implements ClientService, GetClientVipInfo{
+public class Client implements ClientService, ClientVipInfo{
 	
-	private String clientID;
-	private ClientPO clientPO;
 	private ClientDao clientDao;
-	private ClientTransform clientTrans;
 
-	public Client(String clientID){
-		this.clientID = clientID;
-		this.initClientPO();
+	public Client(){
 		this.clientDao = new ClientDao_Stub();
-		this.clientTrans = ClientTransform.getInstance();
 	}	
-	
-	//初始化成员变量clientpo
-	private void initClientPO() {
-		ClientPO po = clientDao.getClientInfo(this.clientID);
-		if(po != null) {
-			this.clientPO = po;
-		}
-	}
 	
 	/**
 	 * 获得用户（会员）信息,包括信用值
@@ -46,12 +32,9 @@ public class Client implements ClientService, GetClientVipInfo{
 	 * @author Xue.W
 	 */
 	public ClientVO getClientInfo (String clientID){
-		if(clientPO != null) {
-			return this.clientTrans.clientTransToVO(clientPO);
-		} else {
-			return null;
-		}
+		ClientPO po = this.clientDao.getClientInfo(clientID);
 		
+		return ClientTransform.getInstance().clientTransToVO(po);
 	}
 	
 	/**
@@ -64,13 +47,14 @@ public class Client implements ClientService, GetClientVipInfo{
 		if(clientVO == null) {
 			return ResultMessage.FAILURE;
 		}
+		ClientPO po = this.clientDao.getClientInfo(clientVO.userID);
 		
-		ClientPO po = new ClientPO(clientVO.userID, clientVO.phoneNumber, clientVO.trueName,
-				clientVO.identityID, clientVO.headImagePath, clientPO.getVipType(), 
-				clientPO.getVipLevel(), clientPO.getVipInfo());
+		po.setPhoneNumber(clientVO.phoneNumber);
+		po.setTrueName(clientVO.trueName);
+		po.setIdentityID(clientVO.identityID);
+		po.setHeadImagePath(clientVO.headImagePath);
 		
 		if(clientDao.updateClientInfo(po)){
-			this.clientPO = po;					//同时更新类中的成员变量po
 			return ResultMessage.SUCCESS;
 		}
 		
@@ -85,13 +69,15 @@ public class Client implements ClientService, GetClientVipInfo{
 	 */
 	public ResultMessage registerVIP(VipVO vipVO){
 		
-		if(!isVIP(vipVO.userID) && vipVO.userID.equals(this.clientID)) {
+		if(vipVO != null && !this.isVIP(vipVO.userID)) {
 			
-			if(clientDao.updateClientInfo(clientPO)){
-				//同时更新clientpo中的vip信息
-				this.clientPO.setVipType(vipVO.vipType.ordinal());
-				this.clientPO.setVipLevel(vipVO.level);
-				this.clientPO.setVipInfo(vipVO.info);
+			ClientPO po = this.clientDao.getClientInfo(vipVO.userID);
+			
+			po.setVipType(vipVO.vipType.ordinal());
+			po.setVipLevel(vipVO.level);
+			po.setVipInfo(vipVO.info);
+			
+			if(clientDao.updateClientInfo(po)){
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -105,13 +91,16 @@ public class Client implements ClientService, GetClientVipInfo{
 	 * @return
 	 */
 	public VipVO getVipInfo(String userID){
-		if(userID == this.clientID) {
-			return new VipVO(clientPO.getUserID(), VipType.values()[clientPO.getVipType()], 
-				clientPO.getVipLevel(), clientPO.getVipInfo());
-		} else {
-			ClientPO po = clientDao.getClientInfo(userID);
-			return new VipVO(po.getUserID(), VipType.values()[clientPO.getVipType()], po.getVipLevel(), po.getVipInfo());
+		if(this.isVIP(userID)) {
+			
+			ClientPO clientPO = this.clientDao.getClientInfo(userID);
+			
+			if(clientPO != null) {
+				return new VipVO(clientPO.getUserID(), VipType.values()[clientPO.getVipType()], 
+						clientPO.getVipLevel(), clientPO.getVipInfo());
+			}
 		}
+		return null;
 	}
 	
 	/**
@@ -120,26 +109,14 @@ public class Client implements ClientService, GetClientVipInfo{
 	 * @return
 	 */
 	public boolean isVIP(String userID) {
-		if(this.clientPO != null && this.clientPO.getVipType() != 0) {
-			return true;
+		ClientPO clientPO = this.clientDao.getClientInfo(userID);
+	
+		if(clientPO != null) {
+			if(clientPO.getVipType() == 1 || clientPO.getVipType() == 2) {
+				return true;
+			}
 		}
-		return false;
+ 		return false;
 	}
 	
-	public String getClientID() {
-		return clientID;
-	}
-
-	public void setClientID(String clientID) {
-		this.clientID = clientID;
-	}
-
-	public ClientPO getClientPO() {
-		return clientPO;
-	}
-
-	public void setClientPO(ClientPO clientPO) {
-		this.clientPO = clientPO;
-	}
-
 }

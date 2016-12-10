@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Message.VipType;
 import logic.mockObject.MockGetClientVipInfo;
-import logic.user.GetClientVipInfo;
+import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -25,7 +25,7 @@ public class HotelBusinessPromotion implements Promotion {
 	private String promotionName;
 	private double discount;
 	private String cooperateBusiness;
-	private GetClientVipInfo clientVip;
+	private ClientVipInfo clientVip;
 	
 	/**
 	 * @param promotionID

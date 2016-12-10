@@ -2,6 +2,10 @@ package logictest.order;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,10 +16,13 @@ import logic.order.ExecuteOrder;
 public class ExecuteOrderTest {
 
 	private ExecuteOrder executeOrder;
+	private String time;
 	
 	@Before
 	public void setUp() {
 		this.executeOrder = new ExecuteOrder();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+		time =format.format(new Date());
 	}
 	
 	@Test
@@ -24,7 +31,7 @@ public class ExecuteOrderTest {
 		
 		assertEquals(OrderState.EXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals("2016-12-08", this.executeOrder.getPo().getExecutedTime().substring(0, 10));
+		assertEquals(time, this.executeOrder.getPo().getExecutedTime().substring(0, 10));
 		
 	}	
 	
@@ -34,7 +41,7 @@ public class ExecuteOrderTest {
 		
 		assertEquals(OrderState.ABNORMAL.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals("2016-12-08", this.executeOrder.getPo().getAbnormalTime().substring(0, 10));
+		assertEquals(time, this.executeOrder.getPo().getAbnormalTime().substring(0, 10));
 	}	
 
 	@Test
@@ -51,7 +58,7 @@ public class ExecuteOrderTest {
 		
 		assertEquals(OrderState.EXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals("2016-12-08", this.executeOrder.getPo().getExecutedTime().substring(0, 10));
+		assertEquals(time, this.executeOrder.getPo().getExecutedTime().substring(0, 10));
 	}	
 
 
@@ -66,7 +73,7 @@ public class ExecuteOrderTest {
 		
 		assertEquals(OrderState.UNDOED.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals("2016-12-08", this.executeOrder.getPo().getUndoAbnormalTime().substring(0, 10));
+		assertEquals(time, this.executeOrder.getPo().getUndoAbnormalTime().substring(0, 10));
 		
 	}	
 	

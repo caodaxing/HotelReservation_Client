@@ -16,7 +16,7 @@ public class CreditChangeTest {
 	
 	@Before
 	public void setUp() {
-		change = new CreditChange("123");
+		change = new CreditChange();
 	}
 	
 	@Test

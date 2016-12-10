@@ -5,8 +5,8 @@ import Message.OrderState;
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
+import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
-import logic.mockObject.MockCreditChangeInfo;
 import logic.utility.Time;
 import logicService.order.ExecuteOrderService;
 import po.OrderPO;
@@ -27,8 +27,9 @@ public class ExecuteOrder implements ExecuteOrderService{
 	private OrderPO po;
 	
 	public ExecuteOrder() {
+		this.creditChangeInfo = new CreditChange();
+		
 		this.orderDao = new OrderDao_Stub();
-		this.creditChangeInfo = new MockCreditChangeInfo();
 	}
 
 	@Override

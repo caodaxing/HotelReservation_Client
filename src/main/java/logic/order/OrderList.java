@@ -28,8 +28,9 @@ public class OrderList implements OrderListService{
 	private OrderTransform orderTrans;
 	
 	public OrderList() {
-		this.orderListDao = new OrderListDao_Stub();
 		this.orderTrans = new OrderTransform();
+		
+		this.orderListDao = new OrderListDao_Stub();
 	}
 
 	

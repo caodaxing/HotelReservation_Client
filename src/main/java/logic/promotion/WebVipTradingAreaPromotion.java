@@ -6,7 +6,7 @@ import java.util.HashMap;
 import logic.hotel.GetHotelTradingAreaInfo;
 import logic.mockObject.MockGetClientVipInfo;
 import logic.mockObject.MockGetHotelTradingArea;
-import logic.user.GetClientVipInfo;
+import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -23,7 +23,7 @@ public class WebVipTradingAreaPromotion implements Promotion {
 	private String promotionID;
 	private String promotionName;
 	private HashMap<String, double[]> vipTradeAreaDiscount;
-	private GetClientVipInfo clientVip;
+	private ClientVipInfo clientVip;
 	private GetHotelTradingAreaInfo getHotelTradingAreaInfo;
 	
 	/**

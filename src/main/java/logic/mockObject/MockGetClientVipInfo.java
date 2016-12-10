@@ -1,15 +1,25 @@
 package logic.mockObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Message.VipType;
-import logic.user.GetClientVipInfo;
+import logic.user.ClientVipInfo;
 import vo.VipVO;
 
-public class MockGetClientVipInfo implements GetClientVipInfo{
+public class MockGetClientVipInfo implements ClientVipInfo{
 
 	@Override
 	public VipVO getVipInfo(String userID) {
-//		return new VipVO("wyy", VipType.BIRTHDAY_VIP, 2, "1996-12-09");
-		return new VipVO("wyy", VipType.BUSINESS_VIP, 2, "南京大学");
+		if(userID == "wyy") {
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+			String t =format.format(new Date());
+			return new VipVO("wyy", VipType.BIRTHDAY_VIP, 2, t);
+		}
+		
+		return new VipVO("bcy", VipType.BUSINESS_VIP, 2, "南京大学");
+		
 	}
 
 	@Override

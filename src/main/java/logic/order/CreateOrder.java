@@ -3,8 +3,8 @@ package logic.order;
 import Message.OrderState;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
+import logic.credit.Credit;
 import logic.credit.CreditInfo;
-import logic.mockObject.MockCreditInfo;
 import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
 import logic.utility.OrderTransform;
@@ -22,14 +22,15 @@ public class CreateOrder implements CreateOrderService{
 	private OrderDao orderDao;
 	private OrderTransform orderTrans;
 	private CreditInfo creditInfo; 
-	private CalculationPromotionInfo caculatePromotion;
+	private CalculationPromotionInfo caculatePromotionInfo;
 	
 	
 	public CreateOrder() {
 		this.orderTrans = new OrderTransform();
+		this.creditInfo = new Credit();
+		this.caculatePromotionInfo = new CalculatePromotion();
+		
 		this.orderDao = new OrderDao_Stub();
-		this.creditInfo = new MockCreditInfo();
-		this.caculatePromotion = new CalculatePromotion();
 	}
 
 	
@@ -40,7 +41,7 @@ public class CreateOrder implements CreateOrderService{
 			return null;
 		} 
 		
-		OrderVO vo = this.caculatePromotion.calculatePromotion(o);
+		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
 		
 		vo.orderState = OrderState.UNEXECUTED;
 		

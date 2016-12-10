@@ -3,8 +3,8 @@ package logic.promotion;
 import java.util.ArrayList;
 
 import Message.VipType;
-import logic.mockObject.MockGetClientVipInfo;
-import logic.user.GetClientVipInfo;
+import logic.user.Client;
+import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import logic.utility.Time;
 import vo.OrderVO;
@@ -24,7 +24,7 @@ public class HotelBirthdayPromotion implements Promotion {
 	private String hotelID;
 	private String promotionName;
 	private double discount;
-	private GetClientVipInfo clientVip;
+	private ClientVipInfo clientVip;
 	
 	/**
 	 * @param promotionID
@@ -39,11 +39,13 @@ public class HotelBirthdayPromotion implements Promotion {
 		this.hotelID = hotelID;
 		this.promotionName = promotionName;
 		this.discount = discount;
-		this.clientVip = new MockGetClientVipInfo();
+		
+		this.clientVip = new Client();
 	}
 
 	@Override
 	public boolean judgePromotion(OrderVO vo) {
+		
 		if(vo.hotelID == this.hotelID) {
 			if(this.clientVip.isVIP(vo.userID)) {
 				

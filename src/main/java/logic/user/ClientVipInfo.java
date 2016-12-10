@@ -7,7 +7,7 @@ import vo.VipVO;
  * @author Mark.W
  *
  */
-public interface GetClientVipInfo {
+public interface ClientVipInfo {
 
 	/**
 	 * 获得VIP信息

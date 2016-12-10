@@ -11,11 +11,12 @@ public class CreditDao_Stub implements CreditDao{
 	private ArrayList<CreditHistoryPO> changeList = new ArrayList<>();
 	
 	public boolean changeCredit(CreditHistoryPO po) {
-		if (po!=null) {
-			changeList.add(po);
-			return true;
-		}
-		return false;
+//		if (po!=null) {
+//			changeList.add(po);
+//			return true;
+//		}
+//		return false;
+		return true;
 	}
 
 	public ArrayList<CreditHistoryPO> getCreditHistory(String userID) {
@@ -29,12 +30,19 @@ public class CreditDao_Stub implements CreditDao{
 	}
 
 	public int getCredit(String userID) {
-		for (int i = changeList.size()-1 ; i>=0 ;i--) {
-			if (changeList.get(i).getUserID().equals(userID)) {
-				return changeList.get(i).getNowCredit();
-			}
+//		for (int i = changeList.size()-1 ; i>=0 ;i--) {
+//			if (changeList.get(i).getUserID().equals(userID)) {
+//				return changeList.get(i).getNowCredit();
+//			}
+//		}
+//		return 0;
+		
+		if(userID == "wyy") {
+			return 1000;
 		}
-		return 0;
+		 
+		return -100;
+		
 	}
 
 	@Override

@@ -50,8 +50,15 @@ public class CreateOrderTest {
 		assertEquals(5, order.promotions.size());
 		
 		assertEquals(122.89, 0.00, order.afterPrice);
-		
 	}
+	
+	//替换MockCalculatePromotion和MockCreditInfo之后
+		@Test
+		public void testCreateOrder3() {
+			assertEquals(false, this.createOrder.judgeCreditCanCreateOrder("bcy"));
+			
+			assertEquals(true, this.createOrder.judgeCreditCanCreateOrder("wyy"));
+		}
 	
 	
 	

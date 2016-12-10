@@ -20,8 +20,9 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	private PromotionFactory promotionFactory;
 	
 	public CalculatePromotion() {
-		this.promotionDao = new PromotionDao_Stub();
 		this.promotionFactory = new PromotionFactory();
+		
+		this.promotionDao = new PromotionDao_Stub();
 	}
 
 	/**

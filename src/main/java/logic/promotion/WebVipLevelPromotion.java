@@ -3,7 +3,7 @@ package logic.promotion;
 import java.util.ArrayList;
 
 import logic.mockObject.MockGetClientVipInfo;
-import logic.user.GetClientVipInfo;
+import logic.user.ClientVipInfo;
 import logic.utility.DataFormat;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -20,7 +20,7 @@ public class WebVipLevelPromotion  implements Promotion{
 	private String promotionID;
 	private String promotionName;
 	private double[] vipLevelDiscount;
-	private GetClientVipInfo clientVip;
+	private ClientVipInfo clientVip;
 	
 	/**
 	 * @param promotionID
