@@ -11,4 +11,6 @@ public interface WebBusinessService {
 
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID);
 	
+	public boolean webBusinessIDExists(String userID);
+	
 }

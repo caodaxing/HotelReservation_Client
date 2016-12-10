@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMUserInfoController;
+import vo.ClientVO;
 
 /**
  * 网站管理人员界面_客户管理_查看客户信息详情
@@ -65,6 +66,13 @@ public class CheckUser {
 		id = new TextField();
 		credit = new TextField();
 		
+		//根据controller内容修改
+		ClientVO vo = controller.getClientInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		credit.setText(Integer.toString(vo.credit) );
+		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -106,14 +114,18 @@ public class CheckUser {
 		modify.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳至修改界面
+				controller.setModifyUserUI();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳至查询界面
+				controller.setSearchClientView();
+				controller.getStage().show();
 			}
 			
 		});

@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
+import viewController.WMHotelManagerInfoController;
 import viewController.WMUserInfoController;
 import viewController.WebManagerLeftController;
 
@@ -73,7 +74,12 @@ public class SearchUser {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				//跳至对应查看界面，直接清空搜索框
+				WMUserInfoController newController = new WMUserInfoController(controller.getStage(),controller.getUserID());
+				newController.setClientID(userID.getText());
+				userID.setText("");
+				newController.setCheckUserView();
+				newController.getStage().show();
 			}
 			
 		});

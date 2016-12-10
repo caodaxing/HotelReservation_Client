@@ -12,6 +12,7 @@ import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMHotelManagerInfoController;
 import viewController.WMUserInfoController;
+import vo.HotelManagerVO;
 
 /**
  * 网站管理人员界面_酒店工作人员管理_修改信息
@@ -66,6 +67,13 @@ public class ModifyHotelManager {
 		id = new TextField();
 		password = new TextField();
 		
+		//根据controller内容修改
+		HotelManagerVO vo = controller.getHotelMangerInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		password.setText(vo.password);
+		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -107,14 +115,19 @@ public class ModifyHotelManager {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//确定修改（userID已保存在controller中）
+				controller.modifyHotelManagerInfo();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消修改，清空textfield，返回查看界面
+				setBlank();
+				controller.setCheckHotelManagerView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -134,6 +147,29 @@ public class ModifyHotelManager {
 		
 		return scene;
 	
+	}
+	
+	public String getName(){
+		return name.getText();
+	}
+	
+	public String getPhone(){
+		return phone.getText();
+	}
+	
+	public String getId(){
+		return id.getText();
+	}
+	
+	public String getPassword(){
+		return password.getText();
+	}
+	
+	public void setBlank(){
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+		password.setText("");
 	}
 	
 }

@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMUserInfoController;
+import vo.ClientVO;
 
 /**
  * 网站管理人员界面_客户管理_修改客户信息
@@ -66,6 +67,13 @@ public class ModifyUser {
 		id = new TextField();
 		head = new TextField();
 		
+		//根据controller显示
+		ClientVO vo = controller.getClientInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		head.setText(vo.headImagePath);
+		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -74,7 +82,7 @@ public class ModifyUser {
 		name.setEditable(true);
 		phone.setEditable(true);
 		id.setEditable(true);
-		head.setEditable(true);
+		head.setEditable(false);
 		
 		rightPane.getChildren().add(name);
 		rightPane.getChildren().add(phone);
@@ -107,14 +115,19 @@ public class ModifyUser {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//确定修改（userID已保存在controller中）
+				controller.modifyUserInfo();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消修改，清空textfield，返回查看界面
+				setBlank();
+				controller.setCheckUserView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -135,5 +148,23 @@ public class ModifyUser {
 		return scene;
 	
 	}
+	public String getName(){
+		return name.getText();
+	}
+	
+	public String getPhone(){
+		return phone.getText();
+	}
+	
+	public String getId(){
+		return id.getText();
+	}
+	
+	public void setBlank(){
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+	}
+	
 	
 }

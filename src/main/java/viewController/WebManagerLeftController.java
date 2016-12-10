@@ -4,10 +4,8 @@ import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.hotel.UpdateHotelService;
-import logicService.stub.HotelManagerService_Stub;
 import logicService.stub.HotelService_Stub;
 import logicService.stub.WebManagerService_Stub;
-import logicService.user.HotelManagerService;
 import logicService.user.WebManagerService;
 import view.helpTools.OneButtonDialog;
 import view.right.webManager.hotelInfo.AddHotel;
@@ -15,6 +13,7 @@ import view.right.webManager.hotelInfo.AddHotelManager;
 import view.right.webManager.hotelManagerInfo.SearchHotelManager;
 import view.right.webManager.userInfo.SearchUser;
 import view.right.webManager.webBusinessInfo.First;
+import vo.HotelManagerVO;
 import vo.HotelVO;
 
 public class WebManagerLeftController {
@@ -24,7 +23,7 @@ public class WebManagerLeftController {
 	protected String userID;
 	
 	protected UpdateHotelService updateHotelService ;
-	protected WebManagerService webManagerservice ;
+	protected WebManagerService webManagerService ;
 	protected AccountService accountService ;	//用时初始化
 	
 	protected AddHotel addHotelUI;
@@ -37,7 +36,7 @@ public class WebManagerLeftController {
 	
 	public WebManagerLeftController(){
 		updateHotelService = new HotelService_Stub();
-		webManagerservice = new WebManagerService_Stub(userID);
+		webManagerService = new WebManagerService_Stub(userID);
 		
 		addHotelUI = new AddHotel(this);
 		addHotelManagerUI = new AddHotelManager(this);
@@ -52,27 +51,33 @@ public class WebManagerLeftController {
 		this.userID = userID;
 	}
 	
+	public void setSearchClientView(){
+		stage.setScene(searchUserUI.getScene());
+	}
+	
 	public void setSearchHotelManagerView(){
-		
+		stage.setScene(searchHotelManagerUI.getScene());
 	}
 	
 	public void setAddHotelView(){
-		
+		stage.setScene(addHotelUI.getScene());
 	}
 	
 	public void setAddHotelManagerView(){
-		
+		stage.setScene(addHotelManagerUI.getScene());
 	}
+	//设置hotel对应的添加酒店工作人员界面
 	public void setAddHotelManagerView(String hotelID){
-		
+		AddHotelManager addHotelManagerUI = new AddHotelManager(this,hotelID);
+		stage.setScene(addHotelManagerUI.getScene());
 	}
 	
 	public void SearchUserView(){
-		
+		stage.setScene(searchUserUI.getScene());
 	}
 	
 	public void setWMWBFirstView(){
-		
+		stage.setScene(firstUI.getScene());
 	}
 	
 	/*
@@ -152,9 +157,30 @@ public class WebManagerLeftController {
 		}
 		
 		//查看酒店是否存在
+		if(updateHotelService.hotelIDExist(hotelID) == ResultMessage.FAILURE){
+			//酒店不存在
+			showDialog("酒店不存在，请重新输入");
+			return ;
+		}
 		//查看工作人员是否存在
+		if(updateHotelService.hotelHasManager(hotelID) == ResultMessage.SUCCESS){
+			//已有工作人员
+			showDialog("该酒店已有工作人员，请勿重复添加");
+			return ;
+		}
 		//添加工作人员，清空输入框
-		//跳入添加酒店界面
+		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
+		ResultMessage result = webManagerService.addHotelManager(vo);
+		if(result == ResultMessage.SUCCESS){
+			//成功，清空输入框，跳至添加酒店界面
+			showDialog("添加成功");
+			addHotelManagerUI.setBlank();
+			setAddHotelView();
+		}else{
+			//失败
+			showDialog("添加失败");
+			return ;
+		}
 		
 	}
 	

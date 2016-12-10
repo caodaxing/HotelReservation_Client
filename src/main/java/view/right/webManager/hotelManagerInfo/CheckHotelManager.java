@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMHotelManagerInfoController;
+import vo.HotelManagerVO;
 
 /**
  * 网站管理人员界面_酒店工作人员管理_查看详情
@@ -65,6 +66,13 @@ public class CheckHotelManager {
 		id = new TextField();
 		password = new TextField();
 		
+		//根据controller内容修改
+		HotelManagerVO vo = controller.getHotelMangerInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		password.setText(vo.password);
+		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -106,14 +114,18 @@ public class CheckHotelManager {
 		modify.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳至修改界面
+				controller.setModifyHotelManagerView();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//跳至查询界面
+				controller.setSearchHotelManagerView();
+				controller.getStage().show();
 			}
 			
 		});

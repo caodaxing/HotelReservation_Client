@@ -185,6 +185,7 @@ public class UserLeftController {
 			showDialog("注销失败");
 			return ;
 		}
+		userID = null;
 		showDialog("注销成功");
 		accountController.setFirstView();
 		newStage.show();

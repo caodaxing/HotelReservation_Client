@@ -26,8 +26,7 @@ public class ClientService_Stub implements ClientService {
 		this.clientID = clientID;
 	}
 
-	public ClientService_Stub(String clientID) {
-		this.clientID = clientID;
+	public ClientService_Stub() {
 	}
 
 	public ClientService_Stub(String userID, Identity identity){

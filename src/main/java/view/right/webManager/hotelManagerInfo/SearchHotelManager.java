@@ -72,8 +72,12 @@ public class SearchHotelManager {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//跳至对应查看界面，直接清空搜索框
+				WMHotelManagerInfoController newController = new WMHotelManagerInfoController(controller.getStage(),controller.getUserID());
+				newController.setHotelID(hotelManagerID.getText());
+				hotelManagerID.setText("");
+				newController.setCheckHotelManagerView();
+				newController.getStage().show();
 			}
 			
 		});
@@ -110,5 +114,6 @@ public class SearchHotelManager {
 		return scene;
 		
 	}
+	
 
 }
