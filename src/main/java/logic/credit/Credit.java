@@ -23,11 +23,15 @@ public class Credit implements CreditInfo, CreditService{
 	}
 	
 	public ResultMessage setVIPCredit(int level, int credit_num){
+		if(this.creditDao.setVIPCredit(level, credit_num)) {
+			return ResultMessage.SUCCESS;
+		}
+		
 		return ResultMessage.FAILURE;
 	}
 	
 	public int getVIPCredit(int level){
-		return 0;
+		return this.getVIPCredit(level);
 	}
 	
 }

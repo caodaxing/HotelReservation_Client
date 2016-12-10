@@ -21,20 +21,38 @@ public class CreateOrderTest {
 		this.createOrder = new CreateOrder();
 	}
 	
+	//替换MockCalculatePromotion之前
+//	@Test
+//	public void testCreateOrder1() {
+//		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
+//		rooms.add(new RoomVO("00005", "1109", RoomType.SINGLE_ROOM, 400, false, null));
+//		
+//		OrderVO vo = new OrderVO("20161225000051234", "2016-12-25 12:00:00", "2016-12-26 12;00:00",
+//				"00005", rooms, 1, false, 400);
+//		
+//		vo = this.createOrder.createOrder(vo);
+//		
+//		assertEquals(vo.afterPrice, 320.0, 0);
+//		
+//		assertEquals(vo.promotions.get(0).promotionName, "全网折扣");
+//		
+//	}
+
+	//替换MockCalculatePromotion之后
 	@Test
-	public void testCreateOrder() {
+	public void testCreateOrder2() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00005", "1109", RoomType.SINGLE_ROOM, 400, false, null));
+		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400, false, null));
+		OrderVO vo = new OrderVO("wyy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
 		
-		OrderVO vo = new OrderVO("20161225000051234", "2016-12-25 12:00:00", "2016-12-26 12;00:00",
-				"00005", rooms, 1, false, 400);
+		OrderVO order = this.createOrder.createOrder(vo);
 		
-		vo = this.createOrder.createOrder(vo);
+		assertEquals(5, order.promotions.size());
 		
-		assertEquals(vo.afterPrice, 320.0, 0);
-		
-		assertEquals(vo.promotions.get(0).promotionName, "全网折扣");
+		assertEquals(122.89, 0.00, order.afterPrice);
 		
 	}
+	
+	
 	
 }

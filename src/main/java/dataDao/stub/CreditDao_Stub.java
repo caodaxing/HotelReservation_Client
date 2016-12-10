@@ -37,4 +37,14 @@ public class CreditDao_Stub implements CreditDao{
 		return 0;
 	}
 
+	@Override
+	public boolean setVIPCredit(int level, int credit_num) {
+		return true;
+	}
+
+	@Override
+	public int getVIPCredit(int level) {
+		return 100;
+	}
+
 }
