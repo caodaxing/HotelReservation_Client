@@ -13,11 +13,11 @@ public class AccountService_Stub implements AccountService{
 	}
 
 	public ResultMessage login(AccountVO accountVO) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage modifyPassword(AccountVO accountVO) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class OrderService_Stub implements OrderService {
 	}
 
 	public ResultMessage undoOrder(String order_id) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public OrderVO getOrderInfo(String order_id) {
@@ -79,15 +79,15 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	}
 
 	public ResultMessage normalExecute(String order_id) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage autoSetUnnormal(String order_id) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage supplyOrder(String order_id) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override

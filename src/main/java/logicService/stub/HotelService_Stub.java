@@ -14,7 +14,7 @@ public class HotelService_Stub implements UpdateHotelService{
 	public ResultMessage updateRoom(RoomVO room) {
 		// TODO Auto-generated method stub
 		
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelName) {

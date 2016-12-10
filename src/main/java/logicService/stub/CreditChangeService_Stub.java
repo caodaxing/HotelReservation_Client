@@ -16,7 +16,7 @@ public class CreditChangeService_Stub implements CreditChangeService{
 	}
 
 	public ResultMessage rechargeCredit(CreditChangeVO creditChangeVO) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ArrayList<CreditChangeVO> getCreditHistory(String userID) {

@@ -47,7 +47,7 @@ public class ClientService_Stub implements ClientService {
 
 	public ResultMessage updateClientInfo(ClientVO new_userInfo) {
 		
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage registerVIP(VipVO VIPInfo) {
@@ -110,7 +110,7 @@ public class ClientService_Stub implements ClientService {
 	}
 
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo) {
@@ -122,7 +122,7 @@ public class ClientService_Stub implements ClientService {
 	}
 
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 

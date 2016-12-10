@@ -53,7 +53,7 @@ public class UserLeftController {
 	
 	//构造函数
 	public UserLeftController(){
-	
+		
 		accountService = new AccountService_Stub();
 		clientService = new ClientService_Stub(userID);
 		orderService = new OrderService_Stub();
@@ -71,6 +71,7 @@ public class UserLeftController {
 	}
 	
 	public UserLeftController(Stage stage ,String userID){
+		this();
 		this.stage = stage ;
 		this.userID = userID ;
 	}

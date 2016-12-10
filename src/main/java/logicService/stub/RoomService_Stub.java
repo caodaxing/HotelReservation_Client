@@ -31,7 +31,7 @@ public class RoomService_Stub implements RoomService {
 	}
 
 	public ResultMessage addRoomInfo(RoomVO roomVO) {
-		return ResultMessage.FAILURE;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override

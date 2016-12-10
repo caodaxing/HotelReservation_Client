@@ -4,17 +4,12 @@ import javafx.stage.Stage;
 import logicService.order.OrderService;
 import view.right.user.checkHotel.*;
 
-public class UserCheckHotelController {
-	
-	private Stage stage ;
-	private String userID;
+public class UserCheckHotelController extends UserLeftController {
 	
 	//逻辑层接口（先不写）
-	private OrderService orderService;
 	
 	//控制的界面
 	private EvaluationList evaluationListUI;
-	private HotelFirst firstUI;
 	private HistoryOrderList historyOrderListUI;
 	private HotelInfo hotelInfoUI;
 	private MakeOrder makeOrderUI;
@@ -26,11 +21,9 @@ public class UserCheckHotelController {
 	public UserCheckHotelController(Stage stage , String userID){
 		
 		this.stage = stage ;
-		this.userID = userID ;
-		
+		this.userID = userID;
 		
 		evaluationListUI = new EvaluationList(this);
-		firstUI = new HotelFirst(this);
 		historyOrderListUI = new HistoryOrderList(this);
 		hotelInfoUI = new HotelInfo(this);
 		makeOrderUI = new MakeOrder(this);
@@ -53,12 +46,6 @@ public class UserCheckHotelController {
 		
 		stage.setScene(evaluationListUI.getScene());
 		
-	}
-	
-	public void setFirstView(){
-		
-		stage.setScene(firstUI.getScene());
-	
 	}
 	
 	public void setHistoryOrderListView(){
