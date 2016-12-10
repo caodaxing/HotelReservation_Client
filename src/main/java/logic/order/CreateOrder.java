@@ -4,8 +4,8 @@ import Message.OrderState;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditInfo;
-import logic.mockObject.MockCalculatePromotion;
 import logic.mockObject.MockCreditInfo;
+import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
 import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
@@ -29,7 +29,7 @@ public class CreateOrder implements CreateOrderService{
 		this.orderTrans = new OrderTransform();
 		this.orderDao = new OrderDao_Stub();
 		this.creditInfo = new MockCreditInfo();
-		this.caculatePromotion = new MockCalculatePromotion();
+		this.caculatePromotion = new CalculatePromotion();
 	}
 
 	

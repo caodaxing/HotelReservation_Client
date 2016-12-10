@@ -13,5 +13,5 @@ public interface OrderHotelInfo {
 
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID);
 	
-	public ArrayList<String> getBookedHotelList (String userID);
+	public ArrayList<String> getBookedHotelList(String userID);
 }
