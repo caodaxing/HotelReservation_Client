@@ -73,4 +73,14 @@ public class UpdateHotel implements UpdateHotelService, HotelUpdateRoom {
 		return updateRoomInfo.updateRoomInfo(roomVO);
 	}
 
+	@Override
+	public ResultMessage hotelIDExist(String hotelID) {
+		return null;
+	}
+
+	@Override
+	public ResultMessage hotelHasManager(String hotelID) {
+		return null;
+	}
+
 }
