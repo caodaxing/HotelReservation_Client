@@ -6,7 +6,7 @@ import logicService.account.AccountService;
 import view.right.webBusiness.VIPInfo.Blank;
 import view.right.webBusiness.VIPInfo.SetVIPCredit;
 
-public class WBVIPInfoController{
+public class WBVIPInfoController extends WebBusinessLeftController{
 	
 	private Stage stage;
 	

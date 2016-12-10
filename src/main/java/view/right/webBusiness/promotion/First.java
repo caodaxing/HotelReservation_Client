@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class First {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	Button checkNowName;
 	Button makeNewPromotion;
@@ -33,6 +32,7 @@ public class First {
 	public First(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

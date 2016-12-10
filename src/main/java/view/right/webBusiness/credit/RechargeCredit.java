@@ -24,11 +24,10 @@ import viewController.WebBusinessLeftController;
 public class RechargeCredit {
 	
 	private WBCreditController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField userID;
 	TextField rechargeAmount;
@@ -39,6 +38,7 @@ public class RechargeCredit {
 	public RechargeCredit(WBCreditController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

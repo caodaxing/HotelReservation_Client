@@ -8,7 +8,7 @@ import view.right.webBusiness.orderManagement.AbnormalOrderList;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder;
 import view.right.webBusiness.orderManagement.UnexecuteOrder;
 
-public class WBOrderManagementController{
+public class WBOrderManagementController extends WebBusinessLeftController{
 	
 	private Stage stage;
 	

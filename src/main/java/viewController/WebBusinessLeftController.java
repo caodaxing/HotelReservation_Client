@@ -1,6 +1,9 @@
 package viewController;
 
 import javafx.stage.Stage;
+import view.right.webBusiness.promotion.First;
+
+
 
 public class WebBusinessLeftController {
 	
@@ -9,16 +12,12 @@ public class WebBusinessLeftController {
 	private WBPromotionController wbPromotionController;
 	private WBCreditController wbCreditController;
 	
+	private First firstUI;
+	
 	protected Stage stage;
 	
-	public WebBusinessLeftController(Stage stage){
-		
-		this.stage = stage;
-		wbVIPInfoController = new WBVIPInfoController(stage);
-		wbOrderManagementController = new WBOrderManagementController(stage);
-		wbPromotionController = new WBPromotionController(stage);
-		wbCreditController = new WBCreditController(stage);
-		
+	public WebBusinessLeftController(){
+		firstUI = new First(wbPromotionController);
 	}
 	
 	public void setBlankView(){
@@ -62,13 +61,11 @@ public class WebBusinessLeftController {
 	}
 	
 	public void setPromotionView(){
-		stage.close();
-		Stage newStage = new Stage();
-		newStage.centerOnScreen();
-		newStage.setTitle("酒店预定系统");
-		wbPromotionController = new WBPromotionController(newStage);
-		wbPromotionController.setFirstView();
-		newStage.show();
+		stage = new Stage();
+		stage.centerOnScreen();
+		stage.setTitle("酒店预定系统");
+		stage.setScene(firstUI.getScene());
+		stage.show();
 	}
 	
 	public void setTodayUnexecuteOrderView(){

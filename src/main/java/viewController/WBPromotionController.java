@@ -12,7 +12,7 @@ import view.right.webBusiness.promotion.SetSpecialTimeStrategy;
 import view.right.webBusiness.promotion.SetVIPAreaStrategy;
 import view.right.webBusiness.promotion.SetVIPStrategy;
 
-public class WBPromotionController{
+public class WBPromotionController extends WebBusinessLeftController{
 	
 	private Stage stage;
 	//逻辑层接口
