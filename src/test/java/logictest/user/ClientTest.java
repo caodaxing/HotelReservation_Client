@@ -36,25 +36,28 @@ public class ClientTest {
 	public void testUpdateClientInfo2() {
 		ClientVO vo = new ClientVO("wyy", "13338031126", "王友运", "3203221111111111", 1000, "image/wyy.jpg");
 		assertEquals(client.updateClientInfo(vo), ResultMessage.SUCCESS);
+		
 		//data层写好了才能测试
 //		assertEquals(client.getClientPO().getVipInfo(), "nju");
 	}
 	
 	@Test
-	public void testGetVipInfo() {
+	public void testGetVipInfo1() {
+		assertEquals(client.isVIP("wyy"), true);
+		
 		assertEquals(client.getVipInfo("wyy").info, "南京大学");
 	}
 	
 	@Test
-	public void testRegisterVIP1() {
-//		assertEquals(client.isVIP(client.getClientPO().getUserID()), true);
+	public void testGetVipInfo2() {
+		assertEquals(false, client.isVIP("bcy"));
+		
+		assertEquals(null, client.getVipInfo("bcy"));
 	}
 	
 	@Test
-	public void testRegisterVIP2() {
-//		client.setClientPO(new ClientPO("wyy", "13338031126", "王友运", "3203221111111111", "image/wyy.jpg", 0, 0, null));
-		assertEquals(client.registerVIP(new VipVO("wyy", VipType.BIRTHDAY_VIP, 0, "20160101")), ResultMessage.SUCCESS);
-//		assertEquals(client.getClientPO().getVipType(), 1);
+	public void testRegisterVIP() {
+		assertEquals(client.registerVIP(new VipVO("bcy", VipType.BIRTHDAY_VIP, 0, "20160101")), ResultMessage.SUCCESS);
 	}
 
 }

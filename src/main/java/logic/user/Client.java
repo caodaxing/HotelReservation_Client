@@ -100,6 +100,7 @@ public class Client implements ClientService, ClientVipInfo{
 						clientPO.getVipLevel(), clientPO.getVipInfo());
 			}
 		}
+		
 		return null;
 	}
 	
