@@ -20,13 +20,14 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_查看酒店_酒店详情_酒店房间列表
  * @author XueWang
  *
  */
-public class RoomList {
+public class RoomList{
 
 	private UserCheckHotelController controller;
 	
@@ -36,7 +37,7 @@ public class RoomList {
 	
 	private AnchorPane rightPane;
 	
-	private UserUI userui = new UserUI();
+	private UserUI userui;
 	
 	Button revert;
 	
@@ -57,6 +58,8 @@ public class RoomList {
 	public RoomList(UserCheckHotelController controller){
 		
 		this.controller = controller;
+		
+		userui = new UserUI(controller);
 		
 		leftPane = userui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

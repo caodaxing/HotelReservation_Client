@@ -28,7 +28,7 @@ public class HistoryCredit {
 	
 	private AnchorPane rightPane;
 	
-	private UserUI userui = new UserUI();
+	private UserUI userui ;
 	
 	Button revert;
 	
@@ -37,6 +37,8 @@ public class HistoryCredit {
 	public HistoryCredit(UserMyInfoController controller){
 		
 		this.controller = controller;
+		
+		userui = new UserUI(controller);
 		
 		leftPane = userui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

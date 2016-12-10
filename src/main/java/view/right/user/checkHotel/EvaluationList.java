@@ -34,7 +34,7 @@ public class EvaluationList {
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	
-	private UserUI userui = new UserUI();
+	private UserUI leftUI;
 	
 	Button revert;
 	
@@ -57,7 +57,9 @@ public class EvaluationList {
 		
 		this.controller = controller;
 		
-		leftPane = userui.getPane();
+		leftUI = new UserUI(controller);
+		
+		leftPane = leftUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

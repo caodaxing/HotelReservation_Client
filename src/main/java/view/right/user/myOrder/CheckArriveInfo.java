@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
+import viewController.UserLeftController;
 import viewController.UserMyOrderController;
 
 /**
@@ -23,7 +24,7 @@ public class CheckArriveInfo {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -38,6 +39,8 @@ public class CheckArriveInfo {
 	public CheckArriveInfo(UserMyOrderController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

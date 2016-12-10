@@ -23,7 +23,7 @@ public class ModifyPassword {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI ;
 
 	private GridPane leftPane ;
 	
@@ -39,6 +39,8 @@ public class ModifyPassword {
 	public ModifyPassword(UserLeftController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

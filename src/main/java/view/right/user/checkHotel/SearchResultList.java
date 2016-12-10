@@ -22,6 +22,7 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_查看酒店_搜索结果列表
@@ -34,7 +35,7 @@ public class SearchResultList{
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private UserUI userui = new UserUI();
+	private UserUI userui;
 	
 	Button ascendingSort;
 	Button dscendingSort;
@@ -63,6 +64,8 @@ public class SearchResultList{
 	public SearchResultList(UserCheckHotelController controller){
 		
 		this.controller = controller;
+		
+		userui = new UserUI(controller);
 		
 		leftPane = userui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

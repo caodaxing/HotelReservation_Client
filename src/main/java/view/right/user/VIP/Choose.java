@@ -18,7 +18,7 @@ public class Choose {
 	
 	private Scene scene;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI ;
 	
 	private GridPane leftPane;
 	
@@ -30,6 +30,7 @@ public class Choose {
 	public Choose(UserLeftController controller) {
 		
 		this.controller = controller;
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

@@ -16,7 +16,7 @@ public class CheckCompanyVIP {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -27,6 +27,7 @@ public class CheckCompanyVIP {
 	public CheckCompanyVIP(UserLeftController controller){
 		
 		this.controller = controller;
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

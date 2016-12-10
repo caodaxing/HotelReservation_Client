@@ -28,7 +28,7 @@ import viewController.UserCheckHotelController;
  * @author XueWang
  *
  */
-public class HistoryOrderList {
+public class HistoryOrderList{
 
 	private UserCheckHotelController controller;
 	
@@ -38,7 +38,7 @@ public class HistoryOrderList {
 	
 	private AnchorPane rightPane;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI;
 	
 	Button revert;
 	
@@ -59,6 +59,8 @@ public class HistoryOrderList {
 	public HistoryOrderList(UserCheckHotelController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

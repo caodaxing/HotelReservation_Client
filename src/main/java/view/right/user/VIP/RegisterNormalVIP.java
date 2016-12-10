@@ -21,7 +21,7 @@ public class RegisterNormalVIP {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -35,6 +35,7 @@ public class RegisterNormalVIP {
 	public RegisterNormalVIP(UserVIPController controller){
 		
 		this.controller = controller;
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

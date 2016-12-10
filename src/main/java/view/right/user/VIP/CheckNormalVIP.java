@@ -19,7 +19,7 @@ public class CheckNormalVIP {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -30,6 +30,8 @@ public class CheckNormalVIP {
 	public CheckNormalVIP(UserLeftController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

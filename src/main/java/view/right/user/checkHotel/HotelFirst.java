@@ -16,13 +16,13 @@ import viewController.UserLeftController;
  * @author XueWang
  *
  */
-public class HotelFirst {
+public class HotelFirst{
 	
 	private UserLeftController controller ;
 	
 	private Scene scene;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI;
 	
 	private GridPane leftPane;
 	
@@ -34,6 +34,8 @@ public class HotelFirst {
 	public HotelFirst(UserLeftController controller) {
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

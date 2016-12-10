@@ -11,19 +11,20 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_查看酒店_生成订单
  * @author XueWang
  *
  */
-public class MakeOrder {
+public class MakeOrder{
 
 	private UserCheckHotelController controller;
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -43,6 +44,8 @@ public class MakeOrder {
 	public MakeOrder(UserCheckHotelController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

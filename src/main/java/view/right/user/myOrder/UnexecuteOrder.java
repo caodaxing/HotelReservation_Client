@@ -23,7 +23,7 @@ public class UnexecuteOrder {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI;	
 	
 	private GridPane leftPane ;
 	
@@ -44,6 +44,8 @@ public class UnexecuteOrder {
 	public UnexecuteOrder(UserMyOrderController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

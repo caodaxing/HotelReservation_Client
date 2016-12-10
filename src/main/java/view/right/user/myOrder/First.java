@@ -27,7 +27,7 @@ public class First {
 	
 	private AnchorPane rightPane;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI ;
 
 	TextField orderID;
 	
@@ -36,6 +36,8 @@ public class First {
 	public First(UserLeftController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

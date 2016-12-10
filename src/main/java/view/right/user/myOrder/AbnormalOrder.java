@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
-import viewController.UserMyOrderController;
+import viewController.UserLeftController;
 
 /**
  * 客户界面_我的订单_异常订单详情
@@ -23,7 +23,7 @@ public class AbnormalOrder {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();	
+	private UserUI userUI ;	
 	
 	private GridPane leftPane ;
 	
@@ -39,6 +39,8 @@ public class AbnormalOrder {
 	public AbnormalOrder(UserMyOrderController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		// 初始化左侧Pane
 		leftPane = userUI.getPane() ;

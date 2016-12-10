@@ -25,13 +25,14 @@ public class OrderList {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private UserUI userUI = new UserUI();
+	private UserUI userUI;
 	
 	ScrollBar scroller;
 	
 	public OrderList(UserLeftController controller){
 		
 		this.controller = controller;
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

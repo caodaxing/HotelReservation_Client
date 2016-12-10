@@ -14,11 +14,13 @@ public class Blank {
 	
 	private GridPane root ;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI ;
 	
 	public Blank(UserMyInfoController controller){
 		
 		this.controller = controller ;
+		
+		userUI = new UserUI(controller);
 		
 		root = userUI.getPane();
 		root.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

@@ -25,7 +25,7 @@ public class CheckMyInfo {
 	
 	private Scene scene ;
 	
-	private UserUI userUI = new UserUI();
+	private UserUI userUI;
 
 	private GridPane leftPane ;
 	
@@ -42,6 +42,8 @@ public class CheckMyInfo {
 	public CheckMyInfo(UserLeftController controller){
 		
 		this.controller = controller;
+		
+		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
