@@ -1,11 +1,11 @@
 package logic.hotel;
 
 import java.util.ArrayList;
-
 import Message.HotelSearchCondition;
 import dataDao.HotelDao;
 import dataDao.stub.HotelDao_Stub;
-import logic.mockObject.MockGetBookedHotelList;
+import logic.mockObject.MockOrderHotelInfo;
+import logic.order.OrderHotelInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.SearchHotelService;
 import po.HotelPO;
@@ -20,11 +20,11 @@ import vo.HotelVO;
 public class SearchHotel implements SearchHotelService{
 	
 	HotelDao hotelDao;
-	MockGetBookedHotelList getBookedHotelList;
+	OrderHotelInfo getBookedHotelList;
 	
 	public SearchHotel() {
 		hotelDao = new HotelDao_Stub();
-		getBookedHotelList = new MockGetBookedHotelList();
+		getBookedHotelList = new MockOrderHotelInfo();
 	}
 	
 	/**
