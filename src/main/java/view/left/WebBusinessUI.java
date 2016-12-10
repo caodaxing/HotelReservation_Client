@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
+import view.right.webBusiness.promotion.First;
 import viewController.WebBusinessLeftController;
 
 /**
@@ -81,7 +82,8 @@ public class WebBusinessUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				controller.setPromotionView();
+//				controller = new WebBusinessLeftController();
+				controller.setFirstVeiw();
 			}
 			
 		});
@@ -91,7 +93,6 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setWBCreditView();
 			}
 			
 		});
@@ -101,7 +102,6 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setWBVIPInfoView();
 			}
 			
 		});
@@ -111,7 +111,6 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setUnexecuteOrderView();
 			}
 			
 		});
@@ -121,7 +120,6 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setTodayUnexecuteOrderView();
 			}
 			
 		});
@@ -131,7 +129,6 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setAbnormalOrderView();
 			}
 			
 		});

@@ -20,7 +20,7 @@ import viewController.WebBusinessLeftController;
  */
 public class First {
 	
-	private WBPromotionController controller;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -29,7 +29,7 @@ public class First {
 	Button checkNowName;
 	Button makeNewPromotion;
 	
-	public First(WBPromotionController controller){
+	public First(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
@@ -75,8 +75,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setExistStrategyView();
-				controller.getStage().show();
+				
+//				controller.setExistStrategyView();
+//				controller.getStage().show();
 			}
 							
 		});
@@ -86,8 +87,8 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setChooseView();
-				controller.getStage().show();
+//				controller.setChooseView();
+//				controller.getStage().show();
 			}
 							
 		});
