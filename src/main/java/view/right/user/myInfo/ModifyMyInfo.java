@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserMyInfoController;
+import vo.ClientVO;
 
 /**
  * 客户界面_我的信息_修改基本信息
@@ -67,10 +68,18 @@ public class ModifyMyInfo {
 	
 	private void setTextField (){
 		
+		ClientVO vo = controller.getMyInfo();
+		
 		name = new TextField();
 		phone = new TextField();
 		id = new TextField();
 		head = new TextField();
+		
+		//根据controller设置text
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		head.setText(vo.headImagePath);
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);

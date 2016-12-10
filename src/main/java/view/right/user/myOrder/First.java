@@ -62,10 +62,6 @@ public class First {
 		inquiry = new Button("查询");
 		inquiry.setPrefSize(100, 30);
 		
-		//设置按钮位置
-		inquiry.setLayoutX(375);
-		inquiry.setLayoutY(330);
-		
 		//添加按钮监听
 		inquiry.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -80,8 +76,8 @@ public class First {
 		//添加组件
 		rightPane.getChildren().add(inquiry);
 		
-		AnchorPane.setLeftAnchor(inquiry, 175.0);
-		AnchorPane.setTopAnchor(inquiry, 330.0);
+		AnchorPane.setLeftAnchor(inquiry, 350.0);
+		AnchorPane.setTopAnchor(inquiry, 250.0);
 		
 	}
 	
@@ -89,7 +85,7 @@ public class First {
 		
 		//添加文本框
 		orderID = new TextField();
-		orderID.setPrefSize(250, 30);
+		orderID.setPrefSize(200, 30);
 				
 		//设置文本框位置
 		orderID.setLayoutX(375);
@@ -99,7 +95,7 @@ public class First {
 				
 		rightPane.getChildren().add(orderID);
 				
-		AnchorPane.setLeftAnchor(orderID, 175.0);
+		AnchorPane.setLeftAnchor(orderID, 100.0);
 		AnchorPane.setTopAnchor(orderID, 250.0);
 		
 	}

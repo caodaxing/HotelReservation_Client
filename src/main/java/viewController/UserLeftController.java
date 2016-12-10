@@ -216,9 +216,14 @@ public class UserLeftController {
 		
 		String oldPassword = modifyPasswordUI.getOldPassword();
 		String newPassword = modifyPasswordUI.getNewPassword();
-		String repeatPasswrod = modifyPasswordUI.getRepeatPassword();
+		String rePassword = modifyPasswordUI.getRepeatPassword();
 		
-		if(!newPassword.equals(repeatPasswrod)){
+		if(newPassword.equals("") || rePassword.equals("") || oldPassword.equals("")){
+			//有未输入项
+			showDialog("请填写完整");
+			return ;
+		}
+		if(!newPassword.equals(rePassword)){
 			//两次输入密码不一致
 			showDialog("两次输入密码不一致");
 			return ;

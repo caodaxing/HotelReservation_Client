@@ -1,5 +1,8 @@
 package view.right.user.checkHotel;
 
+import java.text.DecimalFormat;
+
+import Message.RoomType;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +17,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
+import vo.HotelSearchVO;
 /**
  * 客户界面_查看酒店_搜索酒店
  * @author XueWang
@@ -242,4 +246,41 @@ public class SearchHotel {
 	
 	}
 
+	public HotelSearchVO getSearchVO(){
+		String c = city.getText();
+		String tradingArea = area.getText();
+		String name = hotelName.getText();
+		int t = roomType.getSelectionModel().getSelectedIndex();
+		RoomType type = null;
+		switch(t){
+		case 0:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 1:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 2:
+			type = RoomType.TRIPLE_ROOM;
+			break;
+		case 3:
+			type = RoomType.BIGBED_ROOM;
+			break;
+		case 4:
+			type = RoomType.SUITE;
+			break;
+		case -1:
+		default:
+			break;
+		}
+		DecimalFormat df=new DecimalFormat("#.00");
+		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
+		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
+		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));
+		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
+		int starLow = Integer.valueOf(starLeft.getText());
+		int starHigh = Integer.valueOf(starRight.getText());
+		HotelSearchVO vo = new HotelSearchVO(c,null,tradingArea,name,type,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		return vo;
+	}
+	
 }

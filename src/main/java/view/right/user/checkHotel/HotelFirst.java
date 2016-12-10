@@ -63,8 +63,8 @@ public class HotelFirst{
 		searchNewHotel = new Button();
 		
 		//设置Button文字
-		checkHistoryHotel.setText("制定生日特惠");
-		searchNewHotel.setText("制定合作企业优惠");
+		checkHistoryHotel.setText("预定过的酒店");
+		searchNewHotel.setText("搜索酒店");
 		
 		//设置Button大小
 		checkHistoryHotel.setPrefSize(150,50);

@@ -1,5 +1,8 @@
 package view.right.vistor;
 
+import java.text.DecimalFormat;
+
+import Message.RoomType;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +17,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.VistorUI;
 import viewController.VistorController;
+import vo.HotelSearchVO;
 
 /**
  * 游客界面_查看酒店_搜索酒店
@@ -153,8 +157,8 @@ public class SearchHotel {
 		AnchorPane.setTopAnchor(starLeft, 500.0);
 		
 		AnchorPane.setTopAnchor(priceRight, 400.0);
-		AnchorPane.setTopAnchor(evaluationLeft, 450.0);
-		AnchorPane.setTopAnchor(starLeft, 500.0);
+		AnchorPane.setTopAnchor(evaluationRight, 450.0);
+		AnchorPane.setTopAnchor(starRight, 500.0);
 		
 	}
 	
@@ -190,7 +194,7 @@ public class SearchHotel {
 	private void setChoiceBox(){
 		
 		//待修改，根据controller
-		roomType = new ChoiceBox(FXCollections.observableArrayList("标准房","钟点房"));
+		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
 		
 		roomType.setPrefSize(200, 30);
 		
@@ -217,6 +221,43 @@ public class SearchHotel {
 		
 		return scene;
 	
+	}
+	
+	public HotelSearchVO getSearchVO(){
+		String c = city.getText();
+		String tradingArea = area.getText();
+		String name = hotelName.getText();
+		int t = roomType.getSelectionModel().getSelectedIndex();
+		RoomType type = null;
+		switch(t){
+		case 0:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 1:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 2:
+			type = RoomType.TRIPLE_ROOM;
+			break;
+		case 3:
+			type = RoomType.BIGBED_ROOM;
+			break;
+		case 4:
+			type = RoomType.SUITE;
+			break;
+		case -1:
+		default:
+			break;
+		}
+		DecimalFormat df=new DecimalFormat("#.00");
+		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
+		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
+		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));
+		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
+		int starLow = Integer.valueOf(starLeft.getText());
+		int starHigh = Integer.valueOf(starRight.getText());
+		HotelSearchVO vo = new HotelSearchVO(c,null,tradingArea,name,type,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		return vo;
 	}
 
 }

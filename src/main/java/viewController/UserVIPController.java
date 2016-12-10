@@ -44,6 +44,10 @@ public class UserVIPController extends UserLeftController {
 			VipVO VIPInfo = new VipVO(userID,type,1,registerNormalVIPUI.getBirthday());
 			result = clientService.registerVIP(VIPInfo);
 		}else{
+			if(registerCompanyVIPUI.getCompany().equals("")){
+				showDialog("请输入企业");
+				return ;
+			}
 			//注册企业会员
 			VipVO vo = new VipVO(userID,type,1,registerCompanyVIPUI.getCompany());
 			result = clientService.registerVIP(vo);

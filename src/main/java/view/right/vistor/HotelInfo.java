@@ -134,6 +134,7 @@ public class HotelInfo {
 	private void setImage(){
 		
 		//从controller得到图片
+		g
 		Image image = new Image("", 250, 200,false ,true);
 		
 		hotelImage = new ImageView(image);

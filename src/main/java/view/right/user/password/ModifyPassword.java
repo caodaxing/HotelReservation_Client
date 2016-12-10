@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,8 +31,8 @@ public class ModifyPassword {
 	private AnchorPane rightPane ;
 	
 	TextField oldPassword;
-	TextField newPassword;
-	TextField repeatPassword;
+	PasswordField newPassword;
+	PasswordField repeatPassword;
 	
 	Button yes;
 	Button no;
@@ -60,8 +61,8 @@ public class ModifyPassword {
 	private void setTextField (){
 		
 		oldPassword = new TextField();
-		newPassword = new TextField();
-		repeatPassword = new TextField();
+		newPassword = new PasswordField();
+		repeatPassword = new PasswordField();
 		
 		oldPassword.setPrefSize(200, 30);
 		newPassword.setPrefSize(200, 30);
@@ -116,9 +117,9 @@ public class ModifyPassword {
 		rightPane.getChildren().add(no);
 		
 		AnchorPane.setLeftAnchor(yes, 150.0);
-		AnchorPane.setLeftAnchor(no, 475.0);
-
-		AnchorPane.setTopAnchor(yes, 350.0);
+		AnchorPane.setTopAnchor(yes, 475.0);
+		
+		AnchorPane.setLeftAnchor(no, 350.0);
 		AnchorPane.setTopAnchor(no, 475.0);
 		
 	}
