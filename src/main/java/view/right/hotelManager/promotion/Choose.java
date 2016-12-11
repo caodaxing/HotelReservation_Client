@@ -22,7 +22,7 @@ public class Choose{
 	
 	private Scene scene;
 	
-	private HotelManagerUI hotelManagerUI = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	private GridPane leftPane;
 	
@@ -36,8 +36,9 @@ public class Choose{
 	public Choose (HMPromotionController controller) {
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
-		leftPane = hotelManagerUI.getPane();
+		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

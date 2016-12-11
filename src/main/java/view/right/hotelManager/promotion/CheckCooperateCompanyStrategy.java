@@ -23,7 +23,7 @@ public class CheckCooperateCompanyStrategy {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField cooperateCompanyName;
 	TextField dicountRange;
@@ -34,6 +34,7 @@ public class CheckCooperateCompanyStrategy {
 	public CheckCooperateCompanyStrategy(HMPromotionController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

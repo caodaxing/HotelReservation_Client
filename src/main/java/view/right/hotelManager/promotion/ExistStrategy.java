@@ -31,7 +31,7 @@ public class ExistStrategy {
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	Button revert;
 	
@@ -54,6 +54,7 @@ public class ExistStrategy {
 	public ExistStrategy(HMPromotionController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

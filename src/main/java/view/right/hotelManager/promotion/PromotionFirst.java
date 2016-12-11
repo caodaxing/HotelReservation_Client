@@ -10,27 +10,28 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
-import viewController.HMPromotionController;
+import viewController.HotelManagerLeftController;
 
 /**
  * 酒店工作人员界面_促销策略_初始界面（选择查看现有策略还是制定新策略）
  * @author XueWang
  *
  */
-public class First {
+public class PromotionFirst {
 	
-	private HMPromotionController controller;
+	private HotelManagerLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	Button checkNowName;
 	Button makeNewPromotion;
 	
-	public First(HMPromotionController controller){
+	public PromotionFirst(HotelManagerLeftController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -73,9 +74,7 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setChooseView();
-				Stage stage = controller.getStage();
-				stage.show();
+				
 			}
 							
 		});

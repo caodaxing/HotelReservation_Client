@@ -23,7 +23,7 @@ public class SetLeaveInfo {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField roomType;
 	TextField actualLeaveTime;
@@ -34,6 +34,7 @@ public class SetLeaveInfo {
 	public SetLeaveInfo(HMOrderManagementController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

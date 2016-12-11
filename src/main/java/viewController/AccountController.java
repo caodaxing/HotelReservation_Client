@@ -24,6 +24,7 @@ public class AccountController {
 	private VistorController vistorController ;
 	private WMUserInfoController webManagerController ;
 	private WBVIPInfoController wbVIPInfoController;
+	private HMHotelInfoController hmOrderManagementController;
 	//差两个
 	
 	//管理的页面
@@ -168,7 +169,8 @@ public class AccountController {
 			userController = new UserMyInfoController(stage, userID);
 			userController.setBlankView();
 		}else if(identity == Identity.HOTELMANAGER){
-			//
+			hmOrderManagementController = new HMHotelInfoController(stage,userID);
+			hmOrderManagementController.setBlankView();
 		}else if(identity == Identity.WEBBUSSINESS){
 			wbVIPInfoController = new WBVIPInfoController(stage,userID);
 			wbVIPInfoController.setBlankView();

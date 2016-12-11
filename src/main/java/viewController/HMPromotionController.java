@@ -11,13 +11,13 @@ import view.right.hotelManager.promotion.CheckSpecialTimeStrategy;
 import view.right.hotelManager.promotion.CheckThreeRoomsStrategy;
 import view.right.hotelManager.promotion.Choose;
 import view.right.hotelManager.promotion.ExistStrategy;
-import view.right.hotelManager.promotion.First;
+import view.right.hotelManager.promotion.PromotionFirst;
 import view.right.hotelManager.promotion.SetBirthdayStrategy;
 import view.right.hotelManager.promotion.SetCooperateCompanyStrategy;
 import view.right.hotelManager.promotion.SetSpecialTimeStrategy;
 import view.right.hotelManager.promotion.SetThreeRoomsStrategy;
 
-public class HMPromotionController {
+public class HMPromotionController extends HotelManagerLeftController{
 	
 	private Stage stage;
 	
@@ -34,15 +34,16 @@ public class HMPromotionController {
 	private CheckThreeRoomsStrategy checkThreeRoomsStrategyUI;
 	private Choose chooseUI;
 	private ExistStrategy existStrategyUI;
-	private First firstUI;
+	private PromotionFirst firstUI;
 	private SetBirthdayStrategy setBirthdayStrategyUI;
 	private SetCooperateCompanyStrategy setCooperateCompanyStrategyUI;
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetThreeRoomsStrategy setThreeRoomsStrategyUI;
 	
-	public HMPromotionController(Stage stage){
+	public HMPromotionController(Stage stage, String userId){
 		
 		this.stage = stage;
+		this.userId = userId;
 		
 		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
 		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
@@ -50,7 +51,7 @@ public class HMPromotionController {
 		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
 		chooseUI = new Choose(this);
 		existStrategyUI = new ExistStrategy(this);
-		firstUI = new First(this);
+		firstUI = new PromotionFirst(this);
 		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
 		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
 		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);

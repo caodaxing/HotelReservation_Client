@@ -18,7 +18,7 @@ import view.right.hotelManager.orderManagement.SetLeaveInfo;
 import view.right.hotelManager.orderManagement.UndoOrder;
 import view.right.hotelManager.orderManagement.UnexecuteOrder;
 
-public class HMOrderManagementController {
+public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	private Stage stage;
 	
@@ -41,13 +41,14 @@ public class HMOrderManagementController {
 	private UndoOrder undoOrderUI;
 	private UnexecuteOrder unexecuteOrderUI;
 	
-	public HMOrderManagementController(Stage stage){
+	public HMOrderManagementController(Stage stage, String userId){
 		
 		//orderService = new Order();
 		//orderListService = new OrderList();
 		//executeOrderService = new ExecuteOrder();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
+		this.userId = userId;
 		abnormalOrderUI = new AbnormalOrder(this);
 		checkArriveInfoUI = new CheckArriveInfo(this);
 		checkLeaveInfoUI = new CheckLeaveInfo(this);

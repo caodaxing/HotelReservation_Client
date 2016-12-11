@@ -23,7 +23,7 @@ public class CheckArriveInfo {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField roomType;
 	TextField arriveTime;
@@ -34,6 +34,7 @@ public class CheckArriveInfo {
 	public CheckArriveInfo(HMOrderManagementController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

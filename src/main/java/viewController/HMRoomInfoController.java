@@ -8,7 +8,7 @@ import view.right.hotelManager.roomInfo.ExistRooms;
 import view.right.hotelManager.roomInfo.First;
 import view.right.hotelManager.roomInfo.SetAvailableRooms;
 
-public class HMRoomInfoController {
+public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	private Stage stage;
 	
@@ -22,12 +22,14 @@ public class HMRoomInfoController {
 	private SetAvailableRooms setAvailableRoomsUI;
 	private ExistRooms existRoomsUI;
 	
-	public HMRoomInfoController(Stage stage){
+	public HMRoomInfoController(Stage stage, String userId){
 		
 //		roomService = new Room();
 //		checkHotelService = new CheckHotel();
 //		orderService = new Order();
 		this.stage = stage;
+		this.userId = userId;
+		
 		firstUI = new First(this);
 		setAvailableRoomsUI = new SetAvailableRooms(this);
 		existRoomsUI = new ExistRooms(this);

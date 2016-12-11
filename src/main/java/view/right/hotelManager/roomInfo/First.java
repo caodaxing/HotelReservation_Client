@@ -9,8 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
-import viewController.HMPromotionController;
-import viewController.HMRoomInfoController;
+import viewController.HotelManagerLeftController;
 
 /**
  * 酒店工作人员界面_客房管理_初始界面（选择查看现有客房还是录入可用客房）
@@ -19,18 +18,19 @@ import viewController.HMRoomInfoController;
  */
 public class First {
 	
-	private HMRoomInfoController controller;
+	private HotelManagerLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	Button checkNowRoom;
 	Button inputAvailableRoom;
 	
-	public First(HMRoomInfoController controller){
+	public First(HotelManagerLeftController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

@@ -23,7 +23,7 @@ public class CheckSpecialTimeStrategy {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField startDiscount;
 	TextField endDiscount;
@@ -35,6 +35,7 @@ public class CheckSpecialTimeStrategy {
 	public CheckSpecialTimeStrategy(HMPromotionController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

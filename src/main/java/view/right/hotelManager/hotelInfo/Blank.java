@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
-import viewController.HMHotelInfoController;
+import viewController.HotelManagerLeftController;
 
 /**
  * 酒店管理人员的右侧空白页
@@ -13,19 +13,20 @@ import viewController.HMHotelInfoController;
  */
 public class Blank {
 	
-	private HMHotelInfoController controller;
+	private HotelManagerLeftController controller;
 	
 	private Scene scene;
 	
 	private GridPane root ;
 	
-	private HotelManagerUI hmUI = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
-	public Blank(HMHotelInfoController controller){
+	public Blank(HotelManagerLeftController controller){
 		
 		this.controller = controller ;
+		hmui = new HotelManagerUI(controller);
 		
-		root = hmUI.getPane();
+		root = hmui.getPane();
 		root.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);

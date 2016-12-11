@@ -13,7 +13,7 @@ import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 
 /**
- * 酒店工作人员界面_管理订单_未执行订单详情
+ * 酒店工作人员界面_管理订单_撤销订单详情
  * @author XueWang
  *
  */
@@ -23,7 +23,7 @@ public class UndoOrder {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField orderID;
 	TextField hotelName;
@@ -35,6 +35,7 @@ public class UndoOrder {
 	public UndoOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

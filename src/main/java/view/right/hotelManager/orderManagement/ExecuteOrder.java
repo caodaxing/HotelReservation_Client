@@ -11,7 +11,6 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
-import viewController.WBOrderManagementController;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单详情
@@ -24,7 +23,7 @@ public class ExecuteOrder {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField orderID;
 	TextField hotelName;
@@ -42,6 +41,7 @@ public class ExecuteOrder {
 	public ExecuteOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

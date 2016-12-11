@@ -11,7 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
-import viewController.HMHotelInfoController;
+import viewController.HotelManagerLeftController;
 
 /**
  * 酒店工作人员界面_酒店信息_维护酒店信息界面
@@ -20,11 +20,11 @@ import viewController.HMHotelInfoController;
  */
 public class ModifyHotelInfo {
 	
-	private HMHotelInfoController controller;
+	private HotelManagerLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField hotelStar;
 	TextField hotelLocation;
@@ -35,9 +35,10 @@ public class ModifyHotelInfo {
 	Button cancel;
 	Button ok;
 	
-	public ModifyHotelInfo(HMHotelInfoController controller){
+	public ModifyHotelInfo(HotelManagerLeftController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

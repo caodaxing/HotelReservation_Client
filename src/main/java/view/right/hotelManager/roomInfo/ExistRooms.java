@@ -34,7 +34,7 @@ public class ExistRooms {
 	
 	private AnchorPane rightPane;
 	
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	Button revert;
 	
@@ -55,6 +55,7 @@ public class ExistRooms {
 	public ExistRooms(HMRoomInfoController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

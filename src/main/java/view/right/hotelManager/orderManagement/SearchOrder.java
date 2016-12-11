@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
-import viewController.HMOrderManagementController;
+import viewController.HotelManagerLeftController;
 
 /**
  * 酒店工作人员界面_管理订单_查询订单界面
@@ -19,22 +19,23 @@ import viewController.HMOrderManagementController;
  */
 public class SearchOrder{
 	
-	private HMOrderManagementController controller;
+	private HotelManagerLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hotelmanagerui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	Button inquiry;
 	Button revert;
 	
 	TextField orderID;
 	
-	public SearchOrder(HMOrderManagementController controller){
+	public SearchOrder(HotelManagerLeftController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
-		leftPane = hotelmanagerui.getPane();
+		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

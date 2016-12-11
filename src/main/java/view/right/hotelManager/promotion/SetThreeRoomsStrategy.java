@@ -23,7 +23,7 @@ public class SetThreeRoomsStrategy {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField discountRange;
 	TextField discountName;
@@ -34,6 +34,7 @@ public class SetThreeRoomsStrategy {
 	public SetThreeRoomsStrategy(HMPromotionController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

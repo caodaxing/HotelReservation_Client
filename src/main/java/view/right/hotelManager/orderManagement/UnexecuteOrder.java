@@ -23,7 +23,7 @@ public class UnexecuteOrder {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI wbui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField orderID;
 	TextField hotelName;
@@ -39,8 +39,9 @@ public class UnexecuteOrder {
 	public UnexecuteOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
-		
-		leftPane = wbui.getPane();
+		hmui = new HotelManagerUI(controller);
+				
+		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

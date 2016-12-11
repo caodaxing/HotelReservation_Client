@@ -25,7 +25,7 @@ public class SetCooperateCompanyStrategy {
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private HotelManagerUI hmui = new HotelManagerUI();
+	private HotelManagerUI hmui;
 	
 	TextField cooperateCompanyName;
 	TextField dicountRange;
@@ -37,6 +37,7 @@ public class SetCooperateCompanyStrategy {
 	public SetCooperateCompanyStrategy(HMPromotionController controller){
 		
 		this.controller = controller;
+		hmui = new HotelManagerUI(controller);
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
