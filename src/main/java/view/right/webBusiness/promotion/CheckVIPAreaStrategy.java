@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class CheckVIPAreaStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI hotelmanagerui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField lowestVIPLevel;
 	TextField tradingArea;
@@ -48,7 +47,9 @@ public class CheckVIPAreaStrategy {
 	public CheckVIPAreaStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
-		leftPane = hotelmanagerui.getPane();
+		wbui = new WebBusinessUI(controller);
+		
+		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();
@@ -150,7 +151,8 @@ public class CheckVIPAreaStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setCheckVIPAreaStrategyView();
+				controller.getStage().show();
 			}
 			
 		});

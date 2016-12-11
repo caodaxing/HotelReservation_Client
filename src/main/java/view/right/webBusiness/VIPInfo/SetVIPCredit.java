@@ -22,12 +22,11 @@ import viewController.WebBusinessLeftController;
  */
 public class SetVIPCredit {
 	
-	private WBVIPInfoController controller;
-	private WebBusinessLeftController wbController;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField updateVIP1;
 	TextField updateVIP2;
@@ -36,9 +35,10 @@ public class SetVIPCredit {
 	Button cancel;
 	Button ok;
 	
-	public SetVIPCredit(WBVIPInfoController controller){
+	public SetVIPCredit(WebBusinessLeftController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -135,6 +135,14 @@ public class SetVIPCredit {
 				// TODO Auto-generated method stub
 				OneButtonDialog dialog = new OneButtonDialog("设置成功");
 				dialog.show();
+				//传输vo
+				updateVIP1.getText();
+				updateVIP2.getText();
+				updateVIP3.getText();
+				//
+				updateVIP1.setText("");
+				updateVIP2.setText("");
+				updateVIP3.setText("");
 			}
 					
 		});
@@ -145,8 +153,7 @@ public class SetVIPCredit {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setBlankView();
-				Stage stage = controller.getStage();
-				stage.show();
+				controller.getStage().show();
 			}
 					
 		});

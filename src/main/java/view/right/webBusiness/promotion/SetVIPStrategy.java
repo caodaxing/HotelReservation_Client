@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class SetVIPStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField VIP1DiscountRange;
 	TextField VIP2DiscountRange;
@@ -38,6 +37,7 @@ public class SetVIPStrategy {
 	public SetVIPStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -141,7 +141,21 @@ public class SetVIPStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				Prompt prompt = new Prompt("保存成功");
+				prompt.show();
+				//传输vo
+				VIP1DiscountRange.getText();
+				VIP2DiscountRange.getText();
+				VIP3DiscountRange.getText();
+				discountName.getText();
+				//
+				VIP1DiscountRange.setText("");
+				VIP2DiscountRange.setText("");
+				VIP3DiscountRange.setText("");
+				discountName.setText("");
+				
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});
@@ -151,7 +165,8 @@ public class SetVIPStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});

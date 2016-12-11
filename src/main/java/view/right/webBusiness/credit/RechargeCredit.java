@@ -23,7 +23,7 @@ import viewController.WebBusinessLeftController;
  */
 public class RechargeCredit {
 	
-	private WBCreditController controller;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -35,7 +35,7 @@ public class RechargeCredit {
 	Button ok;
 	Button cancel;
 	
-	public RechargeCredit(WBCreditController controller){
+	public RechargeCredit(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
@@ -116,6 +116,12 @@ public class RechargeCredit {
 				// TODO Auto-generated method stub
 				OneButtonDialog dialog = new OneButtonDialog("充值成功");
 				dialog.show();
+				//传输vo
+				userID.getText();
+				rechargeAmount.getText();
+				//
+				userID.setText("");
+				rechargeAmount.setText("");
 			}
 			
 		});
@@ -125,10 +131,8 @@ public class RechargeCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				WBVIPInfoController controller = new WBVIPInfoController(new Stage());
 				controller.setBlankView();
-				Stage stage = controller.getStage();
-				stage.show();
+				controller.getStage().show();
 			}
 			
 		});

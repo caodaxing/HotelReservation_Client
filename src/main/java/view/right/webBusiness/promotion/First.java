@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
@@ -21,6 +20,7 @@ import viewController.WebBusinessLeftController;
 public class First {
 	
 	private WebBusinessLeftController controller;
+	private WBPromotionController wbPromotionController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -75,9 +75,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
-//				controller.setExistStrategyView();
-//				controller.getStage().show();
+				wbPromotionController = new WBPromotionController(controller.getStage(), controller.getUserId());
+				wbPromotionController.setExistStrategyView();
+				wbPromotionController.getStage().show();
 			}
 							
 		});
@@ -87,8 +87,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-//				controller.setChooseView();
-//				controller.getStage().show();
+				wbPromotionController = new WBPromotionController(controller.getStage(), controller.getUserId());
+				wbPromotionController.setChooseView();
+				wbPromotionController.getStage().show();
 			}
 							
 		});

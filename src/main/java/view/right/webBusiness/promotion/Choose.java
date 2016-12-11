@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class Choose {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	Button VIPTradingDiscount;
 	Button VIPLevelDiscount;
@@ -34,6 +33,7 @@ public class Choose {
 	public Choose(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -63,7 +63,7 @@ public class Choose {
 		VIPLevelDiscount.setId("Choose");
 		VIPLevelDiscount.setPrefSize(150, 50);
 		
-		specialDayDiscount = new Button("VIP特定商圈折扣");
+		specialDayDiscount = new Button("制定特殊期间折扣");
 		specialDayDiscount.setId("Choose");
 		specialDayDiscount.setPrefSize(150, 50);
 		
@@ -83,7 +83,8 @@ public class Choose {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setSetVIPAreaStrategyView();
+				controller.getStage().show();
 			}
 							
 		});
@@ -93,7 +94,8 @@ public class Choose {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setSetVIPStrategyView();
+				controller.getStage().show();
 			}
 							
 		});
@@ -103,7 +105,8 @@ public class Choose {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setSetSpecialTimeStrategyView();
+				controller.getStage().show();
 			}
 							
 		});

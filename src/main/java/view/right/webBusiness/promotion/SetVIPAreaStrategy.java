@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class SetVIPAreaStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI hotelmanagerui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField lowestVIPLevel;
 	TextField tradingArea;
@@ -49,7 +48,9 @@ public class SetVIPAreaStrategy {
 	public SetVIPAreaStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
-		leftPane = hotelmanagerui.getPane();
+		wbui = new WebBusinessUI(controller);
+		
+		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();
@@ -160,7 +161,21 @@ public class SetVIPAreaStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				Prompt prompt = new Prompt("保存成功");
+				prompt.show();
+				//传输vo
+				lowestVIPLevel.getText();
+				tradingArea.getText();
+				discountRange.getText();
+				discountName.getText();
+				//
+				lowestVIPLevel.setText("");
+				tradingArea.setText("");
+				discountRange.setText("");
+				discountName.setText("");
 				
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -170,14 +185,15 @@ public class SetVIPAreaStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 			
 		});
 		
 		//右侧pane添加
-		rightPane.getChildren().add(cancel);
 		rightPane.getChildren().add(ok);
+		rightPane.getChildren().add(cancel);
 		
 		AnchorPane.setLeftAnchor(ok, 450 - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setLeftAnchor(cancel, BUTTON_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);

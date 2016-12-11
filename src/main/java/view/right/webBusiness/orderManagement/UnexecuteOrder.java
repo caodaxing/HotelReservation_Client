@@ -23,11 +23,10 @@ import viewController.WebBusinessLeftController;
 public class UnexecuteOrder {
 	
 	private WBOrderManagementController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField orderID;
 	TextField hotelName;
@@ -42,6 +41,7 @@ public class UnexecuteOrder {
 	public UnexecuteOrder(WBOrderManagementController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

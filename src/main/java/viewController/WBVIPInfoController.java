@@ -8,8 +8,6 @@ import view.right.webBusiness.VIPInfo.SetVIPCredit;
 
 public class WBVIPInfoController extends WebBusinessLeftController{
 	
-	private Stage stage;
-	
 	//逻辑层接口
 	private AccountService accountService;
 	
@@ -17,10 +15,11 @@ public class WBVIPInfoController extends WebBusinessLeftController{
 	private SetVIPCredit setVIPCreditUI;
 	private Blank blankUI;
 	
-	public WBVIPInfoController(Stage stage){
+	public WBVIPInfoController(Stage stage, String userId){
 //		accountService = new Account();
 		this.stage = stage;
-		
+		this.userId = userId;
+		System.out.println("yes");
 		setVIPCreditUI = new SetVIPCredit(this);
 		blankUI = new Blank(this);
 		

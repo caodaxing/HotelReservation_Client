@@ -14,7 +14,6 @@ import view.right.webBusiness.promotion.SetVIPStrategy;
 
 public class WBPromotionController extends WebBusinessLeftController{
 	
-	private Stage stage;
 	//逻辑层接口
 	private PromotionService promotionService;
 	
@@ -24,29 +23,30 @@ public class WBPromotionController extends WebBusinessLeftController{
 	private CheckVIPStrategy checkVIPStrategyUI;
 	private Choose chooseUI;
 	private ExistStrategy existStrategyUI;
-	private First firstUI;
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetVIPAreaStrategy setVIPAreaStrategyUI;
 	private SetVIPStrategy setVIPStrategyUI;
 	
-	public WBPromotionController(Stage stage){
+	public WBPromotionController(Stage stage, String userId){
 		
 		//promotionService = new Promotion();
 		this.stage = stage;
+		this.userId = userId;
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);
 		chooseUI = new Choose(this);
 		existStrategyUI = new ExistStrategy(this);
-		firstUI = new First(this);
 		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
 		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
 		setVIPStrategyUI = new SetVIPStrategy(this);
 		
 	}
+	
 	public Stage getStage(){
 		return stage;
 	}
+	
 	public void setCheckSpecialTimeStrategyView(){
 		stage.setScene(checkSpecialTimeStrategyUI.getScene());
 	}
@@ -65,10 +65,6 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public void setExistStrategyView(){
 		stage.setScene(existStrategyUI.getScene());
-	}
-
-	public void setFirstView(){
-		stage.setScene(firstUI.getScene());
 	}
 
 	public void setSetSpecialTimeStrategyView(){

@@ -9,8 +9,6 @@ import view.right.webBusiness.credit.RechargeCredit;
 
 public class WBCreditController extends WebBusinessLeftController{
 	
-	private Stage stage;
-	
 	//逻辑层接口
 	private CreditService creditService;
 	private AccountService accountService;
@@ -18,11 +16,12 @@ public class WBCreditController extends WebBusinessLeftController{
 	//控制的界面
 	private RechargeCredit rechargeCreditUI;
 	
-	public WBCreditController(Stage stage){
+	public WBCreditController(Stage stage, String userId){
 		
 //		creditService = new Credit();
 //		accountService = new Account();
 		this.stage = stage;
+		this.userId = userId;
 		rechargeCreditUI = new RechargeCredit(this);
 		
 	}

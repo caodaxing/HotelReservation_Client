@@ -23,6 +23,7 @@ public class AccountController {
 	private UserMyInfoController userController ;//需用userID初始化
 	private VistorController vistorController ;
 	private WMUserInfoController webManagerController ;
+	private WBVIPInfoController wbVIPInfoController;
 	//差两个
 	
 	//管理的页面
@@ -169,7 +170,8 @@ public class AccountController {
 		}else if(identity == Identity.HOTELMANAGER){
 			//
 		}else if(identity == Identity.WEBBUSSINESS){
-			//
+			wbVIPInfoController = new WBVIPInfoController(stage,userID);
+			wbVIPInfoController.setBlankView();
 		}else if(identity == Identity.WEBMANAGER){
 			webManagerController = new WMUserInfoController(stage ,userID);
 			webManagerController.setBlankView();

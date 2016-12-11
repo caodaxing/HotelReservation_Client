@@ -10,8 +10,6 @@ import view.right.webBusiness.orderManagement.UnexecuteOrder;
 
 public class WBOrderManagementController extends WebBusinessLeftController{
 	
-	private Stage stage;
-	
 	//逻辑层接口
 	private OrderService orderService;
 	private ManageOrderService manageOrderService;
@@ -22,10 +20,11 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 	private TodayUnexecuteOrder todayUnexecuteOderUI;
 	private UnexecuteOrder unexecuteeOrderUI;
 	
-	public WBOrderManagementController(Stage stage){
+	public WBOrderManagementController(Stage stage, String userId){
 		//orderService = new Order();
 		//manageOrderService = new ManageOrder();
 		this.stage = stage;
+		this.userId = userId;
 		abnormalOrderUI = new AbnormalOrder(this);
 		abnormalOrderListUI = new AbnormalOrderList(this);
 		todayUnexecuteOderUI = new TodayUnexecuteOrder(this);

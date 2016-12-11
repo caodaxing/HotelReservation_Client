@@ -15,9 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
-import view.left.UserUI;
+import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
-import viewController.UserCheckHotelController;
 
 /**
  * 酒店工作人员界面_管理订单_订单列表
@@ -31,7 +30,7 @@ public class OrderList {
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	
-	private UserUI userui = new UserUI();
+	private HotelManagerUI hmui = new HotelManagerUI();
 	
 	Button revert;
 	
@@ -54,7 +53,7 @@ public class OrderList {
 		
 		this.controller = controller;
 		
-		leftPane = userui.getPane();
+		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane = new AnchorPane();

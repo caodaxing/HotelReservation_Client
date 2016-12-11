@@ -27,13 +27,12 @@ import viewController.WebBusinessLeftController;
 public class ExistStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	Button revert;
 	
@@ -56,6 +55,7 @@ public class ExistStrategy {
 	public ExistStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -96,7 +96,8 @@ public class ExistStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setFirstVeiw();
+				controller.getStage().show();
 			}
 			
 		});

@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class CheckSpecialTimeStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField startDiscount;
 	TextField endDiscount;
@@ -37,6 +36,7 @@ public class CheckSpecialTimeStrategy {
 	public CheckSpecialTimeStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -133,7 +133,8 @@ public class CheckSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setCheckSpecialTimeStrategyView();
+				controller.getStage().show();
 			}
 					
 		});

@@ -16,18 +16,19 @@ import viewController.WebBusinessLeftController;
  */
 public class Blank {
 	
-	private WBVIPInfoController controller;
-	private WebBusinessLeftController wbController;
+	private WBVIPInfoController wbController;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	
 	private GridPane leftPane ;
 	private AnchorPane rightPane;
 	
-	private WebBusinessUI webUI = new WebBusinessUI(wbController);
+	private WebBusinessUI webUI;
 	
-	public Blank(WBVIPInfoController controller){
+	public Blank(WebBusinessLeftController controller){
 		
 		this.controller = controller ;
+		webUI = new WebBusinessUI(controller);
 		
 		leftPane = webUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

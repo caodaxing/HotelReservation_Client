@@ -19,11 +19,11 @@ public class WebBusinessUI{
 
 	private GridPane pane;
 	
-	private WebBusinessLeftController controller;
+	private WebBusinessLeftController leftcontroller;
 	
 	public WebBusinessUI(WebBusinessLeftController controller){
 		
-		this.controller = controller;
+		this.leftcontroller = controller;
 		pane = this.initGridPane();
 	}
 	
@@ -58,32 +58,27 @@ public class WebBusinessUI{
 		manageVIPLevel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(manageVIPLevel, 0, 3);
 		
-		Button manageOrder = new Button("订单管理");
-		manageOrder.setId("light-button");
-		manageOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(manageOrder, 0, 4);
-		
 		Button todayUnexecuteOrder = new Button("今日未执行订单");
 		todayUnexecuteOrder.setId("dark-button");
 		todayUnexecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(todayUnexecuteOrder, 0, 5);
+		grid.add(todayUnexecuteOrder, 0, 4);
 		
 		Button manageAbnormalOrder = new Button("异常订单管理");
 		manageAbnormalOrder.setId("dark-button");
 		manageAbnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(manageAbnormalOrder, 0, 6);
+		grid.add(manageAbnormalOrder, 0, 5);
 		
 		Button signOut = new Button("注 销");
 		signOut.setId("light-button");
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(signOut, 0, 7);
+		grid.add(signOut, 0, 6);
 		
 		webPromotion.setOnAction(new EventHandler<ActionEvent>(){
 			
 			@Override
 			public void handle(ActionEvent event) {
-//				controller = new WebBusinessLeftController();
-				controller.setFirstVeiw();
+				leftcontroller.setFirstVeiw();
+				leftcontroller.getStage().show();
 			}
 			
 		});
@@ -93,6 +88,8 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				leftcontroller.setRechargeCreditView();
+				leftcontroller.getStage().show();
 			}
 			
 		});
@@ -102,15 +99,8 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-			}
-			
-		});
-		
-		manageOrder.setOnAction(new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				leftcontroller.setVIPLevelView();
+				leftcontroller.getStage().show();
 			}
 			
 		});
@@ -120,6 +110,8 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				leftcontroller.setTodayUnexecuteOrderView();
+				leftcontroller.getStage().show();
 			}
 			
 		});
@@ -129,6 +121,8 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				leftcontroller.setAbnormalOrderView();
+				leftcontroller.getStage().show();
 			}
 			
 		});
@@ -138,10 +132,7 @@ public class WebBusinessUI{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-//				AccountController accountController = new AccountController(new Stage());
-//				accountController.setFirstView();
-//				stage = accountController.getStage();
-//				stage.show();
+				leftcontroller.setFirstUIView();
 			}
 			
 		});

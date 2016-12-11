@@ -25,12 +25,11 @@ import viewController.WebBusinessLeftController;
  */
 public class TodayUnexecuteOrder {
 	
-	private WBOrderManagementController controller;
-	private WebBusinessLeftController wbController;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TableView<Person> tableView;
 	
@@ -47,9 +46,10 @@ public class TodayUnexecuteOrder {
 			new Person("1111", "1111", "1111", "1111", button1),
 			new Person("2222", "2222", "2222", "2222", button2));
 	
-	public TodayUnexecuteOrder(WBOrderManagementController controller){
+	public TodayUnexecuteOrder(WebBusinessLeftController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

@@ -21,11 +21,10 @@ import viewController.WebBusinessLeftController;
 public class SetSpecialTimeStrategy {
 	
 	private WBPromotionController controller;
-	private WebBusinessLeftController wbController;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TextField startDiscount;
 	TextField endDiscount;
@@ -38,6 +37,7 @@ public class SetSpecialTimeStrategy {
 	public SetSpecialTimeStrategy(WBPromotionController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -141,7 +141,21 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				Prompt prompt = new Prompt("保存成功");
+				prompt.show();
+				//传输vo
+				startDiscount.getText();
+				endDiscount.getText();
+				discountRange.getText();
+				discountName.getText();
+				//
+				startDiscount.setText("");
+				endDiscount.setText("");
+				discountRange.setText("");
+				discountName.setText("");
+				
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});
@@ -151,7 +165,8 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});

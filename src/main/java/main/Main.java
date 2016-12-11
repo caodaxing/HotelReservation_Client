@@ -13,9 +13,7 @@ public class Main extends Application{
 		AccountController accountController = new AccountController(stage);
 		accountController.setFirstView();
 		stage.show();
-	//	WBVIPInfoController controller = new WBVIPInfoController(stage);
-	//	controller.setBlankView();
-	//	controller.getStage().show();
+		
 	}
 	
 	public static void main(String[] args) {

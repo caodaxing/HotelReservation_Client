@@ -24,12 +24,11 @@ import viewController.WebBusinessLeftController;
  */
 public class AbnormalOrderList {
 	
-	private WBOrderManagementController controller;
-	private WebBusinessLeftController wbController;
+	private WebBusinessLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
-	private WebBusinessUI wbui = new WebBusinessUI(wbController);
+	private WebBusinessUI wbui;
 	
 	TableView<Person> tableView;
 	
@@ -42,12 +41,13 @@ public class AbnormalOrderList {
 	Button button1 = new Button("查看");
 	Button button2 = new Button("查看");
 	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", "1111", button1),
+			new Person("2", "1111", "1111", "1111", button1),
 			new Person("2222", "2222", "2222", "2222", button2));
 	
-	public AbnormalOrderList(WBOrderManagementController controller){
+	public AbnormalOrderList(WebBusinessLeftController controller){
 		
 		this.controller = controller;
+		wbui = new WebBusinessUI(controller);
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
