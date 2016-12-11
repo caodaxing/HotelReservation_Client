@@ -75,12 +75,7 @@ public class UpdateHotel implements UpdateHotelService, HotelUpdateRoom {
 
 	@Override
 	public ResultMessage hotelIDExist(String hotelID) {
-		return null;
-	}
-
-	@Override
-	public ResultMessage hotelHasManager(String hotelID) {
-		return null;
+		return this.hotelIDExist(hotelID);
 	}
 
 }
