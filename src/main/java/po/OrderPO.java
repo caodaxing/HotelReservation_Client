@@ -47,7 +47,7 @@ public class OrderPO {
 			int roomNum, ArrayList<String> roomIDs,boolean hasChild, int numberOfPeople, int state,
 			double beforePromotionPrice, double afterPromotionPrice, int promotionNum, 
 			ArrayList<String> promotionIDs,
-			String executedTime, String abnormalTime, String undoAbnormalTime) {
+			String executedTime, String undoAbnormalTime, String abnormalTime) {
 		this.uesrID = userID;
 		this.orderID=orderID;
 		this.startTime=startTime;
@@ -63,8 +63,8 @@ public class OrderPO {
 		this.promotionNum = promotionNum;
 		this.promotionIDs = promotionIDs;
 		this.executedTime = executedTime;
-		this.abnormalTime = abnormalTime;
 		this.undoAbnormalTime = undoAbnormalTime;
+		this.abnormalTime = abnormalTime;
 	}
 	
 	public String getUesrID() {
