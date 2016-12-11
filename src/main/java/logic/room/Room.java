@@ -23,6 +23,7 @@ public class Room implements RoomService , RoomInfo{
 	public Room() {
 		roomDao = new RoomDao_Stub();
 	}
+	
 	/**
 	 * 获取酒店房间列表
 	 * @param hotel_id 传入的酒店id
@@ -32,6 +33,7 @@ public class Room implements RoomService , RoomInfo{
 	public ArrayList<RoomVO> getRoomList(String hotelId){
 		ArrayList<RoomPO> roomPOList = roomDao.getHotelRooms(hotelId);
 		ArrayList<RoomVO> roomList = new ArrayList<>();
+		
 		for (RoomPO roomPO : roomPOList) {
 			roomList.add(RoomTransform.roomTransToVO(roomPO));
 		}
@@ -59,11 +61,12 @@ public class Room implements RoomService , RoomInfo{
 			System.out.println("logic.room.Room.updateRoomInfo参数异常");
 			return null;
 		}
+		
 		if (roomDao.updateRoom(RoomTransform.roomTransToPO(roomVO))) {
 			return ResultMessage.SUCCESS;
-		}else {
-			return ResultMessage.FAILURE;
 		}
+		
+		return ResultMessage.FAILURE;
 	}
 	
 	/**
@@ -73,26 +76,29 @@ public class Room implements RoomService , RoomInfo{
 	 * @author bcy
 	 */
 	public ResultMessage addRoomInfo(RoomVO roomVO){
-		if (roomVO==null) {
+		if (roomVO == null) {
 			System.out.println("logic.room.Room.addRoomInfo参数异常");
 			return null;
 		}
+		
 		if (roomDao.addRoom(RoomTransform.roomTransToPO(roomVO))) {
 			return ResultMessage.SUCCESS;
-		}else {
-			return ResultMessage.FAILURE;
 		}
+	
+		return ResultMessage.FAILURE;
 	}
 
 	@Override
 	public int getRemainingRoomNums(String hotelId, RoomType roomType) {
 		ArrayList<RoomPO> roomList = roomDao.getHotelRooms(hotelId);
 		int remainingRoomNums = 0;
+		
 		for (RoomPO roomPO : roomList) {
-			if (roomPO.getRoomType()==roomType.ordinal()&&roomPO.isEmpty()) {
-				remainingRoomNums++;
+			if (roomPO.getRoomType() == roomType.ordinal() && roomPO.isEmpty()) {
+				remainingRoomNums ++;
 			}
 		}
+		
 		return remainingRoomNums;
 	}
 }

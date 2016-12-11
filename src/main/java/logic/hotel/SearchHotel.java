@@ -6,7 +6,7 @@ import Message.HotelSearchCondition;
 import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import factories.HotelSortFactory;
-import logic.mockObject.MockOrderHotelInfo;
+import logic.order.Order;
 import logic.order.OrderHotelInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.SearchHotelService;
@@ -22,23 +22,17 @@ import vo.HotelVO;
 public class SearchHotel implements SearchHotelService {
 
 	private HotelDao hotelDao;
-	private OrderHotelInfo getBookedHotelList;
+	private OrderHotelInfo orderHotelInfo;
 	private HotelSort hotelSort;
 
 	public SearchHotel() {
 		hotelDao = new HotelDao_Stub();
 		
-		getBookedHotelList = new MockOrderHotelInfo();
+		orderHotelInfo = new Order();
 	}
 
-	/**
-	 * 获取酒店所在商圈
-	 * @param distract   传入酒店所属行政区
-	 * @return ArrayList<String> 返回商圈列表
-	 * @author all
-	 */
-	public ArrayList<String> getTradingArea(String distract) {
-		return hotelDao.getTradingAreas(distract);
+	public ArrayList<String> getTradingArea(String city) {
+		return hotelDao.getTradingAreas(city);
 	}
 
 	/**
@@ -91,9 +85,9 @@ public class SearchHotel implements SearchHotelService {
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getBookedHotelList(String userID) {
-		ArrayList<String> hotelIds = getBookedHotelList.getBookedHotelList(userID);
+		ArrayList<String> hotelIds = orderHotelInfo.getBookedHotelList(userID);
 		
-		ArrayList<HotelVO> bookedHotelList = new ArrayList<>();
+		ArrayList<HotelVO> bookedHotelList = new ArrayList<HotelVO>();
 		
 		for (String hotelId : hotelIds) {
 			bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelId)));

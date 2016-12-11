@@ -67,9 +67,8 @@ public class OrderDao_Stub implements OrderDao {
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {
 		ArrayList<String> list = new ArrayList<String>();
+		list.add("00001");
 		list.add("00002");
-		list.add("00003");
-		list.add("00005");
 		
 		return list;
 	}

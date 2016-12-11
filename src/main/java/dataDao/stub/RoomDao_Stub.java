@@ -13,7 +13,7 @@ public class RoomDao_Stub implements RoomDao {
 	public RoomDao_Stub() {
 		this.roomList.add(new RoomPO("00002", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, true, null));
 		this.roomList.add(new RoomPO("00002", "1009", RoomType.SINGLE_ROOM.ordinal(), 250, false, null));
-		this.roomList.add(new RoomPO("00002", "1203", RoomType.SUITE.ordinal(), 1200, true, null));
+		this.roomList.add(new RoomPO("00002", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, true, null));
 	}
 
 	public RoomPO getRoomInfo(String hotelId, String roomId) {

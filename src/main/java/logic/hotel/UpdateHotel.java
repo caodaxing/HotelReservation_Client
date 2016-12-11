@@ -3,18 +3,13 @@ package logic.hotel;
 import Message.ResultMessage;
 import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
-import logic.mockObject.MockUpdateRoomInfo;
-import logic.room.UpdateRoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.UpdateHotelService;
 import vo.HotelVO;
-import vo.RoomVO;
 
 /**
- * 更新酒店信息，提供了添加、修改酒店信息和修改房间信息
- * 
+ * 更新酒店信息
  * @author bcy
- *
  */
 public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 
@@ -29,22 +24,18 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 			System.out.println("logic.hotel.UpdateHotel.addHotel参数异常");
 			return null;
 		}
+		
 		if (hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO))) {
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.FAILURE;
 	}
 
-	/**
-	 * 更新酒店信息
-	 * @param hotelVO 传入的VO信息
-	 * @return ResultMessage 返回是否更新成功（成功/失败）
-	 * @author all
-	 */
 	public ResultMessage updateHotelInfo(HotelVO hotelVO) {
-		if (hotelVO != null && hotelVO.hoteID != null && hotelVO.hoteID != "") {
+		if (hotelVO == null || hotelVO.hoteID == null || hotelVO.hoteID == "") {
 			return null;
 		}
+		
 		if (hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))) {
 			return ResultMessage.SUCCESS;
 		} 

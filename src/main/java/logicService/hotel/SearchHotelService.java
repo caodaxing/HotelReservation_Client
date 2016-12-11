@@ -15,11 +15,11 @@ public interface SearchHotelService {
 	
 	/**
 	 * 获取酒店所在商圈
-	 * @param location 传入酒店地址
+	 * @param city 传入酒店地址
 	 * @return ArrayList<String> 返回商圈列表
 	 * @author all
 	 */
-	public ArrayList<String> getTradingArea (String location);
+	public ArrayList<String> getTradingArea (String city);
 	
 	/**
 	 * 将搜索到的酒店按一定方式排列

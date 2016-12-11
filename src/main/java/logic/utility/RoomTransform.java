@@ -13,12 +13,20 @@ public class RoomTransform {
 
 	//将RoomPO转化为VO
 	public static RoomVO roomTransToVO(RoomPO po) {
+		
+		if(po == null) {
+			return null;
+		}
 		return new RoomVO(po.getHotelId(), po.getRoomId(), RoomType.values()[po.getRoomType()],
 				po.getPrice(), po.isEmpty(), po.getPictures());
 	}
 	
 	//将RoomVO转化为PO
 	public static RoomPO roomTransToPO(RoomVO vo) {
+		if(vo == null) {
+			return null;
+		}
+		
 		return new RoomPO(vo.hotelId, vo.roomId, vo.roomType.ordinal(), vo.price, vo.isEmpty, vo.pictures);
 	}
 }

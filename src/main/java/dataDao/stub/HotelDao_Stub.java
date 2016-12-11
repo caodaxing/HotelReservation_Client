@@ -2,8 +2,6 @@ package dataDao.stub;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 import dataDao.hotel.HotelDao;
 import po.HotelPO;
@@ -29,7 +27,7 @@ public class HotelDao_Stub implements HotelDao {
 		 locationMap.put("张家港",a2);
 		
 	 
-		 hotelList.add(new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
+		 hotelList.add(new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 2, "酒店介绍1", "酒店设施1",
 				 null, null, "南京大学"));
 		 hotelList.add(new HotelPO("00002", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
 				 null, null, "新华书店"));
@@ -50,7 +48,7 @@ public class HotelDao_Stub implements HotelDao {
 			return new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
 					 null, null, "南京大学");
 		} else if(hotelID == "00002") {
-			return new HotelPO("00002", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
+			return new HotelPO("00002", "如家","张家港", "杨舍", "凉风路", 3.8, 4, "酒店介绍2", "酒店设施2",
 					 null, null, "新华书店");
 		}
 		
