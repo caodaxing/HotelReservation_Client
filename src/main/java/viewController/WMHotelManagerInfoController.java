@@ -90,7 +90,7 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 			showDialog("信息不完整");
 			return ;
 		}
-		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
+		//HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
 		
 		ResultMessage result = webManagerService.updateHotelManagerInfo(vo);
 		if(result == ResultMessage.SUCCESS){

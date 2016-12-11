@@ -2,6 +2,8 @@ package viewController;
 
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logicService.account.AccountService;
+import logicService.stub.AccountService_Stub;
 import logicService.stub.ClientService_Stub;
 import logicService.user.ClientService;
 import view.right.webManager.userInfo.Blank;
@@ -11,6 +13,7 @@ import vo.ClientVO;
 
 public class WMUserInfoController extends WebManagerLeftController{
 
+	AccountService accountService ;
 	ClientService clientService ;
 	
 	private Blank blankUI ;
@@ -24,6 +27,7 @@ public class WMUserInfoController extends WebManagerLeftController{
 		this.stage = stage;
 		this.userID = userID;
 		
+		accountService = new AccountService_Stub();
 		clientService = new ClientService_Stub();
 		
 		blankUI = new Blank(this);
@@ -63,7 +67,7 @@ public class WMUserInfoController extends WebManagerLeftController{
 		}
 		
 		//判断客户是否存在
-		if(!clientService.userIDExists(clientID)){
+		if(!accountService.userIDExists(clientID)){
 			//若不存在,清空id
 			showDialog("客户不存在");
 			clientID = null;

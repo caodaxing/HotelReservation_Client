@@ -55,7 +55,7 @@ public class UserLeftController {
 	public UserLeftController(){
 		
 		accountService = new AccountService_Stub();
-		clientService = new ClientService_Stub(userID);
+		clientService = new ClientService_Stub();
 		orderService = new OrderService_Stub();
 		
 		orderFirstUI = new First(this);

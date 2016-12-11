@@ -62,7 +62,7 @@ public class HotelInfo {
 		setButton();
 		
 		//设置图片域
-		//setImage();
+		setImage();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
@@ -133,8 +133,6 @@ public class HotelInfo {
 	
 	private void setImage(){
 		
-		//从controller得到图片
-		g
 		Image image = new Image("", 250, 200,false ,true);
 		
 		hotelImage = new ImageView(image);

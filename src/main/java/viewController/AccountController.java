@@ -92,6 +92,9 @@ public class AccountController {
 		}else if(!password.equals(rePassword)){
 			//两次输入密码不一致，弹出“两次密码输入不一致，请重新输入”
 			showDialog("两次密码输入不一致，请重新输入");
+		}else if(accountService.userIDExists(userID)){
+			//用户名已存在
+			showDialog("用户名已存在");
 		}else{
 			
 			AccountVO accountVO = new AccountVO(userID,password,Identity.CLIENT);
@@ -104,7 +107,7 @@ public class AccountController {
 				setFirstView();
 			}else{//调用helpTools里的对话框
 				//“注册失败，请尝试修改用户名”
-				showDialog("注册失败，请尝试修改用户名");
+				showDialog("注册失败，请重试");
 			}
 		}
 		

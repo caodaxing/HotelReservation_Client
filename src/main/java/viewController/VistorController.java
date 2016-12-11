@@ -31,9 +31,7 @@ public class VistorController extends VistorLeftController{
 		
 		this.stage = stage ;
 		
-		//逻辑层接口初始化，待修改
-		//searchService = new HotelService_Stub();
-		//checkService = new HotelService_Stub();
+		
 		
 		blankUI = new Blank(this);
 		hotelInfoUI = new HotelInfo(this);

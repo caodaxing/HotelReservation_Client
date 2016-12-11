@@ -169,7 +169,7 @@ public class WebManagerLeftController {
 			return ;
 		}
 		//添加工作人员，清空输入框
-		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
+		//HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
 		ResultMessage result = webManagerService.addHotelManager(vo);
 		if(result == ResultMessage.SUCCESS){
 			//成功，清空输入框，跳至添加酒店界面
