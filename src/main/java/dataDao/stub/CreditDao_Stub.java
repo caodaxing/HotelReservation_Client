@@ -7,6 +7,8 @@ import po.CreditHistoryPO;
 
 public class CreditDao_Stub implements CreditDao{
 
+	private int[] vipLevelCredit = new int[3];
+	
 	private ArrayList<CreditHistoryPO> changeList = new ArrayList<>();
 	
 	public boolean changeCredit(CreditHistoryPO po) {
@@ -46,12 +48,13 @@ public class CreditDao_Stub implements CreditDao{
 
 	@Override
 	public boolean setVIPCredit(int level, int credit_num) {
+		this.vipLevelCredit[level] = credit_num;
 		return true;
 	}
 
 	@Override
 	public int getVIPCredit(int level) {
-		return 100;
+		return vipLevelCredit[level];
 	}
 
 }

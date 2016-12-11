@@ -107,7 +107,8 @@ public class Account implements AccountService{
 	
 	//////用户名的分类，暂定
 	public Identity getIdentity(String accountID){
-		return Identity.CLIENT;
+		AccountPO po = this.accountDao.getAccountInfo(accountID);
+		return Identity.values()[po.getIdentity()];
 	}
 	
 	public AccountPO transToPO(AccountVO accountVO) {

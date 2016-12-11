@@ -49,8 +49,8 @@ public class SearchHotel implements SearchHotelService {
 	 * @return ArrayList<HotelInfoVO> 返回酒店列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getInitialHotelList(String city, String distract, String tradingArea) {
-		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(city, distract, tradingArea);
+	public ArrayList<HotelVO> getInitialHotelList(String city, String tradingArea) {
+		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(city, tradingArea);
 		
 		ArrayList<HotelVO> hotelVOList = new ArrayList<HotelVO>();
 		
@@ -116,7 +116,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-		ArrayList<HotelVO> hotelList = getInitialHotelList(search.city, search.distract, search.tradingArea);
+		ArrayList<HotelVO> hotelList = getInitialHotelList(search.city, search.tradingArea);
 		
 		if (hotelList == null) {
 			return null;

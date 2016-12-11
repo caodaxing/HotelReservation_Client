@@ -5,7 +5,6 @@ import Message.RoomType;
 /**
  * 搜索酒店的VO类
  * @param city 酒店所在城市
- * @param distract 酒店所在行政区
  * @param tradingArea 酒店所属商圈
  * @param hotelName 酒店名称
  * @param roomType 房间类型(默认标间)
@@ -20,7 +19,6 @@ import Message.RoomType;
 public class HotelSearchVO {
 	
 	public String city;
-	public String distract;
 	public String tradingArea;
 	public String hotelName;
 	public RoomType roomType = RoomType.STANDARD_ROOM;
@@ -44,10 +42,9 @@ public class HotelSearchVO {
 	 * @param starLow
 	 * @param starHigh
 	 */
-	public HotelSearchVO(String city, String distract,String tradingArea, String hotelName, RoomType roomType, double priceLow, double priceHigh,
+	public HotelSearchVO(String city,String tradingArea, String hotelName, RoomType roomType, double priceLow, double priceHigh,
 			double commentLow, double commentHigh, int starLow, int starHigh) {
 		this.city = city;
-		this.distract = distract;
 		this.tradingArea = tradingArea;
 		this.hotelName = hotelName;
 		this.roomType = roomType;

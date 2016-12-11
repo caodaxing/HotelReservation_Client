@@ -17,7 +17,7 @@ import vo.VipVO;
  * po中没有保存credit，以防止credit被更改
  * @author Xue.W
  */
-public class Client implements ClientService, ClientVipInfo{
+public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	
 	private ClientDao clientDao;
 
@@ -118,6 +118,22 @@ public class Client implements ClientService, ClientVipInfo{
 			}
 		}
  		return false;
+	}
+
+	@Override
+	public boolean updateClientVip(String userID, int level) {
+		ClientPO clientPO = this.clientDao.getClientInfo(userID);
+		
+		if(level == clientPO.getVipLevel()) {
+			return true;
+		}
+		
+		clientPO.setVipLevel(level);
+		if(this.clientDao.updateClientInfo(clientPO))  {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }

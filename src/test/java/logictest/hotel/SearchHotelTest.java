@@ -29,7 +29,7 @@ public class SearchHotelTest {
 	
 	@Test
 	public void testGetInitialHotelList(){
-		ArrayList<HotelVO> hotels = searchHotel.getInitialHotelList("123", "123", "123");
+		ArrayList<HotelVO> hotels = searchHotel.getInitialHotelList("123",  "123");
 		ArrayList<HotelVO> trueHotels = new ArrayList<>();
 		System.out.println(hotels.get(0).hoteID);
 		HotelVO hotelVO=new HotelVO("123", "汉庭", "123", "123", "123", "123", 1, "", null, null, null, null);

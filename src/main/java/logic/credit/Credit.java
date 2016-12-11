@@ -8,7 +8,6 @@ import logicService.credit.CreditService;
 /**
  * 提供获取信用、设置和获取vip信用等级
  * @author bcy
- *
  */
 public class Credit implements CreditInfo, CreditService{
 	
@@ -19,7 +18,7 @@ public class Credit implements CreditInfo, CreditService{
 	}
 
 	public int getCredit(String userID){
-		return this.creditDao.getCredit(userID);					//该方法被其他包调用，不能访问成员变量获得。应该直接拉取数据库。
+		return this.creditDao.getCredit(userID);					
 	}
 	
 	public ResultMessage setVIPCredit(int level, int credit_num){

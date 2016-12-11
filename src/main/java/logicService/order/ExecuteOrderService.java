@@ -2,7 +2,6 @@ package logicService.order;
 
 
 import Message.ResultMessage;
-import vo.EvaluationVO;
 
 /**
  * 酒店工作人员执行订单
@@ -17,13 +16,6 @@ public interface ExecuteOrderService {
 	 * @return ResultMessage
 	 */
 	public ResultMessage normalExecute(String orderID);
-	
-	/**
-	 * 自动设置成异常订单
-	 * @param order_id 订单id
-	 * @return ResultMessage
-	 */
-	public ResultMessage autoSetAbnormal(String orderID);
 	
 	/**
 	 * 客户在最晚执行订单时间后入住，补登记订单

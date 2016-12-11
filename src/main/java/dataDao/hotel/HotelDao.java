@@ -16,6 +16,6 @@ public interface HotelDao {
 	
 	public ArrayList<String> getTradingAreas(String loaction);
 	
-	public ArrayList<HotelPO> SearchHotelList(String city,String distract,String tradingArea);
+	public ArrayList<HotelPO> SearchHotelList(String city,String tradingArea);
 	
 }

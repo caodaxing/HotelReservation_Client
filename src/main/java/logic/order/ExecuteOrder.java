@@ -66,41 +66,6 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage autoSetAbnormal(String orderID) {
-		po = this.orderDao.getOrderByOrderID(orderID);
-		
-		if(po != null) {
-			if(po.getState() != OrderState.ABNORMAL.ordinal()) {
-				po.setState(OrderState.ABNORMAL.ordinal());
-				
-				String time = Time.getCurrentTime();
-				
-				po.setAbnormalTime(time);
-				
-				if(this.orderDao.updateOrder(po)) {
-					
-					//更新信用记录和信用值
-					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
-							po.getUesrID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, 
-							-(int)po.getAfterPromotionPrice());
-					
-					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
-						return ResultMessage.SUCCESS;
-					} else {
-						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
-						po.setState(OrderState.UNEXECUTED.ordinal());
-						po.setAbnormalTime(null);
-						this.orderDao.updateOrder(po);
-					}
-				}
-			}
-		}
-		
-		return ResultMessage.FAILURE;
-	}
-	
-	
-	@Override
 	public ResultMessage supplyOrder(String orderID) {
 		
 		po = this.orderDao.getOrderByOrderID(orderID);
@@ -183,5 +148,41 @@ public class ExecuteOrder implements ExecuteOrderService{
 	public void setPo(OrderPO po) {
 		this.po = po;
 	}
+	
+	
+//	public ResultMessage autoSetAbnormal(String orderID) {
+//		po = this.orderDao.getOrderByOrderID(orderID);
+//		
+//		if(po != null) {
+//			if(po.getState() != OrderState.ABNORMAL.ordinal()) {
+//				po.setState(OrderState.ABNORMAL.ordinal());
+//				
+//				String time = Time.getCurrentTime();
+//				
+//				po.setAbnormalTime(time);
+//				
+//				if(this.orderDao.updateOrder(po)) {
+//					
+//					//更新信用记录和信用值
+//					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
+//							po.getUesrID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, 
+//							-(int)po.getAfterPromotionPrice());
+//					
+//					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+//						return ResultMessage.SUCCESS;
+//					} else {
+//						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+//						po.setState(OrderState.UNEXECUTED.ordinal());
+//						po.setAbnormalTime(null);
+//						this.orderDao.updateOrder(po);
+//					}
+//				}
+//			}
+//		}
+//		
+//		return ResultMessage.FAILURE;
+//	}
+	
+
 	
 }

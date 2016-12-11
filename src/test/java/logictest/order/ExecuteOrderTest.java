@@ -35,14 +35,14 @@ public class ExecuteOrderTest {
 		
 	}	
 	
-	@Test
-	public void testAutoSetAbnormal() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.autoSetAbnormal("20161212000041212"));
-		
-		assertEquals(OrderState.ABNORMAL.ordinal(), this.executeOrder.getPo().getState());
-		
-		assertEquals(time, this.executeOrder.getPo().getAbnormalTime().substring(0, 10));
-	}	
+//	@Test
+//	public void testAutoSetAbnormal() {
+//		assertEquals(ResultMessage.SUCCESS, this.executeOrder.autoSetAbnormal("20161212000041212"));
+//		
+//		assertEquals(OrderState.ABNORMAL.ordinal(), this.executeOrder.getPo().getState());
+//		
+//		assertEquals(time, this.executeOrder.getPo().getAbnormalTime().substring(0, 10));
+//	}	
 
 	@Test
 	public void testSupplyOrderl() {
