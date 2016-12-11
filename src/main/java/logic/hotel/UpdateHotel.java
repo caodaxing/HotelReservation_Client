@@ -47,5 +47,9 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 	public ResultMessage hotelIDExist(String hotelID) {
 		return this.hotelIDExist(hotelID);
 	}
+	
+	public ResultMessage hotelHasManager(String hotelID) {
+		return ResultMessage.SUCCESS;
+	}
 
 }

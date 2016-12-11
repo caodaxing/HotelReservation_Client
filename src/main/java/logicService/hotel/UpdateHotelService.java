@@ -12,6 +12,8 @@ import vo.RoomVO;
  */
 public interface UpdateHotelService {
 	
+	public ResultMessage hotelHasManager(String hotelID);
+	
 	public ResultMessage hotelIDExist(String hotelID);
 	
 	public ResultMessage addHotel(HotelVO hotelVO);

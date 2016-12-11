@@ -256,7 +256,7 @@ public class SearchHotel {
 		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
 		int starLow = Integer.valueOf(starLeft.getText());
 		int starHigh = Integer.valueOf(starRight.getText());
-		HotelSearchVO vo = new HotelSearchVO(c,null,tradingArea,name,type,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 	}
 

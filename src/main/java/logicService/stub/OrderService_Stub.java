@@ -116,11 +116,6 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	}
 
 	@Override
-	public ResultMessage autoSetAbnormal(String orderID) {
-		return ResultMessage.SUCCESS ;
-	}
-
-	@Override
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllCredit) {
 		return ResultMessage.SUCCESS;
 	}
