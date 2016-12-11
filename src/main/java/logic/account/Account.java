@@ -113,6 +113,11 @@ public class Account implements AccountService{
 	public AccountPO transToPO(AccountVO accountVO) {
 		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.ordinal());
 	}
+
+	@Override
+	public boolean userIDExists(String userID) {
+		return this.accountDao.userIDExists(userID);
+	}
 	
 }
 

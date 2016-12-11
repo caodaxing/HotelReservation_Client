@@ -25,9 +25,4 @@ public interface ClientService {
 	
 	public VipVO getVipInfo(String userID);
 	
-	public boolean userIDExists(String userID);
-	
-	
-	//网站管理人员
-	
 }

@@ -2,7 +2,7 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import dataDao.HotelDao;
+import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.mockObject.MockOrderHotelInfo;
 import logic.mockObject.MockPromotionInfo;

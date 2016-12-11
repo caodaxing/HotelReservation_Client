@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import Message.RoomType;
-import dataDao.RoomDao;
+import dataDao.room.RoomDao;
 import dataDao.stub.RoomDao_Stub;
 import logic.utility.RoomTransform;
 import logicService.room.RoomService;

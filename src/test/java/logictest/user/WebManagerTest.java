@@ -33,7 +33,7 @@ public class WebManagerTest {
 
 	@Test
 	public void testAddHotelManager() {
-		HotelManagerVO vo = new HotelManagerVO("mdzzz", "green", "1222", "bcy", "111222");
+		HotelManagerVO vo = new HotelManagerVO("mdzzz", "green", "1222","111222");
 		assertEquals(this.webManager.addHotelManager(vo), ResultMessage.SUCCESS);
 	}
 }

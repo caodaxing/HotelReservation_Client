@@ -9,28 +9,18 @@ package po;
  * @param numberOfIdentityCard    身份证号
  */
 public class HotelManagerPO {
-	private String userID;
 	private String hotelID;
 	private String phoneNumber;
 	private String trueName;
-	private String numberOfIdentityCard;
+	private String IdentityCardID;
 	
-	public HotelManagerPO(String userID, String hotelID, String phoneNumber, String trueName,
-			String numberOfIdentityCard) {
+	public HotelManagerPO(String hotelID, String phoneNumber, String trueName,
+			String IdentityCardID) {
 		super();
-		this.userID = userID;
 		this.hotelID = hotelID;
 		this.phoneNumber = phoneNumber;
 		this.trueName = trueName;
-		this.numberOfIdentityCard = numberOfIdentityCard;
-	}
-	
-	public String getUserID() {
-		return userID;
-	}
-	
-	public void setUserID(String userID) {
-		this.userID = userID;
+		this.IdentityCardID = IdentityCardID;
 	}
 	
 	public String getHotelID() {
@@ -57,12 +47,12 @@ public class HotelManagerPO {
 		this.trueName = trueName;
 	}
 	
-	public String getNumberOfIdentityCard() {
-		return numberOfIdentityCard;
+	public String getIdentityCardID() {
+		return IdentityCardID;
 	}
 	
-	public void setNumberOfIdentityCard(String numberOfIdentityCard) {
-		this.numberOfIdentityCard = numberOfIdentityCard;
+	public void setNumberOfIdentityCard(String IdentityCardID) {
+		this.IdentityCardID = IdentityCardID;
 	}
 
 }

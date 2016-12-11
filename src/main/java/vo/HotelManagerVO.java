@@ -12,17 +12,14 @@ public class HotelManagerVO {
 	public String phoneNumber;
 	public String trueName;
 	public String numberOfIdentityCard;
-	public String password;
 	
-	public HotelManagerVO(String userID, String hotelID, String phoneNumber, String trueName,
-			String numberOfIdentityCard) {
-		this.userID = userID;
+	public HotelManagerVO(String hotelID, String phoneNumber, 
+			String trueName, String numberOfIdentityCard) {
 		this.hotelID = hotelID;
 		this.phoneNumber = phoneNumber;
 		this.trueName = trueName;
 		this.numberOfIdentityCard = numberOfIdentityCard;
 	}
-	
 	
 	
 }

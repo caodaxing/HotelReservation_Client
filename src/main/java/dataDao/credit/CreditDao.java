@@ -1,4 +1,4 @@
-package dataDao;
+package dataDao.credit;
 
 import java.util.ArrayList;
 

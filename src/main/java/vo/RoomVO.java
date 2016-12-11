@@ -7,7 +7,7 @@ import Message.RoomType;
 /**
  * @param hotelId
  * @param roomId
- * @param orderId
+ * @param roomType
  * @param price 小数点保留两位
  * @param isEmpty
  * @param pictures

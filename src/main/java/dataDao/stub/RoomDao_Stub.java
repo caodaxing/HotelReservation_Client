@@ -2,7 +2,7 @@ package dataDao.stub;
 
 import java.util.ArrayList;
 
-import dataDao.RoomDao;
+import dataDao.room.RoomDao;
 import po.RoomPO;
 
 public class RoomDao_Stub implements RoomDao {

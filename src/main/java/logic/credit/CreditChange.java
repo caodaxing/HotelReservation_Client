@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import Message.CreditChangeType;
 import Message.ResultMessage;
-import dataDao.CreditDao;
+import dataDao.credit.CreditDao;
 import dataDao.stub.CreditDao_Stub;
 import logic.utility.CreditTransform;
 import logicService.credit.CreditChangeService;

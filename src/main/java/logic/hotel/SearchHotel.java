@@ -1,8 +1,9 @@
 package logic.hotel;
 
 import java.util.ArrayList;
+
 import Message.HotelSearchCondition;
-import dataDao.HotelDao;
+import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import factories.HotelSortFactory;
 import logic.mockObject.MockOrderHotelInfo;

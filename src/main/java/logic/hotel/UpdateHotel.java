@@ -1,7 +1,7 @@
 package logic.hotel;
 
 import Message.ResultMessage;
-import dataDao.HotelDao;
+import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.mockObject.MockUpdateRoomInfo;
 import logic.room.UpdateRoomInfo;

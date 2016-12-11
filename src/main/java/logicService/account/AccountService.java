@@ -20,4 +20,6 @@ public interface AccountService {
 	
 	public Identity getIdentity (String accountID);
 	
+	public boolean userIDExists(String userID);
+	
 }

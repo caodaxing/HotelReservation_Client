@@ -1,7 +1,7 @@
 package logic.credit;
 
 import Message.ResultMessage;
-import dataDao.CreditDao;
+import dataDao.credit.CreditDao;
 import dataDao.stub.CreditDao_Stub;
 import logicService.credit.CreditService;
 

@@ -1,9 +1,8 @@
 package dataDao.stub;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import dataDao.CreditDao;
+import dataDao.credit.CreditDao;
 import po.CreditHistoryPO;
 
 public class CreditDao_Stub implements CreditDao{

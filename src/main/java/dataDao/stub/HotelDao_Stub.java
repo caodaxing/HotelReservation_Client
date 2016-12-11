@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import dataDao.HotelDao;
+import dataDao.hotel.HotelDao;
 import po.HotelPO;
 
 public class HotelDao_Stub implements HotelDao {

@@ -8,4 +8,6 @@ public interface AccountDao {
 	public boolean modifyPassword(AccountPO po);
 	
 	public AccountPO getAccountInfo(String accountID);
+	
+	public boolean userIDExists(String userID);
 }

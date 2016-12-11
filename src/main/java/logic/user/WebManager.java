@@ -44,8 +44,8 @@ public class WebManager implements WebManagerService {
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
 		
-		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManagerInfo.userID)) {
-			hotelManager = new HotelManager(hotelManagerInfo.userID);
+		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManagerInfo.hotelID)) {
+			hotelManager = new HotelManager(hotelManagerInfo.hotelID);
 		}
 		
 		return hotelManager.updateHotelManagerInfo(hotelManagerInfo);
