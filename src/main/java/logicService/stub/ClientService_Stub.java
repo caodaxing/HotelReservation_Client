@@ -124,6 +124,4 @@ public class ClientService_Stub implements ClientService {
 		return ResultMessage.SUCCESS;
 	}
 
-
-
 }

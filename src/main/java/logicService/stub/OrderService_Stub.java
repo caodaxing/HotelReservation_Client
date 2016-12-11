@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.ResultMessage;
+import logicService.order.CreateOrderService;
+import logicService.order.ExecuteOrderService;
+import logicService.order.ManageOrderService;
+import logicService.order.OrderListService;
 import logicService.order.OrderService;
 import vo.EvaluationVO;
 import vo.OrderVO;
 import vo.RoomVO;
 
-public class OrderService_Stub implements OrderService {
+public class OrderService_Stub implements OrderService,CreateOrderService,ExecuteOrderService,ManageOrderService,OrderListService {
 
 	public OrderVO createOrder(OrderVO o) {
 //		return new OrderVO("161124000021109", "161124", new RoomVO(0, 288, 0, "1109"), "161125", 0, 2, false, 288);
@@ -92,8 +96,48 @@ public ArrayList<OrderVO> getDailyOrderList() {
 
 	@Override
 	public ResultMessage evaluate(EvaluationVO evaluation) {
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<OrderVO> filterUserOrderList(String userID, OrderListCondition condition) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> filterSpecificUserHotelOrderList(String userID, String hotelId) {
+		return null;
+	}
+
+	@Override
+	public ResultMessage autoSetAbnormal(String orderID) {
+		return ResultMessage.SUCCESS ;
+	}
+
+	@Override
+	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllCredit) {
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getWebDailyUnexecutedOrderList() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<OrderVO> getWebDailyAbnormalOrderList() {
+		return null;
+	}
+
+	@Override
+	public boolean judgeCreditCanCreateOrder(String user_id) {
+		return false;
 	}
 	
 }
