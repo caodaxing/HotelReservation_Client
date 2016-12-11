@@ -7,10 +7,8 @@ import java.util.HashMap;
  * @param hoteID 酒店ID
  * @param hotelName 酒店名称
  * @param city 城市
- * @param distract 所在行政区
  * @param tradingArea 所属商圈
  * @param locationOfHotel 酒店地址
- * 
  * @param evaluationGrades 评价等级
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
@@ -25,7 +23,6 @@ public class HotelVO {
 	public String hoteID;
 	public String hotelName;
 	public String city;
-	public String distract;
 	public String tradingArea;
 	public String locationOfHotel;
 	
@@ -37,13 +34,12 @@ public class HotelVO {
 	public HashMap<Integer, Integer> emptyRoomNum;
 	public String bussiness;
 
-	public HotelVO(String hoteID,String hotelName, String city, String distract,String tradingArea,
+	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,
 			String locationOfHotel,double evaluationGrades,int levelOfHotel,String introduction, String facilities,
 			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
-		this.distract = distract;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.evaluationGrades=evaluationGrades;
@@ -69,13 +65,12 @@ public class HotelVO {
 	 * @param emptyRoomNum
 	 * @param bussiness
 	 */
-	public HotelVO(String hoteID,String hotelName, String city, String distract,String tradingArea,
+	public HotelVO(String hoteID,String hotelName, String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities,
 			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
-		this.distract = distract;
 		this.tradingArea=tradingArea;
 		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;

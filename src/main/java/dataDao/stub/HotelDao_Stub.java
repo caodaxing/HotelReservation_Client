@@ -29,11 +29,11 @@ public class HotelDao_Stub implements HotelDao {
 		 locationMap.put("张家港",a2);
 		
 	 
-		 hotelList.add(new HotelPO("00021", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
+		 hotelList.add(new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
 				 null, null, "南京大学"));
-		 hotelList.add(new HotelPO("00023", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
+		 hotelList.add(new HotelPO("00002", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
 				 null, null, "新华书店"));
-		 hotelList.add(new HotelPO("04321", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
+		 hotelList.add(new HotelPO("00003", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
 				 null, null, "杜蕾斯"));
 	}
 
@@ -46,12 +46,17 @@ public class HotelDao_Stub implements HotelDao {
 	}
 
 	public HotelPO getHotelInfoByHotelID(String hotelID) {
-		for (HotelPO hotelPO : hotelList) {
-			if (hotelID == hotelPO.getHoteID()) {
-				return hotelPO;
-			}
+		if(hotelID == "00001") {
+			return new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
+					 null, null, "南京大学");
+		} else if(hotelID == "00002") {
+			return new HotelPO("00002", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
+					 null, null, "新华书店");
 		}
-		return null;
+		
+		return new HotelPO("00003", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
+				 null, null, "杜蕾斯");
+		
 	}
 
 	public ArrayList<String> getTradingAreas(String loaction) {
@@ -59,7 +64,6 @@ public class HotelDao_Stub implements HotelDao {
 			return this.locationMap.get(loaction);
 		}
 		return null;
-
 	}
 
 	public ArrayList<HotelPO> SearchHotelList(String city, String tradingArea) {

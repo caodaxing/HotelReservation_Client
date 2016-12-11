@@ -64,4 +64,8 @@ public class HotelManager implements HotelManagerService{
 		this.hotelManagerPO = hotelManagerPO;
 	}
 
+	public boolean addHotelManager(HotelManagerPO po) {
+		return this.hotelManagerDao.addHotelManager(po);
+	}
+
 }

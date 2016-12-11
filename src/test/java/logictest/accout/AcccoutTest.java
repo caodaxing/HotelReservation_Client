@@ -21,31 +21,25 @@ public class AcccoutTest {
 	
 	@Test
 	public void testLogin1() {
-		assertEquals(ResultMessage.UNMATCHED_PASSWORD, 
+		assertEquals(ResultMessage.USERNAME_NOT_EXIST, 
 				account.login(new AccountVO("curry", "currycurry", Identity.CLIENT)));
 	}
 	
 	@Test
 	public void testLogin2() {
-		assertEquals(ResultMessage.SUCCESS, account.login(new AccountVO("curry",
+		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.login(new AccountVO("wyy",
 				"e80b5017098950fc58aad83c8c14978e", Identity.CLIENT)));
 	}
-	
-//	@Test
-//	public void testLogin3() {
-//		assertEquals(ResultMessage.USERNAME_NOT_EXIST, 
-//			account.login(new AccountVO("curr", "currycurry", Identity.ClIENT)));
-//	}
 
 	@Test
-	public void testLogout1() {
+	public void testLogin3() {
 		assertEquals(ResultMessage.FAILURE, account.login(new AccountVO(null, null, null)));
 	}
 	
 	@Test
-	public void testLogout2() {
-		assertEquals(ResultMessage.SUCCESS, account.login(new AccountVO("curry", 
-				"e80b5017098950fc58aad83c8c14978e", Identity.CLIENT)));
+	public void testLogin4() {
+		assertEquals(ResultMessage.SUCCESS, account.login(new AccountVO("wyy", 
+				"6f6e37133b6207ef6a02aa64224a97ac", Identity.CLIENT)));
 	}
 	
 	@Test

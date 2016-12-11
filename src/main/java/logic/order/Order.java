@@ -22,22 +22,14 @@ import vo.OrderVO;
  */
 public class Order implements OrderService, OrderHotelInfo{
 	
-	private String orderID;
 	private OrderDao orderDao;
-	private OrderPO orderPO;
 	private EvaluationTransform evaluationTrans;
 	private OrderTransform orderTrans;
 	
-	public Order(String orderID) {
-		this.orderID = orderID;
+	public Order() {
 		this.evaluationTrans = new EvaluationTransform();
 		this.orderTrans = new OrderTransform();
 		this.orderDao = new OrderDao_Stub();
-		this.initOrderPO();
-	}
-
-	private void initOrderPO() {
-		this.orderPO = this.orderDao.getOrderByOrderID(this.orderID);
 	}
 
 	@Override
@@ -48,10 +40,6 @@ public class Order implements OrderService, OrderHotelInfo{
 
 	@Override
 	public OrderVO getOrderInfo(String orderID) {
-		if(this.orderPO != null && this.orderPO.getOrderID() == orderID) {
-			return this.orderTrans.orderTransToVO(this.orderPO);
-		}
-		
 		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
 		return this.orderTrans.orderTransToVO(po);
 		

@@ -18,4 +18,9 @@ public class WebBusinessDao_Stub implements WebBusinessDao {
 		return true;
 	}
 
+	@Override
+	public boolean addWebBusiness(WebBusinessPO webBusinessPO) {
+		return true;
+	}
+
 }

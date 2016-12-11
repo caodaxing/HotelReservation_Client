@@ -8,4 +8,5 @@ public interface HotelManagerDao {
 	
 	public boolean updateHotelManagerInfo(HotelManagerPO po);
 	
+	public boolean addHotelManager(HotelManagerPO hotelManagerPO);
 }

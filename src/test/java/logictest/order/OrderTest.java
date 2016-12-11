@@ -13,7 +13,7 @@ public class OrderTest {
 	
 	@Before
 	public void setUp() {
-		this.order = new Order("20161212000041212");
+		this.order = new Order();
 	}
 	
 	@Test

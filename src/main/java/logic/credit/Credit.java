@@ -30,7 +30,7 @@ public class Credit implements CreditInfo, CreditService{
 	}
 	
 	public int getVIPCredit(int level){
-		return this.getVIPCredit(level);
+		return this.creditDao.getVIPCredit(level);
 	}
 	
 }

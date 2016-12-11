@@ -4,7 +4,7 @@ import vo.PromotionVO;
 
 
 /**
- * 给hotel提供的接口 获取酒店信息
+ * 给order提供的接口 获取促销信息
  * @author Mark.W
  *
  */

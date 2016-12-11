@@ -18,7 +18,5 @@ public interface UpdateHotelService {
 	
 	public ResultMessage updateHotelInfo(HotelVO hotelVO);
 	
-	public ResultMessage updateRoom(RoomVO roomVO);
-	
 }
 

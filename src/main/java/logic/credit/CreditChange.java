@@ -29,11 +29,54 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
 	public CreditChange() {
 		this.updateVip = new Client();
-		this.initTable();
-		
 		creditDao = new CreditDao_Stub();
 	}
 
+	public ResultMessage changeCredit(CreditChangeVO vo){
+		Credit credit = new Credit();
+		
+		if(vo == null || vo.userID == null || vo.time == null ||
+				vo.orderID == null || vo.action == null ){
+			return ResultMessage.FAILURE;
+		}
+		
+		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+		
+		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, 
+				vo.action.ordinal(), vo.cerditChange, nowCredit);
+		
+		if(creditDao.changeCredit(po)) {
+			
+			this.judgeVipLevelChange(vo.userID, nowCredit);
+			
+			return ResultMessage.SUCCESS;
+		}
+		
+		return ResultMessage.FAILURE;
+	}
+	
+	//表驱动,根据信用址更改用户vip信息
+	private void judgeVipLevelChange(String userID, int nowCredit) {
+		this.initTable();
+		
+		int level = 0;
+		
+		for(int i=0; i< low.length; ++i) {
+			if(nowCredit >= low[i] && nowCredit < high[i]) {
+				level = this.lev[i];
+				break;
+			}
+			
+			if(i == low.length -1) {
+				if(nowCredit >= low[i]) {
+					level = this.lev[i];
+				}
+			}
+		}
+		
+		this.updateVip.updateClientVip(userID, level);
+	}
+	
 	private void initTable() {
 		int level1 = this.creditDao.getVIPCredit(1);
 		int level2 = this.creditDao.getVIPCredit(2);
@@ -55,53 +98,18 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		lev[3] = 3;
 	}
 	
-	public ResultMessage changeCredit(CreditChangeVO vo){
-		Credit credit = new Credit();
-		
-		if(vo == null || vo.userID == null || vo.time == null ||
-				vo.orderID == null || vo.action == null ){
-			return ResultMessage.FAILURE;
-		}
-		
-		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
-		
-		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, 
-				vo.action.ordinal(), vo.cerditChange, nowCredit);
-		
-		if(creditDao.changeCredit(po)) {
-			this.judgeVipLevelChange(vo.userID, nowCredit);
-			return ResultMessage.SUCCESS;
-		}
-		
-		return ResultMessage.FAILURE;
-	}
-	
-	//表驱动,根据信用址更改用户vip信息
-	private void judgeVipLevelChange(String userID, int nowCredit) {
-		int level = 0;
-		
-		for(int i=0; i< low.length; ++i) {
-			if(nowCredit >= low[i] && nowCredit < high[i]) {
-				level = this.lev[i];
-				break;
-			}
-			
-			if(i == low.length -1) {
-				if(nowCredit >= low[i]) {
-					level = this.lev[i];
-				}
-			}
-		}
-		
-		this.updateVip.updateClientVip(userID, level);
-	}
 	
 	public ArrayList<CreditChangeVO> getCreditHistory(String userID){
 		ArrayList<CreditHistoryPO> historyPOList = creditDao.getCreditHistory(userID);
-		ArrayList<CreditChangeVO> historyVOList = new ArrayList<>();
 		
-		for (Iterator<CreditHistoryPO> iterator = historyPOList.iterator(); iterator.hasNext();) {
-			CreditHistoryPO creditHistoryPO = (CreditHistoryPO) iterator.next();
+		if(historyPOList == null) {
+			return null;
+		}
+		
+		ArrayList<CreditChangeVO> historyVOList = new ArrayList<CreditChangeVO>();
+		
+		for (int i=0; i<historyPOList.size(); ++i) {
+			CreditHistoryPO creditHistoryPO = historyPOList.get(i);
 			
 			historyVOList.add(CreditTransform.creditTransToVO(creditHistoryPO));
 		}
@@ -110,21 +118,6 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	}
 	
 	public ResultMessage rechargeCredit(CreditChangeVO vo){
-		Credit credit = new Credit();
-		
-		if(vo == null || vo.userID == null || vo.time == null || vo.action !=CreditChangeType.RECHARGE_CREDIT ){
-			return ResultMessage.FAILURE;
-		}
-		
-		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
-		
-		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, vo.action.ordinal(), vo.cerditChange, nowCredit);
-		
-		if(creditDao.changeCredit(po)) {
-			return ResultMessage.SUCCESS;
-		}
-		
-		return ResultMessage.FAILURE; 
-		
+		return this.changeCredit(vo);
 	}
 }

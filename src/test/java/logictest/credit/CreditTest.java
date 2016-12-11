@@ -17,12 +17,19 @@ public class CreditTest {
 	}	
 	@Test
 	public void testGetCredit1() {
-		assertEquals(1, credit.getCredit("123"));
+		assertEquals(1700, credit.getCredit("wyy"));
 	}
 	
 	@Test
 	public void testGetCredit2() {
-		assertEquals(100, credit.getCredit("1234"));
+		assertEquals(800, credit.getCredit("bcy"));
 	}
 
+	@Test
+	public void testGetVipCredit() {
+		assertEquals(0, credit.getVIPCredit(0));
+		assertEquals(1000, credit.getVIPCredit(1));
+		assertEquals(4000, credit.getVIPCredit(2));
+		assertEquals(80000, credit.getVIPCredit(3));
+	}
 }

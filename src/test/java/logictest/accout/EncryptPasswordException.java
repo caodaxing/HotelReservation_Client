@@ -23,10 +23,6 @@ public class EncryptPasswordException {
 		String pass2 = "abcdef";
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
 		
-		System.out.println(this.encryption.encryptPassword("wyy"));
-		System.out.println(this.encryption.encryptPassword("bcy"));
-		System.out.println(this.encryption.encryptPassword("zdy"));
-		
 		pass1 = "123QWEASDZXC";
 		pass2 = "123QWEASDZXC";
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));

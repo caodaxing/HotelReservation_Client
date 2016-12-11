@@ -1,13 +1,12 @@
 package logic.user;
 
 import Message.ResultMessage;
-import dataDao.stub.WebManagerDao_Stub;
-import dataDao.user.WebManagerDao;
+import logic.hotel.AddHotelInfo;
+import logic.hotel.UpdateHotel;
 import logic.utility.HotelManagerTransform;
 import logic.utility.WebBusinessTransform;
 import logicService.user.WebManagerService;
 import po.HotelManagerPO;
-import po.HotelPO;
 import po.WebBusinessPO;
 import vo.HotelManagerVO;
 import vo.HotelVO;
@@ -20,7 +19,6 @@ import vo.WebBusinessVO;
 public class WebManager implements WebManagerService {
 	
 	private String webManagerID;
-	private WebManagerDao webManagerDao;
 	private HotelManager hotelManager;
 	private WebBusiness webBusiness;
 	private HotelManagerTransform hotelManagerTrans;
@@ -30,8 +28,6 @@ public class WebManager implements WebManagerService {
 		this.webManagerID = userID;
 		this.hotelManagerTrans = HotelManagerTransform.getInstance();
 		this.webBusinessTrans = WebBusinessTransform.getInstance();
-		
-		this.webManagerDao = new WebManagerDao_Stub();
 	}
 	
 	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
@@ -68,11 +64,10 @@ public class WebManager implements WebManagerService {
 	}
 	
 	public ResultMessage addHotel(HotelVO hotelVO){
+		AddHotelInfo addHotel = new UpdateHotel();
+		
 		if(hotelVO != null) {
-			HotelPO po = new HotelPO(hotelVO.hoteID, hotelVO.hotelName, hotelVO.city, hotelVO.distract,hotelVO.tradingArea, 
-					hotelVO.locationOfHotel, hotelVO.levelOfHotel, hotelVO.introduction, hotelVO.facilities, 
-					hotelVO.picturesPath, hotelVO.emptyRoomNum, hotelVO.bussiness);	
-			if(this.webManagerDao.addHotel(po)) {
+			if(addHotel.addHotel(hotelVO) == ResultMessage.SUCCESS) {
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -84,7 +79,7 @@ public class WebManager implements WebManagerService {
 		
 		if(hotelManagerVO != null) {
 			HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(hotelManagerVO);
-			if(this.webManagerDao.addHotelManager(po)) {
+			if(this.hotelManager.addHotelManager(po)) {
 				return ResultMessage.SUCCESS;
 			}
 		}
@@ -95,7 +90,7 @@ public class WebManager implements WebManagerService {
 	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessVO){
 		if(webBusinessVO != null){
 			WebBusinessPO po = this.webBusinessTrans.webBusinessTransToPO(webBusinessVO);
-			if(this.webManagerDao.addWebBusiness(po)) {
+			if(this.webBusiness.addWebBusiness(po)) {
 				return ResultMessage.SUCCESS;
 			}
 		}

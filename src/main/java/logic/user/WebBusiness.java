@@ -68,4 +68,8 @@ public class WebBusiness implements WebBusinessService{
 		this.webBusinessPO = webBusinessPO;
 	}
 
+	public boolean addWebBusiness(WebBusinessPO po) {
+		return this.webBusinessDao.addWebBusiness(po);
+	}
+
 }

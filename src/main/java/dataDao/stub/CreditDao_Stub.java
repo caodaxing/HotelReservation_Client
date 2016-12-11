@@ -29,18 +29,11 @@ public class CreditDao_Stub implements CreditDao{
 	}
 
 	public ArrayList<CreditHistoryPO> getCreditHistory(String userID) {
-		ArrayList<CreditHistoryPO> list = new ArrayList<CreditHistoryPO>();
-		for (int i = 0; i < pos.size(); ++ i) {
-			if (pos.get(i).getUserID().equals(userID)) {
-				list.add(pos.get(i));
-			}
-		}
-		return list;
+		return pos;
 	}
 
 	public int getCredit(String userID) {
 
-		
 		if(userID == "wyy") {
 			return 1700;
 		} else if(userID == "bcy") {

@@ -8,4 +8,5 @@ public interface WebBusinessDao {
 	
 	public boolean updateWebBusinessInfo(WebBusinessPO webBusinessInfo);
 	
+	public boolean addWebBusiness(WebBusinessPO  webBusinessPO);
 }
