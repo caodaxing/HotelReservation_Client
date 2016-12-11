@@ -31,7 +31,7 @@ public class Client implements ClientService, ClientVipInfo{
 	 * @return 返回用户信息
 	 * @author Xue.W
 	 */
-	public ClientVO getClientInfo (String clientID){
+	public ClientVO getClientInfo(String clientID){
 		ClientPO po = this.clientDao.getClientInfo(clientID);
 		
 		return ClientTransform.getInstance().clientTransToVO(po);

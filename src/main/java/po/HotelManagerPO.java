@@ -16,7 +16,6 @@ public class HotelManagerPO {
 	
 	public HotelManagerPO(String hotelID, String phoneNumber, String trueName,
 			String IdentityCardID) {
-		super();
 		this.hotelID = hotelID;
 		this.phoneNumber = phoneNumber;
 		this.trueName = trueName;
