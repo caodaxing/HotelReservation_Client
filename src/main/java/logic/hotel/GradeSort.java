@@ -55,7 +55,7 @@ public class GradeSort implements HotelSort{
 			sortedHotels.add(hotelVO);
 		}
 		
-		return this.getSortedList(sortedHotels);
+		return sortedHotels;
 
 	}
 
@@ -78,6 +78,6 @@ public class GradeSort implements HotelSort{
 				hotelList.add(hotelVO);
 			}
 		}
-		return hotelList;
+		return this.getSortedList(hotelList);
 	}
 }

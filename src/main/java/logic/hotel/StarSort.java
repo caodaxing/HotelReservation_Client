@@ -56,7 +56,7 @@ public class StarSort implements HotelSort{
 		for (HotelVO hotelVO : hotelArray) {
 			sortedHotels.add(hotelVO);
 		}
-		return this.getSortedList(sortedHotels);
+		return sortedHotels;
 
 	}
 
@@ -80,6 +80,6 @@ System.out.println("logic.hotel.starSort.getSortedList参数异常");
 			}
 		}
 		
-		return hotelList;
+		return this.getSortedList(hotelList);
 	}
 }
