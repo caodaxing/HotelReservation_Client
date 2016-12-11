@@ -21,12 +21,14 @@ public class EncryptPasswordException {
 	public void test() {
 		String pass1 = "abcdef";
 		String pass2 = "abcdef";
-		System.out.println(encryption.encryptPassword(pass1));
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
+		
+		System.out.println(this.encryption.encryptPassword("wyy"));
+		System.out.println(this.encryption.encryptPassword("bcy"));
+		System.out.println(this.encryption.encryptPassword("zdy"));
 		
 		pass1 = "123QWEASDZXC";
 		pass2 = "123QWEASDZXC";
-		System.out.println(encryption.encryptPassword(pass1));
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
 	}
 

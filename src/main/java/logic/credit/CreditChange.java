@@ -23,9 +23,9 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
 	private CreditDao creditDao;
 	private UpdateClientVip updateVip;
-	private int[] low = new int[3];
-	private int[] high = new int[3]; 
-	private int[] lev = new int[3];
+	private int[] low = new int[4];
+	private int[] high = new int[4]; 
+	private int[] lev = new int[4];
 	
 	public CreditChange() {
 		this.updateVip = new Client();
@@ -42,14 +42,17 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		low[0] = 0;
 		low[1] = level1;
 		low[2] = level2;
+		low[3] = level3;
 		
 		high[0] = level1;
 		high[1] = level2;
 		high[2] = level3;
+		high[3] = 0;
 		
-		lev[0] = 1;
-		lev[1] = 2;
-		lev[2] = 3;
+		lev[0] = 0;
+		lev[1] = 1;
+		lev[2] = 2;
+		lev[3] = 3;
 	}
 	
 	public ResultMessage changeCredit(CreditChangeVO vo){
@@ -78,8 +81,15 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		int level = 0;
 		
 		for(int i=0; i< low.length; ++i) {
-			if(nowCredit >= low[i] && nowCredit <= high[i]) {
+			if(nowCredit >= low[i] && nowCredit < high[i]) {
 				level = this.lev[i];
+				break;
+			}
+			
+			if(i == low.length -1) {
+				if(nowCredit >= low[i]) {
+					level = this.lev[i];
+				}
 			}
 		}
 		

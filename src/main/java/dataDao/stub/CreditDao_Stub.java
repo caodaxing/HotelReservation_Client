@@ -2,44 +2,49 @@ package dataDao.stub;
 
 import java.util.ArrayList;
 
+import Message.CreditChangeType;
 import dataDao.credit.CreditDao;
 import po.CreditHistoryPO;
 
 public class CreditDao_Stub implements CreditDao{
 
-	private int[] vipLevelCredit = new int[3];
+	private int[] vipLevelCredit = new int[4];
+	private ArrayList<CreditHistoryPO> pos = new ArrayList<CreditHistoryPO>();
 	
-	private ArrayList<CreditHistoryPO> changeList = new ArrayList<>();
-	
+	public CreditDao_Stub() {
+		this.vipLevelCredit[0] = 0;
+		this.vipLevelCredit[1] = 1000;
+		this.vipLevelCredit[2] = 4000;
+		this.vipLevelCredit[3] = 80000;
+		
+		pos.add(new CreditHistoryPO("wyy", "2016-11-11", "20161111000031234", CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE.ordinal(), 400, 1700));
+		pos.add(new CreditHistoryPO("wyy", "2016-10-01", "20161001000051236", CreditChangeType.SET_ABNORMAL_ORDER_DECREASE.ordinal(), -400, 1300));
+		pos.add(new CreditHistoryPO("wyy", "2015-12-31", null, CreditChangeType.RECHARGE_CREDIT.ordinal(), 1000, 1700));
+		pos.add(new CreditHistoryPO("bcy", "2016-12-12", "20161212000561854", CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE.ordinal(), 400, 800));
+		pos.add(new CreditHistoryPO("zdy", "2014-01-01", "201401011003431904", CreditChangeType.UNDO_ABNORAML_ORDER_RECOVER.ordinal(), -300, -100));
+	}
+
 	public boolean changeCredit(CreditHistoryPO po) {
-//		if (po!=null) {
-//			changeList.add(po);
-//			return true;
-//		}
-//		return false;
 		return true;
 	}
 
 	public ArrayList<CreditHistoryPO> getCreditHistory(String userID) {
 		ArrayList<CreditHistoryPO> list = new ArrayList<CreditHistoryPO>();
-		for (int i = changeList.size()-1; i >=0; i++) {
-			if (changeList.get(i).getUserID().equals(userID)) {
-				list.add(changeList.get(i));
+		for (int i = 0; i < pos.size(); ++ i) {
+			if (pos.get(i).getUserID().equals(userID)) {
+				list.add(pos.get(i));
 			}
 		}
 		return list;
 	}
 
 	public int getCredit(String userID) {
-//		for (int i = changeList.size()-1 ; i>=0 ;i--) {
-//			if (changeList.get(i).getUserID().equals(userID)) {
-//				return changeList.get(i).getNowCredit();
-//			}
-//		}
-//		return 0;
+
 		
 		if(userID == "wyy") {
-			return 1000;
+			return 1700;
+		} else if(userID == "bcy") {
+			return 800;
 		}
 		 
 		return -100;
@@ -48,7 +53,6 @@ public class CreditDao_Stub implements CreditDao{
 
 	@Override
 	public boolean setVIPCredit(int level, int credit_num) {
-		this.vipLevelCredit[level] = credit_num;
 		return true;
 	}
 

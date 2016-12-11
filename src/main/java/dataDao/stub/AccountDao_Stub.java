@@ -12,9 +12,9 @@ public class AccountDao_Stub implements AccountDao{
 	private ArrayList<AccountPO> pos = new ArrayList<AccountPO>();
 
 	public AccountDao_Stub() {
-		this.pos.add(new AccountPO("wyy", "e80b5017098950fc58aad83c8c14978e", Identity.CLIENT.ordinal()));
-		this.pos.add(new AccountPO("bcy", "162befe78a0c20249a4bab30cca88515", Identity.CLIENT.ordinal()));
-		this.pos.add(new AccountPO("zdy", "e80b5017098950fc58aad83c8c14978e", Identity.CLIENT.ordinal()));
+		this.pos.add(new AccountPO("wyy", "6f6e37133b6207ef6a02aa64224a97ac", Identity.CLIENT.ordinal()));
+		this.pos.add(new AccountPO("bcy", "c7569021bccaa534144be57f83d2b914", Identity.CLIENT.ordinal()));
+		this.pos.add(new AccountPO("zdy", "6d2413e0bd56bdc227f1d7ba523631f2", Identity.CLIENT.ordinal()));
 	}
 
 	public boolean addAccount(AccountPO po) {
@@ -26,8 +26,13 @@ public class AccountDao_Stub implements AccountDao{
 	}
 
 	public AccountPO getAccountInfo(String accountID) {
-		return new AccountPO("curry", "e80b5017098950fc58aad83c8c14978e", 0);
-//		return new AccountPO("kobe", "162befe78a0c20249a4bab30cca88515", 0);
+		for(int i=0; i<pos.size(); ++i) {
+			if(pos.get(i).getAccountID().equals(accountID)) {
+				return pos.get(i);
+			}
+		}
+		
+		return null;
 	}
 
 	@Override

@@ -11,40 +11,38 @@ import po.HotelPO;
 public class HotelDao_Stub implements HotelDao {
 
 	private ArrayList<HotelPO> hotelList = new ArrayList<HotelPO>();
-	private HashMap<String, String> locationMap = new HashMap<String, String>();
+	private HashMap<String, ArrayList<String>> locationMap = new HashMap<String, ArrayList<String>>();
 
 	public HotelDao_Stub() {
-		// locationMap = new HashMap<>();
-		// locationMap.put("栖霞区", "马群");
-		// locationMap.put("栖霞区", "仙林中心");
-		// locationMap.put("栖霞区", "尧化门");
-		// locationMap.put("秦淮区", "新街口");
-		// hotelList.add(new HotelPO("123", "汉庭", "123", "123", "123", "123", 1,
-		// "", null, null, null, null));
-
-		// hotelList.add(new HotelPO("00001", "green", "鼓楼区", "南京",
-		// "仙林中心","仙林大道163", 3,
-		// "好酒店", "好设施",null, null, "南京大学"));
+		ArrayList<String> a1 = new ArrayList<String>();
+		a1.add("仙林中心");
+		a1.add("尧化门");
+		a1.add("马群");
+		a1.add("新街口");
+		a1.add("大行宫");
+		 locationMap.put("南京",a1);
+		 
+		 ArrayList<String> a2 = new ArrayList<String>();
+		 a2.add("杨舍");
+		a2.add("锦丰");
+		a2.add("港区");
+		 locationMap.put("张家港",a2);
+		
+	 
+		 hotelList.add(new HotelPO("00021", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
+				 null, null, "南京大学"));
+		 hotelList.add(new HotelPO("00023", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
+				 null, null, "新华书店"));
+		 hotelList.add(new HotelPO("04321", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
+				 null, null, "杜蕾斯"));
 	}
 
 	public boolean addHotel(HotelPO po) {
-		hotelList.add(po);
 		return true;
 	}
 
 	public boolean updateHotel(HotelPO po) {
-		if (po == null) {
-			return false;
-		}
-
-		for (HotelPO hotelPO : hotelList) {
-			if (po.getHoteID() == hotelPO.getHoteID()) {
-				hotelList.remove(hotelPO);
-				hotelList.add(po);
-				return true;
-			}
-		}
-		return false;
+		return true;
 	}
 
 	public HotelPO getHotelInfoByHotelID(String hotelID) {
@@ -57,36 +55,19 @@ public class HotelDao_Stub implements HotelDao {
 	}
 
 	public ArrayList<String> getTradingAreas(String loaction) {
-		ArrayList<String> tradingAreas = new ArrayList<>();
-
-		Iterator iterator = locationMap.entrySet().iterator();
-
-		while (iterator.hasNext()) {
-			Map.Entry entry = (Map.Entry) iterator.next();
-			String loc = (String) entry.getKey();
-			if (loc == loaction) {
-				String tradingArea = (String) entry.getValue();
-				tradingAreas.add(tradingArea);
-			}
+		if(this.locationMap.containsKey(loaction)) {
+			return this.locationMap.get(loaction);
 		}
-		return tradingAreas;
+		return null;
+
 	}
 
 	public ArrayList<HotelPO> SearchHotelList(String city, String tradingArea) {
-		ArrayList<HotelPO> hotels = new ArrayList<>();
-		
-		for (HotelPO hotelPO : hotelList) {
-			if (hotelPO.getCity() == city && hotelPO.getTradingArea() == tradingArea) {
-				hotels.add(hotelPO);
-			}
-		}
-		return hotelList;
+		return this.hotelList;
 	}
 
 	@Override
 	public boolean hotelIDExist(String hotelID) {
-		
-		
 		return false;
 	}
 
