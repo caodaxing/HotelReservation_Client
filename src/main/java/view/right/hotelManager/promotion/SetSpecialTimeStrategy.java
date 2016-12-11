@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import view.left.WebBusinessUI;
 import viewController.HMPromotionController;
@@ -142,7 +143,20 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				//传输vo
+				startDiscount.getText();
+				endDiscount.getText();
+				discountRange.getText();
+				discountName.getText();
+				//
+				startDiscount.setText("");
+				endDiscount.setText("");
+				discountRange.setText("");
+				discountName.setText("");
+				OneButtonDialog dialog = new OneButtonDialog("制定成功");
+				dialog.show();
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});
@@ -152,7 +166,12 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				startDiscount.setText("");
+				endDiscount.setText("");
+				discountRange.setText("");
+				discountName.setText("");
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});

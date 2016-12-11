@@ -81,28 +81,32 @@ public class Choose{
 		birthdayStrategy.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSetBirthdayStrategyView();
+				controller.getStage().show();
 			}
 			
 		});
 		cooperateCompanyStrategy.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSetCooperateCompanyStrategyView();
+				controller.getStage().show();
 			}
 			
 		});
 		specialTimeStrategy.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSetSpecialTimeStrategyView();
+				controller.getStage().show();
 			}
 			
 		});
 		threeRoomsStrategy.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSetThreeRoomsStrategyView();
+				controller.getStage().show();
 			}
 			
 		});

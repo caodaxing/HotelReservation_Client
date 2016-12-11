@@ -35,6 +35,7 @@ public class HotelManagerLeftController{
 		
 		accountService = new AccountService_Stub();
 		
+		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		searchOrderUI = new SearchOrder(this);
 		orderListUI = new OrderList(this);

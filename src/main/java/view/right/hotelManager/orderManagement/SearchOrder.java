@@ -10,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
+import viewController.HMHotelInfoController;
+import viewController.HMOrderManagementController;
 import viewController.HotelManagerLeftController;
 
 /**
@@ -80,7 +82,12 @@ public class SearchOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				//传输vo
+				orderID.getText();
+				//
+				orderID.setText("");
+				HMOrderManagementController hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+				hmcontroller.setExecuteOrderView();
 			}
 			
 		});
@@ -90,7 +97,8 @@ public class SearchOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				HMHotelInfoController hmcontroller = new HMHotelInfoController(controller.getStage(), controller.getUserId());
+				hmcontroller.setBlankView();
 			}
 			
 		});

@@ -7,9 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
+import viewController.HMPromotionController;
 import viewController.HotelManagerLeftController;
 
 /**
@@ -20,6 +20,7 @@ import viewController.HotelManagerLeftController;
 public class PromotionFirst {
 	
 	private HotelManagerLeftController controller;
+	private HMPromotionController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -74,7 +75,9 @@ public class PromotionFirst {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				hmcontroller = new HMPromotionController(controller.getStage(),controller.getUserId());
+				hmcontroller.setExistStrategy();
+				hmcontroller.getStage().show();
 			}
 							
 		});
@@ -84,7 +87,9 @@ public class PromotionFirst {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				hmcontroller = new HMPromotionController(controller.getStage(),controller.getUserId());
+				hmcontroller.setChooseView();
+				hmcontroller.getStage().show();
 			}
 							
 		});

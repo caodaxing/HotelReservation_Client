@@ -181,7 +181,8 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-										
+				controller.setCheckArriveInfoView();
+				controller.getStage().show();
 			}
 									
 		});
@@ -191,7 +192,8 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-										
+				controller.setCheckLeaveInfoView();
+				controller.getStage().show();
 			}
 									
 		});
@@ -201,17 +203,19 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-										
+				controller.setEvaluationInfoView();
+				controller.getStage().show();
 			}
 									
 		});
 		
 		revert.setOnAction(new EventHandler<ActionEvent>(){
-
+			
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-										
+				controller.setSearchOrderView();
+				controller.getStage().show();
 			}
 									
 		});

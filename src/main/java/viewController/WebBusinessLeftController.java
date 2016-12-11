@@ -92,12 +92,8 @@ public class WebBusinessLeftController {
 		newStage.setTitle("酒店预订系统");
 		accountController = new AccountController(newStage);
 		
-//		if(userId != null){
-			result = accountService.logout(userId);
-//		}else{
-//			System.out.println("...");
-//		}
-		
+		result = accountService.logout(userId);
+
 		if(result == ResultMessage.FAILURE){
 			showDialog("注销失败");
 			return ;

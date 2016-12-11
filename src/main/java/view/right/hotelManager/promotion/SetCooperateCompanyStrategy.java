@@ -9,10 +9,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
-import view.left.WebBusinessUI;
 import viewController.HMPromotionController;
-import viewController.WBPromotionController;
 
 /**
  * 酒店工作人员界面_促销策略_制定合作企业促销策略
@@ -130,7 +129,18 @@ public class SetCooperateCompanyStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				//传输vo
+				cooperateCompanyName.getText();
+				dicountRange.getText();
+				discountName.getText();
+				//
+				cooperateCompanyName.setText("");
+				dicountRange.setText("");
+				discountName.setText("");
+				OneButtonDialog dialog = new OneButtonDialog("制定成功");
+				dialog.show();
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});
@@ -140,7 +150,11 @@ public class SetCooperateCompanyStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				cooperateCompanyName.setText("");
+				dicountRange.setText("");
+				discountName.setText("");
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});

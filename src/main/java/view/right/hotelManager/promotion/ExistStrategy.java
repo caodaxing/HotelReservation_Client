@@ -95,7 +95,8 @@ public class ExistStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setFirstView();
+				controller.getStage().show();
 			}
 			
 		});

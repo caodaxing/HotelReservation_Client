@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
+import viewController.HMRoomInfoController;
 import viewController.HotelManagerLeftController;
 
 /**
@@ -73,7 +74,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				HMRoomInfoController hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
+				hmcontroller.setExistRoomsView();
+				hmcontroller.getStage().show();
 			}
 							
 		});
@@ -83,7 +86,9 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				HMRoomInfoController hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
+				hmcontroller.setSetAvailableRoomsView();
+				hmcontroller.getStage().show();	
 			}
 							
 		});

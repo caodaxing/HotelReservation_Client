@@ -10,7 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
+import viewController.HMHotelInfoController;
 import viewController.HotelManagerLeftController;
 
 /**
@@ -136,7 +138,20 @@ public class ModifyHotelInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				//传输vo
+				hotelStar.getText();
+				hotelLocation.getText();
+				hotelBriefing.getText();
+				hotelFacility.getText();
+				HotelImage.getText();
+				//
+				hotelStar.setText("");;
+				hotelLocation.setText("");;
+				hotelBriefing.setText("");;
+				hotelFacility.setText("");;
+				HotelImage.setText("");;
+				OneButtonDialog dialog = new OneButtonDialog("修改成功");	
+				dialog.show();
 			}
 							
 		});
@@ -146,7 +161,8 @@ public class ModifyHotelInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				HMHotelInfoController hmcontroller = new HMHotelInfoController(controller.getStage(), controller.getUserId());
+				hmcontroller.setBlankView();
 			}
 							
 		});

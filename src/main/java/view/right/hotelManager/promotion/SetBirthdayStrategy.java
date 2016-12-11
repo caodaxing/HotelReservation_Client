@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
 
@@ -116,7 +117,16 @@ public class SetBirthdayStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				//传输vo
+				discountRange.getText();
+				discountName.getText();
+				//
+				discountRange.setText("");
+				discountName.setText("");
+				OneButtonDialog dialog = new OneButtonDialog("制定成功");
+				dialog.show();
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});
@@ -126,7 +136,10 @@ public class SetBirthdayStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				discountRange.setText("");
+				discountName.setText("");
+				controller.setChooseView();
+				controller.getStage().show();
 			}
 					
 		});

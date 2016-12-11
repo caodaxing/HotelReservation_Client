@@ -9,8 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
-import viewController.HMPromotionController;
 import viewController.HMRoomInfoController;
 
 /**
@@ -129,7 +129,16 @@ public class SetAvailableRooms {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				//传输vo
+				roomType.getText();
+				roomNum.getText();
+				initialPrice.getText();
+				//
+				roomType.setText("");
+				roomNum.setText("");
+				initialPrice.setText("");
+				OneButtonDialog dialog = new OneButtonDialog("设置成功");
+				dialog.show();
 			}
 					
 		});
@@ -139,7 +148,11 @@ public class SetAvailableRooms {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				roomType.setText("");
+				roomNum.setText("");
+				initialPrice.setText("");
+				controller.setFirstView();
+				controller.getStage().show();
 			}
 					
 		});
