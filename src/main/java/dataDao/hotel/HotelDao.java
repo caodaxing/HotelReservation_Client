@@ -2,10 +2,11 @@ package dataDao.hotel;
 
 import java.util.ArrayList;
 
-import Message.RoomType;
 import po.HotelPO;
 
 public interface HotelDao {
+	
+	public boolean hotelIDExist(String hotelID);
 	
 	public boolean addHotel(HotelPO po);
 	

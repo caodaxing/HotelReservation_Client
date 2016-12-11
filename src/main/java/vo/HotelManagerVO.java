@@ -5,7 +5,6 @@ package vo;
  * @param phoneNumber   联系方式
  * @param trueName    	真实姓名
  * @param numberOfIdentityCard    身份证号
- * @param password 登录密码
  */
 public class HotelManagerVO {
 	public String hotelID;

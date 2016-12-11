@@ -83,4 +83,9 @@ public class HotelDao_Stub implements HotelDao {
 		return hotelList;
 	}
 
+	@Override
+	public boolean hotelIDExist(String hotelID) {
+		return false;
+	}
+
 }
