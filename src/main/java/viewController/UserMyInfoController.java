@@ -30,7 +30,7 @@ public class UserMyInfoController extends UserLeftController {
 		this.userID = userID;
 
 		creditChangeService = new CreditChangeService_Stub(userID);
-		clientService = new ClientService_Stub(userID);
+		clientService = new ClientService_Stub();
 		
 		blankUI = new Blank(this);
 		historyCreditUI = new HistoryCredit(this);

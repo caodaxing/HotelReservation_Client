@@ -5,11 +5,10 @@ import vo.WebBusinessVO;
 
 public class WebBusinessService_Stub implements WebBusinessService{
 
-	private String webBusinessID;
+	private String webBusinessID = "000000";
 	
-	public WebBusinessService_Stub(String webBusinessID) {
+	public WebBusinessService_Stub() {
 		super();
-		this.webBusinessID = webBusinessID;
 	}
 
 	public String getWebBusinessID() {

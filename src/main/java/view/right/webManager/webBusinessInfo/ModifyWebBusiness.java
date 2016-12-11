@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMWebBusinessInfoController;
+import vo.WebBusinessVO;
 
 /**
  * 网站管理人员界面_网站营销人员管理_修改信息
@@ -65,6 +66,11 @@ public class ModifyWebBusiness {
 		id = new TextField();
 		password = new TextField();
 		
+		WebBusinessVO vo = controller.getWebBusinessInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -72,7 +78,7 @@ public class ModifyWebBusiness {
 		
 		name.setEditable(true);
 		phone.setEditable(true);
-		id.setEditable(true);
+		id.setEditable(false);
 		password.setEditable(true);
 		
 		rightPane.getChildren().add(name);
@@ -106,14 +112,17 @@ public class ModifyWebBusiness {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.modifyWebBusinessInfo();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				setBlank();
+				controller.setCheckWebBusinessView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -133,6 +142,25 @@ public class ModifyWebBusiness {
 		
 		return scene;
 	
+	}
+	
+	public String getName(){
+		return name.getText();
+	}
+	
+	public String getPhone(){
+		return phone.getText();
+	}
+	
+	public String getPassword(){
+		return password.getText();
+	}
+	
+	public void setBlank(){
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+		password.setText("");
 	}
 	
 }

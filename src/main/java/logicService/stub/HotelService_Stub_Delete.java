@@ -136,4 +136,16 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ResultMessage hotelIDExist(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage hotelHasManager(String hotelID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

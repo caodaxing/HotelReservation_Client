@@ -1,9 +1,11 @@
 package viewController;
 
+import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import view.right.webManager.hotelManagerInfo.CheckHotelManager;
 import view.right.webManager.hotelManagerInfo.ModifyHotelManager;
+import vo.AccountVO;
 import vo.HotelManagerVO;
 
 public class WMHotelManagerInfoController extends WebManagerLeftController{
@@ -62,6 +64,13 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 			hotelID = null;
 			return;
 		}
+		//判断id是否为酒店工作人员
+		if(!accountService.userIDExists(hotelID)){
+			//若不是
+			showDialog("当前ID不是酒店工作人员");
+			hotelID = null ;
+			return;
+		}
 		
 		//若一切正常
 		stage.setScene(checkHotelManagerUI.getScene());
@@ -90,10 +99,12 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 			showDialog("信息不完整");
 			return ;
 		}
-		//HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
-		
-		ResultMessage result = webManagerService.updateHotelManagerInfo(vo);
-		if(result == ResultMessage.SUCCESS){
+		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id);
+		// 添加酒店工作人员
+		ResultMessage result0 = webManagerService.updateHotelManagerInfo(vo);
+		// 修改密码
+		ResultMessage result1 = accountService.modifyPassword(new AccountVO(hotelID, password, Identity.HOTELMANAGER));
+		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			//修改成功,清空，返回查看界面
 			showDialog("修改成功");
 			modifyHotelManagerUI.setBlank();

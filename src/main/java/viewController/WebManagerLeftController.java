@@ -1,9 +1,11 @@
 package viewController;
 
+import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.hotel.UpdateHotelService;
+import logicService.stub.AccountService_Stub;
 import logicService.stub.HotelService_Stub;
 import logicService.stub.WebManagerService_Stub;
 import logicService.user.WebManagerService;
@@ -13,6 +15,7 @@ import view.right.webManager.hotelInfo.AddHotelManager;
 import view.right.webManager.hotelManagerInfo.SearchHotelManager;
 import view.right.webManager.userInfo.SearchUser;
 import view.right.webManager.webBusinessInfo.First;
+import vo.AccountVO;
 import vo.HotelManagerVO;
 import vo.HotelVO;
 
@@ -24,7 +27,7 @@ public class WebManagerLeftController {
 	
 	protected UpdateHotelService updateHotelService ;
 	protected WebManagerService webManagerService ;
-	protected AccountService accountService ;	//用时初始化
+	protected AccountService accountService ;
 	
 	protected AddHotel addHotelUI;
 	protected AddHotelManager addHotelManagerUI;
@@ -37,6 +40,7 @@ public class WebManagerLeftController {
 	public WebManagerLeftController(){
 		updateHotelService = new HotelService_Stub();
 		webManagerService = new WebManagerService_Stub(userID);
+		accountService = new AccountService_Stub();
 		
 		addHotelUI = new AddHotel(this);
 		addHotelManagerUI = new AddHotelManager(this);
@@ -163,22 +167,24 @@ public class WebManagerLeftController {
 			return ;
 		}
 		//查看工作人员是否存在
-		if(updateHotelService.hotelHasManager(hotelID) == ResultMessage.SUCCESS){
+		if(accountService.userIDExists(hotelID)){
 			//已有工作人员
 			showDialog("该酒店已有工作人员，请勿重复添加");
 			return ;
 		}
 		//添加工作人员，清空输入框
-		//HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id,password);
-		ResultMessage result = webManagerService.addHotelManager(vo);
-		if(result == ResultMessage.SUCCESS){
+		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id);
+		
+		ResultMessage result0 = webManagerService.addHotelManager(vo);
+		ResultMessage result1 = accountService.register(new AccountVO(hotelID,password,Identity.HOTELMANAGER));
+		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			//成功，清空输入框，跳至添加酒店界面
 			showDialog("添加成功");
 			addHotelManagerUI.setBlank();
 			setAddHotelView();
 		}else{
 			//失败
-			showDialog("添加失败");
+			showDialog("添加失败,请重试");
 			return ;
 		}
 		

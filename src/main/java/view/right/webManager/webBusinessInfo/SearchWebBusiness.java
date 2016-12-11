@@ -71,8 +71,11 @@ public class SearchWebBusiness {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//跳转对应查看界面，清空搜索框
+				controller.setWebBusinessID(webBusinessID.getText());
+				webBusinessID.setText("");
+				controller.setCheckWebBusinessView();
+				controller.getStage().show();
 			}
 			
 		});

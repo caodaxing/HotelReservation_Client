@@ -30,4 +30,9 @@ public class AccountService_Stub implements AccountService{
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public boolean userIDExists(String userID) {
+		return false;
+	}
+
 }

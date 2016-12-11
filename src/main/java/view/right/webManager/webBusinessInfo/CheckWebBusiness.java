@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -11,6 +12,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMWebBusinessInfoController;
+import vo.WebBusinessVO;
 
 /**
  * 网站管理人员界面_网站营销人员管理_查看详情
@@ -18,7 +20,6 @@ import viewController.WMWebBusinessInfoController;
  *
  */
 public class CheckWebBusiness {
-
 
 	private WMWebBusinessInfoController controller ;
 	
@@ -33,7 +34,7 @@ public class CheckWebBusiness {
 	TextField name;
 	TextField phone;
 	TextField id;
-	TextField password;
+	PasswordField password;
 	
 	Button modify;
 	Button back;
@@ -64,7 +65,13 @@ public class CheckWebBusiness {
 		name = new TextField();
 		phone = new TextField();
 		id = new TextField();
-		password = new TextField();
+		password = new PasswordField();
+		
+		WebBusinessVO vo = controller.getWebBusinessInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		password.setText("123456");
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
@@ -107,14 +114,16 @@ public class CheckWebBusiness {
 		modify.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setModifyWebBusinessView();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setSearchWebBusinessView();
+				controller.getStage().show();
 			}
 			
 		});

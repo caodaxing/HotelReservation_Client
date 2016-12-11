@@ -106,14 +106,18 @@ public class AddWebBusiness {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.addWebBusiness();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//取消，跳回选择界面
+				setBlank();
+				controller.setWMWBFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -133,6 +137,29 @@ public class AddWebBusiness {
 		
 		return scene;
 	
+	}
+	
+	public String getName(){
+		return name.getText();
+	}
+	
+	public String getPhone(){
+		return phone.getText();
+	}
+	
+	public String getId(){
+		return id.getText();
+	}
+	
+	public String getPassword(){
+		return password.getText();
+	}
+	
+	public void setBlank(){
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+		password.setText("");
 	}
 	
 }

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -72,7 +73,6 @@ public class ModifyHotelManager {
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
 		id.setText(vo.numberOfIdentityCard);
-		password.setText(vo.password);
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);

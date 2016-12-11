@@ -1,5 +1,6 @@
 package viewController;
 
+import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
@@ -72,6 +73,13 @@ public class WMUserInfoController extends WebManagerLeftController{
 			showDialog("客户不存在");
 			clientID = null;
 			return;
+		}
+		//判断是否为客户
+		if(! (accountService.getIdentity(clientID) == Identity.CLIENT) ){
+			//若不是客户
+			showDialog("此ID对应用户不是客户");
+			clientID = null;
+			return ;
 		}
 		
 		stage.setScene(checkUserUI.getScene());
