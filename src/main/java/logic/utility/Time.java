@@ -44,6 +44,26 @@ public class Time {
 		}
 	}
 	
+	
+	//最晚订单执行时间为订单预计入住时间加4个小时
+	public String calculateLastestExecutedTime() {
+		Calendar c = Calendar.getInstance();
+		Date d = null;
+		
+		try {
+			d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		c.setTime(d);
+		c.add(Calendar.HOUR, 4);
+		
+		String result = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(c.getTime());
+		
+		return result;
+	}
+
 
 	public Time nextDay() {
 		Calendar c = Calendar.getInstance();
@@ -128,7 +148,6 @@ public class Time {
 		return false;
 	}
 	
-
 	public int getYear() {
 		return year;
 	}
@@ -165,5 +184,5 @@ public class Time {
 		return sec;
 	}
 
-	
+
 }

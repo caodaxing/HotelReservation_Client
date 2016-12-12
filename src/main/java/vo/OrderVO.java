@@ -7,8 +7,8 @@ import Message.OrderState;
 /**
  * @param userID 用户id
  * @param roomType 订单id
- * @param startTime  订单开始时间
- * @param endTime  结束时间
+ * @param startTime  订单开始时间(预计入住时间)
+ * @param endTime  结束时间(预计退房时间)
  * @param hotelID 酒店id
  * @param room 房间信息
  * @param orderState 状态 默认为未执行
@@ -17,9 +17,10 @@ import Message.OrderState;
  * @param beforePrice 优惠前价格
  * @param afterPrice 优惠后价格
  * @param promotions 订单时候的促销信息
- * @param executedTime 订单执行的时间 格式yyyy-MM-dd HH:mm:ss
- * @param undoAbnormalTime 订单撤销的时间 格式yyyy-MM-dd HH:mm:ss
- * @param abnormalTime 订单被置为异常的时间 格式yyyy-MM-dd HH:mm:ss
+ * @param executedTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param undoAbnormalTime 异常订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param abnormalTime 订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss	
+ * @param undoUnexecutedTime 未执行订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss
  */
 public class OrderVO {
 	
@@ -38,6 +39,7 @@ public class OrderVO {
 	public String executedTime; 
 	public String undoAbnormalTime;	
 	public String abnormalTime;	
+	public String undoUnexecutedTime;	//未执行订单被用户置为异常的时间
 	
 	/**
 	 * 生成订单调用时给view层用的构造方法
@@ -79,12 +81,13 @@ public class OrderVO {
 	 * @param executedTime
 	 * @param undoAbnormalTime
 	 * @param abnormalTime
+	 * @param undoUnexecutedTime
 	 */
 	public OrderVO(String userID,String orderId, String startTime, String endTime,String hotelID, 
 			ArrayList<RoomVO> rooms, OrderState orderState,
 			int numOfPeople, boolean hasChild, double beforePrice, 
 			double afterPrice, ArrayList<PromotionVO> promotions,String executedTime,
-			String undoAbnormalTime, String abnormalTime) {
+			String undoAbnormalTime, String abnormalTime,  String undoUnexecutedTime) {
 		
 		this.userID = userID;
 		this.orderId = orderId;
@@ -101,6 +104,7 @@ public class OrderVO {
 		this.executedTime = executedTime;
 		this.undoAbnormalTime = undoAbnormalTime;
 		this.abnormalTime = abnormalTime;
+		this.undoUnexecutedTime = undoUnexecutedTime;
 	}
 	
 }

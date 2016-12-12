@@ -19,8 +19,9 @@ import java.util.ArrayList;
  * @param promotionNum 使用的促销策略的数量
  * @param promotionIDs 该订单使用的促销策略
  * @param executedTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
- * @param undoAbnormalTime 订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param undoAbnormalTime 异常订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
  * @param abnormalTime 订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss	
+ * @param undoUnexecutedTime 未执行订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss	
  * @author Mark.W
  */
 public class OrderPO {
@@ -39,15 +40,15 @@ public class OrderPO {
 	private int promotionNum;
 	private ArrayList<String> promotionIDs;
 	private String executedTime; //订单执行的时间
-	private String undoAbnormalTime;	//订单撤销的时间
+	private String undoAbnormalTime;	//异常订单撤销的时间
 	private String abnormalTime;	//订单被置为异常的时间
-
+	private String undoUnexecutedTime;	//未执行订单被用户置为异常的时间
 
 	public OrderPO(String userID, String orderID,String hotelId, String startTime, String endTime,
 			int roomNum, ArrayList<String> roomIDs,boolean hasChild, int numberOfPeople, int state,
 			double beforePromotionPrice, double afterPromotionPrice, int promotionNum, 
-			ArrayList<String> promotionIDs,
-			String executedTime, String undoAbnormalTime, String abnormalTime) {
+			ArrayList<String> promotionIDs, String executedTime, String undoAbnormalTime, 
+			String abnormalTime, String undoUnexecutedTime) {
 		this.uesrID = userID;
 		this.orderID=orderID;
 		this.startTime=startTime;
@@ -65,6 +66,7 @@ public class OrderPO {
 		this.executedTime = executedTime;
 		this.undoAbnormalTime = undoAbnormalTime;
 		this.abnormalTime = abnormalTime;
+		this.undoUnexecutedTime = undoUnexecutedTime;
 	}
 	
 	public String getUesrID() {
@@ -212,4 +214,13 @@ public class OrderPO {
 	public void setPromotionNum(int promotionNum) {
 		this.promotionNum = promotionNum;
 	}
+
+	public String getUndoUnexecutedTime() {
+		return undoUnexecutedTime;
+	}
+
+	public void setUndoUnexecutedTime(String undoUnexecutedTime) {
+		this.undoUnexecutedTime = undoUnexecutedTime;
+	}
+
 }

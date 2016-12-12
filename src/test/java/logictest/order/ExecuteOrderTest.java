@@ -77,4 +77,14 @@ public class ExecuteOrderTest {
 		
 	}	
 	
+	@Test
+	public void testUndoUnexecutedOrder() {
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
+		
+		assertEquals(OrderState.UNDOED_UNEXECUTED.ordinal(), this.executeOrder.getPo().getState());
+		
+		assertEquals(time, this.executeOrder.getPo().getUndoUnexecutedTime().substring(0, 10));
+		
+	}
+	
 }
