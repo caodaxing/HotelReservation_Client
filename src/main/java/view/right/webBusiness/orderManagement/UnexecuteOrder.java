@@ -38,6 +38,8 @@ public class UnexecuteOrder {
 	
 	Button revert;
 	
+	TodayUnexecuteOrder tuo;
+	
 	public UnexecuteOrder(WBOrderManagementController controller){
 		
 		this.controller = controller;
@@ -66,27 +68,18 @@ public class UnexecuteOrder {
 	
 	private void setTextContent(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
+		tuo = new TodayUnexecuteOrder(controller);
+		int num = tuo.tableView.getSelectionModel().getSelectedIndex()+1;
+		System.out.print(num);
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField();
-		hotelName = new TextField();
-		roomType = new TextField();
-		estimateInTime = new TextField();
-		estimateLeaveTime = new TextField();
-		primeCost = new TextField();
-		realCost = new TextField();
-		
-		/*
-		//根据Controller设置textField文字
-		orderID.setText(infoList.get(0));
-		hotelName.setText(infoList.get(1));
-		roomType.setText(infoList.get(2));
-		arriveTime.setText(infoList.get(3));
-		leaveTime.setText(infoList.get(4));
-		primeCost.setText(infoList.get(5));
-		realCost.setText(infoList.get(6));
-		*/
+		orderID = new TextField(tuo.orderList.get(num).orderId);
+		hotelName = new TextField(tuo.orderList.get(num).hotelID);
+		roomType = new TextField(tuo.orderList.get(num).rooms.get(0).roomType.toString());
+		estimateInTime = new TextField(tuo.orderList.get(num).startTime);
+		estimateLeaveTime = new TextField(tuo.orderList.get(num).endTime);
+		primeCost = new TextField(String.valueOf(tuo.orderList.get(num).beforePrice));
+		realCost = new TextField(String.valueOf(tuo.orderList.get(num).afterPrice));
 		
 		//设置TextField不可更改
 		orderID.setEditable(false);
@@ -149,7 +142,15 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				orderID.setText("");
+				hotelName.setText("");
+				roomType.setText("");
+				estimateInTime.setText("");
+				estimateLeaveTime.setText("");
+				primeCost.setText("");
+				realCost.setText("");
+				controller.setTodayUnexecuteOrderView();
+				controller.getStage().show();
 			}
 							
 		});

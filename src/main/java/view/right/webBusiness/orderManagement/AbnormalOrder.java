@@ -9,8 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
-import viewController.WBCreditController;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
 
@@ -19,7 +19,7 @@ import viewController.WebBusinessLeftController;
  * @author XueWang
  *
  */
-public class AbnormalOrder {
+public class AbnormalOrder{
 	
 	private WBOrderManagementController controller;
 	private Scene scene;
@@ -63,7 +63,8 @@ public class AbnormalOrder {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		
+		
 		//添加文本框
 		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
@@ -151,7 +152,12 @@ public class AbnormalOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				//传输creditVO
+				//
+				OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
+				dialog.show();
+				controller.setAbnormalOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -161,7 +167,12 @@ public class AbnormalOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				//传输creditVO
+				//
+				OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
+				dialog.show();
+				controller.setAbnormalOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -171,7 +182,8 @@ public class AbnormalOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setAbnormalOrderListView();
+				controller.getStage().show();
 			}
 			
 		});

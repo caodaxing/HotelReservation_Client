@@ -136,6 +136,7 @@ public class SetVIPCredit {
 				OneButtonDialog dialog = new OneButtonDialog("设置成功");
 				dialog.show();
 				//传输vo
+				String userid = controller.getUserId();
 				updateVIP1.getText();
 				updateVIP2.getText();
 				updateVIP3.getText();
@@ -152,6 +153,9 @@ public class SetVIPCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				updateVIP1.setText("");
+				updateVIP2.setText("");
+				updateVIP3.setText("");
 				controller.setBlankView();
 				controller.getStage().show();
 			}

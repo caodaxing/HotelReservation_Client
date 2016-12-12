@@ -35,7 +35,7 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 		return stage;
 	}
 	
-	public void setAbnormalOrderView(){
+	public void setabnormalOrderView(){
 		stage.setScene(abnormalOrderUI.getScene());
 	}
 	

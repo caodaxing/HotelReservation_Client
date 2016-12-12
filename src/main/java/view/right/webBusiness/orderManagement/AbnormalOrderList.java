@@ -1,9 +1,13 @@
 package view.right.webBusiness.orderManagement;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -12,10 +16,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.ManageOrderService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
+import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
+import vo.OrderVO;
 
 /**
  * 网站营销人员界面_订单管理_异常订单列表
@@ -25,6 +33,8 @@ import viewController.WebBusinessLeftController;
 public class AbnormalOrderList {
 	
 	private WebBusinessLeftController controller;
+	private WBOrderManagementController wbcontroller;
+	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -38,16 +48,14 @@ public class AbnormalOrderList {
 	TableColumn<Person, String> lastExecuteTime;
 	TableColumn<Person, Button> operation;
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("2", "1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", "2222", button2));
+	private ObservableList<Person> data;
+	private Button button;
 	
 	public AbnormalOrderList(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
+		manageOrderService = new OrderService_Stub();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -95,15 +103,42 @@ public class AbnormalOrderList {
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
 		operation.setMinWidth(100);
 		
+		initialData();
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, userId, lastExecuteTime, operation);
 		
-		//
+		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
+	}
+	
+	public void initialData(){
+		data = FXCollections.observableArrayList();
+		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
+		for(int i=0;i<orderList.size();i++){
+			button = new Button("查看");
+			button.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent event) {
+					wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
+					wbcontroller.setabnormalOrderView();
+					wbcontroller.getStage().show();
+				}
+				
+			});
+			
+			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, button));
+		}
+		
+	}
+	
+	public ObservableList<Person> getData(){
+		return data;
 	}
 	
 	/**
