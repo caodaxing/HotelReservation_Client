@@ -10,61 +10,37 @@ import vo.HotelManagerVO;
 
 public class HotelManager implements HotelManagerService{
 
-	private String hotelManagerID;
-	private HotelManagerPO hotelManagerPO;
 	private HotelManagerDao hotelManagerDao; 
 	private HotelManagerTransform hotelManagerTrans;
 	
-	public HotelManager(String hotelManagerID) {
-		this.hotelManagerID = hotelManagerID;
+	public HotelManager() {
 		this.hotelManagerTrans = HotelManagerTransform.getInstance();
 		
 		this.hotelManagerDao = new HotelManagerDao_Stub();
-		this.initHotelManagerPO();
-	}
-
-	private void initHotelManagerPO() {
-		this.hotelManagerPO = this.hotelManagerDao.getHotelManagerInfo(hotelManagerID);
 	}
 
 	@Override
 	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
-		if(hotelManagerPO != null) {
-			return this.hotelManagerTrans.hotelManagerTransToVO(hotelManagerPO);
-		}
-		
 		HotelManagerPO po = hotelManagerDao.getHotelManagerInfo(hotelManager_ID);
-		this.hotelManagerPO = po;
+		
 		return this.hotelManagerTrans.hotelManagerTransToVO(po);
 	}
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO vo){
 		HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(vo);
+		
 		if(hotelManagerDao.updateHotelManagerInfo(po)) {
-			this.hotelManagerPO = po;			//更新成员变量中的po
 			return ResultMessage.SUCCESS;
 		}
 		
 		return ResultMessage.FAILURE;
 	}
-	
-	public String getHotelManagerID() {
-		return hotelManagerID;
-	}
-
-	public void setHotelManagerID(String hotelManagerID) {
-		this.hotelManagerID = hotelManagerID;
-	}
-	
-	public HotelManagerPO getHotelManagerPO() {
-		return hotelManagerPO;
-	}
-
-	public void setHotelManagerPO(HotelManagerPO hotelManagerPO) {
-		this.hotelManagerPO = hotelManagerPO;
-	}
 
 	public boolean addHotelManager(HotelManagerPO po) {
+		if(po == null) {
+			return false;
+		}
+		
 		return this.hotelManagerDao.addHotelManager(po);
 	}
 

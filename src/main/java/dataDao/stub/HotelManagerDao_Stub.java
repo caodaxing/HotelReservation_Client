@@ -10,13 +10,13 @@ public class HotelManagerDao_Stub implements HotelManagerDao {
 	private ArrayList<HotelManagerPO> pos = new ArrayList<HotelManagerPO>();
 	 
 	public HotelManagerDao_Stub() {
-		this.pos.add(new HotelManagerPO("rujia", "如家酒店", "12345678910", "3203222"));
-		this.pos.add(new HotelManagerPO("qitian", "七天酒店", "10987654321", "3203221"));
+		this.pos.add(new HotelManagerPO("00001", "1111111111", "abc", "3203222"));
+		this.pos.add(new HotelManagerPO("00002", "2222222222", "def", "3203221"));
 	}
 
 	@Override
 	public HotelManagerPO getHotelManagerInfo(String hotelManagerID) {
-		if(hotelManagerID == "rujia") {
+		if(hotelManagerID == "00001") {
 			return pos.get(0);
 		}
 		

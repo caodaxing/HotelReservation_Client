@@ -18,7 +18,6 @@ public class TimeTest {
 	
 	@Test
 	public void testGetCurrentTime() {
-		assertEquals("2016-12-09", Time.getCurrentTime().substring(0, 10));
 		
 		assertEquals("2016-11-11 00:00:00", time.getTime());
 	}

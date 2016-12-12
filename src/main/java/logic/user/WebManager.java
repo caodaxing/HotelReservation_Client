@@ -18,47 +18,36 @@ import vo.WebBusinessVO;
  */
 public class WebManager implements WebManagerService {
 	
-	private String webManagerID;
 	private HotelManager hotelManager;
 	private WebBusiness webBusiness;
 	private HotelManagerTransform hotelManagerTrans;
 	private WebBusinessTransform webBusinessTrans;
 	
-	public WebManager(String userID){
-		this.webManagerID = userID;
+	public WebManager(){
+		
+		this.hotelManager = new HotelManager();
+		this.webBusiness = new WebBusiness();
+		
 		this.hotelManagerTrans = HotelManagerTransform.getInstance();
 		this.webBusinessTrans = WebBusinessTransform.getInstance();
 	}
 	
 	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
-		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManager_ID)) {
-			hotelManager = new HotelManager(hotelManager_ID);
-		}
 		
 		return hotelManager.getHotelManagerInfo(hotelManager_ID);
 	}
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo){
 		
-		if(hotelManager == null || !hotelManager.getHotelManagerID().equals(hotelManagerInfo.hotelID)) {
-			hotelManager = new HotelManager(hotelManagerInfo.hotelID);
-		}
-		
 		return hotelManager.updateHotelManagerInfo(hotelManagerInfo);
 	}
 	
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID){
-		if(this.webBusiness == null || !this.webBusiness.getWebBusinessID().equals(webBusiness_ID)){
-			this.webBusiness = new WebBusiness(webBusiness_ID);
-		}
 		
 		return this.webBusiness.getWebBusinessInfo(webBusiness_ID);
 	}
 	
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
-		if(this.webBusiness == null || !this.webBusiness.getWebBusinessID().equals(webBusinessInfo.userID)){
-			this.webBusiness = new WebBusiness(webBusinessInfo.userID);
-		}
 		
 		return this.webBusiness.updateWebBusinessInfo(webBusinessInfo);
 	}
@@ -96,13 +85,5 @@ public class WebManager implements WebManagerService {
 		}
 		return ResultMessage.FAILURE;
 	}
-	
-	public String getWebManagerID() {
-		return webManagerID;
-	}
 
-	public void setWebManagerID(String webManagerID) {
-		this.webManagerID = webManagerID;
-	}
-	
 }

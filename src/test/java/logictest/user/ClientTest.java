@@ -2,6 +2,10 @@ package logictest.user;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,19 +49,24 @@ public class ClientTest {
 	public void testGetVipInfo1() {
 		assertEquals(client.isVIP("wyy"), true);
 		
-		assertEquals(client.getVipInfo("wyy").info, "南京大学");
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+		String t =format.format(new Date());
+		
+		assertEquals(t, client.getVipInfo("wyy").info);
 	}
 	
 	@Test
 	public void testGetVipInfo2() {
-		assertEquals(false, client.isVIP("bcy"));
+		assertEquals(false, client.isVIP("zdy"));
 		
-		assertEquals(null, client.getVipInfo("bcy"));
+		assertEquals(null, client.getVipInfo("zdy"));
 	}
 	
 	@Test
 	public void testRegisterVIP() {
-		assertEquals(client.registerVIP(new VipVO("bcy", VipType.BIRTHDAY_VIP, 0, "20160101")), ResultMessage.SUCCESS);
+		assertEquals(ResultMessage.FAILURE, client.registerVIP(new VipVO("bcy", VipType.BIRTHDAY_VIP, 0, "20160101")));
+		
+		assertEquals(ResultMessage.SUCCESS, client.registerVIP(new VipVO("zdy", VipType.BIRTHDAY_VIP, 0, "20160101")));
 	}
 
 }

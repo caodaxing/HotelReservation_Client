@@ -16,20 +16,18 @@ public class WebBusinessTest {
 	
 	@Before
 	public void setUp() {
-		webBusiness = new WebBusiness("mdzz");
+		webBusiness = new WebBusiness();
 	}
 	
 	@Test
 	public void testGetWebBusinessInfo() {
-		assertEquals(this.webBusiness.getWebBusinessInfo(this.webBusiness.getWebBusinessID()).numberOfIdentityCard,
-				"11");
+		assertEquals("11", this.webBusiness.getWebBusinessInfo("mdzz").numberOfIdentityCard);
 	}
 	
 	@Test
 	public void testUpdateWebBusinessInfo() {
 		WebBusinessVO vo = new WebBusinessVO("mdzz", "王雪", "1333", "22");
 		assertEquals(this.webBusiness.updateWebBusinessInfo(vo), ResultMessage.SUCCESS);
-		assertEquals(this.webBusiness.getWebBusinessPO().getNumberOfIdentityCard(), "22");
 	}
 
 }

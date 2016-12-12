@@ -55,7 +55,7 @@ public class CreateOrderTest {
 	//替换MockCalculatePromotion和MockCreditInfo之后
 		@Test
 		public void testCreateOrder3() {
-			assertEquals(false, this.createOrder.judgeCreditCanCreateOrder("bcy"));
+			assertEquals(false, this.createOrder.judgeCreditCanCreateOrder("zdy"));
 			
 			assertEquals(true, this.createOrder.judgeCreditCanCreateOrder("wyy"));
 		}

@@ -31,6 +31,7 @@ public class Room implements RoomService , RoomInfo{
 	 * @author bcy
 	 */
 	public ArrayList<RoomVO> getRoomList(String hotelId){
+		
 		ArrayList<RoomPO> roomPOList = roomDao.getHotelRooms(hotelId);
 		ArrayList<RoomVO> roomList = new ArrayList<>();
 		
@@ -47,7 +48,9 @@ public class Room implements RoomService , RoomInfo{
 	 * @author bcy
 	 */
 	public RoomVO getRoomInfo(String hotelId, String roomId){
-		return RoomTransform.roomTransToVO(roomDao.getRoomInfo(hotelId, roomId));
+		RoomPO po = roomDao.getRoomInfo(hotelId, roomId);
+		
+		return RoomTransform.roomTransToVO(po);
 	}
 	
 	/**

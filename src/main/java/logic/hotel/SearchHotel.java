@@ -105,7 +105,7 @@ public class SearchHotel implements SearchHotelService {
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
 		
 		if (search == null || search.city == null || search.city == "" || search.starLow > search.starHigh
-				|| search.commentLow > search.commentHigh || search.priceLow > search.priceHigh) {
+				|| search.commentLow > search.commentHigh || search.roomPriceLow > search.roomPriceHigh) {
 System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
@@ -129,7 +129,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
 		}
 		
-		if (search.priceLow != -1) {
+		if (search.roomPriceLow != -1) {
 			this.hotelSort = new PriceSort();
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
 		}

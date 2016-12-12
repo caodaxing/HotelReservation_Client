@@ -16,7 +16,7 @@ public class WebManagerTest {
 	
 	@Before
 	public void setUp() {
-		this.webManager = new WebManager("zz");
+		this.webManager = new WebManager();
 	}
 	
 	@Test

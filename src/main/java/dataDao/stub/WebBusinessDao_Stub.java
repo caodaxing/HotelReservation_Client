@@ -8,7 +8,7 @@ public class WebBusinessDao_Stub implements WebBusinessDao {
 	@Override
 	public WebBusinessPO getWebBusinessInfo(String webBusinessID) {
 		if(webBusinessID == "mdzz")
-			return new WebBusinessPO("mdzz", "王雪", "123456", "11");
+			return new WebBusinessPO("mdzzz", "王雪", "123456", "11");
 		else 
 			return null;
 	}

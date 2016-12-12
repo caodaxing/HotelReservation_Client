@@ -2,7 +2,6 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.HotelSearchCondition;
 import logic.room.RoomInfo;
 import logic.room.Room;
 import vo.HotelVO;
@@ -77,6 +76,7 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 			return null;
 		}
+		
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
 		// 获取酒店的最低价格的列表
 		ArrayList<LowestPrice> lowPriceList = new ArrayList<>();
@@ -100,6 +100,7 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 		return this.getSortedList(sortedHotels);
 	}
 
+	
 	// 获取酒店最低价的类
 	private class LowestPrice {
 		private double LowestPrice;
@@ -107,6 +108,7 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 
 		public LowestPrice(HotelVO hotelVO) {
 			this.hotelVO = hotelVO;
+			
 			RoomInfo roomInfo = new Room();
 			ArrayList<RoomVO> roomList = roomInfo.getRoomList(hotelVO.hoteID);
 			LowestPrice = roomList.get(0).price;

@@ -21,6 +21,7 @@ public class CreditTest {
 	}
 	
 	@Test
+	
 	public void testGetCredit2() {
 		assertEquals(800, credit.getCredit("bcy"));
 	}
