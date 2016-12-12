@@ -71,10 +71,20 @@ public class ExecuteOrderTest {
 	public void testUndoAbnormalOrder2() {
 		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoAbnormalOrder("20160101000240001", true));
 		
-		assertEquals(OrderState.UNDOED.ordinal(), this.executeOrder.getPo().getState());
+		assertEquals(OrderState.UNDOED_ABNORMAL.ordinal(), this.executeOrder.getPo().getState());
 		
 		assertEquals(time, this.executeOrder.getPo().getUndoAbnormalTime().substring(0, 10));
 		
 	}	
+	
+	@Test
+	public void testUndoUnexecutedOrder() {
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
+		
+		assertEquals(OrderState.UNDOED_UNEXECUTED.ordinal(), this.executeOrder.getPo().getState());
+		
+		assertEquals(time, this.executeOrder.getPo().getUndoUnexecutedTime().substring(0, 10));
+		
+	}
 	
 }

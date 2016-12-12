@@ -1,9 +1,6 @@
 package logic.credit;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import Message.CreditChangeType;
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
 import dataDao.stub.CreditDao_Stub;

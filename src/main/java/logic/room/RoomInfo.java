@@ -2,6 +2,7 @@ package logic.room;
 
 import java.util.ArrayList;
 
+import Message.RoomType;
 import vo.RoomVO;
 
 /**
@@ -13,5 +14,7 @@ public interface RoomInfo {
 	public RoomVO getRoomInfo(String hotel_id,String room_id);
 	
 	public ArrayList<RoomVO> getRoomList(String hotelID);
+	
+	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String t);
 	
 }

@@ -52,6 +52,11 @@ public class Account implements AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage login(AccountVO accountVO) {
+		
+		if(this.accountDao.hasLogin(accountVO.userId)) {
+			return ResultMessage.USER_HAS_LOGIN;
+		}
+		
 		if(accountVO == null || accountVO.userId == null ||
 				accountVO.identity == null || accountVO.password == null) {
 			return ResultMessage.FAILURE;
@@ -66,9 +71,12 @@ public class Account implements AccountService{
 		if(!po.getPassword().equals(accountVO.password)) {
 			return ResultMessage.UNMATCHED_PASSWORD;
 		} else {
-			return ResultMessage.SUCCESS;
+			if(this.accountDao.setLogin(accountVO.userId)) {
+				return ResultMessage.SUCCESS;
+			}
 		}
 		
+		return ResultMessage.FAILURE;
 	}
 	
 	
@@ -78,8 +86,12 @@ public class Account implements AccountService{
 	 * @return RusultMessage 返回登出的结果（成功/失败）
 	 * @author bcy
 	 */ 
-	public ResultMessage logout(String userID) {	
-		return ResultMessage.SUCCESS;
+	public ResultMessage logout(String userID) {
+		if(this.accountDao.setLogout(userID)) {
+			return ResultMessage.SUCCESS;
+		}
+		
+		return ResultMessage.FAILURE;
 	}
 	
 	/**

@@ -8,7 +8,10 @@ import dataDao.stub.HotelDao_Stub;
 import factories.HotelSortFactory;
 import logic.order.Order;
 import logic.order.OrderHotelInfo;
+import logic.room.Room;
+import logic.room.RoomInfo;
 import logic.utility.HotelTransform;
+import logic.utility.Time;
 import logicService.hotel.SearchHotelService;
 import po.HotelPO;
 import vo.HotelSearchVO;
@@ -104,41 +107,96 @@ public class SearchHotel implements SearchHotelService {
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
 		
-		if (search == null || search.city == null || search.city == "" || search.starLow > search.starHigh
+		if (search == null || search.city == null || search.city == "" || search.tradingArea == null 
+				|| search.tradingArea == ""||search.starLow > search.starHigh
 				|| search.commentLow > search.commentHigh || search.roomPriceLow > search.roomPriceHigh) {
 System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-		ArrayList<HotelVO> hotelList = getInitialHotelList(search.city, search.tradingArea);
-		
-		if (hotelList == null) {
+
+		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
+		if (initList == null || initList.size() == 0) {
 			return null;
 		}
-		
+	
+		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();
+		//酒店名称的筛选
 		if (search.hotelName != null && search.hotelName != "") {
-			for (HotelVO hotelVO : hotelList) {
-				if (hotelVO.hotelName != search.hotelName) {
-					hotelList.remove(hotelVO);
+			for (int i=0; i<initList.size(); ++i) {
+				HotelVO hotelVO = initList.get(i); 
+				if (hotelVO.hotelName == search.hotelName) {
+					hotelList.add(hotelVO);
+				}
+			}
+		} else {
+			hotelList = initList;
+		}
+		
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
+		}
+
+		if(search.startTime != null && search.startTime != "" 
+				&& search.endTime != null && search.endTime!= "") {
+			
+			//筛选指定房间类型和指定时间的空房
+			RoomInfo roomInfo = new Room();
+			int num = 0;
+			
+			for(int i=0; i<hotelList.size(); ++i) {
+				HotelVO vo  = hotelList.get(i);
+				boolean noEmptyRoom = false;
+				Time t1 = new Time(search.startTime);
+				Time t2 = new Time(search.endTime);
+				
+				while(!t1.getTime().equals(t2.getTime())) {
+					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
+					if(num <= 0) {
+						noEmptyRoom = true;
+						break;
+					}
+					
+					t1 = t1.nextDay();
+				}
+				
+				if(noEmptyRoom) {
+					hotelList.remove(vo);
 				}
 			}
 		}
 		
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
+		}
+		
+		
 		if (search.starLow >= 0 && search.starLow <= 5 && search.starHigh >= 0 && search.starHigh <= 5) {
 			this.hotelSort = new StarSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
+			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starHigh, hotelList);
+		}
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
 		}
 		
 		if (search.roomPriceLow != -1) {
 			this.hotelSort = new PriceSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
+			hotelList = this.hotelSort.getSpecificSectionHotelList(search.roomPriceLow, search.roomPriceHigh, hotelList);
+		}
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
 		}
 		
-		if (search.commentLow >= 0 && search.commentLow < 5 || search.commentHigh > 0 && search.commentHigh <= 5) {
+		
+		if (search.commentLow >= 0 && search.commentLow <= 5 || search.commentHigh > 0 && search.commentHigh <= 5) {
 			this.hotelSort = new GradeSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
+			hotelList = this.hotelSort.getSpecificSectionHotelList(search.commentLow, search.commentHigh, hotelList);
+		}
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
 		}
 		
+
 		return hotelList;
 	}
 

@@ -87,8 +87,8 @@ public class SearchUser {
 		//添加组件
 		rightPane.getChildren().add(inquiry);
 		
-		AnchorPane.setLeftAnchor(inquiry, 175.0);
-		AnchorPane.setTopAnchor(inquiry, 330.0);
+		AnchorPane.setLeftAnchor(inquiry, 350.0);
+		AnchorPane.setTopAnchor(inquiry, 250.0);
 		
 	}
 	
@@ -96,7 +96,7 @@ public class SearchUser {
 		
 		//添加文本框
 		userID = new TextField();
-		userID.setPrefSize(250, 30);
+		userID.setPrefSize(200, 30);
 				
 		//设置文本框位置
 		userID.setLayoutX(375);
@@ -106,7 +106,7 @@ public class SearchUser {
 				
 		rightPane.getChildren().add(userID);
 				
-		AnchorPane.setLeftAnchor(userID, 175.0);
+		AnchorPane.setLeftAnchor(userID, 100.0);
 		AnchorPane.setTopAnchor(userID, 250.0);
 		
 	}

@@ -3,7 +3,6 @@ package logic.mockObject;
 import java.util.ArrayList;
 
 import logic.order.OrderHotelInfo;
-import po.OrderPO;
 import vo.EvaluationVO;
 import vo.OrderVO;
 
@@ -13,7 +12,7 @@ public class MockOrderHotelInfo implements OrderHotelInfo {
 	ArrayList<EvaluationVO> evaluationVOs = new ArrayList<>();
 	
 	public MockOrderHotelInfo() {
-		orders.add(new OrderVO("bcy", "1234", null, null, "123", null, null, 2, false, 200, 150, null, null, null, null));
+		orders.add(new OrderVO("bcy", "1234", null, null, "123", null, null, 2, false, 200, 150, null, null, null, null, null));
 		evaluationVOs.add(new EvaluationVO("1234", 5, "棒极了"));
 	}
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId){

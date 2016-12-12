@@ -9,7 +9,7 @@ import vo.RoomVO;
 
 /**
  * 按价格排序
- * 
+ * 默认是价格从低到高
  * @author all
  *
  */
@@ -32,9 +32,13 @@ public class PriceSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null) {
+		if (hotels == null || hotels.size() == 0) {
 System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 			return null;
+		}
+		
+		if(hotels.size() == 1) {
+			return hotels;
 		}
 		
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
@@ -77,26 +81,30 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 			return null;
 		}
 		
-		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
+		ArrayList<HotelVO> sortedHotels = new ArrayList<HotelVO>();
 		// 获取酒店的最低价格的列表
-		ArrayList<LowestPrice> lowPriceList = new ArrayList<>();
+		ArrayList<LowestPrice> lowPriceInitList = new ArrayList<LowestPrice>();
 		
-		for (HotelVO hotelVO : hotels) {
-			lowPriceList.add(new LowestPrice(hotelVO));
+		for (int i=0; i<hotels.size(); ++i) {
+			HotelVO hotelVO = hotels.get(i);
+			lowPriceInitList.add(new LowestPrice(hotelVO));
 		}
 
 		// 获取符合排序条件的酒店列表
-		ArrayList<LowestPrice> hotelList = new ArrayList<>();
-		for (LowestPrice lowestPrice : hotelList) {
-			if (lowestPrice.getLowestPrice() >= startPrice || lowestPrice.getLowestPrice() <= endPrice) {
+		ArrayList<LowestPrice> hotelList = new ArrayList<LowestPrice>();
+		for (int i=0; i<lowPriceInitList.size(); ++i) {
+			LowestPrice lowestPrice = lowPriceInitList.get(i);
+			if (lowestPrice.getLowestPrice() >= startPrice && lowestPrice.getLowestPrice() <= endPrice) {
 				hotelList.add(lowestPrice);
 			}
 		}
+		
 
-		for (LowestPrice lowestPrice : hotelList) {
+		for (int i=0; i<hotelList.size(); ++i) {
+			LowestPrice lowestPrice = hotelList.get(i);
 			sortedHotels.add(lowestPrice.getHotelVO());
 		}
-		
+
 		return this.getSortedList(sortedHotels);
 	}
 
@@ -111,10 +119,14 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 			
 			RoomInfo roomInfo = new Room();
 			ArrayList<RoomVO> roomList = roomInfo.getRoomList(hotelVO.hoteID);
-			LowestPrice = roomList.get(0).price;
-			for (RoomVO roomVO : roomList) {
-				if (roomVO.price < LowestPrice) {
-					LowestPrice = roomVO.price;
+			if(roomList == null || roomList.size() == 0) {
+				LowestPrice = 0;
+			} else {
+				LowestPrice = roomList.get(0).price;
+				for (RoomVO roomVO : roomList) {
+					if (roomVO.price < LowestPrice) {
+						LowestPrice = roomVO.price;
+					}
 				}
 			}
 		}

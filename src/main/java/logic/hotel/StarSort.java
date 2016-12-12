@@ -2,12 +2,11 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.HotelSearchCondition;
 import vo.HotelVO;
 
 /**
  * 按星级排序
- * 
+ * 默认是星级从高到低
  * @author all
  *
  */
@@ -30,9 +29,13 @@ public class StarSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null) {
+		if (hotels == null || hotels.size() == 0) {
 			System.out.println("logic.hotel.starSort.getSortedList参数异常");
 			return null;
+		}
+		
+		if(hotels.size() == 1) {
+			return hotels;
 		}
 		
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
@@ -67,15 +70,17 @@ public class StarSort implements HotelSort{
 	 * @return ArrayList<HotelVO> 返回按星级排序好的酒店名称列表
 	 * @author all
 	 */
-	public ArrayList<HotelVO> getSpecificSectionHotelList(double starStar, double endStar, ArrayList<HotelVO> hotels) {
-		if (hotels == null || starStar > endStar ) {
+	public ArrayList<HotelVO> getSpecificSectionHotelList(double startStar, double endStar, ArrayList<HotelVO> hotels) {
+		if (hotels == null || startStar > endStar ) {
 System.out.println("logic.hotel.starSort.getSortedList参数异常");
 			return null;
 		}
+		
 		// 获取符合排序条件的酒店列表
-		ArrayList<HotelVO> hotelList = new ArrayList<>();
-		for (HotelVO hotelVO : hotelList) {
-			if (hotelVO.levelOfHotel >= starStar && hotelVO.levelOfHotel <= endStar) {
+		ArrayList<HotelVO> hotelList = new ArrayList<HotelVO>();
+		for (int i=0; i<hotels.size(); ++i) { 
+			HotelVO hotelVO = hotels.get(i);
+			if ((double)hotelVO.levelOfHotel >= startStar && (double)hotelVO.levelOfHotel <= endStar) {
 				hotelList.add(hotelVO);
 			}
 		}

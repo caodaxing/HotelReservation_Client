@@ -34,7 +34,7 @@ public class OrderTransformTest {
 		
 		OrderPO po1 = new OrderPO("wyy", "20161212000041122", "green", "2016-09-09 12:00:00", 
 				"2016-09-10 12:00:00", 1, roomIDs1, false, 2, 0, 400, 320, 1, promotionIDs1, 
-				null, null, null);
+				null, null, null, null);
 		
 		ArrayList<String> roomIDs2 = new ArrayList<String>();
 		roomIDs2.add("1223");
@@ -44,7 +44,7 @@ public class OrderTransformTest {
 		
 		OrderPO po2 = new OrderPO("wyy", "20161214000041122", "green", "2016-12-13 12:00:00", 
 				"2016-12-14 12:00:00", 1, roomIDs2, false, 2, 0, 300, 240, 1, promotionIDs2, 
-				null, null, null);
+				null, null, null, null);
 		
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
 		pos.add(po1);
@@ -67,7 +67,7 @@ public class OrderTransformTest {
 		
 		OrderPO po = new OrderPO("wyy", "20161212000041122", "green", "2016-09-09 12:00:00", 
 				"2016-09-10 12:00:00", 1, roomIDs, false, 2, 0, 400, 320, 1, promotionIDs, 
-				null, null, null);
+				null, null, null, null);
 		
 		OrderVO vo = this.orderTransform.orderTransToVO(po);
 		
@@ -78,13 +78,13 @@ public class OrderTransformTest {
 	@Test
 	public void testOrderTransToPO() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("green", "1109", RoomType.STANDARD_ROOM, 400, false, null));
+		rooms.add(new RoomVO("green", "1109", RoomType.STANDARD_ROOM, 400));
 		
 		ArrayList<PromotionVO> promotions = new ArrayList<PromotionVO>();
 		promotions.add(new PromotionVO("ppp", " 全网折扣", 0.8, "2016-01-01 12:00:00", "2016-12-12 12:00:00"));
 		
 		OrderVO vo = new OrderVO("wyy", "20161212000041122", "2016-09-10 12:00:00", "2016-10-10 12:00:00",
-				"green", rooms, OrderState.UNEXECUTED, 2, false, 400, 320, promotions, null, null, null);
+				"green", rooms, OrderState.UNEXECUTED, 2, false, 400, 320, promotions, null, null, null, null);
 		
 		OrderPO po = this.orderTransform.orderTransToPO(vo);
 		

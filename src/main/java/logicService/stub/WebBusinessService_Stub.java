@@ -21,7 +21,7 @@ public class WebBusinessService_Stub implements WebBusinessService{
 
 	@Override
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID) {
-		return null;
+		return new WebBusinessVO("1234","wx","aaa","bbb");
 	}
 
 }

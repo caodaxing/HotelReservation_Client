@@ -38,6 +38,21 @@ public class AccountDao_Stub implements AccountDao{
 	@Override
 	public boolean userIDExists(String userID) {
 		return false;
+	}
+
+	@Override
+	public boolean hasLogin(String userID) {
+		return false;
+	}
+
+	@Override
+	public boolean setLogout(String userID) {
+		return  true;
+	}
+
+	@Override
+	public boolean setLogin(String userID) {
+		return true;
 	}	
 
 }

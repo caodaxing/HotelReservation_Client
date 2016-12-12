@@ -1,16 +1,14 @@
 package logic.utility;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
+
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 

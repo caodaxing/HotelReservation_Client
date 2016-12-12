@@ -1,5 +1,9 @@
 package logic.order;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Message.CreditChangeType;
 import Message.OrderState;
 import Message.ResultMessage;
@@ -19,11 +23,12 @@ import vo.CreditChangeVO;
  */
 public class ExecuteOrder implements ExecuteOrderService{
 	
+	private long sixHours = 6 * 60 * 60 * 1000;
 	private OrderDao orderDao;
 	private CreditChangeInfo creditChangeInfo;
-	private OrderList orderList;  //每次执行订单必须获得订单列表，
-								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
-	
+//	private OrderList orderList;  //每次执行订单必须获得订单列表，
+//								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
+//	
 	private OrderPO po;
 	
 	public ExecuteOrder() {
@@ -108,7 +113,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 				
 				String undoAbnormalTime = Time.getCurrentTime();
 				
-				po.setState(OrderState.UNDOED.ordinal());
+				po.setState(OrderState.UNDOED_ABNORMAL.ordinal());
 				po.setUndoAbnormalTime(undoAbnormalTime);
 				
 				if(this.orderDao.updateOrder(po)) {
@@ -140,7 +145,73 @@ public class ExecuteOrder implements ExecuteOrderService{
 		return ResultMessage.FAILURE;
 	}
 		
+	@Override
+	public ResultMessage undoUnexecutedOrder(String orderID) {
+		po = this.orderDao.getOrderByOrderID(orderID);
+		
+		if(po != null && po.getState() == OrderState.UNEXECUTED.ordinal()) {
+			String time = Time.getCurrentTime();
+			po.setState(OrderState.UNDOED_UNEXECUTED.ordinal());
+			po.setUndoUnexecutedTime(time);;
+System.out.println("a");
+			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
+System.out.println("b");
+				if(this.orderDao.updateOrder(po)) {
+					//更新信用记录和信用值
+					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
+							po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
+					
+					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+						return ResultMessage.SUCCESS;
+					} else {
+						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+						po.setState(OrderState.UNEXECUTED.ordinal());
+						po.setUndoUnexecutedTime(null);;
+						this.orderDao.updateOrder(po);
+					}
+				}
+			} else {
+System.out.println("c");
+				if(this.orderDao.updateOrder(po)) {
+					return ResultMessage.SUCCESS;
+				}
+			}
+ 		}
+		
+		return ResultMessage.FAILURE;
+	}
+
 	
+	private boolean lessThanSixHourLastestExecutedTime(String time, String orderStartTime) {
+		
+		if(time == null || orderStartTime == null) {
+System.out.println("logic.order.ExecuteOrder.afterLastestExecutedTime参数错误");
+			return false;
+		}
+		
+		long l1 = 0, l2 =0;
+		
+		try {
+			String lastestExecutedTime = new Time(orderStartTime).calculateLastestExecutedTime();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			Date d1 = format.parse(time);
+			Date d2 = format.parse(lastestExecutedTime);
+			
+			l1 = d1.getTime();
+			l2 = d2.getTime();
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		if(l2 - l1 <  this.sixHours) {
+			return true;
+		}
+		
+		return false;
+	}
+
 	public OrderPO getPo() {
 		return po;
 	}
@@ -148,7 +219,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	public void setPo(OrderPO po) {
 		this.po = po;
 	}
-	
+
 	
 //	public ResultMessage autoSetAbnormal(String orderID) {
 //		po = this.orderDao.getOrderByOrderID(orderID);

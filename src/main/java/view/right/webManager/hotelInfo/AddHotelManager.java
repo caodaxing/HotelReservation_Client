@@ -137,10 +137,10 @@ public class AddHotelManager {
 		rightPane.getChildren().add(cancel);
 		
 		AnchorPane.setLeftAnchor(confirm, 150.0);
-		AnchorPane.setTopAnchor(confirm, 475.0);
+		AnchorPane.setTopAnchor(confirm, 525.0);
 		
 		AnchorPane.setLeftAnchor(cancel, 350.0);
-		AnchorPane.setTopAnchor(cancel, 475.0);
+		AnchorPane.setTopAnchor(cancel, 525.0);
 		
 	}
 	
