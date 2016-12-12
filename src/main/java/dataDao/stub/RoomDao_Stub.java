@@ -20,8 +20,9 @@ public class RoomDao_Stub implements RoomDao {
 		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n11, null));
 		
 		HashMap<String, String> n12 = new HashMap<String, String>();
-		n12.put("2016-12-20 12:00:00", "2016-12-22 12:00:00");
-		this.pos1.add(new RoomPO("00001", "1009", RoomType.SINGLE_ROOM.ordinal(), 250, n12, null));
+		n12.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
+		this.pos1.add(new RoomPO("00001", "1009", RoomType.STANDARD_ROOM.ordinal(), 250, n12, null));
+		
 		this.pos1.add(new RoomPO("00001", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
 		
 		
@@ -34,14 +35,20 @@ public class RoomDao_Stub implements RoomDao {
 		this.pos2.add(new RoomPO("00002", "1009", RoomType.SINGLE_ROOM.ordinal(), 200, n22, null));
 		
 		this.pos2.add(new RoomPO("00002", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
+
 		
 		HashMap<String, String> n31 = new HashMap<String, String>();
-		n31.put("2017-01-05 12:00:00", "2017-01-06 12:00:00");
+		n31.put("2017-01-07 12:00:00", "2017-01-08 12:00:00");
 		this.pos3.add(new RoomPO("00003", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n31, null));
+		
 		HashMap<String, String> n32 = new HashMap<String, String>();
 		n32.put("2017-01-07 12:00:00", "2017-01-08 12:00:00");
+		n32.put("2017-01-02 12:00:00", "2017-01-03 12:00:00");
 		this.pos3.add(new RoomPO("00003", "1009", RoomType.SINGLE_ROOM.ordinal(), 400, n32, null));
-		this.pos3.add(new RoomPO("00003", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
+		
+		HashMap<String, String> n33 = new HashMap<String, String>();
+		n33.put("2017-01-07 12:00:00", "2017-01-08 12:00:00");
+		this.pos3.add(new RoomPO("00003", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, n33, null));
 	}
 
 	public RoomPO getRoomInfo(String hotelId, String roomId) {

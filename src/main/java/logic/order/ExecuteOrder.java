@@ -108,7 +108,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 				
 				String undoAbnormalTime = Time.getCurrentTime();
 				
-				po.setState(OrderState.UNDOED.ordinal());
+				po.setState(OrderState.UNDOED_ABNORMAL.ordinal());
 				po.setUndoAbnormalTime(undoAbnormalTime);
 				
 				if(this.orderDao.updateOrder(po)) {
@@ -140,6 +140,17 @@ public class ExecuteOrder implements ExecuteOrderService{
 		return ResultMessage.FAILURE;
 	}
 		
+	@Override
+	public ResultMessage undoUnexecutedOrder(String orderID) {
+		po = this.orderDao.getOrderByOrderID(orderID);
+		
+		if(po != null && po.getState() == OrderState.UNEXECUTED.ordinal()) {
+			String time = Time.getCurrentTime();
+			
+		}
+		return null;
+	}
+
 	
 	public OrderPO getPo() {
 		return po;
@@ -148,7 +159,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	public void setPo(OrderPO po) {
 		this.po = po;
 	}
-	
+
 	
 //	public ResultMessage autoSetAbnormal(String orderID) {
 //		po = this.orderDao.getOrderByOrderID(orderID);

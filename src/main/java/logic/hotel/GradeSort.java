@@ -29,10 +29,15 @@ public class GradeSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null ) {
+		if (hotels == null || hotels.size() == 0) {
 			System.out.println("logic.hotel.GradeSort.getSortedList参数异常");
 			return null;
 		}
+		
+		if(hotels.size() == 1) {
+			return hotels;
+		}
+		
 		ArrayList<HotelVO> sortedHotels = new ArrayList<>();
 		// 对符合排序条件的酒店进行排序
 		HotelVO[] hotelArray = new HotelVO[hotels.size()];
@@ -70,13 +75,16 @@ public class GradeSort implements HotelSort{
 		if (hotels == null || startGrade > endGrade) {
 			return null;
 		}
+		
 		// 获取符合条件的酒店列表
-		ArrayList<HotelVO> hotelList = new ArrayList<>();
-		for (HotelVO hotelVO : hotelList) {
+		ArrayList<HotelVO> hotelList = new ArrayList<HotelVO>();
+		for (int i=0; i<hotels.size(); ++i) {
+			HotelVO hotelVO = hotels.get(i);
 			if (hotelVO.evaluationGrades >= startGrade && hotelVO.evaluationGrades <= endGrade) {
 				hotelList.add(hotelVO);
 			}
 		}
+		
 		return this.getSortedList(hotelList);
 	}
 }

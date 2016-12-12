@@ -23,7 +23,7 @@ public class UndoedFilter implements OrderListFilter{
 		
 		for(int i=0; i<orders.size(); ++i) {
 			po = orders.get(i);
-			if(po.getState() == OrderState.UNDOED.ordinal()) {
+			if(po.getState() == OrderState.UNDOED_ABNORMAL.ordinal()) {
 				res.add(po);
 			}
 		}

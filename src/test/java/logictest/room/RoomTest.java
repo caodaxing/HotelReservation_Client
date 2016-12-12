@@ -44,11 +44,19 @@ public class RoomTest {
 	}
 	
 	@Test
-	public void testGetRemainingRoomNums(){
-//		assertEquals(2, this.room.getRemainingRoomNums("00002", RoomType.STANDARD_ROOM));
-		fail("Not yet implemented");
+	public void testGetSpcificTimeRemainingRoomNums1(){
+		assertEquals(1, this.room.getSpcificTimeRemainingRoomNums("00001", RoomType.STANDARD_ROOM, "2016-12-25 12:00:00"));
 	}
 	
+	@Test
+	public void testGetSpcificTimeRemainingRoomNums2(){
+		assertEquals(3, this.room.getSpcificTimeRemainingRoomNums("00001", RoomType.STANDARD_ROOM, "2016-12-26 12:00:00"));
+	}
+	
+	@Test
+	public void testGetSpcificTimeRemainingRoomNums3(){
+		assertEquals(0, this.room.getSpcificTimeRemainingRoomNums("00002", RoomType.SINGLE_ROOM, "2017-01-03 12:00:00"));
+	}
 	
 	
 }

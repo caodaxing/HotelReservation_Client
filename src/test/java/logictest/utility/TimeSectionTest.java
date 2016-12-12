@@ -36,5 +36,10 @@ public class TimeSectionTest {
 		assertEquals(true, this.section.includeTime("2016-11-01 12:00:00"));
 	}
 
+	@Test
+	public void testIncludeTime5() {
+		assertEquals(false, this.section.includeTime("2016-11-08 12:00:00"));
+	}
+
 
 }

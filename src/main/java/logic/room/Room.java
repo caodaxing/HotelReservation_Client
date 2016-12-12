@@ -110,6 +110,10 @@ public class Room implements RoomService , RoomInfo{
 		ArrayList<RoomPO> roomList = roomDao.getHotelRooms(hotelId);
 		int remainingRoomNums = 0;
 		
+		if(roomType == null) {
+			roomType = RoomType.STANDARD_ROOM;
+		}
+		
 		for (RoomPO roomPO : roomList) {
 			if (roomPO.getRoomType() == roomType.ordinal()) {
 				

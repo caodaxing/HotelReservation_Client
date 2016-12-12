@@ -55,7 +55,7 @@ public class OrderListTest {
 		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.UNDOED);
 		
 		assertEquals(vos.size(), 1);
-		assertEquals(vos.get(0).orderState, OrderState.UNDOED);
+		assertEquals(vos.get(0).orderState, OrderState.UNDOED_ABNORMAL);
 		assertEquals(vos.get(0).orderId, "20160808000060634");
 	}
 	
@@ -103,7 +103,7 @@ public class OrderListTest {
 		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.UNDOED);
 		
 		assertEquals(vos.size(), 1);
-		assertEquals(vos.get(0).orderState, OrderState.UNDOED);
+		assertEquals(vos.get(0).orderState, OrderState.UNDOED_ABNORMAL);
 		assertEquals(vos.get(0).orderId, "20160808000060634");
 	}
 	

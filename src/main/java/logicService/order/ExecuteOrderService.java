@@ -31,4 +31,7 @@ public interface ExecuteOrderService {
 	 * @return
 	 */
 	
+	//用户撤销未执行订单
+	public ResultMessage undoUnexecutedOrder(String orderID);
+	
 }
