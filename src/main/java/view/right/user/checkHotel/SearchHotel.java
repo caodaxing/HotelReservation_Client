@@ -41,8 +41,8 @@ public class SearchHotel {
 
 	ChoiceBox roomType ;
 	
-	CheckBox haveRoom ;
-	CheckBox haveReserved ;
+	TextField startTime ;
+	TextField endTime ;
 	
 	TextField priceLeft ;
 	TextField evaluationLeft ;
@@ -221,22 +221,23 @@ public class SearchHotel {
 		
 	}
 	
+	//修改为textfiled
 	private void setCheckBox(){
 		
-		haveRoom = new CheckBox();
-		haveReserved = new CheckBox();
+		startTime = new TextField();
+		endTime = new TextField();
 		
-		haveRoom.setPrefSize(30, 30);
-		haveReserved.setPrefSize(30, 30);
+		startTime.setPrefSize(75, 30);
+		endTime.setPrefSize(75, 30);
 		
-		rightPane.getChildren().add(haveRoom);
-		rightPane.getChildren().add(haveReserved);
+		rightPane.getChildren().add(startTime);
+		rightPane.getChildren().add(endTime);
 		
-		AnchorPane.setLeftAnchor(haveRoom, 200.0);
-		AnchorPane.setTopAnchor(haveRoom, 350.0);
+		AnchorPane.setLeftAnchor(startTime, 200.0);
+		AnchorPane.setTopAnchor(startTime, 350.0);
 		
-		AnchorPane.setLeftAnchor(haveReserved, 350.0);
-		AnchorPane.setTopAnchor(haveReserved, 350.0);
+		AnchorPane.setLeftAnchor(endTime, 350.0);
+		AnchorPane.setTopAnchor(endTime, 350.0);
 		
 	}
 	

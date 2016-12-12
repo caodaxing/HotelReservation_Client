@@ -134,5 +134,11 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	public boolean judgeCreditCanCreateOrder(String user_id) {
 		return false;
 	}
+
+	@Override
+	public ResultMessage undoUnexecutedOrder(String orderID) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
+	}
 	
 }

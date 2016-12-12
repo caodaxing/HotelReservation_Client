@@ -85,8 +85,8 @@ public class SearchHotelManager {
 		//添加组件
 		rightPane.getChildren().add(inquiry);
 		
-		AnchorPane.setLeftAnchor(inquiry, 175.0);
-		AnchorPane.setTopAnchor(inquiry, 330.0);
+		AnchorPane.setLeftAnchor(inquiry, 350.0);
+		AnchorPane.setTopAnchor(inquiry, 250.0);
 		
 	}
 	
@@ -94,7 +94,7 @@ public class SearchHotelManager {
 		
 		//添加文本框
 		hotelManagerID = new TextField();
-		hotelManagerID.setPrefSize(250, 30);
+		hotelManagerID.setPrefSize(200, 30);
 				
 		//设置文本框位置
 		hotelManagerID.setLayoutX(375);
@@ -104,7 +104,7 @@ public class SearchHotelManager {
 				
 		rightPane.getChildren().add(hotelManagerID);
 				
-		AnchorPane.setLeftAnchor(hotelManagerID, 175.0);
+		AnchorPane.setLeftAnchor(hotelManagerID, 100.0);
 		AnchorPane.setTopAnchor(hotelManagerID, 250.0);
 		
 	}

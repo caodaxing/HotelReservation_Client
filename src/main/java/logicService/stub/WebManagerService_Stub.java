@@ -25,7 +25,7 @@ public class WebManagerService_Stub implements WebManagerService {
 
 	@Override
 	public ResultMessage addHotel(HotelVO hotelVO) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -35,17 +35,17 @@ public class WebManagerService_Stub implements WebManagerService {
 
 	@Override
 	public ResultMessage addHotelManager(HotelManagerVO hotelManager) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class WebManagerService_Stub implements WebManagerService {
 
 	@Override
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 

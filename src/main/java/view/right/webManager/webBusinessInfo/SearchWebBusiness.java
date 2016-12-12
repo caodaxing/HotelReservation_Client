@@ -83,8 +83,8 @@ public class SearchWebBusiness {
 		//添加组件
 		rightPane.getChildren().add(inquiry);
 		
-		AnchorPane.setLeftAnchor(inquiry, 175.0);
-		AnchorPane.setTopAnchor(inquiry, 330.0);
+		AnchorPane.setLeftAnchor(inquiry, 350.0);
+		AnchorPane.setTopAnchor(inquiry, 250.0);
 		
 	}
 	
@@ -92,7 +92,7 @@ public class SearchWebBusiness {
 		
 		//添加文本框
 		webBusinessID = new TextField();
-		webBusinessID.setPrefSize(250, 30);
+		webBusinessID.setPrefSize(200, 30);
 				
 		//设置文本框位置
 		webBusinessID.setLayoutX(375);
@@ -102,7 +102,7 @@ public class SearchWebBusiness {
 				
 		rightPane.getChildren().add(webBusinessID);
 				
-		AnchorPane.setLeftAnchor(webBusinessID, 175.0);
+		AnchorPane.setLeftAnchor(webBusinessID, 100.0);
 		AnchorPane.setTopAnchor(webBusinessID, 250.0);
 		
 	}

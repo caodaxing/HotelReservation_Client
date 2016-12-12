@@ -42,8 +42,8 @@ public class SearchHotel {
 
 	ChoiceBox roomType ;
 	
-	CheckBox haveRoom ;
-	//游客不能选择预定过
+	TextField startTime ;
+	TextField endTime;
 	
 	TextField priceLeft ;
 	TextField evaluationLeft ;
@@ -207,13 +207,20 @@ public class SearchHotel {
 	
 	private void setCheckBox(){
 		
-		haveRoom = new CheckBox();
-		haveRoom.setPrefSize(30, 30);
+		startTime = new TextField();
+		endTime = new TextField();
 		
-		rightPane.getChildren().add(haveRoom);
+		startTime.setPrefSize(75, 30);
+		endTime.setPrefSize(75,30);
 		
-		AnchorPane.setLeftAnchor(haveRoom, 200.0);
-		AnchorPane.setTopAnchor(haveRoom, 350.0);
+		rightPane.getChildren().add(startTime);
+		rightPane.getChildren().add(endTime);
+		
+		AnchorPane.setLeftAnchor(startTime, 200.0);
+		AnchorPane.setTopAnchor(startTime, 350.0);
+		
+		AnchorPane.setLeftAnchor(endTime, 350.0);
+		AnchorPane.setTopAnchor(endTime, 350.0);
 		
 	}
 	
@@ -250,6 +257,7 @@ public class SearchHotel {
 			break;
 		}
 		DecimalFormat df=new DecimalFormat("#.00");
+		
 		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
 		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
 		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));

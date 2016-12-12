@@ -22,7 +22,7 @@ public class HotelManagerService_Stub implements HotelManagerService {
 
 	@Override
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID) {
-		return null;
+		return new HotelManagerVO("12345","如家","2201","23");
 	}
 
 }
