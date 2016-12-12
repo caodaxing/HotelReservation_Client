@@ -32,7 +32,6 @@ public class RoomDao_Stub implements RoomDao {
 		} else if(hotelId == "00002" && roomId == "1009") {
 			return pos1.get(1);
 		}
-		
 		return pos1.get(2);
 	}
 

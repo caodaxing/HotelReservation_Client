@@ -3,9 +3,9 @@ package logic.utility;
 import java.util.ArrayList;
 
 import Message.OrderState;
-import logic.mockObject.MockRoomInfo;
 import logic.promotion.ManagePromotion;
 import logic.promotion.PromotionInfo;
+import logic.room.Room;
 import logic.room.RoomInfo;
 import po.OrderPO;
 import vo.OrderVO;
@@ -18,7 +18,7 @@ public class OrderTransform {
 	private PromotionInfo promotionInfo;
 	
 	public OrderTransform() {
-		this.roomInfo = new MockRoomInfo();
+		this.roomInfo = new Room();
 		
 		this.promotionInfo = new ManagePromotion();
 	}

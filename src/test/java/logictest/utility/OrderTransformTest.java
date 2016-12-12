@@ -54,7 +54,7 @@ public class OrderTransformTest {
 		
 		assertEquals(vos.get(0).promotions.get(0).promotionID, "ppp");
 		
-		assertEquals(vos.get(1).rooms.get(0).hotelId, "green");
+		assertEquals("00001", vos.get(1).rooms.get(0).hotelId);
 	}
 	
 	@Test
