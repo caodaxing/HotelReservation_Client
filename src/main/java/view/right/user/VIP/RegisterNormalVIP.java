@@ -126,11 +126,7 @@ public class RegisterNormalVIP {
 	}
 	
 	public String getBirthday(){
-		String str = "" ;
-		str+=birthday.getValue().getYear();
-		str+=birthday.getValue().getMonthValue();
-		str+=birthday.getValue().getDayOfMonth();
-		return str;
+		return birthday.getValue().toString();
 	}
 	
 }

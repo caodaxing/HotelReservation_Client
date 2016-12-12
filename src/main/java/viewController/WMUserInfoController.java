@@ -83,12 +83,14 @@ public class WMUserInfoController extends WebManagerLeftController{
 		}
 		
 		stage.setScene(checkUserUI.getScene());
+		checkUserUI.setText();
 		
 	}
 	
 	public void setModifyUserUI(){
 		
 		stage.setScene(modifyUserUI.getScene());
+		modifyUserUI.setText();
 	
 	}
 	

@@ -67,12 +67,6 @@ public class CheckWebBusiness {
 		id = new TextField();
 		password = new PasswordField();
 		
-		WebBusinessVO vo = controller.getWebBusinessInfo();
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.numberOfIdentityCard);
-		password.setText("123456");
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -145,4 +139,11 @@ public class CheckWebBusiness {
 	
 	}
 	
+	public void setText(){
+		WebBusinessVO vo = controller.getWebBusinessInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		password.setText("123456");
+	}
 }

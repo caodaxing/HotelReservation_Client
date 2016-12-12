@@ -1,6 +1,7 @@
 package view.right.vistor;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 
 import Message.RoomType;
 import javafx.collections.FXCollections;
@@ -8,8 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -42,8 +43,8 @@ public class SearchHotel {
 
 	ChoiceBox roomType ;
 	
-	TextField startTime ;
-	TextField endTime;
+	DatePicker startTime ;
+	DatePicker endTime;
 	
 	TextField priceLeft ;
 	TextField evaluationLeft ;
@@ -78,7 +79,7 @@ public class SearchHotel {
 		setChoiceBox();
 		
 		//设置CheckBox
-		setCheckBox();
+		setDatePicker();
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
@@ -193,7 +194,6 @@ public class SearchHotel {
 	
 	private void setChoiceBox(){
 		
-		//待修改，根据controller
 		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
 		
 		roomType.setPrefSize(200, 30);
@@ -205,10 +205,13 @@ public class SearchHotel {
 		
 	}
 	
-	private void setCheckBox(){
+	private void setDatePicker(){
 		
-		startTime = new TextField();
-		endTime = new TextField();
+		startTime = new DatePicker();
+		endTime = new DatePicker();
+		
+		startTime.setValue(LocalDate.now());
+		endTime.setValue(LocalDate.now());
 		
 		startTime.setPrefSize(75, 30);
 		endTime.setPrefSize(75,30);
@@ -256,15 +259,21 @@ public class SearchHotel {
 		default:
 			break;
 		}
+		
 		DecimalFormat df=new DecimalFormat("#.00");
 		
+		if(startTime.getValue().isAfter(endTime.getValue())){
+			controller.showDialog("入住时间不应晚于退房时间");
+		}
+		String start = startTime.getValue().toString();
+		String end = endTime.getValue().toString();
 		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
 		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
 		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));
 		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
 		int starLow = Integer.valueOf(starLeft.getText());
 		int starHigh = Integer.valueOf(starRight.getText());
-		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 	}
 

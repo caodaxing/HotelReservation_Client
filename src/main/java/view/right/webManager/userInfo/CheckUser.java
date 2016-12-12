@@ -66,13 +66,6 @@ public class CheckUser {
 		id = new TextField();
 		credit = new TextField();
 		
-		//根据controller内容修改
-		ClientVO vo = controller.getClientInfo();
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.identityID);
-		credit.setText(Integer.toString(vo.credit) );
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -147,4 +140,12 @@ public class CheckUser {
 	
 	}
 	
+	public void setText(){
+		//根据controller内容修改
+		ClientVO vo = controller.getClientInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		credit.setText(Integer.toString(vo.credit) );
+	}
 }

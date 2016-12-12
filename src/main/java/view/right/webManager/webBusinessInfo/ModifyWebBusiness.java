@@ -66,11 +66,6 @@ public class ModifyWebBusiness {
 		id = new TextField();
 		password = new TextField();
 		
-		WebBusinessVO vo = controller.getWebBusinessInfo();
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.numberOfIdentityCard);
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -163,4 +158,11 @@ public class ModifyWebBusiness {
 		password.setText("");
 	}
 	
+	public void setText(){
+		
+		WebBusinessVO vo = controller.getWebBusinessInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+	}
 }

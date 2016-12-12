@@ -70,9 +70,9 @@ public class WebManagerLeftController {
 	public void setAddHotelManagerView(){
 		stage.setScene(addHotelManagerUI.getScene());
 	}
-	//设置hotel对应的添加酒店工作人员界面
+	//设置酒店工作人员界面
 	public void setAddHotelManagerView(String hotelID){
-		AddHotelManager addHotelManagerUI = new AddHotelManager(this,hotelID);
+		AddHotelManager addHotelManagerUI = new AddHotelManager(this);
 		stage.setScene(addHotelManagerUI.getScene());
 	}
 	

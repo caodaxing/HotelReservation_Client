@@ -67,13 +67,6 @@ public class ModifyUser {
 		id = new TextField();
 		head = new TextField();
 		
-		//根据controller显示
-		ClientVO vo = controller.getClientInfo();
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.identityID);
-		head.setText(vo.headImagePath);
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -166,5 +159,12 @@ public class ModifyUser {
 		id.setText("");
 	}
 	
-	
+	public void setText(){
+		//根据controller显示
+		ClientVO vo = controller.getClientInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		head.setText(vo.headImagePath);
+	}
 }

@@ -79,12 +79,13 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 		}
 		
 		stage.setScene(checkWebBusinessUI.getScene());
-		
+		checkWebBusinessUI.setText();
 	}
 	
 	public void setModifyWebBusinessView(){
 		
 		stage.setScene(modifyWebBusinessUI.getScene());
+		modifyWebBusinessUI.setText();
 		
 	}
 	

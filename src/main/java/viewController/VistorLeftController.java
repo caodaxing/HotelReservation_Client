@@ -1,6 +1,7 @@
 package viewController;
 
 import javafx.stage.Stage;
+import view.helpTools.OneButtonDialog;
 
 public class VistorLeftController {
 	
@@ -30,6 +31,11 @@ public class VistorLeftController {
 		accountController = new AccountController(newStage);
 		accountController.setSignUpView();
 		newStage.show();
+	}
+	
+	public void showDialog(String str){
+		OneButtonDialog dialog = new OneButtonDialog(str);
+		dialog.show();
 	}
 	
 }

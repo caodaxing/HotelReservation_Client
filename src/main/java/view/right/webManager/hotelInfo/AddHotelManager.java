@@ -58,11 +58,6 @@ public class AddHotelManager {
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 	
 	}
-	//addhotel后跳入对应酒店添加工作人员的界面
-	public AddHotelManager(WebManagerLeftController controller, String ID){
-		this(controller);
-		hotelID.setText(ID);
-	}
 	
 	private void setTextField (){
 		

@@ -74,12 +74,14 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 		
 		//若一切正常
 		stage.setScene(checkHotelManagerUI.getScene());
+		checkHotelManagerUI.setText();
 		
 	}
 	
 	public void setModifyHotelManagerView(){
 		
 		stage.setScene(modifyHotelManagerUI.getScene());
+		modifyHotelManagerUI.setText();
 		
 	}
 	

@@ -67,13 +67,6 @@ public class CheckHotelManager {
 		id = new TextField();
 		password = new PasswordField();
 		
-		//根据controller内容修改
-		HotelManagerVO vo = controller.getHotelMangerInfo();
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.numberOfIdentityCard);
-		password.setText("123456");
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -146,6 +139,17 @@ public class CheckHotelManager {
 		
 		return scene;
 	
+	}
+	
+	public void setText(){
+		
+		//根据controller内容修改
+		HotelManagerVO vo = controller.getHotelMangerInfo();
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.numberOfIdentityCard);
+		password.setText("123456");
+		
 	}
 	
 }
