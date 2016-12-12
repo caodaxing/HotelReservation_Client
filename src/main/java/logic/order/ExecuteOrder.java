@@ -21,9 +21,9 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	private OrderDao orderDao;
 	private CreditChangeInfo creditChangeInfo;
-	private OrderList orderList;  //每次执行订单必须获得订单列表，
-								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
-	
+//	private OrderList orderList;  //每次执行订单必须获得订单列表，
+//								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
+//	
 	private OrderPO po;
 	
 	public ExecuteOrder() {

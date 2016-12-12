@@ -3,7 +3,6 @@ package logic.mockObject;
 import java.util.ArrayList;
 
 import logic.order.OrderHotelInfo;
-import po.OrderPO;
 import vo.EvaluationVO;
 import vo.OrderVO;
 

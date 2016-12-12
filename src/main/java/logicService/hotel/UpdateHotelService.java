@@ -2,7 +2,6 @@ package logicService.hotel;
 
 import Message.ResultMessage;
 import vo.HotelVO;
-import vo.RoomVO;
 
 /**
  * 更新酒店信息和酒店房间信息的接口, 

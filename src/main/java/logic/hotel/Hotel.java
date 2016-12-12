@@ -2,7 +2,6 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.ResultMessage;
 import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;

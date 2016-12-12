@@ -1,6 +1,7 @@
 package dataDao.stub;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Message.RoomType;
 import dataDao.room.RoomDao;
@@ -13,17 +14,34 @@ public class RoomDao_Stub implements RoomDao {
 	ArrayList<RoomPO> pos3 = new ArrayList<RoomPO>();
 	
 	public RoomDao_Stub() {
-		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, true, null));
-		this.pos1.add(new RoomPO("00001", "1009", RoomType.SINGLE_ROOM.ordinal(), 250, false, null));
-		this.pos1.add(new RoomPO("00001", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, true, null));
+		HashMap<String, String> n11 = new HashMap<String, String>();
+		n11.put("2016-12-15 12:00:00", "2016-12-16 12:00:00");
+		n11.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
+		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n11, null));
 		
-		this.pos2.add(new RoomPO("00002", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, true, null));
-		this.pos2.add(new RoomPO("00002", "1009", RoomType.SINGLE_ROOM.ordinal(), 200, false, null));
-		this.pos2.add(new RoomPO("00002", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, true, null));
+		HashMap<String, String> n12 = new HashMap<String, String>();
+		n12.put("2016-12-20 12:00:00", "2016-12-22 12:00:00");
+		this.pos1.add(new RoomPO("00001", "1009", RoomType.SINGLE_ROOM.ordinal(), 250, n12, null));
+		this.pos1.add(new RoomPO("00001", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
 		
-		this.pos3.add(new RoomPO("00003", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, true, null));
-		this.pos3.add(new RoomPO("00003", "1009", RoomType.SINGLE_ROOM.ordinal(), 400, false, null));
-		this.pos3.add(new RoomPO("00003", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, true, null));
+		
+		HashMap<String, String> n21 = new HashMap<String, String>();
+		n21.put("2017-01-01 12:00:00", "2017-01-02 12:00:00");
+		this.pos2.add(new RoomPO("00002", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n21, null));
+		
+		HashMap<String, String> n22 = new HashMap<String, String>();
+		n22.put("2017-01-03 12:00:00", "2017-01-04 12:00:00");
+		this.pos2.add(new RoomPO("00002", "1009", RoomType.SINGLE_ROOM.ordinal(), 200, n22, null));
+		
+		this.pos2.add(new RoomPO("00002", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
+		
+		HashMap<String, String> n31 = new HashMap<String, String>();
+		n31.put("2017-01-05 12:00:00", "2017-01-06 12:00:00");
+		this.pos3.add(new RoomPO("00003", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n31, null));
+		HashMap<String, String> n32 = new HashMap<String, String>();
+		n32.put("2017-01-07 12:00:00", "2017-01-08 12:00:00");
+		this.pos3.add(new RoomPO("00003", "1009", RoomType.SINGLE_ROOM.ordinal(), 400, n32, null));
+		this.pos3.add(new RoomPO("00003", "1203", RoomType.STANDARD_ROOM.ordinal(), 1200, null, null));
 	}
 
 	public RoomPO getRoomInfo(String hotelId, String roomId) {

@@ -44,4 +44,11 @@ public class TimeTest {
 		assertEquals(false, time.after(new Time("2017-11-10")));
 	}
 
+	@Test
+	public void testNextDay() {
+		assertEquals("2016-11-11 12:00:00", new Time("2016-11-10 12:00:00").nextDay().getTime());
+		
+		assertEquals("2016-11-01 12:00:00", new Time("2016-10-31 12:00:00").nextDay().getTime());
+	}
+
 }

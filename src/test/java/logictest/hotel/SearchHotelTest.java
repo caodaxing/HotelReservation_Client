@@ -1,6 +1,7 @@
 package logictest.hotel;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
@@ -125,5 +126,6 @@ public class SearchHotelTest {
 //		
 //		assertEquals(1, this.searchHotel.search(vo).size());
 //		assertEquals("00002", this.searchHotel.search(vo).get(0).hoteID);
+		fail("Not yet implemented");
 	}
 }

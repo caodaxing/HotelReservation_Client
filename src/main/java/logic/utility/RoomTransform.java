@@ -18,7 +18,7 @@ public class RoomTransform {
 			return null;
 		}
 		return new RoomVO(po.getHotelId(), po.getRoomId(), RoomType.values()[po.getRoomType()],
-				po.getPrice(), po.isEmpty(), po.getPictures());
+				po.getPrice(), po.getNotEmptyTime(), po.getPictures());
 	}
 	
 	//将RoomVO转化为PO
@@ -27,6 +27,6 @@ public class RoomTransform {
 			return null;
 		}
 		
-		return new RoomPO(vo.hotelId, vo.roomId, vo.roomType.ordinal(), vo.price, vo.isEmpty, vo.pictures);
+		return new RoomPO(vo.hotelId, vo.roomId, vo.roomType.ordinal(), vo.price,vo.notEmptyTime, vo.pictures);
 	}
 }

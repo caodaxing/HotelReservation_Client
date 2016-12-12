@@ -9,7 +9,7 @@ import vo.RoomVO;
 
 /**
  * 按价格排序
- * 
+ * 默认是价格从低到高
  * @author all
  *
  */

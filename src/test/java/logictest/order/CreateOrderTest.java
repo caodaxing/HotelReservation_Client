@@ -42,7 +42,7 @@ public class CreateOrderTest {
 	@Test
 	public void testCreateOrder2() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400, false, null));
+		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
 		OrderVO vo = new OrderVO("wyy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
 		
 		OrderVO order = this.createOrder.createOrder(vo);

@@ -78,7 +78,7 @@ public class OrderTransformTest {
 	@Test
 	public void testOrderTransToPO() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("green", "1109", RoomType.STANDARD_ROOM, 400, false, null));
+		rooms.add(new RoomVO("green", "1109", RoomType.STANDARD_ROOM, 400));
 		
 		ArrayList<PromotionVO> promotions = new ArrayList<PromotionVO>();
 		promotions.add(new PromotionVO("ppp", " 全网折扣", 0.8, "2016-01-01 12:00:00", "2016-12-12 12:00:00"));

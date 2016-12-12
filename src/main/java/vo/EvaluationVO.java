@@ -1,7 +1,5 @@
 package vo;
 
-import Message.RoomType;
-
 /**
  * @param orderID 订单id
  * @param commentLevel 评分 （保留一位小数）

@@ -2,12 +2,11 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import Message.HotelSearchCondition;
 import vo.HotelVO;
 
 /**
  * 按评分排序
- * 
+ * 默认评分从高到底
  * @author all
  *
  */

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import Message.PromotionType;
 import dataDao.promotion.PromotionDao;
 import po.PromotionPO;
-import vo.PromotionVO;
 
 public class PromotionDao_Stub implements PromotionDao {
 

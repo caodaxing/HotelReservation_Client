@@ -1,12 +1,18 @@
 package logic.room;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
 
 import Message.ResultMessage;
 import Message.RoomType;
 import dataDao.room.RoomDao;
 import dataDao.stub.RoomDao_Stub;
 import logic.utility.RoomTransform;
+import logic.utility.TimeSection;
 import logicService.room.RoomService;
 import po.RoomPO;
 import vo.RoomVO;
@@ -93,12 +99,44 @@ public class Room implements RoomService , RoomInfo{
 
 	@Override
 	public int getRemainingRoomNums(String hotelId, RoomType roomType) {
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+		String t =format.format(new Date()) + " 12:00:00";
+		
+		return this.getSpcificTimeRemainingRoomNums(hotelId, roomType, t);
+	}
+	
+	
+	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String t) {
 		ArrayList<RoomPO> roomList = roomDao.getHotelRooms(hotelId);
 		int remainingRoomNums = 0;
 		
 		for (RoomPO roomPO : roomList) {
-			if (roomPO.getRoomType() == roomType.ordinal() && roomPO.isEmpty()) {
-				remainingRoomNums ++;
+			if (roomPO.getRoomType() == roomType.ordinal()) {
+				
+				ArrayList<TimeSection> sections = new ArrayList<TimeSection>();
+				
+				if(roomPO.getNotEmptyTime() != null) {
+					Iterator it = roomPO.getNotEmptyTime().entrySet().iterator();
+					while(it.hasNext()) {
+						Map.Entry<String, String> entry = (Map.Entry<String, String>)(it.next());
+						sections.add(new TimeSection((String)entry.getKey(), (String)entry.getValue()));
+					}
+					
+					boolean isEmpty = true;
+					for(TimeSection sec : sections) {
+						if(sec.includeTime(t)) {
+							isEmpty = false;
+							break;
+						}
+					}
+					
+					if(isEmpty) {
+						remainingRoomNums ++;
+					}
+					
+				} else {
+					remainingRoomNums ++;
+				}
 			}
 		}
 		
