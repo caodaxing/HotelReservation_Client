@@ -50,7 +50,7 @@ public class Order implements OrderService, OrderHotelInfo{
 		
 		if(evaluation != null) {
 			EvaluationPO po = this.evaluationTrans.evalutionTransToPO(evaluation);
-			if(this.orderDao.addEvalution(po)) {
+			if(this.orderDao.addEvaluation(po)) {
 				return ResultMessage.SUCCESS;
 			}
 		}

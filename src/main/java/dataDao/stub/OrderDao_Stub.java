@@ -47,7 +47,7 @@ public class OrderDao_Stub implements OrderDao {
 	}
 
 	@Override
-	public boolean addEvalution(EvaluationPO po) {
+	public boolean addEvaluation(EvaluationPO po) {
 		return true;
 	}
 
