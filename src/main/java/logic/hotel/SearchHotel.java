@@ -115,10 +115,10 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 		}
 		
 		ArrayList<HotelVO> hotelList = getInitialHotelList(search.city, search.tradingArea);
-		
 		if (hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
+		
 		
 		//酒店名称的筛选
 		if (search.hotelName != null && search.hotelName != "") {
@@ -128,56 +128,63 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 				}
 			}
 		}
-		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
 		
-		//筛选指定房间类型和指定时间的空房
-		RoomInfo roomInfo = new Room();
-		Time t1 = new Time(search.startTime);
-		Time t2 = new Time(search.endTime);
-		int num = 0;
 		
-		boolean noEmptyRoom = false;
-		for(HotelVO vo : hotelList) {
-			while(!t1.getTime().equals(t2.getTime())) {
-				num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
-				if(num <= 0) {
-					noEmptyRoom = true;
-					break;
+		if(search.startTime != null && search.startTime != "" 
+				&& search.endTime != null && search.endTime!= "") {
+			
+			//筛选指定房间类型和指定时间的空房
+			RoomInfo roomInfo = new Room();
+			Time t1 = new Time(search.startTime);
+			Time t2 = new Time(search.endTime);
+			int num = 0;
+			
+			boolean noEmptyRoom = false;
+			for(HotelVO vo : hotelList) {
+				while(!t1.getTime().equals(t2.getTime())) {
+					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
+					if(num <= 0) {
+						noEmptyRoom = true;
+						break;
+					}
+				}
+				
+				if(noEmptyRoom) {
+					hotelList.remove(vo);
 				}
 			}
-			
-			if(noEmptyRoom) {
-				hotelList.remove(vo);
-			}
 		}
+		if(hotelList == null || hotelList.size() == 0) {
+			return null;
+		}
+		
 		
 		
 		if (search.roomPriceLow != -1) {
 			this.hotelSort = new PriceSort();
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
 		}
-		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
+		
 		
 		if (search.starLow >= 0 && search.starLow <= 5 && search.starHigh >= 0 && search.starHigh <= 5) {
 			this.hotelSort = new StarSort();
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
 		}
-		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
+
 		
 		if (search.commentLow >= 0 && search.commentLow < 5 || search.commentHigh > 0 && search.commentHigh <= 5) {
 			this.hotelSort = new GradeSort();
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starLow, hotelList);
 		}
-		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}

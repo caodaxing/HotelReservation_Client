@@ -10,4 +10,10 @@ public interface AccountDao {
 	public AccountPO getAccountInfo(String accountID);
 	
 	public boolean userIDExists(String userID);
+	
+	public boolean hasLogin(String userID);
+	
+	public boolean setLogout(String userID);
+	
+	public boolean setLogin(String userID);
 }
