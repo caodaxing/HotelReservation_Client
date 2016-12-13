@@ -1,5 +1,7 @@
 package view.right.webBusiness.promotion;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,8 +18,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
+import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.WBPromotionController;
 import viewController.WebBusinessLeftController;
+import vo.OrderVO;
 
 /**
  * 网站营销人员界面_促销策略_查看现有策略列表
@@ -43,14 +47,11 @@ public class ExistStrategy {
 	TableColumn<Person, Button> operation1;
 	TableColumn<Person, Button> operation2;
 	
-	Button button11 = new Button("查看");
-	Button button12 = new Button("预定");
-	Button button21 = new Button("查看");
-	Button button22 = new Button("预定");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", button11, button12),
-			new Person("2222", "2222", button21, button22));
+	private ObservableList<Person> data;
+	private Button check;
+	private Button delete;
+	private int row;
+	ArrayList<OrderVO> orderList;
 	
 	public ExistStrategy(WBPromotionController controller){
 		

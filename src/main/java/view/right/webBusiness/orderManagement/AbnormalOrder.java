@@ -1,5 +1,7 @@
 package view.right.webBusiness.orderManagement;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,11 +10,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.ManageOrderService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
+import vo.OrderVO;
 
 /**
  * 网站营销人员界面_订单管理_异常订单详情
@@ -22,6 +27,7 @@ import viewController.WebBusinessLeftController;
 public class AbnormalOrder{
 	
 	private WBOrderManagementController controller;
+	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -35,11 +41,13 @@ public class AbnormalOrder{
 	Button halfCredit;
 	Button allCredit;
 	Button revert;
+	ArrayList<OrderVO> orderList;
 	
 	public AbnormalOrder(WBOrderManagementController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
+		manageOrderService = new OrderService_Stub();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -64,22 +72,24 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
+		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
+		int num = controller.getRow();
 		
 		
 		//添加文本框
-		orderID = new TextField();
+		orderID = new TextField(orderList.get(num).orderId);
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField();
+		hotelName = new TextField(orderList.get(num).hotelID);
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField();
+		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		lastExecuteTime = new TextField();
+		lastExecuteTime = new TextField(orderList.get(num).endTime);
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		

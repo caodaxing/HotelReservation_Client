@@ -114,9 +114,9 @@ public class TodayUnexecuteOrder {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
+							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
-								System.out.println(row);
 								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(), row);
 								wbcontroller.setUnexecuteOrderView();
 								wbcontroller.getStage().show();
@@ -155,33 +155,6 @@ public class TodayUnexecuteOrder {
 		
 	}
 	
-//	public void setButton(){
-//		//添加按钮
-//		check = new Button("查看");
-//		check.setId("CheckVIPAreaStrategy");
-//		check.setPrefSize(100, 40);
-//								
-//		//设置按钮位置
-//		check.setLayoutX(625);
-//		check.setLayoutY(525);
-//								
-//		//设置按钮监听
-//		check.setOnAction(new EventHandler<ActionEvent>(){
-//
-//			@Override
-//			public void handle(ActionEvent event) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//									
-//		});
-//								
-//		//右侧pane添加
-//		rightPane.getChildren().add(check);
-//								
-//		AnchorPane.setLeftAnchor(check, 425.0);
-//		AnchorPane.setTopAnchor(check, 525.0);
-//	}
 	
 	/**
 	 * 异常订单列表的内部数据类

@@ -10,12 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import logicService.order.ManageOrderService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
@@ -49,7 +51,9 @@ public class AbnormalOrderList {
 	TableColumn<Person, Button> operation;
 	
 	private ObservableList<Person> data;
-	private Button button;
+	private ArrayList<OrderVO> orderList;
+	private Button check;
+	private int row;
 	
 	public AbnormalOrderList(WebBusinessLeftController controller){
 		
@@ -102,6 +106,25 @@ public class AbnormalOrderList {
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								row = this.getTableRow().getIndex();
+								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(), row);
+								wbcontroller.setUnexecuteOrderView();
+								wbcontroller.getStage().show();
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
 		operation.setMinWidth(100);
 		
 		initialData();
@@ -118,22 +141,10 @@ public class AbnormalOrderList {
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
 		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
 		for(int i=0;i<orderList.size();i++){
-			button = new Button("查看");
-			button.setOnAction(new EventHandler<ActionEvent>(){
-
-				@Override
-				public void handle(ActionEvent event) {
-					wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
-					wbcontroller.setabnormalOrderView();
-					wbcontroller.getStage().show();
-				}
-				
-			});
-			
-			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, button));
+			check = new Button("查看");
+			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, check));
 		}
 		
 	}

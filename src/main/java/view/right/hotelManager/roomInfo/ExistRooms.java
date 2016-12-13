@@ -1,6 +1,7 @@
 package view.right.hotelManager.roomInfo;
 
-import javafx.beans.property.SimpleObjectProperty;
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,10 +15,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.room.RoomService;
+import logicService.stub.RoomService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
-import viewController.UserCheckHotelController;
+import vo.RoomVO;
 
 /**
  * 酒店工作人员界面_客房管理_查看现有客房列表
@@ -27,6 +30,7 @@ import viewController.UserCheckHotelController;
 public class ExistRooms {
 	
 	private HMRoomInfoController controller;
+	private RoomService roomService;
 	
 	private Scene scene;
 	
@@ -45,17 +49,14 @@ public class ExistRooms {
 	TableColumn<Person, String> remainedNum;
 	TableColumn<Person, Button> operation;
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", button2));
+	private ObservableList<Person> data;
+	private ArrayList<RoomVO> roomList;
 	
 	public ExistRooms(HMRoomInfoController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		roomService = new RoomService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -132,12 +133,9 @@ public class ExistRooms {
 		remainedNum.setCellValueFactory(new PropertyValueFactory<Person, String>("remainedNum"));
 		remainedNum.setMinWidth(125);
 		
-		operation= new TableColumn<>("操作");
-		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
-		operation.setMinWidth(125);
-		
+		initialData();
 		tableView.setItems(data);
-		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
+		tableView.getColumns().addAll(roomType, initialPrice, remainedNum);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
@@ -147,6 +145,15 @@ public class ExistRooms {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
+	private void initialData(){
+		data = FXCollections.observableArrayList();
+		roomList = manageOrderService.getWebDailyUnexecutedOrderList();
+		for(int i=0;i<roomList.size();i++){
+			check = new Button("查看");
+			data.add(new Person(roomList.get(i).orderId, roomList.get(i).hotelID, roomList.get(i).userID, roomList.get(i).endTime, check));
+		}
+	}
+	
 	/**
 	 * 异常订单列表的内部数据类
 	 */
@@ -154,14 +161,12 @@ public class ExistRooms {
 		private final SimpleStringProperty roomType;
 		private final SimpleStringProperty initialPrice;
 		private final SimpleStringProperty remainedNum;
-		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String RoomType, String InitialPrice, String RemainedNum, Button operation){
+		private Person(String RoomType, String InitialPrice, String RemainedNum){
 			
 			this.roomType = new SimpleStringProperty(RoomType);
 			this.initialPrice = new SimpleStringProperty(InitialPrice);
 			this.remainedNum = new SimpleStringProperty(RemainedNum);
-			this.operation =  new SimpleObjectProperty<Object>(operation);
 			
 		}
 		
@@ -187,14 +192,6 @@ public class ExistRooms {
 		
 		public void setRemainedNum(String RemainedNum){
 			remainedNum.set(RemainedNum);
-		}
-		
-		public Button getOperation(){
-			return (Button)operation.get();
-		}
-		
-		public void setOperation(Object Operation){
-			operation.set(Operation);
 		}
 		
 	}

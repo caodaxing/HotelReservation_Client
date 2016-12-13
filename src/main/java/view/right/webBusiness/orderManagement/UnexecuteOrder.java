@@ -74,8 +74,7 @@ public class UnexecuteOrder {
 	private void setTextContent(){
 		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
 		int num = controller.getRow();
-		System.out.println(num);
-		
+	
 		//设置未执行订单的文本信息
 		orderID = new TextField(orderList.get(num).orderId);
 		hotelName = new TextField(orderList.get(num).hotelID);
