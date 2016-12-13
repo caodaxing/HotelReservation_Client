@@ -79,7 +79,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setOrderListView();
+				leftcontroller.setAllOrderListView();
 				leftcontroller.getStage().show();
 			}
 			
@@ -93,7 +93,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setOrderListView();
+				leftcontroller.setHasexecuteOrderListView();
 				leftcontroller.getStage().show();
 			}
 			
@@ -107,7 +107,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setOrderListView();
+				leftcontroller.setUnexecuteOrderListView();
 				leftcontroller.getStage().show();
 			}
 			
@@ -121,7 +121,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setOrderListView();
+				leftcontroller.setHasUndoOrderListView();
 				leftcontroller.getStage().show();
 			}
 			
@@ -135,7 +135,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setOrderListView();
+				leftcontroller.setAbnormalOrderListView();
 				leftcontroller.getStage().show();
 			}
 			

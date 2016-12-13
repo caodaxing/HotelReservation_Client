@@ -41,6 +41,8 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	private UndoOrder undoOrderUI;
 	private UnexecuteOrder unexecuteOrderUI;
 	
+	private int row;
+	
 	public HMOrderManagementController(Stage stage, String userId){
 		
 		//orderService = new Order();
@@ -62,6 +64,30 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		unexecuteOrderUI = new UnexecuteOrder(this);
 		
 	}
+	
+public HMOrderManagementController(Stage stage, String userId, int row){
+		
+		//orderService = new Order();
+		//orderListService = new OrderList();
+		//executeOrderService = new ExecuteOrder();
+		//manageOrdreService = new ManageOrder();
+		this.stage = stage;
+		this.userId = userId;
+		this.row = row;
+		abnormalOrderUI = new AbnormalOrder(this);
+		checkArriveInfoUI = new CheckArriveInfo(this);
+		checkLeaveInfoUI = new CheckLeaveInfo(this);
+		evalutionInfoUI = new EvaluationInfo(this);
+		executeOrderUI = new ExecuteOrder(this);
+		orderListUI = new OrderList(this);
+		searchOrderUI = new SearchOrder(this);
+		setArriveInfoUI = new SetArriveInfo(this);
+		setLeaveInfoUI = new SetLeaveInfo(this);
+		undoOrderUI = new UndoOrder(this);
+		unexecuteOrderUI = new UnexecuteOrder(this);
+		
+	}
+	
 	
 	public Stage getStage(){
 		return stage;
@@ -109,5 +135,13 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public void setUnexecuteOrderView(){
 		stage.setScene(unexecuteOrderUI.getScene());
+	}
+	
+	public void setRow(){
+		row = orderListUI.getRow();
+	}
+	
+	public int getRow(){
+		return row;
 	}
 }

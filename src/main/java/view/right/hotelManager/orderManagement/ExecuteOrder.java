@@ -1,5 +1,8 @@
 package view.right.hotelManager.orderManagement;
 
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,9 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.OrderListService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单详情
@@ -20,6 +26,7 @@ import viewController.HMOrderManagementController;
 public class ExecuteOrder {
 	
 	private HMOrderManagementController controller;
+	private OrderListService orderListService;	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -38,10 +45,13 @@ public class ExecuteOrder {
 	Button checkEvaluation;
 	Button revert;
 	
+	ArrayList<OrderVO> orderList;
+	
 	public ExecuteOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -67,16 +77,17 @@ public class ExecuteOrder {
 	
 	private void setTextContent(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
+		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
+		int num = controller.getRow();
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField();
-		hotelName = new TextField();
-		roomType = new TextField();
-		arriveTime = new TextField();
-		leaveTime = new TextField();
-		primeCost = new TextField();
-		realCost = new TextField();
+		orderID = new TextField(orderList.get(num).orderId);
+		hotelName = new TextField(orderList.get(num).hotelID);
+		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		arriveTime = new TextField(orderList.get(num).startTime);
+		leaveTime = new TextField(orderList.get(num).endTime);
+		primeCost = new TextField(String.valueOf(orderList.get(num).beforePrice));
+		realCost = new TextField(String.valueOf(orderList.get(num).afterPrice));
 		
 		orderID.setId("ExecuteOrder");
 		hotelName.setId("ExecuteOrder");
@@ -86,16 +97,6 @@ public class ExecuteOrder {
 		primeCost.setId("ExecuteOrder");
 		realCost.setId("ExecuteOrder");
 		
-		/*
-		//根据Controller设置textField文字
-		orderID.setText(infoList.get(0));
-		hotelName.setText(infoList.get(1));
-		roomType.setText(infoList.get(2));
-		arriveTime.setText(infoList.get(3));
-		leaveTime.setText(infoList.get(4));
-		primeCost.setText(infoList.get(5));
-		realCost.setText(infoList.get(6));
-		*/
 		
 		//设置TextField不可更改
 		orderID.setEditable(false);
@@ -215,7 +216,7 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setSearchOrderView();
+				controller.setOrderListView();
 				controller.getStage().show();
 			}
 									

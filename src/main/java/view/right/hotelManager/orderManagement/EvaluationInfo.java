@@ -1,5 +1,8 @@
 package view.right.hotelManager.orderManagement;
 
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,9 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.OrderListService;
+import logicService.order.OrderService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.EvaluationVO;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单_评价详情
@@ -20,6 +28,8 @@ import viewController.HMOrderManagementController;
 public class EvaluationInfo {
 	
 	private HMOrderManagementController controller;
+	private OrderService orderService;
+	private OrderListService orderListService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -30,10 +40,15 @@ public class EvaluationInfo {
 	
 	Button revert;
 	
+	ArrayList<OrderVO> orderList;
+	EvaluationVO info;
+	
 	public EvaluationInfo(HMOrderManagementController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		orderService = new OrderService_Stub();
+		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -58,15 +73,17 @@ public class EvaluationInfo {
 	}
 	
 	private void setTextField(){
+		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
+		int num = controller.getRow();
+		info = orderService.getEvaluationInfo(orderList.get(num).orderId);
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		
-		evaluationGrade = new TextField();
+		evaluationGrade = new TextField(String.valueOf(info.commentLevel));
 		evaluationGrade.setId("EvaluationInfo");
 		evaluationGrade.setPrefSize(100, 30);
 		
-		evaluation = new TextField();
+		evaluation = new TextField(info.evaluationContent);
 		evaluation.setId("CheckLeaveInfo");
 		evaluation.setPrefSize(250, 100);
 		/*

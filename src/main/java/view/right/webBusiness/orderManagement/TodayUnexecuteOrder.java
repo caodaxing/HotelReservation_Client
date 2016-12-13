@@ -117,7 +117,7 @@ public class TodayUnexecuteOrder {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
-								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(), row);
+								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(),row);
 								wbcontroller.setUnexecuteOrderView();
 								wbcontroller.getStage().show();
 							});
