@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.VistorUI;
 import viewController.VistorController;
+import vo.HotelVO;
 
 /**
  * 游客界面_查看酒店_酒店详情
@@ -57,19 +58,19 @@ public class HotelInfo {
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
 		//设置TextField
-		setText();
+		setTextField();
 		
 		setButton();
 		
 		//设置图片域
-		//setImage();
+		setImageView();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
 	}
 	
-	private void setText(){
+	private void setTextField(){
 		
 		//初始化textField
 		hotelName = new TextField();
@@ -119,7 +120,9 @@ public class HotelInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回搜索酒店界面
+				controller.setSearchHotelView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -131,18 +134,29 @@ public class HotelInfo {
 		
 	}
 	
-	//待修改
-	private void setImage(){
+	private void setImageView(){
 		
-		Image image = new Image("", 250, 200,false ,true);
+		//Image image = new Image("", 250, 200,false ,true);
 		
-		hotelImage = new ImageView(image);
+		hotelImage = new ImageView();
 		
 		rightPane.getChildren().add(hotelImage);
 		
 		AnchorPane.setLeftAnchor(hotelImage, 150.0);
 		AnchorPane.setTopAnchor(hotelImage, 360.0);
 		
+	}
+	
+	public void setText(){
+		HotelVO vo = controller.getHotelInfo();
+		hotelName.setText(vo.hotelName);
+		address.setText(vo.locationOfHotel);
+		introduction.setText(vo.introduction);;
+		facility.setText(vo.facilities);
+	}
+	
+	public void setImage(){
+		//待补充
 	}
 	
 	public Scene getScene(){

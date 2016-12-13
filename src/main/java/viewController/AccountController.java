@@ -143,6 +143,10 @@ public class AccountController {
 			//弹出“密码错误”
 			showDialog("密码错误");
 			return ;
+		}else if(result == ResultMessage.USER_HAS_LOGIN){
+			//用户已登录
+			showDialog("用户已在别处登录");
+			return ;
 		}else if(result == ResultMessage.FAILURE){
 			//弹出 系统错误，请重试
 			showDialog("系统错误，请重试");

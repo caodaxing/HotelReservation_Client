@@ -42,7 +42,6 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 
 	@Override
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
-
 		return null;
 	}
 
@@ -60,19 +59,29 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 
 	@Override
 	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition, ArrayList<HotelVO> hotels) {
-		return null;
+		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+				3.4,3, "贼他妈棒", "三星级",null,null,null);
+		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+		list.add(vo);
+		return list;
 	}
 
 	@Override
 	public ArrayList<HotelVO> getBookedHotelList(String user_id) {
-
-		return null;
+		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+				3.4,3, "贼他妈棒", "三星级",null,null,null);
+		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+		list.add(vo);
+		return list;
 	}
 
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-
-		return null;
+		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+				3.4,3, "贼他妈棒", "三星级",null,null,null);
+		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+		list.add(vo);
+		return list;
 	}
 	
 }
