@@ -82,7 +82,9 @@ public class SearchHotel {
 		setDatePicker();
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+	
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索酒店背景.jpg\")");
 	}
 	
 	private void setTextField(){
@@ -213,7 +215,7 @@ public class SearchHotel {
 		endTime = new DatePicker();
 		
 		startTime.setValue(LocalDate.now());
-		endTime.setValue(LocalDate.now());
+		endTime.setValue(LocalDate.now().plusDays(1));
 		
 		startTime.setPrefSize(75, 30);
 		endTime.setPrefSize(75,30);
@@ -261,10 +263,15 @@ public class SearchHotel {
 		default:
 			break;
 		}
+		String start = startTime.getValue().toString();
 		if(startTime.getValue().isAfter(endTime.getValue())){
 			controller.showDialog("入住时间不应晚于退房时间");
+			//给controller用
+			start="x";
+		}else if(startTime.getValue().isBefore(LocalDate.now())){
+			controller.showDialog("预计入住时间应晚于当前时间");
+			start="x";
 		}
-		String start = startTime.getValue().toString();
 		String end = endTime.getValue().toString();
 		
 

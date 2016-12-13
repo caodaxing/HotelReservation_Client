@@ -68,6 +68,8 @@ public class HotelInfo {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_酒店详情背景.jpg\")");
 	}
 	
 	private void setTextField(){
@@ -135,8 +137,6 @@ public class HotelInfo {
 	}
 	
 	private void setImageView(){
-		
-		//Image image = new Image("", 250, 200,false ,true);
 		
 		hotelImage = new ImageView();
 		

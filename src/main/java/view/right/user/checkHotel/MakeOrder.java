@@ -1,17 +1,25 @@
 package view.right.user.checkHotel;
 
+import java.time.LocalDate;
+
+import Message.RoomType;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.TimeHelper;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
 import viewController.UserLeftController;
+import vo.OrderVO;
 
 /**
  * 客户界面_查看酒店_生成订单
@@ -30,13 +38,13 @@ public class MakeOrder{
 	
 	private AnchorPane rightPane;
 	
-	TextField roomType ;
+	ChoiceBox roomType ;
 	TextField roomNums ; 
-	TextField arriveTime ;
-	TextField leaveTime ;
-	TextField latestTime ;
+	DatePicker arriveTime ;
+	DatePicker leaveTime ;
+	DatePicker latestTime ;
 	TextField peopleNums ;
-	TextField haveChild ;
+	ChoiceBox haveChild ;
 	
 	Button makeOrder ;
 	Button back ;
@@ -69,22 +77,26 @@ public class MakeOrder{
 	private void setTextField(){
 		
 		//初始化textField
-		roomType = new TextField();
+		roomType =new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		
 		roomNums = new TextField();
-		arriveTime = new TextField();
-		leaveTime = new TextField();
-		latestTime = new TextField();
+		arriveTime = new DatePicker();
+		leaveTime = new DatePicker();
+		latestTime = new DatePicker();
 		peopleNums = new TextField();
-		haveChild = new TextField();
+		haveChild = new ChoiceBox(FXCollections.observableArrayList("是","否"));
 		
 		//设置textField可操作性
-		roomType.setEditable(true);
 		roomNums.setEditable(true);
 		arriveTime.setEditable(true);
 		leaveTime.setEditable(true);
 		latestTime.setEditable(true);
 		peopleNums.setEditable(true);
-		haveChild.setEditable(true);
+		
+		//设置DatePicker初始值
+		arriveTime.setValue(LocalDate.now());
+		leaveTime.setValue(LocalDate.now().plusDays(1));
+		latestTime.setValue(LocalDate.now().plusDays(1));
 		
 		//设置textField大小
 		roomType.setPrefSize(200, 30);
@@ -170,6 +182,67 @@ public class MakeOrder{
 		
 		return scene;
 	
+	}
+	
+	public OrderVO getOrderVO(){
+		
+		int t = roomType.getSelectionModel().getSelectedIndex();
+		RoomType type = null;
+		switch(t){
+		case 0:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 1:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 2:
+			type = RoomType.TRIPLE_ROOM;
+			break;
+		case 3:
+			type = RoomType.BIGBED_ROOM;
+			break;
+		case 4:
+			type = RoomType.SUITE;
+			break;
+		case -1:
+		default:
+			break;
+		}
+		
+		String time = TimeHelper.getInstanceTimeString();
+		
+		String arrive = arriveTime.getValue().toString()+" "+time;
+		if(arriveTime.getValue().isAfter(leaveTime.getValue())){
+			controller.showDialog("入住时间不应晚于退房时间");
+			//给controller用
+			arrive="x";
+		}else if(arriveTime.getValue().isAfter(latestTime.getValue())){
+			controller.showDialog("预计入住时间不应晚于最晚入住时间");
+			arrive="x";
+		}else if(arriveTime.getValue().isBefore(LocalDate.now())){
+			controller.showDialog("预计入住时间应晚于当前时间");
+			arrive="x";
+		}
+		String leave = leaveTime.getValue().toString()+" "+time;
+		String latest = latestTime.getValue().toString()+" "+time;
+		
+		int numOfR = 1;
+		if(!peopleNums.getText().equals(""))
+			numOfR = Integer.valueOf(roomNums.getText());
+		
+		int numOfP = 1;
+		if(!peopleNums.getText().equals(""))
+			numOfP = Integer.valueOf(peopleNums.getText());
+		
+		int t2 = haveChild.getSelectionModel().getSelectedIndex();
+		boolean child = false;
+		if(t2 == 0){
+			child = true;
+		}
+		
+		//userID,hotelID,beforePrice需要controller加
+		return new OrderVO(null,arrive,numOfR,null,leave,numOfP,child,null);
+		
 	}
 	
 }

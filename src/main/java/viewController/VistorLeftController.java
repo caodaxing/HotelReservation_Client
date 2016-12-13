@@ -20,6 +20,7 @@ public class VistorLeftController {
 		newStage.setTitle("酒店预订系统");
 		accountController = new AccountController(newStage);
 		accountController.setSignInView();
+		newStage.setResizable(false);
 		newStage.show();
 	}
 	
@@ -30,6 +31,7 @@ public class VistorLeftController {
 		newStage.setTitle("酒店预订系统");
 		accountController = new AccountController(newStage);
 		accountController.setSignUpView();
+		newStage.setResizable(false);
 		newStage.show();
 	}
 	

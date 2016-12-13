@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
+import vo.HotelVO;
 
 /**
  * 客户界面_查看酒店_酒店详情
@@ -64,16 +65,16 @@ public class HotelInfo{
 		setButton();
 		
 		//设置图片域
-		setImage();
+		setImageView();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_酒店详情背景.jpg\")");
 	}
 	
 	private void setTextField(){
-		
-		//ArrayList<String> infoList = controller.getInfoList();
 		
 		//初始化textField
 		hotelName = new TextField();
@@ -180,12 +181,9 @@ public class HotelInfo{
 				
 	}
 	
-	private void setImage(){
-		
-		//从controller得到图片
-		Image image = new Image("", 250, 200,false ,true);
-		
-		hotelImage = new ImageView(image);
+	private void setImageView(){
+	
+		hotelImage = new ImageView();
 		
 		rightPane.getChildren().add(hotelImage);
 		
@@ -193,6 +191,20 @@ public class HotelInfo{
 		AnchorPane.setTopAnchor(hotelImage, 360.0);
 		
 	}
+	
+	
+	public void setText(){
+		HotelVO vo = controller.getHotelInfo();
+		hotelName.setText(vo.hotelName);
+		address.setText(vo.locationOfHotel);
+		introduction.setText(vo.introduction);;
+		facility.setText(vo.facilities);
+	}
+	
+	public void setImage(){
+		//待补充
+	}
+	
 	
 	public Scene getScene(){
 		

@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
+import viewController.UserCheckHotelController;
 import viewController.UserLeftController;
 
 /**
@@ -74,14 +75,20 @@ public class HotelFirst{
 		checkHistoryHotel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//历史酒店
+				UserCheckHotelController right = new UserCheckHotelController(controller.getStage(),controller.getUserID());
+				right.setHistoryOrderListView();
+				right.getStage().show();
 			}
 			
 		});
 		searchNewHotel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//搜索酒店界面
+				UserCheckHotelController right = new UserCheckHotelController(controller.getStage(),controller.getUserID());
+				right.setSearchHotelView();
+				right.getStage().show();
 			}
 			
 		});

@@ -12,12 +12,14 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.user.checkHotel.RoomList.Person;
@@ -47,14 +49,9 @@ public class HistoryOrderList{
 	TableColumn<Person, String> orderId;
 	TableColumn<Person, String> roomType;
 	TableColumn<Person, String> orderState;
-	TableColumn<Person, Button> operation;
+	//不能查看
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", button2));
+	private final ObservableList<Person> data = FXCollections.observableArrayList();
 	
 	public HistoryOrderList(UserCheckHotelController controller){
 		
@@ -77,6 +74,8 @@ public class HistoryOrderList{
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_历史订单列表背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -100,8 +99,9 @@ public class HistoryOrderList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//返回选择界面
+				controller.setHotelFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -135,12 +135,8 @@ public class HistoryOrderList{
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderState"));
 		orderState.setMinWidth(125);
 		
-		operation= new TableColumn<>("操作");
-		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
-		operation.setMinWidth(125);
-		
 		tableView.setItems(data);
-		tableView.getColumns().addAll(orderId, roomType, orderState, operation);
+		tableView.getColumns().addAll(orderId, roomType, orderState);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
@@ -157,14 +153,12 @@ public class HistoryOrderList{
 		private final SimpleStringProperty orderId;
 		private final SimpleStringProperty roomType;
 		private final SimpleStringProperty orderState;
-		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String orderId, String roomType, String orderState, Button operation){
+		private Person(String orderId, String roomType, String orderState){
 			
 			this.orderId = new SimpleStringProperty(orderId);
 			this.roomType = new SimpleStringProperty(roomType);
 			this.orderState = new SimpleStringProperty(orderState);
-			this.operation =  new SimpleObjectProperty<Object>(operation);
 			
 		}
 		
@@ -190,14 +184,6 @@ public class HistoryOrderList{
 		
 		public void setOrderState(String OrderState){
 			orderState.set(OrderState);
-		}
-		
-		public Button getOperation(){
-			return (Button)operation.get();
-		}
-		
-		public void setOperation(Object Operation){
-			operation.set(Operation);
 		}
 		
 	}

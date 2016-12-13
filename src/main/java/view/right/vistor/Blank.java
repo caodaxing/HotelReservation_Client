@@ -33,7 +33,7 @@ public class Blank {
 		AnchorPane.setTopAnchor(leftPane, 0.0);
 		
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		
+
 	}
 	
 	public Scene getScene(){

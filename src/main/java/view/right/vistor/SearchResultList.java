@@ -78,7 +78,7 @@ public class SearchResultList {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
-		//添加排序按钮
+		//添加排序和返回按钮
 		setSortButton();
 		
 		//设置列表,列表值初始化放到controller中
@@ -87,6 +87,8 @@ public class SearchResultList {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索结果列表背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -100,19 +102,19 @@ public class SearchResultList {
 		//设置按钮
 		ascendingSort = new Button("价格升序");
 		ascendingSort.setId("searchResultList");
-		ascendingSort.setPrefSize(100, 30);
+		ascendingSort.setPrefSize(80, 30);
 		
 		dscendingSort = new Button("价格降序");
 		dscendingSort.setId("searchResultList");
-		dscendingSort.setPrefSize(100, 30);
+		dscendingSort.setPrefSize(80, 30);
 		
 		starLevel = new Button("星级");
 		starLevel.setId("searchResultList");
-		starLevel.setPrefSize(100, 30);
+		starLevel.setPrefSize(80, 30);
 		
 		evaluation = new Button("评价");
 		evaluation.setId("searchList");
-		evaluation.setPrefSize(100, 30);
+		evaluation.setPrefSize(80, 30);
 		
 		revert = new Button("返回");
 		revert.setId("searchList");
@@ -226,11 +228,11 @@ public class SearchResultList {
 		
 		starlevel = new TableColumn<>("星级");
 		starlevel.setCellValueFactory(new PropertyValueFactory<Person, String>("starlevel"));
-		starlevel.setMinWidth(80);
+		starlevel.setMinWidth(50);
 		
 		evalaution = new TableColumn<>("评价");
 		evalaution.setCellValueFactory(new PropertyValueFactory<Person, String>("evaluation"));
-		evalaution.setMinWidth(80);
+		evalaution.setMinWidth(50);
 		
 		operation1= new TableColumn<>("操作");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
@@ -253,11 +255,12 @@ public class SearchResultList {
 				};
 			}
 		});
-		operation1.setMinWidth(100);
+		operation1.setMinWidth(120);
 		
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(500);
 		tableView.getColumns().addAll(hotelName, whetherReserve, starlevel, evalaution, operation1);
 		
 		//设置列表位置

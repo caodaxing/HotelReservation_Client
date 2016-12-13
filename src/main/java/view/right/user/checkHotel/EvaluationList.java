@@ -10,12 +10,14 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
@@ -31,7 +33,9 @@ public class EvaluationList {
 	private UserCheckHotelController controller;
 	
 	private Scene scene;
+	
 	private GridPane leftPane;
+	
 	private AnchorPane rightPane;
 	
 	private UserUI leftUI;
@@ -46,12 +50,7 @@ public class EvaluationList {
 	TableColumn<Person, String> score;
 	TableColumn<Person, Button> operation;
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", "2222", button2));
+	private final ObservableList<Person> data = FXCollections.observableArrayList();
 	
 	public EvaluationList(UserCheckHotelController controller){
 		
@@ -74,6 +73,9 @@ public class EvaluationList {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
+		//添加样式表
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_酒店评价列表背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -97,8 +99,9 @@ public class EvaluationList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 返回选择界面
+				controller.setHotelFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -138,9 +141,28 @@ public class EvaluationList {
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								int row = this.getTableRow().getIndex();
+								//待修改
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
+		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(500);
 		tableView.getColumns().addAll(orderId, roomType, arriveTime, score, operation);
 		
 		//设置列表位置
@@ -148,7 +170,7 @@ public class EvaluationList {
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 150.0);
 	}
 	
 	/**
