@@ -59,7 +59,8 @@ public class VistorController extends VistorLeftController{
 	
 	public void setSearchHotelView(){
 
-		HotelSearchVO vo = searchHotelUI.getSearchVO();
+		//HotelSearchVO vo = searchHotelUI.getSearchVO();
+		//我写着句是干啥来着？？
 		stage.setScene(searchHotelUI.getScene());
 	
 	}

@@ -62,7 +62,7 @@ public class HotelInfo {
 		setButton();
 		
 		//设置图片域
-		setImage();
+		//setImage();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
@@ -131,6 +131,7 @@ public class HotelInfo {
 		
 	}
 	
+	//待修改
 	private void setImage(){
 		
 		Image image = new Image("", 250, 200,false ,true);

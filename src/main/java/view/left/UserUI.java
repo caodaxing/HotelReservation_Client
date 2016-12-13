@@ -37,11 +37,11 @@ public class UserUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		//Pane pane = new GridPane();
-		//Image image = new Image("Image\\index.jpg", 200, 180, false, true);
-		//ImageView headImage = new ImageView(image);
-		//pane.getChildren().add(headImage);
-		//grid.add(pane, 0, 0);
+		Pane pane = new GridPane();
+		Image image = new Image("/hotelImage/index.jpg", 200, 180, false, true);
+		ImageView headImage = new ImageView(image);
+		pane.getChildren().add(headImage);
+		grid.add(pane, 0, 0);
 		
 		Button vip = new Button("会 员");
 		vip.setOnAction(new EventHandler<ActionEvent>(){
@@ -184,6 +184,8 @@ public class UserUI{
 		});
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signOut, 0, 11);
+		
+		grid.getStylesheets().add("/CSS/left.css");
 		
 		return grid;
 	}

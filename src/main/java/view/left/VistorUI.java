@@ -39,12 +39,6 @@ public class VistorUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		//Pane pane = new GridPane();
-		//Image image = new Image("Image\\index1.jpg", 200, 180, false, true);
-		//ImageView headImage = new ImageView(image);
-		//pane.getChildren().add(headImage);
-		//grid.add(pane, 0, 0);
-		
 		Button signIn = new Button("登 录");
 		signIn.setId("light-button");
 		signIn.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
@@ -69,6 +63,8 @@ public class VistorUI{
 			}
 			
 		});
+		
+		grid.getStylesheets().add("/CSS/left.css");
 		
 		return grid;
 		

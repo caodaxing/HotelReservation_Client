@@ -38,11 +38,11 @@ public class WebManagerUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		//Pane pane = new GridPane();
-		//Image image = new Image("Image\\index2.jpg", 200, 180, false, true);
-		//ImageView headImage = new ImageView(image);
-		//pane.getChildren().add(headImage);
-		//grid.add(pane, 0, 0);
+		Pane pane = new GridPane();
+		Image image = new Image("/酒店图片/index2.jpg", 200, 180, false, true);
+		ImageView headImage = new ImageView(image);
+		pane.getChildren().add(headImage);
+		grid.add(pane, 0, 0);
 		
 		Button manageWebbusiness = new Button("网站营销人员管理");
 		manageWebbusiness.setId("light-button");
@@ -125,6 +125,8 @@ public class WebManagerUI{
 		});
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(signOut, 0, 7);
+		
+		grid.getStylesheets().add("/CSS/left.css");
 		
 		return grid;
 	}
