@@ -1,5 +1,7 @@
 package viewController;
 
+import java.util.ArrayList;
+
 import javafx.stage.Stage;
 import logicService.order.ManageOrderService;
 import logicService.order.OrderService;
@@ -7,6 +9,7 @@ import view.right.webBusiness.orderManagement.AbnormalOrder;
 import view.right.webBusiness.orderManagement.AbnormalOrderList;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder;
 import view.right.webBusiness.orderManagement.UnexecuteOrder;
+import vo.OrderVO;
 
 public class WBOrderManagementController extends WebBusinessLeftController{
 	
@@ -18,7 +21,8 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 	private AbnormalOrder abnormalOrderUI;
 	private AbnormalOrderList abnormalOrderListUI;
 	private TodayUnexecuteOrder todayUnexecuteOderUI;
-	private UnexecuteOrder unexecuteeOrderUI;
+	protected UnexecuteOrder unexecuteeOrderUI;
+	private int row;
 	
 	public WBOrderManagementController(Stage stage, String userId){
 		//orderService = new Order();
@@ -27,6 +31,14 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 		this.userId = userId;
 		abnormalOrderUI = new AbnormalOrder(this);
 		abnormalOrderListUI = new AbnormalOrderList(this);
+		todayUnexecuteOderUI = new TodayUnexecuteOrder(this);
+		unexecuteeOrderUI = new UnexecuteOrder(this);
+	}
+	
+	public WBOrderManagementController(Stage stage, String userId, int row){
+		this.stage = stage;
+		this.userId = userId;
+		this.row = row;
 		todayUnexecuteOderUI = new TodayUnexecuteOrder(this);
 		unexecuteeOrderUI = new UnexecuteOrder(this);
 	}
@@ -44,10 +56,20 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 	}
 	
 	public void setTodayUnexecuteOrderView(){
+		
 		stage.setScene(todayUnexecuteOderUI.getScene());
 	}
 	
 	public void setUnexecuteOrderView(){
 		stage.setScene(unexecuteeOrderUI.getScene());
 	}
+	
+	public void setRow(){
+		row = todayUnexecuteOderUI.getRow();
+	}
+	
+	public int getRow(){
+		return row;
+	}
+	
 }

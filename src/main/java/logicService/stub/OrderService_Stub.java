@@ -125,15 +125,15 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	@Override
 	public ArrayList<OrderVO> getWebDailyUnexecutedOrderList() {
 		
-		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,true,null);
-		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,true,null);
+		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,null,null);
+		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,null,null);
 		ArrayList<RoomVO> list = new ArrayList<>();
 		list.add(roomvo1);
 		list.add(roomvo2);
 		
 		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
-		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", "161124", "161125","837JFD",list, OrderState.UNEXECUTED, 2, false, 288, 228, null, null,null,null);
-		OrderVO order2 = new OrderVO("jske223","161124000021109", "161124", "161125","sje44",list, OrderState.UNEXECUTED, 2, false, 336, 258, null, null,null,null);
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", "161124", "161125","837JFD",list, OrderState.UNEXECUTED, 2, false, 288, 228, null, null,null,null,null);
+		OrderVO order2 = new OrderVO("jske223","161124000021109", "161124", "161125","sje44",list, OrderState.UNEXECUTED, 2, false, 336, 258, null, null,null,null,null);
 		List.add(order1);
 		List.add(order2);
 		
@@ -142,15 +142,15 @@ public ArrayList<OrderVO> getDailyOrderList() {
 
 	@Override
 	public ArrayList<OrderVO> getWebDailyAbnormalOrderList() {
-		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,true,null);
-		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,true,null);
+		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,null,null);
+		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,null,null);
 		ArrayList<RoomVO> list = new ArrayList<>();
 		list.add(roomvo1);
 		list.add(roomvo2);
 		
 		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
-		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", "161124", "161125","837JFD",list, OrderState.UNEXECUTED, 2, false, 288, 228, null, null,null,null);
-		OrderVO order2 = new OrderVO("jske223","161124000021109", "161124", "161125","sje44",list, OrderState.UNEXECUTED, 2, false, 336, 258, null, null,null,null);
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", "161124", "161125","837JFD",list, OrderState.UNEXECUTED, 2, false, 288, 228, null, null,null,null,null);
+		OrderVO order2 = new OrderVO("jske223","161124000021109", "161124", "161125","sje44",list, OrderState.UNEXECUTED, 2, false, 336, 258, null, null,null,null,null);
 		List.add(order1);
 		List.add(order2);
 		

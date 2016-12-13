@@ -10,10 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.ManageOrderService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
+import vo.OrderVO;
 
 /**
  * 网站营销人员界面_订单管理_未执行订单详情
@@ -23,6 +26,7 @@ import viewController.WebBusinessLeftController;
 public class UnexecuteOrder {
 	
 	private WBOrderManagementController controller;
+	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -37,13 +41,13 @@ public class UnexecuteOrder {
 	TextField realCost;
 	
 	Button revert;
+	ArrayList<OrderVO> orderList;
 	
-	TodayUnexecuteOrder tuo;
-	
-	public UnexecuteOrder(WBOrderManagementController controller){
+	public UnexecuteOrder(WBOrderManagementController controller) {
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
+		manageOrderService = new OrderService_Stub();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -67,19 +71,18 @@ public class UnexecuteOrder {
 	}
 	
 	private void setTextContent(){
-		
-		tuo = new TodayUnexecuteOrder(controller);
-		int num = tuo.tableView.getSelectionModel().getSelectedIndex()+1;
-		System.out.print(num);
+		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
+		int num = controller.getRow();
+		System.out.println(num);
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField(tuo.orderList.get(num).orderId);
-		hotelName = new TextField(tuo.orderList.get(num).hotelID);
-		roomType = new TextField(tuo.orderList.get(num).rooms.get(0).roomType.toString());
-		estimateInTime = new TextField(tuo.orderList.get(num).startTime);
-		estimateLeaveTime = new TextField(tuo.orderList.get(num).endTime);
-		primeCost = new TextField(String.valueOf(tuo.orderList.get(num).beforePrice));
-		realCost = new TextField(String.valueOf(tuo.orderList.get(num).afterPrice));
+		orderID = new TextField(orderList.get(num).orderId);
+		hotelName = new TextField(orderList.get(num).hotelID);
+		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		estimateInTime = new TextField(orderList.get(num).startTime);
+		estimateLeaveTime = new TextField(orderList.get(num).endTime);
+		primeCost = new TextField(String.valueOf(orderList.get(num).beforePrice));
+		realCost = new TextField(String.valueOf(orderList.get(num).afterPrice));
 		
 		//设置TextField不可更改
 		orderID.setEditable(false);
