@@ -12,6 +12,7 @@ public class Main extends Application{
 		
 		AccountController accountController = new AccountController(stage);
 		accountController.setFirstView();
+		stage.setResizable(false);
 		stage.show();
 		
 	}

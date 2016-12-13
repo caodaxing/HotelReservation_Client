@@ -25,6 +25,7 @@ public class OneButtonDialog {
 		stage.setTitle("提示");
 		stage.centerOnScreen();
 		stage.setAlwaysOnTop(true);
+		stage.setResizable(false);
 		
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefSize(300.0, 150.0);
@@ -50,6 +51,7 @@ public class OneButtonDialog {
 		AnchorPane.setTopAnchor(button, 100.0);
 		
 		Scene scene = new Scene(pane,300,150);
+		scene.getStylesheets().add("/CSS/right.css");
 		stage.setScene(scene);
 		
 	}

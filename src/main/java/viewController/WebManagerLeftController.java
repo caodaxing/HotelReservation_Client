@@ -104,6 +104,7 @@ public class WebManagerLeftController {
 		userID = null;
 		showDialog("注销成功");
 		accountController.setFirstView();
+		newStage.setResizable(false);
 		newStage.show();
 		
 	}
