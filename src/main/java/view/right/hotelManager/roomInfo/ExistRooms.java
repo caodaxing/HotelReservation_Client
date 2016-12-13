@@ -62,6 +62,7 @@ public class ExistRooms {
 		
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		rightPane.getStylesheets().add("/CSS/right.css");
 		
 		//设置返回按钮
 		setRevertButton();

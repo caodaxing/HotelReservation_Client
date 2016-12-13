@@ -29,6 +29,7 @@ public class Prompt {
 		
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefSize(300.0, 150.0);
+		pane.getStylesheets().add("/CSS/right.css");
 		
 		label = new Label();
 		label.setText(labelText);

@@ -4,10 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 import view.helpTools.DefaultNums;
-import view.right.webBusiness.promotion.First;
 import viewController.WebBusinessLeftController;
 
 /**
@@ -37,11 +38,11 @@ public class WebBusinessUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		//Pane pane = new GridPane();
-		//Image image = new Image("Image\\index2.jpg", 200, 180, false, true);
-		//ImageView headImage = new ImageView(image);
-		//pane.getChildren().add(headImage);
-		//grid.add(pane, 0, 0);
+		Pane pane = new GridPane();
+		Image image = new Image("/hotelImage/index2.jpg", 200, 200, false, true);
+		ImageView headImage = new ImageView(image);
+		pane.getChildren().add(headImage);
+		grid.add(pane, 0, 0);
 		
 		Button webPromotion = new Button("网站促销策略");
 		webPromotion.setId("light-button");
@@ -136,6 +137,7 @@ public class WebBusinessUI{
 			}
 			
 		});
+		grid.getStylesheets().add(getClass().getResource("/CSS/left.css").toExternalForm());
 		
 		return grid;
 	}

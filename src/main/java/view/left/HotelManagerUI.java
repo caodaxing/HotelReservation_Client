@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import view.helpTools.DefaultNums;
 import viewController.HotelManagerLeftController;
 
@@ -34,11 +37,11 @@ public class HotelManagerUI{
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
-		//Pane pane = new GridPane();
-		//Image image = new Image("Image\\index3.jpg", 200, 180, false, true);
-		//	ImageView headImage = new ImageView(image);
-		//pane.getChildren().add(headImage);
-		//grid.add(pane, 0, 0);
+		Pane pane = new GridPane();
+		Image image = new Image("/hotelImage/index3.jpg", 200, 180, false, true);
+		ImageView headImage = new ImageView(image);
+		pane.getChildren().add(headImage);
+		grid.add(pane, 0, 0);
 		
 		Button hotelInfo = new Button("酒店信息");
 		hotelInfo.setId("light-button");
@@ -178,6 +181,7 @@ public class HotelManagerUI{
 			}
 			
 		});
+		grid.getStylesheets().add(getClass().getResource("/CSS/left.css").toExternalForm());
 		
 		return grid;
 	}
