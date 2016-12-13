@@ -58,8 +58,7 @@ public class OrderService_Stub implements OrderService,CreateOrderService,Execut
 	
 
 	public EvaluationVO getEvaluationInfo(String orderId) {
-		return null;
-//		return new EvaluationVO("房间很乱，差评！！", "00102", "161222001021033", 0);
+		return new EvaluationVO("161222001021033", 3.0, "房间很乱，差评！！");
 	}
 
 
@@ -109,7 +108,19 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	@Override
 	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition) {
 		// TODO Auto-generated method stub
-		return null;
+		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.SINGLE_ROOM,330,null,null);
+		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,null,null);
+		ArrayList<RoomVO> list = new ArrayList<>();
+		list.add(roomvo1);
+		list.add(roomvo2);
+		
+		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021103", "161124", "161122","837JFD",list, OrderState.UNEXECUTED, 2, false, 288, 228, null, null,null,null,null);
+		OrderVO order2 = new OrderVO("jske223","161124000021109", "161124", "161125","sje44",list, OrderState.UNEXECUTED, 2, false, 336, 258, null, null,null,null,null);
+		List.add(order1);
+		List.add(order2);
+		
+		return List;
 	}
 
 	@Override

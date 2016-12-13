@@ -1,5 +1,8 @@
 package view.right.hotelManager.orderManagement;
 
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -8,15 +11,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
+import logicService.order.OrderListService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
+import viewController.HMOrderManagementController;
 import viewController.HotelManagerLeftController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_订单列表
@@ -25,7 +34,8 @@ import viewController.HotelManagerLeftController;
 public class OrderList {
 	
 	private HotelManagerLeftController controller;
-	
+	private HMOrderManagementController hmcontroller;
+	private OrderListService orderListService;	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -42,17 +52,16 @@ public class OrderList {
 	TableColumn<Person, String> price;
 	TableColumn<Person, Button> operation;
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", "2222", button2));
+	private ObservableList<Person> data;
+	private Button check;
+	private int row;
+	ArrayList<OrderVO> orderList;
 	
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -135,8 +144,28 @@ public class OrderList {
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								row = this.getTableRow().getIndex();
+								hmcontroller = new HMOrderManagementController(controller.getStage(), controller.getUserId(), row);
+								hmcontroller.setExecuteOrderView();
+								hmcontroller.getStage().show();
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
 		operation.setMinWidth(100);
 		
+		initialData();
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
@@ -146,6 +175,19 @@ public class OrderList {
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
+	}
+	
+	public int getRow(){
+		return row;
+	}
+	
+	public void initialData(){
+		data = FXCollections.observableArrayList();
+		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
+		for(int i=0;i<orderList.size();i++){
+			check = new Button("查看");
+			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).orderState.toString(), String.valueOf(orderList.get(i).afterPrice), check));
+		}
 	}
 	
 	/**

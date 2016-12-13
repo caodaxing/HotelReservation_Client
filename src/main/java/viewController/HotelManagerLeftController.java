@@ -69,7 +69,31 @@ public class HotelManagerLeftController{
 		stage.show();
 	}
 	
-	public void setOrderListView(){
+	public void setAllOrderListView(){
+		orderListUI = new OrderList(this);
+		stage.setScene(orderListUI.getScene());
+		stage.show();
+	}
+	
+	public void setHasexecuteOrderListView(){
+		orderListUI = new OrderList(this);
+		stage.setScene(orderListUI.getScene());
+		stage.show();
+	}
+	
+	public void setUnexecuteOrderListView(){
+		orderListUI = new OrderList(this);
+		stage.setScene(orderListUI.getScene());
+		stage.show();
+	}
+	
+	public void setHasUndoOrderListView(){
+		orderListUI = new OrderList(this);
+		stage.setScene(orderListUI.getScene());
+		stage.show();
+	}
+	
+	public void setAbnormalOrderListView(){
 		orderListUI = new OrderList(this);
 		stage.setScene(orderListUI.getScene());
 		stage.show();
@@ -94,12 +118,12 @@ public class HotelManagerLeftController{
 		newStage.setTitle("酒店预订系统");
 		accountController = new AccountController(newStage);
 		
-		result = accountService.logout(userId);
-		
+		ResultMessage result = accountService.logout(userId);
 		if(result == ResultMessage.FAILURE){
 			showDialog("注销失败");
 			return ;
 		}
+		userId = null;
 		showDialog("注销成功");
 		accountController.setFirstView();
 		newStage.show();

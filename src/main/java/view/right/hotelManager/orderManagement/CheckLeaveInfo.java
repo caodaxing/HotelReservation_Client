@@ -1,5 +1,8 @@
 package view.right.hotelManager.orderManagement;
 
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,9 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.order.OrderListService;
+import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单_查看退房信息
@@ -20,6 +26,7 @@ import viewController.HMOrderManagementController;
 public class CheckLeaveInfo {
 	
 	private HMOrderManagementController controller;
+	private OrderListService orderListService;	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -30,10 +37,13 @@ public class CheckLeaveInfo {
 	
 	Button revert;
 	
+	ArrayList<OrderVO> orderList;
+	
 	public CheckLeaveInfo(HMOrderManagementController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -59,14 +69,15 @@ public class CheckLeaveInfo {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
+		int num = controller.getRow();
 		//添加文本框
 		
-		roomType = new TextField();
+		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
 		roomType.setId("CheckLeaveInfo");
 		roomType.setPrefSize(200, 30);
 		
-		actualLeaveTime = new TextField();
+		actualLeaveTime = new TextField(orderList.get(num).endTime);
 		actualLeaveTime.setId("CheckLeaveInfo");
 		actualLeaveTime.setPrefSize(200, 30);
 		/*
