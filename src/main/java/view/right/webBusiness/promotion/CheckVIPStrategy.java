@@ -1,5 +1,7 @@
 package view.right.webBusiness.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,7 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_查看VIP专属折扣
@@ -32,6 +34,7 @@ public class CheckVIPStrategy {
 	TextField discountName;
 	
 	Button revert;
+	ArrayList<PromotionVO> promotionList;
 	
 	public CheckVIPStrategy(WBPromotionController controller){
 		
@@ -61,21 +64,23 @@ public class CheckVIPStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setPromotoinList();
+		promotionList = controller.getPromotionList();
+		int num = controller.getRow();
 		//添加文本框
-		VIP1DiscountRange = new TextField();
+		VIP1DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		VIP1DiscountRange.setId("CheckVIPStrategy");
 		VIP1DiscountRange.setPrefSize(200, 30);
 				
-		VIP2DiscountRange = new TextField();
+		VIP2DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		VIP2DiscountRange.setId("CheckVIPStrategy");
 		VIP2DiscountRange.setPrefSize(200, 30);
 			
-		VIP3DiscountRange = new TextField();
+		VIP3DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		VIP3DiscountRange.setId("CheckVIPStrategy");
 		VIP3DiscountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckVIPStrategy");
 		discountName.setPrefSize(200, 30);
 				

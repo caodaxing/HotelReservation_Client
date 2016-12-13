@@ -1,16 +1,20 @@
 package viewController;
 
+import java.util.ArrayList;
+
+import Message.PromotionType;
 import javafx.stage.Stage;
 import logicService.promotion.PromotionService;
+import logicService.stub.PromotionService_Stub;
 import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
 import view.right.webBusiness.promotion.CheckVIPAreaStrategy;
 import view.right.webBusiness.promotion.CheckVIPStrategy;
 import view.right.webBusiness.promotion.Choose;
 import view.right.webBusiness.promotion.ExistStrategy;
-import view.right.webBusiness.promotion.First;
 import view.right.webBusiness.promotion.SetSpecialTimeStrategy;
 import view.right.webBusiness.promotion.SetVIPAreaStrategy;
 import view.right.webBusiness.promotion.SetVIPStrategy;
+import vo.PromotionVO;
 
 public class WBPromotionController extends WebBusinessLeftController{
 	
@@ -27,11 +31,31 @@ public class WBPromotionController extends WebBusinessLeftController{
 	private SetVIPAreaStrategy setVIPAreaStrategyUI;
 	private SetVIPStrategy setVIPStrategyUI;
 	
+	private ArrayList<PromotionVO> promotionList;
+	private int row;
+	
 	public WBPromotionController(Stage stage, String userId){
 		
-		//promotionService = new Promotion();
+		promotionService = new PromotionService_Stub();
 		this.stage = stage;
 		this.userId = userId;
+		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
+		checkVIPStrategyUI  = new CheckVIPStrategy(this);
+		chooseUI = new Choose(this);
+		existStrategyUI = new ExistStrategy(this);
+		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
+		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
+		setVIPStrategyUI = new SetVIPStrategy(this);
+		
+	}
+	
+	public WBPromotionController(Stage stage, String userId, int row){
+		
+		promotionService = new PromotionService_Stub();
+		this.stage = stage;
+		this.userId = userId;
+		this.row = row;
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);
@@ -77,5 +101,21 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public void setSetVIPStrategyView(){
 		stage.setScene(setVIPStrategyUI.getScene());
+	}
+	
+	public void setPromotoinList(){
+		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
+	}
+	
+	public ArrayList<PromotionVO> getPromotionList(){
+		return promotionList;
+	}
+	
+	public void setRow(){
+		row = existStrategyUI.getRow();
+	}
+	
+	public int getRow(){
+		return row;
 	}
 }
