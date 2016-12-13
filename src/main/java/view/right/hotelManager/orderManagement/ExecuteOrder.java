@@ -48,6 +48,7 @@ public class ExecuteOrder {
 		
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		rightPane.getStylesheets().add("/CSS/right.css");
 		
 		//添加文本内容
 		setTextContent();

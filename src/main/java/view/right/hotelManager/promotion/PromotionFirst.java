@@ -39,6 +39,7 @@ public class PromotionFirst {
 		
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		rightPane.getStylesheets().add("/CSS/right.css");
 		
 		//添加按钮
 		setButton();

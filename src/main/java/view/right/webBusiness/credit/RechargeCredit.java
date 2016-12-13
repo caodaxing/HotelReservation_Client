@@ -46,11 +46,14 @@ public class RechargeCredit {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
+		
 		//添加文本框
 		setTextField();
 		
 		//添加按钮
 		setButton();
+		
+		rightPane.getStylesheets().add("/CSS/right.css");
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -64,11 +67,9 @@ public class RechargeCredit {
 		
 		//添加文本框
 		userID = new TextField();
-		userID.setId("RechargeCredit");
 		userID.setPrefSize(200, 30);
 		
 		rechargeAmount = new TextField();
-		rechargeAmount.setId("RechargeCredit");
 		rechargeAmount.setPrefSize(200, 30);
 		
 		//设置文本框位置
@@ -82,6 +83,7 @@ public class RechargeCredit {
 		rightPane.getChildren().add(userID);
 		rightPane.getChildren().add(rechargeAmount);
 		
+		
 		AnchorPane.setLeftAnchor(userID, 200.0);
 		AnchorPane.setLeftAnchor(rechargeAmount, 200.0);
 		
@@ -94,11 +96,9 @@ public class RechargeCredit {
 		
 		//添加按钮
 		ok = new Button("确认");
-		ok.setId("RechargeCredit");
 		ok.setPrefSize(100, 40);
 		
 		cancel = new Button("取消");
-		cancel.setId("RechargeCredit");
 		cancel.setPrefSize(100, 40);
 				
 		//设置按钮位置
