@@ -4,11 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import viewController.VistorLeftController;
 
@@ -38,6 +34,10 @@ public class VistorUI{
 		GridPane grid = new GridPane();
 		grid.setAlignment(Pos.BASELINE_LEFT);
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
+		
+		GridPane pane = new GridPane();
+		pane.setPrefSize(200, 200);
+		grid.add(pane, 0, 0);
 		
 		Button signIn = new Button("登 录");
 		signIn.setId("light-button");

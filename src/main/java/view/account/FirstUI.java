@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import view.helpTools.DefaultNums;
 import viewController.AccountController;
@@ -33,12 +34,12 @@ public class FirstUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setId("First");
+		root.setStyle("-fx-background-image:url(\"/signImage/首页背景.jpg\")");
 		
 		setButton();
 		
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+		scene.getStylesheets().add("/CSS/account.css");
 	}
 	
 	public Scene getScene(){

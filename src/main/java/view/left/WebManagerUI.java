@@ -39,7 +39,7 @@ public class WebManagerUI{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("/酒店图片/index2.jpg", 200, 180, false, true);
+		Image image = new Image("/酒店图片/index2.jpg", 200, 200, false, true);
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);

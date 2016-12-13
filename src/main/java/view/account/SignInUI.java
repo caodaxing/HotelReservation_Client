@@ -36,7 +36,8 @@ public class SignInUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setId("SignIn");
+		root.setStyle("-fx-background-image:url(\"/signImage/登录界面.jpg\")");
+		root.getStylesheets().add("/CSS/account.css");
 		
 		setButton();
 		
