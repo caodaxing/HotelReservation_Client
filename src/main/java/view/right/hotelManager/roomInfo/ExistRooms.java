@@ -149,7 +149,9 @@ public class ExistRooms {
 		data = FXCollections.observableArrayList();
 		roomList = roomService.getRoomList(controller.getUserId());
 		for(int i=0;i<roomList.size();i++){
-			data.add(new Person(roomList.get(i).roomType.toString(), String.valueOf(roomList.get(i).price), String.valueOf(roomService.getRemainingRoomNums(controller.getUserId(), roomList.get(i).roomType))));
+			data.add(new Person(roomList.get(i).roomType.toString(), String.valueOf(roomList.get(i).price),
+					String.valueOf(roomService.getRemainingRoomNums(controller.getUserId()
+							, roomList.get(i).roomType))));
 		}
 	}
 	

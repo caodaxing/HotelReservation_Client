@@ -178,7 +178,9 @@ public class SearchHotel {
 		search.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//若没有则弹出提示，若有则跳至搜索结果界面,不清空搜索信息,返回时由controller负责重新初始化
+				controller.searchAndSetSearchHotelView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -259,20 +261,40 @@ public class SearchHotel {
 		default:
 			break;
 		}
-		
-		DecimalFormat df=new DecimalFormat("#.00");
-		
 		if(startTime.getValue().isAfter(endTime.getValue())){
 			controller.showDialog("入住时间不应晚于退房时间");
 		}
 		String start = startTime.getValue().toString();
 		String end = endTime.getValue().toString();
-		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
-		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
-		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));
-		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
-		int starLow = Integer.valueOf(starLeft.getText());
-		int starHigh = Integer.valueOf(starRight.getText());
+		
+
+		
+		DecimalFormat df=new DecimalFormat("#.00");
+		//若为空则置为默认值
+		double priceLow = -1.00;
+		if(!priceLeft.getText().equals(""))
+			priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
+		
+		double priceHigh = 5000.00;
+		if(!priceRight.getText().equals(""))
+			priceHigh = Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
+		
+		double commentLow = 0.00;
+		if(!evaluationLeft.getText().equals(""))
+			commentLow = Double.valueOf(evaluationLeft.getText());
+		
+		double commentHigh = 5.00;
+		if(!evaluationRight.getText().equals(""))
+			commentHigh = Double.valueOf(evaluationRight.getText());
+		
+		int starLow = 0;
+		if(!starLeft.getText().equals(""))
+			starLow = Integer.valueOf(starLeft.getText());
+		
+		int starHigh = 5;
+		if(!starRight.getText().equals(""))
+			starHigh = Integer.valueOf(starRight.getText());
+		
 		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 	}

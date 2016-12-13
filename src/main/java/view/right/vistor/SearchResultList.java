@@ -12,18 +12,22 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.left.VistorUI;
 import view.right.user.checkHotel.SearchResultList.Person;
 import viewController.UserCheckHotelController;
 import viewController.VistorController;
+import viewController.WBOrderManagementController;
+import vo.HotelVO;
 
 /**
  * 游客界面_查看酒店_搜索结果列表
@@ -58,18 +62,15 @@ public class SearchResultList {
 	TableColumn<Person, String> evalaution;
 	TableColumn<Person, Button> operation1;
 	
-	Button button11 = new Button("查看");
-	Button button21 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", "1111", button11),
-			new Person("2222", "2222", "2222", "2222", button21));
+	private final ObservableList<Person> data = FXCollections.observableArrayList();;
+	private Button check;
 	
 	public SearchResultList(VistorController controller){
 		
 		this.controller = controller;
 		
 		leftUI = new VistorUI(controller);
+		//service
 		
 		leftPane = leftUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -80,7 +81,7 @@ public class SearchResultList {
 		//添加排序按钮
 		setSortButton();
 		
-		//设置列表
+		//设置列表,列表值初始化放到controller中
 		setList();
 		
 		HBox root = new HBox(leftPane, rightPane);
@@ -99,19 +100,19 @@ public class SearchResultList {
 		//设置按钮
 		ascendingSort = new Button("价格升序");
 		ascendingSort.setId("searchResultList");
-		ascendingSort.setPrefSize(60, 30);
+		ascendingSort.setPrefSize(100, 30);
 		
 		dscendingSort = new Button("价格降序");
 		dscendingSort.setId("searchResultList");
-		dscendingSort.setPrefSize(60, 30);
+		dscendingSort.setPrefSize(100, 30);
 		
 		starLevel = new Button("星级");
 		starLevel.setId("searchResultList");
-		starLevel.setPrefSize(60, 30);
+		starLevel.setPrefSize(100, 30);
 		
 		evaluation = new Button("评价");
 		evaluation.setId("searchList");
-		evaluation.setPrefSize(60, 30);
+		evaluation.setPrefSize(100, 30);
 		
 		revert = new Button("返回");
 		revert.setId("searchList");
@@ -178,8 +179,9 @@ public class SearchResultList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//返回搜索酒店界面，每次返回搜索界面都将list和iD清空
+				controller.setSearchHotelView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -216,23 +218,43 @@ public class SearchResultList {
 		//添加列
 		hotelName = new TableColumn<>("酒店名称");
 		hotelName.setCellValueFactory(new PropertyValueFactory<Person, String>("hotelName"));
-		hotelName.setMinWidth(150);
+		hotelName.setMinWidth(200);
 		
 		whetherReserve = new TableColumn<>("是否预定过");
 		whetherReserve.setCellValueFactory(new PropertyValueFactory<Person, String>("whetherReserve"));
-		whetherReserve.setMinWidth(100);
+		whetherReserve.setMinWidth(80);
 		
 		starlevel = new TableColumn<>("星级");
 		starlevel.setCellValueFactory(new PropertyValueFactory<Person, String>("starlevel"));
-		starlevel.setMinWidth(60);
+		starlevel.setMinWidth(80);
 		
 		evalaution = new TableColumn<>("评价");
 		evalaution.setCellValueFactory(new PropertyValueFactory<Person, String>("evaluation"));
-		evalaution.setMinWidth(60);
+		evalaution.setMinWidth(80);
 		
 		operation1= new TableColumn<>("操作");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
-		operation1.setMinWidth(50);
+		operation1.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								int row = this.getTableRow().getIndex();
+								controller.setHotelID(row);
+								controller.setHotelInfoView();
+								controller.getStage().show();
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
+		operation1.setMinWidth(100);
+		
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
@@ -243,7 +265,15 @@ public class SearchResultList {
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
-		AnchorPane.setTopAnchor(tableView, 160.0);
+		AnchorPane.setTopAnchor(tableView, 150.0);
+	}
+	
+	public void setListValue(){
+		ArrayList<HotelVO> hotelList = controller.getSearchHotelList();
+		for(int i=0;i<hotelList.size();i++){
+			check = new Button("查看");
+			data.add(new Person(hotelList.get(i).hotelName,"请先登录", Integer.toString(hotelList.get(i).levelOfHotel), Double.toString(hotelList.get(i).evaluationGrades), check));
+		}
 	}
 	
 	/**

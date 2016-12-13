@@ -2,6 +2,7 @@ package viewController;
 
 import java.util.ArrayList;
 
+import Message.HotelSearchCondition;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.hotel.CheckHotelService;
@@ -24,14 +25,15 @@ public class VistorController extends VistorLeftController{
 	private SearchHotel searchHotelUI ;
 	private SearchResultList searchResultListUI ;
 	
-	HotelSearchVO searchVO ;
-	String hotelID;
+	private ArrayList<HotelVO> hotelList;
+	private String hotelID;
 	
 	public VistorController(Stage stage){
 		
 		this.stage = stage ;
 		
-		
+		searchService = new HotelService_Stub();
+		checkService = new HotelService_Stub();
 		
 		blankUI = new Blank(this);
 		hotelInfoUI = new HotelInfo(this);
@@ -44,36 +46,59 @@ public class VistorController extends VistorLeftController{
 		return stage;
 	}
 	
-	public void setBlankView(){
-		
-		stage.setScene(blankUI.getScene());
-		
+	public void setHotelID(int row){
+		hotelID = hotelList.get(row).hoteID;
 	}
 	
-	public void setHotelInfoView(String hotelID){
-		 
-		this.hotelID = hotelID;
-		stage.setScene(hotelInfoUI.getScene());
-		
+	public void setBlankView(){
+		stage.setScene(blankUI.getScene());
 	}
 	
 	public void setSearchHotelView(){
-
-		//HotelSearchVO vo = searchHotelUI.getSearchVO();
-		//我写着句是干啥来着？？
+		//生成新的searchHotelView，searchResultList，hotelInfo
+		searchHotelUI = new SearchHotel(this);
+		searchResultListUI = new SearchResultList(this);
+		hotelInfoUI = new HotelInfo(this);
 		stage.setScene(searchHotelUI.getScene());
+		//清空hotelList和hotelID
+		hotelList = null;
+		hotelID = null;
+	}
 	
+	public void setHotelInfoView(){
+		stage.setScene(hotelInfoUI.getScene());
+		hotelInfoUI.setText();
+		hotelInfoUI.setImage();
+	}
+	
+	//搜索酒店，设置界面，设置list
+	public void searchAndSetSearchHotelView(){
+		hotelList = searchService.search(searchHotelUI.getSearchVO());
+		//若为空
+		if(hotelList == null){
+			showDialog("没有符合条件的酒店");
+			return ;
+		}
+		//不为空则跳转
+		searchResultListUI.setListValue();
+		stage.setScene(searchResultListUI.getScene());
+	}
+	
+	//返回搜索到的酒店列表
+	public ArrayList<HotelVO> getSearchHotelList(){
+		return hotelList;
+	}
+	
+	//返回排序后的列表
+	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition){
+		return searchService.getSortedList(condition, hotelList);
 	}
 	
 	public void setSearchResultListView(){
-		
 		stage.setScene(searchResultListUI.getScene());
-	
+		searchResultListUI.setListValue();
 	}
 	
-	public ArrayList<HotelVO> getSearchHotelList(){
-		return searchService.search(searchVO);
-	}
 	
 	public HotelVO getHotelInfo(){
 		return checkService.getHotelnfo(hotelID);

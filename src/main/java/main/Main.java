@@ -3,7 +3,6 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import viewController.AccountController;
-import viewController.WBVIPInfoController;
 
 public class Main extends Application{
 	
