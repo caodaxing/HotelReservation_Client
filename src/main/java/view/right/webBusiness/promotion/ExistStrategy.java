@@ -2,6 +2,7 @@ package view.right.webBusiness.promotion;
 
 import java.util.ArrayList;
 
+import Message.PromotionType;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -9,19 +10,26 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.util.Callback;
+import logicService.promotion.PromotionService;
+import logicService.stub.PromotionService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
-import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
+import viewController.WBOrderManagementController;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
-import vo.OrderVO;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_查看现有策略列表
@@ -31,7 +39,6 @@ import vo.OrderVO;
 public class ExistStrategy {
 	
 	private WBPromotionController controller;
-	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -51,7 +58,7 @@ public class ExistStrategy {
 	private Button check;
 	private Button delete;
 	private int row;
-	ArrayList<OrderVO> orderList;
+	ArrayList<PromotionVO> promotionList;
 	
 	public ExistStrategy(WBPromotionController controller){
 		
@@ -116,26 +123,73 @@ public class ExistStrategy {
 		
 		//创建列表对象
 		tableView = new TableView<Person>();
+		tableView.setPrefSize(455, 400);
 		tableView.setEditable(false);
+		initialData();
 		
 		//添加列表内容
 				
 		//添加列
 		promotionType = new TableColumn<>("策略类型");
 		promotionType.setCellValueFactory(new PropertyValueFactory<Person, String>("promotiontype"));
-		promotionType.setMinWidth(140);
+		promotionType.setMinWidth(160);
 		
 		promotionName = new TableColumn<>("策略名称");
 		promotionName.setCellValueFactory(new PropertyValueFactory<Person, String>("promotionname"));
-		promotionName.setMinWidth(140);
+		promotionName.setMinWidth(160);
 		
 		operation1 = new TableColumn<>("操作1");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
-		operation1.setMinWidth(80);
+		operation1.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(50);
+							Item.setOnAction(event->{
+								row = this.getTableRow().getIndex();
+								if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
+									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+									controller.setCheckSpecialTimeStrategyView();
+									controller.getStage().show();
+								}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_LEVEL){
+									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+									controller.setCheckVIPStrategyView();
+									controller.getStage().show();
+								}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_TRADINGAREA){
+									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+									controller.setCheckVIPAreaStrategyView();
+									controller.getStage().show();
+								}
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
+		operation1.setMinWidth(50);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
-		operation2.setMinWidth(80);
+		operation2.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("删除");
+							Item.setPrefWidth(50);
+							Item.setOnAction(event->{
+								
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
+		operation2.setMinWidth(50);
 		
 		tableView.setItems(data);
 		tableView.getColumns().addAll(promotionType, promotionName, operation1, operation2);
@@ -147,7 +201,19 @@ public class ExistStrategy {
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
+
+	public int getRow(){
+		return row;
+	}
 	
+	public void initialData(){
+		data = FXCollections.observableArrayList();
+		controller.setPromotoinList();
+		promotionList = controller.getPromotionList();
+		for(int i=0;i<promotionList.size();i++){
+			data.add(new Person(promotionList.get(i).promotionType.toString(), promotionList.get(i).promotionName.toString(), check, delete));
+		}
+	}
 	/**
 	 * 异常订单列表的内部数据类
 	 */

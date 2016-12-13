@@ -1,5 +1,7 @@
 package view.right.webBusiness.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +14,7 @@ import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
 import viewController.WebBusinessLeftController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_查看特殊期间促销策略
@@ -32,6 +35,7 @@ public class CheckSpecialTimeStrategy {
 	TextField discountName;
 	
 	Button revert;
+	ArrayList<PromotionVO> promotionList;
 	
 	public CheckSpecialTimeStrategy(WBPromotionController controller){
 		
@@ -61,21 +65,24 @@ public class CheckSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setPromotoinList();
+		promotionList = controller.getPromotionList();
+		int num = controller.getRow();
+		
 		//添加文本框
-		startDiscount = new TextField();
+		startDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
 		startDiscount.setId("CheckSpecialTimeStrategy");
 		startDiscount.setPrefSize(200, 30);
 				
-		endDiscount = new TextField();
+		endDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
 		endDiscount.setId("CheckSpecialTimeStrategy");
 		endDiscount.setPrefSize(200, 30);
 			
-		discountRange = new TextField();
+		discountRange = new TextField(String.valueOf(promotionList.get(num).vipLevelDiscount));
 		discountRange.setId("CheckSpecialTimeStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
 				
@@ -120,7 +127,7 @@ public class CheckSpecialTimeStrategy {
 	private void setButton(){
 		
 		//添加按钮
-		revert = new Button("撤销并恢复一半信用");
+		revert = new Button("返回");
 		revert.setId("CheckSpecialTimeStrategy");
 		revert.setPrefSize(100, 40);
 		
@@ -134,7 +141,7 @@ public class CheckSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setCheckSpecialTimeStrategyView();
+				controller.setExistStrategyView();
 				controller.getStage().show();
 			}
 					

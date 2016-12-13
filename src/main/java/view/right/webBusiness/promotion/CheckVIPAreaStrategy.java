@@ -1,5 +1,7 @@
 package view.right.webBusiness.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,10 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logicService.promotion.PromotionService;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_查看会员特定商圈折扣策略
@@ -32,6 +35,7 @@ public class CheckVIPAreaStrategy {
 	TextField discountName;
 	
 	Button revert;
+	ArrayList<PromotionVO> promotionList;
 	
 	private static final int 
 	TEXTFIELD_WIDTH = 200,//文本框的宽度
@@ -73,13 +77,15 @@ public class CheckVIPAreaStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
+		controller.setPromotoinList();
+		promotionList = controller.getPromotionList();
+		int num = controller.getRow();
 		
 		//初始化文本框
 		lowestVIPLevel = new TextField();
-		tradingArea = new TextField();
-		discountRange = new TextField();
-		discountName = new TextField();
+		tradingArea = new TextField(promotionList.get(num).promotionID);
+		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
+		discountName = new TextField(promotionList.get(num).promotionName);
 		
 		lowestVIPLevel.setId("CheckVIPAreaStrategy");
 		tradingArea.setId("CheckVIPAreaStrategy");

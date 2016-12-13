@@ -22,7 +22,7 @@ public class AccountService_Stub implements AccountService{
 
 	@Override
 	public Identity getIdentity(String accountID) {
-		return Identity.CLIENT;
+		return Identity.WEBBUSSINESS;
 	}
 
 	@Override
