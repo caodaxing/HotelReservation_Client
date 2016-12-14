@@ -39,7 +39,7 @@ public class HotelThreeRoomsPromotion implements Promotion{
 	@Override
 	public boolean judgePromotion(OrderVO vo) {
 		if(this.hotelID == vo.hotelID) {
-			if(vo.rooms != null && vo.rooms.size() >= 3) {
+			if(vo.roomNum >= 3) {
 				return true;
 			}
 		}
@@ -52,18 +52,22 @@ public class HotelThreeRoomsPromotion implements Promotion{
 		
 		double discount = 0;
 		//roomsAndDiscount下标0表示预定3间
-		if(vo.rooms.size() -3 < this.roomsAndDiscount.length) {
-			discount = this.roomsAndDiscount[vo.rooms.size() - 3];
+		if(vo.roomNum -3 < this.roomsAndDiscount.length) {
+			discount = this.roomsAndDiscount[vo.roomNum - 3];
 		} else {
 			discount = this.roomsAndDiscount[this.roomsAndDiscount.length-1];
 		}
 		
-		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * discount);
 		
-		if(vo.promotions == null) {
-			vo.promotions = new ArrayList<PromotionVO>();
+		if(discount != 0) {
+			double temp = vo.beforePrice * discount;
+			
+			if(temp < vo.afterPrice) {
+				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.promotion = this.changeToVO();
+			}
 		}
-		vo.promotions.add(this.changeToVO());
+		
 		
 		return vo;
 	}

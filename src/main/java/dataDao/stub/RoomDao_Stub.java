@@ -17,7 +17,7 @@ public class RoomDao_Stub implements RoomDao {
 		HashMap<String, String> n11 = new HashMap<String, String>();
 		n11.put("2016-12-15 12:00:00", "2016-12-16 12:00:00");
 		n11.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
-		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n11, null));
+		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 500, n11, null));
 		
 		HashMap<String, String> n12 = new HashMap<String, String>();
 		n12.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
@@ -28,7 +28,7 @@ public class RoomDao_Stub implements RoomDao {
 		
 		HashMap<String, String> n21 = new HashMap<String, String>();
 		n21.put("2017-01-01 12:00:00", "2017-01-02 12:00:00");
-		this.pos2.add(new RoomPO("00002", "1109", RoomType.STANDARD_ROOM.ordinal(), 400, n21, null));
+		this.pos2.add(new RoomPO("00002", "1109", RoomType.STANDARD_ROOM.ordinal(), 500, n21, null));
 		
 		HashMap<String, String> n22 = new HashMap<String, String>();
 		n22.put("2017-01-03 12:00:00", "2017-01-04 12:00:00");

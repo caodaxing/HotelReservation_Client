@@ -1,6 +1,6 @@
 package logictest.promotion;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
@@ -24,15 +24,14 @@ public class CalculatePromotionTest {
 	//HotelBirthday + WebVipLevel + WebTradingArea + Web11 + Hotel11
 	@Test
 	public void testCalculatePromotion1() {
-		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		OrderVO vo = new OrderVO("wyy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
+		OrderVO vo = new OrderVO("wyy", RoomType.STANDARD_ROOM, 1, "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001",  2, false);
+		vo.beforePrice = 400;
 		
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(5, order.promotions.size());
+		assertEquals("11111", order.promotion.promotionID);
 		
-		assertEquals(122.89, 0.00, order.afterPrice);
+		assertEquals(280, order.afterPrice, 0.00);
 	}
 	
 	
@@ -40,64 +39,53 @@ public class CalculatePromotionTest {
 	@Test
 	public void testCalculatePromotion2() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		rooms.add(new RoomVO("00001", "1102", RoomType.STANDARD_ROOM, 300));
-		rooms.add(new RoomVO("00001", "1103", RoomType.STANDARD_ROOM, 500));
-		OrderVO vo = new OrderVO("wyy", "2016-11-30 12:00:00", "2016-11-31 12:00:00", "00001", rooms, 4, false, 1200);
-		
+		OrderVO vo = new OrderVO("wyy",RoomType.STANDARD_ROOM, 3, "2016-11-30 12:00:00", "2016-11-31 12:00:00", "00001",4, false);
+		vo.beforePrice = 1200;
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(4, order.promotions.size());
+		assertEquals("11111", order.promotion.promotionID);
 		
-		assertEquals(622.08, 0.00, order.afterPrice);
+		assertEquals(280, order.afterPrice, 0.00);	
 	}
 	
 	//HotelBirthday + WebVipLevel + WebTradingArea + HotelThreeRooms
 	@Test
 	public void testCalculatePromotion3() {
-		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		rooms.add(new RoomVO("00001", "1102", RoomType.STANDARD_ROOM, 300));
-		rooms.add(new RoomVO("00001", "1103", RoomType.STANDARD_ROOM, 500));
-		rooms.add(new RoomVO("00001", "1105", RoomType.STANDARD_ROOM, 300));
-		OrderVO vo = new OrderVO("wyy", "2016-11-30 12:00:00", "2016-11-31 12:00:00", "00001", rooms, 4, false, 1500);
-		
+		OrderVO vo = new OrderVO("wyy",RoomType.STANDARD_ROOM, 4,  "2016-11-30 12:00:00", "2016-11-31 12:00:00", "00001", 4, false);
+		vo.beforePrice = 1500;
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(4, order.promotions.size());
+		assertEquals("11111", order.promotion.promotionID);
 		
-		assertEquals(552.96, 0.00, order.afterPrice);
+		assertEquals(280, order.afterPrice, 0.00);	
 		
 	}
 	
 	//HotelBusiness + WebVipLevel + WebTradingArea
 	@Test
 	public void testCalculatePromotion4() {
-		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		OrderVO vo = new OrderVO("bcy", "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001", rooms, 2, false, 400);
-		
+		OrderVO vo = new OrderVO("bcy",RoomType.STANDARD_ROOM,1, "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001",2, false);
+		vo.beforePrice = 400;
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(3, order.promotions.size());
+		assertEquals("11111", order.promotion.promotionID);
 		
-		assertEquals(179.20, 0.00, order.afterPrice);
+		assertEquals(280, order.afterPrice, 0.00);	
 	}
 	
 	//Web11 + Hotel11
 	@Test
 	public void testCalculatePromotion5() {
-		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		OrderVO vo = new OrderVO("zdy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
-		
+		OrderVO vo = new OrderVO("zdy", RoomType.STANDARD_ROOM, 1,"2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001",2, false);
+		vo.beforePrice = 400;
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(2, order.promotions.size());
+		assertEquals("11111", order.promotion.promotionID);
 		
-		assertEquals(400, 0.00, order.beforePrice);
+		assertEquals(280, order.afterPrice, 0.00);	
 		
-		assertEquals(196, 0.00, order.afterPrice);
+		assertEquals(400, order.beforePrice, 0);
+		
 	}
 	
 	//不使用任何prmotion
@@ -105,13 +93,13 @@ public class CalculatePromotionTest {
 	public void testCalculatePromotion6() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
 		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		OrderVO vo = new OrderVO("zdy", "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001", rooms, 2, false, 400);
-		
+		OrderVO vo = new OrderVO("zdy",RoomType.STANDARD_ROOM, 1, "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001", 2, false);
+		vo.beforePrice = 400;
 		OrderVO order = this.calculatePromotion.calculatePromotion(vo);
 		
-		assertEquals(null, order.promotions);
+		assertEquals(null, order.promotion);
 		
-		assertEquals(400, 0.00, order.beforePrice);
+		assertEquals(400, order.beforePrice, 0);
 	}
 
 }

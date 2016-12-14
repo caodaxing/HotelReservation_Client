@@ -41,24 +41,37 @@ public class CreateOrderTest {
 	//替换MockCalculatePromotion之后
 	@Test
 	public void testCreateOrder2() {
-		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
-		OrderVO vo = new OrderVO("wyy", "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001", rooms, 2, false, 400);
+		OrderVO vo = new OrderVO("wyy", RoomType.STANDARD_ROOM, 1, "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001",  2, false);
 		
 		OrderVO order = this.createOrder.createOrder(vo);
 		
 		assertEquals(5, order.promotions.size());
 		
-		assertEquals(122.89, 0.00, order.afterPrice);
+		assertEquals(122.89,  order.afterPrice, 0.00);
 	}
 	
+	@Test
+	public void testCreateOrder3() {
+		OrderVO vo = new OrderVO("wyy", RoomType.STANDARD_ROOM, 1, "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001",  2, false);
+		
+		OrderVO order = this.createOrder.createOrder(vo);
+		
+		assertEquals("20161111001889", order.orderId);
+		
+		assertEquals(5, order.promotions.size());
+		
+		assertEquals(153.61, order.afterPrice, 0);
+		
+	}
+	
+	
 	//替换MockCalculatePromotion和MockCreditInfo之后
-		@Test
-		public void testCreateOrder3() {
-			assertEquals(false, this.createOrder.judgeCreditCanCreateOrder("zdy"));
-			
-			assertEquals(true, this.createOrder.judgeCreditCanCreateOrder("wyy"));
-		}
+	@Test
+	public void testCreateOrder4() {
+		assertEquals(false, this.createOrder.judgeCreditCanCreateOrder("zdy"));
+		
+		assertEquals(true, this.createOrder.judgeCreditCanCreateOrder("wyy"));
+	}
 	
 	
 	

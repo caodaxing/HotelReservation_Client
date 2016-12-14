@@ -12,5 +12,5 @@ public interface HotelInfo {
 	
 	public HotelVO getHotelnfo(String hotelId);
 	
-	public int getRoomPrice(String hotelID, RoomType roomType);
+	public double getRoomPrice(String hotelID, RoomType roomType);
 }

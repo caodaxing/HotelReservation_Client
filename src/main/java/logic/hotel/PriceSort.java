@@ -2,10 +2,10 @@ package logic.hotel;
 
 import java.util.ArrayList;
 
-import logic.room.RoomInfo;
 import logic.room.Room;
+import logic.room.RoomInfo;
 import vo.HotelVO;
-import vo.RoomVO;
+
 
 /**
  * 按价格排序
@@ -15,6 +15,7 @@ import vo.RoomVO;
  */
 public class PriceSort implements HotelSort{
 
+	//该类获取酒店房间需要用到roominfo最低价格
 	private  UpOrDownSort sort;
 
 	public PriceSort() {
@@ -118,17 +119,7 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 			this.hotelVO = hotelVO;
 			
 			RoomInfo roomInfo = new Room();
-			ArrayList<RoomVO> roomList = roomInfo.getRoomList(hotelVO.hoteID);
-			if(roomList == null || roomList.size() == 0) {
-				LowestPrice = 0;
-			} else {
-				LowestPrice = roomList.get(0).price;
-				for (RoomVO roomVO : roomList) {
-					if (roomVO.price < LowestPrice) {
-						LowestPrice = roomVO.price;
-					}
-				}
-			}
+			this.LowestPrice = roomInfo.getHotelLowestPrice(hotelVO.hoteID);
 		}
 
 		public double getLowestPrice() {

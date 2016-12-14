@@ -1,6 +1,5 @@
 package vo;
 
-import java.util.ArrayList;
 
 import Message.OrderState;
 import Message.RoomType;
@@ -38,7 +37,7 @@ public class OrderVO {
 	public boolean hasChild;
 	public double beforePrice;
 	public double afterPrice;
-	public ArrayList<PromotionVO> promotions;
+	public PromotionVO promotion;
 	public String executedTime; 
 	public String undoAbnormalTime;	
 	public String abnormalTime;	
@@ -89,7 +88,7 @@ public class OrderVO {
 	 */
 	public OrderVO(String userID, String orderId, RoomType roomType, int roomNum, String startTime, String endTime,
 			String hotelID, OrderState orderState, int numOfPeople, boolean hasChild, double beforePrice,
-			double afterPrice, ArrayList<PromotionVO> promotions, String executedTime, String undoAbnormalTime,
+			double afterPrice, PromotionVO promotion, String executedTime, String undoAbnormalTime,
 			String abnormalTime, String undoUnexecutedTime) {
 		this.userID = userID;
 		this.orderId = orderId;
@@ -103,7 +102,7 @@ public class OrderVO {
 		this.hasChild = hasChild;
 		this.beforePrice = beforePrice;
 		this.afterPrice = afterPrice;
-		this.promotions = promotions;
+		this.promotion = promotion;
 		this.executedTime = executedTime;
 		this.undoAbnormalTime = undoAbnormalTime;
 		this.abnormalTime = abnormalTime;

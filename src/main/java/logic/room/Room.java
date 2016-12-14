@@ -170,4 +170,52 @@ public class Room implements RoomService , RoomInfo{
 		
 		return remainingRoomNums;
 	}
+
+	@Override
+	public double getHotelLowestPrice(String hotelID) {
+		ArrayList<RoomVO> roomList = this.getRoomList(hotelID);
+		
+		double LowestPrice = 0;
+		
+		if(roomList == null || roomList.size() == 0) {
+			System.out.println("logic.room.getHotelLowestPrice参数报错");
+			return 0;
+		} 
+		
+		LowestPrice = roomList.get(0).price;
+		
+		for (RoomVO roomVO : roomList) {
+			if (roomVO.price < LowestPrice) {
+				LowestPrice = roomVO.price;
+			}
+		}
+		
+		return LowestPrice;
+	}
+
+	@Override
+	public double getRoomPrice(String hotelID, RoomType roomType) {
+		ArrayList<RoomVO> roomList = this.getRoomList(hotelID);
+		double price = 0;
+		
+		if(roomList == null || roomList.size() == 0) {
+			System.out.println("logic.room.getRoomPrice参数报错");
+			return 0;
+		} 
+		
+		boolean roomExist = false;
+		for (RoomVO roomVO : roomList) {
+			if (roomVO.roomType == roomType) {
+				price = roomVO.price;
+				roomExist = true;
+				break;
+			}
+		}
+		
+		if(!roomExist) {
+			System.out.println("logic.room.getRoomPrice生成订单房间信息不一致，酒店不存在该房间");
+		}
+		
+		return price;
+	}
 }

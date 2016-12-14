@@ -36,7 +36,10 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 		if(order == null) {
 			return null;
 		}
-		
+
+//System.out.println(order.beforePrice);
+//System.out.println(order.orderId);
+
 		this.promotions.clear();
 		//清除原先的promotion,以防止promotion有添加或者改动不一致的现象
 		

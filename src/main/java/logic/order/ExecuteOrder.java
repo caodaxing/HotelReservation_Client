@@ -47,6 +47,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 		}
 		
 		if(po != null) {
+			
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
 				String executedTime = Time.getCurrentTime();
 				

@@ -1,7 +1,6 @@
 package logictest.room;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 
@@ -59,4 +58,18 @@ public class RoomTest {
 	}
 	
 	
+	@Test
+	public void testGetRoomPrice1(){
+		assertEquals(400, 0, this.room.getRoomPrice("00001", RoomType.STANDARD_ROOM));
+	}
+	
+	@Test
+	public void testGetRoomPrice2(){
+		assertEquals(0, 0, this.room.getRoomPrice("00001", RoomType.SINGLE_ROOM));
+	}
+	
+	@Test
+	public void testGetRoomPrice3(){
+		assertEquals(500, 0, this.room.getRoomPrice("00002", RoomType.STANDARD_ROOM));
+	}
 }

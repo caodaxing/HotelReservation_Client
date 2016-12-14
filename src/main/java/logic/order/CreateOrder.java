@@ -27,12 +27,14 @@ public class CreateOrder implements CreateOrderService{
 	private OrderTransform orderTrans;
 	private CreditInfo creditInfo; 
 	private CalculationPromotionInfo caculatePromotionInfo;
+	private HotelInfo info;
 	
 	
 	public CreateOrder() {
 		this.orderTrans = new OrderTransform();
 		this.creditInfo = new Credit();
 		this.caculatePromotionInfo = new CalculatePromotion();
+		this.info = new Hotel();
 		
 		this.orderDao = new OrderDao_Stub();
 	}
@@ -48,11 +50,14 @@ public class CreateOrder implements CreateOrderService{
 
 		//生成订单的id
 		int num = this.orderDao.getOrderNum();
-		String orderID = o.startTime.substring(0, 10) + String.format("%06d", num);
+		String orderID = o.startTime.substring(0, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%06d", num);
 		o.orderId = orderID;
 		
-		HotelInfo info = new Hotel();
-		o.beforePrice = info.getRoomPrice(o.hotelID, o.roomType);
+		
+		//获取价格
+		o.beforePrice = info.getRoomPrice(o.hotelID, o.roomType) * o.roomNum;
+		o.afterPrice = o.beforePrice;
+		
 		
 		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
 		

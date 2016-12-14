@@ -71,12 +71,14 @@ public class WebVipTradingAreaPromotion implements Promotion {
 			discount = dis[l];
 		}
 		
-		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * discount);
-		
-		if(vo.promotions == null) {
-			vo.promotions = new ArrayList<PromotionVO>();
-		} 
-		vo.promotions.add(this.changeToVO());
+		if(discount != 0) {
+			double temp = vo.beforePrice * discount;
+			
+			if(temp < vo.afterPrice) {
+				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.promotion = this.changeToVO();
+			}
+		}
 		
 		return vo;
 	}

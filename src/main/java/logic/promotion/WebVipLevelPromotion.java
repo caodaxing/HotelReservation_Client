@@ -56,12 +56,15 @@ public class WebVipLevelPromotion  implements Promotion{
 			discount = this.vipLevelDiscount[this.vipLevelDiscount.length-1];
 		}
 		
-		vo.afterPrice = DataFormat.getInstance().formatDouble(vo.beforePrice * discount);
-		
-		if(vo.promotions == null) {
-			vo.promotions = new ArrayList<PromotionVO>();
+
+		if(discount != 0) {
+			double temp = vo.beforePrice * discount;
+			
+			if(temp < vo.afterPrice) {
+				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.promotion = this.changeToVO();
+			}
 		}
-		vo.promotions.add(this.changeToVO());
 		
 		return vo;
 	}
