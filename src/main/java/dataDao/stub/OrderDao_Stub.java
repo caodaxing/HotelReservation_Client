@@ -72,4 +72,9 @@ public class OrderDao_Stub implements OrderDao {
 		
 		return list;
 	}
+
+	@Override
+	public int getOrderNum() {
+		return 1889;
+	}
 }

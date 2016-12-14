@@ -43,6 +43,13 @@ public class CreateOrder implements CreateOrderService{
 			return null;
 		} 
 		
+
+		//生成订单的id
+		int num = this.orderDao.getOrderNum();
+		String orderID = o.startTime.substring(0, 10) + String.format("%06d", num);
+		o.orderId = orderID;
+		
+		
 		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
 		
 		vo.orderState = OrderState.UNEXECUTED;
@@ -65,6 +72,7 @@ public class CreateOrder implements CreateOrderService{
 	}
 
 	
+
 	@Override
 	public boolean judgeCreditCanCreateOrder(String userID) {
 		if(creditInfo.getCredit(userID) >= 0) {
