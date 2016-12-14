@@ -33,7 +33,6 @@ public class ModifyUser {
 	TextField name;
 	TextField phone;
 	TextField id;
-	//头像待修改，or放弃？
 	TextField head;
 	
 	Button confirm;
@@ -57,7 +56,9 @@ public class ModifyUser {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-	
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/用户管理_修改客户信息背景.jpg\")");
 	}
 	
 	private void setTextField (){

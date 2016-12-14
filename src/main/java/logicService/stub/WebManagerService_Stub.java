@@ -30,7 +30,7 @@ public class WebManagerService_Stub implements WebManagerService {
 
 	@Override
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID) {
-		return null;
+		return new HotelManagerVO("123","456","789","1112");
 	}
 
 	@Override

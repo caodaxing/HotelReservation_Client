@@ -56,6 +56,9 @@ public class AddHotel {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 	
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/添加酒店背景.jpg\")");
+		
 	}
 	
 	private void setTextField (){

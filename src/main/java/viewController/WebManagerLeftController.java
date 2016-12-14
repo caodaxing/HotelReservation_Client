@@ -130,9 +130,8 @@ public class WebManagerLeftController {
 		ResultMessage result = updateHotelService.addHotel(vo);
 		if(result == ResultMessage.SUCCESS){
 			//成功，清空textfield,跳入添加酒店工作人员界面
-			showDialog("添加成功，请添加酒店工作人员");
+			showDialog("添加成功");
 			addHotelUI.setBlank();
-			setAddHotelManagerView(hotelID);
 		}else{
 			//错误
 			showDialog("系统错误，请重试");
@@ -179,10 +178,9 @@ public class WebManagerLeftController {
 		ResultMessage result0 = webManagerService.addHotelManager(vo);
 		ResultMessage result1 = accountService.register(new AccountVO(hotelID,password,Identity.HOTELMANAGER));
 		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
-			//成功，清空输入框，跳至添加酒店界面
+			//成功，清空输入框
 			showDialog("添加成功");
 			addHotelManagerUI.setBlank();
-			setAddHotelView();
 		}else{
 			//失败
 			showDialog("添加失败,请重试");

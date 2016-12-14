@@ -33,7 +33,9 @@ public class Blank {
 		AnchorPane.setTopAnchor(leftPane, 0.0);
 		
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-
+		
+		root.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/blank/空白背景.jpg\")");
 	}
 	
 	public Scene getScene(){

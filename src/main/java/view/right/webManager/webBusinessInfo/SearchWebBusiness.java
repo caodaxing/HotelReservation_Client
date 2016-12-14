@@ -53,7 +53,9 @@ public class SearchWebBusiness {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/网站营销人员管理_查询界面背景.jpg\")");
 	}
 	
 	private void setButton(){

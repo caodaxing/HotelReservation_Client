@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import view.helpTools.DefaultNums;
 import viewController.VistorLeftController;
 
@@ -23,6 +26,13 @@ public class VistorUI{
 		
 		this.controller = controller;
 		pane = this.initGridPane();
+		
+		Pane imagePane = new GridPane();
+		Image image = new Image("/head/游客头像.png", 200, 200, false, true);
+		ImageView headImage = new ImageView(image);
+		pane.getChildren().add(headImage);
+		pane.add(imagePane, 0, 0);
+		
 	}
 	
 	public GridPane getPane(){

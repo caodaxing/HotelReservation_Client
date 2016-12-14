@@ -20,7 +20,6 @@ public class VistorController extends VistorLeftController{
 	private SearchHotelService searchService;
 	private CheckHotelService checkService;
 	
-	private static Blank blankUI;
 	private HotelInfo hotelInfoUI ;
 	private SearchHotel searchHotelUI ;
 	private SearchResultList searchResultListUI ;
@@ -35,7 +34,6 @@ public class VistorController extends VistorLeftController{
 		searchService = new HotelService_Stub();
 		checkService = new HotelService_Stub();
 		
-		blankUI = new Blank(this);
 		hotelInfoUI = new HotelInfo(this);
 		searchHotelUI = new SearchHotel(this);
 		searchResultListUI = new SearchResultList(this);
@@ -48,10 +46,6 @@ public class VistorController extends VistorLeftController{
 	
 	public void setHotelID(int row){
 		hotelID = hotelList.get(row).hoteID;
-	}
-	
-	public void setBlankView(){
-		stage.setScene(blankUI.getScene());
 	}
 	
 	public void setSearchHotelView(){
@@ -72,8 +66,13 @@ public class VistorController extends VistorLeftController{
 	}
 	
 	//搜索酒店，设置界面，设置list
-	public void searchAndSetSearchHotelView(){
-		if(searchHotelUI.getSearchVO().startTime.equals("x")){
+	public void searchAndSetSearchHotelListView(){
+		HotelSearchVO vo = searchHotelUI.getSearchVO();
+		if(vo.startTime.equals("x")){
+			return ;
+		}
+		if(vo.city.equals("") || vo.tradingArea.equals("")){
+			showDialog("请输入酒店城市和商圈");
 			return ;
 		}
 		hotelList = searchService.search(searchHotelUI.getSearchVO());
@@ -83,27 +82,28 @@ public class VistorController extends VistorLeftController{
 			return ;
 		}
 		//不为空则跳转
+		setSearchResultListView();
+	}
+	
+	public void setSearchResultListView(){
+		searchResultListUI = new SearchResultList(this);
 		searchResultListUI.setListValue();
 		stage.setScene(searchResultListUI.getScene());
 	}
 	
 	//返回搜索到的酒店列表
-	public ArrayList<HotelVO> getSearchHotelList(){
+	public ArrayList<HotelVO> getHotelList(){
 		return hotelList;
 	}
 	
 	//返回排序后的列表
-	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition){
-		return searchService.getSortedList(condition, hotelList);
-	}
-	
-	public void setSearchResultListView(){
-		stage.setScene(searchResultListUI.getScene());
-		searchResultListUI.setListValue();
+	public void setSortedList(HotelSearchCondition condition){
+		hotelList =  searchService.getSortedList(condition, hotelList);
 	}
 	
 	
 	public HotelVO getHotelInfo(){
 		return checkService.getHotelnfo(hotelID);
 	}
+
 }

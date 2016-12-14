@@ -57,7 +57,9 @@ public class CheckWebBusiness {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-	
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/用户管理_添加网站营销人员背景.jpg\")");
 	}
 	
 	private void setTextField (){

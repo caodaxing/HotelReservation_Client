@@ -181,7 +181,7 @@ public class SearchHotel {
 			
 			public void handle(ActionEvent event){
 				//若没有则弹出提示，若有则跳至搜索结果界面,不清空搜索信息,返回时由controller负责重新初始化
-				controller.searchAndSetSearchHotelView();
+				controller.searchAndSetSearchHotelListView();
 				controller.getStage().show();
 			}
 			
@@ -198,6 +198,7 @@ public class SearchHotel {
 	
 	private void setChoiceBox(){
 		
+		//待修改
 		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
 		
 		roomType.setPrefSize(200, 30);
@@ -226,7 +227,7 @@ public class SearchHotel {
 		AnchorPane.setLeftAnchor(startTime, 200.0);
 		AnchorPane.setTopAnchor(startTime, 350.0);
 		
-		AnchorPane.setLeftAnchor(endTime, 350.0);
+		AnchorPane.setLeftAnchor(endTime, 325.0);
 		AnchorPane.setTopAnchor(endTime, 350.0);
 		
 	}

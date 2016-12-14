@@ -122,8 +122,8 @@ public class HotelInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//返回搜索酒店界面
-				controller.setSearchHotelView();
+				//返回酒店列表界面
+				controller.setSearchResultListView();
 				controller.getStage().show();
 			}
 			

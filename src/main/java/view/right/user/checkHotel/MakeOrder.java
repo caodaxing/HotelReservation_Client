@@ -242,8 +242,8 @@ public class MakeOrder{
 			child = true;
 		}
 		
-		//userID,hotelID,beforePrice需要controller加
-		return new OrderVO(null,arrive,numOfR,null,leave,numOfP,child,null);
+		//hotelID由controller添加
+		return new OrderVO(controller.getUserID(),type,numOfR,arrive,leave,"",numOfP,child);
 		
 	}
 	

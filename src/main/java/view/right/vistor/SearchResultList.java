@@ -2,6 +2,7 @@ package view.right.vistor;
 
 import java.util.ArrayList;
 
+import Message.HotelSearchCondition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -61,15 +62,16 @@ public class SearchResultList {
 	TableColumn<Person, String> evalaution;
 	TableColumn<Person, Button> operation1;
 	
-	private final ObservableList<Person> data = FXCollections.observableArrayList();;
+	private ObservableList<Person> data;
 	private Button check;
 	
 	public SearchResultList(VistorController controller){
 		
 		this.controller = controller;
 		
+		data = FXCollections.observableArrayList();
+		
 		leftUI = new VistorUI(controller);
-		//service
 		
 		leftPane = leftUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -140,8 +142,10 @@ public class SearchResultList {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//按价格升序
+				controller.setSortedList(HotelSearchCondition.PRICE_UP);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -150,8 +154,10 @@ public class SearchResultList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 按价格降序
+				controller.setSortedList(HotelSearchCondition.PRICE_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -160,8 +166,10 @@ public class SearchResultList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 按星级
+				controller.setSortedList(HotelSearchCondition.STAR_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -170,8 +178,10 @@ public class SearchResultList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 按评价
+				controller.setSortedList(HotelSearchCondition.GRADE_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -213,8 +223,6 @@ public class SearchResultList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-		
-		//添加列表内容
 				
 		//添加列
 		hotelName = new TableColumn<>("酒店名称");
@@ -256,7 +264,6 @@ public class SearchResultList {
 		});
 		operation1.setMinWidth(120);
 		
-		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
 		tableView.setPrefWidth(500);
@@ -271,13 +278,15 @@ public class SearchResultList {
 	}
 	
 	public void setListValue(){
-		ArrayList<HotelVO> hotelList = controller.getSearchHotelList();
+		ArrayList<HotelVO> hotelList = controller.getHotelList();
 		for(int i=0;i<hotelList.size();i++){
 			check = new Button("查看");
 			data.add(new Person(hotelList.get(i).hotelName,"请先登录", Integer.toString(hotelList.get(i).levelOfHotel), Double.toString(hotelList.get(i).evaluationGrades), check));
 		}
-	}
 	
+
+	}
+
 	public static class Person{
 		private final SimpleStringProperty hotelName;
 		private final SimpleStringProperty whetherReserve;
