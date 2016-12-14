@@ -3,6 +3,7 @@ package logic.hotel;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import Message.RoomType;
 import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;
@@ -24,8 +25,6 @@ public class Hotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo
 	private OrderHotelInfo evaluationInfo;
 	
 	public Hotel(){
-		this.evaluationInfo = new Order();
-		
 		this.hotelDao = new HotelDao_Stub();
 	}
 
@@ -55,7 +54,14 @@ public class Hotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo
 	
 
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelId) {
+		this.evaluationInfo = new Order();
+		
 		return evaluationInfo.getHotelEvaluations(hotelId);
+	}
+
+	@Override
+	public int getRoomPrice(String hotelID, RoomType roomType) {
+		return 0;
 	}
 	
 }

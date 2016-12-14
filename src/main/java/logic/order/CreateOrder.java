@@ -7,6 +7,8 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditInfo;
+import logic.hotel.Hotel;
+import logic.hotel.HotelInfo;
 import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
 import logic.utility.OrderTransform;
@@ -49,6 +51,8 @@ public class CreateOrder implements CreateOrderService{
 		String orderID = o.startTime.substring(0, 10) + String.format("%06d", num);
 		o.orderId = orderID;
 		
+		HotelInfo info = new Hotel();
+		o.beforePrice = info.getRoomPrice(o.hotelID, o.roomType);
 		
 		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
 		

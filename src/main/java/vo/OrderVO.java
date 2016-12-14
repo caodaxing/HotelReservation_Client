@@ -54,10 +54,9 @@ public class OrderVO {
 	 * @param hotelID
 	 * @param numOfPeople
 	 * @param hasChild
-	 * @param beforePrice
 	 */
 	public OrderVO(String userID,  RoomType roomType, int roomNum, String startTime, String endTime,
-			String hotelID, int numOfPeople, boolean hasChild, double beforePrice) {
+			String hotelID, int numOfPeople, boolean hasChild) {
 		this.userID = userID;
 		this.roomType = roomType;
 		this.roomNum = roomNum;
@@ -66,7 +65,6 @@ public class OrderVO {
 		this.endTime = endTime;
 		this.numOfPeople = numOfPeople;
 		this.hasChild = hasChild;
-		this.beforePrice = beforePrice;
 	}
 
 	/**

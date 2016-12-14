@@ -17,4 +17,6 @@ public interface RoomInfo {
 	
 	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String t);
 	
+	 
+	
 }

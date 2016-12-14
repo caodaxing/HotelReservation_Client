@@ -1,5 +1,6 @@
 package logic.hotel;
 
+import Message.RoomType;
 import vo.HotelVO;
 
 /**
@@ -10,4 +11,6 @@ import vo.HotelVO;
 public interface HotelInfo {
 	
 	public HotelVO getHotelnfo(String hotelId);
+	
+	public int getRoomPrice(String hotelID, RoomType roomType);
 }
