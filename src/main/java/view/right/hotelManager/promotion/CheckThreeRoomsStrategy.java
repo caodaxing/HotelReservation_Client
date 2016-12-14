@@ -1,5 +1,7 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_查看三间及以上预订策略
@@ -27,6 +30,7 @@ public class CheckThreeRoomsStrategy {
 	
 	TextField discountRange;
 	TextField discountName;
+	ArrayList<PromotionVO> promotionList;
 	
 	Button revert;
 	
@@ -58,13 +62,16 @@ public class CheckThreeRoomsStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setThreeRoomPromotion();
+		promotionList = controller.getPromotionList();
+		int num = controller.getRow();
+		
 		//添加文本框
-		discountRange = new TextField();
+		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		discountRange.setId("CheckThreeRoomsStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckThreeRoomsStrategy");
 		discountName.setPrefSize(200, 30);
 			
@@ -110,7 +117,8 @@ public class CheckThreeRoomsStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setExistStrategy();
+				controller.getStage().show();
 			}
 					
 		});

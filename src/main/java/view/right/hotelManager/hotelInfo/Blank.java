@@ -1,7 +1,9 @@
 package view.right.hotelManager.hotelInfo;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HotelManagerLeftController;
@@ -17,7 +19,8 @@ public class Blank {
 	
 	private Scene scene;
 	
-	private GridPane root ;
+	private GridPane leftPane ;
+	private AnchorPane rightPane;
 	
 	private HotelManagerUI hmui;
 	
@@ -26,8 +29,13 @@ public class Blank {
 		this.controller = controller ;
 		hmui = new HotelManagerUI(controller);
 		
-		root = hmui.getPane();
-		root.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
+		leftPane = hmui.getPane();
+		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
+		
+		rightPane = new AnchorPane();
+		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
+		
+		HBox root = new HBox(leftPane, rightPane);
 		
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		

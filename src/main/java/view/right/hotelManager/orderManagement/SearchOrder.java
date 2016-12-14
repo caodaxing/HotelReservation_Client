@@ -21,7 +21,7 @@ import viewController.HotelManagerLeftController;
  */
 public class SearchOrder{
 	
-	private HotelManagerLeftController controller;
+	private HMOrderManagementController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -32,7 +32,7 @@ public class SearchOrder{
 	
 	TextField orderID;
 	
-	public SearchOrder(HotelManagerLeftController controller){
+	public SearchOrder(HMOrderManagementController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
@@ -87,8 +87,8 @@ public class SearchOrder{
 				orderID.getText();
 				//
 				orderID.setText("");
-				HMOrderManagementController hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
-				hmcontroller.setExecuteOrderView();
+				controller.setExecuteOrderView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -98,8 +98,8 @@ public class SearchOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				HMHotelInfoController hmcontroller = new HMHotelInfoController(controller.getStage(), controller.getUserId());
-				hmcontroller.setBlankView();
+				controller.setOrderListView();
+				controller.getStage().show();
 			}
 			
 		});

@@ -1,5 +1,7 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_查看特定期间优惠
@@ -31,6 +34,7 @@ public class CheckSpecialTimeStrategy {
 	TextField discountName;
 	
 	Button revert;
+	ArrayList<PromotionVO> promotionList;
 	
 	public CheckSpecialTimeStrategy(HMPromotionController controller){
 		
@@ -60,21 +64,25 @@ public class CheckSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setspecialTimePromotion();
+		promotionList = controller.getPromotionList();
+		controller.setRow();
+		int num = controller.getRow();
+		
 		//添加文本框
-		startDiscount = new TextField();
+		startDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
 		startDiscount.setId("CheckSpecialTimeStrategy");
 		startDiscount.setPrefSize(200, 30);
 				
-		endDiscount = new TextField();
+		endDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
 		endDiscount.setId("CheckSpecialTimeStrategy");
 		endDiscount.setPrefSize(200, 30);
 			
-		discountRange = new TextField();
+		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		discountRange.setId("CheckSpecialTimeStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
 				
@@ -134,7 +142,8 @@ public class CheckSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setExistStrategy();
+				controller.getStage().show();
 			}
 					
 		});

@@ -1,5 +1,7 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_查看生日促销策略
@@ -29,6 +32,8 @@ public class CheckBirthdayStrategy {
 	TextField discountName;
 	
 	Button revert;
+	
+	ArrayList<PromotionVO> promotionList;
 	
 	public CheckBirthdayStrategy(HMPromotionController controller){
 		
@@ -58,13 +63,17 @@ public class CheckBirthdayStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setBirthdayPromotion();
+		promotionList = controller.getPromotionList();
+		controller.setRow();
+		int num = controller.getRow();
+		
 		//添加文本框
-		discountRange = new TextField();
+		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		discountRange.setId("CheckBirthdayStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckBirthdayStrategy");
 		discountName.setPrefSize(200, 30);
 			
@@ -109,7 +118,8 @@ public class CheckBirthdayStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setExistStrategy();
+				controller.getStage().show();
 			}
 					
 		});

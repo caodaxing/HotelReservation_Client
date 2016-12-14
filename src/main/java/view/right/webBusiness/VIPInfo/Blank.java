@@ -16,7 +16,6 @@ import viewController.WebBusinessLeftController;
  */
 public class Blank {
 	
-	private WBVIPInfoController wbController;
 	private WebBusinessLeftController controller;
 	private Scene scene;
 	

@@ -1,11 +1,15 @@
 package viewController;
 
 
+import java.util.ArrayList;
+
+import Message.OrderListCondition;
 import javafx.stage.Stage;
 import logicService.order.ExecuteOrderService;
 import logicService.order.ManageOrderService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
+import logicService.stub.OrderService_Stub;
 import view.right.hotelManager.orderManagement.AbnormalOrder;
 import view.right.hotelManager.orderManagement.CheckArriveInfo;
 import view.right.hotelManager.orderManagement.CheckLeaveInfo;
@@ -17,6 +21,7 @@ import view.right.hotelManager.orderManagement.SetArriveInfo;
 import view.right.hotelManager.orderManagement.SetLeaveInfo;
 import view.right.hotelManager.orderManagement.UndoOrder;
 import view.right.hotelManager.orderManagement.UnexecuteOrder;
+import vo.OrderVO;
 
 public class HMOrderManagementController extends HotelManagerLeftController{
 	
@@ -42,11 +47,12 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	private UnexecuteOrder unexecuteOrderUI;
 	
 	private int row;
+	private ArrayList<OrderVO> orderList;
 	
 	public HMOrderManagementController(Stage stage, String userId){
 		
 		//orderService = new Order();
-		//orderListService = new OrderList();
+		orderListService = new OrderService_Stub();
 		//executeOrderService = new ExecuteOrder();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
@@ -114,6 +120,9 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	}
 	
 	public void setOrderListView(){
+		orderList = new ArrayList<OrderVO>();
+		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
+		orderListUI.initialData();
 		stage.setScene(orderListUI.getScene());
 	}
 	
@@ -144,4 +153,6 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	public int getRow(){
 		return row;
 	}
+	
+	
 }

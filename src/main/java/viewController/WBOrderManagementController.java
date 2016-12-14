@@ -1,15 +1,14 @@
 package viewController;
 
-import java.util.ArrayList;
-
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.order.ManageOrderService;
 import logicService.order.OrderService;
+import logicService.stub.OrderService_Stub;
 import view.right.webBusiness.orderManagement.AbnormalOrder;
 import view.right.webBusiness.orderManagement.AbnormalOrderList;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder;
 import view.right.webBusiness.orderManagement.UnexecuteOrder;
-import vo.OrderVO;
 
 public class WBOrderManagementController extends WebBusinessLeftController{
 	
@@ -26,7 +25,7 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 	
 	public WBOrderManagementController(Stage stage, String userId){
 		//orderService = new Order();
-		//manageOrderService = new ManageOrder();
+		manageOrderService = new OrderService_Stub();
 		this.stage = stage;
 		this.userId = userId;
 		abnormalOrderUI = new AbnormalOrder(this);
@@ -41,6 +40,8 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 		this.row = row;
 		todayUnexecuteOderUI = new TodayUnexecuteOrder(this);
 		unexecuteeOrderUI = new UnexecuteOrder(this);
+		abnormalOrderUI = new AbnormalOrder(this);
+		abnormalOrderListUI = new AbnormalOrderList(this);
 	}
 	
 	public Stage getStage(){

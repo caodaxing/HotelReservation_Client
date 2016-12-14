@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 
@@ -164,7 +165,10 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				OneButtonDialog dialog = new OneButtonDialog("订单执行成功，请更新房间信息");
+				dialog.show();
+				controller.setOrderListView();
+				controller.getStage().show();
 			}
 							
 		});

@@ -158,7 +158,7 @@ public class CheckVIPAreaStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setCheckVIPAreaStrategyView();
+				controller.setExistStrategyView();
 				controller.getStage().show();
 			}
 			

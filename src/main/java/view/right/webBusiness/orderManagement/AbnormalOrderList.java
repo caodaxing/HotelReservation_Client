@@ -116,7 +116,7 @@ public class AbnormalOrderList {
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
 								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(), row);
-								wbcontroller.setUnexecuteOrderView();
+								wbcontroller.setabnormalOrderView();
 								wbcontroller.getStage().show();
 							});
 						}

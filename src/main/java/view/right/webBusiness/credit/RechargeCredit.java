@@ -1,5 +1,6 @@
 package view.right.webBusiness.credit;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,13 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
 import viewController.WBCreditController;
-import viewController.WBVIPInfoController;
 import viewController.WebBusinessLeftController;
+import vo.CreditChangeVO;
 
 /**
  * 网站营销人员界面_信用充值_信用充值
@@ -24,6 +24,7 @@ import viewController.WebBusinessLeftController;
 public class RechargeCredit {
 	
 	private WebBusinessLeftController controller;
+	private WBCreditController wbcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -114,14 +115,23 @@ public class RechargeCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				OneButtonDialog dialog = new OneButtonDialog("充值成功");
-				dialog.show();
+				wbcontroller = new WBCreditController(controller.getStage(),controller.getUserId());
 				//传输vo
-				userID.getText();
-				rechargeAmount.getText();
+				String userId = userID.getText();
+				int rechargeCredit = Integer.parseInt(rechargeAmount.getText());
+				CreditChangeVO creditChangeVO = new CreditChangeVO(userId, rechargeCredit);
 				//
-				userID.setText("");
-				rechargeAmount.setText("");
+				if(wbcontroller.getRechargeResult(creditChangeVO) == ResultMessage.SUCCESS){
+					userID.setText("");
+					rechargeAmount.setText("");
+					OneButtonDialog dialog = new OneButtonDialog("充值成功");
+					dialog.show();
+				}else{
+					userID.setText("");
+					rechargeAmount.setText("");
+					OneButtonDialog dialog = new OneButtonDialog("充值失败");
+					dialog.show();
+				}
 			}
 			
 		});

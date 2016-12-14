@@ -1,16 +1,16 @@
 package viewController;
 
+import Message.ResultMessage;
 import javafx.stage.Stage;
-import logic.account.Account;
-import logic.credit.Credit;
 import logicService.account.AccountService;
-import logicService.credit.CreditService;
+import logicService.credit.CreditChangeService;
 import view.right.webBusiness.credit.RechargeCredit;
+import vo.CreditChangeVO;
 
 public class WBCreditController extends WebBusinessLeftController{
 	
 	//逻辑层接口
-	private CreditService creditService;
+	private CreditChangeService creditChangeService;
 	private AccountService accountService;
 	
 	//控制的界面
@@ -32,6 +32,10 @@ public class WBCreditController extends WebBusinessLeftController{
 	
 	public void setRechargeCreditView(){
 		stage.setScene(rechargeCreditUI.getScene());
+	}
+	
+	public ResultMessage getRechargeResult(CreditChangeVO vo){
+		return creditChangeService.rechargeCredit(vo);
 	}
 	
 }

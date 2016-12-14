@@ -35,7 +35,6 @@ public class OrderList {
 	
 	private HotelManagerLeftController controller;
 	private HMOrderManagementController hmcontroller;
-	private OrderListService orderListService;	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -43,6 +42,7 @@ public class OrderList {
 	private HotelManagerUI hmui;
 	
 	Button revert;
+	Button search;
 	
 	TableView<Person> tableView;
 	
@@ -55,13 +55,12 @@ public class OrderList {
 	private ObservableList<Person> data;
 	private Button check;
 	private int row;
-	ArrayList<OrderVO> orderList;
+	private ArrayList<OrderVO> orderList;
 	
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
-		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -93,11 +92,29 @@ public class OrderList {
 		revert = new Button("返回");
 		revert.setPrefSize(100, 40);
 		
+		search = new Button("查询");
+		search.setPrefSize(100, 40);
+		
 		//设置按钮位置
+		search.setLayoutX(450);
+		search.setLayoutY(550);
+		
 		revert.setLayoutX(650);
 		revert.setLayoutY(550);
 	
 		//添加监听
+		search.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+				hmcontroller.setSearchOrderView();
+				hmcontroller.getStage().show();
+			}
+			
+		});
+		
 		revert.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
@@ -110,9 +127,13 @@ public class OrderList {
 		});
 			
 		//添加组件
+		rightPane.getChildren().add(search);
 		rightPane.getChildren().add(revert);
-
+		
+		AnchorPane.setLeftAnchor(search, 250.0);
 		AnchorPane.setLeftAnchor(revert, 450.0);
+		
+		AnchorPane.setTopAnchor(search, 550.0);
 		AnchorPane.setTopAnchor(revert, 550.0);
 	
 	}
@@ -165,8 +186,6 @@ public class OrderList {
 		});
 		operation.setMinWidth(100);
 		
-		initialData();
-		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
 		//设置列表位置
@@ -183,11 +202,11 @@ public class OrderList {
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
+		orderList = controller.getList();
 		for(int i=0;i<orderList.size();i++){
-			check = new Button("查看");
 			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).orderState.toString(), String.valueOf(orderList.get(i).afterPrice), check));
 		}
+		tableView.setItems(data);
 	}
 	
 	/**

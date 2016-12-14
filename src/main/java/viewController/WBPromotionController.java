@@ -3,6 +3,7 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.PromotionType;
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.promotion.PromotionService;
 import logicService.stub.PromotionService_Stub;
@@ -14,6 +15,7 @@ import view.right.webBusiness.promotion.ExistStrategy;
 import view.right.webBusiness.promotion.SetSpecialTimeStrategy;
 import view.right.webBusiness.promotion.SetVIPAreaStrategy;
 import view.right.webBusiness.promotion.SetVIPStrategy;
+import vo.CreditChangeVO;
 import vo.PromotionVO;
 
 public class WBPromotionController extends WebBusinessLeftController{
@@ -107,6 +109,18 @@ public class WBPromotionController extends WebBusinessLeftController{
 		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
 	}
 	
+	public void setSpecialTimePromotion(){
+		promotionList = promotionService.getWebPromotions(PromotionType.WEB_11_11);
+	}
+	
+	public void setVipAreaPromotion(){
+		promotionList = promotionService.getWebPromotions(PromotionType.WEB_VIP_TRADINGAREA);
+	}
+
+	public void setVipPromotion(){
+		promotionList = promotionService.getWebPromotions(PromotionType.WEB_VIP_LEVEL);
+	}
+	
 	public ArrayList<PromotionVO> getPromotionList(){
 		return promotionList;
 	}
@@ -118,4 +132,6 @@ public class WBPromotionController extends WebBusinessLeftController{
 	public int getRow(){
 		return row;
 	}
+	
+	
 }

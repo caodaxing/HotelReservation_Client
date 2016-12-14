@@ -2,6 +2,7 @@ package view.right.webBusiness.orderManagement;
 
 import java.util.ArrayList;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -164,11 +165,20 @@ public class AbnormalOrder{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输creditVO
+				String orderId = orderID.getText();
+				boolean bool = false;
 				//
-				OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
-				dialog.show();
-				controller.setAbnormalOrderListView();
-				controller.getStage().show();
+				if(manageOrderService.undoAbnormalOrder(orderId, bool) == ResultMessage.SUCCESS){
+					OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
+					dialog.show();
+					controller.setAbnormalOrderListView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("信用修改失败");
+					dialog.show();
+					controller.setAbnormalOrderListView();
+					controller.getStage().show();
+				}
 			}
 			
 		});
@@ -179,11 +189,20 @@ public class AbnormalOrder{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输creditVO
+				String orderId = orderID.getText();
+				boolean bool = true;
 				//
-				OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
-				dialog.show();
-				controller.setAbnormalOrderListView();
-				controller.getStage().show();
+				if(manageOrderService.undoAbnormalOrder(orderId, bool) == ResultMessage.SUCCESS){
+					OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
+					dialog.show();
+					controller.setAbnormalOrderListView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("信用修改失败");
+					dialog.show();
+					controller.setAbnormalOrderListView();
+					controller.getStage().show();
+				}
 			}
 			
 		});

@@ -1,5 +1,7 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_查看合作企业促销策略
@@ -30,6 +33,7 @@ public class CheckCooperateCompanyStrategy {
 	TextField discountName;
 	
 	Button revert;
+	ArrayList<PromotionVO> promotionList;
 	
 	public CheckCooperateCompanyStrategy(HMPromotionController controller){
 		
@@ -59,17 +63,21 @@ public class CheckCooperateCompanyStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
+		controller.setCooperatePromotion();
+		promotionList = controller.getPromotionList();
+		controller.setRow();
+		int num = controller.getRow();
+		
 		//添加文本框
-		cooperateCompanyName = new TextField();
+		cooperateCompanyName = new TextField(promotionList.get(num).cooperateBusiness);
 		cooperateCompanyName.setId("CheckCooperateCompanyStrategy");
 		cooperateCompanyName.setPrefSize(200, 30);
 				
-		dicountRange = new TextField();
+		dicountRange = new TextField(String.valueOf(promotionList.get(num).discount));
 		dicountRange.setId("CheckCooperateCompanyStrategy");
 		dicountRange.setPrefSize(200, 30);
 			
-		discountName = new TextField();
+		discountName = new TextField(promotionList.get(num).promotionName);
 		discountName.setId("CheckCooperateCompanyStrategy");
 		discountName.setPrefSize(200, 30);
 				
@@ -121,7 +129,8 @@ public class CheckCooperateCompanyStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-						
+				controller.setExistStrategy();
+				controller.getStage().show();
 			}
 					
 		});
