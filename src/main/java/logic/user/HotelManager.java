@@ -1,5 +1,7 @@
 package logic.user;
 
+import java.rmi.RemoteException;
+
 import Message.ResultMessage;
 import dataDao.stub.HotelManagerDao_Stub;
 import dataDao.user.HotelManagerDao;
@@ -21,7 +23,12 @@ public class HotelManager implements HotelManagerService{
 
 	@Override
 	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
-		HotelManagerPO po = hotelManagerDao.getHotelManagerInfo(hotelManager_ID);
+		HotelManagerPO po = null;
+		try {
+			po = hotelManagerDao.getHotelManagerInfo(hotelManager_ID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return this.hotelManagerTrans.hotelManagerTransToVO(po);
 	}
@@ -29,8 +36,12 @@ public class HotelManager implements HotelManagerService{
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO vo){
 		HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(vo);
 		
-		if(hotelManagerDao.updateHotelManagerInfo(po)) {
-			return ResultMessage.SUCCESS;
+		try {
+			if(hotelManagerDao.updateHotelManagerInfo(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -41,7 +52,14 @@ public class HotelManager implements HotelManagerService{
 			return false;
 		}
 		
-		return this.hotelManagerDao.addHotelManager(po);
+		boolean res = false;
+		try {
+			res =  this.hotelManagerDao.addHotelManager(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }

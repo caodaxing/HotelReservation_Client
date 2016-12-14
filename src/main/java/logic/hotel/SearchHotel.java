@@ -1,5 +1,6 @@
 package logic.hotel;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
@@ -35,7 +36,14 @@ public class SearchHotel implements SearchHotelService {
 	}
 
 	public ArrayList<String> getTradingArea(String city) {
-		return hotelDao.getTradingAreas(city);
+		ArrayList<String> res = null;
+		try {
+			res =  hotelDao.getTradingAreas(city);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 	/**
@@ -47,7 +55,12 @@ public class SearchHotel implements SearchHotelService {
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getInitialHotelList(String city, String tradingArea) {
-		ArrayList<HotelPO> hotelPOList = hotelDao.SearchHotelList(city, tradingArea);
+		ArrayList<HotelPO> hotelPOList = null;
+		try {
+			hotelPOList = hotelDao.SearchHotelList(city, tradingArea);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		ArrayList<HotelVO> hotelVOList = new ArrayList<HotelVO>();
 		
@@ -93,7 +106,11 @@ public class SearchHotel implements SearchHotelService {
 		ArrayList<HotelVO> bookedHotelList = new ArrayList<HotelVO>();
 		
 		for (String hotelId : hotelIds) {
-			bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelId)));
+			try {
+				bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelId)));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 		return bookedHotelList;
 	}

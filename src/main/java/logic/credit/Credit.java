@@ -1,5 +1,7 @@
 package logic.credit;
 
+import java.rmi.RemoteException;
+
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
 import dataDao.stub.CreditDao_Stub;
@@ -18,19 +20,36 @@ public class Credit implements CreditInfo, CreditService{
 	}
 
 	public int getCredit(String userID){
-		return this.creditDao.getCredit(userID);					
+		int cre = 0;
+		try {
+			cre =  this.creditDao.getCredit(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return cre;					
 	}
 	
 	public ResultMessage setVIPCredit(int level, int credit_num){
-		if(this.creditDao.setVIPCredit(level, credit_num)) {
-			return ResultMessage.SUCCESS;
+		try {
+			if(this.creditDao.setVIPCredit(level, credit_num)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
 	}
 	
 	public int getVIPCredit(int level){
-		return this.creditDao.getVIPCredit(level);
+		int vipcre = 0;
+		try {
+			vipcre =  this.creditDao.getVIPCredit(level);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return vipcre;
 	}
 	
 }

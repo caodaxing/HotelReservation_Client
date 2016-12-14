@@ -1,5 +1,6 @@
 package logic.order;
 
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +40,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 
 	@Override
 	public ResultMessage normalExecute(String orderID) {
-		po= this.orderDao.getOrderByOrderID(orderID);
+		try {
+			po= this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(po != null) {
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
@@ -48,21 +53,25 @@ public class ExecuteOrder implements ExecuteOrderService{
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setExecutedTime(executedTime);
 				
-				if(this.orderDao.updateOrder(po)) {
-					//更新信用记录和信用值
-					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
-							po.getUesrID(), CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE, 
-							(int)po.getAfterPromotionPrice());
-					
-					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
-						return ResultMessage.SUCCESS;
-					} else {
-						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
-						po.setState(OrderState.UNEXECUTED.ordinal());
-						po.setExecutedTime(null);
-						this.orderDao.updateOrder(po);
+				try {
+					if(this.orderDao.updateOrder(po)) {
+						//更新信用记录和信用值
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
+								po.getUesrID(), CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE, 
+								(int)po.getAfterPromotionPrice());
+						
+						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+							return ResultMessage.SUCCESS;
+						} else {
+							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+							po.setState(OrderState.UNEXECUTED.ordinal());
+							po.setExecutedTime(null);
+							this.orderDao.updateOrder(po);
+						}
+						
 					}
-					
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -73,7 +82,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 	@Override
 	public ResultMessage supplyOrder(String orderID) {
 		
-		po = this.orderDao.getOrderByOrderID(orderID);
+		try {
+			po = this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(po !=  null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
@@ -82,20 +95,24 @@ public class ExecuteOrder implements ExecuteOrderService{
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setExecutedTime(executedTime);
 				
-				if(this.orderDao.updateOrder(po)) {
-					//更新信用记录和信用值
-					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
-							po.getUesrID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
-					
-					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
-						return ResultMessage.SUCCESS;
+				try {
+					if(this.orderDao.updateOrder(po)) {
+						//更新信用记录和信用值
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
+								po.getUesrID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
 						
-					} else {
-						po.setState(OrderState.ABNORMAL.ordinal());
-						po.setExecutedTime(null);
-						this.orderDao.updateOrder(po);
+						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
+							return ResultMessage.SUCCESS;
+							
+						} else {
+							po.setState(OrderState.ABNORMAL.ordinal());
+							po.setExecutedTime(null);
+							this.orderDao.updateOrder(po);
+						}
+						
 					}
-					
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -106,7 +123,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	// 撤销异常订单
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {
-		po = this.orderDao.getOrderByOrderID(orderID);
+		try {
+			po = this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(po != null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
@@ -116,28 +137,32 @@ public class ExecuteOrder implements ExecuteOrderService{
 				po.setState(OrderState.UNDOED_ABNORMAL.ordinal());
 				po.setUndoAbnormalTime(undoAbnormalTime);
 				
-				if(this.orderDao.updateOrder(po)) {
-					
-					int recoverCreditNum = 0;
-					
-					if(recoverAllDeletedCredit) {
-						recoverCreditNum = (int)po.getAfterPromotionPrice();
-					} else {
-						recoverCreditNum = (int)(po.getAfterPromotionPrice()/2);
+				try {
+					if(this.orderDao.updateOrder(po)) {
+						
+						int recoverCreditNum = 0;
+						
+						if(recoverAllDeletedCredit) {
+							recoverCreditNum = (int)po.getAfterPromotionPrice();
+						} else {
+							recoverCreditNum = (int)(po.getAfterPromotionPrice()/2);
+						}
+						
+						//更新信用记录和信用值
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), undoAbnormalTime, 
+								po.getUesrID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, recoverCreditNum);
+						
+						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+							return ResultMessage.SUCCESS;
+						} else {
+							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+							po.setState(OrderState.ABNORMAL.ordinal());
+							po.setUndoAbnormalTime(null);
+							this.orderDao.updateOrder(po);
+						}
 					}
-					
-					//更新信用记录和信用值
-					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), undoAbnormalTime, 
-							po.getUesrID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, recoverCreditNum);
-					
-					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
-						return ResultMessage.SUCCESS;
-					} else {
-						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
-						po.setState(OrderState.ABNORMAL.ordinal());
-						po.setUndoAbnormalTime(null);
-						this.orderDao.updateOrder(po);
-					}
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			}
 		}
@@ -147,33 +172,44 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 	@Override
 	public ResultMessage undoUnexecutedOrder(String orderID) {
-		po = this.orderDao.getOrderByOrderID(orderID);
+		try {
+			po = this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(po != null && po.getState() == OrderState.UNEXECUTED.ordinal()) {
 			String time = Time.getCurrentTime();
 			po.setState(OrderState.UNDOED_UNEXECUTED.ordinal());
 			po.setUndoUnexecutedTime(time);;
-System.out.println("a");
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
 System.out.println("b");
-				if(this.orderDao.updateOrder(po)) {
-					//更新信用记录和信用值
-					CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
-							po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
-					
-					if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
-						return ResultMessage.SUCCESS;
-					} else {
-						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
-						po.setState(OrderState.UNEXECUTED.ordinal());
-						po.setUndoUnexecutedTime(null);;
-						this.orderDao.updateOrder(po);
+				try {
+					if(this.orderDao.updateOrder(po)) {
+						//更新信用记录和信用值
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
+								po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
+						
+						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+							return ResultMessage.SUCCESS;
+						} else {
+							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+							po.setState(OrderState.UNEXECUTED.ordinal());
+							po.setUndoUnexecutedTime(null);;
+							this.orderDao.updateOrder(po);
+						}
 					}
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			} else {
 System.out.println("c");
-				if(this.orderDao.updateOrder(po)) {
-					return ResultMessage.SUCCESS;
+				try {
+					if(this.orderDao.updateOrder(po)) {
+						return ResultMessage.SUCCESS;
+					}
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			}
  		}

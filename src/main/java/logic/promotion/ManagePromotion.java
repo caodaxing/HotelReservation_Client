@@ -1,5 +1,6 @@
 package logic.promotion;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Message.PromotionType;
@@ -26,8 +27,12 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 		if(vo != null) {
 			PromotionPO po = this.promotionTrans.promotionTransToPO(vo);
 			
-			if(this.promotionDao.addPromotion(po)) {
-				return ResultMessage.SUCCESS;
+			try {
+				if(this.promotionDao.addPromotion(po)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -36,21 +41,36 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 
 	@Override
 	public PromotionVO getPromotion(String promotionID) {
-		PromotionPO po = this.promotionDao.getPromotion(promotionID);
+		PromotionPO po = null;
+		try {
+			po = this.promotionDao.getPromotion(promotionID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return this.promotionTrans.promotionTransToVO(po);
 	}
 
 	@Override
 	public ArrayList<PromotionVO> getHotelPromotions(String hotelID, PromotionType promotionType) {
 		
-		ArrayList<PromotionPO> pos = this.promotionDao.getHotelPromotions(hotelID, promotionType.ordinal());
+		ArrayList<PromotionPO> pos = null;
+		try {
+			pos = this.promotionDao.getHotelPromotions(hotelID, promotionType.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return this.promotionTrans.promotionListTransToVO(pos);
 	}
 
 	@Override
 	public ArrayList<PromotionVO> getWebPromotions(PromotionType promotionType) {
-		ArrayList<PromotionPO> pos = this.promotionDao.getWebPromotions(promotionType.ordinal());
+		ArrayList<PromotionPO> pos = null;
+		try {
+			pos = this.promotionDao.getWebPromotions(promotionType.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return this.promotionTrans.promotionListTransToVO(pos);
 	}

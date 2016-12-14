@@ -1,5 +1,6 @@
 package logic.credit;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
@@ -42,11 +43,15 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, 
 				vo.action.ordinal(), vo.cerditChange, nowCredit);
 		
-		if(creditDao.changeCredit(po)) {
-			
-			this.judgeVipLevelChange(vo.userID, nowCredit);
-			
-			return ResultMessage.SUCCESS;
+		try {
+			if(creditDao.changeCredit(po)) {
+				
+				this.judgeVipLevelChange(vo.userID, nowCredit);
+				
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -75,9 +80,16 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	}
 	
 	private void initTable() {
-		int level1 = this.creditDao.getVIPCredit(1);
-		int level2 = this.creditDao.getVIPCredit(2);
-		int level3 = this.creditDao.getVIPCredit(3);
+		int level1 = 0;
+		int level2 = 0;
+		int level3 = 0;
+		try {
+			level1 = this.creditDao.getVIPCredit(1);
+			level2 = this.creditDao.getVIPCredit(2);
+			level3 = this.creditDao.getVIPCredit(3);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		low[0] = 0;
 		low[1] = level1;
@@ -97,7 +109,12 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
 	
 	public ArrayList<CreditChangeVO> getCreditHistory(String userID){
-		ArrayList<CreditHistoryPO> historyPOList = creditDao.getCreditHistory(userID);
+		ArrayList<CreditHistoryPO> historyPOList = null;
+		try {
+			historyPOList = creditDao.getCreditHistory(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(historyPOList == null) {
 			return null;

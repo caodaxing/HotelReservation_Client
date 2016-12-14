@@ -1,5 +1,6 @@
 package logic.hotel;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import dataDao.hotel.HotelDao;
@@ -29,12 +30,23 @@ public class Hotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo
 	}
 
 	public HotelVO getHotelnfo(String hotelID) {
-		return HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelID));
+		HotelVO vo = null;
+		try {
+			vo =  HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelID));
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 	@Override
 	public String getHotelTradingArea(String hotelID) {
-		HotelPO po = this.hotelDao.getHotelInfoByHotelID(hotelID);
+		HotelPO po = null;
+		try {
+			po = this.hotelDao.getHotelInfoByHotelID(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		if(po == null) {
 			return null;
 		}

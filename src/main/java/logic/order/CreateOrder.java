@@ -1,5 +1,7 @@
 package logic.order;
 
+import java.rmi.RemoteException;
+
 import Message.OrderState;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
@@ -47,13 +49,19 @@ public class CreateOrder implements CreateOrderService{
 		
 		OrderPO po = this.orderTrans.orderTransToPO(vo);
 		
-		if(this.orderDao.addOrder(po)) {
+		boolean success = false;
+		try {
+			success = this.orderDao.addOrder(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(success) {
 			return vo;
 		} else {
 			System.out.println("logic.order.CreateOrder.createOrder更新数据库异常");
 			return null;
 		}
-		
 	}
 
 	

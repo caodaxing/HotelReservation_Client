@@ -1,5 +1,6 @@
 package logic.promotion;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Message.PromotionType;
@@ -53,7 +54,12 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	}
 	
 	private void initWebPromotions() {
-		ArrayList<PromotionPO> pos = this.promotionDao.getWebPromotions(PromotionType.ALL.ordinal());
+		ArrayList<PromotionPO> pos = null;
+		try {
+			pos = this.promotionDao.getWebPromotions(PromotionType.ALL.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(pos == null) {
 			return;
@@ -65,7 +71,12 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	}
 
 	private void initHoteLPromotions(String hotelID) {
-		ArrayList<PromotionPO> pos = this.promotionDao.getHotelPromotions(hotelID,PromotionType.ALL.ordinal());
+		ArrayList<PromotionPO> pos = null;
+		try {
+			pos = this.promotionDao.getHotelPromotions(hotelID,PromotionType.ALL.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(pos == null) {
 			return;

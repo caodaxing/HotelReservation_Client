@@ -1,5 +1,7 @@
 package logic.hotel;
 
+import java.rmi.RemoteException;
+
 import Message.ResultMessage;
 import dataDao.hotel.HotelDao;
 import dataDao.stub.HotelDao_Stub;
@@ -25,8 +27,12 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 			return null;
 		}
 		
-		if (hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO))) {
-			return ResultMessage.SUCCESS;
+		try {
+			if (hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO))) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		return ResultMessage.FAILURE;
 	}
@@ -36,8 +42,12 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 			return null;
 		}
 		
-		if (hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))) {
-			return ResultMessage.SUCCESS;
+		try {
+			if (hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		} 
 		
 		return ResultMessage.FAILURE;

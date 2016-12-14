@@ -1,5 +1,7 @@
 package logic.account;
 
+import java.rmi.RemoteException;
+
 import Message.Identity;
 import Message.ResultMessage;
 import dataDao.account.AccountDao;
@@ -36,8 +38,12 @@ public class Account implements AccountService{
 			if(accountVO.password != accountVO.confirmedPassword) {
 				return ResultMessage.UNMATCHED_PASSWORD;
 			} else {
-				if(accountDao.addAccount(transToPO(accountVO))) {
-					return ResultMessage.SUCCESS;
+				try {
+					if(accountDao.addAccount(transToPO(accountVO))) {
+						return ResultMessage.SUCCESS;
+					}
+				} catch (RemoteException e) {
+					e.printStackTrace();
 				}
 			}	
 		}
@@ -53,8 +59,12 @@ public class Account implements AccountService{
 	 */
 	public ResultMessage login(AccountVO accountVO) {
 		
-		if(this.accountDao.hasLogin(accountVO.userId)) {
-			return ResultMessage.USER_HAS_LOGIN;
+		try {
+			if(this.accountDao.hasLogin(accountVO.userId)) {
+				return ResultMessage.USER_HAS_LOGIN;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		if(accountVO == null || accountVO.userId == null ||
@@ -62,7 +72,12 @@ public class Account implements AccountService{
 			return ResultMessage.FAILURE;
 		}
 	
-		AccountPO po = accountDao.getAccountInfo(accountVO.userId);
+		AccountPO po = null;
+		try {
+			po = accountDao.getAccountInfo(accountVO.userId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(po == null) {
 			return ResultMessage.USERNAME_NOT_EXIST;
@@ -71,8 +86,13 @@ public class Account implements AccountService{
 		if(!po.getPassword().equals(accountVO.password)) {
 			return ResultMessage.UNMATCHED_PASSWORD;
 		} else {
-			if(this.accountDao.setLogin(accountVO.userId)) {
-				return ResultMessage.SUCCESS;
+			
+			try {
+				if(this.accountDao.setLogin(accountVO.userId)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -87,8 +107,12 @@ public class Account implements AccountService{
 	 * @author bcy
 	 */ 
 	public ResultMessage logout(String userID) {
-		if(this.accountDao.setLogout(userID)) {
-			return ResultMessage.SUCCESS;
+		try {
+			if(this.accountDao.setLogout(userID)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -110,8 +134,12 @@ public class Account implements AccountService{
 			return ResultMessage.UNMATCHED_PASSWORD;
 		} 
 			
-		if(accountDao.modifyPassword(transToPO(accountVO))) {
-			return ResultMessage.SUCCESS;
+		try {
+			if(accountDao.modifyPassword(transToPO(accountVO))) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		} 
 		
 		return ResultMessage.FAILURE;
@@ -119,7 +147,12 @@ public class Account implements AccountService{
 	
 	//////用户名的分类，暂定
 	public Identity getIdentity(String accountID){
-		AccountPO po = this.accountDao.getAccountInfo(accountID);
+		AccountPO po = null;
+		try {
+			po = this.accountDao.getAccountInfo(accountID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return Identity.values()[po.getIdentity()];
 	}
 	
@@ -129,8 +162,17 @@ public class Account implements AccountService{
 
 	@Override
 	public boolean userIDExists(String userID) {
-		return this.accountDao.userIDExists(userID);
+		try {
+			if(this.accountDao.userIDExists(userID)){
+				return true;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
+	
 	
 }
 

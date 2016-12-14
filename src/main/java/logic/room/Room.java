@@ -1,5 +1,6 @@
 package logic.room;
 
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +39,12 @@ public class Room implements RoomService , RoomInfo{
 	 */
 	public ArrayList<RoomVO> getRoomList(String hotelId){
 		
-		ArrayList<RoomPO> roomPOList = roomDao.getHotelRooms(hotelId);
+		ArrayList<RoomPO> roomPOList = null;
+		try {
+			roomPOList = roomDao.getHotelRooms(hotelId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		ArrayList<RoomVO> roomList = new ArrayList<>();
 		
 		for (RoomPO roomPO : roomPOList) {
@@ -54,7 +60,12 @@ public class Room implements RoomService , RoomInfo{
 	 * @author bcy
 	 */
 	public RoomVO getRoomInfo(String hotelId, String roomId){
-		RoomPO po = roomDao.getRoomInfo(hotelId, roomId);
+		RoomPO po = null;
+		try {
+			po = roomDao.getRoomInfo(hotelId, roomId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return RoomTransform.roomTransToVO(po);
 	}
@@ -71,8 +82,12 @@ public class Room implements RoomService , RoomInfo{
 			return null;
 		}
 		
-		if (roomDao.updateRoom(RoomTransform.roomTransToPO(roomVO))) {
-			return ResultMessage.SUCCESS;
+		try {
+			if (roomDao.updateRoom(RoomTransform.roomTransToPO(roomVO))) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -90,8 +105,12 @@ public class Room implements RoomService , RoomInfo{
 			return null;
 		}
 		
-		if (roomDao.addRoom(RoomTransform.roomTransToPO(roomVO))) {
-			return ResultMessage.SUCCESS;
+		try {
+			if (roomDao.addRoom(RoomTransform.roomTransToPO(roomVO))) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 	
 		return ResultMessage.FAILURE;
@@ -107,7 +126,12 @@ public class Room implements RoomService , RoomInfo{
 	
 	
 	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String t) {
-		ArrayList<RoomPO> roomList = roomDao.getHotelRooms(hotelId);
+		ArrayList<RoomPO> roomList = null;
+		try {
+			roomList = roomDao.getHotelRooms(hotelId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		int remainingRoomNums = 0;
 		
 		if(roomType == null) {

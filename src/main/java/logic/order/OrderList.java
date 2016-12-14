@@ -1,5 +1,6 @@
 package logic.order;
 
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,7 +44,11 @@ public class OrderList implements OrderListService{
 			return null;
 		}
 		
-		this.orders = this.orderListDao.getOrderListByUserId(userID);
+		try {
+			this.orders = this.orderListDao.getOrderListByUserId(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return this.filterList(condition);
 	}
@@ -58,7 +63,11 @@ public class OrderList implements OrderListService{
 			return null;
 		}
 		
-		this.orders = this.orderListDao.getOrderListByHotelID(hotelID);
+		try {
+			this.orders = this.orderListDao.getOrderListByHotelID(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return this.filterList(condition);
 	}
@@ -73,7 +82,11 @@ public class OrderList implements OrderListService{
 		}
 		
 		
-		this.orders = this.orderListDao.getOrderListByUserId(userID);
+		try {
+			this.orders = this.orderListDao.getOrderListByUserId(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		ArrayList<OrderPO> res = new ArrayList<OrderPO>();
 		OrderPO po = null;
@@ -119,7 +132,11 @@ public class OrderList implements OrderListService{
 		DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 		String time =format.format(date);
 		
-		this.orders = this.orderListDao.getAllDailyOrders(time);
+		try {
+			this.orders = this.orderListDao.getAllDailyOrders(time);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public ArrayList<OrderPO> getOrders() {

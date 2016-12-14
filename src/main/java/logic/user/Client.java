@@ -1,6 +1,8 @@
 package logic.user;
 
 
+import java.rmi.RemoteException;
+
 import Message.ResultMessage;
 import Message.VipType;
 import dataDao.stub.ClientDao_Stub;
@@ -32,7 +34,12 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	 * @author Xue.W
 	 */
 	public ClientVO getClientInfo(String clientID){
-		ClientPO po = this.clientDao.getClientInfo(clientID);
+		ClientPO po = null;
+		try {
+			po = this.clientDao.getClientInfo(clientID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return ClientTransform.getInstance().clientTransToVO(po);
 	}
@@ -47,15 +54,24 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		if(clientVO == null) {
 			return ResultMessage.FAILURE;
 		}
-		ClientPO po = this.clientDao.getClientInfo(clientVO.userID);
+		ClientPO po = null;
+		try {
+			po = this.clientDao.getClientInfo(clientVO.userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		po.setPhoneNumber(clientVO.phoneNumber);
 		po.setTrueName(clientVO.trueName);
 		po.setIdentityID(clientVO.identityID);
 		po.setHeadImagePath(clientVO.headImagePath);
 		
-		if(clientDao.updateClientInfo(po)){
-			return ResultMessage.SUCCESS;
+		try {
+			if(clientDao.updateClientInfo(po)){
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -71,14 +87,23 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		
 		if(vipVO != null && !this.isVIP(vipVO.userID)) {
 			
-			ClientPO po = this.clientDao.getClientInfo(vipVO.userID);
+			ClientPO po = null;
+			try {
+				po = this.clientDao.getClientInfo(vipVO.userID);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			
 			po.setVipType(vipVO.vipType.ordinal());
 			po.setVipLevel(vipVO.level);
 			po.setVipInfo(vipVO.info);
 			
-			if(clientDao.updateClientInfo(po)){
-				return ResultMessage.SUCCESS;
+			try {
+				if(clientDao.updateClientInfo(po)){
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -93,7 +118,12 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	public VipVO getVipInfo(String userID){
 		if(this.isVIP(userID)) {
 			
-			ClientPO clientPO = this.clientDao.getClientInfo(userID);
+			ClientPO clientPO = null;
+			try {
+				clientPO = this.clientDao.getClientInfo(userID);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			
 			if(clientPO != null) {
 				return new VipVO(clientPO.getUserID(), VipType.values()[clientPO.getVipType()], 
@@ -110,7 +140,12 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	 * @return
 	 */
 	public boolean isVIP(String userID) {
-		ClientPO clientPO = this.clientDao.getClientInfo(userID);
+		ClientPO clientPO = null;
+		try {
+			clientPO = this.clientDao.getClientInfo(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	
 		if(clientPO != null) {
 			if(clientPO.getVipType() == 1 || clientPO.getVipType() == 2) {
@@ -122,15 +157,24 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 
 	@Override
 	public boolean updateClientVip(String userID, int level) {
-		ClientPO clientPO = this.clientDao.getClientInfo(userID);
+		ClientPO clientPO = null;
+		try {
+			clientPO = this.clientDao.getClientInfo(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		if(level == clientPO.getVipLevel()) {
 			return true;
 		}
 		
 		clientPO.setVipLevel(level);
-		if(this.clientDao.updateClientInfo(clientPO))  {
-			return true;
+		try {
+			if(this.clientDao.updateClientInfo(clientPO))  {
+				return true;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return false;

@@ -1,5 +1,6 @@
 package logic.order;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import Message.ResultMessage;
@@ -32,13 +33,23 @@ public class Order implements OrderService, OrderHotelInfo{
 
 	@Override
 	public EvaluationVO getEvaluationInfo(String orderID) {
-		EvaluationPO po = this.orderDao.getEvaluationByOrderID(orderID);
+		EvaluationPO po = null;
+		try {
+			po = this.orderDao.getEvaluationByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return this.evaluationTrans.evalutionTransToVO(po);
 	}
 
 	@Override
 	public OrderVO getOrderInfo(String orderID) {
-		OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+		OrderPO po = null;
+		try {
+			po = this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return this.orderTrans.orderTransToVO(po);
 		
 	}
@@ -48,8 +59,12 @@ public class Order implements OrderService, OrderHotelInfo{
 		
 		if(evaluation != null) {
 			EvaluationPO po = this.evaluationTrans.evalutionTransToPO(evaluation);
-			if(this.orderDao.addEvaluation(po)) {
-				return ResultMessage.SUCCESS;
+			try {
+				if(this.orderDao.addEvaluation(po)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -59,12 +74,27 @@ public class Order implements OrderService, OrderHotelInfo{
 	@Override
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
 		
-		return this.evaluationTrans.evalutionListTransToVO(this.orderDao.getEvaluationByHotelID(hotelID));
+		ArrayList<EvaluationPO> res = null;
+		try {
+			res = this.orderDao.getEvaluationByHotelID(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return this.evaluationTrans.evalutionListTransToVO(res);
 	}
 
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {
-		return this.orderDao.getBookedHotelList(userID);
+		ArrayList<String> res = null;
+		
+		try {
+			res =  this.orderDao.getBookedHotelList(userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }
