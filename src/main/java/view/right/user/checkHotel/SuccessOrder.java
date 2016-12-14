@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
+import vo.OrderVO;
 
 /**
  * 客户界面_查看酒店_生成订单成功反馈
@@ -150,7 +151,9 @@ public class SuccessOrder {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回首页,清空
+				controller.setHotelFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -167,6 +170,42 @@ public class SuccessOrder {
 	public Scene getScene(){
 		
 		return scene;
+	
+	}
+	
+	public void setText(){
+
+		OrderVO vo = controller.getOrderInfo();
+		
+		//待修改orderVO
+		hotelName.setText(controller.getHotelInfo(vo.hotelID).hotelName);
+		roomType.setText(vo.roomType);
+		roomNums.setText(vo.roomNums);
+		arriveTime.setText(vo.startTime);
+		latestTime.setText(vo.endTime);
+		originalPrice.setText(Double.toString(vo.beforePrice) );
+		actualPrice.setText(Double.toString(vo.afterPrice) );
+		peopleNums.setText(Integer.toString(vo.numOfPeople));
+		String hasChild = "否";
+		if(vo.hasChild){
+			hasChild = "是";
+		}
+		
+		haveChild.setText(hasChild);
+
+	}
+	
+	public void setBlank(){
+
+		hotelName.setText("");
+		roomType.setText("");
+		roomNums.setText("");
+		arriveTime.setText("");
+		latestTime.setText("");
+		originalPrice.setText("");
+		actualPrice.setText("");
+		peopleNums.setText("");
+		haveChild.setText("");
 	
 	}
 	

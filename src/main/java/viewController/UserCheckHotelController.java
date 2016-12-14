@@ -1,8 +1,12 @@
 package viewController;
 
+import java.util.ArrayList;
+
 import javafx.stage.Stage;
 import logicService.order.OrderService;
 import view.right.user.checkHotel.*;
+import vo.HotelVO;
+import vo.OrderVO;
 
 public class UserCheckHotelController extends UserLeftController {
 	
@@ -89,5 +93,25 @@ public class UserCheckHotelController extends UserLeftController {
 		stage.setScene(successOrderUI.getScene());
 		
 	}
-	
+
+	public void searchAndSetSearchHotelView() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public HotelVO getHotelInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<HotelVO> getSearchHotelList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public OrderVO getOrderInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

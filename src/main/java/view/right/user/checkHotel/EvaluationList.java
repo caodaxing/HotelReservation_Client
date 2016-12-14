@@ -1,5 +1,7 @@
 package view.right.user.checkHotel;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -22,6 +24,7 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
+import vo.HotelVO;
 
 /**
  * 客户界面_查看酒店_酒店详情_评价列表
@@ -51,6 +54,7 @@ public class EvaluationList {
 	TableColumn<Person, Button> operation;
 	
 	private final ObservableList<Person> data = FXCollections.observableArrayList();
+	private Button check;
 	
 	public EvaluationList(UserCheckHotelController controller){
 		
@@ -171,6 +175,15 @@ public class EvaluationList {
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 150.0);
+	}
+	
+	public void setListValue(){
+		ArrayList<EvaluationVO> evaluationList = controller.getEvaluationList();
+		for(int i=0;i<evaluationList.size();i++){
+			check = new Button("查看");
+			//待修改
+			data.add(new Person(, check));
+		}
 	}
 	
 	/**

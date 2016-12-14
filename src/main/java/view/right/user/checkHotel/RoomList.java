@@ -1,5 +1,7 @@
 package view.right.user.checkHotel;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,17 +12,20 @@ import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
 import viewController.UserLeftController;
+import vo.HotelVO;
 
 /**
  * 客户界面_查看酒店_酒店详情_酒店房间列表
@@ -48,12 +53,8 @@ public class RoomList{
 	TableColumn<Person, String> remainedNum;
 	TableColumn<Person, Button> operation;
 	
-	Button button1 = new Button("查看");
-	Button button2 = new Button("查看");
-	
-	private final ObservableList<Person> data = FXCollections.observableArrayList(
-			new Person("1111", "1111", "1111", button1),
-			new Person("2222", "2222", "2222", button2));
+	private final ObservableList<Person> data = FXCollections.observableArrayList();
+	private Button reverse;
 	
 	public RoomList(UserCheckHotelController controller){
 		
@@ -75,7 +76,9 @@ public class RoomList{
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		
+	
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_酒店房间列表背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -99,8 +102,9 @@ public class RoomList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//返回首页
+				controller.setHotelFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -136,9 +140,28 @@ public class RoomList{
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("预订");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								int row = this.getTableRow().getIndex();
+								//待修改
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
 		operation.setMinWidth(125);
 		
 		tableView.setItems(data);
+		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(500);
 		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
 		
 		//设置列表位置
@@ -147,6 +170,14 @@ public class RoomList{
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
+	}
+	
+	public void setListValue(){
+		ArrayList<RoomVO> roomList = controller.getRoomList();
+		for(int i=0;i<roomList.size();i++){
+			reverse = new Button("预订");
+			//待修改data.add(new Person(roomList.get(i),"请先登录", Integer.toString(roomList.get(i).levelOfHotel), Double.toString(roomList.get(i).evaluationGrades), reverse));
+		}
 	}
 	
 	/**

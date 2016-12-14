@@ -95,5 +95,10 @@ public class UserMyInfoController extends UserLeftController {
 			stage.show();
 		}
 	}
+
+	public ArrayList<CreditChangeVO> getCreditList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

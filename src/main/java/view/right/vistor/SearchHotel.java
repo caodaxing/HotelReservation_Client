@@ -274,8 +274,6 @@ public class SearchHotel {
 		}
 		String end = endTime.getValue().toString();
 		
-
-		
 		DecimalFormat df=new DecimalFormat("#.00");
 		//若为空则置为默认值
 		double priceLow = -1.00;

@@ -36,7 +36,6 @@ import vo.HotelVO;
  */
 public class SearchResultList {
 
-
 	private VistorController controller;
 	
 	private Scene scene;
@@ -267,8 +266,8 @@ public class SearchResultList {
 		rightPane.getChildren().add(tableView);
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
-		
 		AnchorPane.setTopAnchor(tableView, 150.0);
+	
 	}
 	
 	public void setListValue(){
@@ -279,9 +278,6 @@ public class SearchResultList {
 		}
 	}
 	
-	/**
-	 * 异常订单列表的内部数据类
-	 */
 	public static class Person{
 		private final SimpleStringProperty hotelName;
 		private final SimpleStringProperty whetherReserve;

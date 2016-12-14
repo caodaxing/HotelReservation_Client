@@ -83,11 +83,11 @@ public class SearchHotel {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索结果列表背景.jpg\")");
 	}
 	
 	private void setTextField(){
-		
-		//ArrayList<String> infoList = controller.getInfoList();
 		
 		//初始化textField
 		city = new TextField();
@@ -183,14 +183,18 @@ public class SearchHotel {
 		search.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//若没有则弹出提示，若有则跳至搜索结果界面,不清空搜索信息,返回时由controller负责重新初始化
+				controller.searchAndSetSearchHotelView();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回首页
+				controller.setHotelFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -228,7 +232,7 @@ public class SearchHotel {
 		endTime = new DatePicker();
 		
 		startTime.setValue(LocalDate.now());
-		endTime.setValue(LocalDate.now());
+		endTime.setValue(LocalDate.now().plusDays(1));
 		
 		startTime.setPrefSize(75, 30);
 		endTime.setPrefSize(75,30);
@@ -276,20 +280,43 @@ public class SearchHotel {
 		default:
 			break;
 		}
-		
-		DecimalFormat df=new DecimalFormat("#.00");
-		
+		String start = startTime.getValue().toString();
 		if(startTime.getValue().isAfter(endTime.getValue())){
 			controller.showDialog("入住时间不应晚于退房时间");
+			//给controller用
+			start="x";
+		}else if(startTime.getValue().isBefore(LocalDate.now())){
+			controller.showDialog("预计入住时间应晚于当前时间");
+			start="x";
 		}
-		String start = startTime.getValue().toString();
 		String end = endTime.getValue().toString();
-		double priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
-		double priceHigh =  Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
-		double commentLow =  Double.valueOf(df.format(Double.valueOf(evaluationLeft.getText())));
-		double commentHigh =  Double.valueOf(df.format(Double.valueOf(evaluationRight.getText())));
-		int starLow = Integer.valueOf(starLeft.getText());
-		int starHigh = Integer.valueOf(starRight.getText());
+		
+		DecimalFormat df=new DecimalFormat("#.00");
+		//若为空则置为默认值
+		double priceLow = -1.00;
+		if(!priceLeft.getText().equals(""))
+			priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
+		
+		double priceHigh = 5000.00;
+		if(!priceRight.getText().equals(""))
+			priceHigh = Double.valueOf(df.format(Double.valueOf(priceRight.getText())));
+		
+		double commentLow = 0.00;
+		if(!evaluationLeft.getText().equals(""))
+			commentLow = Double.valueOf(evaluationLeft.getText());
+		
+		double commentHigh = 5.00;
+		if(!evaluationRight.getText().equals(""))
+			commentHigh = Double.valueOf(evaluationRight.getText());
+		
+		int starLow = 0;
+		if(!starLeft.getText().equals(""))
+			starLow = Integer.valueOf(starLeft.getText());
+		
+		int starHigh = 5;
+		if(!starRight.getText().equals(""))
+			starHigh = Integer.valueOf(starRight.getText());
+		
 		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 	}

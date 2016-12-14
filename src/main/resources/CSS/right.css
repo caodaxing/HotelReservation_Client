@@ -4,3 +4,6 @@
 	-fx-font-size:14px ;
 	-fx-text-alignment: CENTER ;
  }
+ .button:hover{
+ 	-fx-background-coler:rgba(17,64,108);
+ }

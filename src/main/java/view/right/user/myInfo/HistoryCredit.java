@@ -1,17 +1,25 @@
 package view.right.user.myInfo;
 
+import java.util.ArrayList;
+
+import Message.CreditChangeType;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserMyInfoController;
+import vo.CreditChangeVO;
 
 /**
  * 客户界面_我的信息_查看历史信用记录
@@ -31,8 +39,16 @@ public class HistoryCredit {
 	private UserUI userui ;
 	
 	Button revert;
+
+	TableView<Person> tableView;
 	
-	ScrollBar scroller;
+	TableColumn<Person, String> time;
+	TableColumn<Person, String> orderID;
+	TableColumn<Person, String> action;
+	TableColumn<Person, String> change;
+	TableColumn<Person, String> result;
+	
+	private final ObservableList<Person> data = FXCollections.observableArrayList();;
 	
 	public HistoryCredit(UserMyInfoController controller){
 		
@@ -48,37 +64,19 @@ public class HistoryCredit {
 		
 		setRevertButton();
 		
-		//设置滚动条
-		setScroller();
+		setList();
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/基本信息_查看基本信息界面背景.jpg\")");
 	}
 	
 	public Scene getScene(){
 		
 		return scene;
 	
-	}
-	
-	private void setScroller(){
-		
-		//设置滚动条
-		scroller = new ScrollBar();
-		scroller.setLayoutX(775);
-		scroller.setLayoutY(140);
-		scroller.setPrefHeight(400);
-		scroller.setOrientation(Orientation.VERTICAL);
-		scroller.setUnitIncrement(10.0);
-		scroller.setBlockIncrement(5.0);
-		
-		//添加组件
-		rightPane.getChildren().add(scroller);
-		
-		AnchorPane.setLeftAnchor(scroller, 575.0);
-		AnchorPane.setTopAnchor(scroller, 140.0);
-		
 	}
 	
 	private void setRevertButton(){
@@ -110,5 +108,133 @@ public class HistoryCredit {
 		AnchorPane.setTopAnchor(revert, 550.0);
 	
 	}
+
+	private void setList(){
+		
+		//创建列表对象
+		tableView = new TableView<Person>();
+		tableView.setEditable(false);
+		
+		//添加列表内容
+				
+		//添加列
+		time = new TableColumn<>("时  间");
+		time.setCellValueFactory(new PropertyValueFactory<Person, String>("time"));
+		time.setMinWidth(160);
+		
+		orderID = new TableColumn<>("订单号");
+		orderID.setCellValueFactory(new PropertyValueFactory<Person, String>("orderID"));
+		orderID.setMinWidth(100);
+		
+		action = new TableColumn<>("动作");
+		action.setCellValueFactory(new PropertyValueFactory<Person, String>("action"));
+		action.setMinWidth(80);
+		
+		change = new TableColumn<>("信用值变化");
+		change.setCellValueFactory(new PropertyValueFactory<Person, String>("change"));
+		change.setMinWidth(80);
+		
+		result= new TableColumn<>("信用值结果");
+		result.setCellValueFactory(new PropertyValueFactory<Person, String>("result"));
+		result.setMinWidth(80);
+		
+		
+		tableView.setItems(data);
+		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(500);
+		tableView.getColumns().addAll(time, orderID, action, change, result);
+		
+		//设置列表位置
+		rightPane.getChildren().add(tableView);
+		
+		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setTopAnchor(tableView, 150.0);
 	
+	}
+	
+	public void setListValue(){
+		ArrayList<CreditChangeVO> creditList = controller.getCreditList();
+		for(CreditChangeVO c:creditList){
+			
+			String type = "";
+			CreditChangeType t = c.action;
+			if(t == CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE){
+				type = "生成订单增加";
+			}else if(t == CreditChangeType.SET_ABNORMAL_ORDER_DECREASE){
+				type = "订单异常扣除";
+			}else if(t == CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER){
+				type = "异常订单恢复";
+			}else if(t == CreditChangeType.UNDO_ABNORAML_ORDER_RECOVER){
+				type = "异常订单撤销";
+			}else if(t == CreditChangeType.RECHARGE_CREDIT){
+				type = "信用充值";
+			}else if(t == CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE){
+				type = "撤销订单扣除";
+			}
+			
+			data.add(new Person(c.time,c.orderID,type,Integer.toString(c.cerditChange),Integer.toString(c.nowCredit)));
+		}
+	}
+	
+	/**
+	 * 异常订单列表的内部数据类
+	 */
+	public static class Person{
+		private final SimpleStringProperty time;
+		private final SimpleStringProperty orderID;
+		private final SimpleStringProperty action;
+		private final SimpleStringProperty change;
+		private final SimpleStringProperty result;
+		
+		private Person(String time, String orderID, String action, String change, String result){
+			
+			this.time = new SimpleStringProperty(time);
+			this.orderID = new SimpleStringProperty(orderID);
+			this.action = new SimpleStringProperty(action);
+			this.change =  new SimpleStringProperty(change);
+			this.result =  new SimpleStringProperty(result);
+			
+		}
+		
+		public String getTime(){
+			return time.get();
+		}
+		
+		public void setTime(String time){
+			this.time.set(time);
+		}
+		
+		public String getOrderID(){
+			return orderID.get();
+		}
+		
+		public void setOrderID(String orderID){
+			this.orderID.set(orderID);
+		}
+		
+		public String getAction(){
+			return action.get();
+		}
+		
+		public void setAction(String action){
+			this.action.set(action);
+		}
+		
+		public String getChange(){
+			return change.get();
+		}
+		
+		public void setChange(String change){
+			this.change.set(change);
+		}
+		
+		public String getResult(){
+			return result.get();
+		}
+		
+		public void setResult(String result){
+			this.result.set(result);
+		}
+		
+	}
 }

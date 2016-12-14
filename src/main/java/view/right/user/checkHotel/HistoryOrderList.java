@@ -24,6 +24,7 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import view.right.user.checkHotel.RoomList.Person;
 import viewController.UserCheckHotelController;
+import vo.HotelVO;
 
 /**
  * 客户界面_查看酒店_酒店详情_历史订单
@@ -144,6 +145,14 @@ public class HistoryOrderList{
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
+	}
+	
+	public void setListValue(){
+		ArrayList<OrderVO> historyList = controller.getHistoryOrderList();
+		for(int i=0;i<historyList.size();i++){
+			//待修改
+			data.add(new Person();
+		}
 	}
 	
 	/**
