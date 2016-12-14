@@ -64,7 +64,7 @@ public class PromotionDao_Stub implements PromotionDao {
 				0.70, "2016-11-11 00:00:00", "2016-11-12 00:00:00", null, null, null, null);
 		
 		double[] vipLevel = {0, 0.80};
-		PromotionPO p2 = new PromotionPO(PromotionType.WEB_VIP_LEVEL.ordinal(), "666666", null, "网站vip等级折扣", 
+		PromotionPO p2 = new PromotionPO(PromotionType.WEB_VIP_LEVEL.ordinal(), "66666", null, "网站vip等级折扣", 
 				0, null, null, null, null, null, vipLevel);
 		
 		HashMap<String, double[]> vipTrading = new 	HashMap<String, double[]>();

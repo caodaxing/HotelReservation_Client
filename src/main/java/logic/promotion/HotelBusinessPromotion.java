@@ -63,13 +63,15 @@ public class HotelBusinessPromotion implements Promotion {
 
 	@Override
 	public OrderVO calculate(OrderVO vo) {
-		double temp = vo.beforePrice * this.discount;
-		
-		if(temp < vo.afterPrice) {
-			vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
-			vo.promotion = this.changeToVO();
+		if(this.discount != 0) {
+			double temp = vo.beforePrice * this.discount;
+			
+			if(temp < vo.afterPrice) {
+				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.promotion = this.changeToVO();
+			}
 		}
-		
+	
 		return vo;
 	}
 	

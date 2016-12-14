@@ -45,22 +45,22 @@ public class CreateOrderTest {
 		
 		OrderVO order = this.createOrder.createOrder(vo);
 		
-		assertEquals(5, order.promotions.size());
+		assertEquals("55555", order.promotion.promotionID);
 		
-		assertEquals(122.89,  order.afterPrice, 0.00);
+		assertEquals(350,  order.afterPrice, 0);
 	}
 	
 	@Test
 	public void testCreateOrder3() {
-		OrderVO vo = new OrderVO("wyy", RoomType.STANDARD_ROOM, 1, "2016-11-11 12:00:00", "2016-11-12 12:00:00", "00001",  2, false);
+		OrderVO vo = new OrderVO("wyy", RoomType.STANDARD_ROOM, 1, "2016-12-25 12:00:00", "2016-12-26 12:00:00", "00002",  2, false);
 		
 		OrderVO order = this.createOrder.createOrder(vo);
 		
-		assertEquals("20161111001889", order.orderId);
+		assertEquals("20161225001889", order.orderId);
 		
-		assertEquals(5, order.promotions.size());
+		assertEquals("66666", order.promotion.promotionID);
 		
-		assertEquals(153.61, order.afterPrice, 0);
+		assertEquals(320, order.afterPrice, 0);
 		
 	}
 	
