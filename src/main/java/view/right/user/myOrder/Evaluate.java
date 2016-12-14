@@ -107,14 +107,19 @@ public class Evaluate {
 		confirm.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//评价
+				controller.evaluate();
+				controller.getStage().show();
 			}
 			
 		});
 		cancel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回首页并清空
+				setBlank();
+				controller.setOrderFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -136,6 +141,13 @@ public class Evaluate {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+
+		grade.setText("");
+		info.setText("");
+		
 	}
 	
 }

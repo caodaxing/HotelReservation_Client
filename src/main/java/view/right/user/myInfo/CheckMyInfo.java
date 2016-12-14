@@ -67,13 +67,6 @@ public class CheckMyInfo {
 		id = new TextField();
 		credit = new TextField();
 		
-		ClientVO vo = controller.getMyInfo();
-		//根据controller设置text
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.identityID);
-		credit.setText(Integer.toString(vo.credit));
-		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
@@ -117,6 +110,7 @@ public class CheckMyInfo {
 			public void handle(ActionEvent event){
 				//查看历史信用记录
 				UserMyInfoController right = new UserMyInfoController(controller.getStage(),controller.getUserID());
+				setBlank();
 				right.setHistoryCreditView();
 				right.getStage().show();
 			}
@@ -127,6 +121,7 @@ public class CheckMyInfo {
 			public void handle(ActionEvent event){
 				//修改个人信息
 				UserMyInfoController right = new UserMyInfoController(controller.getStage(),controller.getUserID());
+				setBlank();
 				right.setModifyMyInfoView();
 				right.getStage().show();
 			}
@@ -148,6 +143,27 @@ public class CheckMyInfo {
 		
 		return scene;
 	
+	}
+	
+	
+	public void setBlank(){
+
+		name.setText("");
+		phone.setText("");
+		id.setText("");
+		credit.setText("");
+		
+	}
+	
+	public void setText(){
+		
+		ClientVO vo = controller.getMyInfo();
+		//根据controller设置text
+		name.setText(vo.trueName);
+		phone.setText(vo.phoneNumber);
+		id.setText(vo.identityID);
+		credit.setText(Integer.toString(vo.credit));
+		
 	}
 
 }

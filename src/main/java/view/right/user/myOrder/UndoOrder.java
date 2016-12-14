@@ -115,7 +115,10 @@ public class UndoOrder {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//暂时返回首页
+				controller.setOrderFirstView();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -133,6 +136,24 @@ public class UndoOrder {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+	
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		undoTime.setText("");
+
+	}
+	
+	public void setText(){
+
+		//待修改
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		undoTime.setText("");
 	}
 
 }

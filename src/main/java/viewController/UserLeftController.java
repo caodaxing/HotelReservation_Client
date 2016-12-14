@@ -57,7 +57,8 @@ public class UserLeftController {
 		accountService = new AccountService_Stub();
 		clientService = new ClientService_Stub();
 		orderService = new OrderService_Stub();
-		
+
+		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
 		allOrderList = new OrderList(this);
 		executeOrderList = new OrderList(this);
@@ -81,6 +82,7 @@ public class UserLeftController {
 	 */
 	public void setCheckMyInfoView(){
 		checkMyInfoUI = new CheckMyInfo(this);
+		checkMyInfoUI.setText();
 		stage.setScene(checkMyInfoUI.getScene());
 		stage.show();
 	}
@@ -261,6 +263,11 @@ public class UserLeftController {
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
+	}
+
+	public ArrayList<OrderVO> getOrderList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserLeftController;
+import viewController.UserMyOrderController;
 
 /**
  * 客户界面_我的订单_初始界面（查询订单）
@@ -67,8 +68,11 @@ public class First {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 搜索，controller内部实现跳转，若有则清空跳转（工厂模式）,若没有则清空提示
+				UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
+				right.searchOrder();
+				setBlank();
+				right.getStage().show();
 			}
 			
 		});
@@ -103,6 +107,18 @@ public class First {
 	public Scene getScene(){
 		
 		return scene;
+		
+	}
+	
+	public void setBlank(){
+		
+		orderID.setText("");
+		
+	}
+	
+	public String getOrderID(){
+		
+		return orderID.getText();
 		
 	}
 	

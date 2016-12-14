@@ -100,7 +100,10 @@ public class CheckLeaveInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回订单首页并清空
+				controller.setOrderFirstView();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -117,6 +120,20 @@ public class CheckLeaveInfo {
 	public Scene getScene(){
 		
 		return scene;
+	
+	}
+	
+	public void setBlank(){
+
+		roomType.setText("");
+		leaveTime.setText("");
+		
+	}
+	
+	public void setText(){
+//待修改，却少离开信息
+		roomType.setText("");
+		leaveTime.setText("");
 	
 	}
 	

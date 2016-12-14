@@ -171,5 +171,29 @@ public class UnexecuteOrder {
 		return scene;
 	
 	}
+	
+	public void setBlank(){
 
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+		originalPrice.setText("");
+		actualPrice.setText("");
+		
+	}
+
+	public void setText(){
+
+		//待修改
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+		originalPrice.setText("");
+		actualPrice.setText("");
+		
+	}
 }

@@ -11,6 +11,8 @@ import view.right.user.myOrder.First;
 import view.right.user.myOrder.OrderList;
 import view.right.user.myOrder.UndoOrder;
 import view.right.user.myOrder.UnexecuteOrder;
+import vo.EvaluationVO;
+import vo.OrderVO;
 
 public class UserMyOrderController extends UserLeftController {
 
@@ -96,6 +98,26 @@ public class UserMyOrderController extends UserLeftController {
 	public void setUnexecuteOrderView(){
 		
 		stage.setScene(unexecuteOrderUI.getScene());
+		
+	}
+
+	public OrderVO getOrderInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void evaluate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public EvaluationVO getEvaluationInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void searchOrder() {
+		// TODO Auto-generated method stub
 		
 	}
 	

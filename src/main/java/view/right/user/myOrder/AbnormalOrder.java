@@ -12,6 +12,7 @@ import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserLeftController;
 import viewController.UserMyOrderController;
+import vo.OrderVO;
 
 /**
  * 客户界面_我的订单_异常订单详情
@@ -116,7 +117,10 @@ public class AbnormalOrder {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回异常订单界面并清空
+				controller.setAbnormalOrderList();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -134,6 +138,26 @@ public class AbnormalOrder {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+
+		orderID.setText("");;
+		hotelName.setText("");;
+		roomType.setText("");;
+		latestTime.setText("");
+		
+	}
+	
+	public void setText(){
+
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		//待修改
+		roomType.setText(vo.roomType);
+		latestTime.setText(vo.abnormalTime);
+		
 	}
 	
 }

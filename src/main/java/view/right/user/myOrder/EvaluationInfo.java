@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.UserUI;
 import viewController.UserMyOrderController;
+import vo.EvaluationVO;
 
 /**
  * 客户界面_我的订单_已执行订单_查看评价
@@ -51,7 +52,7 @@ public class EvaluationInfo {
 		rightPane.setPrefSize( DefaultNums.RIGHT_WIDTH , DefaultNums.HEIGHT );
 		
 		//设置TextField
-		setText();
+		setTextField();
 		
 		//设置Button
 		setButton();
@@ -61,7 +62,7 @@ public class EvaluationInfo {
 		
 	}
 	
-	private void setText(){
+	private void setTextField(){
 		
 		//初始化textField
 		grade = new TextField();
@@ -103,7 +104,10 @@ public class EvaluationInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回首页并清空
+				controller.setOrderFirstView();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -121,6 +125,17 @@ public class EvaluationInfo {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+		grade.setText("");
+		info.setText("");
+	}
+	
+	public void setText(){
+		EvaluationVO vo = controller.getEvaluationInfo();
+		grade.setText(Double.toString(vo.commentLevel) );
+		info.setText(vo.evaluationContent);
 	}
 	
 }

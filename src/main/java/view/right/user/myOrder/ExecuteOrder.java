@@ -72,8 +72,6 @@ public class ExecuteOrder {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
-		
 		//初始化textField
 		orderID = new TextField();
 		hotelName = new TextField();
@@ -82,16 +80,7 @@ public class ExecuteOrder {
 		leaveTime = new TextField();
 		originalPrice = new TextField();
 		actualPrice = new TextField();
-		/*
-		//根据Controller设置textField文字
-		roomType.setText(infoList.get(0));
-		hotelName.setText(infoList.get(1));
-		roomType.setText(infoList.get(2));
-		arriveTime.setText(infoList.get(3));
-		leaveTime.setText(infoList.get(4));
-		originalPrice.setText(infoList.get(5));
-		actualPrice.setText(infoList.get(6));
-		*/
+		
 		//设置textField可操作性
 		orderID.setEditable(false);
 		hotelName.setEditable(false);
@@ -149,7 +138,7 @@ public class ExecuteOrder {
 		//设置Button文字
 		arriveMessage.setText("入住信息");
 		leaveMessage.setText("退房信息");
-		checkEvaluation.setText("查看评论");
+		checkEvaluation.setText("评价");
 		back.setText("返回");
 				
 		//设置Button大小
@@ -162,28 +151,34 @@ public class ExecuteOrder {
 		arriveMessage.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setCheckArriveInfoView();
+				controller.getStage().show();
 			}
 			
 		});
 		leaveMessage.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setCheckLeaveInfoView();
+				controller.getStage().show();
 			}
 			
 		});
 		checkEvaluation.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setEvaluateView();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回首页并清空
+				controller.setOrderFirstView();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -212,6 +207,29 @@ public class ExecuteOrder {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+	
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+		originalPrice.setText("");
+		actualPrice.setText("");
+		
+	}
+	
+	public void setText(){
+		//待补充
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+		originalPrice.setText("");
+		actualPrice.setText("");
 	}
 	
 }

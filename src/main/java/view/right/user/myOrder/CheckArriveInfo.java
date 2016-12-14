@@ -109,7 +109,10 @@ public class CheckArriveInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回订单首页并清空
+				controller.setOrderFirstView();
+				setBlank();
+				controller.getStage().show();
 			}
 			
 		});
@@ -127,6 +130,22 @@ public class CheckArriveInfo {
 		
 		return scene;
 	
+	}
+	
+	public void setBlank(){
+
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+	
+	}
+	
+	public void setText(){
+//待修改 ???缺少入住离开信息
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+
 	}
 	
 }

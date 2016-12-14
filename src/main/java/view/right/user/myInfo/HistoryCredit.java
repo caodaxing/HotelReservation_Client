@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserMyInfoController;
 import vo.CreditChangeVO;
@@ -155,23 +156,7 @@ public class HistoryCredit {
 	public void setListValue(){
 		ArrayList<CreditChangeVO> creditList = controller.getCreditList();
 		for(CreditChangeVO c:creditList){
-			
-			String type = "";
-			CreditChangeType t = c.action;
-			if(t == CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE){
-				type = "生成订单增加";
-			}else if(t == CreditChangeType.SET_ABNORMAL_ORDER_DECREASE){
-				type = "订单异常扣除";
-			}else if(t == CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER){
-				type = "异常订单恢复";
-			}else if(t == CreditChangeType.UNDO_ABNORAML_ORDER_RECOVER){
-				type = "异常订单撤销";
-			}else if(t == CreditChangeType.RECHARGE_CREDIT){
-				type = "信用充值";
-			}else if(t == CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE){
-				type = "撤销订单扣除";
-			}
-			
+			String type = MessageHelper.creditChangeTypeToString(c.action);
 			data.add(new Person(c.time,c.orderID,type,Integer.toString(c.cerditChange),Integer.toString(c.nowCredit)));
 		}
 	}
