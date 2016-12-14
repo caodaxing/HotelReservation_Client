@@ -1,5 +1,6 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,7 +13,7 @@ import java.util.HashMap;
  * @param notEmptyTime 保存房间不空闲的时间 key-value分别对应开始时间和结束时间，形式如“YYYY-MM-DD 12:00:00”
  * @param pictures
  */
-public class RoomPO {
+public class RoomPO implements Serializable{
 
 	private String hotelId;
 	private String roomId;
