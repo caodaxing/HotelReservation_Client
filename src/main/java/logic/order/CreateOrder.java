@@ -3,6 +3,7 @@ package logic.order;
 import java.rmi.RemoteException;
 
 import Message.OrderState;
+import Message.ResultMessage;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.Credit;
@@ -11,10 +12,12 @@ import logic.hotel.CheckHotel;
 import logic.hotel.HotelInfo;
 import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
+import logic.room.UpdateRoom;
 import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
 import po.OrderPO;
 import vo.OrderVO;
+import vo.RoomVO;
 
 /**
  * 生成订单接口的实现类
@@ -28,6 +31,7 @@ public class CreateOrder implements CreateOrderService{
 	private CreditInfo creditInfo; 
 	private CalculationPromotionInfo caculatePromotionInfo;
 	private HotelInfo info;
+	private UpdateRoom updateRoom;
 	
 	
 	public CreateOrder() {
@@ -35,6 +39,7 @@ public class CreateOrder implements CreateOrderService{
 		this.creditInfo = new Credit();
 		this.caculatePromotionInfo = new CalculatePromotion();
 		this.info = new CheckHotel();
+		this.updateRoom = new UpdateRoom();
 		
 		this.orderDao = new OrderDao_Stub();
 	}
@@ -47,18 +52,16 @@ public class CreateOrder implements CreateOrderService{
 			return null;
 		} 
 		
-
 		//生成订单的id
 		int num = this.orderDao.getOrderNum();
 		String orderID = o.startTime.substring(0, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%06d", num);
 		o.orderId = orderID;
-		
-		
+				
 		//获取价格
 		o.beforePrice = info.getRoomPrice(o.hotelID, o.roomType) * o.roomNum;
 		o.afterPrice = o.beforePrice;
 		
-		
+
 		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
 		
 		vo.orderState = OrderState.UNEXECUTED;
@@ -73,7 +76,13 @@ public class CreateOrder implements CreateOrderService{
 		}
 		
 		if(success) {
-			return vo;
+			
+			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(vo.hotelID, vo.roomType, o.roomNum)) {
+				return vo;
+			}
+	
+System.out.println("logic.order.createOrder更新房间数量有问题");
+			return null;
 		} else {
 			System.out.println("logic.order.CreateOrder.createOrder更新数据库异常");
 			return null;

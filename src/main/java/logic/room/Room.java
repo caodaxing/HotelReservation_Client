@@ -5,8 +5,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
 
 import Message.ResultMessage;
 import Message.RoomType;
@@ -26,17 +24,28 @@ public class Room implements RoomService , RoomInfo{
 
 	public static int BOOK_ADVANCE_DAY = 30;
 	private RoomDao roomDao;
-	
+
 	public Room() {
 		roomDao = new RoomDao_Stub();
 	}
 	
-	/**
-	 * 获取酒店房间列表
-	 * @param hotel_id 传入的酒店id
-	 * @return ArrayList<RoomVO> 酒店的房间信息列表
-	 * @author bcy
-	 */
+	@Override
+	public RoomVO getRoomInfo(String hotelID, RoomType roomType) {
+		RoomPO po = null;
+		try {
+			po = this.roomDao.getRoomInfo(hotelID, roomType.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(po == null) {
+			return null;
+		}
+		RoomVO vo = new RoomVO(po.getHotelId(), RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getPrice());
+		return vo;
+	}
+	
+
 	public ArrayList<RoomVO> getRoomList(String hotelId){
 		
 		ArrayList<RoomPO> roomPOList = null;
@@ -56,12 +65,7 @@ public class Room implements RoomService , RoomInfo{
 	}
 	
 	
-	/**
-	 * 更新酒店房间信息
-	 * @param RoomVO 传入的VO信息
-	 * @return ResultMessage 返回修改的结果（成功/失败）
-	 * @author bcy
-	 */
+	//更新酒店房间信息
 	public ResultMessage updateRoomInfo(RoomVO roomVO){
 		if (roomVO==null) {
 			System.out.println("logic.room.Room.updateRoomInfo参数异常");
@@ -87,12 +91,7 @@ public class Room implements RoomService , RoomInfo{
 		return ResultMessage.FAILURE;
 	}
 	
-	/**
-	 * 增加酒店房间信息
-	 * @param RoomVO 传入的VO信息
-	 * @return ResultMessage 返回增加的结果（成功/失败）
-	 * @author bcy
-	 */
+	// 增加酒店房间信息
 	public ResultMessage addRoomInfo(RoomVO roomVO){
 		if (roomVO == null) {
 			System.out.println("logic.room.Room.addRoomInfo参数异常");
@@ -251,5 +250,8 @@ public class Room implements RoomService , RoomInfo{
 //		
 //		return price;
 	}
+
+
+	
 
 }

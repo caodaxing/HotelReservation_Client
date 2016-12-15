@@ -1,5 +1,6 @@
 package dataDao.stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,10 +15,11 @@ public class RoomDao_Stub implements RoomDao {
 	ArrayList<RoomPO> pos3 = new ArrayList<RoomPO>();
 	
 	public RoomDao_Stub() {
-		HashMap<String, String> n11 = new HashMap<String, String>();
-		n11.put("2016-12-15 12:00:00", "2016-12-16 12:00:00");
-		n11.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
-		this.pos1.add(new RoomPO("00001", "1109", RoomType.STANDARD_ROOM.ordinal(), 500, n11));
+		int[] t1 = new int[30];
+		for(int i=0; i<30; ++i) {
+			t1[i] = 10;
+		}
+		this.pos1.add(new RoomPO("00001", RoomType.STANDARD_ROOM.ordinal(), 10, 500, t1));
 		
 		HashMap<String, String> n12 = new HashMap<String, String>();
 		n12.put("2016-12-25 12:00:00", "2016-12-26 12:00:00");
@@ -76,6 +78,11 @@ public class RoomDao_Stub implements RoomDao {
 		}
 	
 		return pos3;
+	}
+
+	@Override
+	public RoomPO getRoomInfo(String hotelId, int roomType) throws RemoteException {
+		return null;
 	}
 	
 

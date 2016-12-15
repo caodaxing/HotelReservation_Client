@@ -2,7 +2,6 @@ package po;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * @param hoteID 酒店ID

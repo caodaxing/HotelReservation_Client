@@ -15,6 +15,8 @@ public interface RoomService {
 	
 	public ArrayList<RoomVO> getRoomList(String hotelID);
 	
+	public RoomVO getRoomInfo(String hotelID, RoomType roomType);
+	
 	//更新房间价格等信息
 	public ResultMessage updateRoomInfo(RoomVO roomVO);
 	

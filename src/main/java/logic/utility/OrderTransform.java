@@ -51,7 +51,7 @@ public class OrderTransform {
 		
 		PromotionVO provo = this.promotionInfo.getPromotion(order.getPromotionID());
 		
-		return new OrderVO(order.getUesrID(), order.getOrderID(),RoomType.values()[order.getRoomType()], order.getRoomNum(),
+		return new OrderVO(order.getUesrID(), order.getOrderID(),RoomType.values()[order.getRoomType()], order.getRoomID(), order.getRoomNum(),
 				order.getStartTime(), order.getEndTime(), order.getHotelId(), OrderState.values()[order.getState()],
 				order.getNumberOfPeople(), order.isHasChild(), order.getBeforePromotionPrice(),
 				order.getAfterPromotionPrice(),provo ,
@@ -95,7 +95,7 @@ public class OrderTransform {
 		}
 			
 		
-		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.hotelID, vo.startTime, vo.endTime,
+		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.hotelID, vo.startTime, vo.endTime,vo.roomID,
 				vo.roomNum, vo.roomType.ordinal(),  vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
 				vo.beforePrice, vo.afterPrice, promotionID, vo.checkInTime, vo.checkOutTime,
 				vo.abnormalTime, vo.undoAbnormalTime, vo.undoUnexecutedTime);

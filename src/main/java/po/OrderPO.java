@@ -1,7 +1,6 @@
 package po;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * @param uesrID 用户id
@@ -70,7 +69,7 @@ public class OrderPO implements Serializable{
 	 */
 	public OrderPO(String uesrID, String orderID, String hotelId, String startTime, String endTime, String roomID, int roomNum,
 			int roomType, boolean hasChild, int numberOfPeople, int state, double beforePromotionPrice,
-			double afterPromotionPrice, String promotionID, String executedTime, String checkOutTime, 
+			double afterPromotionPrice, String promotionID, String checkInTime, String checkOutTime, 
 			String undoAbnormalTime, String abnormalTime, String undoUnexecutedTime) {
 		this.uesrID = uesrID;
 		this.orderID = orderID;
@@ -86,7 +85,7 @@ public class OrderPO implements Serializable{
 		this.beforePromotionPrice = beforePromotionPrice;
 		this.afterPromotionPrice = afterPromotionPrice;
 		this.promotionID = promotionID;
-		this.checkInTime = executedTime;
+		this.checkInTime = checkInTime;
 		this.undoAbnormalTime = undoAbnormalTime;
 		this.abnormalTime = abnormalTime;
 		this.undoUnexecutedTime = undoUnexecutedTime;
