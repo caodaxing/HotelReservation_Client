@@ -73,7 +73,7 @@ public class CheckLeaveInfo {
 		int num = controller.getRow();
 		//添加文本框
 		
-		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		roomType = new TextField(orderList.get(num).roomType.toString());
 		roomType.setId("CheckLeaveInfo");
 		roomType.setPrefSize(200, 30);
 		

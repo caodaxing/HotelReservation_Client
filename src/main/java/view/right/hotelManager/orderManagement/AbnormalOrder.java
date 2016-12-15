@@ -1,5 +1,7 @@
 package view.right.hotelManager.orderManagement;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +13,8 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import viewController.HotelManagerLeftController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_异常订单详情
@@ -20,6 +24,7 @@ import viewController.HMOrderManagementController;
 public class AbnormalOrder{
 	
 	private HMOrderManagementController controller;
+	private HotelManagerLeftController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -32,6 +37,8 @@ public class AbnormalOrder{
 	
 	Button againRegister;
 	Button revert;
+	
+	ArrayList<OrderVO> orderList;
 	
 	public AbnormalOrder(HMOrderManagementController controller){
 		
@@ -61,22 +68,24 @@ public class AbnormalOrder{
 	}
 	
 	private void setTextField(){
-	
-		//ArrayList<String> infoList = controller.getInfoList();
+		
+		orderList = controller.getOrderList();
+		int num = controller.getRow();
+		
 		//添加文本框
-		orderID = new TextField();
+		orderID = new TextField(orderList.get(num).orderId);
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField();
+		hotelName = new TextField(orderList.get(num).hotelID);
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField();
+		roomType = new TextField(orderList.get(num).roomType.toString());
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		lastExecuteTime = new TextField();
+		lastExecuteTime = new TextField(orderList.get(num).endTime);
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		
@@ -155,6 +164,7 @@ public class AbnormalOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				
 				controller.setOrderListView();
 				controller.getStage().show();
 			}

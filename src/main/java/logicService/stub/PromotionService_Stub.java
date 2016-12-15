@@ -12,7 +12,7 @@ public class PromotionService_Stub implements PromotionService {
 
 	@Override
 	public ResultMessage addPromotion(PromotionVO promotionVO) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override

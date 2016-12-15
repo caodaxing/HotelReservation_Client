@@ -1,5 +1,6 @@
 package view.right.webBusiness.promotion;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_制定VIP专属折扣
@@ -63,7 +64,6 @@ public class SetVIPStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		VIP1DiscountRange = new TextField();
 		VIP1DiscountRange.setId("SetVIPStrategy");
@@ -143,21 +143,27 @@ public class SetVIPStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				Prompt prompt = new Prompt("保存成功");
-				prompt.show();
 				//传输vo
-				VIP1DiscountRange.getText();
-				VIP2DiscountRange.getText();
-				VIP3DiscountRange.getText();
-				discountName.getText();
+				double d1 = Double.parseDouble(VIP1DiscountRange.getText());
+				double d2 = Double.parseDouble(VIP2DiscountRange.getText());
+				double d3 = Double.parseDouble(VIP3DiscountRange.getText());
+				double[] d = {d1,d2,d3};
+				String s = discountName.getText();
+				PromotionVO promotionVO = new PromotionVO(null, s, d);
 				//
-				VIP1DiscountRange.setText("");
-				VIP2DiscountRange.setText("");
-				VIP3DiscountRange.setText("");
-				discountName.setText("");
-				
-				controller.setChooseView();
-				controller.getStage().show();
+				if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+					VIP1DiscountRange.setText("");
+					VIP2DiscountRange.setText("");
+					VIP3DiscountRange.setText("");
+					discountName.setText("");
+					Prompt prompt = new Prompt("保存成功");
+					prompt.show();
+					controller.setChooseView();
+					controller.getStage().show();
+				}else{
+					Prompt prompt = new Prompt("输入错误");
+					prompt.show();
+				}
 			}
 					
 		});

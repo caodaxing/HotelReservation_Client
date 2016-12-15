@@ -82,7 +82,7 @@ public class CheckArriveInfo {
 		estimateLeaveTime.setId("CheckArriveInfo");
 		estimateLeaveTime.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		roomType = new TextField(orderList.get(num).roomType.toString());
 		roomType.setId("CheckArriveInfo");
 		roomType.setPrefSize(200, 30);
 		

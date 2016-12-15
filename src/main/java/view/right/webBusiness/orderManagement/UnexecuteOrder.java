@@ -78,7 +78,7 @@ public class UnexecuteOrder {
 		//设置未执行订单的文本信息
 		orderID = new TextField(orderList.get(num).orderId);
 		hotelName = new TextField(orderList.get(num).hotelID);
-		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		roomType = new TextField(orderList.get(num).roomType.toString());
 		estimateInTime = new TextField(orderList.get(num).startTime);
 		estimateLeaveTime = new TextField(orderList.get(num).endTime);
 		primeCost = new TextField(String.valueOf(orderList.get(num).beforePrice));

@@ -22,7 +22,7 @@ public class AccountService_Stub implements AccountService{
 
 	@Override
 	public Identity getIdentity(String accountID) {
-		return Identity.WEBMANAGER;
+		return Identity.HOTELMANAGER;
 	}
 
 	@Override

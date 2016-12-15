@@ -133,5 +133,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 		return row;
 	}
 	
-	
+	public ResultMessage getAddPromotionResult(PromotionVO promotionVO){
+		return promotionService.addPromotion(promotionVO);
+	}
 }
