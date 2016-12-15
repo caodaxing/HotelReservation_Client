@@ -11,7 +11,6 @@ import java.util.HashMap;
  * @param roomType
  * @param price 小数点保留两位
  * @param notEmptyTime 保存房间不空闲的时间 key-value分别对应开始时间和结束时间，形式如“YYYY-MM-DD 12:00:00”
- * @param pictures
  */
 public class RoomPO implements Serializable{
 
@@ -20,7 +19,6 @@ public class RoomPO implements Serializable{
 	private int roomType; 
 	private double price;
 	private HashMap<String, String> notEmptyTime;
-	private ArrayList<String> pictures;
 	
 
 	/**
@@ -29,16 +27,14 @@ public class RoomPO implements Serializable{
 	 * @param roomType
 	 * @param price 小数点保留两位
 	 * @param notEmptyTime 保存房间不空闲的时间 key-value分别对应开始时间和结束时间，形式如“YYYY-MM-DD 12:00:00”
-	 * @param pictures
-	 */
+s	 */
 	public RoomPO(String hotelId, String roomId, int roomType, double price, 
-			HashMap<String, String> notEmptyTime, ArrayList<String> pictures) {
+			HashMap<String, String> notEmptyTime) {
 		this.hotelId = hotelId;
 		this.roomId = roomId;
 		this.roomType = roomType;
 		this.price = price;
 		this.notEmptyTime = notEmptyTime;
-		this.pictures = pictures;
 	}
 
 	public String getHotelId() {
@@ -80,14 +76,5 @@ public class RoomPO implements Serializable{
 	public void setNotEmptyTime(HashMap<String, String> notEmptyTime) {
 		this.notEmptyTime = notEmptyTime;
 	}
-
-	public ArrayList<String> getPictures() {
-		return pictures;
-	}
-
-	public void setPictures(ArrayList<String> pictures) {
-		this.pictures = pictures;
-	}
-	
 	
 }

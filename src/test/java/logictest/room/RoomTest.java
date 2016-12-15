@@ -39,7 +39,7 @@ public class RoomTest {
 	public void testUpdateRoomInfo(){
 		HashMap<String, String> n = new HashMap<String, String>();
 		n.put("2016-12-20 12:00:00", "2016-12-21 12:00:00");
-		assertEquals(ResultMessage.SUCCESS, this.room.updateRoomInfo(new RoomVO("00002", "1109", RoomType.STANDARD_ROOM, 500, n, null)));
+		assertEquals(ResultMessage.SUCCESS, this.room.updateRoomInfo(new RoomVO("00002", "1109", RoomType.STANDARD_ROOM, 500, n)));
 	}
 	
 	@Test

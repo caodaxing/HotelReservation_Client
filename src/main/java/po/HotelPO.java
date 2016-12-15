@@ -11,7 +11,6 @@ import java.util.HashMap;
  * @param distract 所在行政区
  * @param tradingArea 所属商圈
  * @param locationOfHotel 酒店地址
- * 
  * @param evaluationGrades 评价等级
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
@@ -19,6 +18,7 @@ import java.util.HashMap;
  * @param picturesPath 照片
  * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
+ * @param pictures 图片
  * @author Mark.W
  *
  */
