@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.utility.Encryption;
 import view.right.webManager.hotelManagerInfo.CheckHotelManager;
 import view.right.webManager.hotelManagerInfo.ModifyHotelManager;
 import vo.AccountVO;
@@ -105,7 +106,7 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 		// 添加酒店工作人员
 		ResultMessage result0 = webManagerService.updateHotelManagerInfo(vo);
 		// 修改密码
-		ResultMessage result1 = accountService.modifyPassword(new AccountVO(hotelID, password, Identity.HOTELMANAGER));
+		ResultMessage result1 = accountService.modifyPassword(Encryption.getInstance().encrypt(new AccountVO(hotelID, password, Identity.HOTELMANAGER)));
 		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			//修改成功,清空，返回查看界面
 			showDialog("修改成功");

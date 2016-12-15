@@ -16,6 +16,7 @@ import vo.EvaluationVO;
 
 /**
  * 客户界面_我的订单_已执行订单_查看评价
+ * 抛弃了他
  * @author XueWang
  *
  */

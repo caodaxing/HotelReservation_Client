@@ -2,6 +2,7 @@ package view.helpTools;
 
 import Message.CreditChangeType;
 import Message.OrderState;
+import Message.RoomType;
 
 public class MessageHelper {
 
@@ -42,6 +43,26 @@ public class MessageHelper {
 		}
 		
 		return state;
+		
+	}
+	
+	public static String roomTypeToString(RoomType t){
+		
+		String type = "错误";
+		
+		if(t== RoomType.BIGBED_ROOM){
+			type = "大床房";
+		}else if(t == RoomType.SINGLE_ROOM){
+			type = "单人间";
+		}else if(t == RoomType.STANDARD_ROOM){
+			type = "标准间";
+		}else if(t == RoomType.SUITE){
+			type = "套房";
+		}else if(t == RoomType.TRIPLE_ROOM){
+			type = "三人间";
+		}
+		
+		return type;
 		
 	}
 	

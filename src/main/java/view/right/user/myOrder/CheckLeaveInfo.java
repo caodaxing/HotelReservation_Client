@@ -9,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserMyOrderController;
+import vo.OrderVO;
 
 /**
  * 客户界面_我的订单_已执行订单_查看退房信息
@@ -131,9 +133,10 @@ public class CheckLeaveInfo {
 	}
 	
 	public void setText(){
-//待修改，却少离开信息
-		roomType.setText("");
-		leaveTime.setText("");
+
+		OrderVO vo = controller.getOrderInfo();
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		leaveTime.setText(vo.endTime);
 	
 	}
 	

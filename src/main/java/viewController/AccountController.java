@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.stub.AccountService_Stub;
 import view.account.FirstUI;
@@ -100,7 +101,7 @@ public class AccountController {
 		}else{
 			
 			AccountVO accountVO = new AccountVO(userID,password,Identity.CLIENT);
-			ResultMessage result = accountService.register(accountVO);
+			ResultMessage result = accountService.register(Encryption.getInstance().encrypt(accountVO));
 		
 			if(result == ResultMessage.SUCCESS){//注册成功则返回首页
 				//弹出“注册成功”对话框，清空textfield

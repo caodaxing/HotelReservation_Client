@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.utility.Encryption;
 import logicService.stub.WebBusinessService_Stub;
 import logicService.user.WebBusinessService;
 import view.right.webManager.webBusinessInfo.AddWebBusiness;
@@ -128,7 +129,7 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 		
 		WebBusinessVO vo = new WebBusinessVO(webBusinessID,name,phone,"");
 		ResultMessage result0 = webManagerService.addWebBusiness(vo);
-		ResultMessage result1 = accountService.register(new AccountVO(webBusinessID,password,Identity.WEBBUSSINESS));
+		ResultMessage result1 = accountService.register(Encryption.getInstance().encrypt(new AccountVO(webBusinessID,password,Identity.WEBBUSSINESS)));
 		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			//成功，清空输入框，跳至选择界面
 			showDialog("添加成功");
@@ -155,7 +156,7 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 		vo.phoneNumber = phone ;
 		
 		ResultMessage result0 = webManagerService.updateWebBusinessInfo(vo);
-		ResultMessage result1 = accountService.modifyPassword(new AccountVO(webBusinessID,password,Identity.WEBBUSSINESS));
+		ResultMessage result1 = accountService.modifyPassword(Encryption.getInstance().encrypt(new AccountVO(webBusinessID,password,Identity.WEBBUSSINESS)));
 		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			showDialog("修改成功");
 			modifyWebBusinessUI.setBlank();

@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserLeftController;
 import viewController.UserMyOrderController;
@@ -154,8 +155,7 @@ public class AbnormalOrder {
 		OrderVO vo = controller.getOrderInfo();
 		orderID.setText(vo.orderId);
 		hotelName.setText(vo.hotelID);
-		//待修改
-		roomType.setText(vo.roomType);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 		latestTime.setText(vo.abnormalTime);
 		
 	}

@@ -7,6 +7,7 @@ import Message.OrderListCondition;
 import Message.ResultMessage;
 import Message.VipType;
 import javafx.stage.Stage;
+import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
@@ -270,7 +271,7 @@ public class UserLeftController {
 		}
 		
 		AccountVO vo = new AccountVO(userID, oldPassword , newPassword , Identity.CLIENT );
-		ResultMessage result = accountService.modifyPassword(vo);
+		ResultMessage result = accountService.modifyPassword(Encryption.getInstance().encrypt(vo));
 		if(result == ResultMessage.UNMATCHED_PASSWORD){
 			//旧密码不正确,弹框清空
 			showDialog("原密码错误，请重新输入");

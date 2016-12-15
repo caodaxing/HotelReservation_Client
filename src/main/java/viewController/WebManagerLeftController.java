@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.hotel.UpdateHotelService;
 import logicService.stub.AccountService_Stub;
@@ -176,7 +177,7 @@ public class WebManagerLeftController {
 		HotelManagerVO vo = new HotelManagerVO(hotelID,phone,name,id);
 		
 		ResultMessage result0 = webManagerService.addHotelManager(vo);
-		ResultMessage result1 = accountService.register(new AccountVO(hotelID,password,Identity.HOTELMANAGER));
+		ResultMessage result1 = accountService.register(Encryption.getInstance().encrypt(new AccountVO(hotelID,password,Identity.HOTELMANAGER)));
 		if(result0 == ResultMessage.SUCCESS && result1 == ResultMessage.SUCCESS){
 			//成功，清空输入框
 			showDialog("添加成功");

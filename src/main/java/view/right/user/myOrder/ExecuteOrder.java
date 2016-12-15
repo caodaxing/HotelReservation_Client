@@ -9,9 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserLeftController;
 import viewController.UserMyOrderController;
+import vo.OrderVO;
 
 /**
  * 客户界面_我的订单_已执行订单详情
@@ -222,14 +224,14 @@ public class ExecuteOrder {
 	}
 	
 	public void setText(){
-		//待补充
-		orderID.setText("");
-		hotelName.setText("");
-		roomType.setText("");
-		arriveTime.setText("");
-		leaveTime.setText("");
-		originalPrice.setText("");
-		actualPrice.setText("");
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		arriveTime.setText(vo.executedTime);
+		leaveTime.setText(vo.endTime);
+		originalPrice.setText(Double.toString(vo.beforePrice));
+		actualPrice.setText(Double.toString(vo.afterPrice));
 	}
 	
 }

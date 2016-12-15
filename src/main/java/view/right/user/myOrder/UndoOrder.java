@@ -9,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserMyOrderController;
+import vo.OrderVO;
 
 /**
  * 客户界面_我的订单_已撤销订单
@@ -149,11 +151,15 @@ public class UndoOrder {
 	
 	public void setText(){
 
-		//待修改
-		orderID.setText("");
-		hotelName.setText("");
-		roomType.setText("");
-		undoTime.setText("");
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		if(vo.undoAbnormalTime == null){
+			undoTime.setText(vo.undoUnexecutedTime);
+		}else{
+			undoTime.setText(vo.undoAbnormalTime);
+		}
 	}
 
 }
