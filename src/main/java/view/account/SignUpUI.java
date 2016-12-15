@@ -37,7 +37,7 @@ public class SignUpUI{
 		
 		root = new AnchorPane();
 		root.setPrefSize(DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/signImage/首页背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/signImage/注册界面.jpg\")");
 		root.getStylesheets().add("/CSS/account.css");
 		
 		setButton();
