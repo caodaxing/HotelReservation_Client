@@ -20,6 +20,7 @@ import viewController.HotelManagerLeftController;
 public class First {
 	
 	private HotelManagerLeftController controller;
+	private HMRoomInfoController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -75,7 +76,7 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				HMRoomInfoController hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
+				hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
 				hmcontroller.setExistRoomsView();
 				hmcontroller.getStage().show();
 			}
@@ -87,7 +88,7 @@ public class First {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				HMRoomInfoController hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
+				hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
 				hmcontroller.setSetAvailableRoomsView();
 				hmcontroller.getStage().show();	
 			}
