@@ -126,7 +126,7 @@ public class WebManagerLeftController {
 			return ;
 		}
 		
-		HotelVO vo = new HotelVO(hotelID, hotelName, city, area, null, 0, 0, null, null, null, null, null);
+		HotelVO vo = new HotelVO(hotelID, hotelName, city, area, null, 0,  null, null, null, null);
 		
 		ResultMessage result = updateHotelService.addHotel(vo);
 		if(result == ResultMessage.SUCCESS){

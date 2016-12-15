@@ -301,7 +301,7 @@ public class SearchHotel {
 		if(!starRight.getText().equals(""))
 			starHigh = Integer.valueOf(starRight.getText());
 		
-		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 		}catch(Exception e){
 			controller.showDialog("请输入正确的值");

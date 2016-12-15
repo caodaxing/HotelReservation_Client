@@ -199,7 +199,7 @@ public class ExecuteOrder {
 		orderID.setText(vo.orderId);
 		hotelName.setText(vo.hotelID);
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
-		arriveTime.setText(vo.executedTime);
+		arriveTime.setText(vo .checkInTime);
 		leaveTime.setText(vo.endTime);
 		originalPrice.setText(Double.toString(vo.beforePrice));
 		actualPrice.setText(Double.toString(vo.afterPrice));
