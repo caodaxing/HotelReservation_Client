@@ -154,6 +154,8 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 
+		ArrayList<HotelVO> hotelList2  = new ArrayList<HotelVO>();
+		
 		if(search.startTime != null && search.startTime != "" 
 				&& search.endTime != null && search.endTime!= "") {
 			
@@ -163,58 +165,59 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			
 			for(int i=0; i<hotelList.size(); ++i) {
 				HotelVO vo  = hotelList.get(i);
-				boolean noEmptyRoom = false;
+				boolean empty = true;
 				Time t1 = new Time(search.startTime);
 				Time t2 = new Time(search.endTime);
 				
 				while(!t1.getTime().equals(t2.getTime())) {
 					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
-					if(num <= 0) {
-						noEmptyRoom = true;
+					if(num < search.roomNum) {
+						empty = false;
 						break;
 					}
 					
 					t1 = t1.nextDay();
 				}
 				
-				if(noEmptyRoom) {
-					hotelList.remove(vo);
+				if(empty) {
+					hotelList2.remove(vo);
 				}
 			}
 		}
 		
-		if(hotelList == null || hotelList.size() == 0) {
+		if(hotelList2 == null || hotelList2.size() == 0) {
 			return null;
 		}
 		
 		
 		if (search.starLow >= 0 && search.starLow <= 5 && search.starHigh >= 0 && search.starHigh <= 5) {
 			this.hotelSort = new StarSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starHigh, hotelList);
+			hotelList2 = this.hotelSort.getSpecificSectionHotelList(search.starLow, search.starHigh, hotelList2);
 		}
-		if(hotelList == null || hotelList.size() == 0) {
+		if(hotelList2 == null || hotelList2.size() == 0) {
 			return null;
 		}
 		
+		
 		if (search.roomPriceLow != -1) {
 			this.hotelSort = new PriceSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.roomPriceLow, search.roomPriceHigh, hotelList);
+			hotelList2 = this.hotelSort.getSpecificSectionHotelList(search.roomPriceLow, search.roomPriceHigh, hotelList2);
 		}
-		if(hotelList == null || hotelList.size() == 0) {
+		if(hotelList2 == null || hotelList2.size() == 0) {
 			return null;
 		}
 		
 		
 		if (search.commentLow >= 0 && search.commentLow <= 5 || search.commentHigh > 0 && search.commentHigh <= 5) {
 			this.hotelSort = new GradeSort();
-			hotelList = this.hotelSort.getSpecificSectionHotelList(search.commentLow, search.commentHigh, hotelList);
+			hotelList2 = this.hotelSort.getSpecificSectionHotelList(search.commentLow, search.commentHigh, hotelList2);
 		}
-		if(hotelList == null || hotelList.size() == 0) {
+		if(hotelList2 == null || hotelList2.size() == 0) {
 			return null;
 		}
 		
 
-		return hotelList;
+		return hotelList2;
 	}
 
 }

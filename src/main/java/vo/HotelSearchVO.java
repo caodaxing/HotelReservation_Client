@@ -24,6 +24,7 @@ public class HotelSearchVO {
 	public String tradingArea;
 	public String hotelName;
 	public RoomType roomType = RoomType.STANDARD_ROOM;
+	public int roomNum;
 	public String startTime;
 	public String endTime;
 	public double roomPriceLow = -1;
@@ -49,14 +50,14 @@ public class HotelSearchVO {
 	 * @param starLow 酒店星期最低值(默认值为0)
 	 * @param starHigh 酒店星期最低值(默认值为5)
 	 */
-	public HotelSearchVO(String city, String tradingArea, String hotelName, RoomType roomType, String startTime,
+	public HotelSearchVO(String city, String tradingArea, String hotelName, RoomType roomType, int roomNum, String startTime,
 			String endTime,double roomPriceLow, double roomPriceHigh, double commentLow,
 			double commentHigh, int starLow, int starHigh) {
-		super();
 		this.city = city;
 		this.tradingArea = tradingArea;
 		this.hotelName = hotelName;
 		this.roomType = roomType;
+		this.roomNum = roomNum;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.roomPriceLow = roomPriceLow;

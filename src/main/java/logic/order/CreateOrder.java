@@ -77,6 +77,7 @@ public class CreateOrder implements CreateOrderService{
 		
 		if(success) {
 			
+			//生成订单成功 更新房间数量信息
 			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(vo.hotelID, vo.roomType, o.roomNum)) {
 				return vo;
 			}

@@ -26,12 +26,9 @@ import vo.OrderVO;
  */
 public class ExecuteOrder implements ExecuteOrderService{
 	
-	private long sixHours = 6 * 60 * 60 * 1000;
+	private static long SIX_HOUR = 6 * 60 * 60 * 1000;
 	private OrderDao orderDao;
 	private CreditChangeInfo creditChangeInfo;
-//	private OrderList orderList;  //每次执行订单必须获得订单列表，
-//								//尝试使用orderlist类中的orders成员变量来减少对数据库的访问，是否考虑周全有待验证
-//	
 	private OrderPO po;
 	
 	public ExecuteOrder() {
@@ -40,6 +37,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 		this.orderDao = new OrderDao_Stub();
 	}
 
+	//退房，更新order的退房时间信息
 	@Override
 	public ResultMessage checkOut(String orderID) {
 		
@@ -194,6 +192,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 		return ResultMessage.FAILURE;
 	}
 		
+	
 	@Override
 	public ResultMessage undoUnexecutedOrder(String orderID) {
 		try {
@@ -204,9 +203,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po != null && po.getState() == OrderState.UNEXECUTED.ordinal()) {
 			String time = Time.getCurrentTime();
+			
 			po.setState(OrderState.UNDOED_UNEXECUTED.ordinal());
 			po.setUndoUnexecutedTime(time);;
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
+				
 System.out.println("b");
 				try {
 					if(this.orderDao.updateOrder(po)) {
@@ -227,7 +228,9 @@ System.out.println("b");
 					e.printStackTrace();
 				}
 			} else {
+				
 System.out.println("c");
+
 				try {
 					if(this.orderDao.updateOrder(po)) {
 						return ResultMessage.SUCCESS;
@@ -252,6 +255,8 @@ System.out.println("logic.order.ExecuteOrder.afterLastestExecutedTime参数错�
 		long l1 = 0, l2 =0;
 		
 		try {
+			
+			//最晚订单执行时间为计划入住时间之后四小时
 			String lastestExecutedTime = new Time(orderStartTime).calculateLastestExecutedTime();
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
@@ -265,7 +270,7 @@ System.out.println("logic.order.ExecuteOrder.afterLastestExecutedTime参数错�
 			e.printStackTrace();
 		}
 		
-		if(l2 - l1 <  this.sixHours) {
+		if(l2 - l1 <  this.SIX_HOUR) {
 			return true;
 		}
 		
