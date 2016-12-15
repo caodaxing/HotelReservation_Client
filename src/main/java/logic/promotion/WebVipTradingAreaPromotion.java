@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import logic.hotel.Hotel;

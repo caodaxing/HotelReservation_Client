@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import java.util.ArrayList;
 
 import Message.VipType;
 import logic.user.Client;

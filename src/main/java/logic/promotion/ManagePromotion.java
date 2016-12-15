@@ -24,7 +24,23 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 
 	@Override
 	public ResultMessage addPromotion(PromotionVO vo) {
+		
 		if(vo != null) {
+			
+			//确定vo的id
+			int num = 0;
+			try {
+				num = this.promotionDao.getPromotinoNum();
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+			
+			if(vo.hotelID == null) {
+				vo.promotionID = "00000" +  String.format("%04d", num);
+			} else {
+				vo.promotionID = vo.hotelID +  String.format("%04d", num);
+			}
+			
 			PromotionPO po = this.promotionTrans.promotionTransToPO(vo);
 			
 			try {
@@ -39,6 +55,7 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 		return ResultMessage.FAILURE;
 	}
 
+	
 	@Override
 	public PromotionVO getPromotion(String promotionID) {
 		PromotionPO po = null;
@@ -50,6 +67,7 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 		return this.promotionTrans.promotionTransToVO(po);
 	}
 
+	
 	@Override
 	public ArrayList<PromotionVO> getHotelPromotions(String hotelID, PromotionType promotionType) {
 		
@@ -63,6 +81,7 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 		return this.promotionTrans.promotionListTransToVO(pos);
 	}
 
+	
 	@Override
 	public ArrayList<PromotionVO> getWebPromotions(PromotionType promotionType) {
 		ArrayList<PromotionPO> pos = null;

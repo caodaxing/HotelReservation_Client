@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import java.util.ArrayList;
 
 import logic.utility.DataFormat;
 import vo.OrderVO;

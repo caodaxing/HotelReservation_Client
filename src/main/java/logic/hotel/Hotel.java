@@ -15,7 +15,6 @@ import logicService.hotel.CheckHotelService;
 import po.HotelPO;
 import vo.EvaluationVO;
 import vo.HotelVO;
-import vo.RoomVO;
 
 /**
  * 酒店信息，提供更新房间、酒店信息，获取评价，获取促销策略方法

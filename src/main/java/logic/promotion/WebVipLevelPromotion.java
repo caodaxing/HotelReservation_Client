@@ -1,6 +1,5 @@
 package logic.promotion;
 
-import java.util.ArrayList;
 
 import logic.user.Client;
 import logic.user.ClientVipInfo;

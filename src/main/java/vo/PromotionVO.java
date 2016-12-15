@@ -30,8 +30,9 @@ public class PromotionVO {
 	public HashMap<String, double[]> vipTradeAreaDiscount;
 	public double[] vipLevelDiscount;
 	
+	
 	/**
-	 * 酒店特定时间优惠 promotionType.HOTEL_11_1
+	 *  酒店特定时间优惠 promotionType.HOTEL_11_1
 	 * @param promotionID
 	 * @param hotelID
 	 * @param promotionName
@@ -133,7 +134,7 @@ public class PromotionVO {
 	 * @param startTime
 	 * @param endTime
 	 */
-	public PromotionVO(String promotionID,  String promotionName,double discount,
+	public PromotionVO(String promotionID,  String promotionName, double discount,
 			String startTime, String endTime) {
 		this.promotionType = PromotionType.WEB_11_11;
 		this.promotionID = promotionID;

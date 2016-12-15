@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import Message.Identity;
 import Message.ResultMessage;
 import dataDao.account.AccountDao;
-import dataDao.stub.AccountDao_Stub;
 import logicService.account.AccountService;
+import main.rmi.RemoteHelper;
 import po.AccountPO;
 import vo.AccountVO;
 
@@ -19,7 +19,7 @@ public class Account implements AccountService{
 	private AccountDao accountDao;
 		
 	public Account(){
-		accountDao = new AccountDao_Stub();
+		accountDao = RemoteHelper.getInstance().getAccountDao();
 	}
 
 	/**
@@ -59,6 +59,11 @@ public class Account implements AccountService{
 	 */
 	public ResultMessage login(AccountVO accountVO) {
 		
+		if(accountVO == null || accountVO.userId == null ||
+				accountVO.identity == null || accountVO.password == null) {
+			return ResultMessage.FAILURE;
+		}
+		
 		try {
 			if(this.accountDao.hasLogin(accountVO.userId)) {
 				return ResultMessage.USER_HAS_LOGIN;
@@ -67,11 +72,7 @@ public class Account implements AccountService{
 			e.printStackTrace();
 		}
 		
-		if(accountVO == null || accountVO.userId == null ||
-				accountVO.identity == null || accountVO.password == null) {
-			return ResultMessage.FAILURE;
-		}
-	
+		
 		AccountPO po = null;
 		try {
 			po = accountDao.getAccountInfo(accountVO.userId);
