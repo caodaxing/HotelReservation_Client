@@ -16,7 +16,6 @@ import java.util.HashMap;
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
  * @param picturesPath 照片
- * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
  * @param pictures 图片
  * @author Mark.W
@@ -34,12 +33,11 @@ public class HotelPO implements Serializable{
 	private String introduction;
 	private String facilities;
 	private ArrayList<String> picturesPath;
-	private HashMap<Integer, Integer> emptyRoomNum;
 	private String bussiness;
 
 	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
 			String locationOfHotel,double evaluationGrades,int levelOfHotel,String introduction, String facilities, 
-			ArrayList<String> pictures,	HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+			ArrayList<String> pictures,	String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
@@ -50,7 +48,6 @@ public class HotelPO implements Serializable{
 		this.introduction=introduction;
 		this.facilities = facilities;
 		this.picturesPath=pictures;
-		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
 	
@@ -70,7 +67,7 @@ public class HotelPO implements Serializable{
 	 */
 	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities, 
-			ArrayList<String> pictures,	HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+			ArrayList<String> pictures,	 String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
@@ -80,7 +77,6 @@ public class HotelPO implements Serializable{
 		this.introduction=introduction;
 		this.facilities = facilities;
 		this.picturesPath=pictures;
-		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
 	
@@ -172,14 +168,6 @@ public class HotelPO implements Serializable{
 
 	public void setPictures(ArrayList<String> pictures) {
 		this.picturesPath = pictures;
-	}
-
-	public HashMap<Integer, Integer> getEmptyRoomNum() {
-		return emptyRoomNum;
-	}
-
-	public void setEmptyRoomNum(HashMap<Integer, Integer> emptyRoomNum) {
-		this.emptyRoomNum = emptyRoomNum;
 	}
 	
 	public double getEvaluationGrades() {

@@ -19,7 +19,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class Order implements OrderService, OrderHotelInfo{
+public class Order implements OrderService, OrderHotelInfo, OrderInfo{
 	
 	private OrderDao orderDao;
 	private EvaluationTransform evaluationTrans;
@@ -30,17 +30,7 @@ public class Order implements OrderService, OrderHotelInfo{
 		this.orderTrans = new OrderTransform();
 		this.orderDao = new OrderDao_Stub();
 	}
-
-	@Override
-	public EvaluationVO getEvaluationInfo(String orderID) {
-		EvaluationPO po = null;
-		try {
-			po = this.orderDao.getEvaluationByOrderID(orderID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return this.evaluationTrans.evalutionTransToVO(po);
-	}
+	
 
 	@Override
 	public OrderVO getOrderInfo(String orderID) {
@@ -53,6 +43,35 @@ public class Order implements OrderService, OrderHotelInfo{
 		return this.orderTrans.orderTransToVO(po);
 		
 	}
+	
+	public ResultMessage updateOrder(OrderVO vo) {
+		if(vo != null) {
+			OrderPO po = this.orderTrans.orderTransToPO(vo);
+			
+			try {
+				if(this.orderDao.updateOrder(po)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return ResultMessage.SUCCESS;
+	}
+ 
+	
+	@Override
+	public EvaluationVO getEvaluationInfo(String orderID) {
+		EvaluationPO po = null;
+		try {
+			po = this.orderDao.getEvaluationByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return this.evaluationTrans.evalutionTransToVO(po);
+	}
+
 	
 	@Override
 	public ResultMessage evaluate(EvaluationVO evaluation) {
@@ -71,6 +90,7 @@ public class Order implements OrderService, OrderHotelInfo{
 		return ResultMessage.FAILURE;
 	}
 
+	
 	@Override
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
 		
@@ -84,6 +104,7 @@ public class Order implements OrderService, OrderHotelInfo{
 		return this.evaluationTrans.evalutionListTransToVO(res);
 	}
 
+	
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {
 		ArrayList<String> res = null;
@@ -96,7 +117,6 @@ public class Order implements OrderService, OrderHotelInfo{
 		
 		return res;
 	}
-
 }
 
 

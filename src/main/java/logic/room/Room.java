@@ -12,8 +12,7 @@ import Message.ResultMessage;
 import Message.RoomType;
 import dataDao.room.RoomDao;
 import dataDao.stub.RoomDao_Stub;
-import logic.utility.RoomTransform;
-import logic.utility.TimeSection;
+import logic.utility.Time;
 import logicService.room.RoomService;
 import po.RoomPO;
 import vo.RoomVO;
@@ -25,6 +24,7 @@ import vo.RoomVO;
  */
 public class Room implements RoomService , RoomInfo{
 
+	public static int BOOK_ADVANCE_DAY = 30;
 	private RoomDao roomDao;
 	
 	public Room() {
@@ -47,28 +47,14 @@ public class Room implements RoomService , RoomInfo{
 		}
 		ArrayList<RoomVO> roomList = new ArrayList<>();
 		
-		for (RoomPO roomPO : roomPOList) {
-			roomList.add(RoomTransform.roomTransToVO(roomPO));
+		for (RoomPO po : roomPOList) {
+			roomList.add(new RoomVO(po.getHotelId(),  RoomType.values()[po.getRoomType()],
+					po.getRoomNum(), po.getPrice()));
 		}
+		
 		return roomList;
 	}
 	
-	/**
-	 * 获取酒店具体房间信息
-	 * @param hotel_id 传入的酒店id和房间id
-	 * @return RoomVO 酒店指定房间的信息
-	 * @author bcy
-	 */
-	public RoomVO getRoomInfo(String hotelId, String roomId){
-		RoomPO po = null;
-		try {
-			po = roomDao.getRoomInfo(hotelId, roomId);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
-		return RoomTransform.roomTransToVO(po);
-	}
 	
 	/**
 	 * 更新酒店房间信息
@@ -83,7 +69,15 @@ public class Room implements RoomService , RoomInfo{
 		}
 		
 		try {
-			if (roomDao.updateRoom(RoomTransform.roomTransToPO(roomVO))) {
+			RoomPO po = this.roomDao.getRoomInfo(roomVO.hotelId,  roomVO.roomType.ordinal());
+			po.setRoomNum(roomVO.roomNum);
+			po.setPrice(roomVO.price);
+			
+			int[] temp = po.getSpecificTimeRoomNum();
+			temp[0] = roomVO.roomNum;
+			po.setSpecificTimeRoomNum(temp);
+			
+			if (roomDao.updateRoom(po)) {
 				return ResultMessage.SUCCESS;
 			}
 		} catch (RemoteException e) {
@@ -105,8 +99,15 @@ public class Room implements RoomService , RoomInfo{
 			return null;
 		}
 		
+		int[] timeAfterRoomNum = new int[this.BOOK_ADVANCE_DAY];
+		for(int i=0; i<this.BOOK_ADVANCE_DAY; ++i) {
+			timeAfterRoomNum[i]  = roomVO.roomNum;
+		}
+		
+		RoomPO po = new RoomPO(roomVO.hotelId, roomVO.roomType.ordinal(), roomVO.roomNum, roomVO.price, timeAfterRoomNum);
+		
 		try {
-			if (roomDao.addRoom(RoomTransform.roomTransToPO(roomVO))) {
+			if (roomDao.addRoom(po)) {
 				return ResultMessage.SUCCESS;
 			}
 		} catch (RemoteException e) {
@@ -125,50 +126,71 @@ public class Room implements RoomService , RoomInfo{
 	}
 	
 	
-	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String t) {
-		ArrayList<RoomPO> roomList = null;
+	public int getSpcificTimeRemainingRoomNums(String hotelId, RoomType roomType, String time) {
+		
+		int dayNum = new Time(time).calculateDay(Time.getCurrentTime());
+		
+		if(dayNum > 30) {
+			return 0;
+		}
+		
+		RoomPO po = null;
 		try {
-			roomList = roomDao.getHotelRooms(hotelId);
+			po = this.roomDao.getRoomInfo(hotelId, roomType.ordinal());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		int remainingRoomNums = 0;
 		
-		if(roomType == null) {
-			roomType = RoomType.STANDARD_ROOM;
-		}
-		
-		for (RoomPO roomPO : roomList) {
-			if (roomPO.getRoomType() == roomType.ordinal()) {
-				
-				ArrayList<TimeSection> sections = new ArrayList<TimeSection>();
-				
-				if(roomPO.getNotEmptyTime() != null) {
-					Iterator it = roomPO.getNotEmptyTime().entrySet().iterator();
-					while(it.hasNext()) {
-						Map.Entry<String, String> entry = (Map.Entry<String, String>)(it.next());
-						sections.add(new TimeSection((String)entry.getKey(), (String)entry.getValue()));
-					}
-					
-					boolean isEmpty = true;
-					for(TimeSection sec : sections) {
-						if(sec.includeTime(t)) {
-							isEmpty = false;
-							break;
-						}
-					}
-					
-					if(isEmpty) {
-						remainingRoomNums ++;
-					}
-					
-				} else {
-					remainingRoomNums ++;
-				}
-			}
-		}
+		int remainingRoomNums = po.getSpecificTimeRoomNum()[dayNum];
 		
 		return remainingRoomNums;
+		
+		
+		
+//		ArrayList<RoomPO> roomList = null;
+//		try {
+//			roomList = roomDao.getHotelRooms(hotelId);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		int remainingRoomNums = 0;
+//		
+//		if(roomType == null) {
+//			roomType = RoomType.STANDARD_ROOM;
+//		}
+//		
+//		for (RoomPO roomPO : roomList) {
+//			
+//			if (roomPO.getRoomType() == roomType.ordinal()) {
+//				
+//				ArrayList<TimeSection> sections = new ArrayList<TimeSection>();
+//				
+//				if(roomPO.getNotEmptyTime() != null) {
+//					Iterator it = roomPO.getNotEmptyTime().entrySet().iterator();
+//					while(it.hasNext()) {
+//						Map.Entry<String, String> entry = (Map.Entry<String, String>)(it.next());
+//						sections.add(new TimeSection((String)entry.getKey(), (String)entry.getValue()));
+//					}
+//					
+//					boolean isEmpty = true;
+//					for(TimeSection sec : sections) {
+//						if(sec.includeTime(time)) {
+//							isEmpty = false;
+//							break;
+//						}
+//					}
+//					
+//					if(isEmpty) {
+//						remainingRoomNums ++;
+//					}
+//					
+//				} else {
+//					remainingRoomNums ++;
+//				}
+//			}
+//		}
+//		
+//		return remainingRoomNums;
 	}
 
 	@Override
@@ -195,27 +217,39 @@ public class Room implements RoomService , RoomInfo{
 
 	@Override
 	public double getRoomPrice(String hotelID, RoomType roomType) {
-		ArrayList<RoomVO> roomList = this.getRoomList(hotelID);
-		double price = 0;
 		
-		if(roomList == null || roomList.size() == 0) {
-			System.out.println("logic.room.getRoomPrice参数报错");
+		RoomPO po = null;
+		try {
+			po = this.roomDao.getRoomInfo(hotelID, roomType.ordinal());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(po == null) {
 			return 0;
-		} 
-		
-		boolean roomExist = false;
-		for (RoomVO roomVO : roomList) {
-			if (roomVO.roomType == roomType) {
-				price = roomVO.price;
-				roomExist = true;
-				break;
-			}
 		}
 		
-		if(!roomExist) {
-			System.out.println("logic.room.getRoomPrice生成订单房间信息不一致，酒店不存在该房间");
-		}
+		return po.getPrice();
 		
-		return price;
+//		if(roomList == null || roomList.size() == 0) {
+//			System.out.println("logic.room.getRoomPrice参数报错");
+//			return 0;
+//		} 
+//		
+//		boolean roomExist = false;
+//		for (RoomVO roomVO : roomList) {
+//			if (roomVO.roomType == roomType) {
+//				price = roomVO.price;
+//				roomExist = true;
+//				break;
+//			}
+//		}
+//		
+//		if(!roomExist) {
+//			System.out.println("logic.room.getRoomPrice生成订单房间信息不一致，酒店不存在该房间");
+//		}
+//		
+//		return price;
 	}
+
 }

@@ -12,7 +12,4 @@ public interface OrderService {
 	public OrderVO getOrderInfo(String orderID);
 	
 	public ResultMessage evaluate(EvaluationVO evaluation);
-	
-	
 }
-

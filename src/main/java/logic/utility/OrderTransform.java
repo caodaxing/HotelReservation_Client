@@ -55,7 +55,7 @@ public class OrderTransform {
 				order.getStartTime(), order.getEndTime(), order.getHotelId(), OrderState.values()[order.getState()],
 				order.getNumberOfPeople(), order.isHasChild(), order.getBeforePromotionPrice(),
 				order.getAfterPromotionPrice(),provo ,
-				order.getExecutedTime(), order.getAbnormalTime(), order.getUndoAbnormalTime(), order.getUndoUnexecutedTime());
+				order.getCheckInTime(), order.getCheckOutTime(), order.getAbnormalTime(), order.getUndoAbnormalTime(), order.getUndoUnexecutedTime());
 		
 	}
 	
@@ -97,7 +97,7 @@ public class OrderTransform {
 		
 		OrderPO po = new OrderPO(vo.userID, vo.orderId, vo.hotelID, vo.startTime, vo.endTime,
 				vo.roomNum, vo.roomType.ordinal(),  vo.hasChild, vo.numOfPeople, vo.orderState.ordinal(),
-				vo.beforePrice, vo.afterPrice, promotionID, vo.executedTime, 
+				vo.beforePrice, vo.afterPrice, promotionID, vo.checkInTime, vo.checkOutTime,
 				vo.abnormalTime, vo.undoAbnormalTime, vo.undoUnexecutedTime);
 		return po;
 	}

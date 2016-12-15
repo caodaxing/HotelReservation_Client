@@ -18,7 +18,7 @@ import Message.RoomType;
  * @param beforePrice 优惠前价格
  * @param afterPrice 优惠后价格
  * @param promotions 订单时候的促销信息
- * @param executedTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
+ * @param checkInTime 订单执行的时间 格式yyyy/MM/dd HH:mm:ss
  * @param undoAbnormalTime 异常订单撤销的时间 格式yyyy/MM/dd HH:mm:ss
  * @param abnormalTime 订单被置为异常的时间 格式yyyy/MM/dd HH:mm:ss	
  * @param undoUnexecutedTime 未执行订单被用户撤销的时间 格式yyyy/MM/dd HH:mm:ss
@@ -38,7 +38,8 @@ public class OrderVO {
 	public double beforePrice;
 	public double afterPrice;
 	public PromotionVO promotion;
-	public String executedTime; 
+	public String checkInTime; 
+	public String checkOutTime;
 	public String undoAbnormalTime;	
 	public String abnormalTime;	
 	public String undoUnexecutedTime;	
@@ -88,7 +89,7 @@ public class OrderVO {
 	 */
 	public OrderVO(String userID, String orderId, RoomType roomType, int roomNum, String startTime, String endTime,
 			String hotelID, OrderState orderState, int numOfPeople, boolean hasChild, double beforePrice,
-			double afterPrice, PromotionVO promotion, String executedTime, String undoAbnormalTime,
+			double afterPrice, PromotionVO promotion, String checkInTime, String checkOutTime, String undoAbnormalTime,
 			String abnormalTime, String undoUnexecutedTime) {
 		this.userID = userID;
 		this.orderId = orderId;
@@ -103,7 +104,8 @@ public class OrderVO {
 		this.beforePrice = beforePrice;
 		this.afterPrice = afterPrice;
 		this.promotion = promotion;
-		this.executedTime = executedTime;
+		this.checkInTime = checkInTime;
+		this.checkInTime = checkOutTime;
 		this.undoAbnormalTime = undoAbnormalTime;
 		this.abnormalTime = abnormalTime;
 		this.undoUnexecutedTime = undoUnexecutedTime;

@@ -12,10 +12,12 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
+import logic.utility.OrderTransform;
 import logic.utility.Time;
 import logicService.order.ExecuteOrderService;
 import po.OrderPO;
 import vo.CreditChangeVO;
+import vo.OrderVO;
 
 /**
  * 执行订单
@@ -39,7 +41,24 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage normalExecute(String orderID) {
+	public ResultMessage checkOut(String orderID) {
+		
+		try {
+			OrderPO po = this.orderDao.getOrderByOrderID(orderID);
+			po.setCheckOutTime(Time.getCurrentTime());
+			
+			if(this.orderDao.updateOrder(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.FAILURE;
+	}
+	
+	
+	public ResultMessage normalExecute(String orderID, String roomID) {
 		try {
 			po= this.orderDao.getOrderByOrderID(orderID);
 		} catch (RemoteException e) {
@@ -49,15 +68,17 @@ public class ExecuteOrder implements ExecuteOrderService{
 		if(po != null) {
 			
 			if(po.getState() != OrderState.EXECUTED.ordinal()) {
-				String executedTime = Time.getCurrentTime();
+				String checkInTime = Time.getCurrentTime();
 				
+				// 添加订单的信息
 				po.setState(OrderState.EXECUTED.ordinal());
-				po.setExecutedTime(executedTime);
+				po.setCheckInTime(checkInTime);
+				po.setRoomID(roomID);
 				
 				try {
 					if(this.orderDao.updateOrder(po)) {
 						//更新信用记录和信用值
-						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), checkInTime, 
 								po.getUesrID(), CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE, 
 								(int)po.getAfterPromotionPrice());
 						
@@ -66,7 +87,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 						} else {
 							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
 							po.setState(OrderState.UNEXECUTED.ordinal());
-							po.setExecutedTime(null);
+							po.setCheckInTime(null);
 							this.orderDao.updateOrder(po);
 						}
 						
@@ -81,7 +102,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage supplyOrder(String orderID) {
+	public ResultMessage supplyOrder(String orderID, String roomID) {
 		
 		try {
 			po = this.orderDao.getOrderByOrderID(orderID);
@@ -91,15 +112,17 @@ public class ExecuteOrder implements ExecuteOrderService{
 		
 		if(po !=  null) {
 			if(po.getState() == OrderState.ABNORMAL.ordinal()) {
-				String executedTime = Time.getCurrentTime();
+				String checkInTime = Time.getCurrentTime();
 				
+				// 添加订单的信息
 				po.setState(OrderState.EXECUTED.ordinal());
-				po.setExecutedTime(executedTime);
+				po.setCheckInTime(checkInTime);
+				po.setRoomID(roomID);
 				
 				try {
 					if(this.orderDao.updateOrder(po)) {
 						//更新信用记录和信用值
-						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), executedTime, 
+						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), checkInTime, 
 								po.getUesrID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
 						
 						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
@@ -107,7 +130,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 							
 						} else {
 							po.setState(OrderState.ABNORMAL.ordinal());
-							po.setExecutedTime(null);
+							po.setCheckInTime(null);
 							this.orderDao.updateOrder(po);
 						}
 						

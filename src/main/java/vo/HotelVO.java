@@ -14,7 +14,6 @@ import java.util.HashMap;
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
  * @param picturesPath 照片
- * @param emptyRoomNum 不同类型房间空余数量，类型 0单人间 1标准间 2三人间 3大床房 4套间
  * @param bussiness 合作企业
  * @author bcy
  *
@@ -25,18 +24,16 @@ public class HotelVO {
 	public String city;
 	public String tradingArea;
 	public String locationOfHotel;
-	
 	public double evaluationGrades;
 	public int levelOfHotel;
 	public String introduction;
 	public String facilities;
 	public ArrayList<String> picturesPath;
-	public HashMap<Integer, Integer> emptyRoomNum;
 	public String bussiness;
 
 	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,
 			String locationOfHotel,double evaluationGrades,int levelOfHotel,String introduction, String facilities,
-			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+			ArrayList<String> pictures, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
@@ -47,7 +44,6 @@ public class HotelVO {
 		this.introduction=introduction;
 		this.facilities = facilities;
 		this.picturesPath=pictures;
-		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
 	
@@ -67,7 +63,7 @@ public class HotelVO {
 	 */
 	public HotelVO(String hoteID,String hotelName, String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities,
-			ArrayList<String> pictures,HashMap<Integer, Integer> emptyRoomNum, String bussiness) {
+			ArrayList<String> pictures, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
@@ -77,7 +73,6 @@ public class HotelVO {
 		this.introduction=introduction;
 		this.facilities = facilities;
 		this.picturesPath=pictures;
-		this.emptyRoomNum=emptyRoomNum;
 		this.bussiness = bussiness;
 	}
 }

@@ -28,11 +28,11 @@ public class HotelDao_Stub implements HotelDao {
 		
 	 
 		 hotelList.add(new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 2, "酒店介绍1", "酒店设施1",
-				 null, null, "南京大学"));
+				  null, "南京大学"));
 		 hotelList.add(new HotelPO("00002", "green","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
-				 null, null, "新华书店"));
+				  null, "新华书店"));
 		 hotelList.add(new HotelPO("00003", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
-				 null, null, "杜蕾斯"));
+				 null, "杜蕾斯"));
 	}
 
 	public boolean addHotel(HotelPO po) {
@@ -46,14 +46,14 @@ public class HotelDao_Stub implements HotelDao {
 	public HotelPO getHotelInfoByHotelID(String hotelID) {
 		if(hotelID == "00001") {
 			return new HotelPO("00001", "如家","南京", "仙林中心", "仙林大道123号", 4.7, 3, "酒店介绍1", "酒店设施1",
-					 null, null, "南京大学");
+					  null, "南京大学");
 		} else if(hotelID == "00002") {
 			return new HotelPO("00002", "如家","张家港", "杨舍", "凉风路", 4.8, 4, "酒店介绍2", "酒店设施2",
-					 null, null, "新华书店");
+					 null, "新华书店");
 		}
 		
 		return new HotelPO("00003", "七天","南京", "马群", "仙林大道3号", 4.5, 3, "酒店介绍3", "酒店设施3",
-				 null, null, "杜蕾斯");
+				null, "杜蕾斯");
 		
 	}
 

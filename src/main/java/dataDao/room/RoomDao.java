@@ -8,7 +8,7 @@ import po.RoomPO;
 
 public interface RoomDao extends Remote{
 	
-	public RoomPO getRoomInfo(String hotelId, String roomId)  throws RemoteException;
+	public RoomPO getRoomInfo(String hotelId, int roomType)  throws RemoteException;
 	
 	public boolean addRoom(RoomPO roomPO)  throws RemoteException;
 	

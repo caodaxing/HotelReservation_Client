@@ -44,6 +44,21 @@ public class Time {
 		}
 	}
 	
+	public int calculateDay(String t) {
+	   SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    long today = 0, from = 0;
+		try {
+			today = df.parse(t).getTime();
+			 from = df.parse(this.time).getTime();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    
+	    int res = (int) ((from - today) / (1000 * 60 * 60 * 24));
+	    
+	    return res;
+	}
+	
 	
 	//最晚订单执行时间为订单预计入住时间加4个小时
 	public String calculateLastestExecutedTime() {

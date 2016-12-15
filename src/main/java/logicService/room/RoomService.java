@@ -13,10 +13,9 @@ import vo.RoomVO;
  */
 public interface RoomService {
 	
-	public ArrayList<RoomVO> getRoomList(String hotel_id);
+	public ArrayList<RoomVO> getRoomList(String hotelID);
 	
-	public RoomVO getRoomInfo(String hotel_id, String room_id);
-	
+	//更新房间价格等信息
 	public ResultMessage updateRoomInfo(RoomVO roomVO);
 	
 	public ResultMessage addRoomInfo(RoomVO roomVO);
