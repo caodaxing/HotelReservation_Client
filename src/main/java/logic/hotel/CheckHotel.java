@@ -21,12 +21,12 @@ import vo.HotelVO;
  * @author all
  *
  */
-public class Hotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo{
+public class CheckHotel implements CheckHotelService, HotelInfo, HotelTradingAreaInfo{
 	
 	private HotelDao hotelDao;
 	private OrderHotelInfo evaluationInfo;
 	
-	public Hotel(){
+	public CheckHotel(){
 		this.hotelDao = new HotelDao_Stub();
 	}
 

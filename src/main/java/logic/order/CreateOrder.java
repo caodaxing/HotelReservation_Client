@@ -7,7 +7,7 @@ import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditInfo;
-import logic.hotel.Hotel;
+import logic.hotel.CheckHotel;
 import logic.hotel.HotelInfo;
 import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
@@ -34,7 +34,7 @@ public class CreateOrder implements CreateOrderService{
 		this.orderTrans = new OrderTransform();
 		this.creditInfo = new Credit();
 		this.caculatePromotionInfo = new CalculatePromotion();
-		this.info = new Hotel();
+		this.info = new CheckHotel();
 		
 		this.orderDao = new OrderDao_Stub();
 	}

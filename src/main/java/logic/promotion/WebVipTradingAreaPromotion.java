@@ -2,7 +2,7 @@ package logic.promotion;
 
 import java.util.HashMap;
 
-import logic.hotel.Hotel;
+import logic.hotel.CheckHotel;
 import logic.hotel.HotelTradingAreaInfo;
 import logic.user.Client;
 import logic.user.ClientVipInfo;
@@ -36,7 +36,7 @@ public class WebVipTradingAreaPromotion implements Promotion {
 		this.promotionName = promotionName;
 		this.vipTradeAreaDiscount = vipTradeAreaDiscount;
 		this.clientVip = new Client();
-		this.getHotelTradingAreaInfo = new Hotel();
+		this.getHotelTradingAreaInfo = new CheckHotel();
 	}
 
 	@Override
