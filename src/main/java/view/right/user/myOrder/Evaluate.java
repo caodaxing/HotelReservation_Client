@@ -144,7 +144,7 @@ public class Evaluate {
 	}
 	
 	public void setBlank(){
-
+		
 		grade.setText("");
 		info.setText("");
 		

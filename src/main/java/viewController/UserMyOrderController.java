@@ -1,5 +1,6 @@
 package viewController;
 
+import Message.OrderState;
 import javafx.stage.Stage;
 import view.right.user.myOrder.AbnormalOrder;
 import view.right.user.myOrder.CheckArriveInfo;
@@ -15,14 +16,6 @@ import vo.EvaluationVO;
 import vo.OrderVO;
 
 public class UserMyOrderController extends UserLeftController {
-
-	/*
-	private AccountService accountService;
-	private ClientService clientService;
-	private CreditService creditService;
-	private EvaluationService evaluationService;
-	private OrderService orderService;
-	*/
 	
 	private AbnormalOrder abnormalOrderUI ;
 	private CheckArriveInfo checkArriveInfoUI ;
@@ -38,14 +31,14 @@ public class UserMyOrderController extends UserLeftController {
 		this.stage = stage;
 		this.userID = userID;
 		
-		abnormalOrderUI = new AbnormalOrder(this);
-		checkArriveInfoUI = new CheckArriveInfo(this);
-		checkLeaveInfoUI = new CheckLeaveInfo(this);
+		//abnormalOrderUI = new AbnormalOrder(this);
+		//checkArriveInfoUI = new CheckArriveInfo(this);
+		//checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evaluateUI = new Evaluate(this);
-		evaluationInfoUI = new EvaluationInfo(this);
-		executeOrderUI = new ExecuteOrder(this);
-		undoOrderUI = new UndoOrder(this);
-		unexecuteOrderUI = new UnexecuteOrder(this);
+		//evaluationInfoUI = new EvaluationInfo(this);
+		//executeOrderUI = new ExecuteOrder(this);
+		//undoOrderUI = new UndoOrder(this);
+		//unexecuteOrderUI = new UnexecuteOrder(this);
 	
 	}
 	
@@ -55,20 +48,25 @@ public class UserMyOrderController extends UserLeftController {
 	
 	public void setAbnormalOrderView(){
 		
+		abnormalOrderUI = new AbnormalOrder(this);
 		stage.setScene(abnormalOrderUI.getScene());
+		abnormalOrderUI.setText();
 		
 	}
 	
 	public void setCheckArriveInfoView(){
 		
 		stage.setScene(checkArriveInfoUI.getScene());
+		checkArriveInfoUI.setText();
 		
 	}
 	
 	public void setCheckLeaveInfoView(){
 		
+		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		stage.setScene(checkLeaveInfoUI.getScene());
-	
+		checkLeaveInfoUI.setText();
+		
 	}
 	
 	public void setEvaluateView(){
@@ -79,45 +77,82 @@ public class UserMyOrderController extends UserLeftController {
 	
 	public void setEvaluationInfoView(){
 		
+		evaluationInfoUI = new EvaluationInfo(this);
 		stage.setScene(evaluationInfoUI.getScene());
-	
+		evaluationInfoUI.setText();
+		
 	}
 	
 	public void setExecuteOrderView(){
 		
+		executeOrderUI = new ExecuteOrder(this);
 		stage.setScene(executeOrderUI.getScene());
+		executeOrderUI.setText();
 		
 	}
 	
 	public void setUndoOrderView(){
 		
+		undoOrderUI = new UndoOrder(this);
 		stage.setScene(undoOrderUI.getScene());
+		undoOrderUI.setText();
 		
 	}
 	
 	public void setUnexecuteOrderView(){
 		
+		unexecuteOrderUI = new UnexecuteOrder(this);
 		stage.setScene(unexecuteOrderUI.getScene());
+		unexecuteOrderUI.setText();
 		
 	}
 
 	public OrderVO getOrderInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void evaluate() {
-		// TODO Auto-generated method stub
-		
+		return orderService.getOrderInfo(orderID);
 	}
 
 	public EvaluationVO getEvaluationInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderService.getEvaluationInfo(orderID);
+	}
+	
+
+	public void whetherEvaluateAndSetView() {
+		//判断是否评价过
+		EvaluationVO vo = orderService.getEvaluationInfo(orderID);
+		if(vo == null){
+			showDialog("尚未评价，请先评价");
+			setEvaluateView();
+			return ;
+		}
+		setEvaluationInfoView();
+	}
+	
+	public void evaluate(){
+		
 	}
 
 	public void searchOrder() {
-		// TODO Auto-generated method stub
+		orderID = orderFirstUI.getOrderID();
+		OrderVO vo = orderService.getOrderInfo(orderID);
+		if(vo == null){
+			//若订单不存在，对话框，清空textfield，清空orderID
+			showDialog("订单不存在");
+			orderID = null;
+			return;
+		}
+		OrderState state = vo.orderState;
+		if(state == OrderState.ABNORMAL){
+			setAbnormalOrderView();
+		}else if(state == OrderState.EXECUTED){
+			setExecuteOrderView();
+		}else if(state == OrderState.UNDOED_ABNORMAL || state == OrderState.UNDOED_UNEXECUTED){
+			setUndoOrderView();
+		}else if(state == OrderState.UNEXECUTED){
+			setUnexecuteOrderView();
+		}else{
+			showDialog("系统错误，请重试");
+			return;
+		}
 		
 	}
 	

@@ -57,6 +57,8 @@ public class UserLeftController {
 	protected ModifyPassword modifyPasswordUI;
 	protected CheckMyInfo checkMyInfoUI;
 	
+	protected String orderID;
+	
 	//构造函数
 	public UserLeftController(){
 		
