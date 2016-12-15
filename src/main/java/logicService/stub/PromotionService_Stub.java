@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 import Message.PromotionType;
 import Message.ResultMessage;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import vo.PromotionVO;
 
-public class PromotionService_Stub implements PromotionService {
+public class PromotionService_Stub implements ManagePromotionService {
 
 	@Override
 	public ResultMessage addPromotion(PromotionVO promotionVO) {

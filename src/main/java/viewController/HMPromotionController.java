@@ -6,7 +6,7 @@ import Message.PromotionType;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.order.OrderService;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import logicService.room.RoomService;
 import logicService.stub.PromotionService_Stub;
 import view.right.hotelManager.promotion.CheckBirthdayStrategy;
@@ -27,7 +27,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 	private Stage stage;
 	
 	//逻辑层接口
-	private PromotionService promotionService;
+	private ManagePromotionService promotionService;
 	private OrderService orderService;
 	private RoomService roomService;
 	private AccountService accountService;

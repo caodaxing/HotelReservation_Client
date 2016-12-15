@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;

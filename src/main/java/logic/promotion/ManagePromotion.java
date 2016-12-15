@@ -8,11 +8,11 @@ import Message.ResultMessage;
 import dataDao.promotion.PromotionDao;
 import dataDao.stub.PromotionDao_Stub;
 import logic.utility.PromotionTransform;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import po.PromotionPO;
 import vo.PromotionVO;
 
-public class ManagePromotion implements PromotionService, PromotionInfo{
+public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 	private PromotionDao promotionDao;
 	private PromotionTransform promotionTrans;
 	

@@ -6,7 +6,7 @@ import Message.PromotionType;
 import Message.ResultMessage;
 import vo.PromotionVO;
 
-public interface PromotionService {
+public interface ManagePromotionService {
 	
 	public ArrayList<PromotionVO> getHotelPromotions(String hotelID, PromotionType promotionType);
 	
