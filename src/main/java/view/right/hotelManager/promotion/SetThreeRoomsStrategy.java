@@ -1,5 +1,6 @@
 package view.right.hotelManager.promotion;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_制定三间及以上预订优惠
@@ -60,7 +62,6 @@ public class SetThreeRoomsStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		discountRange = new TextField();
 		discountRange.setId("SetThreeRoomsStrategy");
@@ -70,7 +71,6 @@ public class SetThreeRoomsStrategy {
 		discountName.setId("SetThreeRoomsStrategy");
 		discountName.setPrefSize(200, 30);
 			
-		//设置文本框内容
 				
 		//设置文本框内容可更改
 		discountRange.setEditable(true);
@@ -119,15 +119,22 @@ public class SetThreeRoomsStrategy {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				discountRange.getText();
-				discountName.getText();
+				String discount = discountRange.getText();
+				String name = discountName.getText();
+				double[] d = {Double.parseDouble(discount)};
+				PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), name, d);
 				//
-				discountRange.setText("");
-				discountName.setText("");
-				OneButtonDialog dialog = new OneButtonDialog("制定成功");
-				dialog.show();
-				controller.setChooseView();
-				controller.getStage().show();
+				if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+					discountRange.setText("");
+					discountName.setText("");
+					OneButtonDialog dialog = new OneButtonDialog("制定成功");
+					dialog.show();
+					controller.setChooseView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("制定失败");
+					dialog.show();
+				}
 			}
 					
 		});

@@ -2,8 +2,10 @@ package viewController;
 
 import javafx.stage.Stage;
 import logicService.hotel.CheckHotelService;
+import logicService.stub.HotelService_Stub;
 import view.right.hotelManager.hotelInfo.Blank;
 import view.right.hotelManager.hotelInfo.ModifyHotelInfo;
+import vo.HotelVO;
 
 public class HMHotelInfoController extends HotelManagerLeftController{
 	
@@ -14,13 +16,15 @@ public class HMHotelInfoController extends HotelManagerLeftController{
 	private ModifyHotelInfo modifyHotelInfoUI;
 	private Blank blankUI;
 	
+	private HotelVO hotelVO;
+	
 	public HMHotelInfoController(Stage stage, String userId){
 		
 		//checkHotelService = new CheckHotel();
 		
 		this.stage = stage;
 		this.userId = userId;
-		
+		checkHotelService = new HotelService_Stub();
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		blankUI = new Blank(this);
 		
@@ -36,5 +40,9 @@ public class HMHotelInfoController extends HotelManagerLeftController{
 	
 	public Stage getStage(){
 		return stage;
+	}
+	
+	public HotelVO getHotelVO(){
+		return checkHotelService.getHotelnfo(userId);
 	}
 }

@@ -1,14 +1,19 @@
 package view.right.hotelManager.hotelInfo;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
@@ -23,6 +28,7 @@ import viewController.HotelManagerLeftController;
 public class ModifyHotelInfo {
 	
 	private HotelManagerLeftController controller;
+	private HMHotelInfoController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -33,9 +39,11 @@ public class ModifyHotelInfo {
 	TextArea hotelBriefing;
 	TextArea hotelFacility;
 	TextArea HotelImage;
+	FileChooser fileChooser;
 	
 	Button cancel;
 	Button ok;
+	Button choosePicture;
 	
 	public ModifyHotelInfo(HotelManagerLeftController controller){
 		
@@ -66,7 +74,7 @@ public class ModifyHotelInfo {
 	
 	private void setTextContent(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
+//		hmcontroller = new HMHotelInfoController(controller.getStage(),controller.getUserId());
 		
 		//设置酒店信息的文本信息
 		hotelStar = new TextField();
@@ -75,10 +83,11 @@ public class ModifyHotelInfo {
 		hotelFacility = new TextArea();
 		HotelImage = new TextArea();
 		
-		/*
-		//根据Controller设置textField文字
-		 
-		*/
+//		hotelStar.setText(String.valueOf(hmcontroller.getHotelVO().levelOfHotel));
+//		hotelLocation.setText(hmcontroller.getHotelVO().locationOfHotel);
+//		hotelBriefing.setText(hmcontroller.getHotelVO().introduction);
+//		hotelFacility.setText(hmcontroller.getHotelVO().facilities);
+////		HotelImage.setText(hmcontroller.getHotelVO().picturesPath);
 		
 		//设置TextField不可更改
 		hotelStar.setEditable(true);
@@ -115,6 +124,25 @@ public class ModifyHotelInfo {
 		AnchorPane.setTopAnchor(HotelImage, 360.0);
 	}
 	
+//	private void openFileChooser(){
+//		
+//		fileChooser = new FileChooser();
+//		fileChooser.setTitle("选择头像");
+//		fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+//                new FileChooser.ExtensionFilter("PNG", "*.png")
+//        );
+//		Stage s = new Stage();
+//		File file = fileChooser.showOpenDialog(s);
+//		if(file==null){
+//			controller.showDialog("请选择图片");
+//			return;
+//		}
+//		String exportFilePath= file.getAbsolutePath();
+//		HotelImage.setText(exportFilePath);
+//		
+//	}
+	
 	private void setButton(){
 		//添加按钮
 		ok = new Button("确认");
@@ -124,6 +152,10 @@ public class ModifyHotelInfo {
 		cancel = new Button("取消");
 		cancel.setId("ModifyHotelInfo");
 		cancel.setPrefSize(100, 40);
+		
+		choosePicture = new Button("选择图片");
+		choosePicture.setId("ModifyHotelInfo");
+		choosePicture.setPrefSize(100, 40);
 						
 		//设置按钮位置
 		ok.setLayoutX(625);
@@ -131,6 +163,9 @@ public class ModifyHotelInfo {
 		
 		cancel.setLayoutX(650);
 		cancel.setLayoutY(510);
+		
+		choosePicture.setLayoutX(625);
+		choosePicture.setLayoutY(390);
 						
 		//设置按钮监听
 		ok.setOnAction(new EventHandler<ActionEvent>(){
@@ -139,11 +174,11 @@ public class ModifyHotelInfo {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				hotelStar.getText();
-				hotelLocation.getText();
-				hotelBriefing.getText();
-				hotelFacility.getText();
-				HotelImage.getText();
+//				String star = hotelStar.getText();
+//				String hotelLocal = hotelLocation.getText();
+//				String hotelBrief = hotelBriefing.getText();
+//				String hoteltool = hotelFacility.getText();
+//				ImageView image = HotelImage.getText();
 				//
 				hotelStar.setText("");;
 				hotelLocation.setText("");;
@@ -166,6 +201,16 @@ public class ModifyHotelInfo {
 			}
 							
 		});
+		
+//		choosePicture.setOnAction(new EventHandler<ActionEvent>(){
+//
+//			@Override
+//			public void handle(ActionEvent event) {
+//				// TODO Auto-generated method stub
+//				openFileChooser();
+//			}
+//							
+//		});
 						
 		//右侧pane添加
 		rightPane.getChildren().add(cancel);

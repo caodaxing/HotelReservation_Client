@@ -22,7 +22,9 @@ import javafx.util.Callback;
 import logicService.order.OrderListService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
+import view.right.user.myOrder.OrderList.Person;
 import viewController.HMOrderManagementController;
 import viewController.HotelManagerLeftController;
 import vo.OrderVO;
@@ -55,12 +57,12 @@ public class OrderList {
 	private ObservableList<Person> data;
 	private Button check;
 	private int row;
-	private ArrayList<OrderVO> orderList;
 	
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		data = FXCollections.observableArrayList();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -143,7 +145,6 @@ public class OrderList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-		initialData();
 		
 		//添加列表内容
 				
@@ -203,12 +204,13 @@ public class OrderList {
 	}
 	
 	public void initialData(){
-		data = FXCollections.observableArrayList();
-		int label = controller.getLabel();
-		controller.setList(label);
-		orderList = controller.getlist();
-		for(int i=0;i<orderList.size();i++){
-			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).orderState.toString(), String.valueOf(orderList.get(i).afterPrice), check));
+		ArrayList<OrderVO> orderList = controller.getlist();
+		if(orderList == null){
+			return ;
+		}
+		for(OrderVO o :orderList){
+			String state = MessageHelper.orderStateToString(o.orderState);
+			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
 		}
 	}
 	

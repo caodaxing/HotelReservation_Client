@@ -69,6 +69,7 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
+		controller.setOrderList();
 		orderList = controller.getOrderList();
 		int num = controller.getRow();
 		
@@ -165,7 +166,7 @@ public class AbnormalOrder{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				
-				controller.setOrderListView();
+				controller.setabnormalOrderListView();
 				controller.getStage().show();
 			}
 			

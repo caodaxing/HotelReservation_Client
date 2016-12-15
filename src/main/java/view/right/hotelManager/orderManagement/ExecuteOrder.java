@@ -216,7 +216,7 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setOrderListView();
+				controller.sethasExecuteOrderListView();
 				controller.getStage().show();
 			}
 									

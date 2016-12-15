@@ -3,6 +3,7 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.PromotionType;
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.order.OrderService;
@@ -24,7 +25,6 @@ import vo.PromotionVO;
 
 public class HMPromotionController extends HotelManagerLeftController{
 	
-	private Stage stage;
 	
 	//逻辑层接口
 	private ManagePromotionService promotionService;
@@ -123,7 +123,6 @@ public class HMPromotionController extends HotelManagerLeftController{
 	}
 	
 	public void setExistStrategy(){
-		existStrategyUI = new ExistStrategy(this);
 		stage.setScene(existStrategyUI.getScene());
 	}
 	
@@ -161,6 +160,10 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public int getRow(){
 		return row;
+	}
+	
+	public ResultMessage getPromotionResult(PromotionVO promotionVO){
+		return promotionService.addPromotion(promotionVO);
 	}
 	
 }

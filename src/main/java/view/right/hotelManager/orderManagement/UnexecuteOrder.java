@@ -167,8 +167,8 @@ public class UnexecuteOrder {
 				// TODO Auto-generated method stub
 				OneButtonDialog dialog = new OneButtonDialog("订单执行成功，请更新房间信息");
 				dialog.show();
-				controller.setOrderListView();
-				controller.getStage().show();
+				
+//				controller.getStage().show();
 			}
 							
 		});
@@ -178,7 +178,7 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-								
+				controller.setunexecuteOrderListView();				
 			}
 							
 		});

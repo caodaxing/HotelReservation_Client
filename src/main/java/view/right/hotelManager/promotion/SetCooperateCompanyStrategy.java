@@ -1,5 +1,8 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +15,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_制定合作企业促销策略
@@ -32,6 +36,8 @@ public class SetCooperateCompanyStrategy {
 	
 	Button ok;
 	Button cancel;
+	
+	ArrayList<PromotionVO> promotionVO;
 	
 	public SetCooperateCompanyStrategy(HMPromotionController controller){
 		
@@ -61,7 +67,6 @@ public class SetCooperateCompanyStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		cooperateCompanyName = new TextField();
 		cooperateCompanyName.setId("SetCooperateCompanyStrategy");
@@ -131,17 +136,23 @@ public class SetCooperateCompanyStrategy {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				cooperateCompanyName.getText();
-				dicountRange.getText();
-				discountName.getText();
+				String companyName = cooperateCompanyName.getText();
+				String discount = dicountRange.getText();
+				String promotionName = discountName.getText();
+				PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), promotionName, Double.parseDouble(discount), companyName);
 				//
-				cooperateCompanyName.setText("");
-				dicountRange.setText("");
-				discountName.setText("");
-				OneButtonDialog dialog = new OneButtonDialog("制定成功");
-				dialog.show();
-				controller.setChooseView();
-				controller.getStage().show();
+				if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+					cooperateCompanyName.setText("");
+					dicountRange.setText("");
+					discountName.setText("");
+					OneButtonDialog dialog = new OneButtonDialog("制定成功");
+					dialog.show();
+					controller.setChooseView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("制定失败");
+					dialog.show();
+				}
 			}
 					
 		});

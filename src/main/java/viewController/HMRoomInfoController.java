@@ -15,8 +15,6 @@ import vo.RoomVO;
 
 public class HMRoomInfoController extends HotelManagerLeftController{
 	
-	private Stage stage;
-	
 	//逻辑层接口
 	private RoomService roomService;
 	private CheckHotelService checkHotelService;

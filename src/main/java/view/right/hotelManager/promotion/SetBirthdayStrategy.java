@@ -1,5 +1,8 @@
 package view.right.hotelManager.promotion;
 
+import java.util.ArrayList;
+
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +15,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMPromotionController;
+import vo.PromotionVO;
 
 /**
  * 酒店工作人员界面_促销策略_执行生日促销策略
@@ -31,6 +35,8 @@ public class SetBirthdayStrategy {
 	
 	Button ok;
 	Button cancel;
+	
+	ArrayList<PromotionVO> promotionList;
 	
 	public SetBirthdayStrategy(HMPromotionController controller){
 		
@@ -60,7 +66,6 @@ public class SetBirthdayStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		discountRange = new TextField();
 		discountRange.setId("SetBirthdayStrategy");
@@ -119,15 +124,21 @@ public class SetBirthdayStrategy {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				discountRange.getText();
-				discountName.getText();
+				String discount = discountRange.getText();
+				String name = discountName.getText();
+				PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), name, Double.parseDouble(discount));
 				//
-				discountRange.setText("");
-				discountName.setText("");
-				OneButtonDialog dialog = new OneButtonDialog("制定成功");
-				dialog.show();
-				controller.setChooseView();
-				controller.getStage().show();
+				if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+					discountRange.setText("");
+					discountName.setText("");
+					OneButtonDialog dialog = new OneButtonDialog("制定成功");
+					dialog.show();
+					controller.setChooseView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("制定失败");
+					dialog.show();
+				}
 			}
 					
 		});

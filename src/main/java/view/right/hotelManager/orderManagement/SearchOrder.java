@@ -98,7 +98,7 @@ public class SearchOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setOrderListView();
+				controller.setallOrderListView();
 				controller.getStage().show();
 			}
 			

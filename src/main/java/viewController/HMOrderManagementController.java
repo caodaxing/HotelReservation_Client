@@ -25,8 +25,6 @@ import vo.OrderVO;
 
 public class HMOrderManagementController extends HotelManagerLeftController{
 	
-	private Stage stage;
-	
 	//逻辑层接口
 	private OrderService orderService;
 	private OrderListService orderListService;
@@ -62,7 +60,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evalutionInfoUI = new EvaluationInfo(this);
 		executeOrderUI = new ExecuteOrder(this);
-		orderListUI = new OrderList(this);
+//		orderListUI = new OrderList(this);
 		searchOrderUI = new SearchOrder(this);
 		setArriveInfoUI = new SetArriveInfo(this);
 		setLeaveInfoUI = new SetLeaveInfo(this);
@@ -119,11 +117,24 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		stage.setScene(executeOrderUI.getScene());
 	}
 	
-	public void setOrderListView(){
-//		orderListUI = new OrderList(this);
-//		orderList = new ArrayList<OrderVO>();
-//		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
-		stage.setScene(orderListUI.getScene());
+	public void setallOrderListView(){
+		stage.setScene(allOrderListUI.getScene());
+	}
+	
+	public void sethasExecuteOrderListView(){
+		stage.setScene(hasExecuteOrderListUI.getScene());
+	}
+	
+	public void setunexecuteOrderListView(){
+		stage.setScene(unExecuteOrderListUI.getScene());
+	}
+	
+	public void setundoOrderListView(){
+		stage.setScene(undoOrderListUI.getScene());
+	}
+	
+	public void setabnormalOrderListView(){
+		stage.setScene(abnormalOrderListUI.getScene());
 	}
 	
 	public void setSearchOrderView(){
@@ -154,8 +165,12 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		return row;
 	}
 	
-	public ArrayList<OrderVO> getOrderList(){
+	public void setOrderList(){
 		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
+	}
+	
+	public ArrayList<OrderVO> getOrderList(){
 		return orderList;
 	}
+	
 }
