@@ -11,7 +11,6 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.helpTools.MessageHelper;
 import view.left.UserUI;
-import viewController.UserLeftController;
 import viewController.UserMyOrderController;
 import vo.OrderVO;
 
@@ -61,7 +60,9 @@ public class AbnormalOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_异常订单背景.jpg\")");
 	}
 	
 	private void setTextField(){

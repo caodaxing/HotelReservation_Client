@@ -60,7 +60,9 @@ public class UndoOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_撤销订单背景.jpg\")");
 	}
 	
 	private void setTextField(){

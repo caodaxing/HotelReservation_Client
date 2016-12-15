@@ -65,7 +65,9 @@ public class UnexecuteOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_未执行订单背景.jpg\")");
 	}
 	
 	private void setTextField(){

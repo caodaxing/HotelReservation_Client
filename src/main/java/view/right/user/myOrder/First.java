@@ -54,6 +54,9 @@ public class First {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/订单查询界面背景.jpg\")");
 		
 	}
 	

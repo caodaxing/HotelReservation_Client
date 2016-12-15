@@ -2,17 +2,12 @@ package view.right.user.myOrder;
 
 import java.util.ArrayList;
 
-import Message.OrderListCondition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,8 +19,6 @@ import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.helpTools.MessageHelper;
 import view.left.UserUI;
-import view.right.hotelManager.orderManagement.OrderList.Person;
-import viewController.HMOrderManagementController;
 import viewController.UserLeftController;
 import viewController.UserMyOrderController;
 import vo.OrderVO;
@@ -77,7 +70,9 @@ public class OrderList {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单界面_全部订单背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -97,7 +92,7 @@ public class OrderList {
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
-		orderId.setMinWidth(100);
+		orderId.setMinWidth(120);
 		
 		hotel = new TableColumn<>("酒店");
 		hotel.setCellValueFactory(new PropertyValueFactory<Person, String>("hotel"));
@@ -137,8 +132,8 @@ public class OrderList {
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefHeight(400);
+		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
 		//设置列表位置
@@ -146,7 +141,7 @@ public class OrderList {
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
-		AnchorPane.setTopAnchor(tableView, 150.0);
+		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
 	/*
