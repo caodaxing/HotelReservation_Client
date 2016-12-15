@@ -54,23 +54,25 @@ public class OrderList {
 	TableColumn<Person, String> price;
 	TableColumn<Person, Button> operation;
 	
-	private ObservableList<Person> data = FXCollections.observableArrayList();;
+	private ObservableList<Person> data ;
 	private Button check;
 	
 	public OrderList(UserLeftController controller){
 		
 		this.controller = controller;
+		
+		data = FXCollections.observableArrayList();
+		
 		userUI = new UserUI(controller);
 		
 		leftPane = userUI.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
 		
+		rightPane = new AnchorPane();
+		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
 		//设置列表
 		setList();
-		
-		rightPane = new AnchorPane();
-		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
@@ -130,6 +132,8 @@ public class OrderList {
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
+		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(500);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
 		//设置列表位置
@@ -137,14 +141,15 @@ public class OrderList {
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 150.0);
 	}
 	
 	/*
 	 * 界面层传入orderist构造界面
 	 * @param controller传入的
 	 */
-	public void setTextValue(ArrayList<OrderVO> orderList){
+	public void setTextValue(){
+		ArrayList<OrderVO> orderList = controller.getOrderList();
 		for(OrderVO o :orderList){
 			check = new Button("查看");
 			String state = MessageHelper.orderStateToString(o.orderState);

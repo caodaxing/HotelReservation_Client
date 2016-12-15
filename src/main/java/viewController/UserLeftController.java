@@ -7,6 +7,7 @@ import Message.ResultMessage;
 import Message.VipType;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
+import logicService.order.OrderListService;
 import logicService.order.OrderService;
 import logicService.stub.AccountService_Stub;
 import logicService.stub.ClientService_Stub;
@@ -35,6 +36,7 @@ public class UserLeftController {
 	protected ClientService clientService;
 	protected AccountService accountService;
 	protected OrderService orderService;
+	protected OrderListService orderListService;
 	
 	private AccountController accountController;
 	
@@ -57,6 +59,7 @@ public class UserLeftController {
 		accountService = new AccountService_Stub();
 		clientService = new ClientService_Stub();
 		orderService = new OrderService_Stub();
+		orderListService = new OrderService_Stub();
 
 		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
@@ -68,7 +71,6 @@ public class UserLeftController {
 		hotelFirstUI = new HotelFirst(this);
 		modifyPasswordUI = new ModifyPassword(this);
 		checkMyInfoUI = new CheckMyInfo(this);
-	
 	}
 	
 	public UserLeftController(Stage stage ,String userID){
@@ -266,8 +268,11 @@ public class UserLeftController {
 	}
 
 	public ArrayList<OrderVO> getOrderList() {
-		// TODO Auto-generated method stub
-		return null;
+		return orderListService.filterUserOrderList(userID, condition);
+	}
+	
+	public String getHeadPath(){
+		return clientService.getClientInfo(userID).headImagePath;
 	}
 	
 }

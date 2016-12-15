@@ -20,7 +20,7 @@ public class AccountController {
 	private AccountService accountService ; 
 	
 	//同层controller
-	private UserMyInfoController userController ;//需用userID初始化
+	private UserMyInfoController userController ;
 	private VistorController vistorController ;
 	private WMUserInfoController webManagerController ;
 	private WBVIPInfoController wbVIPInfoController;

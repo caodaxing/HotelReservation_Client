@@ -22,7 +22,8 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) {
-//		launch(args);
+		launch(args);
+		/*
 		new ClientRunner();
 	
 		AccountDao ad = RemoteHelper.getInstance().getAccountDao();
@@ -31,6 +32,6 @@ public class Main extends Application{
 			System.out.println(ad.getAccountInfo("00001").getIdentity());
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
