@@ -64,9 +64,8 @@ public class CheckSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-		controller.setspecialTimePromotion();
+		controller.setPromotoinList();
 		promotionList = controller.getPromotionList();
-		controller.setRow();
 		int num = controller.getRow();
 		
 		//添加文本框

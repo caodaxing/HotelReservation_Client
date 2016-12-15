@@ -20,10 +20,10 @@ public class HotelManagerUI{
 	
 	private GridPane pane;
 	
-	private HotelManagerLeftController leftcontroller;
+	private HotelManagerLeftController controller;
 	
 	public HotelManagerUI(HotelManagerLeftController controller){
-		this.leftcontroller = controller;
+		this.controller = controller;
 		pane = this.initGridPane();
 	}
 	
@@ -51,8 +51,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setModifyHotelInfoVeiw();
-				leftcontroller.getStage().show();
+				controller.setModifyHotelInfoVeiw();
+				controller.getStage().show();
 			}
 			
 		});
@@ -65,8 +65,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setAllOrderListView();
-				leftcontroller.getStage().show();
+				controller.setAllOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -79,8 +79,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setHasexecuteOrderListView();
-				leftcontroller.getStage().show();
+				controller.setHasExecuteOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -93,8 +93,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setUnexecuteOrderListView();
-				leftcontroller.getStage().show();
+				controller.setunExecuteOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -107,8 +107,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setHasUndoOrderListView();
-				leftcontroller.getStage().show();
+				controller.setUndoOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -121,8 +121,8 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setAbnormalOrderListView();
-				leftcontroller.getStage().show();
+				controller.setAbnormalOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -135,22 +135,22 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setRoomFirstView();
-				leftcontroller.getStage().show();
+				controller.setRoomFirstView();
+				controller.getStage().show();
 			}
 			
 		});
 		
-		Button changePassword = new Button("促销策略");
-		changePassword.setId("light-button");
-		changePassword.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(changePassword, 0, 8);
-		changePassword.setOnAction(new EventHandler<ActionEvent>(){
+		Button promotion = new Button("促销策略");
+		promotion.setId("light-button");
+		promotion.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(promotion, 0, 8);
+		promotion.setOnAction(new EventHandler<ActionEvent>(){
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setPromotionFirstView();
-				leftcontroller.getStage().show();
+				controller.setPromotionFirstView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -163,7 +163,7 @@ public class HotelManagerUI{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				leftcontroller.setFirstUIView();
+				controller.setFirstUIView();
 			}
 			
 		});

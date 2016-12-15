@@ -10,15 +10,13 @@ import vo.RoomVO;
 public class RoomService_Stub implements RoomService {
 
 	public ArrayList<RoomVO> getRoomList(String hotel_id) {
-//		ArrayList<RoomVO> List = new ArrayList<RoomVO>();
-//		RoomVO room1 = new RoomVO(0, 288, 0, "1109");
-//		RoomVO room2 = new RoomVO(0, 388, 0, "0304");
-//		List.add(room1);
-//		List.add(room2);
-//		
-//		return List;
+		ArrayList<RoomVO> List = new ArrayList<RoomVO>();
+		RoomVO room1 = new RoomVO("kshei", "9239", RoomType.SINGLE_ROOM, 288, null);
+		RoomVO room2 = new RoomVO("nsjkd", "7383", RoomType.STANDARD_ROOM, 255, null);
+		List.add(room1);
+		List.add(room2);
 		
-		return null;
+		return List;
 	}
 
 	public RoomVO getRoomInfo(String hotel_id, String room_id) {
@@ -36,7 +34,7 @@ public class RoomService_Stub implements RoomService {
 
 	@Override
 	public int getRemainingRoomNums(String hotelID, RoomType roomType) {
-		return 0;
+		return 1;
 	}
 	
 }

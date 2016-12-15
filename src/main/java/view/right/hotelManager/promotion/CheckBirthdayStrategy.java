@@ -63,9 +63,8 @@ public class CheckBirthdayStrategy {
 	
 	private void setTextField(){
 		
-		controller.setBirthdayPromotion();
+		controller.setPromotoinList();
 		promotionList = controller.getPromotionList();
-		controller.setRow();
 		int num = controller.getRow();
 		
 		//添加文本框

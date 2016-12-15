@@ -63,9 +63,8 @@ public class CheckCooperateCompanyStrategy {
 	
 	private void setTextField(){
 		
-		controller.setCooperatePromotion();
+		controller.setPromotoinList();
 		promotionList = controller.getPromotionList();
-		controller.setRow();
 		int num = controller.getRow();
 		
 		//添加文本框

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Message.OrderListCondition;
 import Message.ResultMessage;
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
@@ -14,7 +15,6 @@ import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
 import view.right.hotelManager.hotelInfo.ModifyHotelInfo;
 import view.right.hotelManager.orderManagement.OrderList;
-import view.right.hotelManager.orderManagement.SearchOrder;
 import view.right.hotelManager.promotion.PromotionFirst;
 import view.right.hotelManager.roomInfo.First;
 import vo.OrderVO;
@@ -22,8 +22,11 @@ import vo.OrderVO;
 public class HotelManagerLeftController{
 	
 	protected ModifyHotelInfo modifyHotelInfoUI;
-	protected SearchOrder searchOrderUI;
-	protected OrderList orderListUI;
+	protected OrderList allOrderListUI;
+	protected OrderList hasExecuteOrderListUI;
+	protected OrderList unExecuteOrderListUI;
+	protected OrderList undoOrderListUI;
+	protected OrderList abnormalOrderListUI;
 	protected First roomFirstUI;
 	protected PromotionFirst promotionFirstUI;
 	protected Blank blankUI;
@@ -39,15 +42,19 @@ public class HotelManagerLeftController{
 	protected String userId;
 	
 	private ArrayList<OrderVO> orderlist;
+	private int label = -1;
 	
 	public HotelManagerLeftController(){
 		
 		accountService = new AccountService_Stub();
 		orderListService = new OrderService_Stub();
 		
-		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
-		orderListUI = new OrderList(this);
+		allOrderListUI = new OrderList(this);
+		hasExecuteOrderListUI = new OrderList(this);
+		unExecuteOrderListUI = new OrderList(this);
+		undoOrderListUI = new OrderList(this);
+		abnormalOrderListUI = new OrderList(this);
 		roomFirstUI = new First(this);
 		promotionFirstUI = new PromotionFirst(this);
 		blankUI = new Blank(this);
@@ -73,49 +80,35 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setAllOrderListView(){
-		orderListUI = new OrderList(this);
-		orderlist = new ArrayList<OrderVO>();
-		orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
-		orderListUI.initialData();
-		stage.setScene(orderListUI.getScene());
+		label = 0;
+		stage.setScene(allOrderListUI.getScene());
 		stage.show();
 	}
 	
-	public void setHasexecuteOrderListView(){
-		orderListUI = new OrderList(this);
-		orderlist = new ArrayList<OrderVO>();
-		orderlist = orderListService.filterHotelOrderList(userId,OrderListCondition.EXECUTED );
-		orderListUI.initialData();
-		stage.setScene(orderListUI.getScene());
+	public void setHasExecuteOrderListView(){
+		label = 1;
+		stage.setScene(hasExecuteOrderListUI.getScene());
 		stage.show();
 	}
 	
-	public void setUnexecuteOrderListView(){
-		orderListUI = new OrderList(this);
-		orderlist = new ArrayList<OrderVO>();
-		orderlist = orderListService.filterHotelOrderList(userId,OrderListCondition.UNEXECUTED );
-		orderListUI.initialData();
-		stage.setScene(orderListUI.getScene());
+	public void setunExecuteOrderListView(){
+		label = 2;
+		stage.setScene(unExecuteOrderListUI.getScene());
 		stage.show();
 	}
 	
-	public void setHasUndoOrderListView(){
-		orderListUI = new OrderList(this);
-		orderlist = new ArrayList<OrderVO>();
-		orderlist = orderListService.filterHotelOrderList(userId,OrderListCondition.UNDOED );
-		orderListUI.initialData();
-		stage.setScene(orderListUI.getScene());
+	public void setUndoOrderListView(){
+		label = 3;
+		stage.setScene(undoOrderListUI.getScene());
 		stage.show();
 	}
 	
 	public void setAbnormalOrderListView(){
-		orderListUI = new OrderList(this);
-		orderlist = new ArrayList<OrderVO>();
-		orderlist = orderListService.filterHotelOrderList(userId,OrderListCondition.ABNORMALED);
-		orderListUI.initialData();
-		stage.setScene(orderListUI.getScene());
+		label = 4;
+		stage.setScene(abnormalOrderListUI.getScene());
 		stage.show();
 	}
+	
 	
 	public void setRoomFirstView(){
 		roomFirstUI = new First(this);
@@ -160,7 +153,25 @@ public class HotelManagerLeftController{
 		return stage;
 	}
 	
-	public ArrayList<OrderVO> getList(){
+	public void setList(int label){
+		if(label == 0){
+			orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
+		}else if(label == 1){
+			orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.EXECUTED);
+		}else if(label == 2){
+			orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.UNEXECUTED);
+		}else if(label == 3){
+			orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.UNDOED);
+		}else{
+			orderlist = orderListService.filterHotelOrderList(userId, OrderListCondition.ABNORMALED);
+		}
+	}
+	
+	public int getLabel(){
+		return label;
+	}
+	
+	public ArrayList<OrderVO> getlist(){
 		return orderlist;
 	}
 }

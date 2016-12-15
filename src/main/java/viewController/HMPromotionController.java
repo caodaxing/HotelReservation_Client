@@ -123,6 +123,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 	}
 	
 	public void setExistStrategy(){
+		existStrategyUI = new ExistStrategy(this);
 		stage.setScene(existStrategyUI.getScene());
 	}
 	
@@ -148,22 +149,6 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public void setPromotoinList(){
 		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
-	}
-	
-	public void setspecialTimePromotion(){
-		promotionList = promotionService.getHotelPromotions(userId, PromotionType.HOTEL_11_11);
-	}
-	
-	public void setBirthdayPromotion(){
-		promotionList = promotionService.getHotelPromotions(userId, PromotionType.HOTEL_BIRTHDAY);
-	}
-
-	public void setThreeRoomPromotion(){
-		promotionList = promotionService.getHotelPromotions(userId, PromotionType.HOTEL_3_ROOMS_OR_MORE);
-	}
-	
-	public void setCooperatePromotion(){
-		promotionList = promotionService.getHotelPromotions(userId, PromotionType.HOTEL_COOPREATE_BUSINESS);
 	}
 	
 	public ArrayList<PromotionVO> getPromotionList(){

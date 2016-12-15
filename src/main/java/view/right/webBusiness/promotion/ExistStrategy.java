@@ -23,7 +23,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.util.Callback;
-import logicService.promotion.PromotionService;
 import logicService.stub.PromotionService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;

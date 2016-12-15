@@ -143,6 +143,7 @@ public class OrderList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
+		initialData();
 		
 		//添加列表内容
 				
@@ -186,6 +187,7 @@ public class OrderList {
 		});
 		operation.setMinWidth(100);
 		
+		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
 		//设置列表位置
@@ -202,11 +204,12 @@ public class OrderList {
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		orderList = controller.getList();
+		int label = controller.getLabel();
+		controller.setList(label);
+		orderList = controller.getlist();
 		for(int i=0;i<orderList.size();i++){
 			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).orderState.toString(), String.valueOf(orderList.get(i).afterPrice), check));
 		}
-		tableView.setItems(data);
 	}
 	
 	/**

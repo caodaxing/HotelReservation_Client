@@ -30,7 +30,6 @@ import vo.RoomVO;
 public class ExistRooms {
 	
 	private HMRoomInfoController controller;
-	private RoomService roomService;
 	
 	private Scene scene;
 	
@@ -51,12 +50,12 @@ public class ExistRooms {
 	
 	private ObservableList<Person> data;
 	private ArrayList<RoomVO> roomList;
+	private int remainNum;
 	
 	public ExistRooms(HMRoomInfoController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
-		roomService = new RoomService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -147,11 +146,13 @@ public class ExistRooms {
 	
 	private void initialData(){
 		data = FXCollections.observableArrayList();
-		roomList = roomService.getRoomList(controller.getUserId());
+		controller.setRoomList();
+		roomList = controller.getRoomList();
 		for(int i=0;i<roomList.size();i++){
+			controller.setRemainedNum(roomList.get(i).roomType);
+			remainNum = controller.getRemainedNum();
 			data.add(new Person(roomList.get(i).roomType.toString(), String.valueOf(roomList.get(i).price),
-					String.valueOf(roomService.getRemainingRoomNums(controller.getUserId()
-							, roomList.get(i).roomType))));
+					String.valueOf(remainNum)));
 		}
 	}
 	

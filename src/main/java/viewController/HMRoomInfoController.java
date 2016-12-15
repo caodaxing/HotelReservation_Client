@@ -1,12 +1,17 @@
 package viewController;
 
+import java.util.ArrayList;
+
+import Message.RoomType;
 import javafx.stage.Stage;
 import logicService.hotel.CheckHotelService;
 import logicService.order.OrderService;
 import logicService.room.RoomService;
+import logicService.stub.RoomService_Stub;
 import view.right.hotelManager.roomInfo.ExistRooms;
 import view.right.hotelManager.roomInfo.First;
 import view.right.hotelManager.roomInfo.SetAvailableRooms;
+import vo.RoomVO;
 
 public class HMRoomInfoController extends HotelManagerLeftController{
 	
@@ -22,9 +27,12 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	private SetAvailableRooms setAvailableRoomsUI;
 	private ExistRooms existRoomsUI;
 	
+	private ArrayList<RoomVO> roomList;
+	private int remainedNum;
+	
 	public HMRoomInfoController(Stage stage, String userId){
 		
-//		roomService = new Room();
+		roomService = new RoomService_Stub();
 //		checkHotelService = new CheckHotel();
 //		orderService = new Order();
 		this.stage = stage;
@@ -50,5 +58,21 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	public void setExistRoomsView(){
 		stage.setScene(existRoomsUI.getScene());
+	}
+	
+	public void setRoomList(){
+		roomList = roomService.getRoomList(userId);
+	}
+	
+	public ArrayList<RoomVO> getRoomList(){
+		return roomList;
+	}
+	
+	public void setRemainedNum(RoomType roomType){
+		remainedNum = roomService.getRemainingRoomNums(userId, roomType);
+	}
+	
+	public int getRemainedNum(){
+		return remainedNum;
 	}
 }

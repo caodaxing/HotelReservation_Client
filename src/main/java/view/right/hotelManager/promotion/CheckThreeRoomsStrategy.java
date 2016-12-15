@@ -62,7 +62,7 @@ public class CheckThreeRoomsStrategy {
 	
 	private void setTextField(){
 		
-		controller.setThreeRoomPromotion();
+		controller.setPromotoinList();
 		promotionList = controller.getPromotionList();
 		int num = controller.getRow();
 		

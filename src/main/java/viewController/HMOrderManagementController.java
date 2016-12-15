@@ -120,10 +120,9 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	}
 	
 	public void setOrderListView(){
-		orderListUI = new OrderList(this);
-		orderList = new ArrayList<OrderVO>();
-		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
-		orderListUI.initialData();
+//		orderListUI = new OrderList(this);
+//		orderList = new ArrayList<OrderVO>();
+//		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
 		stage.setScene(orderListUI.getScene());
 	}
 	
