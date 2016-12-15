@@ -86,7 +86,7 @@ public class AbnormalOrder{
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderList.get(num).rooms.get(0).roomType.toString());
+		roomType = new TextField(orderList.get(num).roomType.toString());
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		

@@ -8,11 +8,11 @@ import Message.ResultMessage;
 import dataDao.promotion.PromotionDao;
 import dataDao.stub.PromotionDao_Stub;
 import logic.utility.PromotionTransform;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import po.PromotionPO;
 import vo.PromotionVO;
 
-public class ManagePromotion implements PromotionService, PromotionInfo{
+public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 	private PromotionDao promotionDao;
 	private PromotionTransform promotionTrans;
 	
@@ -40,6 +40,8 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 			} else {
 				vo.promotionID = vo.hotelID +  String.format("%04d", num);
 			}
+
+System.out.println(vo.promotionID);
 			
 			PromotionPO po = this.promotionTrans.promotionTransToPO(vo);
 			

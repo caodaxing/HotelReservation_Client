@@ -166,10 +166,11 @@ public class SetVIPAreaStrategy {
 				Prompt prompt = new Prompt("保存成功");
 				prompt.show();
 				//传输vo
-				lowestVIPLevel.getText();
-				tradingArea.getText();
-				discountRange.getText();
-				discountName.getText();
+				String s1 = lowestVIPLevel.getText();
+				String s2 = tradingArea.getText();
+				String s3 = discountRange.getText();
+				String s4 = discountName.getText();
+//				PromotionVO promotionVO = new PromotionVO(null,s4,)
 				//
 				lowestVIPLevel.setText("");
 				tradingArea.setText("");

@@ -1,5 +1,6 @@
 package view.right.webBusiness.promotion;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_制定特殊期间促销策略
@@ -26,8 +27,8 @@ public class SetSpecialTimeStrategy {
 	private AnchorPane rightPane;
 	private WebBusinessUI wbui;
 	
-	TextField startDiscount;
-	TextField endDiscount;
+	TextField startDiscountTime;
+	TextField endDiscountTime;
 	TextField discountRange;
 	TextField discountName;
 	
@@ -62,15 +63,14 @@ public class SetSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
-		startDiscount = new TextField();
-		startDiscount.setId("SetSpecialTimeStrategy");
-		startDiscount.setPrefSize(200, 30);
+		startDiscountTime = new TextField();
+		startDiscountTime.setId("SetSpecialTimeStrategy");
+		startDiscountTime.setPrefSize(200, 30);
 				
-		endDiscount = new TextField();
-		endDiscount.setId("SetSpecialTimeStrategy");
-		endDiscount.setPrefSize(200, 30);
+		endDiscountTime = new TextField();
+		endDiscountTime.setId("SetSpecialTimeStrategy");
+		endDiscountTime.setPrefSize(200, 30);
 			
 		discountRange = new TextField();
 		discountRange.setId("SetSpecialTimeStrategy");
@@ -83,17 +83,17 @@ public class SetSpecialTimeStrategy {
 		//设置文本框内容
 				
 		//设置文本框内容可更改
-		startDiscount.setEditable(true);
-		endDiscount.setEditable(true);
+		startDiscountTime.setEditable(true);
+		endDiscountTime.setEditable(true);
 		discountRange.setEditable(true);
 		discountName.setEditable(true);
 				
 		//设置文本框位置
-		startDiscount.setLayoutX(400);
-		startDiscount.setLayoutY(150);
+		startDiscountTime.setLayoutX(400);
+		startDiscountTime.setLayoutY(150);
 				
-		endDiscount.setLayoutX(400);
-		endDiscount.setLayoutY(200);
+		endDiscountTime.setLayoutX(400);
+		endDiscountTime.setLayoutY(200);
 				
 		discountRange.setLayoutX(400);
 		discountRange.setLayoutY(250);
@@ -102,18 +102,18 @@ public class SetSpecialTimeStrategy {
 		discountName.setLayoutY(300);
 				
 		//添加组件
-		rightPane.getChildren().add(startDiscount);
-		rightPane.getChildren().add(endDiscount);
+		rightPane.getChildren().add(startDiscountTime);
+		rightPane.getChildren().add(endDiscountTime);
 		rightPane.getChildren().add(discountRange);
 		rightPane.getChildren().add(discountName);
 				
-		AnchorPane.setLeftAnchor(startDiscount, 200.0);
-		AnchorPane.setLeftAnchor(endDiscount, 200.0);
+		AnchorPane.setLeftAnchor(startDiscountTime, 200.0);
+		AnchorPane.setLeftAnchor(endDiscountTime, 200.0);
 		AnchorPane.setLeftAnchor(discountRange, 200.0);
 		AnchorPane.setLeftAnchor(discountName, 200.0);
 				
-		AnchorPane.setTopAnchor(startDiscount, 150.0);
-		AnchorPane.setTopAnchor(endDiscount, 200.0);
+		AnchorPane.setTopAnchor(startDiscountTime, 150.0);
+		AnchorPane.setTopAnchor(endDiscountTime, 200.0);
 		AnchorPane.setTopAnchor(discountRange, 250.0);
 		AnchorPane.setTopAnchor(discountName, 300.0);
 	}
@@ -142,21 +142,26 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				Prompt prompt = new Prompt("保存成功");
-				prompt.show();
 				//传输vo
-				startDiscount.getText();
-				endDiscount.getText();
-				discountRange.getText();
-				discountName.getText();
+				String s1 = startDiscountTime.getText();
+				String s2 = endDiscountTime.getText();
+				String s3 = discountRange.getText();
+				String s4 = discountName.getText();
 				//
-				startDiscount.setText("");
-				endDiscount.setText("");
-				discountRange.setText("");
-				discountName.setText("");
-				
-				controller.setChooseView();
-				controller.getStage().show();
+				PromotionVO promotionVO = new PromotionVO(null, s4,Double.parseDouble(s3), s1, s2);
+				if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+					startDiscountTime.setText("");
+					endDiscountTime.setText("");
+					discountRange.setText("");
+					discountName.setText("");
+					Prompt prompt = new Prompt("保存成功");
+					prompt.show();
+					controller.setChooseView();
+					controller.getStage().show();
+				}else{
+					Prompt prompt = new Prompt("输入错误");
+					prompt.show();
+				}
 			}
 					
 		});

@@ -74,7 +74,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 public HMOrderManagementController(Stage stage, String userId, int row){
 		
 		//orderService = new Order();
-		//orderListService = new OrderList();
+		orderListService = new OrderService_Stub();
 		//executeOrderService = new ExecuteOrder();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
@@ -120,6 +120,7 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	}
 	
 	public void setOrderListView(){
+		orderListUI = new OrderList(this);
 		orderList = new ArrayList<OrderVO>();
 		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
 		orderListUI.initialData();
@@ -154,5 +155,8 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		return row;
 	}
 	
-	
+	public ArrayList<OrderVO> getOrderList(){
+		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
+		return orderList;
+	}
 }

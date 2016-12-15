@@ -5,16 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.hotel.Hotel;
+import logic.hotel.CheckHotel;
 import vo.HotelVO;
 
 public class HotelTest {
 
-	private Hotel hotel;
+	private CheckHotel hotel;
 	
 	@Before
 	public void setUp() {
-		this.hotel = new Hotel();
+		this.hotel = new CheckHotel();
 	}
 	
 	@Test

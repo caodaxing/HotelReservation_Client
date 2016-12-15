@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Message.PromotionType;
 import Message.ResultMessage;
 import javafx.stage.Stage;
-import logicService.promotion.PromotionService;
+import logicService.promotion.ManagePromotionService;
 import logicService.stub.PromotionService_Stub;
 import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
 import view.right.webBusiness.promotion.CheckVIPAreaStrategy;
@@ -21,7 +21,7 @@ import vo.PromotionVO;
 public class WBPromotionController extends WebBusinessLeftController{
 	
 	//逻辑层接口
-	private PromotionService promotionService;
+	private ManagePromotionService promotionService;
 	
 	//控制界面
 	private CheckSpecialTimeStrategy checkSpecialTimeStrategyUI;
@@ -133,5 +133,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 		return row;
 	}
 	
-	
+	public ResultMessage getAddPromotionResult(PromotionVO promotionVO){
+		return promotionService.addPromotion(promotionVO);
+	}
 }
