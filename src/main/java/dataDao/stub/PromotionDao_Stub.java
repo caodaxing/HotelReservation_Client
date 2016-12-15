@@ -1,5 +1,6 @@
 package dataDao.stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -82,6 +83,11 @@ public class PromotionDao_Stub implements PromotionDao {
 		pos.add(p3);
 		
 		return pos;
+	}
+
+	@Override
+	public int getPromotinoNum() throws RemoteException {
+		return 33;
 	}
 
 

@@ -40,6 +40,8 @@ public class ManagePromotion implements PromotionService, PromotionInfo{
 			} else {
 				vo.promotionID = vo.hotelID +  String.format("%04d", num);
 			}
+
+System.out.println(vo.promotionID);
 			
 			PromotionPO po = this.promotionTrans.promotionTransToPO(vo);
 			
