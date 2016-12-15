@@ -45,18 +45,16 @@ public class CheckNormalVIP {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/vipImage/会员_普通会员界面背景.png\")");
 	}
 	
 	private void setTextField(){
 		
 		birthday = new TextField();
 		
-		//根据controller显示数据
-		VipVO vo = controller.getVIPInfo();
-		birthday.setText(vo.info);
-		
-		birthday.setPrefSize(200, 30);
+		birthday.setPrefSize(250, 30);
 		
 		rightPane.getChildren().add(birthday);
 		
@@ -69,6 +67,13 @@ public class CheckNormalVIP {
 		
 		return scene;
 	
+	}
+	
+	public void setText(){
+
+		//根据controller显示数据
+		VipVO vo = controller.getVIPInfo();
+		birthday.setText(vo.info);
 	}
 	
 }

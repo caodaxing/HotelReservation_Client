@@ -150,6 +150,9 @@ public class OrderList {
 	 */
 	public void setTextValue(){
 		ArrayList<OrderVO> orderList = controller.getOrderList();
+		if(orderList == null){
+			return ;
+		}
 		for(OrderVO o :orderList){
 			check = new Button("查看");
 			String state = MessageHelper.orderStateToString(o.orderState);

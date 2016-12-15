@@ -68,6 +68,9 @@ public class VistorController extends VistorLeftController{
 	//搜索酒店，设置界面，设置list
 	public void searchAndSetSearchHotelListView(){
 		HotelSearchVO vo = searchHotelUI.getSearchVO();
+		if(vo == null){
+			return;
+		}
 		if(vo.startTime.equals("x")){
 			return ;
 		}
@@ -100,7 +103,6 @@ public class VistorController extends VistorLeftController{
 	public void setSortedList(HotelSearchCondition condition){
 		hotelList =  searchService.getSortedList(condition, hotelList);
 	}
-	
 	
 	public HotelVO getHotelInfo(){
 		return checkService.getHotelnfo(hotelID);

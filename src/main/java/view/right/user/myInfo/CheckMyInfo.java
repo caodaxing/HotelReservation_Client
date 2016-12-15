@@ -57,7 +57,9 @@ public class CheckMyInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-	
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/基本信息_查看基本信息界面背景.jpg\")");
 	}
 	
 	private void setTextField (){
@@ -102,7 +104,7 @@ public class CheckMyInfo {
 		historyCredit.setText("查看信用记录");
 		modify.setText("修改");
 		
-		historyCredit.setPrefSize(100, 30);
+		historyCredit.setPrefSize(120, 30);
 		modify.setPrefSize(100, 40);
 		
 		historyCredit.setOnAction(new EventHandler<ActionEvent>(){

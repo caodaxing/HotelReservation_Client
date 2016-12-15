@@ -42,16 +42,14 @@ public class CheckCompanyVIP {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/vipImage/会员_企业会员界面背景.png\")");
 	}
 	
 	private void setTextField(){
 		
 		company = new TextField();
-		
-		//根据controller显示数据
-		VipVO vo = controller.getVIPInfo();
-		company.setText(vo.info);
 		
 		company.setEditable(false);
 		
@@ -68,6 +66,13 @@ public class CheckCompanyVIP {
 		
 		return scene;
 	
+	}
+	
+	public void setText(){
+
+		//根据controller显示数据
+		VipVO vo = controller.getVIPInfo();
+		company.setText(vo.info);
 	}
 
 }

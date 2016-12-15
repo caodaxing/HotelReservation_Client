@@ -39,34 +39,16 @@ public class UserMyInfoController extends UserLeftController {
 	}
 
 	public void setBlankView(){
-		
 		stage.setScene(blankUI.getScene());
-		
 	}
 	
 	public void setHistoryCreditView(){
-		
+		historyCreditUI.setListValue();
 		stage.setScene(historyCreditUI.getScene());
-		
 	}
 	
 	public void setModifyMyInfoView(){
-		
 		stage.setScene(modifyMyInfoUI.getScene());
-		
-	}
-	
-	public ClientVO getClientInfo(){
-		
-		return clientService.getClientInfo(userID);
-		
-	}
-	
-	//待修改
-	public ArrayList<CreditChangeVO> getHistoryCredit(){
-		
-		return creditChangeService.getCreditHistory(userID);
-		
 	}
 	
 	/*
@@ -96,9 +78,20 @@ public class UserMyInfoController extends UserLeftController {
 		}
 	}
 
+	/*
+	 * 返回当前用户的历史信用记录
+	 */
 	public ArrayList<CreditChangeVO> getCreditList() {
-		// TODO Auto-generated method stub
-		return null;
+		return creditChangeService.getCreditHistory(userID);
+	}
+	
+	/*
+	 * 返回当前用户的基本信息
+	 */
+	public ClientVO getClientInfo(){
+		
+		return clientService.getClientInfo(userID);
+		
 	}
 	
 }

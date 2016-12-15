@@ -71,7 +71,7 @@ public class HistoryCredit {
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		
 		rightPane.getStylesheets().add("/CSS/right.css");
-		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/基本信息_查看基本信息界面背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/基本信息_查看信用记录界面背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -129,7 +129,7 @@ public class HistoryCredit {
 		
 		action = new TableColumn<>("动作");
 		action.setCellValueFactory(new PropertyValueFactory<Person, String>("action"));
-		action.setMinWidth(80);
+		action.setMinWidth(100);
 		
 		change = new TableColumn<>("信用值变化");
 		change.setCellValueFactory(new PropertyValueFactory<Person, String>("change"));
@@ -142,19 +142,22 @@ public class HistoryCredit {
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(time, orderID, action, change, result);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
-		AnchorPane.setTopAnchor(tableView, 150.0);
+		AnchorPane.setTopAnchor(tableView, 125.0);
 	
 	}
 	
 	public void setListValue(){
 		ArrayList<CreditChangeVO> creditList = controller.getCreditList();
+		if(creditList == null){
+			return;
+		}
 		for(CreditChangeVO c:creditList){
 			String type = MessageHelper.creditChangeTypeToString(c.action);
 			data.add(new Person(c.time,c.orderID,type,Integer.toString(c.cerditChange),Integer.toString(c.nowCredit)));

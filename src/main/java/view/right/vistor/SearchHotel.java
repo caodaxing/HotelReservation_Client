@@ -274,7 +274,7 @@ public class SearchHotel {
 			start="x";
 		}
 		String end = endTime.getValue().toString();
-		
+		try{
 		DecimalFormat df=new DecimalFormat("#.00");
 		//若为空则置为默认值
 		double priceLow = -1.00;
@@ -303,6 +303,12 @@ public class SearchHotel {
 		
 		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
+		}catch(Exception e){
+			controller.showDialog("请输入正确的值");
+		}
+		
+		return null;
+
 	}
 
 }

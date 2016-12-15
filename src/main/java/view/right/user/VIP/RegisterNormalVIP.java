@@ -52,7 +52,9 @@ public class RegisterNormalVIP {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/vipImage/会员_普通会员界面背景.png\")");
 	}
 	
 	private void setDatePicker(){
@@ -63,7 +65,7 @@ public class RegisterNormalVIP {
 		
 		birthday.setValue(LocalDate.now());
 		
-		birthday.setPrefSize(200, 30);
+		birthday.setPrefSize(250, 30);
 		
 		rightPane.getChildren().add(birthday);
 		

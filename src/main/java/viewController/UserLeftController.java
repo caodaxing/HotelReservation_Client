@@ -3,6 +3,7 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.Identity;
+import Message.OrderListCondition;
 import Message.ResultMessage;
 import Message.VipType;
 import javafx.stage.Stage;
@@ -33,6 +34,8 @@ public class UserLeftController {
 	
 	protected Stage stage;
 	
+	protected ArrayList<OrderVO> orderList;
+	
 	protected ClientService clientService;
 	protected AccountService accountService;
 	protected OrderService orderService;
@@ -44,11 +47,11 @@ public class UserLeftController {
 	protected CheckNormalVIP checkNormalVIPUI; 
 	protected CheckCompanyVIP checkCompanyVIPUI;
 	protected First orderFirstUI;
-	protected OrderList allOrderList;
-	protected OrderList executeOrderList;
-	protected OrderList unexecuteOrderList;
-	protected OrderList undoOrderList;
-	protected OrderList abnormalOrderList;
+	//protected OrderList allOrderList;
+	//protected OrderList executeOrderList;
+	//protected OrderList unexecuteOrderList;
+	//protected OrderList undoOrderList;
+	//protected OrderList abnormalOrderList;
 	protected HotelFirst hotelFirstUI;
 	protected ModifyPassword modifyPasswordUI;
 	protected CheckMyInfo checkMyInfoUI;
@@ -63,11 +66,11 @@ public class UserLeftController {
 
 		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
-		allOrderList = new OrderList(this);
-		executeOrderList = new OrderList(this);
-		unexecuteOrderList = new OrderList(this);
-		undoOrderList = new OrderList(this);
-		abnormalOrderList = new OrderList(this);
+		//allOrderList = new OrderList(this);
+		//executeOrderList = new OrderList(this);
+		//unexecuteOrderList = new OrderList(this);
+		//undoOrderList = new OrderList(this);
+		//abnormalOrderList = new OrderList(this);
 		hotelFirstUI = new HotelFirst(this);
 		modifyPasswordUI = new ModifyPassword(this);
 		checkMyInfoUI = new CheckMyInfo(this);
@@ -102,11 +105,13 @@ public class UserLeftController {
 			if(vo.vipType == VipType.BIRTHDAY_VIP){
 				//普通会员
 				checkNormalVIPUI = new CheckNormalVIP(this);
+				checkNormalVIPUI.setText();
 				stage.setScene(checkNormalVIPUI.getScene());
 				stage.show();
 			}else if(vo.vipType == VipType.BUSINESS_VIP){
 				//企业会员
 				checkCompanyVIPUI = new CheckCompanyVIP(this);
+				checkCompanyVIPUI.setText();
 				stage.setScene(checkCompanyVIPUI.getScene());
 				stage.show();
 			}
@@ -134,33 +139,48 @@ public class UserLeftController {
 		stage.setScene(hotelFirstUI.getScene());
 		stage.show();
 	}
+
+	//设置按条件筛选后的list
+	public void setFilterOrderList(OrderListCondition condition){
+		orderList = orderListService.filterUserOrderList(userID, condition);
+	}
 	
-	//待修改
 	public void setAllOrderList(){
+		setFilterOrderList(OrderListCondition.ALL_ORDERS);
+		OrderList allOrderList = new OrderList(this);
+		allOrderList.setTextValue();
 		stage.setScene(allOrderList.getScene());
 		stage.show();
 	}
 	
-	//待修改
 	public void setExecuteOrderList(){
+		setFilterOrderList(OrderListCondition.EXECUTED);
+		OrderList executeOrderList = new OrderList(this);
+		executeOrderList.setTextValue();
 		stage.setScene(executeOrderList.getScene());
 		stage.show();
 	}
 	
-	//待修改		
 	public void setUnexecuteOrderList(){
+		setFilterOrderList(OrderListCondition.UNEXECUTED);
+		OrderList unexecuteOrderList = new OrderList(this);
+		unexecuteOrderList.setTextValue();
 		stage.setScene(unexecuteOrderList.getScene());
 		stage.show();
 	}
 	
-	//待修改
 	public void setUndoOrderList(){
+		setFilterOrderList(OrderListCondition.UNDOED);
+		OrderList undoOrderList = new OrderList(this);
+		undoOrderList.setTextValue();
 		stage.setScene(undoOrderList.getScene());
 		stage.show();
 	}
 	
-	//待修改
 	public void setAbnormalOrderList(){
+		setFilterOrderList(OrderListCondition.ABNORMALED);
+		OrderList abnormalOrderList = new OrderList(this);
+		abnormalOrderList.setTextValue();
 		stage.setScene(abnormalOrderList.getScene());
 		stage.show();
 	}
@@ -217,6 +237,20 @@ public class UserLeftController {
 	public String getUserID(){
 		return userID;
 	}
+
+	/*
+	 * 返回当前orderList
+	 */
+	public ArrayList<OrderVO> getOrderList(){
+		return orderList;
+	}
+	
+	/*
+	 * 返回用户头像路径
+	 */
+	public String getHeadPath(){
+		return clientService.getClientInfo(userID).headImagePath;
+	}
 	
 	public void modifyPassword(){
 		
@@ -251,11 +285,6 @@ public class UserLeftController {
 		}
 		
 	}
-	
-	//各种getlist方法，加个根据list生成不同列表的方法。待填充
-	public ArrayList<OrderVO> getAllOrderList(){
-		return null;
-	}
 
 	public Stage getStage(){
 		return stage;
@@ -265,14 +294,6 @@ public class UserLeftController {
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
-	}
-
-	public ArrayList<OrderVO> getOrderList() {
-		return orderListService.filterUserOrderList(userID, condition);
-	}
-	
-	public String getHeadPath(){
-		return clientService.getClientInfo(userID).headImagePath;
 	}
 	
 }

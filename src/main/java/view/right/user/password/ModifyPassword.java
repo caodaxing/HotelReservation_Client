@@ -56,6 +56,8 @@ public class ModifyPassword {
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 	
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/修改密码_修改密码界面背景.jpg\")");
 	}
 
 	private void setTextField (){
@@ -81,8 +83,8 @@ public class ModifyPassword {
 		AnchorPane.setLeftAnchor(repeatPassword, 200.0);
 		
 		AnchorPane.setTopAnchor(oldPassword, 150.0);
-		AnchorPane.setTopAnchor(newPassword, 200.0);
-		AnchorPane.setTopAnchor(repeatPassword, 250.0);
+		AnchorPane.setTopAnchor(newPassword, 225.0);
+		AnchorPane.setTopAnchor(repeatPassword, 300.0);
 		
 	}
 	

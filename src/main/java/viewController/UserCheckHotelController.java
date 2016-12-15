@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.stage.Stage;
 import logicService.order.OrderService;
 import view.right.user.checkHotel.*;
+import vo.EvaluationVO;
 import vo.HotelVO;
 import vo.OrderVO;
 
@@ -110,6 +111,11 @@ public class UserCheckHotelController extends UserLeftController {
 	}
 
 	public OrderVO getOrderInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<EvaluationVO> getEvaluationList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
