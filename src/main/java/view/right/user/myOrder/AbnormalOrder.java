@@ -118,9 +118,9 @@ public class AbnormalOrder {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//返回异常订单界面并清空
+				//返回异常订单列表，orderID置为空
 				controller.setAbnormalOrderList();
-				setBlank();
+				controller.setOrderID(null);
 				controller.getStage().show();
 			}
 			

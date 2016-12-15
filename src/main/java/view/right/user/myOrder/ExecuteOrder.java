@@ -40,9 +40,6 @@ public class ExecuteOrder {
 	TextField originalPrice ;
 	TextField actualPrice ;
 	
-	Button arriveMessage ;
-	Button leaveMessage ;
-	
 	Button checkEvaluation ;
 	
 	Button back ;
@@ -132,40 +129,19 @@ public class ExecuteOrder {
 	private void setButton(){
 		
 		//初始化Button
-		arriveMessage = new Button();
-		leaveMessage = new Button();
 		checkEvaluation = new Button();
 		back = new Button();
 		
 		//设置Button文字
-		arriveMessage.setText("入住信息");
-		leaveMessage.setText("退房信息");
 		checkEvaluation.setText("评价");
 		back.setText("返回");
 				
 		//设置Button大小
-		arriveMessage.setPrefSize(100, 40);
-		leaveMessage.setPrefSize(100, 40);
 		checkEvaluation.setPrefSize(100, 40);
 		back.setPrefSize(100, 40);
 		
 		//添加listener
-		arriveMessage.setOnAction(new EventHandler<ActionEvent>(){
-			
-			public void handle(ActionEvent event){
-				controller.setCheckArriveInfoView();
-				controller.getStage().show();
-			}
-			
-		});
-		leaveMessage.setOnAction(new EventHandler<ActionEvent>(){
-			
-			public void handle(ActionEvent event){
-				controller.setCheckLeaveInfoView();
-				controller.getStage().show();
-			}
-			
-		});
+		
 		checkEvaluation.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
@@ -177,26 +153,19 @@ public class ExecuteOrder {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//返回首页并清空
-				controller.setOrderFirstView();
-				setBlank();
+				//返回已执行订单列表
+				controller.setExecuteOrderList();
+				controller.setOrderID(null);
 				controller.getStage().show();
 			}
 			
 		});
 		
 		//添加Button组件
-		rightPane.getChildren().add(arriveMessage);
-		rightPane.getChildren().add(leaveMessage);
 		rightPane.getChildren().add(checkEvaluation);
 		rightPane.getChildren().add(back);
 		
 		//设置Button位置
-		AnchorPane.setLeftAnchor(arriveMessage, 425.0);
-		AnchorPane.setTopAnchor(arriveMessage, 400.0);
-		AnchorPane.setLeftAnchor(leaveMessage, 425.0);
-		AnchorPane.setTopAnchor(leaveMessage, 450.0);
-		
 		AnchorPane.setLeftAnchor(checkEvaluation, 250.0);
 		AnchorPane.setTopAnchor(checkEvaluation, 525.0);
 		

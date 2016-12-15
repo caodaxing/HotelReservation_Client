@@ -73,8 +73,8 @@ public class Evaluate {
 		info.setEditable(true);
 		
 		//设置textField大小
-		grade.setPrefSize(200, 30);
-		info.setPrefSize(200, 30);
+		grade.setPrefSize(100, 30);
+		info.setPrefSize(250, 100);
 		
 		//右侧pane添加组件
 		rightPane.getChildren().add(grade);
@@ -118,7 +118,7 @@ public class Evaluate {
 			public void handle(ActionEvent event){
 				//返回首页并清空
 				setBlank();
-				controller.setOrderFirstView();
+				controller.setExecuteOrderView();
 				controller.getStage().show();
 			}
 			
@@ -129,10 +129,10 @@ public class Evaluate {
 		rightPane.getChildren().add(cancel);
 		
 		//设置Button位置
-		AnchorPane.setLeftAnchor(confirm, 350.0);
-		AnchorPane.setRightAnchor(confirm, 400.0);
+		AnchorPane.setLeftAnchor(confirm, 200.0);
+		AnchorPane.setTopAnchor(confirm, 400.0);
 		
-		AnchorPane.setLeftAnchor(cancel, 200.0);
+		AnchorPane.setLeftAnchor(cancel, 350.0);
 		AnchorPane.setTopAnchor(cancel, 400.0);
 				
 	}
@@ -150,4 +150,26 @@ public class Evaluate {
 		
 	}
 	
+	public double getGrade(){
+		String g = grade.getText();
+		double grd = -1;
+		if(g.equals("")){
+			controller.showDialog("请输入评价等级");
+		}
+		try{
+			grd = Double.valueOf(g);
+			if(grd>5 || grd<0){
+				grd = -1;
+				controller.showDialog("评分请在0-5之间");
+			}
+		}catch(Exception e){
+			controller.showDialog("请输入有效值");
+		}
+		return grd;
+	}
+	
+	public String getInfo(){
+		//允许置空
+		return info.getText();
+	}
 }

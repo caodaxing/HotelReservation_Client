@@ -117,9 +117,9 @@ public class UndoOrder {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//暂时返回首页
-				controller.setOrderFirstView();
-				setBlank();
+				//返回撤销订单列表
+				controller.setUndoOrderList();
+				controller.setOrderID(null);
 				controller.getStage().show();
 			}
 			

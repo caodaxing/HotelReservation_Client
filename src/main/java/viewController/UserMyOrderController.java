@@ -1,10 +1,11 @@
 package viewController;
 
 import Message.OrderState;
+import Message.ResultMessage;
 import javafx.stage.Stage;
+import logicService.order.ExecuteOrderService;
+import logicService.stub.OrderService_Stub;
 import view.right.user.myOrder.AbnormalOrder;
-import view.right.user.myOrder.CheckArriveInfo;
-import view.right.user.myOrder.CheckLeaveInfo;
 import view.right.user.myOrder.Evaluate;
 import view.right.user.myOrder.EvaluationInfo;
 import view.right.user.myOrder.ExecuteOrder;
@@ -17,9 +18,9 @@ import vo.OrderVO;
 
 public class UserMyOrderController extends UserLeftController {
 	
+	private ExecuteOrderService executeService ;
+	
 	private AbnormalOrder abnormalOrderUI ;
-	private CheckArriveInfo checkArriveInfoUI ;
-	private CheckLeaveInfo checkLeaveInfoUI ;
 	private Evaluate evaluateUI ;
 	private EvaluationInfo evaluationInfoUI ;
 	private ExecuteOrder executeOrderUI ;
@@ -30,6 +31,8 @@ public class UserMyOrderController extends UserLeftController {
 		
 		this.stage = stage;
 		this.userID = userID;
+		
+		executeService = new OrderService_Stub();
 		
 		//abnormalOrderUI = new AbnormalOrder(this);
 		//checkArriveInfoUI = new CheckArriveInfo(this);
@@ -51,21 +54,6 @@ public class UserMyOrderController extends UserLeftController {
 		abnormalOrderUI = new AbnormalOrder(this);
 		stage.setScene(abnormalOrderUI.getScene());
 		abnormalOrderUI.setText();
-		
-	}
-	
-	public void setCheckArriveInfoView(){
-		
-		stage.setScene(checkArriveInfoUI.getScene());
-		checkArriveInfoUI.setText();
-		
-	}
-	
-	public void setCheckLeaveInfoView(){
-		
-		checkLeaveInfoUI = new CheckLeaveInfo(this);
-		stage.setScene(checkLeaveInfoUI.getScene());
-		checkLeaveInfoUI.setText();
 		
 	}
 	
@@ -128,7 +116,21 @@ public class UserMyOrderController extends UserLeftController {
 	}
 	
 	public void evaluate(){
-		
+		double grd = evaluateUI.getGrade();
+		if(grd == -1){
+			return;
+		}
+		String info = evaluateUI.getInfo();
+		EvaluationVO vo = new EvaluationVO(orderID,grd,info);
+		ResultMessage result = orderService.evaluate(vo);
+		if(result == ResultMessage.SUCCESS){
+			showDialog("评价成功");
+			evaluateUI.setBlank();
+			setExecuteOrderView();
+		}else{
+			showDialog("评价失败，请重试");
+			return;
+		}
 	}
 
 	public void searchOrder() {
@@ -140,7 +142,20 @@ public class UserMyOrderController extends UserLeftController {
 			orderID = null;
 			return;
 		}
-		OrderState state = vo.orderState;
+		setOrderView();
+		
+	}
+
+	public void setOrderID(String orderID){
+		this.orderID = orderID;
+	}
+	
+	public void setOrderID(int row){
+		orderID = orderList.get(row).hotelID;
+	}
+
+	public void setOrderView() {
+		OrderState state = orderService.getOrderInfo(orderID).orderState;
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){
@@ -153,7 +168,21 @@ public class UserMyOrderController extends UserLeftController {
 			showDialog("系统错误，请重试");
 			return;
 		}
-		
+	}
+	
+	/*
+	 * 撤销订单
+	 */
+	public void undoOrder() {
+		//是否添加选择框?
+		ResultMessage result = executeService.undoUnexecutedOrder(orderID);
+		if(result == ResultMessage.SUCCESS){
+			showDialog("撤销成功");
+			setUndoOrderView();
+		}else {
+			showDialog("撤销失败，请重试");
+			return;
+		}
 	}
 	
 }

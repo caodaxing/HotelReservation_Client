@@ -35,8 +35,6 @@ public class UserLeftController {
 	
 	protected Stage stage;
 	
-	protected ArrayList<OrderVO> orderList;
-	
 	protected ClientService clientService;
 	protected AccountService accountService;
 	protected OrderService orderService;
@@ -58,6 +56,8 @@ public class UserLeftController {
 	protected CheckMyInfo checkMyInfoUI;
 	
 	protected String orderID;
+	
+	protected ArrayList<OrderVO> orderList;
 	
 	//构造函数
 	public UserLeftController(){

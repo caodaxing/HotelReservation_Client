@@ -27,6 +27,7 @@ import view.left.UserUI;
 import view.right.hotelManager.orderManagement.OrderList.Person;
 import viewController.HMOrderManagementController;
 import viewController.UserLeftController;
+import viewController.UserMyOrderController;
 import vo.OrderVO;
 
 /**
@@ -122,6 +123,10 @@ public class OrderList {
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								//待修改
+								UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
+								right.setOrderID(row);
+								right.setOrderView();
+								right.getStage().show();
 							});
 						}
 						setGraphic(Item);

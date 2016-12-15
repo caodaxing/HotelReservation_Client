@@ -143,14 +143,18 @@ public class UnexecuteOrder {
 		undoOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.undoOrder();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回未执行订单列表
+				controller.setUndoOrderList();
+				controller.setOrderID(null);
+				controller.getStage().show();
 			}
 			
 		});

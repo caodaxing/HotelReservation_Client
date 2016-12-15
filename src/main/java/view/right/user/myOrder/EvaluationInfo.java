@@ -74,8 +74,8 @@ public class EvaluationInfo {
 		info.setEditable(false);
 		
 		//设置textField大小
-		grade.setPrefSize(200, 30);
-		info.setPrefSize(200, 30);
+		grade.setPrefSize(100, 30);
+		info.setPrefSize(250, 100);
 		
 		//右侧pane添加组件
 		rightPane.getChildren().add(grade);
@@ -105,9 +105,8 @@ public class EvaluationInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//返回首页并清空
+				//返回首页
 				controller.setOrderFirstView();
-				setBlank();
 				controller.getStage().show();
 			}
 			
