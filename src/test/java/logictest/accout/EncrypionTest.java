@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import logic.utility.Encryption;
 
-public class EncryptPasswordException {
+public class EncrypionTest {
 
 	private Encryption encryption;
 	
@@ -22,6 +22,9 @@ public class EncryptPasswordException {
 		String pass1 = "abcdef";
 		String pass2 = "abcdef";
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
+		
+		System.out.println(encryption.encryptPassword("wyy"));
+		
 		
 		pass1 = "123QWEASDZXC";
 		pass2 = "123QWEASDZXC";

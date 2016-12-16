@@ -36,7 +36,7 @@ public class HotelTransform {
 		
 		return new HotelVO(po.getHoteID(), po.getHotelName(), po.getCity(),po.getTradingArea(), 
 				po.getLocationOfHotel(), po.getEvaluationGrades(),po.getLevelOfHotel(), po.getIntroduction(), 
-				po.getFacilities(), po.getPictures(), po.getBussiness());
+				po.getFacilities(), po.getPicturesPath(), po.getBussiness());
 	}
 
 }

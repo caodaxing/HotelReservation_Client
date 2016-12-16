@@ -27,7 +27,7 @@ public class HotelPO implements Serializable{
 	private String city;
 	private String tradingArea;
 	private String locationOfHotel;
-	public double evaluationGrades;
+	private double evaluationGrades;
 	private int levelOfHotel;
 	private String introduction;
 	private String facilities;
@@ -78,8 +78,15 @@ public class HotelPO implements Serializable{
 		this.picturesPath=pictures;
 		this.bussiness = bussiness;
 	}
-	
-	
+
+	public String getHoteID() {
+		return hoteID;
+	}
+
+	public void setHoteID(String hoteID) {
+		this.hoteID = hoteID;
+	}
+
 	public String getHotelName() {
 		return hotelName;
 	}
@@ -94,39 +101,6 @@ public class HotelPO implements Serializable{
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-	public ArrayList<String> getPicturesPath() {
-		return picturesPath;
-	}
-
-	public void setPicturesPath(ArrayList<String> picturesPath) {
-		this.picturesPath = picturesPath;
-	}
-
-	public String getFacilities() {
-		return facilities;
-	}
-
-	public void setFacilities(String facilities) {
-		this.facilities = facilities;
-	}
-
-	
-	public String getBussiness() {
-		return bussiness;
-	}
-
-	public void setBussiness(String bussiness) {
-		this.bussiness = bussiness;
-	}
-
-	public String getHoteID() {
-		return hoteID;
-	}
-
-	public void setHoteID(String hoteID) {
-		this.hoteID = hoteID;
 	}
 
 	public String getTradingArea() {
@@ -145,6 +119,14 @@ public class HotelPO implements Serializable{
 		this.locationOfHotel = locationOfHotel;
 	}
 
+	public double getEvaluationGrades() {
+		return evaluationGrades;
+	}
+
+	public void setEvaluationGrades(double evaluationGrades) {
+		this.evaluationGrades = evaluationGrades;
+	}
+
 	public int getLevelOfHotel() {
 		return levelOfHotel;
 	}
@@ -161,20 +143,30 @@ public class HotelPO implements Serializable{
 		this.introduction = introduction;
 	}
 
-	public ArrayList<String> getPictures() {
+	public String getFacilities() {
+		return facilities;
+	}
+
+	public void setFacilities(String facilities) {
+		this.facilities = facilities;
+	}
+
+	public ArrayList<String> getPicturesPath() {
 		return picturesPath;
 	}
 
-	public void setPictures(ArrayList<String> pictures) {
-		this.picturesPath = pictures;
+	public void setPicturesPath(ArrayList<String> picturesPath) {
+		this.picturesPath = picturesPath;
+	}
+
+	public String getBussiness() {
+		return bussiness;
+	}
+
+	public void setBussiness(String bussiness) {
+		this.bussiness = bussiness;
 	}
 	
-	public double getEvaluationGrades() {
-		return evaluationGrades;
-	}
 	
-	public void setEvaluationGrades(double evaluationGrades) {
-		this.evaluationGrades = evaluationGrades;
-	}
 	
 }
