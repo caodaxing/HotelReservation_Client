@@ -40,7 +40,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage hacCheckOut(String orderID) {
+	public ResultMessage hasCheckOut(String orderID) {
 		
 		OrderPO po = null;
 		try {
