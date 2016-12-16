@@ -13,19 +13,11 @@ public interface ExecuteOrderService {
 	
 	public ResultMessage checkOut(String orderID);
 	
-	/**
-	 * 客户入住，正常执行订单
-	 * @param order_id 订单id
-	 * @return ResultMessage
-	 */
-	public ResultMessage normalExecute(String orderID, String roomID) ;
+	// 客户入住，正常执行订单 需要传入分配的房间id
+	public ResultMessage normalExecute(String orderID, String[] roomID) ;
 	
-	/**
-	 * 客户在最晚执行订单时间后入住，补登记订单
-	 * @param order_id 订单id
-	 * @return ResultMessage
-	 */
-	public ResultMessage supplyOrder(String orderID,  String roomID);
+	//客户在最晚执行订单时间后入住，补登记订单 需要传入分配的房间id
+	public ResultMessage supplyOrder(String orderID,  String[] roomID);
 	
 	/**
 	 * 网站营销人员撤销异常订单

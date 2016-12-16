@@ -8,7 +8,7 @@ import Message.RoomType;
  * @param userID 用户id
  * @param orderid 订单id
  * @param roomType
- * @param roomId
+ * @param roomIds
  * @param roomNum
  * @param startTime  订单开始时间(预计入住时间)
  * @param endTime  结束时间(预计退房时间)
@@ -29,7 +29,7 @@ public class OrderVO {
 	public String userID;
 	public String orderId;
 	public RoomType roomType;
-	public String roomID;
+	public String[] roomIDs;
 	public int roomNum;
 	public String startTime;
 	public String endTime;
@@ -89,14 +89,14 @@ public class OrderVO {
 	 * @param abnormalTime
 	 * @param undoUnexecutedTime
 	 */
-	public OrderVO(String userID, String orderId, RoomType roomType,String roomID, int roomNum, String startTime, String endTime,
+	public OrderVO(String userID, String orderId, RoomType roomType,String[] roomIDs, int roomNum, String startTime, String endTime,
 			String hotelID, OrderState orderState, int numOfPeople, boolean hasChild, double beforePrice,
 			double afterPrice, PromotionVO promotion, String checkInTime, String checkOutTime, String undoAbnormalTime,
 			String abnormalTime, String undoUnexecutedTime) {
 		this.userID = userID;
 		this.orderId = orderId;
 		this.roomType = roomType;
-		this.roomID = roomID;
+		this.roomIDs = roomIDs;
 		this.roomNum = roomNum;
 		this.startTime = startTime;
 		this.endTime = endTime;

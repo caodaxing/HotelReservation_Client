@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @param hotelId 酒店id
  * @param startTime 开始时间
  * @param endTime 结束时间
+ * @param roomIDs 分配的房间id 数组
  * @param roomNum 酒店房间数量
  * @param roomType 房间类型
  * @param numberOfRooms  房间数量
@@ -31,7 +32,7 @@ public class OrderPO implements Serializable{
 	private String hotelId;
 	private String startTime;
 	private String endTime;
-	private String roomID;
+	private String[] roomIDs;
 	private int roomNum;
 	private int roomType;
 	private boolean hasChild;
@@ -67,7 +68,7 @@ public class OrderPO implements Serializable{
 	 * @param abnormalTime
 	 * @param undoUnexecutedTime
 	 */
-	public OrderPO(String uesrID, String orderID, String hotelId, String startTime, String endTime, String roomID, int roomNum,
+	public OrderPO(String uesrID, String orderID, String hotelId, String startTime, String endTime, String[] roomID, int roomNum,
 			int roomType, boolean hasChild, int numberOfPeople, int state, double beforePromotionPrice,
 			double afterPromotionPrice, String promotionID, String checkInTime, String checkOutTime, 
 			String undoAbnormalTime, String abnormalTime, String undoUnexecutedTime) {
@@ -76,7 +77,7 @@ public class OrderPO implements Serializable{
 		this.hotelId = hotelId;
 		this.startTime = startTime;
 		this.endTime = endTime;
-		this.roomID = roomID;
+		this.roomIDs = roomID;
 		this.roomNum = roomNum;
 		this.roomType = roomType;
 		this.hasChild = hasChild;
@@ -152,13 +153,13 @@ public class OrderPO implements Serializable{
 	}
 
 
-	public String getRoomID() {
-		return roomID;
+	public String[] getRoomIDs() {
+		return roomIDs;
 	}
 
 
-	public void setRoomID(String roomID) {
-		this.roomID = roomID;
+	public void setRoomIDs(String[] roomIDs) {
+		this.roomIDs = roomIDs;
 	}
 
 

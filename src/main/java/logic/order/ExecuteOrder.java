@@ -62,7 +62,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 	
 	
-	public ResultMessage normalExecute(String orderID, String roomID) {
+	public ResultMessage normalExecute(String orderID, String[] roomIDs) {
 		try {
 			po= this.orderDao.getOrderByOrderID(orderID);
 		} catch (RemoteException e) {
@@ -77,7 +77,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 				// 添加订单的信息
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setCheckInTime(checkInTime);
-				po.setRoomID(roomID);
+				po.setRoomIDs(roomIDs);
 				
 				try {
 					if(this.orderDao.updateOrder(po)) {
@@ -106,7 +106,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage supplyOrder(String orderID, String roomID) {
+	public ResultMessage supplyOrder(String orderID, String[] roomIDs) {
 		
 		try {
 			po = this.orderDao.getOrderByOrderID(orderID);
@@ -121,7 +121,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 				// 添加订单的信息
 				po.setState(OrderState.EXECUTED.ordinal());
 				po.setCheckInTime(checkInTime);
-				po.setRoomID(roomID);
+				po.setRoomIDs(roomIDs);
 				
 				try {
 					if(this.orderDao.updateOrder(po)) {
