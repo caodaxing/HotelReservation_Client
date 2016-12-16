@@ -154,6 +154,7 @@ public class Account implements AccountService{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 		return Identity.values()[po.getIdentity()];
 	}
 	

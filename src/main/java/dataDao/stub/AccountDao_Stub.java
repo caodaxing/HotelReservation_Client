@@ -32,7 +32,7 @@ public class AccountDao_Stub implements AccountDao{
 			}
 		}
 		
-		return null;
+		return pos.get(0);
 	}
 
 	@Override
