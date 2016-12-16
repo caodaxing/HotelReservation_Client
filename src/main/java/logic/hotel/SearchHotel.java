@@ -131,12 +131,11 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-
 		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
-	
+		
 		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();
 		//酒店名称的筛选
 		if (search.hotelName != null && search.hotelName != "") {
@@ -153,7 +152,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
-
+		
 		ArrayList<HotelVO> hotelList2  = new ArrayList<HotelVO>();
 		
 		if(search.startTime != null && search.startTime != "" 
@@ -171,6 +170,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 				
 				while(!t1.getTime().equals(t2.getTime())) {
 					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
+			
 					if(num < search.roomNum) {
 						empty = false;
 						break;
@@ -180,7 +180,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 				}
 				
 				if(empty) {
-					hotelList2.remove(vo);
+					hotelList2.add(vo);
 				}
 			}
 		}
@@ -197,6 +197,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 		if(hotelList2 == null || hotelList2.size() == 0) {
 			return null;
 		}
+		
 		
 		
 		if (search.roomPriceLow != -1) {
@@ -216,7 +217,7 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-
+		
 		return hotelList2;
 	}
 

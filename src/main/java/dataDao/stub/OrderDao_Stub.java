@@ -17,8 +17,12 @@ public class OrderDao_Stub implements OrderDao {
 				"2016-12-13 12:00:00",r1, 1, 1, false, 1, 0, 300, 240, "ppp", null, null, null, null, null));
 		
 		String[] r2= {"123"};
-		this.pos.add(new OrderPO("wyy", "20160101000240001", "green", "2016-01-01 12:00:00",
-				"2016-01-02 12:00:00", r2,1, 2, false, 1, 2, 300, 240, "ppp", null, null, null, null, null));
+		this.pos.add(new OrderPO("wyy", "20170101000240001", "green", "2017-01-01 12:00:00",
+				"2017-01-02 12:00:00", r2,1, 2, false, 1, 2, 300, 240, "ppp", null, null, null, null, null));
+		
+		String[] r3= {"123"};
+		this.pos.add(new OrderPO("wyy", "20160101000240001", "green", "2017-01-01 12:00:00",
+				"2017-01-02 12:00:00", r3,1, 2, false, 1, 0, 300, 240, "ppp", null, null, null, null, null));
 		
 	}
 
@@ -36,9 +40,11 @@ public class OrderDao_Stub implements OrderDao {
 	public OrderPO getOrderByOrderID(String orderID) {
 		if(orderID == "20161212000041212") {
 			return pos.get(0);
+		} else if(orderID == "20170101000240001") {
+			return pos.get(1);
 		}
 		
-		return pos.get(1);
+		return pos.get(2);
 	}
 
 	@Override

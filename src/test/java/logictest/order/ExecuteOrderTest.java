@@ -27,11 +27,14 @@ public class ExecuteOrderTest {
 	
 	@Test
 	public void testNormalExecute() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.normalExecute("20161212000041212"));
+		String[] roomIds = {"1109", "1108"};
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.normalExecute("20161212000041212", roomIds));
 		
 		assertEquals(OrderState.EXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals(time, this.executeOrder.getPo().getExecutedTime().substring(0, 10));
+		assertEquals("1108", this.executeOrder.getPo().getRoomIDs()[1]);
+		
+		assertEquals(time, this.executeOrder.getPo().getCheckInTime().substring(0, 10));
 		
 	}	
 	
@@ -46,19 +49,23 @@ public class ExecuteOrderTest {
 
 	@Test
 	public void testSupplyOrderl() {
-		assertEquals(ResultMessage.FAILURE, this.executeOrder.supplyOrder("20161212000041212"));
+		String[] roomIds = {"109", "108"};
+		assertEquals(ResultMessage.FAILURE, this.executeOrder.supplyOrder("20161212000041212",roomIds));
 		
 	}
 	
 	//测试正常补登记
 	@Test
 	public void testSupplyOrder2() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.supplyOrder("20160101000240001"));
+		String[] roomIds = {"709", "708"};
 		
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.supplyOrder("20170101000240001", roomIds));
+		
+		assertEquals(2, this.executeOrder.getPo().getRoomIDs().length);
 		
 		assertEquals(OrderState.EXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		
-		assertEquals(time, this.executeOrder.getPo().getExecutedTime().substring(0, 10));
+		assertEquals(time, this.executeOrder.getPo().getCheckInTime().substring(0, 10));
 	}	
 
 
@@ -69,17 +76,24 @@ public class ExecuteOrderTest {
 	
 	@Test
 	public void testUndoAbnormalOrder2() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoAbnormalOrder("20160101000240001", true));
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoAbnormalOrder("20170101000240001", true));
 		
 		assertEquals(OrderState.UNDOED_ABNORMAL.ordinal(), this.executeOrder.getPo().getState());
 		
 		assertEquals(time, this.executeOrder.getPo().getUndoAbnormalTime().substring(0, 10));
-		
 	}	
 	
+	
 	@Test
-	public void testUndoUnexecutedOrder() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
+	public void testUndoUnexecutedOrder1() {
+		assertEquals(ResultMessage.FAILURE, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
+		
+	}
+	
+	//不会扣除信用
+	@Test
+	public void testUndoUnexecutedOrder2() {
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161"));
 		
 		assertEquals(OrderState.UNDOED_UNEXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		

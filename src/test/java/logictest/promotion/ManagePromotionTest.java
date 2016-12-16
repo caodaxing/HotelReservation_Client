@@ -35,7 +35,7 @@ public class ManagePromotionTest {
 		
 		assertEquals(PromotionType.WEB_11_11, v.promotionType);
 		
-		assertEquals(0.7, 0, v.discount);
+		assertEquals(0.7,  v.discount,0);
 	}
 
 }

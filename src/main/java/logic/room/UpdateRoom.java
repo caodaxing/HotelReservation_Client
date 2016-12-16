@@ -22,7 +22,7 @@ public class UpdateRoom {
 	}
 	
 	//改变指定时期的房间数量信息，changenum包含正负号
-		public ResultMessage updateRoom(String hotelID, RoomType roomType, int changeNum, String time) {
+		public ResultMessage updateRoomInSpecificTime(String hotelID, RoomType roomType, int changeNum, String time) {
 			
 			//如果是当天，调用重载的方法
 			if(new Time(time).sameDay(new Time(Time.getCurrentTime()))) {
@@ -30,6 +30,10 @@ public class UpdateRoom {
 			}
 			
 			int dayNum = new Time(time).calculateDay(Time.getCurrentTime());
+			
+			if(dayNum < 0) {
+				return ResultMessage.FAILURE;
+			}
 			
 			//更新指定日期的房间数量的数组
 			try {

@@ -26,6 +26,6 @@ public class UpdateHotelTest {
 	@Test
 	public void testUpdateHotelInfo(){
 		assertEquals(ResultMessage.SUCCESS, updateHotel.updateHotelInfo(new HotelVO("00001", "rujia", "南京", "仙林中心", 
-				"仙林大道163号", 4.9, 3, "introduction", "facilites",null, null, "nju")));
+				"仙林大道163号", 4.9, 3, "introduction", "facilites", null, "nju")));
 	}
 }

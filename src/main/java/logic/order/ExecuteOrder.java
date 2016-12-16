@@ -201,6 +201,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	@Override
 	public ResultMessage undoUnexecutedOrder(String orderID) {
+	
 		try {
 			po = this.orderDao.getOrderByOrderID(orderID);
 		} catch (RemoteException e) {
@@ -211,40 +212,58 @@ public class ExecuteOrder implements ExecuteOrderService{
 			String time = Time.getCurrentTime();
 			
 			po.setState(OrderState.UNDOED_UNEXECUTED.ordinal());
-			po.setUndoUnexecutedTime(time);;
+			po.setUndoUnexecutedTime(time);
+			
+			
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
-				
-				try {
-					if(this.orderDao.updateOrder(po)) {
-						//更新信用记录和信用值
-						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
-								po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
-						
-						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
+	
+				if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
+						RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
+					
+					try {
+						if(this.orderDao.updateOrder(po)) {
+							//更新信用记录和信用值
+							CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
+									po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
 							
-							//未执行订单撤销，房间数量要恢复
-							if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(po.getHotelId(), 
-									RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
+							if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
+								
 								return ResultMessage.SUCCESS;
+								
+							} else {
+								//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+								po.setState(OrderState.UNEXECUTED.ordinal());
+								po.setUndoUnexecutedTime(null);;
+								this.orderDao.updateOrder(po);
 							}
-							
 						} else {
-							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
-							po.setState(OrderState.UNEXECUTED.ordinal());
-							po.setUndoUnexecutedTime(null);;
-							this.orderDao.updateOrder(po);
+							//如果更新order数据为成功，还原更新的房间信息
+							this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
+									RoomType.values()[po.getRoomType()], -po.getRoomNum(), po.getStartTime());
 						}
+					} catch (RemoteException e) {
+						e.printStackTrace();
 					}
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}
+				} 
+				
 			} else {
 				
-
 				try {
 					if(this.orderDao.updateOrder(po)) {
-						return ResultMessage.SUCCESS;
+						//未执行订单撤销，房间数量要恢复
+						if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
+								RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
+							
+							return ResultMessage.SUCCESS;
+						}
+						
+					}else {
+						//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
+						po.setState(OrderState.UNEXECUTED.ordinal());
+						po.setUndoUnexecutedTime(null);;
+						this.orderDao.updateOrder(po);
 					}
+					
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}

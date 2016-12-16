@@ -2,15 +2,12 @@ package logictest.order;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import Message.RoomType;
 import logic.order.CreateOrder;
 import vo.OrderVO;
-import vo.RoomVO;
 
 public class CreateOrderTest {
 
@@ -47,7 +44,7 @@ public class CreateOrderTest {
 		
 		assertEquals("55555", order.promotion.promotionID);
 		
-		assertEquals(350,  order.afterPrice, 0);
+		assertEquals(840,  order.afterPrice, 0);
 	}
 	
 	@Test

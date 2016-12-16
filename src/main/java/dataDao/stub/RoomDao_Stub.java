@@ -2,7 +2,6 @@ package dataDao.stub;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import Message.RoomType;
 import dataDao.room.RoomDao;

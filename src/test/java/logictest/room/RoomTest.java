@@ -33,7 +33,7 @@ public class RoomTest {
 	
 	@Test
 	public void testRoomInfo(){
-		assertEquals(400, 0, this.room.getRoomInfo("00002", RoomType.STANDARD_ROOM).price);
+		assertEquals(400, this.room.getRoomInfo("00002", RoomType.STANDARD_ROOM).price, 0);
 	}
 	
 	@Test
@@ -60,32 +60,32 @@ public class RoomTest {
 	
 	@Test
 	public void testGetRoomPrice1(){
-		assertEquals(1200, 0, this.room.getRoomPrice("00001", RoomType.STANDARD_ROOM));
+		assertEquals(1200, this.room.getRoomPrice("00001", RoomType.STANDARD_ROOM), 0);
 	}
 	
 	@Test
 	public void testGetRoomPrice2(){
-		assertEquals(400, 0, this.room.getRoomPrice("00002", RoomType.SINGLE_ROOM));
+		assertEquals(400, this.room.getRoomPrice("00002", RoomType.SINGLE_ROOM), 0);
 	}
 	
 	@Test
 	public void testGetRoomPrice3(){
-		assertEquals(400, 0, this.room.getRoomPrice("00003", RoomType.STANDARD_ROOM));
+		assertEquals(400, this.room.getRoomPrice("00003", RoomType.STANDARD_ROOM), 0);
 	}
 	
 	@Test
 	public void testGetHotelLowestPrice1(){
-		assertEquals(250, 0, this.room.getHotelLowestPrice("00001"));
+		assertEquals(250, this.room.getHotelLowestPrice("00001"),0);
 	}
 	
 	@Test
 	public void testGetHotelLowestPrice2(){
-		assertEquals(200, 0, this.room.getHotelLowestPrice("00002"));
+		assertEquals(200, this.room.getHotelLowestPrice("00002"), 0);
 	}
 	
 	@Test
 	public void testGetHotelLowestPrice3(){
-		assertEquals(400, 0, this.room.getHotelLowestPrice("00003"));
+		assertEquals(400, this.room.getHotelLowestPrice("00003"), 0);
 	}
 	
 }

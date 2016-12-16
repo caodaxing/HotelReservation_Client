@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import logic.hotel.CheckHotel;
-import vo.HotelVO;
 
 public class HotelTest {
 
