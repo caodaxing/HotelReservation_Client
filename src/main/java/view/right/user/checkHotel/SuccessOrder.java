@@ -75,7 +75,7 @@ public class SuccessOrder {
 
 		//添加样式表
 		rightPane.getStylesheets().add("/CSS/right.css");
-		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_预定成功反馈界面背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_预订成功反馈界面背景.jpg\")");
 	}
 	
 	private void setTextField(){
@@ -96,7 +96,7 @@ public class SuccessOrder {
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 		roomNums.setText(Integer.toString(vo.roomNum));
 		arriveTime.setText(vo.startTime);
-		promotion.setText(vo.promotion.promotionName+": 原价*"+vo.promotion.discount);
+		promotion.setText(vo.promotion.promotionName+": "+vo.promotion.discount);
 		originalPrice.setText(Double.toString(vo.beforePrice));
 		actualPrice.setText(Double.toString(vo.afterPrice));
 		peopleNums.setText(Integer.toString(vo.numOfPeople));
@@ -148,7 +148,7 @@ public class SuccessOrder {
 		AnchorPane.setLeftAnchor(originalPrice, 200.0);
 		AnchorPane.setLeftAnchor(actualPrice, 200.0);
 		AnchorPane.setLeftAnchor(peopleNums, 200.0);
-		AnchorPane.setLeftAnchor(haveChild, 2000.0);
+		AnchorPane.setLeftAnchor(haveChild, 200.0);
 		
 		AnchorPane.setTopAnchor(hotelName, 100.0);
 		AnchorPane.setTopAnchor(roomType, 150.0);
