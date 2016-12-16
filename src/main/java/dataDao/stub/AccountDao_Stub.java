@@ -13,7 +13,7 @@ public class AccountDao_Stub implements AccountDao{
 
 	public AccountDao_Stub() {
 		this.pos.add(new AccountPO("wyy", "6f6e37133b6207ef6a02aa64224a97ac", Identity.CLIENT.ordinal()));
-		this.pos.add(new AccountPO("bcy", "c7569021bccaa534144be57f83d2b914", Identity.CLIENT.ordinal()));
+		this.pos.add(new AccountPO("bcy", "c7569021bccaa534144be57f83d2b914", Identity.WEBMANAGER.ordinal()));
 		this.pos.add(new AccountPO("zdy", "6d2413e0bd56bdc227f1d7ba523631f2", Identity.HOTELMANAGER.ordinal()));
 	}
 

@@ -39,6 +39,22 @@ public class ExecuteOrder implements ExecuteOrderService{
 		this.orderDao = new OrderDao_Stub();
 	}
 
+	@Override
+	public ResultMessage hacCheckOut(String orderID) {
+		
+		OrderPO po = null;
+		try {
+			po = this.orderDao.getOrderByOrderID(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(po == null || po.getCheckOutTime() == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		return ResultMessage.FAILURE;
+	}
+	
 	//退房，更新order的退房时间信息
 	@Override
 	public ResultMessage checkOut(String orderID) {

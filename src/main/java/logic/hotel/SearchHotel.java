@@ -129,7 +129,7 @@ System.out.println(search.city);
 System.out.println(search.tradingArea);
 System.out.println(search.startTime);
 System.out.println(search.endTime);
-System.out.println(search.hotelName);
+System.out.println(search.hotelName + "hh");
 System.out.println(search.roomPriceLow);
 System.out.println(search.roomPriceHigh);
 System.out.println(search.commentLow);
@@ -155,11 +155,15 @@ System.out.println("a");
 System.out.println(initList.size());
 System.out.println("b");
 
+System.out.println(search.hotelName.equals(""));
+
+
 
 		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();	
 		//酒店名称的筛选
-		if (search.hotelName != null && search.hotelName != "") {
+		if (search.hotelName != null && !search.hotelName.equals("")) {
 			
+			System.out.println(search.hotelName + "bb");
 			
 			for (int i=0; i<initList.size(); ++i) {
 				HotelVO hotelVO = initList.get(i); 
@@ -169,7 +173,10 @@ System.out.println("b");
 			}
 		} else {
 			hotelList = initList;
+System.out.println("bbb");
 		}
+		
+System.out.println(hotelList.size());
 		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;

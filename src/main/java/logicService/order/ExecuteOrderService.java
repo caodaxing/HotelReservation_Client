@@ -10,6 +10,7 @@ import Message.ResultMessage;
  */
 public interface ExecuteOrderService {
 
+	public ResultMessage hacCheckOut(String orderID);
 	
 	public ResultMessage checkOut(String orderID);
 	
