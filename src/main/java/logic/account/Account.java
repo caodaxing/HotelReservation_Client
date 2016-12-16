@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import Message.Identity;
 import Message.ResultMessage;
 import dataDao.account.AccountDao;
+import dataDao.stub.AccountDao_Stub;
 import logicService.account.AccountService;
-import main.rmi.RemoteHelper;
 import po.AccountPO;
 import vo.AccountVO;
 
@@ -19,7 +19,7 @@ public class Account implements AccountService{
 	private AccountDao accountDao;
 		
 	public Account(){
-		accountDao = RemoteHelper.getInstance().getAccountDao();
+		accountDao = new AccountDao_Stub();
 	}
 
 	/**
