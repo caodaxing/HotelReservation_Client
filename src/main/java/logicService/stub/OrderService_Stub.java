@@ -1,7 +1,6 @@
 package logicService.stub;
 
 import java.util.ArrayList;
-
 import Message.CreditChangeType;
 import Message.OrderListCondition;
 import Message.OrderState;
@@ -15,7 +14,6 @@ import logicService.order.OrderService;
 import vo.EvaluationVO;
 import vo.OrderVO;
 import vo.PromotionVO;
-import vo.RoomVO;
 
 public class OrderService_Stub implements OrderService,CreateOrderService,ExecuteOrderService,ManageOrderService,OrderListService {
 
@@ -30,7 +28,9 @@ public class OrderService_Stub implements OrderService,CreateOrderService,Execut
 
 	public OrderVO getOrderInfo(String order_id) {
 //		return new OrderVO("161225005540304", "161225", new RoomVO(0, 388, 0, "0304"), "161226", 1, 2, true, 388);
-		return new OrderVO("12345","12345",RoomType.BIGBED_ROOM,2,"22","33","12345",OrderState.UNEXECUTED,3,true,333,222,new PromotionVO("12345","2342","sda",0.8,"323"),"22","33","22","44");
+//		return new OrderVO("12345","12345",RoomType.BIGBED_ROOM,2,"22","33","12345",OrderState.UNEXECUTED,3,true,333,222,new PromotionVO("12345","2342","sda",0.8,"323"),"22","33","22","44");
+		
+		return null;
 	}
 
 	public String getEvaluation(String order_id) {
@@ -284,19 +284,21 @@ public ArrayList<OrderVO> getDailyOrderList() {
 
 	@Override
 	public ResultMessage checkOut(String orderID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage normalExecute(String orderID, String[] roomID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage supplyOrder(String orderID, String[] roomID) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage hacCheckOut(String orderID) {
 		return null;
 	}
 
