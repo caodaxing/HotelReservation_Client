@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import logicService.order.OrderListService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 import vo.OrderVO;
@@ -70,15 +71,14 @@ public class CheckLeaveInfo {
 	
 	private void setTextField(){
 		
-		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
-		int num = controller.getRow();
+		OrderVO vo = controller.getOrderInfo();
 		//添加文本框
 		
-		roomType = new TextField(orderList.get(num).roomType.toString());
+		roomType = new TextField(MessageHelper.roomTypeToString(vo.roomType));
 		roomType.setId("CheckLeaveInfo");
 		roomType.setPrefSize(200, 30);
 		
-		actualLeaveTime = new TextField(orderList.get(num).endTime);
+		actualLeaveTime = new TextField(vo.checkOutTime);
 		actualLeaveTime.setId("CheckLeaveInfo");
 		actualLeaveTime.setPrefSize(200, 30);
 		/*

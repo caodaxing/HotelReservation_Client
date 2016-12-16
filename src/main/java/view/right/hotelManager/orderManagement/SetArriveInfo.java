@@ -135,8 +135,7 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setFilterOrderList(OrderListCondition.UNEXECUTED);
-				OrderVO orderVO = controller.getlist().get(controller.getRow());
+				OrderVO orderVO = controller.getOrderInfo();
 				String rooms = roomId.getText();
 				String[] roomID = rooms.split(" ");
 				String orderId = orderVO.orderId;
@@ -163,6 +162,7 @@ public class SetArriveInfo {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setunExecuteOrderListView();
+				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			

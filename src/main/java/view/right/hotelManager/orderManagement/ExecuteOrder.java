@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import logicService.order.OrderListService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
@@ -28,7 +29,6 @@ import vo.OrderVO;
 public class ExecuteOrder {
 	
 	private HMOrderManagementController controller;
-	private OrderListService orderListService;	
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -54,7 +54,6 @@ public class ExecuteOrder {
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
-		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -81,17 +80,17 @@ public class ExecuteOrder {
 	
 	private void setTextContent(){
 		
-		controller.setFilterOrderList(OrderListCondition.EXECUTED);
-		orderVO = controller.getlist().get(controller.getRow());
+//		controller.setFilterOrderList(OrderListCondition.EXECUTED);
+//		orderVO = controller.getlist().get(controller.getRow());
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField(orderVO.orderId);
-		hotelName = new TextField(orderVO.hotelID);
-		roomType = new TextField(orderVO.roomType.toString());
-		arriveTime = new TextField(orderVO.startTime);
-		leaveTime = new TextField(orderVO.endTime);
-		primeCost = new TextField(String.valueOf(orderVO.beforePrice));
-		realCost = new TextField(String.valueOf(orderVO.afterPrice));
+		orderID = new TextField();
+		hotelName = new TextField();
+		roomType = new TextField();
+		arriveTime = new TextField();
+		leaveTime = new TextField();
+		primeCost = new TextField();
+		realCost = new TextField();
 		
 		orderID.setId("ExecuteOrder");
 		hotelName.setId("ExecuteOrder");
@@ -188,6 +187,7 @@ public class ExecuteOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setCheckArriveInfoView();
+				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 									
@@ -254,4 +254,25 @@ public class ExecuteOrder {
 		AnchorPane.setTopAnchor(revert, 525.0);
 				
 		}
+	
+	public void setBlank(){
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		arriveTime.setText("");
+		leaveTime.setText("");
+		primeCost.setText("");
+		realCost.setText("");
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		arriveTime.setText(vo.checkInTime);
+		leaveTime.setText(vo.checkOutTime);
+		primeCost.setText(String.valueOf(vo.beforePrice));
+		realCost.setText(String.valueOf(vo.afterPrice));
+	}
 }

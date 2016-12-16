@@ -28,8 +28,6 @@ import vo.OrderVO;
 public class EvaluationInfo {
 	
 	private HMOrderManagementController controller;
-	private OrderService orderService;
-	private OrderListService orderListService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -47,8 +45,6 @@ public class EvaluationInfo {
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
-		orderService = new OrderService_Stub();
-		orderListService = new OrderService_Stub();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -74,17 +70,13 @@ public class EvaluationInfo {
 	}
 	
 	private void setTextField(){
-		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
-		int num = controller.getRow();
-		info = orderService.getEvaluationInfo(orderList.get(num).orderId);
-		
 		//添加文本框
 		
-		evaluationGrade = new TextField(String.valueOf(info.commentLevel));
+		evaluationGrade = new TextField();
 		evaluationGrade.setId("EvaluationInfo");
 		evaluationGrade.setPrefSize(100, 30);
 		
-		evaluation = new TextField(info.evaluationContent);
+		evaluation = new TextField();
 		evaluation.setId("CheckLeaveInfo");
 		evaluation.setPrefSize(250, 100);
 		/*
@@ -149,5 +141,11 @@ public class EvaluationInfo {
 		
 		AnchorPane.setTopAnchor(revert, 400.0);
 		
+	}
+	
+	public void setText(){
+		EvaluationVO vo = controller.getEvaluation(controller.getOrderId());
+		evaluationGrade.setText(String.valueOf(vo.commentLevel));
+		evaluation.setText(vo.evaluationContent);
 	}
 }

@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import logicService.order.OrderListService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 import vo.OrderVO;
@@ -71,19 +72,18 @@ public class CheckArriveInfo {
 	
 	private void setTextField(){
 		
-		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
-		int num = controller.getRow();
+		OrderVO vo = controller.getOrderInfo();
 		
 		//添加文本框
-		arriveTime = new TextField(orderList.get(num).startTime);
+		arriveTime = new TextField(vo.checkInTime);
 		arriveTime.setId("CheckArriveInfo");
 		arriveTime.setPrefSize(200, 30);
 		
-		estimateLeaveTime = new TextField(orderList.get(num).endTime);
+		estimateLeaveTime = new TextField(vo.endTime);
 		estimateLeaveTime.setId("CheckArriveInfo");
 		estimateLeaveTime.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderList.get(num).roomType.toString());
+		roomType = new TextField(MessageHelper.roomTypeToString(vo.roomType));
 		roomType.setId("CheckArriveInfo");
 		roomType.setPrefSize(200, 30);
 		

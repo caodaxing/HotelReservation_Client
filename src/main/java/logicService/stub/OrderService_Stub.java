@@ -29,8 +29,10 @@ public class OrderService_Stub implements OrderService,CreateOrderService,Execut
 	}
 
 	public OrderVO getOrderInfo(String order_id) {
+		String[] s = {"9832","8924"};
+		PromotionVO promotionVO = new PromotionVO("sdjoiew", "kjsfoiweo2", "skfioew", 0.9, "160205", "160207");
 //		return new OrderVO("161225005540304", "161225", new RoomVO(0, 388, 0, "0304"), "161226", 1, 2, true, 388);
-		return new OrderVO("12345","12345",RoomType.BIGBED_ROOM,2,"22","33","12345",OrderState.UNEXECUTED,3,true,333,222,new PromotionVO("12345","2342","sda",0.8,"323"),"22","33","22","44");
+		return new OrderVO("12345","12345",RoomType.BIGBED_ROOM,s,2,"22","33","12345",OrderState.UNEXECUTED,3,true,333,222,promotionVO,"8","22","33","22","44");
 	}
 
 	public String getEvaluation(String order_id) {

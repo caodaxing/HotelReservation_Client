@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 import vo.OrderVO;
@@ -55,7 +56,7 @@ public class UndoOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/infoManagement/订单详情_撤销订单背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_撤销订单背景.jpg\")");
 		
 	}
 
@@ -65,23 +66,23 @@ public class UndoOrder {
 	
 	private void setTextField(){
 		
-		controller.setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
-		orderVO = controller.getlist().get(controller.getRow());
+//		controller.setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
+//		orderVO = controller.getlist().get(controller.getRow());
 		
 		//添加文本框
-		orderID = new TextField(orderVO.orderId);
+		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField(orderVO.hotelID);
+		hotelName = new TextField();
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderVO.roomType.toString());
+		roomType = new TextField();
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		cancelTime = new TextField(orderVO.undoUnexecutedTime);
+		cancelTime = new TextField();
 		cancelTime.setId("AbnormalOrder");
 		cancelTime.setPrefSize(200, 30);
 		
@@ -118,9 +119,9 @@ public class UndoOrder {
 		AnchorPane.setLeftAnchor(cancelTime, 200.0);
 		
 		AnchorPane.setTopAnchor(orderID, 150.0);
-		AnchorPane.setTopAnchor(hotelName, 250.0);
-		AnchorPane.setTopAnchor(roomType, 350.0);
-		AnchorPane.setTopAnchor(cancelTime, 450.0);
+		AnchorPane.setTopAnchor(hotelName, 200.0);
+		AnchorPane.setTopAnchor(roomType, 250.0);
+		AnchorPane.setTopAnchor(cancelTime, 300.0);
 		
 	}
 	
@@ -145,6 +146,7 @@ public class UndoOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setUndoOrderListView();
+				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			
@@ -158,4 +160,21 @@ public class UndoOrder {
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
 	}
+	
+	public void setBlank(){
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		cancelTime.setText("");
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		cancelTime.setText(vo.undoUnexecutedTime);
+	}
+	
+	
 }

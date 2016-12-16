@@ -41,8 +41,8 @@ public class HotelManagerLeftController{
 	protected Stage stage;
 	protected String userId;
 	
-	private ArrayList<OrderVO> orderlist;
-	private int row;
+	protected ArrayList<OrderVO> orderlist;
+	protected String orderId;
 	
 	public HotelManagerLeftController(){
 		
@@ -79,7 +79,13 @@ public class HotelManagerLeftController{
 		stage.show();
 	}
 	
+	//设置列表筛选
+	public void setFilterOrderList(OrderListCondition condition){
+		orderlist = orderListService.filterHotelOrderList(userId, condition);
+	}
+	
 	public void setAllOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.ALL_ORDERS);
 		OrderList allOrderListUI = new OrderList(this);
 		allOrderListUI.initialData();
@@ -88,6 +94,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setHasExecuteOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.EXECUTED);
 		OrderList hasExecuteOrderListUI = new OrderList(this);
 		hasExecuteOrderListUI.initialData();
@@ -96,6 +103,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setunExecuteOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.UNEXECUTED);
 		OrderList unExecuteOrderListUI = new OrderList(this);
 		unExecuteOrderListUI.initialData();
@@ -104,6 +112,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setUndoOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 		OrderList undoOrderListUI = new OrderList(this);
 		undoOrderListUI.initialData();
@@ -112,6 +121,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setAbnormalOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.ABNORMALED);
 		OrderList abnormalOrderListUI = new OrderList(this);
 		abnormalOrderListUI.initialData();
@@ -150,47 +160,52 @@ public class HotelManagerLeftController{
 		newStage.show();
 	}
 	
+	//返回提示框
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
 	}
 	
+	//返回userId
 	public String getUserId(){
 		return userId;
+	}
+	
+	//返回当前orderList
+	public ArrayList<OrderVO> getlist(){
+		return orderlist;
 	}
 	
 	public Stage getStage(){
 		return stage;
 	}
 	
-	public void setFilterOrderList(OrderListCondition condition){
-		orderlist = orderListService.filterHotelOrderList(userId, condition);
+	public String getOrderId(){
+		return orderId;
 	}
 	
-	public ArrayList<OrderVO> getlist(){
-		return orderlist;
-	}
+	
 	
 	public OrderList getabnormalList(){
 		return abnormalOrderListUI;
 	}
-	
-	public OrderVO getOrder(){
-		return orderlist.get(row);
-	}
-	
-	public void setRow(OrderListCondition condition){
-		if(condition == OrderListCondition.ABNORMALED){
-			OrderList abnormalOrderListUI = new OrderList(this);
-			row = abnormalOrderListUI.getRow();
-		}else if(condition == OrderListCondition.EXECUTED){
-			
-		}else if(condition == OrderListCondition.UNEXECUTED){
-			
-		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
-			
-		}else{
-			
-		}
-	}
+//	
+//	public OrderVO getOrder(){
+//		return orderlist.get(row);
+//	}
+//	
+//	public void setRow(OrderListCondition condition){
+//		if(condition == OrderListCondition.ABNORMALED){
+//			OrderList abnormalOrderListUI = new OrderList(this);
+//			row = abnormalOrderListUI.getRow();
+//		}else if(condition == OrderListCondition.EXECUTED){
+//			
+//		}else if(condition == OrderListCondition.UNEXECUTED){
+//			
+//		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
+//			
+//		}else{
+//			
+//		}
+//	}
 }
