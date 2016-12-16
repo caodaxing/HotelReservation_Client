@@ -119,6 +119,7 @@ public class OrderList {
 								int row = this.getTableRow().getIndex();
 								//待修改
 								UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
+								right.setOrderList(controller.getOrderList());
 								right.setOrderID(row);
 								right.setOrderView();
 								right.getStage().show();

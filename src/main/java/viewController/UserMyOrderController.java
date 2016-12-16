@@ -1,5 +1,7 @@
 package viewController;
 
+import java.util.ArrayList;
+
 import Message.OrderState;
 import Message.ResultMessage;
 import javafx.stage.Stage;
@@ -152,12 +154,16 @@ public class UserMyOrderController extends UserLeftController {
 	}
 	
 	public void setOrderID(int row){
-		orderID = orderList.get(row).hotelID;
+		orderID = orderList.get(row).orderId;
+	}
+	
+	public void setOrderList(ArrayList<OrderVO> list){
+		orderList = list;
 	}
 
 	public void setOrderView() {
 		OrderState state = orderService.getOrderInfo(orderID).orderState;
-		System.out.println(MessageHelper.orderStateToString(state));
+		System.out.println(orderID);
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){

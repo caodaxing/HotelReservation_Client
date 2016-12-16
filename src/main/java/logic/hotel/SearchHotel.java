@@ -124,7 +124,20 @@ public class SearchHotel implements SearchHotelService {
 	 */
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
+
+System.out.println(search.city);
+System.out.println(search.tradingArea);
+System.out.println(search.startTime);
+System.out.println(search.endTime);
+System.out.println(search.hotelName);
+System.out.println(search.roomPriceLow);
+System.out.println(search.roomPriceHigh);
+System.out.println(search.commentLow);
+System.out.println(search.commentHigh);
+System.out.println(search.starLow);
+System.out.println(search.starHigh);
 		
+
 		if (search == null || search.city == null || search.city == "" || search.tradingArea == null 
 				|| search.tradingArea == ""||search.starLow > search.starHigh
 				|| search.commentLow > search.commentHigh || search.roomPriceLow > search.roomPriceHigh) {
@@ -157,6 +170,7 @@ System.out.println("b");
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
 		}
+		
 		
 System.out.println("c" + hotelList.size());
 		

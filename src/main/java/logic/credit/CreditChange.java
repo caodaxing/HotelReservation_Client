@@ -113,6 +113,7 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	}
 	
 	
+	
 	public ArrayList<CreditChangeVO> getCreditHistory(String userID){
 		ArrayList<CreditHistoryPO> historyPOList = null;
 		try {

@@ -14,7 +14,7 @@ public class CreditTransform {
 	//将CreditHistorypo转化为vo
 	public static CreditChangeVO creditTransToVO(CreditHistoryPO po) {
 		return new CreditChangeVO(po.getUserID(), po.getTime(), po.getOrderID(), 
-				CreditChangeType.values()[po.getAction()], po.getCerditChange());
+				CreditChangeType.values()[po.getAction()], po.getCerditChange(), po.getNowCredit());
 	}
 	
 	//将CreditChangeVO转化为po
