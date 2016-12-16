@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import Message.PromotionType;
 import Message.ResultMessage;
 import javafx.stage.Stage;
-import logicService.account.AccountService;
-import logicService.order.OrderService;
+import logic.promotion.ManagePromotion;
 import logicService.promotion.ManagePromotionService;
-import logicService.room.RoomService;
-import logicService.stub.PromotionService_Stub;
 import view.right.hotelManager.promotion.CheckBirthdayStrategy;
 import view.right.hotelManager.promotion.CheckCooperateCompanyStrategy;
 import view.right.hotelManager.promotion.CheckSpecialTimeStrategy;
@@ -28,9 +25,6 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	//逻辑层接口
 	private ManagePromotionService promotionService;
-	private OrderService orderService;
-	private RoomService roomService;
-	private AccountService accountService;
 	
 	//控制的界面
 	private CheckBirthdayStrategy checkBirthdayStrategyUI;
@@ -50,7 +44,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public HMPromotionController(Stage stage, String userId){
 		
-		promotionService = new PromotionService_Stub();
+		promotionService = new ManagePromotion();
 		this.stage = stage;
 		this.userId = userId;
 		
@@ -79,7 +73,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 		this.userId = userId;
 		this.row = row;
 		
-		promotionService = new PromotionService_Stub();
+		promotionService = new ManagePromotion();
 		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
 		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
 		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);

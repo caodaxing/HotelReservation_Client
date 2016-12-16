@@ -33,8 +33,7 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	public ResultMessage changeCredit(CreditChangeVO vo){
 		Credit credit = new Credit();
 		
-		if(vo == null || vo.userID == null || vo.time == null ||
-				vo.orderID == null || vo.action == null ){
+		if(vo == null || vo.userID == null || vo.time == null || vo.action == null ){
 			return ResultMessage.FAILURE;
 		}
 		

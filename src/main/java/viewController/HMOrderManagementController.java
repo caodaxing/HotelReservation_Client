@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import Message.OrderState;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.order.Order;
 import logicService.order.ExecuteOrderService;
-import logicService.order.ManageOrderService;
-import logicService.order.OrderListService;
 import logicService.order.OrderService;
-import logicService.stub.OrderService_Stub;
 import view.right.hotelManager.orderManagement.AbnormalOrder;
 import view.right.hotelManager.orderManagement.CheckArriveInfo;
 import view.right.hotelManager.orderManagement.CheckLeaveInfo;
@@ -46,8 +44,8 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public HMOrderManagementController(Stage stage, String userId){
 		
-		orderService = new OrderService_Stub();
-		executeOrderService = new OrderService_Stub();
+		orderService = new Order();
+		executeOrderService = new logic.order.ExecuteOrder();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;

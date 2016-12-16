@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import Message.OrderListCondition;
 import Message.ResultMessage;
-import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import logic.account.Account;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
-import logicService.stub.AccountService_Stub;
-import logicService.stub.OrderService_Stub;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
@@ -46,8 +44,8 @@ public class HotelManagerLeftController{
 	
 	public HotelManagerLeftController(){
 		
-		accountService = new AccountService_Stub();
-		orderListService = new OrderService_Stub();
+		accountService = new Account();
+		orderListService = new logic.order.OrderList();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 //		allOrderListUI = new OrderList(this);

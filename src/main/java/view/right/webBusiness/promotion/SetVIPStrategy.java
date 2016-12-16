@@ -143,7 +143,6 @@ public class SetVIPStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输vo
 				double d1 = Double.parseDouble(VIP1DiscountRange.getText());
 				double d2 = Double.parseDouble(VIP2DiscountRange.getText());
@@ -173,7 +172,6 @@ public class SetVIPStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setChooseView();
 				controller.getStage().show();
 			}

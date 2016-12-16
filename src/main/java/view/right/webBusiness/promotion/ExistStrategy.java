@@ -10,10 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,14 +18,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
 import javafx.util.Callback;
-import logicService.stub.PromotionService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
-import viewController.WBOrderManagementController;
 import viewController.WBPromotionController;
 import vo.PromotionVO;
+
 
 /**
  * 网站营销人员界面_促销策略_查看现有策略列表
@@ -104,7 +99,6 @@ public class ExistStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setFirstVeiw();
 				controller.getStage().show();
 			}

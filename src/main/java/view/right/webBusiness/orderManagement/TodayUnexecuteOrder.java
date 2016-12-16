@@ -6,8 +6,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -18,8 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import logic.order.ManageOrder;
 import logicService.order.ManageOrderService;
-import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBOrderManagementController;
@@ -58,7 +56,8 @@ public class TodayUnexecuteOrder {
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		manageOrderService = new OrderService_Stub();
+		
+		manageOrderService = new ManageOrder();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);

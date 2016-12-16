@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import Message.RoomType;
 import javafx.stage.Stage;
-import logicService.hotel.CheckHotelService;
-import logicService.order.OrderService;
+import logic.room.Room;
 import logicService.room.RoomService;
-import logicService.stub.RoomService_Stub;
-import view.right.hotelManager.orderManagement.SetArriveInfo;
 import view.right.hotelManager.roomInfo.ExistRooms;
 import view.right.hotelManager.roomInfo.First;
 import view.right.hotelManager.roomInfo.SetAvailableRooms;
@@ -19,8 +16,6 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	//逻辑层接口
 	private RoomService roomService;
-	private CheckHotelService checkHotelService;
-	private OrderService orderService;
 	
 	//控制界面
 	private First firstUI;
@@ -33,7 +28,7 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	public HMRoomInfoController(Stage stage, String userId){
 		
-		roomService = new RoomService_Stub();
+		roomService = new Room();
 //		checkHotelService = new CheckHotel();
 //		orderService = new Order();
 		this.stage = stage;

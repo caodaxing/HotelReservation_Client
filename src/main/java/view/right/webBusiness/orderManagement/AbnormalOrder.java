@@ -11,13 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import logic.order.ManageOrder;
 import logicService.order.ManageOrderService;
-import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.WebBusinessUI;
 import viewController.WBOrderManagementController;
-import viewController.WebBusinessLeftController;
 import vo.OrderVO;
 
 /**
@@ -48,7 +47,8 @@ public class AbnormalOrder{
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		manageOrderService = new OrderService_Stub();
+		
+		manageOrderService = new ManageOrder();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -164,7 +164,6 @@ public class AbnormalOrder{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输creditVO
 				String orderId = orderID.getText();
 				boolean bool = false;
@@ -188,7 +187,6 @@ public class AbnormalOrder{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输creditVO
 				String orderId = orderID.getText();
 				boolean bool = true;
@@ -212,7 +210,6 @@ public class AbnormalOrder{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setAbnormalOrderListView();
 				controller.getStage().show();
 			}

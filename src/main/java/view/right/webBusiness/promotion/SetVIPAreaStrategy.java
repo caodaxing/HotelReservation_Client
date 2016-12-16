@@ -162,7 +162,6 @@ public class SetVIPAreaStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				Prompt prompt = new Prompt("保存成功");
 				prompt.show();
 				//传输vo
@@ -187,7 +186,7 @@ public class SetVIPAreaStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+
 				controller.setChooseView();
 				controller.getStage().show();
 			}

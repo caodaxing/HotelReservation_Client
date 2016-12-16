@@ -2,10 +2,10 @@ package viewController;
 
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.account.Account;
+import logic.credit.Credit;
 import logicService.account.AccountService;
 import logicService.credit.CreditService;
-import logicService.stub.AccountService_Stub;
-import logicService.stub.CreditService_Stub;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.webBusiness.VIPInfo.Blank;
@@ -36,8 +36,8 @@ public class WebBusinessLeftController {
 	
 	public WebBusinessLeftController(){
 		
-		accountService = new AccountService_Stub();
-		creditService = new CreditService_Stub();
+		accountService = new Account();
+		creditService = new Credit();
 		
 		firstUI = new First(this);
 		rechargeCreditUI = new RechargeCredit(this);
@@ -48,7 +48,6 @@ public class WebBusinessLeftController {
 	}
 	
 	public WebBusinessLeftController(Stage stage, String userId){
-		this();
 		this.userId = userId;
 		this.stage = stage;
 	}
