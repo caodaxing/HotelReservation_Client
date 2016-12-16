@@ -32,7 +32,7 @@ public class UserMyOrderController extends UserLeftController {
 		this.stage = stage;
 		this.userID = userID;
 		
-		executeService = new OrderService_Stub();
+		executeService = new logic.order.ExecuteOrder();
 		
 		//abnormalOrderUI = new AbnormalOrder(this);
 		//checkArriveInfoUI = new CheckArriveInfo(this);

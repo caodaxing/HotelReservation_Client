@@ -29,8 +29,7 @@ public class UserMyInfoController extends UserLeftController {
 		this.stage = stage ;
 		this.userID = userID;
 
-		creditChangeService = new CreditChangeService_Stub(userID);
-		clientService = new ClientService_Stub();
+		creditChangeService = new CreditChange();
 		
 		blankUI = new Blank(this);
 		historyCreditUI = new HistoryCredit(this);

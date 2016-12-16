@@ -6,6 +6,9 @@ import Message.HotelSearchCondition;
 import Message.ResultMessage;
 import Message.RoomType;
 import javafx.stage.Stage;
+import logic.hotel.CheckHotel;
+import logic.order.CreateOrder;
+import logic.room.Room;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
 import logicService.order.CreateOrderService;
@@ -54,10 +57,10 @@ public class UserCheckHotelController extends UserLeftController {
 		this.stage = stage ;
 		this.userID = userID;
 		
-		createOrderService = new OrderService_Stub();
-		searchHotelService = new HotelService_Stub();
-		checkHotelService = new HotelService_Stub();
-		roomService = new RoomService_Stub();
+		createOrderService = new CreateOrder();
+		searchHotelService = new logic.hotel.SearchHotel();
+		checkHotelService = new CheckHotel();
+		roomService = new Room();
 		
 		//evaluationListUI = new EvaluationList(this);
 		//historyOrderListUI = new HistoryOrderList(this);

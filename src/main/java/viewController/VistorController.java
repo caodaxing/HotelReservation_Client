@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Message.HotelSearchCondition;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.hotel.CheckHotel;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
 import logicService.stub.HotelService_Stub;
@@ -31,8 +32,8 @@ public class VistorController extends VistorLeftController{
 		
 		this.stage = stage ;
 		
-		searchService = new HotelService_Stub();
-		checkService = new HotelService_Stub();
+		searchService = new logic.hotel.SearchHotel();
+		checkService = new CheckHotel();
 		
 		hotelInfoUI = new HotelInfo(this);
 		searchHotelUI = new SearchHotel(this);

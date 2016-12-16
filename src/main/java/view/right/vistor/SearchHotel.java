@@ -201,8 +201,6 @@ public class SearchHotel {
 		//待修改
 		roomType = new ChoiceBox(FXCollections.observableArrayList ("大床房","单人间","标准间","套间","三人间") );
 		
-		roomType.setValue("标准间");
-		
 		roomType.setPrefSize(200, 30);
 		
 		rightPane.getChildren().add(roomType);
@@ -276,6 +274,7 @@ public class SearchHotel {
 			start="x";
 		}
 		String end = endTime.getValue().toString();
+		
 		try{
 		DecimalFormat df=new DecimalFormat("#.00");
 		//若为空则置为默认值

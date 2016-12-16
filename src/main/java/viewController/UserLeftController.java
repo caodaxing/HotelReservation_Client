@@ -7,6 +7,9 @@ import Message.OrderListCondition;
 import Message.ResultMessage;
 import Message.VipType;
 import javafx.stage.Stage;
+import logic.account.Account;
+import logic.order.Order;
+import logic.user.Client;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
@@ -62,10 +65,10 @@ public class UserLeftController {
 	//构造函数
 	public UserLeftController(){
 		
-		accountService = new AccountService_Stub();
-		clientService = new ClientService_Stub();
-		orderService = new OrderService_Stub();
-		orderListService = new OrderService_Stub();
+		accountService = new Account();
+		clientService = new Client();
+		orderService = new Order();
+		orderListService = new logic.order.OrderList();
 
 		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
@@ -252,7 +255,11 @@ public class UserLeftController {
 	 * 返回用户头像路径
 	 */
 	public String getHeadPath(){
-		return clientService.getClientInfo(userID).headImagePath;
+		String headPath = clientService.getClientInfo(userID).headImagePath;
+		if(headPath == null || headPath.equals("")){//默认头像
+			headPath = "/head/游客头像.png";
+		}
+		return headPath;
 	}
 	
 	public void modifyPassword(){

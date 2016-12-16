@@ -3,9 +3,9 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.account.Account;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
-import logicService.stub.AccountService_Stub;
 import view.account.FirstUI;
 import view.account.SignInUI;
 import view.account.SignUpUI;
@@ -37,7 +37,7 @@ public class AccountController {
 		
 		this.stage = stage;
 		
-		accountService = new AccountService_Stub();
+		accountService = new Account();
 		
 		firstUI = new FirstUI(this);
 		signInUI = new SignInUI(this);
@@ -90,7 +90,7 @@ public class AccountController {
 		}
 		else if(userID.length()>12 || userID.length()<6){
 			//用户名不符合格式，弹出“用户名请用6-12位字母和数字组合”对话框
-			showDialog("用户名请使用6-12位数字和字母组合");
+			showDialog("用户名请使用6-12位数字和字母");
 			
 		}else if(!password.equals(rePassword)){
 			//两次输入密码不一致，弹出“两次密码输入不一致，请重新输入”
@@ -134,6 +134,7 @@ public class AccountController {
 		}
 		Identity identity = accountService.getIdentity(ID);
 		AccountVO accountVO = new AccountVO(ID,password,identity);
+		accountVO = Encryption.getInstance().encrypt(accountVO);
 		
 		ResultMessage result = accountService.login(accountVO);
 		if(result == ResultMessage.USERNAME_NOT_EXIST){
@@ -152,8 +153,8 @@ public class AccountController {
 			//弹出 系统错误，请重试
 			showDialog("系统错误，请重试");
 			return ;
-		}else{
-			//弹出"登陆成功"，清空textfiel，跳入对应用户界面
+		}else if(result == ResultMessage.SUCCESS){
+			//弹出"登陆成功"，清空textfield，跳入对应用户界面
 			showDialog("登陆成功");
 			signInUI.setBlank();
 			showFirstView(ID,identity);
