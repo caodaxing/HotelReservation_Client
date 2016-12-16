@@ -151,12 +151,16 @@ System.out.println("a");
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
-		
+
+System.out.println(initList.size());
 System.out.println("b");
 
-		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();
+
+		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();	
 		//酒店名称的筛选
 		if (search.hotelName != null && search.hotelName != "") {
+			
+			
 			for (int i=0; i<initList.size(); ++i) {
 				HotelVO hotelVO = initList.get(i); 
 				if (hotelVO.hotelName == search.hotelName) {

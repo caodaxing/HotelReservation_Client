@@ -46,31 +46,31 @@ public class AcccoutTest {
 	
 	@Test
 	public void testRegister1() {
-		AccountVO vo1 = new AccountVO("curry", "ccccc", "cc", Identity.CLIENT);
+		AccountVO vo1 = new AccountVO("curry", "ccccc", Identity.CLIENT);
 		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.register(vo1));
 	}
 	
 	@Test
 	public void testRegister2() {
-		AccountVO vo2 = new AccountVO("mark", "mmmmm", "mmmmm", Identity.CLIENT);
+		AccountVO vo2 = new AccountVO("mark", "mmmmm", Identity.CLIENT);
 		assertEquals(ResultMessage.SUCCESS, account.register(vo2));
 	}
 	
 	
 	@Test
 	public void testModifyPassword1() {
-		assertEquals(ResultMessage.FAILURE, account.modifyPassword(new AccountVO(null, null, null, null)));
+		assertEquals(ResultMessage.FAILURE, account.modifyPassword(new AccountVO(null,  null, null)));
 	}
 	
 	@Test
 	public void testModifyPassword2() {
-		AccountVO vo2 = new AccountVO("curry", "currycurry", "cuuu", Identity.CLIENT);
+		AccountVO vo2 = new AccountVO("curry", "currycurry", Identity.CLIENT);
 		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.modifyPassword(vo2));
 	}
 	
 	@Test
 	public void testModifyPassword3() {
-		AccountVO vo1 = new AccountVO("curry", "ccccc", "ccccc", Identity.CLIENT);
+		AccountVO vo1 = new AccountVO("curry", "ccccc", Identity.CLIENT);
 		assertEquals(ResultMessage.SUCCESS, account.modifyPassword(vo1));
 	}
 }
