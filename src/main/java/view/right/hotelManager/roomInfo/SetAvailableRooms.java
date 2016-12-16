@@ -60,7 +60,7 @@ public class SetAvailableRooms {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/infoManagement/录入可用客房背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/录入可用客房_背景.jpg\")");
 	}
 	
 	public Scene getScene(){

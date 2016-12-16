@@ -302,8 +302,9 @@ public ArrayList<OrderVO> getDailyOrderList() {
 		return null;
 	}
 
+
 	@Override
-	public ResultMessage hacCheckOut(String orderID) {
+	public ResultMessage hasCheckOut(String orderID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
