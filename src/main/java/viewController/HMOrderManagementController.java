@@ -28,9 +28,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	//逻辑层接口
 	private OrderService orderService;
-	private OrderListService orderListService;
 	private ExecuteOrderService executeOrderService;
-	private ManageOrderService manageOrdreService;
 	
 	//控制的界面
 	private AbnormalOrder abnormalOrderUI;
@@ -49,20 +47,19 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	public HMOrderManagementController(Stage stage, String userId){
 		
 		orderService = new OrderService_Stub();
-		orderListService = new OrderService_Stub();
 		executeOrderService = new OrderService_Stub();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;
 //		abnormalOrderUI = new AbnormalOrder(this);
-		checkArriveInfoUI = new CheckArriveInfo(this);
-		checkLeaveInfoUI = new CheckLeaveInfo(this);
-		evalutionInfoUI = new EvaluationInfo(this);
+//		checkArriveInfoUI = new CheckArriveInfo(this);
+//		checkLeaveInfoUI = new CheckLeaveInfo(this);
+//		evalutionInfoUI = new EvaluationInfo(this);
 //		executeOrderUI = new ExecuteOrder(this);
 //		orderListUI = new OrderList(this);
-		searchOrderUI = new SearchOrder(this);
-		setArriveInfoUI = new SetArriveInfo(this);
-		setLeaveInfoUI = new SetLeaveInfo(this);
+//		searchOrderUI = new SearchOrder(this);
+//		setArriveInfoUI = new SetArriveInfo(this);
+//		setLeaveInfoUI = new SetLeaveInfo(this);
 //		undoOrderUI = new UndoOrder(this);
 //		unexecuteOrderUI = new UnexecuteOrder(this);
 		
@@ -239,9 +236,9 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		return executeOrderService.normalExecute(orderID, roomId);
 	}
 	
-//	public ResultMessage getLeaveResult(String orderID){
-//		return executeOrderService.hasCheckOut(orderID);
-//	}
+	public ResultMessage getLeaveResult(String orderID){
+		return executeOrderService.hasCheckOut(orderID);
+	}
 	
 	public ResultMessage setLeaveResult(String orderId){
 		return executeOrderService.checkOut(orderId);
