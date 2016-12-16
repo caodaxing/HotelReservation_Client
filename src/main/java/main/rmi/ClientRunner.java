@@ -17,7 +17,7 @@ public class ClientRunner {
 		try {
 			
 			remoteHelper = RemoteHelper.getInstance();
-			remoteHelper.setRemote(Naming.lookup("rmi://172.28.168.112:8888/DataRemoteObject"));
+			remoteHelper.setRemote(Naming.lookup("rmi://172.20.10.2:8888/DataRemoteObject"));
 			System.out.println("linked");
 			
 		} catch (MalformedURLException e) {
