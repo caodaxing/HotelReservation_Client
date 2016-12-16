@@ -102,8 +102,8 @@ public class UserCheckHotelController extends UserLeftController {
 	 */
 	public void setHistoryOrderListView(){
 		setHistoryOrderList();
-		OrderList hotelOrderList = new OrderList(this);
-		hotelOrderList.setTextValue();
+		HistoryOrderList hotelOrderList = new HistoryOrderList(this);
+		hotelOrderList.setListValue();
 		stage.setScene(hotelOrderList.getScene());
 		stage.show();
 	}
@@ -204,7 +204,9 @@ public class UserCheckHotelController extends UserLeftController {
 	 */
 	public void makeOrderAndSetSuccessView(){
 		OrderVO vo = makeOrderUI.getOrderVO();
-		
+		if(vo == null){
+			return;
+		}
 		//再次检查orderVO是否有效
 		if(!orderVOIsCorrect(vo)){
 			if(vo.hotelID == null || vo.userID == null ){

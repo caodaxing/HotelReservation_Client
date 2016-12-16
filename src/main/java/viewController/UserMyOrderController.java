@@ -163,7 +163,6 @@ public class UserMyOrderController extends UserLeftController {
 
 	public void setOrderView() {
 		OrderState state = orderService.getOrderInfo(orderID).orderState;
-		System.out.println(orderID);
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){

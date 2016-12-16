@@ -56,6 +56,8 @@ public class CheckNormalVIP {
 		
 		birthday.setPrefSize(250, 30);
 		
+		birthday.setEditable(false);
+		
 		rightPane.getChildren().add(birthday);
 		
 		AnchorPane.setLeftAnchor(birthday, 200.0);

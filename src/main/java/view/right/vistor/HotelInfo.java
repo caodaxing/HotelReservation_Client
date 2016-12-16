@@ -33,7 +33,7 @@ public class HotelInfo {
 	
 	private AnchorPane rightPane;
 	
-	TextField hotelName ;
+	TextField hotelStar ;
 	TextArea address ; 
 	TextArea introduction ;
 	TextField facility ;
@@ -75,36 +75,36 @@ public class HotelInfo {
 	private void setTextField(){
 		
 		//初始化textField
-		hotelName = new TextField();
+		hotelStar = new TextField();
 		address = new TextArea();
 		introduction = new TextArea();
 		facility = new TextField();
 
 		//设置textField可操作性
-		hotelName.setEditable(false);
+		hotelStar.setEditable(false);
 		address.setEditable(false);
 		introduction.setEditable(false);
 		facility.setEditable(false);
 		
 		//设置textField大小
-		hotelName.setPrefSize(250, 30);
+		hotelStar.setPrefSize(250, 30);
 		address.setPrefSize(400, 30);
 		introduction.setPrefSize(300, 60);
 		facility.setPrefSize(300, 60);
 		
 		//右侧pane添加组件
-		rightPane.getChildren().add(hotelName);
+		rightPane.getChildren().add(hotelStar);
 		rightPane.getChildren().add(address);
 		rightPane.getChildren().add(introduction);
 		rightPane.getChildren().add(facility);
 		
 		//右侧Pane设置位置
-		AnchorPane.setLeftAnchor(hotelName, 150.0);
+		AnchorPane.setLeftAnchor(hotelStar, 150.0);
 		AnchorPane.setLeftAnchor(address, 150.0);
 		AnchorPane.setLeftAnchor(introduction, 150.0);
 		AnchorPane.setLeftAnchor(facility, 150.0);
 				
-		AnchorPane.setTopAnchor(hotelName, 100.0);
+		AnchorPane.setTopAnchor(hotelStar, 100.0);
 		AnchorPane.setTopAnchor(address, 150.0);
 		AnchorPane.setTopAnchor(introduction, 200.0);
 		AnchorPane.setTopAnchor(facility, 280.0);
@@ -149,7 +149,7 @@ public class HotelInfo {
 	
 	public void setText(){
 		HotelVO vo = controller.getHotelInfo();
-		hotelName.setText(vo.hotelName);
+		hotelStar.setText(Integer.toString(vo.levelOfHotel));
 		address.setText(vo.locationOfHotel);
 		introduction.setText(vo.introduction);;
 		facility.setText(vo.facilities);

@@ -92,6 +92,9 @@ public class MakeOrder{
 		haveChild = new ChoiceBox(FXCollections.observableArrayList("是","否"));
 		haveChild.setValue("否");
 		
+		roomNums.setText("1");
+		peopleNums.setText("1");
+		
 		//设置textField可操作性
 		roomNums.setEditable(true);
 		arriveTime.setEditable(true);
