@@ -123,7 +123,7 @@ public class ExistStrategy {
 		
 		//创建列表对象
 		tableView = new TableView<Person>();
-		tableView.setPrefSize(455, 400);
+		tableView.setPrefSize(505, 400);
 		tableView.setEditable(false);
 		initialData();
 		
@@ -146,7 +146,7 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
 								if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
@@ -169,7 +169,7 @@ public class ExistStrategy {
 				};
 			}
 		});
-		operation1.setMinWidth(50);
+		operation1.setMinWidth(70);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -179,7 +179,7 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("删除");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								
 							});
@@ -197,7 +197,7 @@ public class ExistStrategy {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 55.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
