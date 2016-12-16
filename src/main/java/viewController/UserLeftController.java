@@ -8,10 +8,12 @@ import Message.ResultMessage;
 import Message.VipType;
 import javafx.stage.Stage;
 import logic.account.Account;
+import logic.hotel.CheckHotel;
 import logic.order.Order;
 import logic.user.Client;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
+import logicService.hotel.CheckHotelService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
 import logicService.stub.AccountService_Stub;
@@ -42,6 +44,7 @@ public class UserLeftController {
 	protected AccountService accountService;
 	protected OrderService orderService;
 	protected OrderListService orderListService;
+	CheckHotelService checkHotelService;
 	
 	private AccountController accountController;
 	
@@ -69,6 +72,8 @@ public class UserLeftController {
 		clientService = new Client();
 		orderService = new Order();
 		orderListService = new logic.order.OrderList();
+		checkHotelService = new CheckHotel();
+		
 
 		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
@@ -314,6 +319,10 @@ public class UserLeftController {
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
+	}
+	
+	public String getHotelName(String hotelID){
+		return checkHotelService.getHotelnfo(hotelID).hotelName;
 	}
 	
 }

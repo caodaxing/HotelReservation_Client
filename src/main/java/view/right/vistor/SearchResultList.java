@@ -262,7 +262,7 @@ public class SearchResultList {
 				};
 			}
 		});
-		operation1.setMinWidth(120);
+		operation1.setMinWidth(110);
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);

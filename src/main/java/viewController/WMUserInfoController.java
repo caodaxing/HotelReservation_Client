@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.user.Client;
 import logicService.account.AccountService;
 import logicService.stub.AccountService_Stub;
 import logicService.stub.ClientService_Stub;
@@ -14,7 +15,6 @@ import vo.ClientVO;
 
 public class WMUserInfoController extends WebManagerLeftController{
 
-	AccountService accountService ;
 	ClientService clientService ;
 	
 	private Blank blankUI ;
@@ -28,8 +28,7 @@ public class WMUserInfoController extends WebManagerLeftController{
 		this.stage = stage;
 		this.userID = userID;
 		
-		accountService = new AccountService_Stub();
-		clientService = new ClientService_Stub();
+		clientService = new Client();
 		
 		blankUI = new Blank(this);
 		checkUserUI = new CheckUser(this);

@@ -29,7 +29,6 @@ public class UserCheckHotelController extends UserLeftController {
 	//逻辑层接口
 	CreateOrderService createOrderService;
 	SearchHotelService searchHotelService;
-	CheckHotelService checkHotelService;
 	RoomService roomService;
 	
 	//控制的界面
@@ -59,7 +58,6 @@ public class UserCheckHotelController extends UserLeftController {
 		
 		createOrderService = new CreateOrder();
 		searchHotelService = new logic.hotel.SearchHotel();
-		checkHotelService = new CheckHotel();
 		roomService = new Room();
 		
 		//evaluationListUI = new EvaluationList(this);
@@ -229,7 +227,7 @@ public class UserCheckHotelController extends UserLeftController {
 		}
 		
 		OrderVO newOrder= createOrderService.createOrder(vo);
-		if(newOrder != null){
+		if(newOrder == null){
 			showDialog("系统错误，请重试");
 			return;
 		}else{
@@ -325,10 +323,6 @@ public class UserCheckHotelController extends UserLeftController {
 	
 	public String getHotelID(){
 		return hotelID;
-	}
-	
-	public String getHotelName(String hotelID){
-		return checkHotelService.getHotelnfo(hotelID).hotelName;
 	}
 	
 	public void setHistoryHotelListView(){

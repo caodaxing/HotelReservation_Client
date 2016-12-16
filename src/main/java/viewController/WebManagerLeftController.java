@@ -3,6 +3,9 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.account.Account;
+import logic.hotel.UpdateHotel;
+import logic.user.WebManager;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.hotel.UpdateHotelService;
@@ -39,9 +42,9 @@ public class WebManagerLeftController {
 	private AccountController accountController;
 	
 	public WebManagerLeftController(){
-		updateHotelService = new HotelService_Stub();
-		webManagerService = new WebManagerService_Stub(userID);
-		accountService = new AccountService_Stub();
+		updateHotelService = new UpdateHotel();
+		webManagerService = new WebManager();
+		accountService = new Account();
 		
 		addHotelUI = new AddHotel(this);
 		addHotelManagerUI = new AddHotelManager(this);

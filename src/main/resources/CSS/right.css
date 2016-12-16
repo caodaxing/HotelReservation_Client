@@ -7,3 +7,12 @@
  .button:hover{
  	-fx-background-coler:rgba(17,64,108);
  }
+ .table-view {
+ 	-fx-base:#ffffff;
+    -fx-control-inner-background: #ffffff;
+    -fx-font-size:14px;
+    -fx-font-color-:#ffffff;
+    -fx-background-color: #ffffff;
+    -fx-table-header-border-color: #ffffff;
+    -fx-padding: 5;
+}

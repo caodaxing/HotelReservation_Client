@@ -100,7 +100,7 @@ public class OrderList {
 		
 		orderState = new TableColumn<>("订单状态");
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderstate"));
-		orderState.setMinWidth(100);
+		orderState.setMinWidth(90);
 		
 		price = new TableColumn<>("价格");
 		price.setCellValueFactory(new PropertyValueFactory<Person, String>("price"));
@@ -157,7 +157,7 @@ public class OrderList {
 		for(OrderVO o :orderList){
 			check = new Button("查看");
 			String state = MessageHelper.orderStateToString(o.orderState);
-			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
+			data.add(new Person(o.orderId,controller.getHotelName(o.hotelID),state,Double.toString(o.afterPrice),check));
 		}
 	}
 
