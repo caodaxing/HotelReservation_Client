@@ -61,6 +61,7 @@ public class CheckArriveInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/房间管理_查看入住信息背景.jpg\")");
 		
 	}
 	

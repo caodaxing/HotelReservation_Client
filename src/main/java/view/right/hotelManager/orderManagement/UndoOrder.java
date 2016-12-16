@@ -61,7 +61,6 @@ public class UndoOrder {
 	
 	private void setTextField(){
 	
-		//ArrayList<String> infoList = controller.getInfoList();
 		
 		//添加文本框
 		orderID = new TextField();
@@ -122,7 +121,7 @@ public class UndoOrder {
 	private void setButton(){
 		
 		//添加按钮
-		revert = new Button("取消");
+		revert = new Button("返回");
 		revert.setId("AbnormalOrder");
 		revert.setPrefSize(100, 40);
 				

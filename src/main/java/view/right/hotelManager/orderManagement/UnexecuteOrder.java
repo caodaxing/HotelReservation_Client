@@ -66,7 +66,6 @@ public class UnexecuteOrder {
 	
 	private void setTextContent(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
 		
 		//设置未执行订单的文本信息
 		orderID = new TextField();

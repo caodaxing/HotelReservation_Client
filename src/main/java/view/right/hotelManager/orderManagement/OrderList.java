@@ -3,6 +3,7 @@ package view.right.hotelManager.orderManagement;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.OrderState;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -57,10 +58,12 @@ public class OrderList {
 	private ObservableList<Person> data;
 	private Button check;
 	private int row;
+	private ArrayList<OrderVO> orderList;
 	
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
+		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 		hmui = new HotelManagerUI(controller);
 		data = FXCollections.observableArrayList();
 		
@@ -110,7 +113,6 @@ public class OrderList {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 				hmcontroller.setSearchOrderView();
 				hmcontroller.getStage().show();
 			}
@@ -146,8 +148,6 @@ public class OrderList {
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
 		
-		//添加列表内容
-				
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
@@ -176,9 +176,7 @@ public class OrderList {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
-								hmcontroller = new HMOrderManagementController(controller.getStage(), controller.getUserId(), row);
-								hmcontroller.setExecuteOrderView();
-								hmcontroller.getStage().show();
+								checkFunction();
 							});
 						}
 						setGraphic(Item);
@@ -203,14 +201,66 @@ public class OrderList {
 		return row;
 	}
 	
+	/*
+	 * left下的列表内容控制
+	 */
 	public void initialData(){
-		ArrayList<OrderVO> orderList = controller.getlist();
+		orderList = controller.getlist();
 		if(orderList == null){
 			return ;
 		}
 		for(OrderVO o :orderList){
 			String state = MessageHelper.orderStateToString(o.orderState);
 			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
+		}
+	}
+	
+	/*
+	 * orderManagementController下的列表内容控制
+	 */
+	public void InitialData(){
+		orderList = hmcontroller.getOrderList();
+		if(orderList == null){
+			return ;
+		}
+		for(OrderVO o :orderList){
+			String state = MessageHelper.orderStateToString(o.orderState);
+			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
+		}
+	}
+	
+	/*
+	 * 查看按钮功能实现
+	 */
+	public void checkFunction(){
+		if(hmcontroller.getOrderList() == null){
+			if(controller.getOrder().orderState == OrderState.EXECUTED ){
+				hmcontroller.setExecuteOrderView();
+				hmcontroller.getStage().show();
+			}else if(controller.getOrder().orderState == OrderState.ABNORMAL){
+				hmcontroller.setAbnormalOrderView();
+				hmcontroller.getStage().show();
+			}else if(controller.getOrder().orderState == OrderState.UNEXECUTED){
+				hmcontroller.setUnexecuteOrderView();
+				hmcontroller.getStage().show();
+			}else{
+				hmcontroller.setUndoOrderView();
+				hmcontroller.getStage().show();
+			}
+		}else{
+			if(hmcontroller.getOrderList().get(row).orderState == OrderState.EXECUTED ){
+				hmcontroller.setExecuteOrderView();
+				hmcontroller.getStage().show();
+			}else if(hmcontroller.getOrderList().get(row).orderState == OrderState.ABNORMAL){
+				hmcontroller.setAbnormalOrderView();
+				hmcontroller.getStage().show();
+			}else if(hmcontroller.getOrderList().get(row).orderState == OrderState.UNEXECUTED){
+				hmcontroller.setUnexecuteOrderView();
+				hmcontroller.getStage().show();
+			}else{
+				hmcontroller.setUndoOrderView();
+				hmcontroller.getStage().show();
+			}
 		}
 	}
 	

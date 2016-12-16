@@ -42,6 +42,7 @@ public class HotelManagerLeftController{
 	protected String userId;
 	
 	private ArrayList<OrderVO> orderlist;
+	private int row;
 	
 	public HotelManagerLeftController(){
 		
@@ -49,11 +50,11 @@ public class HotelManagerLeftController{
 		orderListService = new OrderService_Stub();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
-		allOrderListUI = new OrderList(this);
-		hasExecuteOrderListUI = new OrderList(this);
-		unExecuteOrderListUI = new OrderList(this);
-		undoOrderListUI = new OrderList(this);
-		abnormalOrderListUI = new OrderList(this);
+//		allOrderListUI = new OrderList(this);
+//		hasExecuteOrderListUI = new OrderList(this);
+//		unExecuteOrderListUI = new OrderList(this);
+//		undoOrderListUI = new OrderList(this);
+//		abnormalOrderListUI = new OrderList(this);
 		roomFirstUI = new First(this);
 		promotionFirstUI = new PromotionFirst(this);
 		blankUI = new Blank(this);
@@ -80,7 +81,8 @@ public class HotelManagerLeftController{
 	
 	public void setAllOrderListView(){
 		setFilterOrderList(OrderListCondition.ALL_ORDERS);
-//		OrderList allOrderListUI = new OrderList(this);
+		OrderList allOrderListUI = new OrderList(this);
+		allOrderListUI.getRow();
 		allOrderListUI.initialData();
 		stage.setScene(allOrderListUI.getScene());
 		stage.show();
@@ -88,7 +90,8 @@ public class HotelManagerLeftController{
 	
 	public void setHasExecuteOrderListView(){
 		setFilterOrderList(OrderListCondition.EXECUTED);
-//		OrderList hasExecuteOrderListUI = new OrderList(this);
+		OrderList hasExecuteOrderListUI = new OrderList(this);
+		hasExecuteOrderListUI.getRow();
 		hasExecuteOrderListUI.initialData();
 		stage.setScene(hasExecuteOrderListUI.getScene());
 		stage.show();
@@ -96,7 +99,8 @@ public class HotelManagerLeftController{
 	
 	public void setunExecuteOrderListView(){
 		setFilterOrderList(OrderListCondition.UNEXECUTED);
-//		OrderList unExecuteOrderListUI = new OrderList(this);
+		OrderList unExecuteOrderListUI = new OrderList(this);
+		unExecuteOrderListUI.getRow();
 		unExecuteOrderListUI.initialData();
 		stage.setScene(unExecuteOrderListUI.getScene());
 		stage.show();
@@ -104,15 +108,17 @@ public class HotelManagerLeftController{
 	
 	public void setUndoOrderListView(){
 		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
-//		OrderList undoOrderListUI = new OrderList(this);
+		OrderList undoOrderListUI = new OrderList(this);
+		undoOrderListUI.getRow();
 		undoOrderListUI.initialData();
 		stage.setScene(undoOrderListUI.getScene());
 		stage.show();
 	}
 	
 	public void setAbnormalOrderListView(){
-		setFilterOrderList(OrderListCondition.UNEXECUTED);
-//		OrderList abnormalOrderListUI = new OrderList(this);
+		setFilterOrderList(OrderListCondition.ABNORMALED);
+		OrderList abnormalOrderListUI = new OrderList(this);
+		abnormalOrderListUI.getRow();
 		abnormalOrderListUI.initialData();
 		stage.setScene(abnormalOrderListUI.getScene());
 		stage.show();
@@ -172,5 +178,9 @@ public class HotelManagerLeftController{
 	
 	public OrderList getabnormalList(){
 		return abnormalOrderListUI;
+	}
+	
+	public OrderVO getOrder(){
+		return orderlist.get(row);
 	}
 }

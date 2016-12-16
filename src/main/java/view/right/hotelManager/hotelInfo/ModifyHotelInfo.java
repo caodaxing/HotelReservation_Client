@@ -65,6 +65,7 @@ public class ModifyHotelInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/管理酒店信息背景.jpg\")");
 		
 	}
 	

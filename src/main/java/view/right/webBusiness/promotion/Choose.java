@@ -47,6 +47,7 @@ public class Choose {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/webPromotion/网站促销策略_选择界面背景.jpg\")");
 	}
 	
 	public Scene getScene(){

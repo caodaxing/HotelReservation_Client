@@ -1,5 +1,6 @@
 package view.right.webBusiness.VIPInfo;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -55,6 +56,7 @@ public class SetVIPCredit {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/管理会员等级背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -134,17 +136,23 @@ public class SetVIPCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				OneButtonDialog dialog = new OneButtonDialog("设置成功");
-				dialog.show();
 				//传输vo
-				String userid = controller.getUserId();
-				updateVIP1.getText();
-				updateVIP2.getText();
-				updateVIP3.getText();
+				String level1 = updateVIP1.getText();
+				String level2 = updateVIP2.getText();
+				String level3 = updateVIP3.getText();
 				//
-				updateVIP1.setText("");
-				updateVIP2.setText("");
-				updateVIP3.setText("");
+				if(controller.getSetVIPResult(1, Integer.parseInt(level1)) == ResultMessage.SUCCESS &&
+						controller.getSetVIPResult(2, Integer.parseInt(level2)) == ResultMessage.SUCCESS &&
+						controller.getSetVIPResult(3, Integer.parseInt(level3)) == ResultMessage.SUCCESS){
+					OneButtonDialog dialog = new OneButtonDialog("设置成功");
+					dialog.show();
+					updateVIP1.setText("");
+					updateVIP2.setText("");
+					updateVIP3.setText("");
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("设置失败");
+					dialog.show();
+				}
 			}
 					
 		});

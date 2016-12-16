@@ -73,6 +73,7 @@ public class AbnormalOrderList {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单管理_异常订单列表背景.jpg\")");
 	}
 	
 	public Scene getScene(){

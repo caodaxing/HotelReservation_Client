@@ -75,6 +75,7 @@ public class TodayUnexecuteOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单管理_今日未执行订单背景.jpg\")");
 	}
 	
 	public Scene getScene(){

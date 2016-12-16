@@ -1,8 +1,10 @@
 package viewController;
 
-import javafx.scene.Scene;
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.account.AccountService;
+import logicService.credit.CreditService;
+import logicService.stub.CreditService_Stub;
 import view.right.webBusiness.VIPInfo.Blank;
 import view.right.webBusiness.VIPInfo.SetVIPCredit;
 
@@ -19,7 +21,6 @@ public class WBVIPInfoController extends WebBusinessLeftController{
 //		accountService = new Account();
 		this.stage = stage;
 		this.userId = userId;
-		System.out.println("yes");
 		setVIPCreditUI = new SetVIPCredit(this);
 		blankUI = new Blank(this);
 		

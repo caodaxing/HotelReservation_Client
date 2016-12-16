@@ -11,17 +11,12 @@ public class RoomService_Stub implements RoomService {
 
 	public ArrayList<RoomVO> getRoomList(String hotel_id) {
 		ArrayList<RoomVO> List = new ArrayList<RoomVO>();
-		RoomVO room1 = new RoomVO("kshei", "9239", RoomType.SINGLE_ROOM, 288, null);
-		RoomVO room2 = new RoomVO("nsjkd", "7383", RoomType.STANDARD_ROOM, 255, null);
+		RoomVO room1 = new RoomVO("kshei", RoomType.SINGLE_ROOM, 1, 288);
+		RoomVO room2 = new RoomVO("nsjkd", RoomType.STANDARD_ROOM, 1, 255);
 		List.add(room1);
 		List.add(room2);
 		
 		return List;
-	}
-
-	public RoomVO getRoomInfo(String hotel_id, String room_id) {
-//		return new RoomVO(0, 288, 0, "1109");
-		return null;
 	}
 
 	public ResultMessage updateRoomInfo(RoomVO roomVO) {
@@ -35,6 +30,12 @@ public class RoomService_Stub implements RoomService {
 	@Override
 	public int getRemainingRoomNums(String hotelID, RoomType roomType) {
 		return 1;
+	}
+
+	@Override
+	public RoomVO getRoomInfo(String hotelID, RoomType roomType) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

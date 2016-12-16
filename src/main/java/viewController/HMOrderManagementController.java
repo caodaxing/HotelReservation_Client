@@ -83,7 +83,7 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evalutionInfoUI = new EvaluationInfo(this);
 		executeOrderUI = new ExecuteOrder(this);
-		orderListUI = new OrderList(this);
+//		orderListUI = new OrderList(this);
 		searchOrderUI = new SearchOrder(this);
 		setArriveInfoUI = new SetArriveInfo(this);
 		setLeaveInfoUI = new SetLeaveInfo(this);
@@ -118,23 +118,43 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	}
 	
 	public void setallOrderListView(){
+		setfilterOrderList(OrderListCondition.ALL_ORDERS);
+		OrderList allOrderListUI = new OrderList(this);
+		allOrderListUI.InitialData();
 		stage.setScene(allOrderListUI.getScene());
+		stage.show();
 	}
 	
 	public void sethasExecuteOrderListView(){
+		setfilterOrderList(OrderListCondition.EXECUTED);
+		OrderList hasExecuteOrderListUI = new OrderList(this);
+		hasExecuteOrderListUI.InitialData();
 		stage.setScene(hasExecuteOrderListUI.getScene());
+		stage.show();
 	}
 	
 	public void setunexecuteOrderListView(){
+		setfilterOrderList(OrderListCondition.UNEXECUTED);
+		OrderList unExecuteOrderListUI = new OrderList(this);
+		unExecuteOrderListUI.InitialData();
 		stage.setScene(unExecuteOrderListUI.getScene());
+		stage.show();
 	}
 	
 	public void setundoOrderListView(){
+		setfilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
+		OrderList undoOrderListUI = new OrderList(this);
+		undoOrderListUI.InitialData();
 		stage.setScene(undoOrderListUI.getScene());
+		stage.show();
 	}
 	
 	public void setabnormalOrderListView(){
+		setfilterOrderList(OrderListCondition.ABNORMALED);
+		OrderList abnormalOrderListUI = new OrderList(this);
+		abnormalOrderListUI.InitialData();
 		stage.setScene(abnormalOrderListUI.getScene());
+		stage.show();
 	}
 	
 	public void setSearchOrderView(){
@@ -173,4 +193,7 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		return orderList;
 	}
 	
+	public void setfilterOrderList(OrderListCondition condition){
+		orderList = orderListService.filterHotelOrderList(userId, condition);
+	}
 }

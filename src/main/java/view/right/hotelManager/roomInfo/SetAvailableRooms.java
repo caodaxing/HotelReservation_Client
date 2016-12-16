@@ -1,5 +1,6 @@
 package view.right.hotelManager.roomInfo;
 
+import Message.RoomType;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
+import vo.RoomVO;
 
 /**
  * 酒店工作人员界面_客房管理_录入可用客房
@@ -131,9 +133,10 @@ public class SetAvailableRooms {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				roomType.getText();
-				roomNum.getText();
-				initialPrice.getText();
+				String type = roomType.getText();
+				String num = roomNum.getText();
+				String price = initialPrice.getText();
+//				RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), Double.parseDouble(price));
 				//
 				roomType.setText("");
 				roomNum.setText("");

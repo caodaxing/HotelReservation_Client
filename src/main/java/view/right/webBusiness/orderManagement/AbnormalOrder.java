@@ -65,6 +65,7 @@ public class AbnormalOrder{
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单管理_异常订单背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -107,13 +108,13 @@ public class AbnormalOrder{
 		orderID.setLayoutY(150);
 		
 		hotelName.setLayoutX(400);
-		hotelName.setLayoutY(250);
+		hotelName.setLayoutY(200);
 		
 		roomType.setLayoutX(400);
-		roomType.setLayoutY(350);
+		roomType.setLayoutY(250);
 		
 		lastExecuteTime.setLayoutX(400);
-		lastExecuteTime.setLayoutY(450);
+		lastExecuteTime.setLayoutY(300);
 		
 		//添加组件
 		rightPane.getChildren().add(orderID);
@@ -127,9 +128,9 @@ public class AbnormalOrder{
 		AnchorPane.setLeftAnchor(lastExecuteTime, 200.0);
 		
 		AnchorPane.setTopAnchor(orderID, 150.0);
-		AnchorPane.setTopAnchor(hotelName, 250.0);
-		AnchorPane.setTopAnchor(roomType, 350.0);
-		AnchorPane.setTopAnchor(lastExecuteTime, 450.0);
+		AnchorPane.setTopAnchor(hotelName, 200.0);
+		AnchorPane.setTopAnchor(roomType, 250.0);
+		AnchorPane.setTopAnchor(lastExecuteTime, 300.0);
 		
 	}
 	

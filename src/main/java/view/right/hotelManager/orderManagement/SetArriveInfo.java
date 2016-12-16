@@ -61,7 +61,6 @@ public class SetArriveInfo {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		arriveTime = new TextField();
 		arriveTime.setId("SetArriveInfo");
@@ -74,8 +73,6 @@ public class SetArriveInfo {
 		roomType = new TextField();
 		roomType.setId("SetArriveInfo");
 		roomType.setPrefSize(200, 30);
-		
-		//设置文本框内容
 		
 		//设置文本框内容可更改
 		roomType.setEditable(true);
@@ -133,6 +130,8 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				String orderId = roomType.getText();
+				String roomId = arriveTime.getText();
 				
 			}
 			

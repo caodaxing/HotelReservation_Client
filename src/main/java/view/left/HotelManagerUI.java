@@ -38,7 +38,7 @@ public class HotelManagerUI{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("/hotelImage/index3.jpg", 200, 180, false, true);
+		Image image = new Image("/head/游客头像.png", 200, 180, false, true);
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);
