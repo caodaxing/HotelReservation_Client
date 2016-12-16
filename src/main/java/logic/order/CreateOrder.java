@@ -53,7 +53,13 @@ public class CreateOrder implements CreateOrderService{
 		} 
 		
 		//生成订单的id
-		int num = this.orderDao.getOrderNum();
+		int num = 0;
+		try {
+			num = this.orderDao.getOrderNum();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		
 		String orderID = o.startTime.substring(0, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%06d", num);
 		o.orderId = orderID;
 		
