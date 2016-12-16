@@ -25,6 +25,10 @@ public class Room implements RoomService , RoomInfo{
 	public static int BOOK_ADVANCE_DAY = 30;
 	private RoomDao roomDao;
 
+	public RoomDao getRoomDao() {
+		return roomDao;
+	}
+
 	public Room() {
 		roomDao = new RoomDao_Stub();
 	}
@@ -42,6 +46,7 @@ public class Room implements RoomService , RoomInfo{
 			return null;
 		}
 		RoomVO vo = new RoomVO(po.getHotelId(), RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getPrice());
+		
 		return vo;
 	}
 	
@@ -129,7 +134,7 @@ public class Room implements RoomService , RoomInfo{
 		
 		int dayNum = new Time(time).calculateDay(Time.getCurrentTime());
 		
-		if(dayNum > 30) {
+		if(dayNum > 30  || dayNum < 0) {
 			return 0;
 		}
 		

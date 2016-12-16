@@ -10,6 +10,7 @@ import org.junit.Test;
 import Message.ResultMessage;
 import Message.RoomType;
 import logic.room.Room;
+import logic.utility.Time;
 import vo.RoomVO;
 
 public class RoomTest {
@@ -23,53 +24,68 @@ public class RoomTest {
 	
 	@Test
 	public void testGetRoomList(){
-		assertEquals(3, this.room.getRoomList("00002").size());
+		assertEquals(4, this.room.getRoomList("00002").size());
 		
 		assertEquals(RoomType.SINGLE_ROOM, this.room.getRoomList("00002").get(1).roomType);
 		
-		assertEquals("1203", this.room.getRoomList("00002").get(2).roomId);
+		assertEquals(3, this.room.getRoomList("00002").get(2).roomNum);
 	}
 	
 	@Test
 	public void testRoomInfo(){
-		assertEquals(400, 0, this.room.getRoomInfo("00002", "1109").price);
+		assertEquals(400, 0, this.room.getRoomInfo("00002", RoomType.STANDARD_ROOM).price);
 	}
 	
 	@Test
 	public void testUpdateRoomInfo(){
-		HashMap<String, String> n = new HashMap<String, String>();
-		n.put("2016-12-20 12:00:00", "2016-12-21 12:00:00");
-		assertEquals(ResultMessage.SUCCESS, this.room.updateRoomInfo(new RoomVO("00002", "1109", RoomType.STANDARD_ROOM, 500, n)));
+		assertEquals(ResultMessage.SUCCESS, this.room.updateRoomInfo(new RoomVO("00002", RoomType.STANDARD_ROOM, 10, 500)));
 	}
 	
 	@Test
 	public void testGetSpcificTimeRemainingRoomNums1(){
-		assertEquals(1, this.room.getSpcificTimeRemainingRoomNums("00001", RoomType.STANDARD_ROOM, "2016-12-25 12:00:00"));
+		String t = new Time(Time.getCurrentTime()).nextDay().getTime();
+		assertEquals(0, this.room.getSpcificTimeRemainingRoomNums("00001", RoomType.TRIPLE_ROOM, t));
 	}
 	
 	@Test
 	public void testGetSpcificTimeRemainingRoomNums2(){
-		assertEquals(3, this.room.getSpcificTimeRemainingRoomNums("00001", RoomType.STANDARD_ROOM, "2016-12-26 12:00:00"));
+		assertEquals(7, this.room.getSpcificTimeRemainingRoomNums("00002", RoomType.STANDARD_ROOM, "2016-12-26 12:00:00"));
 	}
 	
 	@Test
 	public void testGetSpcificTimeRemainingRoomNums3(){
-		assertEquals(0, this.room.getSpcificTimeRemainingRoomNums("00002", RoomType.SINGLE_ROOM, "2017-01-03 12:00:00"));
+		assertEquals(20, this.room.getSpcificTimeRemainingRoomNums("00003", RoomType.SINGLE_ROOM, "2017-01-03 12:00:00"));
 	}
 	
 	
 	@Test
 	public void testGetRoomPrice1(){
-		assertEquals(400, 0, this.room.getRoomPrice("00001", RoomType.STANDARD_ROOM));
+		assertEquals(1200, 0, this.room.getRoomPrice("00001", RoomType.STANDARD_ROOM));
 	}
 	
 	@Test
 	public void testGetRoomPrice2(){
-		assertEquals(0, 0, this.room.getRoomPrice("00001", RoomType.SINGLE_ROOM));
+		assertEquals(400, 0, this.room.getRoomPrice("00002", RoomType.SINGLE_ROOM));
 	}
 	
 	@Test
 	public void testGetRoomPrice3(){
-		assertEquals(500, 0, this.room.getRoomPrice("00002", RoomType.STANDARD_ROOM));
+		assertEquals(400, 0, this.room.getRoomPrice("00003", RoomType.STANDARD_ROOM));
 	}
+	
+	@Test
+	public void testGetHotelLowestPrice1(){
+		assertEquals(250, 0, this.room.getHotelLowestPrice("00001"));
+	}
+	
+	@Test
+	public void testGetHotelLowestPrice2(){
+		assertEquals(200, 0, this.room.getHotelLowestPrice("00002"));
+	}
+	
+	@Test
+	public void testGetHotelLowestPrice3(){
+		assertEquals(400, 0, this.room.getHotelLowestPrice("00003"));
+	}
+	
 }

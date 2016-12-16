@@ -214,7 +214,6 @@ public class ExecuteOrder implements ExecuteOrderService{
 			po.setUndoUnexecutedTime(time);;
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
 				
-System.out.println("b");
 				try {
 					if(this.orderDao.updateOrder(po)) {
 						//更新信用记录和信用值
@@ -222,7 +221,13 @@ System.out.println("b");
 								po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
 						
 						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
-							return ResultMessage.SUCCESS;
+							
+							//未执行订单撤销，房间数量要恢复
+							if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(po.getHotelId(), 
+									RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
+								return ResultMessage.SUCCESS;
+							}
+							
 						} else {
 							//如果更新信用记录没有成功，那么对该订单状态的改变也应该撤回
 							po.setState(OrderState.UNEXECUTED.ordinal());
@@ -235,7 +240,6 @@ System.out.println("b");
 				}
 			} else {
 				
-System.out.println("c");
 
 				try {
 					if(this.orderDao.updateOrder(po)) {

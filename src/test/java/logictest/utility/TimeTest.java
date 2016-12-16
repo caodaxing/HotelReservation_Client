@@ -22,12 +22,24 @@ public class TimeTest {
 		assertEquals("2016-11-11 00:00:00", time.getTime());
 	}
 	
+	
 	@Test
 	public void testInitTime() {
 		assertEquals(2016, time.getYear());
 		assertEquals(11, time.getDay());
 		assertEquals(0, time.getSec());
 	}
+	
+	
+	@Test
+	public void testCalculateDay() {
+		assertEquals(0, new Time("2016-12-16 00:00:00").calculateDay(Time.getCurrentTime()));
+		
+		assertEquals(0, new Time("2016-12-16").calculateDay(Time.getCurrentTime()));
+		
+		assertEquals(2, new Time("2016-12-18").calculateDay(Time.getCurrentTime()));
+	}
+	
 	
 	@Test
 	public void testBefore() {

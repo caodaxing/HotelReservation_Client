@@ -97,7 +97,7 @@ public class CalculatePromotionTest {
 	@Test
 	public void testCalculatePromotion6() {
 		ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-		rooms.add(new RoomVO("00001", "1101", RoomType.STANDARD_ROOM, 400));
+		rooms.add(new RoomVO("00001",RoomType.STANDARD_ROOM, 10, 400));
 		OrderVO vo = new OrderVO("zdy",RoomType.STANDARD_ROOM, 1, "2015-11-11 12:00:00", "2015-11-12 12:00:00", "00001", 2, false);
 		vo.beforePrice = 400;
 		vo.afterPrice = 400;

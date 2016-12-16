@@ -45,11 +45,11 @@ public class Time {
 	}
 	
 	public int calculateDay(String t) {
-	   SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	   SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	    long today = 0, from = 0;
 		try {
-			today = df.parse(t).getTime();
-			 from = df.parse(this.time).getTime();
+			today = df.parse(t.substring(0, 10)).getTime();
+			 from = df.parse(this.time.substring(0,  10)).getTime();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
