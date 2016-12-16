@@ -152,6 +152,7 @@ public class UserLeftController {
 	}
 	
 	public void setAllOrderList(){
+		orderID = null;
 		setFilterOrderList(OrderListCondition.ALL_ORDERS);
 		OrderList allOrderList = new OrderList(this);
 		allOrderList.setTextValue();
@@ -160,6 +161,7 @@ public class UserLeftController {
 	}
 	
 	public void setExecuteOrderList(){
+		orderID = null;
 		setFilterOrderList(OrderListCondition.EXECUTED);
 		OrderList executeOrderList = new OrderList(this);
 		executeOrderList.setTextValue();
@@ -168,6 +170,7 @@ public class UserLeftController {
 	}
 	
 	public void setUnexecuteOrderList(){
+		orderID =null;
 		setFilterOrderList(OrderListCondition.UNEXECUTED);
 		OrderList unexecuteOrderList = new OrderList(this);
 		unexecuteOrderList.setTextValue();
@@ -176,6 +179,7 @@ public class UserLeftController {
 	}
 	
 	public void setUndoOrderList(){
+		orderID = null;
 		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 		OrderList undoOrderList = new OrderList(this);
 		undoOrderList.setTextValue();
@@ -184,6 +188,7 @@ public class UserLeftController {
 	}
 	
 	public void setAbnormalOrderList(){
+		orderID = null;
 		setFilterOrderList(OrderListCondition.ABNORMALED);
 		OrderList abnormalOrderList = new OrderList(this);
 		abnormalOrderList.setTextValue();

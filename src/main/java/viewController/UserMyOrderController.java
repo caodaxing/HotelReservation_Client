@@ -5,6 +5,7 @@ import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.order.ExecuteOrderService;
 import logicService.stub.OrderService_Stub;
+import view.helpTools.MessageHelper;
 import view.right.user.myOrder.AbnormalOrder;
 import view.right.user.myOrder.Evaluate;
 import view.right.user.myOrder.EvaluationInfo;
@@ -156,6 +157,7 @@ public class UserMyOrderController extends UserLeftController {
 
 	public void setOrderView() {
 		OrderState state = orderService.getOrderInfo(orderID).orderState;
+		System.out.println(MessageHelper.orderStateToString(state));
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){
