@@ -34,7 +34,7 @@ public class ClientDao_Stub implements ClientDao{
 			}
 		}
 		
-		return null;
+		return pos.get(0);
 	}
 
 	public boolean updateClientInfo(ClientPO clientPO) {
