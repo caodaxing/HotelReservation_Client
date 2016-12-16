@@ -23,7 +23,7 @@ public class AcccoutTest {
 	
 	@Test
 	public void testLogin1() {
-		assertEquals(ResultMessage.USERNAME_NOT_EXIST, 
+		assertEquals(ResultMessage.UNMATCHED_PASSWORD, 
 				account.login(new AccountVO("curry", "currycurry", Identity.CLIENT)));
 	}
 	
@@ -47,7 +47,7 @@ public class AcccoutTest {
 	@Test
 	public void testRegister1() {
 		AccountVO vo1 = new AccountVO("curry", "ccccc", Identity.CLIENT);
-		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.register(vo1));
+		assertEquals(ResultMessage.SUCCESS, account.register(vo1));
 	}
 	
 	@Test
@@ -65,7 +65,7 @@ public class AcccoutTest {
 	@Test
 	public void testModifyPassword2() {
 		AccountVO vo2 = new AccountVO("curry", "currycurry", Identity.CLIENT);
-		assertEquals(ResultMessage.UNMATCHED_PASSWORD, account.modifyPassword(vo2));
+		assertEquals(ResultMessage.SUCCESS, account.modifyPassword(vo2));
 	}
 	
 	@Test
