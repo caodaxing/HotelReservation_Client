@@ -124,42 +124,27 @@ public class SearchHotel implements SearchHotelService {
 	 */
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-
-System.out.println(search.city);
-System.out.println(search.tradingArea);
-System.out.println(search.startTime);
-System.out.println(search.endTime);
-System.out.println(search.hotelName);
-System.out.println(search.roomPriceLow);
-System.out.println(search.roomPriceHigh);
-System.out.println(search.commentLow);
-System.out.println(search.commentHigh);
-System.out.println(search.starLow);
-System.out.println(search.starHigh);
 		
 
-		if (search == null || search.city == null || search.city == "" || search.tradingArea == null 
-				|| search.tradingArea == ""||search.starLow > search.starHigh
+		if (search == null || search.city == null || search.city.equals("") || search.tradingArea == null 
+				|| search.tradingArea.equals("")||search.starLow > search.starHigh
 				|| search.commentLow > search.commentHigh || search.roomPriceLow > search.roomPriceHigh) {
 System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-System.out.println("a");
 		
 		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
 
-System.out.println(initList.size());
-System.out.println("b");
-
-
+		
 		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();	
 		//酒店名称的筛选
-		if (search.hotelName != null && search.hotelName != "") {
+		if (search.hotelName != null && !search.hotelName.equals("")) {
 			
+			System.out.println(search.hotelName + "bb");
 			
 			for (int i=0; i<initList.size(); ++i) {
 				HotelVO hotelVO = initList.get(i); 
@@ -175,19 +160,11 @@ System.out.println("b");
 			return null;
 		}
 		
-		
-System.out.println("c" + hotelList.size());
-		
-		
-	
-		
-		if(search.startTime != null && search.startTime != "" 
-				&& search.endTime != null && search.endTime!= "") {
+		if(search.startTime != null && !search.startTime.equals("") 
+				&& search.endTime != null && !search.endTime.equals("")) {
 			
 			ArrayList<HotelVO> hotelList2  = new ArrayList<HotelVO>();
 	
-System.out.println(search.startTime);
-			
 			//筛选指定房间类型和指定时间的空房
 			RoomInfo roomInfo = new Room();
 			int num = 0;
@@ -201,7 +178,6 @@ System.out.println(search.startTime);
 				while(!t1.getTime().equals(t2.getTime())) {
 					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
 			
-System.out.println(num);
 					
 					if(num < search.roomNum) {
 						empty = false;
@@ -225,7 +201,6 @@ System.out.println(num);
 			return null;
 		}
 	
-System.out.println("d");
 		
 		if (search.starLow >= 0 && search.starLow <= 5 && search.starHigh >= 0 && search.starHigh <= 5) {
 			this.hotelSort = new StarSort();
@@ -235,8 +210,6 @@ System.out.println("d");
 			return null;
 		}
 		
-System.out.println("e");
-		
 		if (search.roomPriceLow != -1) {
 			this.hotelSort = new PriceSort();
 			hotelList = this.hotelSort.getSpecificSectionHotelList(search.roomPriceLow, search.roomPriceHigh, hotelList);
@@ -245,7 +218,6 @@ System.out.println("e");
 			return null;
 		}
 		
-System.out.println("f");
 		
 		if (search.commentLow >= 0 && search.commentLow <= 5 || search.commentHigh > 0 && search.commentHigh <= 5) {
 			this.hotelSort = new GradeSort();
@@ -255,7 +227,6 @@ System.out.println("f");
 			return null;
 		}
 		
-System.out.println("g");
 		
 		return hotelList;
 	}

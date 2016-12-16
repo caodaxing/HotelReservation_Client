@@ -76,7 +76,7 @@ public class Evaluate {
 		
 		//设置textField大小
 		grade.setPrefSize(100, 30);
-		info.setPrefSize(250, 100);
+		info.setPrefSize(250, 150);
 		
 		//右侧pane添加组件
 		rightPane.getChildren().add(grade);

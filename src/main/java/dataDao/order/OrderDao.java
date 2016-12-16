@@ -10,7 +10,7 @@ import po.OrderPO;
 public interface OrderDao extends Remote{
 	
 	//生成订单id时调用的,每次调用data层数据需要加1
-	public int getOrderNum();
+	public int getOrderNum() throws RemoteException;
 	
 	public boolean addOrder(OrderPO orderPO) throws RemoteException;
 	

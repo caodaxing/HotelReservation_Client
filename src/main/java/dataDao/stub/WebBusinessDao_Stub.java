@@ -10,7 +10,7 @@ public class WebBusinessDao_Stub implements WebBusinessDao {
 		if(webBusinessID == "mdzz")
 			return new WebBusinessPO("mdzzz", "王雪", "123456", "11");
 		else 
-			return null;
+			return new WebBusinessPO("mdzzz", "王雪", "123456", "1111");
 	}
 
 	@Override

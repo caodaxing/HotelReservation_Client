@@ -102,19 +102,19 @@ public class SearchResultList{
 		//设置按钮
 		ascendingSort = new Button("价格升序");
 		ascendingSort.setId("searchResultList");
-		ascendingSort.setPrefSize(60, 30);
+		ascendingSort.setPrefSize(80, 30);
 		
 		dscendingSort = new Button("价格降序");
 		dscendingSort.setId("searchResultList");
-		dscendingSort.setPrefSize(60, 30);
+		dscendingSort.setPrefSize(80, 30);
 		
 		starLevel = new Button("星级");
 		starLevel.setId("searchResultList");
-		starLevel.setPrefSize(60, 30);
+		starLevel.setPrefSize(80, 30);
 		
 		evaluation = new Button("评价");
 		evaluation.setId("searchList");
-		evaluation.setPrefSize(60, 30);
+		evaluation.setPrefSize(80, 30);
 		
 		revert = new Button("返回");
 		revert.setId("searchList");
@@ -231,15 +231,15 @@ public class SearchResultList{
 		
 		whetherReserve = new TableColumn<>("是否预定过");
 		whetherReserve.setCellValueFactory(new PropertyValueFactory<Person, String>("whetherReserve"));
-		whetherReserve.setMinWidth(100);
+		whetherReserve.setMinWidth(80);
 		
 		starlevel = new TableColumn<>("星级");
 		starlevel.setCellValueFactory(new PropertyValueFactory<Person, String>("starlevel"));
-		starlevel.setMinWidth(60);
+		starlevel.setMinWidth(40);
 		
 		evalaution = new TableColumn<>("评价");
 		evalaution.setCellValueFactory(new PropertyValueFactory<Person, String>("evaluation"));
-		evalaution.setMinWidth(60);
+		evalaution.setMinWidth(40);
 		
 		operation1= new TableColumn<>("操作1");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
@@ -249,7 +249,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(100);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -262,7 +262,7 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation1.setMinWidth(50);
+		operation1.setMinWidth(70);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -272,7 +272,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("预订");
-							Item.setPrefWidth(100);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -285,7 +285,7 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation2.setMinWidth(50);
+		operation2.setMinWidth(70);
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);

@@ -35,9 +35,9 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 //		Image image2 = Toolkit.getDefaultToolkit().createImage("index1.jpg");
 //		list.add(image1);
 //		list.add(image2);
-//		
-		return new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
+		return null;
+//		return new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
 	}
 
 	public ArrayList<String> getTradingArea(String location) {
@@ -76,11 +76,13 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 //		List.add(info2);
 //		
 //		return List;
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		
+		return null;
 	}
 
 	public ArrayList<HotelVO> getSortedList() {
@@ -97,11 +99,12 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 //		List.add(info1);
 //		
 //		return List;
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		return null;
 	}
 
 	public ArrayList<HotelVO> getBookedHotelList(String user_id) {
@@ -117,11 +120,13 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 //		List.add(info2);
 //		
 //		return List;
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		
+		return null;
 	}
 
 	public HotelVO search(HotelSearchVO search) {
@@ -134,8 +139,9 @@ public class HotelService_Stub_Delete implements UpdateHotelService{
 //		
 //		return  new HotelVO("朗诗酒店", "江苏省南京市珠江路88号", "提供各式标准间，预定赠早餐券，三星级酒店完美体验"
 //				, "288", "房间整洁，好评！", list);
-		return new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		return new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+		return null;
 	}
 
 	@Override

@@ -55,7 +55,18 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 	
 	@Override
 	public ResultMessage hotelIDExist(String hotelID) {
-		return this.hotelIDExist(hotelID);
+		boolean res = false;
+		try {
+			res = this.hotelDao.hotelIDExist(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(res){
+			return ResultMessage.SUCCESS;
+		} else {
+			return ResultMessage.FAILURE;
+		}
 	}
 	
 	public ResultMessage hotelHasManager(String hotelID) {

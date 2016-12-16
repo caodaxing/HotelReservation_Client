@@ -35,6 +35,7 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	 */
 	public ClientVO getClientInfo(String clientID){
 		ClientPO po = null;
+		
 		try {
 			po = this.clientDao.getClientInfo(clientID);
 		} catch (RemoteException e) {

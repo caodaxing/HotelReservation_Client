@@ -163,7 +163,7 @@ public class EvaluationList {
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
 		tableView.setPrefWidth(520);
-		tableView.getColumns().addAll(orderId, roomType, arriveTime, score, operation);
+		tableView.getColumns().addAll(orderId, score, operation);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);

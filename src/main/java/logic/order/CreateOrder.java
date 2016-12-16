@@ -31,7 +31,7 @@ public class CreateOrder implements CreateOrderService{
 	private CalculationPromotionInfo caculatePromotionInfo;
 	private HotelInfo info;
 	private UpdateRoom updateRoom;
-	
+
 	
 	public CreateOrder() {
 		this.orderTrans = new OrderTransform();
@@ -46,26 +46,33 @@ public class CreateOrder implements CreateOrderService{
 	
 	@Override
 	public OrderVO createOrder(OrderVO o) {
+		
 		if(o == null) {
 			System.out.println("logic.order.CreateOrder.createOrder参数异常");
 			return null;
 		} 
 		
 		//生成订单的id
-		int num = this.orderDao.getOrderNum();
+		int num = 0;
+		try {
+			num = this.orderDao.getOrderNum();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		
 		String orderID = o.startTime.substring(0, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%06d", num);
 		o.orderId = orderID;
-				
+		
 		//获取价格
 		o.beforePrice = info.getRoomPrice(o.hotelID, o.roomType) * o.roomNum;
 		o.afterPrice = o.beforePrice;
 		
-
-		OrderVO vo = this.caculatePromotionInfo.calculatePromotion(o);
+	
+		o = this.caculatePromotionInfo.calculatePromotion(o);
 		
-		vo.orderState = OrderState.UNEXECUTED;
+		o.orderState = OrderState.UNEXECUTED;
 		
-		OrderPO po = this.orderTrans.orderTransToPO(vo);
+		OrderPO po = this.orderTrans.orderTransToPO(o);
 		
 		boolean success = false;
 		try {
@@ -75,16 +82,16 @@ public class CreateOrder implements CreateOrderService{
 		}
 		
 		if(success) {
-			
+	
 			//生成订单成功 更新房间数量信息,changeNum传入负数，表示房间数减少
-			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(vo.hotelID, vo.roomType, -o.roomNum)) {
-				return vo;
+			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(o.hotelID, o.roomType, -o.roomNum)) {
+				return o;
 			}
 	
 System.out.println("logic.order.createOrder更新房间数量有问题");
 			return null;
 		} else {
-			System.out.println("logic.order.CreateOrder.createOrder更新数据库异常");
+System.out.println("logic.order.CreateOrder.createOrder更新数据库异常");
 			return null;
 		}
 	}

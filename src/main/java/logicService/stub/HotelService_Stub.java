@@ -59,29 +59,33 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 
 	@Override
 	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition, ArrayList<HotelVO> hotels) {
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		
+		return null;
 	}
 
 	@Override
 	public ArrayList<HotelVO> getBookedHotelList(String user_id) {
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		return null;
 	}
 
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
-				3.4,3, "贼他妈棒", "三星级",null,null,null);
-		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-		list.add(vo);
-		return list;
+//		HotelVO vo = new HotelVO("12344","朗诗酒店", "南京", "栖霞区","仙林大道163号",
+//				3.4,3, "贼他妈棒", "三星级",null,null,null);
+//		ArrayList<HotelVO> list = new ArrayList<HotelVO>();
+//		list.add(vo);
+//		return list;
+		return null;
 	}
 	
 }

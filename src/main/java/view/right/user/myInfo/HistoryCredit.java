@@ -121,11 +121,11 @@ public class HistoryCredit {
 		//添加列
 		time = new TableColumn<>("时  间");
 		time.setCellValueFactory(new PropertyValueFactory<Person, String>("time"));
-		time.setMinWidth(160);
+		time.setMinWidth(100);
 		
 		orderID = new TableColumn<>("订单号");
 		orderID.setCellValueFactory(new PropertyValueFactory<Person, String>("orderID"));
-		orderID.setMinWidth(100);
+		orderID.setMinWidth(150);
 		
 		action = new TableColumn<>("动作");
 		action.setCellValueFactory(new PropertyValueFactory<Person, String>("action"));

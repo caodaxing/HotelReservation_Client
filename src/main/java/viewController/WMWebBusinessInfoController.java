@@ -3,6 +3,7 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.user.WebBusiness;
 import logic.utility.Encryption;
 import logicService.stub.WebBusinessService_Stub;
 import logicService.user.WebBusinessService;
@@ -29,7 +30,7 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 		this.stage = stage ;
 		this.userID = userID;
 		
-		webBusinessService = new WebBusinessService_Stub();
+		webBusinessService = new WebBusiness();
 		
 		addWebBusinessUI = new AddWebBusiness(this);
 		checkWebBusinessUI = new CheckWebBusiness(this);
