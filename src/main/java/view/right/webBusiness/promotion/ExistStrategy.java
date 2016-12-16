@@ -79,7 +79,7 @@ public class ExistStrategy {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/webPromotion/网站促销策略_初始界面背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看现有促销策略列表背景.jpg\")");
 		
 	}
 	

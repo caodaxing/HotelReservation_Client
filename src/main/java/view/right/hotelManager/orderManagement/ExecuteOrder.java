@@ -3,6 +3,7 @@ package view.right.hotelManager.orderManagement;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.layout.HBox;
 import logicService.order.OrderListService;
 import logicService.stub.OrderService_Stub;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 import vo.OrderVO;
@@ -46,6 +48,7 @@ public class ExecuteOrder {
 	Button revert;
 	
 	ArrayList<OrderVO> orderList;
+	OrderVO orderVO;
 	
 	public ExecuteOrder(HMOrderManagementController controller){
 		
@@ -68,6 +71,7 @@ public class ExecuteOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_已执行订单背景.jpg\")");
 		
 	}
 	
@@ -77,17 +81,17 @@ public class ExecuteOrder {
 	
 	private void setTextContent(){
 		
-		orderList = orderListService.filterHotelOrderList(controller.getUserId(), OrderListCondition.ALL_ORDERS);
-		int num = controller.getRow();
+		controller.setFilterOrderList(OrderListCondition.EXECUTED);
+		orderVO = controller.getlist().get(controller.getRow());
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField(orderList.get(num).orderId);
-		hotelName = new TextField(orderList.get(num).hotelID);
-		roomType = new TextField(orderList.get(num).roomType.toString());
-		arriveTime = new TextField(orderList.get(num).startTime);
-		leaveTime = new TextField(orderList.get(num).endTime);
-		primeCost = new TextField(String.valueOf(orderList.get(num).beforePrice));
-		realCost = new TextField(String.valueOf(orderList.get(num).afterPrice));
+		orderID = new TextField(orderVO.orderId);
+		hotelName = new TextField(orderVO.hotelID);
+		roomType = new TextField(orderVO.roomType.toString());
+		arriveTime = new TextField(orderVO.startTime);
+		leaveTime = new TextField(orderVO.endTime);
+		primeCost = new TextField(String.valueOf(orderVO.beforePrice));
+		realCost = new TextField(String.valueOf(orderVO.afterPrice));
 		
 		orderID.setId("ExecuteOrder");
 		hotelName.setId("ExecuteOrder");
@@ -194,8 +198,14 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setCheckLeaveInfoView();
-				controller.getStage().show();
+				
+				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.FAILURE){
+					controller.setSetLeaveInfoView();
+					controller.getStage().show();
+				}else{
+					controller.setCheckLeaveInfoView();
+					controller.getStage().show();
+				}
 			}
 									
 		});
@@ -205,8 +215,13 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setEvaluationInfoView();
-				controller.getStage().show();
+				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
+					controller.setEvaluationInfoView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("暂无评价");
+					dialog.show();
+				}
 			}
 									
 		});
@@ -216,7 +231,7 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.sethasExecuteOrderListView();
+				controller.setHasExecuteOrderListView();
 				controller.getStage().show();
 			}
 									

@@ -2,6 +2,8 @@ package view.right.hotelManager.roomInfo;
 
 import java.util.ArrayList;
 
+import Message.ResultMessage;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,15 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import logicService.room.RoomService;
-import logicService.stub.RoomService_Stub;
+import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
 import vo.RoomVO;
@@ -51,6 +54,8 @@ public class ExistRooms {
 	private ObservableList<Person> data;
 	private ArrayList<RoomVO> roomList;
 	private int remainNum;
+	private int row;
+	private Button change;
 	
 	public ExistRooms(HMRoomInfoController controller){
 		
@@ -72,6 +77,7 @@ public class ExistRooms {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_酒店房间列表背景.jpg\")");
 		
 	}
 	
@@ -132,9 +138,42 @@ public class ExistRooms {
 		remainedNum.setCellValueFactory(new PropertyValueFactory<Person, String>("remainedNum"));
 		remainedNum.setMinWidth(125);
 		
+		operation= new TableColumn<>("操作");
+		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("修改");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								row = this.getTableRow().getIndex();
+								controller.setRoomList();
+								roomList = controller.getRoomList();
+								if(controller.getUpdateRoomResult(roomList.get(row)) == ResultMessage.SUCCESS){
+									OneButtonDialog dialog = new OneButtonDialog("更新成功");
+									dialog.show();
+									controller.setExistRoomsView();
+									controller.getStage().show();
+								}else{
+									OneButtonDialog dialog = new OneButtonDialog("更新失败");
+									dialog.show();
+									controller.setExistRoomsView();
+									controller.getStage().show();
+								}
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
+		operation.setMinWidth(100);
+		
 		initialData();
 		tableView.setItems(data);
-		tableView.getColumns().addAll(roomType, initialPrice, remainedNum);
+		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
@@ -142,6 +181,10 @@ public class ExistRooms {
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
+	}
+	
+	public int getRow(){
+		return row;
 	}
 	
 	private void initialData(){
@@ -152,7 +195,7 @@ public class ExistRooms {
 			controller.setRemainedNum(roomList.get(i).roomType);
 			remainNum = controller.getRemainedNum();
 			data.add(new Person(roomList.get(i).roomType.toString(), String.valueOf(roomList.get(i).price),
-					String.valueOf(remainNum)));
+					String.valueOf(remainNum), change));
 		}
 	}
 	
@@ -163,12 +206,14 @@ public class ExistRooms {
 		private final SimpleStringProperty roomType;
 		private final SimpleStringProperty initialPrice;
 		private final SimpleStringProperty remainedNum;
+		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String RoomType, String InitialPrice, String RemainedNum){
+		private Person(String RoomType, String InitialPrice, String RemainedNum, Button Operation){
 			
 			this.roomType = new SimpleStringProperty(RoomType);
 			this.initialPrice = new SimpleStringProperty(InitialPrice);
 			this.remainedNum = new SimpleStringProperty(RemainedNum);
+			this.operation =  new SimpleObjectProperty<Object>(Operation);
 			
 		}
 		
@@ -194,6 +239,14 @@ public class ExistRooms {
 		
 		public void setRemainedNum(String RemainedNum){
 			remainedNum.set(RemainedNum);
+		}
+		
+		public Button getOperation(){
+			return (Button)operation.get();
+		}
+		
+		public void setOperation(Object Operation){
+			operation.set(Operation);
 		}
 		
 	}

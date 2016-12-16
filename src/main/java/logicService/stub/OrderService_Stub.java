@@ -109,6 +109,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	@Override
 	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition) {
 		// TODO Auto-generated method stub
+		String[] room = {"0320", "8323", "2823"};
 		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
 		PromotionVO promotionVO = new PromotionVO("sdjoiew", "kjsfoiweo2", "skfioew", 0.9, "160205", "160207");
 		
@@ -131,14 +132,14 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //		list.add(roomvo7);
 //		list.add(roomvo8);
 		
-		OrderVO order1 = new OrderVO("267363HSHJ","161124000021103", RoomType.SINGLE_ROOM, "2003", 1, "161124", "161122","837JFD",OrderState.ABNORMAL, 2, false, 288, 228, promotionVO,"160204", "160205",null,null,null);
-		OrderVO order2 = new OrderVO("7838738489","161124000021109", RoomType.STANDARD_ROOM, "0129", 2, "161124", "161125","sje44", OrderState.ABNORMAL, 2, false, 336, 258, promotionVO, "160727", "160729",null,null,null);
-		OrderVO order3 = new OrderVO("sikenflks23","161124000021109", RoomType.BIGBED_ROOM, "0129", 1, "160304", "160308","sddj1", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
-		OrderVO order4 = new OrderVO("vmdkjj2233","161124000021109", RoomType.BIGBED_ROOM, "0129", 1,"161124", "161125","ieuii", OrderState.UNEXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
-		OrderVO order5 = new OrderVO("0sjskeii0","161124000021109", RoomType.BIGBED_ROOM, "0129", 1, "161124", "161125","o3dkm", OrderState.UNDOED_ABNORMAL, 2, false, 336, 258, null, "160204", "160205",null,null,null);
-		OrderVO order6 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, "0129", 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
-		OrderVO order7 = new OrderVO("jsklsei","161124000021109",RoomType.BIGBED_ROOM, "0129", 2, "161124", "161125","klkse", OrderState.UNDOED_ABNORMAL, 2, false, 336, 258, null, "160204", "160205",null,null,null);
-		OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, "0129", 2, "161124", "161125","sje44", OrderState.EXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021103", RoomType.SINGLE_ROOM, room, 1, "161124", "161122","837JFD",OrderState.ABNORMAL, 2, false, 288, 228, promotionVO,"160204", "160205",null,null,null);
+		OrderVO order2 = new OrderVO("7838738489","161124000021109", RoomType.STANDARD_ROOM, room, 2, "161124", "161125","sje44", OrderState.ABNORMAL, 2, false, 336, 258, promotionVO, "160727", "160729",null,null,null);
+		OrderVO order3 = new OrderVO("sikenflks23","161124000021109", RoomType.BIGBED_ROOM, room, 1, "160304", "160308","sddj1", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
+		OrderVO order4 = new OrderVO("vmdkjj2233","161124000021109", RoomType.BIGBED_ROOM, room, 1,"161124", "161125","ieuii", OrderState.UNEXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
+		OrderVO order5 = new OrderVO("0sjskeii0","161124000021109", RoomType.BIGBED_ROOM, room, 1, "161124", "161125","o3dkm", OrderState.UNDOED_ABNORMAL, 2, false, 336, 258, null, "160204", "160205",null,null,null);
+		OrderVO order6 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, room, 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
+		OrderVO order7 = new OrderVO("jsklsei","161124000021109",RoomType.BIGBED_ROOM, room, 2, "161124", "161125","klkse", OrderState.UNDOED_ABNORMAL, 2, false, 336, 258, null, "160204", "160205",null,null,null);
+		OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, room, 2, "161124", "161125","sje44", OrderState.EXECUTED, 2, false, 336, 258, null, "160204", "160205",null,null,null);
 		List.add(order1);
 		List.add(order2);
 		List.add(order3);
@@ -153,8 +154,8 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //			ArrayList<RoomVO> list = new ArrayList<>();
 //			list.add(roomvo1);
 //			list.add(roomvo2);
-			OrderVO order1 = new OrderVO("267363HSHJ","161124000021103", RoomType.SINGLE_ROOM, "2003", 1, "161124", "161122","837JFD",OrderState.ABNORMAL, 2, false, 288, 228, promotionVO,"160204", "160205",null,null,null);
-			OrderVO order2 = new OrderVO("7838738489","161124000021109", RoomType.STANDARD_ROOM, "0129", 2, "161124", "161125","sje44", OrderState.ABNORMAL, 2, false, 336, 258, promotionVO, "160727", "160729",null,null,null);
+			OrderVO order1 = new OrderVO("267363HSHJ","161124000021103", RoomType.SINGLE_ROOM, room, 1, "161124", "161122","837JFD",OrderState.ABNORMAL, 2, false, 288, 228, promotionVO,"160204", "160205",null,null,"03999");
+			OrderVO order2 = new OrderVO("7838738489","161124000021109", RoomType.STANDARD_ROOM, room, 2, "161124", "161125","sje44", OrderState.ABNORMAL, 2, false, 336, 258, promotionVO, "160727", "160729",null,null,"03999");
 			List.add(order1);
 			List.add(order2);
 		}else if(condition == OrderListCondition.EXECUTED){
@@ -175,7 +176,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //			list.add(roomvo6);
 //			list.add(roomvo7);
 //			list.add(roomvo8);
-			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.BIGBED_ROOM, "1609", 2, "161124", "161125","sje44", OrderState.EXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
+			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.BIGBED_ROOM, room, 2, "161124", "161125","sje44", OrderState.EXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,"03999");
 			List.add(order8);
 		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
 //			RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.SINGLE_ROOM,330,null);
@@ -195,7 +196,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //			list.add(roomvo6);
 //			list.add(roomvo7);
 //			list.add(roomvo8);
-			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.BIGBED_ROOM, "1708", 1, "161124", "161125","sje44", OrderState.UNDOED_UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
+			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.BIGBED_ROOM, room, 1, "161124", "161125","sje44", OrderState.UNDOED_UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,"03999");
 			List.add(order8);
 		}else if(condition == OrderListCondition.UNEXECUTED){
 //			RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.SINGLE_ROOM,330,null);
@@ -215,7 +216,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //			list.add(roomvo6);
 //			list.add(roomvo7);
 //			list.add(roomvo8);
-			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, "0920", 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160209", "160210",null,null,null);
+			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, room, 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160209", "160210",null,null,"03999");
 			List.add(order8);
 		}
 		
@@ -235,6 +236,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	@Override
 	public ArrayList<OrderVO> getWebDailyUnexecutedOrderList() {
 		
+		String[] room = {"0320", "8323", "2823"};
 		PromotionVO promotionVO = new PromotionVO("sdjoiew", "kjsfoiweo2", "skfioew", 0.9, "160205", "160207");
 //		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,null);
 //		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,null);
@@ -243,8 +245,8 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //		list.add(roomvo2);
 		
 		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
-		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", RoomType.SINGLE_ROOM, "9292", 1,"161124", "161125","837JFD", OrderState.UNEXECUTED, 2, false, 288, 228, promotionVO, "160204", "160205",null,null,null);
-		OrderVO order2 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, "8984", 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", RoomType.SINGLE_ROOM, room, 1,"161124", "161125","837JFD", OrderState.UNEXECUTED, 2, false, 288, 228, promotionVO, "160204", "160205",null,null,"03999");
+		OrderVO order2 = new OrderVO("jske223","161124000021109", RoomType.SINGLE_ROOM, room, 1,"161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,"03999");
 		List.add(order1);
 		List.add(order2);
 		
@@ -253,6 +255,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 
 	@Override
 	public ArrayList<OrderVO> getWebDailyAbnormalOrderList() {
+		String[] room = {"0320", "8323", "2823"};
 		PromotionVO promotionVO = new PromotionVO("sdjoiew", "kjsfoiweo2", "skfioew", 0.9, "160205", "160207");
 //		RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.BIGBED_ROOM,330,null);
 //		RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,330,null);
@@ -261,8 +264,8 @@ public ArrayList<OrderVO> getDailyOrderList() {
 //		list.add(roomvo2);
 		
 		ArrayList<OrderVO> List = new ArrayList<OrderVO>();
-		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", RoomType.SINGLE_ROOM, "8334", 1,"161124", "161125","837JFD", OrderState.UNEXECUTED, 2, false, 288, 228, promotionVO, "160204", "160205",null,null,null);
-		OrderVO order2 = new OrderVO("jske223","161124000021109",  RoomType.SINGLE_ROOM, "3827", 1, "161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,null);
+		OrderVO order1 = new OrderVO("267363HSHJ","161124000021109", RoomType.SINGLE_ROOM, room, 1,"161124", "161125","837JFD", OrderState.UNEXECUTED, 2, false, 288, 228, promotionVO, "160204", "160205",null,null,"03999");
+		OrderVO order2 = new OrderVO("jske223","161124000021109",  RoomType.SINGLE_ROOM, room, 1, "161124", "161125","sje44", OrderState.UNEXECUTED, 2, false, 336, 258, promotionVO, "160204", "160205",null,null,"03999");
 		List.add(order1);
 		List.add(order2);
 		
@@ -277,6 +280,24 @@ public ArrayList<OrderVO> getDailyOrderList() {
 	@Override
 	public ResultMessage undoUnexecutedOrder(String orderID) {
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage checkOut(String orderID) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage normalExecute(String orderID, String[] roomID) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage supplyOrder(String orderID, String[] roomID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

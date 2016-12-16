@@ -7,7 +7,7 @@ import Message.RoomType;
  * @param city 酒店所在城市
  * @param tradingArea 酒店所属商圈
  * @param hotelName 酒店名称(不填写则为null)
- * @param roomType 房间类型(默认标间)
+ * @param roomId 房间类型(默认标间)
  * @param startTime 计划入住的时间(默认为次日12时)
  * @param endTime 计划退房的时间(默认为次次日12时)
  * @param roomPriceLow 相应房间类型价格最低值 (默认值为-1)

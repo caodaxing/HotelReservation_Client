@@ -1,10 +1,12 @@
 package view.right.hotelManager.roomInfo;
 
 import Message.RoomType;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -28,7 +30,7 @@ public class SetAvailableRooms {
 	private AnchorPane rightPane;
 	private HotelManagerUI hmui;
 	
-	TextField roomType;
+	ChoiceBox roomType;
 	TextField roomNum;
 	TextField initialPrice;
 	
@@ -47,6 +49,9 @@ public class SetAvailableRooms {
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		rightPane.getStylesheets().add("/CSS/right.css");
 		
+		//设置下拉框
+		setChoiceBox();
+		
 		//添加文本框
 		setTextField();
 		
@@ -55,6 +60,7 @@ public class SetAvailableRooms {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/录入可用客房背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -63,12 +69,8 @@ public class SetAvailableRooms {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
-		roomType = new TextField();
-		roomType.setId("SetAvailableRooms");
-		roomType.setPrefSize(200, 30);
-				
+		
 		roomNum = new TextField();
 		roomNum.setId("SetAvailableRooms");
 		roomNum.setPrefSize(200, 30);
@@ -80,7 +82,6 @@ public class SetAvailableRooms {
 		//设置文本框内容
 				
 		//设置文本框内容可更改
-		roomType.setEditable(true);
 		roomNum.setEditable(true);
 		initialPrice.setEditable(true);
 				
@@ -108,6 +109,15 @@ public class SetAvailableRooms {
 		AnchorPane.setTopAnchor(initialPrice, 250.0);
 	}
 	
+	private void setChoiceBox(){
+		
+		//待修改，根据controller
+		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType.setId("SetAvailableRooms");
+		roomType.setPrefSize(200, 30);
+		
+	}
+	
 	private void setButton(){
 		
 		//添加按钮
@@ -133,12 +143,32 @@ public class SetAvailableRooms {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				String type = roomType.getText();
+				int t = roomType.getSelectionModel().getSelectedIndex();
+				RoomType type = null;
+				switch(t){
+				case 0:
+					type = RoomType.SINGLE_ROOM;
+					break;
+				case 1:
+					type = RoomType.STANDARD_ROOM;
+					break;
+				case 2:
+					type = RoomType.TRIPLE_ROOM;
+					break;
+				case 3:
+					type = RoomType.BIGBED_ROOM;
+					break;
+				case 4:
+					type = RoomType.SUITE;
+					break;
+				case -1:
+				default:
+					break;
+				}
 				String num = roomNum.getText();
-				String price = initialPrice.getText();
-//				RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), Double.parseDouble(price));
+				double price = Double.parseDouble(initialPrice.getText());
+				RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), price);
 				//
-				roomType.setText("");
 				roomNum.setText("");
 				initialPrice.setText("");
 				OneButtonDialog dialog = new OneButtonDialog("设置成功");
@@ -152,7 +182,6 @@ public class SetAvailableRooms {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				roomType.setText("");
 				roomNum.setText("");
 				initialPrice.setText("");
 				controller.setFirstView();

@@ -1,5 +1,6 @@
 package view.right.hotelManager.orderManagement;
 
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_撤销订单详情
@@ -31,6 +33,7 @@ public class UndoOrder {
 	TextField cancelTime;
 	
 	Button revert;
+	OrderVO orderVO;
 	
 	public UndoOrder(HMOrderManagementController controller){
 		
@@ -52,6 +55,7 @@ public class UndoOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/订单详情_撤销订单背景.jpg\")");
 		
 	}
 
@@ -60,22 +64,24 @@ public class UndoOrder {
 	}
 	
 	private void setTextField(){
-	
+		
+		controller.setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
+		orderVO = controller.getlist().get(controller.getRow());
 		
 		//添加文本框
-		orderID = new TextField();
+		orderID = new TextField(orderVO.orderId);
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField();
+		hotelName = new TextField(orderVO.hotelID);
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField();
+		roomType = new TextField(orderVO.roomType.toString());
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		cancelTime = new TextField();
+		cancelTime = new TextField(orderVO.undoUnexecutedTime);
 		cancelTime.setId("AbnormalOrder");
 		cancelTime.setPrefSize(200, 30);
 		
@@ -92,13 +98,13 @@ public class UndoOrder {
 		orderID.setLayoutY(150);
 		
 		hotelName.setLayoutX(400);
-		hotelName.setLayoutY(250);
+		hotelName.setLayoutY(200);
 		
 		roomType.setLayoutX(400);
-		roomType.setLayoutY(350);
+		roomType.setLayoutY(250);
 		
 		cancelTime.setLayoutX(400);
-		cancelTime.setLayoutY(450);
+		cancelTime.setLayoutY(300);
 		
 		//添加组件
 		rightPane.getChildren().add(orderID);
@@ -138,7 +144,7 @@ public class UndoOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setundoOrderListView();
+				controller.setUndoOrderListView();
 				controller.getStage().show();
 			}
 			

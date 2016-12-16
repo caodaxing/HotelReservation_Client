@@ -5,7 +5,7 @@ import Message.RoomType;
 
 /**
  * @param hotelId
- * @param roomType
+ * @param roomId
  * @param roomNum
  * @param price
  */

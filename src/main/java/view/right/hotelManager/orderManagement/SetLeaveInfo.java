@@ -1,5 +1,7 @@
 package view.right.hotelManager.orderManagement;
 
+import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,8 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单_更新退房信息
@@ -51,6 +55,7 @@ public class SetLeaveInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/房间管理_更新退房信息背景.jpg\")");
 		
 	}
 	
@@ -60,7 +65,6 @@ public class SetLeaveInfo {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		
 		roomType = new TextField();
@@ -70,10 +74,6 @@ public class SetLeaveInfo {
 		actualLeaveTime = new TextField();
 		actualLeaveTime.setId("SetLeaveInfo");
 		actualLeaveTime.setPrefSize(200, 30);
-		/*
-		 * //设置文本框内容
-		 * 
-		 */
 		
 		//设置文本框内容可更改
 		roomType.setEditable(true);
@@ -124,7 +124,17 @@ public class SetLeaveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setFilterOrderList(OrderListCondition.EXECUTED);
+				OrderVO orderVO = controller.getlist().get(controller.getRow());
+				if(controller.setLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
+					OneButtonDialog dialog = new OneButtonDialog("退房成功");
+					dialog.show();
+					controller.setHasExecuteOrderListView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("更新失败");
+					dialog.show();
+				}
 			}
 			
 		});
@@ -134,7 +144,8 @@ public class SetLeaveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setHasExecuteOrderListView();
+				controller.getStage().show();
 			}
 			
 		});

@@ -63,7 +63,7 @@ public class OrderList {
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
-		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+//		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 		hmui = new HotelManagerUI(controller);
 		data = FXCollections.observableArrayList();
 		
@@ -82,6 +82,7 @@ public class OrderList {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单界面_全部订单背景.jpg\")");
 		
 	}
 	
@@ -176,6 +177,7 @@ public class OrderList {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
+								System.out.println(row);
 								checkFunction();
 							});
 						}
@@ -233,35 +235,25 @@ public class OrderList {
 	 * 查看按钮功能实现
 	 */
 	public void checkFunction(){
-		if(hmcontroller.getOrderList() == null){
-			if(controller.getOrder().orderState == OrderState.EXECUTED ){
+		System.out.println(controller.getlist().get(row).orderState.toString());
+			if(controller.getlist().get(row).orderState == OrderState.EXECUTED ){
+				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
 				hmcontroller.setExecuteOrderView();
 				hmcontroller.getStage().show();
-			}else if(controller.getOrder().orderState == OrderState.ABNORMAL){
+			}else if(controller.getlist().get(row).orderState == OrderState.ABNORMAL){
+				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
 				hmcontroller.setAbnormalOrderView();
 				hmcontroller.getStage().show();
-			}else if(controller.getOrder().orderState == OrderState.UNEXECUTED){
+			}else if(controller.getlist().get(row).orderState == OrderState.UNEXECUTED){
+				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
 				hmcontroller.setUnexecuteOrderView();
 				hmcontroller.getStage().show();
 			}else{
+				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
 				hmcontroller.setUndoOrderView();
 				hmcontroller.getStage().show();
 			}
-		}else{
-			if(hmcontroller.getOrderList().get(row).orderState == OrderState.EXECUTED ){
-				hmcontroller.setExecuteOrderView();
-				hmcontroller.getStage().show();
-			}else if(hmcontroller.getOrderList().get(row).orderState == OrderState.ABNORMAL){
-				hmcontroller.setAbnormalOrderView();
-				hmcontroller.getStage().show();
-			}else if(hmcontroller.getOrderList().get(row).orderState == OrderState.UNEXECUTED){
-				hmcontroller.setUnexecuteOrderView();
-				hmcontroller.getStage().show();
-			}else{
-				hmcontroller.setUndoOrderView();
-				hmcontroller.getStage().show();
-			}
-		}
+		
 	}
 	
 	/**

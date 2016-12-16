@@ -2,6 +2,7 @@ package view.right.hotelManager.orderManagement;
 
 import java.util.ArrayList;
 
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -24,7 +25,6 @@ import vo.OrderVO;
 public class AbnormalOrder{
 	
 	private HMOrderManagementController controller;
-	private HotelManagerLeftController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -38,7 +38,7 @@ public class AbnormalOrder{
 	Button againRegister;
 	Button revert;
 	
-	ArrayList<OrderVO> orderList;
+	OrderVO orderVO;
 	
 	public AbnormalOrder(HMOrderManagementController controller){
 		
@@ -60,7 +60,7 @@ public class AbnormalOrder{
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/infoManagement/订单详情_异常订单背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/orderManagement/订单详情_异常订单背景.jpg\")");
 		
 	}
 
@@ -70,24 +70,23 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
-		controller.setOrderList();
-		orderList = controller.getOrderList();
-		int num = controller.getRow();
+		controller.setFilterOrderList(OrderListCondition.ABNORMALED);
+		orderVO = controller.getlist().get(controller.getRow());
 		
 		//添加文本框
-		orderID = new TextField(orderList.get(num).orderId);
+		orderID = new TextField(orderVO.orderId);
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField(orderList.get(num).hotelID);
+		hotelName = new TextField(orderVO.hotelID);
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderList.get(num).roomType.toString());
+		roomType = new TextField(orderVO.roomType.toString());
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		lastExecuteTime = new TextField(orderList.get(num).endTime);
+		lastExecuteTime = new TextField(orderVO.endTime);
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		
@@ -167,7 +166,7 @@ public class AbnormalOrder{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				
-				controller.setabnormalOrderListView();
+				controller.setAbnormalOrderListView();
 				controller.getStage().show();
 			}
 			

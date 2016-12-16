@@ -7,7 +7,7 @@ import Message.RoomType;
 /**
  * @param userID 用户id
  * @param orderid 订单id
- * @param roomType
+ * @param roomId
  * @param roomIds
  * @param roomNum
  * @param startTime  订单开始时间(预计入住时间)

@@ -46,6 +46,7 @@ public class First {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/客房管理_选择界面背景.jpg\")");
 	}
 	
 	public Scene getScene(){

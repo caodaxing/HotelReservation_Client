@@ -1,5 +1,7 @@
 package view.right.hotelManager.orderManagement;
 
+import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,8 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单_更新入住信息
@@ -25,7 +29,7 @@ public class SetArriveInfo {
 	private AnchorPane rightPane;
 	private HotelManagerUI hmui;
 	
-	TextField roomType;
+	TextField roomId;
 	TextField arriveTime;
 	TextField estimateLeaveTime;
 	
@@ -52,6 +56,7 @@ public class SetArriveInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/房间管理_更新入住信息背景.jpg\")");
 		
 	}
 	
@@ -70,18 +75,18 @@ public class SetArriveInfo {
 		estimateLeaveTime.setId("SetArriveInfo");
 		estimateLeaveTime.setPrefSize(200, 30);
 		
-		roomType = new TextField();
-		roomType.setId("SetArriveInfo");
-		roomType.setPrefSize(200, 30);
+		roomId = new TextField();
+		roomId.setId("SetArriveInfo");
+		roomId.setPrefSize(200, 30);
 		
 		//设置文本框内容可更改
-		roomType.setEditable(true);
+		roomId.setEditable(true);
 		arriveTime.setEditable(true);
 		estimateLeaveTime.setEditable(true);
 		
 		//设置文本框位置
-		roomType.setLayoutX(400);
-		roomType.setLayoutY(150);
+		roomId.setLayoutX(400);
+		roomId.setLayoutY(150);
 		
 		arriveTime.setLayoutX(400);
 		arriveTime.setLayoutY(200);
@@ -92,13 +97,13 @@ public class SetArriveInfo {
 		//添加组件
 		rightPane.getChildren().add(arriveTime);
 		rightPane.getChildren().add(estimateLeaveTime);
-		rightPane.getChildren().add(roomType);
+		rightPane.getChildren().add(roomId);
 		
 		AnchorPane.setLeftAnchor(arriveTime, 200.0);
 		AnchorPane.setLeftAnchor(estimateLeaveTime, 200.0);
-		AnchorPane.setLeftAnchor(roomType, 200.0);
+		AnchorPane.setLeftAnchor(roomId, 200.0);
 		
-		AnchorPane.setTopAnchor(roomType, 150.0);
+		AnchorPane.setTopAnchor(roomId, 150.0);
 		AnchorPane.setTopAnchor(arriveTime, 200.0);
 		AnchorPane.setTopAnchor(estimateLeaveTime, 250.0);
 		
@@ -130,9 +135,24 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				String orderId = roomType.getText();
-				String roomId = arriveTime.getText();
-				
+				controller.setFilterOrderList(OrderListCondition.UNEXECUTED);
+				OrderVO orderVO = controller.getlist().get(controller.getRow());
+				String rooms = roomId.getText();
+				String[] roomID = rooms.split(" ");
+				String orderId = orderVO.orderId;
+				if(controller.getResult(orderId, roomID) == ResultMessage.SUCCESS){
+					OneButtonDialog dialog = new OneButtonDialog("入住成功");
+					dialog.show();
+					controller.setunExecuteOrderListView();
+					controller.getStage().show();
+				}else{
+					OneButtonDialog dialog = new OneButtonDialog("更新失败");
+					dialog.show();
+					roomId.setText("");
+					arriveTime.setText("");
+					estimateLeaveTime.setText("");
+					
+				}
 			}
 			
 		});
@@ -142,7 +162,8 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
+				controller.setunExecuteOrderListView();
+				controller.getStage().show();
 			}
 			
 		});

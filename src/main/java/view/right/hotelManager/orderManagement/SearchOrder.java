@@ -52,6 +52,7 @@ public class SearchOrder{
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/订单查询界面背景.jpg\")");
 		
 	}
 	

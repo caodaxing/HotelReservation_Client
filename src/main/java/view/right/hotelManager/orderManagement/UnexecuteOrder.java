@@ -1,5 +1,6 @@
 package view.right.hotelManager.orderManagement;
 
+import Message.OrderListCondition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
+import vo.OrderVO;
 
 /**
  * 酒店工作人员界面_管理订单_未执行订单详情
@@ -36,6 +38,7 @@ public class UnexecuteOrder {
 	
 	Button doOrder;
 	Button revert;
+	OrderVO orderVO;
 	
 	public UnexecuteOrder(HMOrderManagementController controller){
 		
@@ -57,6 +60,7 @@ public class UnexecuteOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/订单详情_未执行订单背景.jpg\")");
 		
 	}
 	
@@ -66,15 +70,17 @@ public class UnexecuteOrder {
 	
 	private void setTextContent(){
 		
+		controller.setFilterOrderList(OrderListCondition.UNEXECUTED);
+		orderVO = controller.getlist().get(controller.getRow());
 		
 		//设置未执行订单的文本信息
-		orderID = new TextField();
-		hotelName = new TextField();
-		roomType = new TextField();
-		estimateInTime = new TextField();
-		estimateLeaveTime = new TextField();
-		primeCost = new TextField();
-		realCost = new TextField();
+		orderID = new TextField(orderVO.orderId);
+		hotelName = new TextField(orderVO.hotelID);
+		roomType = new TextField(orderVO.roomType.toString());
+		estimateInTime = new TextField(orderVO.startTime);
+		estimateLeaveTime = new TextField(orderVO.endTime);
+		primeCost = new TextField(String.valueOf(orderVO.beforePrice));
+		realCost = new TextField(String.valueOf(orderVO.afterPrice));
 		
 		orderID.setId("UnExecuteOrder");
 		hotelName.setId("UnExecuteOrder");
@@ -83,17 +89,6 @@ public class UnexecuteOrder {
 		estimateLeaveTime.setId("UnExecuteOrder");
 		primeCost.setId("UnExecuteOrder");
 		realCost.setId("UnExecuteOrder");
-		
-		/*
-		//根据Controller设置textField文字
-		orderID.setText(infoList.get(0));
-		hotelName.setText(infoList.get(1));
-		roomType.setText(infoList.get(2));
-		arriveTime.setText(infoList.get(3));
-		leaveTime.setText(infoList.get(4));
-		primeCost.setText(infoList.get(5));
-		realCost.setText(infoList.get(6));
-		*/
 		
 		//设置TextField不可更改
 		orderID.setEditable(false);
@@ -164,6 +159,8 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				controller.setSetArriveInfoView();
+				controller.getStage().show();
 				OneButtonDialog dialog = new OneButtonDialog("订单执行成功，请更新房间信息");
 				dialog.show();
 				
@@ -177,7 +174,8 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setunexecuteOrderListView();				
+				controller.setunExecuteOrderListView();
+				controller.getStage().show();
 			}
 							
 		});

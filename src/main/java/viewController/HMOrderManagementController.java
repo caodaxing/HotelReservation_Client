@@ -4,6 +4,7 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.stage.Stage;
 import logicService.order.ExecuteOrderService;
 import logicService.order.ManageOrderService;
@@ -51,7 +52,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		
 		//orderService = new Order();
 		orderListService = new OrderService_Stub();
-		//executeOrderService = new ExecuteOrder();
+		executeOrderService = new OrderService_Stub();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;
@@ -73,7 +74,7 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		
 		//orderService = new Order();
 		orderListService = new OrderService_Stub();
-		//executeOrderService = new ExecuteOrder();
+		executeOrderService = new OrderService_Stub();
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;
@@ -185,9 +186,6 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 		return row;
 	}
 	
-	public void setOrderList(){
-		orderList = orderListService.filterHotelOrderList(userId, OrderListCondition.ALL_ORDERS);
-	}
 	
 	public ArrayList<OrderVO> getOrderList(){
 		return orderList;
@@ -195,5 +193,17 @@ public HMOrderManagementController(Stage stage, String userId, int row){
 	
 	public void setfilterOrderList(OrderListCondition condition){
 		orderList = orderListService.filterHotelOrderList(userId, condition);
+	}
+	
+	public ResultMessage getResult(String orderID, String[] roomId){
+		return executeOrderService.normalExecute(orderID, roomId);
+	}
+	
+//	public ResultMessage getLeaveResult(String orderID){
+//		return executeOrderService.hasCheckOut(orderID);
+//	}
+	
+	public ResultMessage setLeaveResult(String orderId){
+		return executeOrderService.checkOut(orderId);
 	}
 }

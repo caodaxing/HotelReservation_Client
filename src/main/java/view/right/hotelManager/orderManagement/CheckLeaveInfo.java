@@ -60,6 +60,7 @@ public class CheckLeaveInfo {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
+		root.setStyle("-fx-background-image:url(\"/infoManagement/房间管理_更新退房信息背景.jpg\")");
 		
 	}
 	

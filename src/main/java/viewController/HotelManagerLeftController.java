@@ -82,7 +82,6 @@ public class HotelManagerLeftController{
 	public void setAllOrderListView(){
 		setFilterOrderList(OrderListCondition.ALL_ORDERS);
 		OrderList allOrderListUI = new OrderList(this);
-		allOrderListUI.getRow();
 		allOrderListUI.initialData();
 		stage.setScene(allOrderListUI.getScene());
 		stage.show();
@@ -91,7 +90,6 @@ public class HotelManagerLeftController{
 	public void setHasExecuteOrderListView(){
 		setFilterOrderList(OrderListCondition.EXECUTED);
 		OrderList hasExecuteOrderListUI = new OrderList(this);
-		hasExecuteOrderListUI.getRow();
 		hasExecuteOrderListUI.initialData();
 		stage.setScene(hasExecuteOrderListUI.getScene());
 		stage.show();
@@ -100,7 +98,6 @@ public class HotelManagerLeftController{
 	public void setunExecuteOrderListView(){
 		setFilterOrderList(OrderListCondition.UNEXECUTED);
 		OrderList unExecuteOrderListUI = new OrderList(this);
-		unExecuteOrderListUI.getRow();
 		unExecuteOrderListUI.initialData();
 		stage.setScene(unExecuteOrderListUI.getScene());
 		stage.show();
@@ -109,7 +106,6 @@ public class HotelManagerLeftController{
 	public void setUndoOrderListView(){
 		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 		OrderList undoOrderListUI = new OrderList(this);
-		undoOrderListUI.getRow();
 		undoOrderListUI.initialData();
 		stage.setScene(undoOrderListUI.getScene());
 		stage.show();
@@ -118,7 +114,6 @@ public class HotelManagerLeftController{
 	public void setAbnormalOrderListView(){
 		setFilterOrderList(OrderListCondition.ABNORMALED);
 		OrderList abnormalOrderListUI = new OrderList(this);
-		abnormalOrderListUI.getRow();
 		abnormalOrderListUI.initialData();
 		stage.setScene(abnormalOrderListUI.getScene());
 		stage.show();
@@ -182,5 +177,20 @@ public class HotelManagerLeftController{
 	
 	public OrderVO getOrder(){
 		return orderlist.get(row);
+	}
+	
+	public void setRow(OrderListCondition condition){
+		if(condition == OrderListCondition.ABNORMALED){
+			OrderList abnormalOrderListUI = new OrderList(this);
+			row = abnormalOrderListUI.getRow();
+		}else if(condition == OrderListCondition.EXECUTED){
+			
+		}else if(condition == OrderListCondition.UNEXECUTED){
+			
+		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
+			
+		}else{
+			
+		}
 	}
 }
