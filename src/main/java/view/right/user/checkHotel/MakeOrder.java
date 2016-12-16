@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.helpTools.TimeHelper;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
@@ -79,14 +80,17 @@ public class MakeOrder{
 	private void setTextField(){
 		
 		//初始化textField
-		roomType =new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType =new ChoiceBox(FXCollections.observableArrayList("大床房","单人间","标准间","套间","三人间"));
+		roomType.setValue("标准间");
 		
 		roomNums = new TextField();
 		arriveTime = new DatePicker();
 		leaveTime = new DatePicker();
 		latestTime = new DatePicker();
 		peopleNums = new TextField();
+		
 		haveChild = new ChoiceBox(FXCollections.observableArrayList("是","否"));
+		haveChild.setValue("否");
 		
 		//设置textField可操作性
 		roomNums.setEditable(true);
@@ -155,14 +159,17 @@ public class MakeOrder{
 		makeOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.makeOrderAndSetSuccessView();
+				controller.getStage().show();
 			}
 			
 		});
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				//返回酒店界面
+				controller.setHotelInfoView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -192,25 +199,25 @@ public class MakeOrder{
 		RoomType type = null;
 		switch(t){
 		case 0:
-			type = RoomType.SINGLE_ROOM;
-			break;
-		case 1:
-			type = RoomType.STANDARD_ROOM;
-			break;
-		case 2:
-			type = RoomType.TRIPLE_ROOM;
-			break;
-		case 3:
 			type = RoomType.BIGBED_ROOM;
 			break;
-		case 4:
+		case 1:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 2:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 3:
 			type = RoomType.SUITE;
+			break;
+		case 4:
+			type = RoomType.TRIPLE_ROOM;
 			break;
 		case -1:
 		default:
 			break;
 		}
-		
+		//带时分秒
 		String time = TimeHelper.getInstanceTimeString();
 		
 		String arrive = arriveTime.getValue().toString()+" "+time;
@@ -228,6 +235,13 @@ public class MakeOrder{
 		String leave = leaveTime.getValue().toString()+" "+time;
 		String latest = latestTime.getValue().toString()+" "+time;
 		
+		int t2 = haveChild.getSelectionModel().getSelectedIndex();
+		boolean child = false;
+		if(t2 == 0){
+			child = true;
+		}
+		
+		try{//判断数量是否正确
 		int numOfR = 1;
 		if(!peopleNums.getText().equals(""))
 			numOfR = Integer.valueOf(roomNums.getText());
@@ -236,15 +250,15 @@ public class MakeOrder{
 		if(!peopleNums.getText().equals(""))
 			numOfP = Integer.valueOf(peopleNums.getText());
 		
-		int t2 = haveChild.getSelectionModel().getSelectedIndex();
-		boolean child = false;
-		if(t2 == 0){
-			child = true;
+		return new OrderVO(controller.getUserID(),type,numOfR,arrive,leave,controller.getHotelID(),numOfP,child);
+		}catch(Exception e){
+			controller.showDialog("请输入有效值");
+			return null;
 		}
-		
-		//hotelID由controller添加
-		return new OrderVO(controller.getUserID(),type,numOfR,arrive,leave,"",numOfP,child);
-		
+	}
+	
+	public void setRoomType(RoomType type){
+		roomType.setValue(MessageHelper.roomTypeToString(type));
 	}
 	
 }

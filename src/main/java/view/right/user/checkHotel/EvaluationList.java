@@ -21,9 +21,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
+import vo.EvaluationVO;
 import vo.HotelVO;
 
 /**
@@ -103,8 +105,8 @@ public class EvaluationList {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// 返回选择界面
-				controller.setHotelFirstView();
+				// 返回酒店界面
+				controller.setHotelInfoView();
 				controller.getStage().show();
 			}
 			
@@ -129,19 +131,11 @@ public class EvaluationList {
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
-		orderId.setMinWidth(100);
-		
-		roomType = new TableColumn<>("房间类型");
-		roomType.setCellValueFactory(new PropertyValueFactory<Person, String>("roomType"));
-		roomType.setMinWidth(100);
-		
-		arriveTime = new TableColumn<>("入住时间");
-		arriveTime.setCellValueFactory(new PropertyValueFactory<Person, String>("arriveTime"));
-		arriveTime.setMinWidth(100);
-		
+		orderId.setMinWidth(200);
+
 		score = new TableColumn<>("评分");
 		score.setCellValueFactory(new PropertyValueFactory<Person, String>("score"));
-		score.setMinWidth(100);
+		score.setMinWidth(200);
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
@@ -154,7 +148,9 @@ public class EvaluationList {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								//待修改
+								controller.setEvaluationID(row);
+								controller.setEvaluationView();
+								controller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -166,7 +162,7 @@ public class EvaluationList {
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(orderId, roomType, arriveTime, score, operation);
 		
 		//设置列表位置
@@ -174,15 +170,17 @@ public class EvaluationList {
 		
 		AnchorPane.setLeftAnchor(tableView, 50.0);
 		
-		AnchorPane.setTopAnchor(tableView, 150.0);
+		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
 	public void setListValue(){
 		ArrayList<EvaluationVO> evaluationList = controller.getEvaluationList();
-		for(int i=0;i<evaluationList.size();i++){
+		if(evaluationList == null){
+			return;
+		}
+		for(EvaluationVO vo : evaluationList){
 			check = new Button("查看");
-			//待修改
-			data.add(new Person(, check));
+			data.add(new Person(vo.orderID , Double.toString(vo.commentLevel),check));
 		}
 	}
 	
@@ -191,16 +189,12 @@ public class EvaluationList {
 	 */
 	public static class Person{
 		private final SimpleStringProperty orderId;
-		private final SimpleStringProperty roomType;
-		private final SimpleStringProperty arriveTime;
 		private final SimpleStringProperty score;
 		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String ORDERID, String roomType, String arriveTime, String score, Button operation){
+		private Person(String ORDERID, String score, Button operation){
 			
 			this.orderId = new SimpleStringProperty(ORDERID);
-			this.roomType = new SimpleStringProperty(roomType);
-			this.arriveTime = new SimpleStringProperty(arriveTime);
 			this.score =  new SimpleStringProperty(score);
 			this.operation =  new SimpleObjectProperty<Object>(operation);
 			
@@ -212,22 +206,6 @@ public class EvaluationList {
 		
 		public void setOrderId(String Orderid){
 			orderId.set(Orderid);
-		}
-		
-		public String getRoomType(){
-			return roomType.get();
-		}
-		
-		public void setRoomType(String RoomType){
-			roomType.set(RoomType);
-		}
-		
-		public String getArriveTime(){
-			return arriveTime.get();
-		}
-		
-		public void setArriveTime(String ArriveTime){
-			arriveTime.set(ArriveTime);
 		}
 		
 		public String getScore(){

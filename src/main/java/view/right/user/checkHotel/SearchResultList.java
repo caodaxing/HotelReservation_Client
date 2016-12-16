@@ -2,6 +2,7 @@ package view.right.user.checkHotel;
 
 import java.util.ArrayList;
 
+import Message.HotelSearchCondition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -140,8 +141,10 @@ public class SearchResultList{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				//按价格升序
+				controller.setSortedList(HotelSearchCondition.PRICE_UP);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -150,8 +153,10 @@ public class SearchResultList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 按价格降序
+				controller.setSortedList(HotelSearchCondition.PRICE_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -160,8 +165,10 @@ public class SearchResultList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				// 按星级
+				controller.setSortedList(HotelSearchCondition.STAR_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 			}
 			
 		});
@@ -170,7 +177,10 @@ public class SearchResultList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				// 按评价
+				controller.setSortedList(HotelSearchCondition.GRADE_DOWN);
+				controller.setSearchResultListView();
+				controller.getStage().show();
 				
 			}
 			
@@ -180,7 +190,7 @@ public class SearchResultList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				controller.setHotelFirstView();
+				controller.setSearchHotelView();
 				controller.getStage().show();
 			}
 			
@@ -242,7 +252,9 @@ public class SearchResultList{
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								
+								controller.setHotelID(row);
+								controller.setHotelInfoView();
+								controller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -263,7 +275,9 @@ public class SearchResultList{
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								
+								controller.setHotelID(row);
+								controller.setMakeOrderView();
+								controller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -287,10 +301,11 @@ public class SearchResultList{
 	}
 	
 	public void setListValue(){
-		ArrayList<HotelVO> hotelList = controller.getSearchHotelList();
-		for(int i=0;i<hotelList.size();i++){
+		ArrayList<HotelVO> hotelList = controller.getHotelList();
+		for(HotelVO vo:hotelList){
 			check = new Button("查看");
-			data.add(new Person(hotelList.get(i).hotelName,待修改, Integer.toString(hotelList.get(i).levelOfHotel), Double.toString(hotelList.get(i).evaluationGrades), check,reverse));
+			String isReserved = controller.checkWeitherReserved(vo.hoteID);
+			data.add(new Person(vo.hotelName, isReserved, Integer.toString(vo.levelOfHotel), Double.toString(vo.evaluationGrades), check,reverse));
 		}
 	}
 	

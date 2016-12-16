@@ -137,28 +137,32 @@ public class HotelInfo{
 		historyOrderList.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setHistoryOrderListView();
+				controller.getStage().show();
 			}
 			
 		});
 		roomList.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setRoomListView();
+				controller.getStage().show();
 			}
 			
 		});
 		evaluationList.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setEvaluationListView();
+				controller.getStage().show();
 			}
 			
 		});
 		makeOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				
+				controller.setMakeOrderView();
+				controller.getStage().show();
 			}
 			
 		});

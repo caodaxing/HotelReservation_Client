@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import viewController.UserCheckHotelController;
 import vo.OrderVO;
@@ -30,11 +31,14 @@ public class SuccessOrder {
 	
 	private AnchorPane rightPane;
 	
+	private OrderVO vo;
+	
 	TextField hotelName ;
 	TextField roomType ;
 	TextField roomNums ; 
 	TextField arriveTime ;
-	TextField latestTime ;
+	//原有最晚到达时间因自动设定改为promotion
+	TextField promotion ;
 	TextField originalPrice ;
 	TextField actualPrice ;
 	TextField peopleNums ;
@@ -42,9 +46,13 @@ public class SuccessOrder {
 	
 	Button confirm ;
 	
-	public SuccessOrder(UserCheckHotelController controller){
+	/*
+	 * 根据controller传入的OrderVO显示，相当于大型对话框
+	 */
+	public SuccessOrder(UserCheckHotelController controller,OrderVO vo){
 		
 		this.controller = controller;
+		this.vo = vo;
 		
 		userUI = new UserUI(controller);
 		
@@ -64,7 +72,10 @@ public class SuccessOrder {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		//添加样式表
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_预定成功反馈界面背景.jpg\")");
 	}
 	
 	private void setTextField(){
@@ -74,18 +85,33 @@ public class SuccessOrder {
 		roomType = new TextField();
 		roomNums = new TextField();
 		arriveTime = new TextField();
-		latestTime = new TextField();
+		promotion = new TextField();
 		originalPrice = new TextField();
 		actualPrice = new TextField();
 		peopleNums = new TextField();
 		haveChild = new TextField();
 	
+		//根据vo设置值
+		hotelName.setText(controller.getHotelName(vo.hotelID));
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		roomNums.setText(Integer.toString(vo.roomNum));
+		arriveTime.setText(vo.startTime);
+		promotion.setText(vo.promotion.promotionName+": 原价*"+vo.promotion.discount);
+		originalPrice.setText(Double.toString(vo.beforePrice));
+		actualPrice.setText(Double.toString(vo.afterPrice));
+		peopleNums.setText(Integer.toString(vo.numOfPeople));
+		String have = "否";
+		if(vo.hasChild){
+			have = "是";
+		}
+		haveChild.setText(have);
+		
 		//设置textField可操作性
 		hotelName.setEditable(false);
 		roomType.setEditable(false);
 		roomNums.setEditable(false);
 		arriveTime.setEditable(false);
-		latestTime.setEditable(false);
+		promotion.setEditable(false);
 		originalPrice.setEditable(false);
 		actualPrice.setEditable(false);
 		peopleNums.setEditable(false);
@@ -96,7 +122,7 @@ public class SuccessOrder {
 		roomType.setPrefSize(200, 30);
 		roomNums.setPrefSize(200, 30);
 		arriveTime.setPrefSize(200, 30);
-		latestTime.setPrefSize(200, 30);
+		promotion.setPrefSize(200, 30);
 		originalPrice.setPrefSize(200, 30);
 		actualPrice.setPrefSize(200, 30);
 		peopleNums.setPrefSize(200, 30);
@@ -107,7 +133,7 @@ public class SuccessOrder {
 		rightPane.getChildren().add(roomType);
 		rightPane.getChildren().add(roomNums);
 		rightPane.getChildren().add(arriveTime);
-		rightPane.getChildren().add(latestTime);
+		rightPane.getChildren().add(promotion);
 		rightPane.getChildren().add(originalPrice);
 		rightPane.getChildren().add(actualPrice);
 		rightPane.getChildren().add(peopleNums);
@@ -118,7 +144,7 @@ public class SuccessOrder {
 		AnchorPane.setLeftAnchor(roomType, 200.0);
 		AnchorPane.setLeftAnchor(roomNums, 200.0);
 		AnchorPane.setLeftAnchor(arriveTime, 200.0);
-		AnchorPane.setLeftAnchor(latestTime, 200.0);
+		AnchorPane.setLeftAnchor(promotion, 200.0);
 		AnchorPane.setLeftAnchor(originalPrice, 200.0);
 		AnchorPane.setLeftAnchor(actualPrice, 200.0);
 		AnchorPane.setLeftAnchor(peopleNums, 200.0);
@@ -128,7 +154,7 @@ public class SuccessOrder {
 		AnchorPane.setTopAnchor(roomType, 150.0);
 		AnchorPane.setTopAnchor(roomNums, 200.0);
 		AnchorPane.setTopAnchor(arriveTime, 250.0);
-		AnchorPane.setTopAnchor(latestTime, 300.0);
+		AnchorPane.setTopAnchor(promotion, 300.0);
 		AnchorPane.setTopAnchor(originalPrice, 350.0);
 		AnchorPane.setTopAnchor(actualPrice, 400.0);
 		AnchorPane.setTopAnchor(peopleNums, 450.0);
@@ -170,42 +196,6 @@ public class SuccessOrder {
 	public Scene getScene(){
 		
 		return scene;
-	
-	}
-	
-	public void setText(){
-
-		OrderVO vo = controller.getOrderInfo();
-		
-		//待修改orderVO
-		hotelName.setText(controller.getHotelInfo(vo.hotelID).hotelName);
-		roomType.setText(vo.roomType);
-		roomNums.setText(vo.roomNums);
-		arriveTime.setText(vo.startTime);
-		latestTime.setText(vo.endTime);
-		originalPrice.setText(Double.toString(vo.beforePrice) );
-		actualPrice.setText(Double.toString(vo.afterPrice) );
-		peopleNums.setText(Integer.toString(vo.numOfPeople));
-		String hasChild = "否";
-		if(vo.hasChild){
-			hasChild = "是";
-		}
-		
-		haveChild.setText(hasChild);
-
-	}
-	
-	public void setBlank(){
-
-		hotelName.setText("");
-		roomType.setText("");
-		roomNums.setText("");
-		arriveTime.setText("");
-		latestTime.setText("");
-		originalPrice.setText("");
-		actualPrice.setText("");
-		peopleNums.setText("");
-		haveChild.setText("");
 	
 	}
 	

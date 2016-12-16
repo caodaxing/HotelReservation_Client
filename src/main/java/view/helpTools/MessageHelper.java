@@ -57,7 +57,7 @@ public class MessageHelper {
 		}else if(t == RoomType.STANDARD_ROOM){
 			type = "标准间";
 		}else if(t == RoomType.SUITE){
-			type = "套房";
+			type = "套间";
 		}else if(t == RoomType.TRIPLE_ROOM){
 			type = "三人间";
 		}

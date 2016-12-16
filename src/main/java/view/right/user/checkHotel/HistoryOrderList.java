@@ -21,10 +21,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import view.right.user.checkHotel.RoomList.Person;
 import viewController.UserCheckHotelController;
 import vo.HotelVO;
+import vo.OrderVO;
 
 /**
  * 客户界面_查看酒店_酒店详情_历史订单
@@ -50,9 +52,10 @@ public class HistoryOrderList{
 	TableColumn<Person, String> orderId;
 	TableColumn<Person, String> roomType;
 	TableColumn<Person, String> orderState;
-	//不能查看
+	TableColumn<Person,Button> operation;
 	
 	private final ObservableList<Person> data = FXCollections.observableArrayList();
+	private Button check;
 	
 	public HistoryOrderList(UserCheckHotelController controller){
 		
@@ -100,8 +103,8 @@ public class HistoryOrderList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				//返回选择界面
-				controller.setHotelFirstView();
+				//返回酒店界面
+				controller.setHotelInfoView();
 				controller.getStage().show();
 			}
 			
@@ -126,17 +129,42 @@ public class HistoryOrderList{
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderId"));
-		orderId.setMinWidth(125);
+		orderId.setMinWidth(200);
 		
 		roomType = new TableColumn<>("房间类型");
 		roomType.setCellValueFactory(new PropertyValueFactory<Person, String>("roomType"));
-		roomType.setMinWidth(125);
+		roomType.setMinWidth(100);
 		
 		orderState = new TableColumn<>("订单状态");
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderState"));
-		orderState.setMinWidth(125);
+		orderState.setMinWidth(100);
+	
+		operation= new TableColumn<>("操作");
+		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
+		operation.setCellFactory(new Callback<TableColumn<Person, Button>, TableCell<Person, Button>>(){
+			public TableCell<Person, Button> call(TableColumn<Person, Button> param){
+				return new TableCell<Person, Button>(){
+					protected void updateItem(Button Item, boolean empty){
+						if(!empty){
+							Item = new Button("查看");
+							Item.setPrefWidth(100);
+							Item.setOnAction(event->{
+								int row = this.getTableRow().getIndex();
+								controller.setOrderID(row);
+								controller.setOrderView();
+								controller.getStage().show();
+							});
+						}
+						setGraphic(Item);
+					}
+				};
+			}
+		});
+		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
+		tableView.setPrefHeight(380);
+		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(orderId, roomType, orderState);
 		
 		//设置列表位置
@@ -148,10 +176,13 @@ public class HistoryOrderList{
 	}
 	
 	public void setListValue(){
-		ArrayList<OrderVO> historyList = controller.getHistoryOrderList();
-		for(int i=0;i<historyList.size();i++){
-			//待修改
-			data.add(new Person();
+		ArrayList<OrderVO> historyList = controller.getOrderList();
+		if(historyList == null){
+			return;
+		}
+		for(OrderVO o : historyList){
+			check = new Button("查看");
+			data.add(new Person(o.orderId,MessageHelper.roomTypeToString(o.roomType),MessageHelper.orderStateToString(o.orderState),check ) );
 		}
 	}
 	
@@ -162,13 +193,14 @@ public class HistoryOrderList{
 		private final SimpleStringProperty orderId;
 		private final SimpleStringProperty roomType;
 		private final SimpleStringProperty orderState;
+		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String orderId, String roomType, String orderState){
+		private Person(String orderId, String roomType, String orderState,Button operation){
 			
 			this.orderId = new SimpleStringProperty(orderId);
 			this.roomType = new SimpleStringProperty(roomType);
 			this.orderState = new SimpleStringProperty(orderState);
-			
+			this.operation =  new SimpleObjectProperty<Object>(operation);
 		}
 		
 		public String getOrderId(){
@@ -194,7 +226,13 @@ public class HistoryOrderList{
 		public void setOrderState(String OrderState){
 			orderState.set(OrderState);
 		}
+		public Button getOperation(){
+			return (Button)operation.get();
+		}
 		
+		public void setOperation(Object Operation){
+			operation.set(Operation);
+		}
 	}
 	
 }

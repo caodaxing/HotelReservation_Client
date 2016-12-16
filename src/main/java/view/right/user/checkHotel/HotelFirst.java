@@ -48,7 +48,10 @@ public class HotelFirst{
 		
 		HBox root = new HBox(leftPane,rightPane);
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
-		
+
+		//添加样式表
+		rightPane.getStylesheets().add("/CSS/right.css");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_选择界面背景.jpg\")");
 	}
 	
 	public Scene getScene(){
@@ -77,7 +80,7 @@ public class HotelFirst{
 			public void handle(ActionEvent event){
 				//历史酒店
 				UserCheckHotelController right = new UserCheckHotelController(controller.getStage(),controller.getUserID());
-				right.setHistoryOrderListView();
+				right.setHistoryHotelListView();
 				right.getStage().show();
 			}
 			

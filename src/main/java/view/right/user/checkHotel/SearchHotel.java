@@ -84,7 +84,7 @@ public class SearchHotel {
 		scene = new Scene(root,DefaultNums.WIDTH,DefaultNums.HEIGHT);
 		
 		rightPane.getStylesheets().add("/CSS/right.css");
-		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索结果列表背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索酒店背景.jpg\")");
 	}
 	
 	private void setTextField(){
@@ -160,8 +160,8 @@ public class SearchHotel {
 		AnchorPane.setTopAnchor(starLeft, 500.0);
 		
 		AnchorPane.setTopAnchor(priceRight, 400.0);
-		AnchorPane.setTopAnchor(evaluationLeft, 450.0);
-		AnchorPane.setTopAnchor(starLeft, 500.0);
+		AnchorPane.setTopAnchor(evaluationRight, 450.0);
+		AnchorPane.setTopAnchor(starRight, 500.0);
 		
 	}
 	
@@ -184,7 +184,7 @@ public class SearchHotel {
 			
 			public void handle(ActionEvent event){
 				//若没有则弹出提示，若有则跳至搜索结果界面,不清空搜索信息,返回时由controller负责重新初始化
-				controller.searchAndSetSearchHotelView();
+				controller.searchAndSetSearchHotelListView();
 				controller.getStage().show();
 			}
 			
@@ -215,7 +215,9 @@ public class SearchHotel {
 	private void setChoiceBox(){
 		
 		//待修改，根据controller
-		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType = new ChoiceBox(FXCollections.observableArrayList("大床房","单人间","标准间","套间","三人间"));
+
+		roomType.setValue("标准间");
 		
 		roomType.setPrefSize(200, 30);
 		
@@ -243,7 +245,7 @@ public class SearchHotel {
 		AnchorPane.setLeftAnchor(startTime, 200.0);
 		AnchorPane.setTopAnchor(startTime, 350.0);
 		
-		AnchorPane.setLeftAnchor(endTime, 350.0);
+		AnchorPane.setLeftAnchor(endTime, 325.0);
 		AnchorPane.setTopAnchor(endTime, 350.0);
 		
 	}
@@ -262,19 +264,19 @@ public class SearchHotel {
 		RoomType type = null;
 		switch(t){
 		case 0:
-			type = RoomType.SINGLE_ROOM;
-			break;
-		case 1:
-			type = RoomType.STANDARD_ROOM;
-			break;
-		case 2:
-			type = RoomType.TRIPLE_ROOM;
-			break;
-		case 3:
 			type = RoomType.BIGBED_ROOM;
 			break;
-		case 4:
+		case 1:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 2:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 3:
 			type = RoomType.SUITE;
+			break;
+		case 4:
+			type = RoomType.TRIPLE_ROOM;
 			break;
 		case -1:
 		default:
@@ -317,7 +319,7 @@ public class SearchHotel {
 		if(!starRight.getText().equals(""))
 			starHigh = Integer.valueOf(starRight.getText());
 		
-		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 	}
 	

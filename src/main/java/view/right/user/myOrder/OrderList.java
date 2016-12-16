@@ -132,7 +132,7 @@ public class OrderList {
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(400);
+		tableView.setPrefHeight(380);
 		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		

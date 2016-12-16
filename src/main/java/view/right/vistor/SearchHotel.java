@@ -199,7 +199,9 @@ public class SearchHotel {
 	private void setChoiceBox(){
 		
 		//待修改
-		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType = new ChoiceBox(FXCollections.observableArrayList ("大床房","单人间","标准间","套间","三人间") );
+		
+		roomType.setValue("标准间");
 		
 		roomType.setPrefSize(200, 30);
 		
@@ -246,19 +248,19 @@ public class SearchHotel {
 		RoomType type = null;
 		switch(t){
 		case 0:
-			type = RoomType.SINGLE_ROOM;
-			break;
-		case 1:
-			type = RoomType.STANDARD_ROOM;
-			break;
-		case 2:
-			type = RoomType.TRIPLE_ROOM;
-			break;
-		case 3:
 			type = RoomType.BIGBED_ROOM;
 			break;
-		case 4:
+		case 1:
+			type = RoomType.SINGLE_ROOM;
+			break;
+		case 2:
+			type = RoomType.STANDARD_ROOM;
+			break;
+		case 3:
 			type = RoomType.SUITE;
+			break;
+		case 4:
+			type = RoomType.TRIPLE_ROOM;
 			break;
 		case -1:
 		default:

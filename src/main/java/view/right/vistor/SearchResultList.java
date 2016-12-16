@@ -283,7 +283,6 @@ public class SearchResultList {
 			check = new Button("查看");
 			data.add(new Person(hotelList.get(i).hotelName,"请先登录", Integer.toString(hotelList.get(i).levelOfHotel), Double.toString(hotelList.get(i).evaluationGrades), check));
 		}
-	
 
 	}
 

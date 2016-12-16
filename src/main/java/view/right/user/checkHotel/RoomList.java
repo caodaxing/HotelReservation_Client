@@ -21,11 +21,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.UserUI;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.UserCheckHotelController;
 import viewController.UserLeftController;
 import vo.HotelVO;
+import vo.RoomVO;
 
 /**
  * 客户界面_查看酒店_酒店详情_酒店房间列表
@@ -102,8 +104,7 @@ public class RoomList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				//返回首页
-				controller.setHotelFirstView();
+				controller.setHotelInfoView();
 				controller.getStage().show();
 			}
 			
@@ -149,7 +150,9 @@ public class RoomList{
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								//待修改
+								controller.setRoomType(row);
+								controller.setMakeOrderView();
+								controller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -161,7 +164,7 @@ public class RoomList{
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefWidth(520);
 		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
 		
 		//设置列表位置
@@ -174,9 +177,12 @@ public class RoomList{
 	
 	public void setListValue(){
 		ArrayList<RoomVO> roomList = controller.getRoomList();
-		for(int i=0;i<roomList.size();i++){
+		if(roomList == null){
+			return;
+		}
+		for(RoomVO r:roomList){
 			reverse = new Button("预订");
-			//待修改data.add(new Person(roomList.get(i),"请先登录", Integer.toString(roomList.get(i).levelOfHotel), Double.toString(roomList.get(i).evaluationGrades), reverse));
+			data.add(new Person(MessageHelper.roomTypeToString(r.roomType), Double.toString(r.price) ,Integer.toString(r.roomNum), reverse));
 		}
 	}
 	
