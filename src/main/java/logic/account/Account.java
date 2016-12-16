@@ -29,23 +29,29 @@ public class Account implements AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage register(AccountVO accountVO){
+		
 		if(accountVO == null) 
 			return ResultMessage.FAILURE;
 		
 		if(accountVO.password != null && accountVO.userId != null 
 				&& accountVO.confirmedPassword != null && accountVO.identity != null) {
 			
-			if(accountVO.password != accountVO.confirmedPassword) {
-				return ResultMessage.UNMATCHED_PASSWORD;
-			} else {
-				try {
-					if(accountDao.addAccount(transToPO(accountVO))) {
-						return ResultMessage.SUCCESS;
-					}
-				} catch (RemoteException e) {
-					e.printStackTrace();
+			try {
+				if(!this.accountDao.userIDExists(accountVO.userId)) {
+					if(accountVO.password != accountVO.confirmedPassword) {
+						return ResultMessage.UNMATCHED_PASSWORD;
+					} else {
+						AccountPO po = transToPO(accountVO);
+						if(accountDao.addAccount(po)) {
+							return ResultMessage.SUCCESS;
+						}
+					}	
 				}
-			}	
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			
 		}
 		
 		return ResultMessage.FAILURE;	
@@ -164,6 +170,9 @@ public class Account implements AccountService{
 
 	@Override
 	public boolean userIDExists(String userID) {
+		
+System.out.println(userID);
+	
 		try {
 			if(this.accountDao.userIDExists(userID)){
 				return true;
