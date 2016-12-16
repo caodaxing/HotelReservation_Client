@@ -2,7 +2,7 @@ package Message;
 
 public enum OrderListCondition {
 	ALL_ORDERS,
-	UNDOED, 
+	UNDO_UNEXECUTED, 
 	UNEXECUTED, 
 	EXECUTED, 
 	ABNORMALED

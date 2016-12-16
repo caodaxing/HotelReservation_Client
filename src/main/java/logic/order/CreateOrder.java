@@ -17,7 +17,6 @@ import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
 import po.OrderPO;
 import vo.OrderVO;
-import vo.RoomVO;
 
 /**
  * 生成订单接口的实现类
@@ -77,8 +76,8 @@ public class CreateOrder implements CreateOrderService{
 		
 		if(success) {
 			
-			//生成订单成功 更新房间数量信息
-			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(vo.hotelID, vo.roomType, o.roomNum)) {
+			//生成订单成功 更新房间数量信息,changeNum传入负数，表示房间数减少
+			if(ResultMessage.SUCCESS == this.updateRoom.updateRoom(vo.hotelID, vo.roomType, -o.roomNum)) {
 				return vo;
 			}
 	

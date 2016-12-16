@@ -22,7 +22,7 @@ public class OrderListFilterFactory {
 		OrderListFilter filter = null;
 		
 		switch(condition) {
-		case UNDOED :
+		case UNDO_UNEXECUTED :
 			filter = new UndoedFilter();
 			break;
 		case UNEXECUTED :

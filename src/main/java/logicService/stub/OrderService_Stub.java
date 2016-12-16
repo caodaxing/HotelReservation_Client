@@ -177,7 +177,7 @@ public ArrayList<OrderVO> getDailyOrderList() {
 			list.add(roomvo8);
 			OrderVO order8 = new OrderVO("jske223","161124000021109", RoomType.BIGBED_ROOM, 2, "161124", "161125","sje44", OrderState.EXECUTED, 2, false, 336, 258, promotionVO, null,null,null,null);
 			List.add(order8);
-		}else if(condition == OrderListCondition.UNDOED){
+		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
 			RoomVO roomvo1 = new RoomVO("ks3322","8373",RoomType.SINGLE_ROOM,330,null);
 			RoomVO roomvo2 = new RoomVO("skje233","2455",RoomType.BIGBED_ROOM,922,null);
 			RoomVO roomvo3 = new RoomVO("kjsf333","5365",RoomType.BIGBED_ROOM,330,null);

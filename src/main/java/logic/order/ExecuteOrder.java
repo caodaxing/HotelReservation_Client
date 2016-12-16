@@ -8,16 +8,16 @@ import java.util.Date;
 import Message.CreditChangeType;
 import Message.OrderState;
 import Message.ResultMessage;
+import Message.RoomType;
 import dataDao.order.OrderDao;
 import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
-import logic.utility.OrderTransform;
+import logic.room.UpdateRoom;
 import logic.utility.Time;
 import logicService.order.ExecuteOrderService;
 import po.OrderPO;
 import vo.CreditChangeVO;
-import vo.OrderVO;
 
 /**
  * 执行订单
@@ -30,9 +30,11 @@ public class ExecuteOrder implements ExecuteOrderService{
 	private OrderDao orderDao;
 	private CreditChangeInfo creditChangeInfo;
 	private OrderPO po;
+	private UpdateRoom updateRoom;
 	
 	public ExecuteOrder() {
 		this.creditChangeInfo = new CreditChange();
+		this.updateRoom = new UpdateRoom();
 		
 		this.orderDao = new OrderDao_Stub();
 	}
@@ -45,9 +47,13 @@ public class ExecuteOrder implements ExecuteOrderService{
 			OrderPO po = this.orderDao.getOrderByOrderID(orderID);
 			po.setCheckOutTime(Time.getCurrentTime());
 			
-			if(this.orderDao.updateOrder(po)) {
-				return ResultMessage.SUCCESS;
+			if(this.updateRoom.updateRoom(po.getHotelId(), RoomType.values()[po.getRoomType()], po.getRoomNum()) == ResultMessage.SUCCESS) {
+				if(this.orderDao.updateOrder(po)) {
+					return ResultMessage.SUCCESS;
+				}
 			}
+			
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

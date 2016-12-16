@@ -103,7 +103,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setUndoOrderListView(){
-		setFilterOrderList(OrderListCondition.UNDOED);
+		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 //		OrderList undoOrderListUI = new OrderList(this);
 		undoOrderListUI.initialData();
 		stage.setScene(undoOrderListUI.getScene());

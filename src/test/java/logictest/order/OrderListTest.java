@@ -52,7 +52,7 @@ public class OrderListTest {
 
 	@Test
 	public void testFilterUserOrderList4() {
-		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.UNDOED);
+		ArrayList<OrderVO> vos = this.orderList.filterUserOrderList("wyy", OrderListCondition.UNDO_UNEXECUTED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.UNDOED_UNEXECUTED);
@@ -100,7 +100,7 @@ public class OrderListTest {
 
 	@Test
 	public void testFilterHotelOrderList4() {
-		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.UNDOED);
+		ArrayList<OrderVO> vos = this.orderList.filterHotelOrderList("wyy", OrderListCondition.UNDO_UNEXECUTED);
 		
 		assertEquals(vos.size(), 1);
 		assertEquals(vos.get(0).orderState, OrderState.UNDOED_UNEXECUTED);

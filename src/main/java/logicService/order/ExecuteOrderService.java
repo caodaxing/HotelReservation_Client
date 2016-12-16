@@ -12,8 +12,9 @@ public interface ExecuteOrderService {
 
 	
 	public ResultMessage checkOut(String orderID);
+	
 	/**
-	 * //客户入住，正常执行订单
+	 * 客户入住，正常执行订单
 	 * @param order_id 订单id
 	 * @return ResultMessage
 	 */

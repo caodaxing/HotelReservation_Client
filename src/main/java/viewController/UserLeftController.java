@@ -173,7 +173,7 @@ public class UserLeftController {
 	}
 	
 	public void setUndoOrderList(){
-		setFilterOrderList(OrderListCondition.UNDOED);
+		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 		OrderList undoOrderList = new OrderList(this);
 		undoOrderList.setTextValue();
 		stage.setScene(undoOrderList.getScene());
