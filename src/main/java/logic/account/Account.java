@@ -30,22 +30,22 @@ public class Account implements AccountService{
 	 */
 	public ResultMessage register(AccountVO accountVO){
 		
+System.out.println(accountVO.userId);
+System.out.println(accountVO.password);
+		
 		if(accountVO == null) 
 			return ResultMessage.FAILURE;
 		
 		if(accountVO.password != null && accountVO.userId != null 
-				&& accountVO.confirmedPassword != null && accountVO.identity != null) {
+				 && accountVO.identity != null) {
 			
 			try {
 				if(!this.accountDao.userIDExists(accountVO.userId)) {
-					if(accountVO.password != accountVO.confirmedPassword) {
-						return ResultMessage.UNMATCHED_PASSWORD;
-					} else {
-						AccountPO po = transToPO(accountVO);
-						if(accountDao.addAccount(po)) {
-							return ResultMessage.SUCCESS;
-						}
-					}	
+					
+					AccountPO po = transToPO(accountVO);
+					if(accountDao.addAccount(po)) {
+						return ResultMessage.SUCCESS;
+					}
 				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -132,15 +132,11 @@ public class Account implements AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage modifyPassword(AccountVO accountVO){
-		if(accountVO == null || accountVO.userId == null || accountVO.confirmedPassword == null ||
+		if(accountVO == null || accountVO.userId == null || 
 				accountVO.identity == null || accountVO.password == null) {
 			return ResultMessage.FAILURE;
 		}
 		
-		if(accountVO.password != accountVO.confirmedPassword) {
-			return ResultMessage.UNMATCHED_PASSWORD;
-		} 
-			
 		try {
 			if(accountDao.modifyPassword(transToPO(accountVO))) {
 				return ResultMessage.SUCCESS;

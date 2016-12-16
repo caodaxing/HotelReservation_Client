@@ -1,12 +1,8 @@
 package main;
 
-import java.rmi.RemoteException;
 
-import dataDao.account.AccountDao;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.rmi.ClientRunner;
-import main.rmi.RemoteHelper;
 import viewController.AccountController;
 
 public class Main extends Application{

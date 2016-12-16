@@ -23,7 +23,6 @@ public class Encryption {
 	public AccountVO encrypt(AccountVO accountVO) {
 		accountVO.userId = this.encryptUserInfo(accountVO.userId);
 		accountVO.password = this.encryptPassword(accountVO.password);
-		accountVO.confirmedPassword = this.encryptPassword(accountVO.confirmedPassword);
 		
 		return accountVO;
 	}

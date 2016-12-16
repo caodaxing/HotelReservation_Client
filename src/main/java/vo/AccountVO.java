@@ -14,7 +14,6 @@ public class AccountVO {
 
 	public String userId;
 	public String password;
-	public String confirmedPassword;
 	public Identity identity;
 	
 	public AccountVO(String user_id, String password,Identity identity) {
@@ -23,8 +22,4 @@ public class AccountVO {
 		this.identity=identity;
 	}
 	
-	public AccountVO(String user_id, String password, String newPassword, Identity identity) {
-		this(user_id, password, identity);
-		this.confirmedPassword = newPassword;
-	}
 }
