@@ -7,6 +7,7 @@ import dataDao.credit.CreditDao;
 import dataDao.hotel.HotelDao;
 import dataDao.order.OrderDao;
 import dataDao.order.OrderListDao;
+import dataDao.picture.PictureDao;
 import dataDao.promotion.PromotionDao;
 import dataDao.room.RoomDao;
 import dataDao.user.ClientDao;
@@ -69,4 +70,7 @@ public class RemoteHelper {
 		return (WebBusinessDao) remote;
 	}
 	
+	public PictureDao getPictureDao() {
+		return (PictureDao) remote;
+	}
 }
