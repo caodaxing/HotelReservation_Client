@@ -22,19 +22,7 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO) {
-		if (hotelVO == null) {
-			System.out.println("logic.hotel.UpdateHotel.addHotel参数异常");
-			return null;
-		}
-		
-		try {
-			if (hotelDao.addHotel(HotelTransform.hotelTransToPO(hotelVO))) {
-				return ResultMessage.SUCCESS;
-			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return ResultMessage.FAILURE;
+		return this.updateHotelInfo(hotelVO);
 	}
 
 	public ResultMessage updateHotelInfo(HotelVO hotelVO) {
@@ -43,6 +31,7 @@ public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
 		}
 		
 		try {
+			
 			if (hotelDao.updateHotel(HotelTransform.hotelTransToPO(hotelVO))) {
 				return ResultMessage.SUCCESS;
 			}

@@ -39,7 +39,7 @@ public class ClientTest {
 	
 	@Test
 	public void testUpdateClientInfo2() {
-		ClientVO vo = new ClientVO("wyy", "13338031126", "王友运", "3203221111111111", 1000, "image/wyy.jpg");
+		ClientVO vo = new ClientVO("wyy", "13338031126", "王友运", "3203221111111111", 1000);
 		assertEquals(client.updateClientInfo(vo), ResultMessage.SUCCESS);
 		
 		//data层写好了才能测试

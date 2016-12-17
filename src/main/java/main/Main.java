@@ -11,7 +11,6 @@ import dataDao.picture.PictureDao;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import main.rmi.ClientRunner;
-import main.rmi.PictureHelper;
 import main.rmi.RemoteHelper;
 import viewController.AccountController;
 

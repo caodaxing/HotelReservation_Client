@@ -41,7 +41,7 @@ public class ClientService_Stub implements ClientService {
 //		List.add(order1);
 //		List.add(order2);
 //		
-		return new ClientVO("27873shkj", "13333333333", "王友运", "3203221111111111", 1000, "/head/游客头像.png");
+		return new ClientVO("27873shkj", "13333333333", "王友运", "3203221111111111", 1000);
 	}
 
 	public ResultMessage updateClientInfo(ClientVO new_userInfo) {

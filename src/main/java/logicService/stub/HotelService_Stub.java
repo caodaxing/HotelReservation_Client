@@ -37,7 +37,7 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 	@Override
 	public HotelVO getHotelnfo(String hotel_id) {
 		
-		return new HotelVO("12345","如家","南京","栖霞区","仙林大道163号",3.3,3,"如家酒店","独立卫浴",null,"ekekdlk");
+		return new HotelVO("12345","如家","南京","栖霞区","仙林大道163号",3.3,3,"如家酒店","独立卫浴","ekekdlk");
 	}
 
 	@Override

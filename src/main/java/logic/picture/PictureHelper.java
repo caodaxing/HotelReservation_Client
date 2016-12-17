@@ -1,4 +1,4 @@
-package main.rmi;
+package logic.picture;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

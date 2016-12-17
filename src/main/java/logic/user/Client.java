@@ -5,13 +5,10 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import Message.VipType;
-import dataDao.picture.PictureDao;
 import dataDao.stub.ClientDao_Stub;
 import dataDao.user.ClientDao;
 import logic.utility.ClientTransform;
 import logicService.user.ClientService;
-import main.rmi.PictureHelper;
-import main.rmi.RemoteHelper;
 import po.ClientPO;
 import vo.ClientVO;
 import vo.VipVO;
@@ -73,19 +70,7 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		
 		try {
 			if(clientDao.updateClientInfo(po)){
-
-				if(clientVO.headImagePath != null) {
-					byte[] image = PictureHelper.imageToBytes(clientVO.headImagePath);
-					PictureDao pictureDao = RemoteHelper.getInstance().getPictureDao();
-					try {
-						if(pictureDao.saveUserImage(image, clientVO.userID)) {
-							return ResultMessage.SUCCESS;
-						}
-					} catch (RemoteException e) {
-						e.printStackTrace();
-					}
-				}
-				
+				return ResultMessage.SUCCESS;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
