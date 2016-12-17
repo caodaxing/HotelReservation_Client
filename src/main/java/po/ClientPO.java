@@ -24,7 +24,7 @@ public class ClientPO implements Serializable{
 	private String vipInfo;
 
 	public ClientPO(String userID, String phoneNumber, String trueName, String identityID, 
-			String headImagePath,int vipType, int vipLevel, String vipInfo) {
+			int vipType, int vipLevel, String vipInfo) {
 		this.userID = userID;
 		this.phoneNumber = phoneNumber;
 		this.trueName = trueName;
