@@ -1,7 +1,5 @@
 package main.rmi;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 public class PictureHelper {
 
@@ -29,33 +26,8 @@ public class PictureHelper {
 	        } catch (IOException e) {  
 	            e.printStackTrace();  
 	        }
+	   
 			return data;
-	}
-	
-	/**
-	 * 将从服务器端拿到的二进制流转换成image并保存与本地的download文件夹
-	 * @param data 从服务器端拿到的二进制流
-	 */
-	public static void bytesToImage(byte[] data , String hotelID , String pictureName) {
-		try {  
-            for (int i = 0; i < data.length; ++i) {  
-                if (data[i] < 0) {// 调整异常数据  
-                    data[i] += 256;  
-                }  
-            }  
-            String path = PictureHelper.class.getProtectionDomain().getCodeSource().getLocation().getFile();  
-            try{  
-                path = java.net.URLDecoder.decode(path, "UTF-8"); // 转换处理中文及空格  
-            }  
-            catch (java.io.UnsupportedEncodingException e){  
-            }  
-            path = path.substring(0, path.length()-4)+"download"+hotelID+"\\"+pictureName+".jpg";
-            OutputStream out = new FileOutputStream(path);  
-            out.write(data);  
-            out.flush();  
-            out.close();  
-        } catch (Exception e) {  
-        }
 	}
 	
 	/**
@@ -80,4 +52,32 @@ public class PictureHelper {
 		return null;
 		
 	}
+	
+//	/**
+//	 * 将从服务器端拿到的二进制流转换成image并保存与本地的download文件夹
+//	 * @param data 从服务器端拿到的二进制流
+//	 */
+//	public static void bytesToImage(byte[] data , String hotelID , String pictureName) {
+//		try {  
+//            for (int i = 0; i < data.length; ++i) {  
+//                if (data[i] < 0) {// 调整异常数据  
+//                    data[i] += 256;  
+//                }  
+//            }  
+//            String path = PictureHelper.class.getProtectionDomain().getCodeSource().getLocation().getFile();  
+//            try{  
+//                path = java.net.URLDecoder.decode(path, "UTF-8"); // 转换处理中文及空格  
+//            }  
+//            catch (java.io.UnsupportedEncodingException e){  
+//            }  
+//            path = path.substring(0, path.length()-4)+"download"+hotelID+"\\"+pictureName+".jpg";
+//            OutputStream out = new FileOutputStream(path);  
+//            out.write(data);  
+//            out.flush();  
+//            out.close();  
+//        } catch (Exception e) {  
+//        }
+//	}
+	
+	
 }

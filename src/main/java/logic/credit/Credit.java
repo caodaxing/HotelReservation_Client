@@ -13,6 +13,7 @@ import logicService.credit.CreditService;
  */
 public class Credit implements CreditInfo, CreditService{
 	
+	public static int INIT_CREDIT_NUM = 1000;
 	private CreditDao creditDao;
 	
 	public Credit() {

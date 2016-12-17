@@ -5,10 +5,13 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import Message.VipType;
+import dataDao.picture.PictureDao;
 import dataDao.stub.ClientDao_Stub;
 import dataDao.user.ClientDao;
 import logic.utility.ClientTransform;
 import logicService.user.ClientService;
+import main.rmi.PictureHelper;
+import main.rmi.RemoteHelper;
 import po.ClientPO;
 import vo.ClientVO;
 import vo.VipVO;
@@ -46,15 +49,17 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	}
 	
 	/**
-	 * 修改用户信息
+	 * 修改用户信息,如果有头像更新就更新头像
 	 * @param  clientInfo 传入的用户信息
 	 * @return 返回是否修改成功
 	 * @author Xue.W
 	 */
 	public ResultMessage updateClientInfo(ClientVO clientVO){
+		
 		if(clientVO == null) {
 			return ResultMessage.FAILURE;
 		}
+		
 		ClientPO po = null;
 		try {
 			po = this.clientDao.getClientInfo(clientVO.userID);
@@ -65,11 +70,22 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		po.setPhoneNumber(clientVO.phoneNumber);
 		po.setTrueName(clientVO.trueName);
 		po.setIdentityID(clientVO.identityID);
-		po.setHeadImagePath(clientVO.headImagePath);
 		
 		try {
 			if(clientDao.updateClientInfo(po)){
-				return ResultMessage.SUCCESS;
+
+				if(clientVO.headImagePath != null) {
+					byte[] image = PictureHelper.imageToBytes(clientVO.headImagePath);
+					PictureDao pictureDao = RemoteHelper.getInstance().getPictureDao();
+					try {
+						if(pictureDao.saveUserImage(image, clientVO.userID)) {
+							return ResultMessage.SUCCESS;
+						}
+					} catch (RemoteException e) {
+						e.printStackTrace();
+					}
+				}
+				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -21,7 +21,7 @@ public class HotelTransform {
 		}
 		
 		return new HotelPO(vo.hoteID, vo.hotelName, vo.city,vo.tradingArea, vo.locationOfHotel, vo.evaluationGrades,
-				vo.levelOfHotel, vo.introduction, vo.facilities, vo.picturesPath,  vo.bussiness);
+				vo.levelOfHotel, vo.introduction, vo.facilities, vo.picturesName,  vo.bussiness);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class HotelTransform {
 		
 		return new HotelVO(po.getHoteID(), po.getHotelName(), po.getCity(),po.getTradingArea(), 
 				po.getLocationOfHotel(), po.getEvaluationGrades(),po.getLevelOfHotel(), po.getIntroduction(), 
-				po.getFacilities(), po.getPicturesPath(), po.getBussiness());
+				po.getFacilities(), po.getPicturesName(), po.getBussiness());
 	}
 
 }

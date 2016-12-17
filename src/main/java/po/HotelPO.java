@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
- * @param picturesPath 照片
+ * @param picturesName 照片
  * @param bussiness 合作企业
  * @param pictures 图片
  * @author Mark.W
@@ -31,12 +31,12 @@ public class HotelPO implements Serializable{
 	private int levelOfHotel;
 	private String introduction;
 	private String facilities;
-	private ArrayList<String> picturesPath;
+	private ArrayList<String> picturesName;
 	private String bussiness;
 
 	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
 			String locationOfHotel,double evaluationGrades,int levelOfHotel,String introduction, String facilities, 
-			ArrayList<String> pictures,	String bussiness) {
+			ArrayList<String> picturesName,	String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
@@ -46,7 +46,7 @@ public class HotelPO implements Serializable{
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
 		this.facilities = facilities;
-		this.picturesPath=pictures;
+		this.picturesName=picturesName;
 		this.bussiness = bussiness;
 	}
 	
@@ -60,13 +60,13 @@ public class HotelPO implements Serializable{
 	 * @param levelOfHotel
 	 * @param introduction
 	 * @param facilities
-	 * @param pictures
+	 * @param picturesName
 	 * @param emptyRoomNum
 	 * @param bussiness
 	 */
 	public HotelPO(String hoteID,String hotelName,String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities, 
-			ArrayList<String> pictures,	 String bussiness) {
+			ArrayList<String> picturesName,	 String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName=hotelName;
 		this.city=city;
@@ -75,7 +75,7 @@ public class HotelPO implements Serializable{
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
 		this.facilities = facilities;
-		this.picturesPath=pictures;
+		this.picturesName=picturesName;
 		this.bussiness = bussiness;
 	}
 
@@ -151,12 +151,12 @@ public class HotelPO implements Serializable{
 		this.facilities = facilities;
 	}
 
-	public ArrayList<String> getPicturesPath() {
-		return picturesPath;
+	public ArrayList<String> getPicturesName() {
+		return picturesName;
 	}
 
-	public void setPicturesPath(ArrayList<String> picturesPath) {
-		this.picturesPath = picturesPath;
+	public void setPicturesName(ArrayList<String> picturesName) {
+		this.picturesName = picturesName;
 	}
 
 	public String getBussiness() {
@@ -166,7 +166,5 @@ public class HotelPO implements Serializable{
 	public void setBussiness(String bussiness) {
 		this.bussiness = bussiness;
 	}
-	
-	
 	
 }

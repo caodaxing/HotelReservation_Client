@@ -29,7 +29,7 @@ public class ClientTransform {
 		
 		return new ClientVO(clientPO.getUserID(),clientPO.getPhoneNumber(), 
 				clientPO.getTrueName(), clientPO.getIdentityID(), 
-				creditInfo.getCredit(clientPO.getUserID()), clientPO.getHeadImagePath());
+				creditInfo.getCredit(clientPO.getUserID()));
 	}
 	
 }
