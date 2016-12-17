@@ -201,6 +201,13 @@ public class UserCheckHotelController extends UserLeftController {
 	 * 生成订单并跳至生成成功反馈界面，若不成功则不跳转
 	 */
 	public void makeOrderAndSetSuccessView(){
+		
+		if(!createOrderService.judgeCreditCanCreateOrder(userID)){
+			//判断信用值，小于0直接终止
+			showDialog("您的信用值过低，请充值信用后预订");
+			return;
+		}
+		
 		OrderVO vo = makeOrderUI.getOrderVO();
 		if(vo == null){
 			return;
