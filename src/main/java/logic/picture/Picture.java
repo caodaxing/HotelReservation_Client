@@ -1,5 +1,6 @@
 package logic.picture;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -20,7 +21,15 @@ public class Picture implements PictureService {
 
 	@Override
 	public Image getUserImage(String userID) {
-//		byte[] bs = this.pictureDao.getUserImage(userID);
+		File f = null;
+		try {
+			byte[] bs = this.pictureDao.getUserImage(userID);
+			//图片名就是用户名
+			f = PictureHelper.bytesToImage(bs, userID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
 		
 		return null;
 	}
@@ -28,6 +37,21 @@ public class Picture implements PictureService {
 	@Override
 	public ArrayList<Image> getHotelImage(String hotelID) {
 		ArrayList<Image> images = new ArrayList<Image>();
+		ArrayList<byte[]> imageByte = null;
+		try {
+			imageByte = this.pictureDao.getHotelImage(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(imageByte == null) {
+			return null;
+		}
+		
+		for(int i=0; i<imageByte.size(); ++i) {
+//			images.add(PictureHelper.bytesToImage(imageByte.get(i), String.valueOf(i)));
+		}
+		
 		
 		return null;
 	}

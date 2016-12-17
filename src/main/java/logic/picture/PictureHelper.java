@@ -16,6 +16,10 @@ public class PictureHelper {
 	 * @return
 	 */
 	public static byte[] imageToBytes(String fileName) {
+		if(fileName == null) {
+			return null;
+		}
+		
 		 InputStream in = null;  
 	        byte[] data = null;
 	        try {  
@@ -37,6 +41,11 @@ public class PictureHelper {
 	 * @return
 	 */
 	public static File bytesToImage(byte[] data,String pictureName) {
+		
+		if(data == null || pictureName == null) {
+			return null;
+		}
+		
 		File file = new File(pictureName);
 		BufferedOutputStream stream = null;
 		try {
