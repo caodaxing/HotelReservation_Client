@@ -14,7 +14,7 @@ public class OrderListDao_Stub implements OrderListDao{
 		String[] r1 = {"109"};
 		OrderPO po1 = new OrderPO("wyy", "20161231000060876", "00006", "2016-12-31 12:00:00",
 				"2017-01-01 12:00:00", r1, 1, RoomType.BIGBED_ROOM.ordinal(), false, 1, 1, 300, 240, "ppp", null, null, null, null, null);
-		;
+		
 		OrderPO po2 = new OrderPO("wyy", "20161212000041212", "00004", "2016-12-12 12:00:00",
 				"2016-12-13 12:00:00", r1,1, RoomType.STANDARD_ROOM.ordinal(), false, 1, 0, 400, 320, "ppp", null, null, null, null, null);
 		

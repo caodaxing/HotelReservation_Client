@@ -26,7 +26,7 @@ public class UpdateRoomTest {
 	@Test
 	public void testUpdateRoomInSpecificTime2() {
 		
-		assertEquals(ResultMessage.SUCCESS, this.updateRoom.updateRoomInSpecificTime("00002", RoomType.STANDARD_ROOM, 3, "2016-12-16 00:00:00"));
+		assertEquals(ResultMessage.SUCCESS, this.updateRoom.updateRoomInSpecificTime("00002", RoomType.STANDARD_ROOM, 3, "2017-01-09 00:00:00"));
 	}
 	
 	@Test

@@ -84,16 +84,12 @@ public class ExecuteOrderTest {
 	}	
 	
 	
-	@Test
-	public void testUndoUnexecutedOrder1() {
-		assertEquals(ResultMessage.FAILURE, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
-		
-	}
+	
 	
 	//不会扣除信用
 	@Test
-	public void testUndoUnexecutedOrder2() {
-		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161"));
+	public void testUndoUnexecutedOrder() {
+		assertEquals(ResultMessage.SUCCESS, this.executeOrder.undoUnexecutedOrder("20161212000041212"));
 		
 		assertEquals(OrderState.UNDOED_UNEXECUTED.ordinal(), this.executeOrder.getPo().getState());
 		

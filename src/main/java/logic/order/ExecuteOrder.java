@@ -238,9 +238,9 @@ System.out.println(orderID + recoverAllDeletedCredit);
 	
 				if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
 						RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
-					
 					try {
 						if(this.orderDao.updateOrder(po)) {
+							
 							//更新信用记录和信用值
 							CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
 									po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
