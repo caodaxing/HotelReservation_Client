@@ -1,12 +1,20 @@
 package logic.picture;
 
+import java.awt.Image;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReadParam;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 
 public class PictureHelper {
 
@@ -60,6 +68,32 @@ public class PictureHelper {
 		}
 		return null;
 		
+	}
+	
+	/**
+	 * 直接获得java.awt.Image对象
+	 * @param bytes
+	 * @return
+	 */
+	public static Image bytesTImage(byte[] bytes) {
+		ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+		Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+		 
+		ImageReader reader = (ImageReader) readers.next();
+		Object source = bis;
+		 
+		ImageInputStream iis;
+		Image image = null;
+		try {
+			iis = ImageIO.createImageInputStream(source);
+			reader.setInput(iis, true);
+			ImageReadParam param = reader.getDefaultReadParam();
+			image = reader.read(0, param);
+			return image;
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return null;
 	}
 	
 //	/**
