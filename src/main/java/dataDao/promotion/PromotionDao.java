@@ -8,6 +8,8 @@ import po.PromotionPO;
 
 public interface PromotionDao extends Remote{
 
+	public boolean deletePromotion(String promotionID) throws RemoteException;
+	
 	// promotionType 参数若为0，则表示要拿hotel的所有promotion
 	public ArrayList<PromotionPO> getHotelPromotions(String hotel, int promotionType) throws RemoteException;
 	

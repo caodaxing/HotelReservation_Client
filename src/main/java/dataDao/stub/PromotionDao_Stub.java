@@ -90,5 +90,10 @@ public class PromotionDao_Stub implements PromotionDao {
 		return 33;
 	}
 
+	@Override
+	public boolean deletePromotion(String promotionID) {
+		return true;
+	}
+
 
 }

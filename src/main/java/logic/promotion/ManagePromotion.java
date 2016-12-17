@@ -95,4 +95,17 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 		return this.promotionTrans.promotionListTransToVO(pos);
 	}
 
+	@Override
+	public ResultMessage deletePromotion(String promotionID) {
+		try {
+			if(this.promotionDao.deletePromotion(promotionID)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.FAILURE;
+	}
+
 }

@@ -107,5 +107,10 @@ public class PromotionService_Stub implements ManagePromotionService {
 		return promotionVO;
 	}
 
+	@Override
+	public ResultMessage deletePromotion(String promotionID) {
+		return null;
+	}
+
 	
 }
