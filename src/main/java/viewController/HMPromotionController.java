@@ -161,7 +161,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 	}
 	
 	public ResultMessage getDeletePromotionResult(int num){
-		return promotionService.deletePromotion(promotionList.get(row));
+		return promotionService.deletePromotion(promotionList.get(num).promotionID);
 	}
 	
 	public void setDeletePromotion(){
