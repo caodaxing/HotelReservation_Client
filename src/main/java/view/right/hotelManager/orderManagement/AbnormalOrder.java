@@ -3,6 +3,7 @@ package view.right.hotelManager.orderManagement;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -152,17 +153,19 @@ public class AbnormalOrder{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				
+				if(controller.getSupplyOrderResult(controller.getOrderId(), controller.getOrderInfo().roomIDs) == ResultMessage.SUCCESS){
+					controller.showDialog("补登记成功");
+				}else{
+					controller.showDialog("补登记失败");
+				}
 			}
 			
 		});
 		
 		revert.setOnAction(new EventHandler<ActionEvent>(){
-
+			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setAbnormalOrderListView();
 				controller.setOrderId(null);
 				controller.getStage().show();

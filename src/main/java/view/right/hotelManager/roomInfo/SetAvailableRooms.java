@@ -1,5 +1,6 @@
 package view.right.hotelManager.roomInfo;
 
+import Message.ResultMessage;
 import Message.RoomType;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -163,16 +164,33 @@ public class SetAvailableRooms {
 					break;
 				case -1:
 				default:
+					type = null;
 					break;
 				}
 				String num = roomNum.getText();
-				double price = Double.parseDouble(initialPrice.getText());
-				RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), price);
+				String cost = initialPrice.getText();
+				boolean result = true;
+				try{
+					Integer.parseInt(num);
+					Double.parseDouble(cost);
+				}catch(NumberFormatException e){
+					result = false;
+				}
+//				double price = Double.parseDouble(initialPrice.getText());
+				if(result && type != null){
+					double price = Double.parseDouble(cost);
+					RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), price);
+					if(controller.getAddRoomResult(roomvo) == ResultMessage.SUCCESS){
+						controller.showDialog("添加房间成功");
+					}else{
+						controller.showDialog("添加房间失败");
+					}
+				}else{
+					controller.showDialog("输入错误");
+				}
 				//
-				roomNum.setText("");
-				initialPrice.setText("");
-				OneButtonDialog dialog = new OneButtonDialog("设置成功");
-				dialog.show();
+//				roomNum.setText("");
+//				initialPrice.setText("");
 			}
 					
 		});

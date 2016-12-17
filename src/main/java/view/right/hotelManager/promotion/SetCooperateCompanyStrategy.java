@@ -140,20 +140,23 @@ public class SetCooperateCompanyStrategy {
 				String companyName = cooperateCompanyName.getText();
 				String discount = dicountRange.getText();
 				String promotionName = discountName.getText();
-				PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), promotionName, Double.parseDouble(discount), companyName);
 				//
-				if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-					cooperateCompanyName.setText("");
-					dicountRange.setText("");
-					discountName.setText("");
-					OneButtonDialog dialog = new OneButtonDialog("制定成功");
-					dialog.show();
-					controller.setChooseView();
-					controller.getStage().show();
-				}else{
-					OneButtonDialog dialog = new OneButtonDialog("制定失败");
-					dialog.show();
+				try{
+					double d = Double.parseDouble(discount);
+					PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), promotionName, d, companyName);
+					if(d<=0 || d>=1){
+						controller.showDialog("折扣输入错误");
+					}else if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+						controller.showDialog("制定成功");
+						controller.setChooseView();
+						controller.getStage().show();
+					}else{
+						controller.showDialog("制定失败");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("折扣输入错误");
 				}
+				
 			}
 					
 		});

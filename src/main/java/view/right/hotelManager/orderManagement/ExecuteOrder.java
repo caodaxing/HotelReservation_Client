@@ -154,7 +154,7 @@ public class ExecuteOrder {
 		arriveInfo.setId("button-css");
 		arriveInfo.setPrefSize(100, 40);
 		
-		leaveInfo = new Button("退房信息");
+		leaveInfo = new Button("退房");
 		leaveInfo.setId("button-css");
 		leaveInfo.setPrefSize(100, 40);
 		
@@ -200,8 +200,13 @@ public class ExecuteOrder {
 				// TODO Auto-generated method stub
 				
 				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.FAILURE){
-					controller.setSetLeaveInfoView();
-					controller.getStage().show();
+//					controller.setSetLeaveInfoView();
+//					controller.getStage().show();
+					if(controller.setLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
+						controller.showDialog("退房成功");
+					}else{
+						controller.showDialog("退房失败");
+					}
 				}else{
 					controller.setCheckLeaveInfoView();
 					controller.getStage().show();
@@ -215,6 +220,7 @@ public class ExecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				orderVO = controller.getOrderInfo();
 				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
 					controller.setEvaluationInfoView();
 					controller.getStage().show();

@@ -3,26 +3,30 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
-import Message.OrderState;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.account.Account;
 import logic.order.Order;
+import logic.room.Room;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
+import logicService.room.RoomService;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
 import view.right.hotelManager.hotelInfo.ModifyHotelInfo;
 import view.right.hotelManager.orderManagement.OrderList;
+import view.right.hotelManager.orderManagement.SetArriveInfo;
 import view.right.hotelManager.promotion.PromotionFirst;
 import view.right.hotelManager.roomInfo.First;
 import vo.OrderVO;
+import vo.RoomVO;
 
 public class HotelManagerLeftController{
 	
 	protected ModifyHotelInfo modifyHotelInfoUI;
+	private SetArriveInfo setArriveInfoUI;
 	protected OrderList allOrderListUI;
 	protected OrderList hasExecuteOrderListUI;
 	protected OrderList unExecuteOrderListUI;
@@ -36,6 +40,7 @@ public class HotelManagerLeftController{
 	protected AccountService accountService;
 	protected OrderListService orderListService;
 	private OrderService orderService;
+	private RoomService roomService;
 	
 	private AccountController accountController;
 	
@@ -50,8 +55,10 @@ public class HotelManagerLeftController{
 		accountService = new Account();
 		orderService = new Order();
 		orderListService = new logic.order.OrderList();
+		roomService = new Room();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
+		setArriveInfoUI = new SetArriveInfo(this);
 //		allOrderListUI = new OrderList(this);
 //		hasExecuteOrderListUI = new OrderList(this);
 //		unExecuteOrderListUI = new OrderList(this);
@@ -80,6 +87,14 @@ public class HotelManagerLeftController{
 		stage.setScene(modifyHotelInfoUI.getScene());
 		stage.show();
 	}
+	
+	public void setSetArriveInfoView(){
+		setArriveInfoUI = new SetArriveInfo(this);
+		stage.setScene(setArriveInfoUI.getScene());
+		stage.show();
+	}
+	
+	
 	
 	//设置列表筛选
 	public void setFilterOrderList(OrderListCondition condition){
@@ -227,5 +242,8 @@ public class HotelManagerLeftController{
 		orderlist = orderList;
 	}
 	
+	public ResultMessage getUpdaterRoomResult(RoomVO roomVO){
+		return roomService.updateRoomInfo(roomVO);
+	}
 	
 }

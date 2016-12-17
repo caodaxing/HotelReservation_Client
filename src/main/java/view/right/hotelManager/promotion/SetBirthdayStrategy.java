@@ -127,19 +127,24 @@ public class SetBirthdayStrategy {
 				//传输vo
 				String discount = discountRange.getText();
 				String name = discountName.getText();
-				PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), name, Double.parseDouble(discount));
+				
 				//
-				if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-					discountRange.setText("");
-					discountName.setText("");
-					OneButtonDialog dialog = new OneButtonDialog("制定成功");
-					dialog.show();
-					controller.setChooseView();
-					controller.getStage().show();
-				}else{
-					OneButtonDialog dialog = new OneButtonDialog("制定失败");
-					dialog.show();
+				try{
+					double d = Double.parseDouble(discount);
+					PromotionVO promotionVO = new PromotionVO(null, controller.getUserId(), name, d);
+					if(d<=0 || d>=1){
+						controller.showDialog("折扣输入错误");
+					}else if(controller.getPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+						controller.showDialog("制定成功");
+						controller.setChooseView();
+						controller.getStage().show();
+					}else{
+						controller.showDialog("制定失败");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("折扣输入错误");
 				}
+				
 			}
 					
 		});

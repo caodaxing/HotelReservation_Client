@@ -1,11 +1,13 @@
 package view.right.hotelManager.orderManagement;
 
-import Message.OrderListCondition;
 import Message.ResultMessage;
+import Message.RoomType;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -13,8 +15,8 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
-import viewController.HMOrderManagementController;
-import vo.OrderVO;
+import viewController.HotelManagerLeftController;
+import vo.RoomVO;
 
 /**
  * 酒店工作人员界面_管理订单_已执行订单_更新入住信息
@@ -23,20 +25,20 @@ import vo.OrderVO;
  */
 public class SetArriveInfo {
 	
-	private HMOrderManagementController controller;
+	private HotelManagerLeftController controller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
 	private HotelManagerUI hmui;
 	
-	TextField roomId;
-	TextField arriveTime;
-	TextField estimateLeaveTime;
+	ChoiceBox roomType;
+	TextField roomNumber;
+	TextField roomPrice;
 	
 	Button ok;
 	Button cancel;
 	
-	public SetArriveInfo(HMOrderManagementController controller){
+	public SetArriveInfo(HotelManagerLeftController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
@@ -47,6 +49,9 @@ public class SetArriveInfo {
 		rightPane = new AnchorPane();
 		rightPane.setPrefSize(DefaultNums.RIGHT_WIDTH, DefaultNums.HEIGHT);
 		rightPane.getStylesheets().add("/CSS/right.css");
+		
+		//添加下拉框
+		setChoiceBox();
 		
 		//添加文本内容
 		setTextField();
@@ -64,48 +69,54 @@ public class SetArriveInfo {
 		return scene;
 	}
 	
+	private void setChoiceBox(){
+		
+		//待修改，根据controller
+		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType.setId("SetAvailableRooms");
+		roomType.setPrefSize(200, 30);
+		roomType.setLayoutX(400);
+		roomType.setLayoutY(150);
+		rightPane.getChildren().add(roomType);
+		
+		AnchorPane.setLeftAnchor(roomType, 200.0);
+		
+		AnchorPane.setTopAnchor(roomType, 150.0);
+		
+	}
+	
 	private void setTextField(){
 		
 		//添加文本框
-		arriveTime = new TextField();
-		arriveTime.setId("SetArriveInfo");
-		arriveTime.setPrefSize(200, 30);
+		roomNumber = new TextField();
+		roomNumber.setId("SetArriveInfo");
+		roomNumber.setPrefSize(200, 30);
 		
-		estimateLeaveTime = new TextField();
-		estimateLeaveTime.setId("SetArriveInfo");
-		estimateLeaveTime.setPrefSize(200, 30);
-		
-		roomId = new TextField();
-		roomId.setId("SetArriveInfo");
-		roomId.setPrefSize(200, 30);
+		roomPrice = new TextField();
+		roomPrice.setId("SetArriveInfo");
+		roomPrice.setPrefSize(200, 30);
 		
 		//设置文本框内容可更改
-		roomId.setEditable(true);
-		arriveTime.setEditable(true);
-		estimateLeaveTime.setEditable(true);
+		roomNumber.setEditable(true);
+		roomPrice.setEditable(true);
 		
 		//设置文本框位置
-		roomId.setLayoutX(400);
-		roomId.setLayoutY(150);
 		
-		arriveTime.setLayoutX(400);
-		arriveTime.setLayoutY(200);
+		roomNumber.setLayoutX(400);
+		roomNumber.setLayoutY(200);
 		
-		estimateLeaveTime.setLayoutX(400);
-		estimateLeaveTime.setLayoutY(250);
+		roomPrice.setLayoutX(400);
+		roomPrice.setLayoutY(250);
 		
 		//添加组件
-		rightPane.getChildren().add(arriveTime);
-		rightPane.getChildren().add(estimateLeaveTime);
-		rightPane.getChildren().add(roomId);
+		rightPane.getChildren().add(roomNumber);
+		rightPane.getChildren().add(roomPrice);
 		
-		AnchorPane.setLeftAnchor(arriveTime, 200.0);
-		AnchorPane.setLeftAnchor(estimateLeaveTime, 200.0);
-		AnchorPane.setLeftAnchor(roomId, 200.0);
+		AnchorPane.setLeftAnchor(roomNumber, 200.0);
+		AnchorPane.setLeftAnchor(roomPrice, 200.0);
 		
-		AnchorPane.setTopAnchor(roomId, 150.0);
-		AnchorPane.setTopAnchor(arriveTime, 200.0);
-		AnchorPane.setTopAnchor(estimateLeaveTime, 250.0);
+		AnchorPane.setTopAnchor(roomNumber, 200.0);
+		AnchorPane.setTopAnchor(roomPrice, 250.0);
 		
 	}
 	
@@ -135,22 +146,46 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				OrderVO orderVO = controller.getOrderInfo();
-				String rooms = roomId.getText();
-				String[] roomID = rooms.split(" ");
-				String orderId = orderVO.orderId;
-				if(controller.getResult(orderId, roomID) == ResultMessage.SUCCESS){
-					OneButtonDialog dialog = new OneButtonDialog("入住成功");
-					dialog.show();
-					controller.setunExecuteOrderListView();
-					controller.getStage().show();
-				}else{
-					OneButtonDialog dialog = new OneButtonDialog("更新失败");
-					dialog.show();
-					roomId.setText("");
-					arriveTime.setText("");
-					estimateLeaveTime.setText("");
-					
+				int t = roomType.getSelectionModel().getSelectedIndex();
+				RoomType type = null;
+				switch(t){
+				case 0:
+					type = RoomType.SINGLE_ROOM;
+					break;
+				case 1:
+					type = RoomType.STANDARD_ROOM;
+					break;
+				case 2:
+					type = RoomType.TRIPLE_ROOM;
+					break;
+				case 3:
+					type = RoomType.BIGBED_ROOM;
+					break;
+				case 4:
+					type = RoomType.SUITE;
+					break;
+				case -1:
+				default:
+					type = null;
+					break;
+				}
+				String num = roomNumber.getText();
+				String price = roomPrice.getText();
+				try{
+					int number = Integer.parseInt(num);
+					double d = Double.parseDouble(price);
+					if(type != null){
+						RoomVO roomvo = new RoomVO(controller.getUserId(),type,number,d);
+						if(controller.getUpdaterRoomResult(roomvo) == ResultMessage.SUCCESS){
+							controller.showDialog("更新成功");
+						}else{
+							controller.showDialog("更新失败");
+						}
+					}else{
+						controller.showDialog("输入错误");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("输入错误");
 				}
 			}
 			
@@ -161,7 +196,7 @@ public class SetArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setunExecuteOrderListView();
+				controller.setBlankView();
 				controller.setOrderId(null);
 				controller.getStage().show();
 			}

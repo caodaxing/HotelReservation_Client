@@ -77,4 +77,8 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 		return roomService.updateRoomInfo(roomVO);
 	}
 	
+	public ResultMessage getAddRoomResult(RoomVO roomVO){
+		return roomService.addRoomInfo(roomVO);
+	}
+	
 }

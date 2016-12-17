@@ -35,7 +35,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	private EvaluationInfo evalutionInfoUI;
 	private ExecuteOrder executeOrderUI;
 	private SearchOrder searchOrderUI;
-	private SetArriveInfo setArriveInfoUI;
+//	private SetArriveInfo setArriveInfoUI;
 	private SetLeaveInfo setLeaveInfoUI;
 	private UndoOrder undoOrderUI;
 	private UnexecuteOrder unexecuteOrderUI;
@@ -56,7 +56,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 //		executeOrderUI = new ExecuteOrder(this);
 //		orderListUI = new OrderList(this);
 		searchOrderUI = new SearchOrder(this);
-		setArriveInfoUI = new SetArriveInfo(this);
+//		setArriveInfoUI = new SetArriveInfo(this);
 		setLeaveInfoUI = new SetLeaveInfo(this);
 //		undoOrderUI = new UndoOrder(this);
 //		unexecuteOrderUI = new UnexecuteOrder(this);
@@ -98,9 +98,9 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		stage.setScene(searchOrderUI.getScene());
 	}
 	
-	public void setSetArriveInfoView(){
-		stage.setScene(setArriveInfoUI.getScene());
-	}
+//	public void setSetArriveInfoView(){
+//		stage.setScene(setArriveInfoUI.getScene());
+//	}
 	
 	public void setSetLeaveInfoView(){
 		stage.setScene(setLeaveInfoUI.getScene());
@@ -168,9 +168,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		}
 	}
 	
-	public ResultMessage getResult(String orderID, String[] roomId){
-		return executeOrderService.normalExecute(orderID, roomId);
-	}
+	
 	
 	public ResultMessage getLeaveResult(String orderID){
 		return executeOrderService.hasCheckOut(orderID);
@@ -187,4 +185,13 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	public ResultMessage getRoomInfoUpdateResult(String orderId, String[] roomID){
 		return executeOrderService.normalExecute(orderId, roomID);
 	}
+	
+	public ResultMessage getSupplyOrderResult(String orderId, String[] roomID){
+		return executeOrderService.supplyOrder(orderId, roomID);
+	}
+	
+	public OrderVO getOrder(String orderID){
+		return orderService.getOrderInfo(orderID);
+	}
+	
 }

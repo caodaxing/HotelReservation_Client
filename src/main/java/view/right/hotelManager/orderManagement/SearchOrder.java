@@ -85,7 +85,12 @@ public class SearchOrder{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				//传输vo
-				orderID.getText();
+				if(controller.getOrder(orderID.getText()) != null){
+					controller.setOrderId(orderID.getText());
+					controller.setOrderView(orderID.getText());
+				}else{
+					controller.showDialog("订单不存在");
+				}
 				//
 				orderID.setText("");
 				controller.setExecuteOrderView();
