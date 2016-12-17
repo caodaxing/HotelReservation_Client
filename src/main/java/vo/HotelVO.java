@@ -1,7 +1,6 @@
 package vo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * @param hoteID 酒店ID
@@ -13,7 +12,7 @@ import java.util.HashMap;
  * @param levelOfHotel 酒店星级
  * @param introduction 酒店介绍
  * @param facilities 酒店设施
- * @param picturesPath 照片
+ * @param picturesName 照片
  * @param bussiness 合作企业
  * @author bcy
  *
@@ -28,12 +27,12 @@ public class HotelVO {
 	public int levelOfHotel;
 	public String introduction;
 	public String facilities;
-	public ArrayList<String> picturesPath;
+	public ArrayList<String> picturesName;
 	public String bussiness;
 
 	public HotelVO(String hoteID,String hotelName, String city, String tradingArea,
 			String locationOfHotel,double evaluationGrades,int levelOfHotel,String introduction, String facilities,
-			ArrayList<String> pictures, String bussiness) {
+			ArrayList<String> picturesName, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
@@ -43,7 +42,7 @@ public class HotelVO {
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
 		this.facilities = facilities;
-		this.picturesPath=pictures;
+		this.picturesName=picturesName;
 		this.bussiness = bussiness;
 	}
 	
@@ -63,7 +62,7 @@ public class HotelVO {
 	 */
 	public HotelVO(String hoteID,String hotelName, String city,String tradingArea,
 			String locationOfHotel,int levelOfHotel,String introduction, String facilities,
-			ArrayList<String> pictures, String bussiness) {
+			ArrayList<String> picturesName, String bussiness) {
 		this.hoteID=hoteID;
 		this.hotelName = hotelName;
 		this.city = city;
@@ -72,7 +71,7 @@ public class HotelVO {
 		this.levelOfHotel=levelOfHotel;
 		this.introduction=introduction;
 		this.facilities = facilities;
-		this.picturesPath=pictures;
+		this.picturesName=picturesName;
 		this.bussiness = bussiness;
 	}
 }

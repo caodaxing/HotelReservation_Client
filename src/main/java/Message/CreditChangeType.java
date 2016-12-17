@@ -1,11 +1,13 @@
 package Message;
 
-//0:正常执行订单增加 1:被置为异常订单扣除 2.酒店工作人员补登记异常订单恢复 3.撤销异常订单恢复 4.充值 5.撤销未执行订单扣除订单价值的一半
+//0:正常执行订单增加 1:被置为异常订单扣除 2.酒店工作人员补登记异常订单恢复 3.撤销异常订单恢复 4.充值 5.撤销未执行订单扣除订单价值的一半 6
 public enum CreditChangeType {
 	NORMAL_EXECUTE_ORDER_INCRESE,
 	SET_ABNORMAL_ORDER_DECREASE,
 	SUPPLY_ABNORAML_ORDER_RECOVER,
 	UNDO_ABNORAML_ORDER_RECOVER,
 	RECHARGE_CREDIT,
-	UNDO_UNEXECUTED_ORDER_DECREASE;
+	UNDO_UNEXECUTED_ORDER_DECREASE, 
+	INIT_CREDIT;
+	
 }

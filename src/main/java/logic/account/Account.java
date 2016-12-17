@@ -2,13 +2,19 @@ package logic.account;
 
 import java.rmi.RemoteException;
 
+import Message.CreditChangeType;
 import Message.Identity;
 import Message.ResultMessage;
 import dataDao.account.AccountDao;
 import dataDao.stub.AccountDao_Stub;
+import logic.credit.Credit;
+import logic.credit.CreditChange;
+import logic.credit.CreditChangeInfo;
+import logic.utility.Time;
 import logicService.account.AccountService;
 import po.AccountPO;
 import vo.AccountVO;
+import vo.CreditChangeVO;
 
 /**
  * 提供帐号的注册、修改、登录、登出、获取身份功能。
@@ -17,8 +23,10 @@ import vo.AccountVO;
  */
 public class Account implements AccountService{
 	private AccountDao accountDao;
+	private CreditChangeInfo creditChange;
 		
 	public Account(){
+		this.creditChange = new CreditChange();
 		accountDao = new AccountDao_Stub();
 	}
 
@@ -41,19 +49,30 @@ public class Account implements AccountService{
 					
 					AccountPO po = transToPO(accountVO);
 					if(accountDao.addAccount(po)) {
-						return ResultMessage.SUCCESS;
+						
+						if(this.initCredit(po.getAccountID())) {
+							return ResultMessage.SUCCESS;
+						}
 					}
 				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 			
-			
 		}
 		
 		return ResultMessage.FAILURE;	
 	}
 	
+	private boolean initCredit(String accountID) {
+		CreditChangeVO vo = new CreditChangeVO(accountID, Time.getCurrentTime(), null, CreditChangeType.INIT_CREDIT, 0, Credit.INIT_CREDIT_NUM);
+		if(this.creditChange.changeCredit(vo) == ResultMessage.SUCCESS) {
+			return true;
+		}
+		
+		return false;
+	}
+
 	/**
 	 * 登录
 	 * @param accountVO 传入的VO信息

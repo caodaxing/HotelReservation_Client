@@ -28,20 +28,26 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) {
-//		launch(args);
-		
 		new ClientRunner();
-	
+		
+		launch(args);
+		
 //		AccountDao ad = RemoteHelper.getInstance().getAccountDao();
-		
-		PictureDao pictureDao = RemoteHelper.getInstance().getPictureDao();
-		
-		String imgFile = "d:\\PictureDatabase\\00001\\1.jpg";  
-        
-		try {
-			System.out.println(pictureDao.saveImage(PictureHelper.imageToBytes(imgFile), "12345", "1"));
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//		
+//		try {
+//			System.out.println(ad.getAccountInfo("12334").getIdentity());
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		PictureDao pictureDao = RemoteHelper.getInstance().getPictureDao();
+//		
+//		String imgFile = "d:\\PictureDatabase\\00001\\1.jpg";  
+//        
+//		try {
+//			System.out.println(pictureDao.saveImage(PictureHelper.imageToBytes(imgFile), "12345", "1"));
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
 	}
 }
