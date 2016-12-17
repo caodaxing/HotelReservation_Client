@@ -1,6 +1,7 @@
 package view.right.hotelManager.orderManagement;
 
 import Message.OrderListCondition;
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -160,11 +161,12 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setSetArriveInfoView();
-				controller.getStage().show();
-				OneButtonDialog dialog = new OneButtonDialog("订单执行成功，请更新房间信息");
-				dialog.show();
-				
+				OrderVO vo = controller.getOrderInfo();
+				if(controller.getRoomInfoUpdateResult(vo.orderId, vo.roomIDs) == ResultMessage.SUCCESS){
+					controller.showDialog("订单执行成功");
+				}else{
+					controller.showDialog("订单执行失败");
+				}				
 //				controller.getStage().show();
 			}
 							

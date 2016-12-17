@@ -3,11 +3,14 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.OrderState;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.account.Account;
+import logic.order.Order;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
+import logicService.order.OrderService;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
@@ -32,9 +35,9 @@ public class HotelManagerLeftController{
 	
 	protected AccountService accountService;
 	protected OrderListService orderListService;
+	private OrderService orderService;
 	
 	private AccountController accountController;
-	private ResultMessage result;
 	
 	protected Stage stage;
 	protected String userId;
@@ -45,6 +48,7 @@ public class HotelManagerLeftController{
 	public HotelManagerLeftController(){
 		
 		accountService = new Account();
+		orderService = new Order();
 		orderListService = new logic.order.OrderList();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
@@ -206,4 +210,22 @@ public class HotelManagerLeftController{
 //			
 //		}
 //	}
+	
+	public OrderVO getOrderInfo(){
+		return orderService.getOrderInfo(orderId);
+	}
+	
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
+	}
+	
+	public void setOrderId(int row){
+		orderId = orderlist.get(row).orderId;
+	}
+	
+	public void setOrderList(ArrayList<OrderVO> orderList){
+		orderlist = orderList;
+	}
+	
+	
 }

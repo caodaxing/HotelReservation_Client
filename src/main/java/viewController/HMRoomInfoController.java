@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import Message.ResultMessage;
 import Message.RoomType;
 import javafx.stage.Stage;
+import logic.order.ExecuteOrder;
 import logic.room.Room;
+import logicService.order.ExecuteOrderService;
 import logicService.room.RoomService;
 import view.right.hotelManager.roomInfo.ExistRooms;
 import view.right.hotelManager.roomInfo.First;
@@ -74,4 +76,5 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	public ResultMessage getUpdateRoomResult(RoomVO roomVO){
 		return roomService.updateRoomInfo(roomVO);
 	}
+	
 }

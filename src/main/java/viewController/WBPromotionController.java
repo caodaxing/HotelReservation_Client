@@ -136,4 +136,12 @@ public class WBPromotionController extends WebBusinessLeftController{
 	public ResultMessage getAddPromotionResult(PromotionVO promotionVO){
 		return promotionService.addPromotion(promotionVO);
 	}
+	
+	public ResultMessage getDeletePromotionResult(int num){
+		return promotionService.deletePromotion(promotionList.get(row));
+	}
+	
+	public void setDeletePromotion(){
+		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
+	}
 }

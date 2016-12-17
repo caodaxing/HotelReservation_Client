@@ -3,6 +3,7 @@ package view.right.webBusiness.promotion;
 import java.util.ArrayList;
 
 import Message.PromotionType;
+import Message.ResultMessage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -175,7 +176,14 @@ public class ExistStrategy {
 							Item = new Button("删除");
 							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
-								
+								int num = this.getTableRow().getIndex();
+								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
+									controller.showDialog("删除成功");
+									controller.setDeletePromotion();
+									controller.getStage().show();
+								}else{
+									controller.showDialog("删除失败");
+								}
 							});
 						}
 						setGraphic(Item);

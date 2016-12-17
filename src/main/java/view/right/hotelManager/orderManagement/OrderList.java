@@ -177,11 +177,13 @@ public class OrderList {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								HMOrderManagementController HMcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
-								HMcontroller.setOrderList(controller.getlist());
-								HMcontroller.setOrderId(row);
-								HMcontroller.setOrderView();
-								HMcontroller.getStage().show();
+//								HMOrderManagementController HMcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+//								HMcontroller.setOrderList(controller.getlist());
+								controller.setOrderId(row);
+								String orderID = controller.getOrderId();
+//								System.out.println(orderID);
+								hmcontroller.setOrderView(orderID);
+								hmcontroller.getStage().show();
 							});
 						}
 						setGraphic(Item);

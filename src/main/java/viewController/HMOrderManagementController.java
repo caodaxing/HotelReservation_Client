@@ -135,25 +135,25 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 //		orderList = orderListService.filterHotelOrderList(userId, condition);
 //	}
 	
-	public OrderVO getOrderInfo(){
-		return orderService.getOrderInfo(orderId);
-	}
+//	public OrderVO getOrderInfo(){
+//		return orderService.getOrderInfo(orderId);
+//	}
+//	
+//	public void setOrderId(String orderId){
+//		this.orderId = orderId;
+//	}
+//	
+//	public void setOrderId(int row){
+//		this.orderId = orderlist.get(row).orderId;
+//	}
+//	
+//	public void setOrderList(ArrayList<OrderVO> orderList){
+//		orderlist = orderList;
+//	}
 	
-	public void setOrderId(String orderId){
-		this.orderId = orderId;
-	}
-	
-	public void setOrderId(int row){
-		orderId = orderlist.get(row).orderId;
-	}
-	
-	public void setOrderList(ArrayList<OrderVO> orderList){
-		orderlist = orderList;
-	}
-	
-	public void setOrderView() {
+	public void setOrderView(String orderId) {
 		OrderState state = orderService.getOrderInfo(orderId).orderState;
-//		System.out.println(orderId);
+//		System.out.println(state);
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){
@@ -182,5 +182,9 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public EvaluationVO getEvaluation(String orderId){
 		return orderService.getEvaluationInfo(orderId);
+	}
+	
+	public ResultMessage getRoomInfoUpdateResult(String orderId, String[] roomID){
+		return executeOrderService.normalExecute(orderId, roomID);
 	}
 }
