@@ -124,8 +124,7 @@ public class SetLeaveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setFilterOrderList(OrderListCondition.EXECUTED);
-				OrderVO orderVO = controller.getlist().get(controller.getRow());
+				OrderVO orderVO = controller.getOrderInfo();
 				if(controller.setLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
 					OneButtonDialog dialog = new OneButtonDialog("退房成功");
 					dialog.show();
@@ -145,6 +144,7 @@ public class SetLeaveInfo {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setHasExecuteOrderListView();
+				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			

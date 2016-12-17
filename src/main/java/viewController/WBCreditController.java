@@ -2,9 +2,9 @@ package viewController;
 
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.credit.CreditChange;
 import logicService.account.AccountService;
 import logicService.credit.CreditChangeService;
-import logicService.stub.CreditChangeService_Stub;
 import view.right.webBusiness.credit.RechargeCredit;
 import vo.CreditChangeVO;
 
@@ -22,7 +22,7 @@ public class WBCreditController extends WebBusinessLeftController{
 //		accountService = new Account();
 		this.stage = stage;
 		this.userId = userId;
-		creditChangeService = new CreditChangeService_Stub(userId);
+		creditChangeService = new CreditChange();
 		rechargeCreditUI = new RechargeCredit(this);
 		
 	}

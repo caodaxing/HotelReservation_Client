@@ -33,11 +33,10 @@ public class TimeTest {
 	
 	@Test
 	public void testCalculateDay() {
-		assertEquals(0, new Time("2016-12-16 00:00:00").calculateDay(Time.getCurrentTime()));
+		assertEquals(0, new Time(Time.getCurrentTime().substring(0, 10)).calculateDay(Time.getCurrentTime()));
 		
-		assertEquals(0, new Time("2016-12-16").calculateDay(Time.getCurrentTime()));
 		
-		assertEquals(2, new Time("2016-12-18").calculateDay(Time.getCurrentTime()));
+		assertEquals(1, new Time(Time.getCurrentTime().substring(0, 10)).nextDay().calculateDay(Time.getCurrentTime()));
 	}
 	
 	

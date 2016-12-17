@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import viewController.HMOrderManagementController;
 import viewController.HotelManagerLeftController;
@@ -70,23 +71,20 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
-		controller.setFilterOrderList(OrderListCondition.ABNORMALED);
-		orderVO = controller.getlist().get(controller.getRow());
-		
 		//添加文本框
-		orderID = new TextField(orderVO.orderId);
+		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField(orderVO.hotelID);
+		hotelName = new TextField();
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderVO.roomType.toString());
+		roomType = new TextField();
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		lastExecuteTime = new TextField(orderVO.endTime);
+		lastExecuteTime = new TextField();
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		
@@ -165,8 +163,8 @@ public class AbnormalOrder{
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				
 				controller.setAbnormalOrderListView();
+				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			
@@ -182,5 +180,21 @@ public class AbnormalOrder{
 		AnchorPane.setTopAnchor(againRegister, 525.0);
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
+	}
+	
+	public void setBlank(){
+		orderID.setText("");
+		hotelName.setText("");
+		roomType.setText("");
+		lastExecuteTime.setText("");
+	}
+	
+	public void setText(){
+		
+		OrderVO vo = controller.getOrderInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
+		lastExecuteTime.setText(vo.abnormalTime);
 	}
 }

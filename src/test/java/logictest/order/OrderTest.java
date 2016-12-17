@@ -18,7 +18,7 @@ public class OrderTest {
 	
 	@Test
 	public void testGetOrderInfo() {
-		assertEquals("2016-12-12 12:00:00", this.order.getOrderInfo("20161212000041212").startTime);
+		assertEquals("2017-01-09 12:00:00", this.order.getOrderInfo("20161212000041212").startTime);
 	}
 	
 	@Test

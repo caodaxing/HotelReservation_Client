@@ -40,7 +40,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	}
 
 	@Override
-	public ResultMessage hacCheckOut(String orderID) {
+	public ResultMessage hasCheckOut(String orderID) {
 		
 		OrderPO po = null;
 		try {
@@ -167,6 +167,9 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	// 撤销异常订单
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {
+		
+System.out.println(orderID + recoverAllDeletedCredit);
+		
 		try {
 			po = this.orderDao.getOrderByOrderID(orderID);
 		} catch (RemoteException e) {
@@ -235,9 +238,9 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 				if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
 						RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
-					
 					try {
 						if(this.orderDao.updateOrder(po)) {
+							
 							//更新信用记录和信用值
 							CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
 									po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);

@@ -84,7 +84,6 @@ public class Choose {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setSetVIPAreaStrategyView();
 				controller.getStage().show();
 			}
@@ -95,7 +94,6 @@ public class Choose {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setSetVIPStrategyView();
 				controller.getStage().show();
 			}
@@ -106,7 +104,6 @@ public class Choose {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setSetSpecialTimeStrategyView();
 				controller.getStage().show();
 			}

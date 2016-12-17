@@ -142,7 +142,6 @@ public class SetSpecialTimeStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输vo
 				String s1 = startDiscountTime.getText();
 				String s2 = endDiscountTime.getText();
@@ -171,7 +170,6 @@ public class SetSpecialTimeStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setChooseView();
 				controller.getStage().show();
 			}

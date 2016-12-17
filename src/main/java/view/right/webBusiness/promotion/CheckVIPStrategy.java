@@ -139,7 +139,6 @@ public class CheckVIPStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setExistStrategyView();
 				controller.getStage().show();
 			}

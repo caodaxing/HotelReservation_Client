@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Message.PromotionType;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.promotion.ManagePromotion;
 import logicService.promotion.ManagePromotionService;
 import logicService.stub.PromotionService_Stub;
 import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
@@ -15,7 +16,6 @@ import view.right.webBusiness.promotion.ExistStrategy;
 import view.right.webBusiness.promotion.SetSpecialTimeStrategy;
 import view.right.webBusiness.promotion.SetVIPAreaStrategy;
 import view.right.webBusiness.promotion.SetVIPStrategy;
-import vo.CreditChangeVO;
 import vo.PromotionVO;
 
 public class WBPromotionController extends WebBusinessLeftController{
@@ -38,7 +38,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public WBPromotionController(Stage stage, String userId){
 		
-		promotionService = new PromotionService_Stub();
+		promotionService = new ManagePromotion();
 		this.stage = stage;
 		this.userId = userId;
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
@@ -54,7 +54,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public WBPromotionController(Stage stage, String userId, int row){
 		
-		promotionService = new PromotionService_Stub();
+		promotionService = new ManagePromotion();
 		this.stage = stage;
 		this.userId = userId;
 		this.row = row;
@@ -135,5 +135,13 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public ResultMessage getAddPromotionResult(PromotionVO promotionVO){
 		return promotionService.addPromotion(promotionVO);
+	}
+	
+	public ResultMessage getDeletePromotionResult(int num){
+		return promotionService.deletePromotion(promotionList.get(row));
+	}
+	
+	public void setDeletePromotion(){
+		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
 	}
 }

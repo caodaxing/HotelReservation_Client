@@ -3,6 +3,7 @@ package view.right.webBusiness.promotion;
 import java.util.ArrayList;
 
 import Message.PromotionType;
+import Message.ResultMessage;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -10,10 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,14 +19,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
 import javafx.util.Callback;
-import logicService.stub.PromotionService_Stub;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
-import viewController.WBOrderManagementController;
 import viewController.WBPromotionController;
 import vo.PromotionVO;
+
 
 /**
  * 网站营销人员界面_促销策略_查看现有策略列表
@@ -104,7 +100,6 @@ public class ExistStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setFirstVeiw();
 				controller.getStage().show();
 			}
@@ -123,7 +118,7 @@ public class ExistStrategy {
 		
 		//创建列表对象
 		tableView = new TableView<Person>();
-		tableView.setPrefSize(455, 400);
+		tableView.setPrefSize(505, 400);
 		tableView.setEditable(false);
 		initialData();
 		
@@ -146,7 +141,7 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								row = this.getTableRow().getIndex();
 								if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
@@ -169,7 +164,7 @@ public class ExistStrategy {
 				};
 			}
 		});
-		operation1.setMinWidth(50);
+		operation1.setMinWidth(70);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -179,9 +174,16 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("删除");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
-								
+								int num = this.getTableRow().getIndex();
+								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
+									controller.showDialog("删除成功");
+									controller.setDeletePromotion();
+									controller.getStage().show();
+								}else{
+									controller.showDialog("删除失败");
+								}
 							});
 						}
 						setGraphic(Item);
@@ -197,7 +199,7 @@ public class ExistStrategy {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 55.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}

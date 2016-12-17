@@ -3,13 +3,14 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.OrderListCondition;
+import Message.OrderState;
 import Message.ResultMessage;
-import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import logic.account.Account;
+import logic.order.Order;
 import logicService.account.AccountService;
 import logicService.order.OrderListService;
-import logicService.stub.AccountService_Stub;
-import logicService.stub.OrderService_Stub;
+import logicService.order.OrderService;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
@@ -34,20 +35,21 @@ public class HotelManagerLeftController{
 	
 	protected AccountService accountService;
 	protected OrderListService orderListService;
+	private OrderService orderService;
 	
 	private AccountController accountController;
-	private ResultMessage result;
 	
 	protected Stage stage;
 	protected String userId;
 	
-	private ArrayList<OrderVO> orderlist;
-	private int row;
+	protected ArrayList<OrderVO> orderlist;
+	protected String orderId;
 	
 	public HotelManagerLeftController(){
 		
-		accountService = new AccountService_Stub();
-		orderListService = new OrderService_Stub();
+		accountService = new Account();
+		orderService = new Order();
+		orderListService = new logic.order.OrderList();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 //		allOrderListUI = new OrderList(this);
@@ -79,7 +81,13 @@ public class HotelManagerLeftController{
 		stage.show();
 	}
 	
+	//设置列表筛选
+	public void setFilterOrderList(OrderListCondition condition){
+		orderlist = orderListService.filterHotelOrderList(userId, condition);
+	}
+	
 	public void setAllOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.ALL_ORDERS);
 		OrderList allOrderListUI = new OrderList(this);
 		allOrderListUI.initialData();
@@ -88,6 +96,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setHasExecuteOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.EXECUTED);
 		OrderList hasExecuteOrderListUI = new OrderList(this);
 		hasExecuteOrderListUI.initialData();
@@ -96,6 +105,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setunExecuteOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.UNEXECUTED);
 		OrderList unExecuteOrderListUI = new OrderList(this);
 		unExecuteOrderListUI.initialData();
@@ -104,6 +114,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setUndoOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
 		OrderList undoOrderListUI = new OrderList(this);
 		undoOrderListUI.initialData();
@@ -112,6 +123,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setAbnormalOrderListView(){
+		orderId = null;
 		setFilterOrderList(OrderListCondition.ABNORMALED);
 		OrderList abnormalOrderListUI = new OrderList(this);
 		abnormalOrderListUI.initialData();
@@ -150,47 +162,70 @@ public class HotelManagerLeftController{
 		newStage.show();
 	}
 	
+	//返回提示框
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
 	}
 	
+	//返回userId
 	public String getUserId(){
 		return userId;
+	}
+	
+	//返回当前orderList
+	public ArrayList<OrderVO> getlist(){
+		return orderlist;
 	}
 	
 	public Stage getStage(){
 		return stage;
 	}
 	
-	public void setFilterOrderList(OrderListCondition condition){
-		orderlist = orderListService.filterHotelOrderList(userId, condition);
+	public String getOrderId(){
+		return orderId;
 	}
 	
-	public ArrayList<OrderVO> getlist(){
-		return orderlist;
-	}
+	
 	
 	public OrderList getabnormalList(){
 		return abnormalOrderListUI;
 	}
+//	
+//	public OrderVO getOrder(){
+//		return orderlist.get(row);
+//	}
+//	
+//	public void setRow(OrderListCondition condition){
+//		if(condition == OrderListCondition.ABNORMALED){
+//			OrderList abnormalOrderListUI = new OrderList(this);
+//			row = abnormalOrderListUI.getRow();
+//		}else if(condition == OrderListCondition.EXECUTED){
+//			
+//		}else if(condition == OrderListCondition.UNEXECUTED){
+//			
+//		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
+//			
+//		}else{
+//			
+//		}
+//	}
 	
-	public OrderVO getOrder(){
-		return orderlist.get(row);
+	public OrderVO getOrderInfo(){
+		return orderService.getOrderInfo(orderId);
 	}
 	
-	public void setRow(OrderListCondition condition){
-		if(condition == OrderListCondition.ABNORMALED){
-			OrderList abnormalOrderListUI = new OrderList(this);
-			row = abnormalOrderListUI.getRow();
-		}else if(condition == OrderListCondition.EXECUTED){
-			
-		}else if(condition == OrderListCondition.UNEXECUTED){
-			
-		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
-			
-		}else{
-			
-		}
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
 	}
+	
+	public void setOrderId(int row){
+		orderId = orderlist.get(row).orderId;
+	}
+	
+	public void setOrderList(ArrayList<OrderVO> orderList){
+		orderlist = orderList;
+	}
+	
+	
 }

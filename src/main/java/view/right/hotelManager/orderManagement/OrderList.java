@@ -57,13 +57,12 @@ public class OrderList {
 	
 	private ObservableList<Person> data;
 	private Button check;
-	private int row;
 	private ArrayList<OrderVO> orderList;
 	
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
-//		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 		hmui = new HotelManagerUI(controller);
 		data = FXCollections.observableArrayList();
 		
@@ -148,6 +147,7 @@ public class OrderList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
+		tableView.setPrefHeight(370);
 		
 		//添加列
 		orderId = new TableColumn<>("订单号");
@@ -176,9 +176,14 @@ public class OrderList {
 							Item = new Button("查看");
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
-								System.out.println(row);
-								checkFunction();
+								int row = this.getTableRow().getIndex();
+//								HMOrderManagementController HMcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+//								HMcontroller.setOrderList(controller.getlist());
+								controller.setOrderId(row);
+								String orderID = controller.getOrderId();
+//								System.out.println(orderID);
+								hmcontroller.setOrderView(orderID);
+								hmcontroller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -194,14 +199,14 @@ public class OrderList {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 60.0);
 		
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
-	public int getRow(){
-		return row;
-	}
+//	public int getRow(){
+//		return row;
+//	}
 	
 	/*
 	 * left下的列表内容控制
@@ -217,44 +222,44 @@ public class OrderList {
 		}
 	}
 	
-	/*
-	 * orderManagementController下的列表内容控制
-	 */
-	public void InitialData(){
-		orderList = hmcontroller.getOrderList();
-		if(orderList == null){
-			return ;
-		}
-		for(OrderVO o :orderList){
-			String state = MessageHelper.orderStateToString(o.orderState);
-			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
-		}
-	}
+//	/*
+//	 * orderManagementController下的列表内容控制
+//	 */
+//	public void InitialData(){
+//		orderList = controll
+//		if(orderList == null){
+//			return ;
+//		}
+//		for(OrderVO o :orderList){
+//			String state = MessageHelper.orderStateToString(o.orderState);
+//			data.add(new Person(o.orderId,o.hotelID,state,Double.toString(o.afterPrice),check));
+//		}
+//	}
 	
 	/*
 	 * 查看按钮功能实现
 	 */
-	public void checkFunction(){
-		System.out.println(controller.getlist().get(row).orderState.toString());
-			if(controller.getlist().get(row).orderState == OrderState.EXECUTED ){
-				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
-				hmcontroller.setExecuteOrderView();
-				hmcontroller.getStage().show();
-			}else if(controller.getlist().get(row).orderState == OrderState.ABNORMAL){
-				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
-				hmcontroller.setAbnormalOrderView();
-				hmcontroller.getStage().show();
-			}else if(controller.getlist().get(row).orderState == OrderState.UNEXECUTED){
-				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
-				hmcontroller.setUnexecuteOrderView();
-				hmcontroller.getStage().show();
-			}else{
-				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
-				hmcontroller.setUndoOrderView();
-				hmcontroller.getStage().show();
-			}
-		
-	}
+//	public void checkFunction(){
+//		System.out.println(controller.getlist().get(row).orderState.toString());
+//			if(controller.getlist().get(row).orderState == OrderState.EXECUTED ){
+//				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
+//				hmcontroller.setExecuteOrderView();
+//				hmcontroller.getStage().show();
+//			}else if(controller.getlist().get(row).orderState == OrderState.ABNORMAL){
+//				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
+//				hmcontroller.setAbnormalOrderView();
+//				hmcontroller.getStage().show();
+//			}else if(controller.getlist().get(row).orderState == OrderState.UNEXECUTED){
+//				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
+//				hmcontroller.setUnexecuteOrderView();
+//				hmcontroller.getStage().show();
+//			}else{
+//				hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId(),row);
+//				hmcontroller.setUndoOrderView();
+//				hmcontroller.getStage().show();
+//			}
+//		
+//	}
 	
 	/**
 	 * 异常订单列表的内部数据类

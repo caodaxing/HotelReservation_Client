@@ -76,7 +76,6 @@ public class First {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				wbPromotionController = new WBPromotionController(controller.getStage(), controller.getUserId());
 				wbPromotionController.setExistStrategyView();
 				wbPromotionController.getStage().show();
@@ -88,7 +87,6 @@ public class First {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				wbPromotionController = new WBPromotionController(controller.getStage(), controller.getUserId());
 				wbPromotionController.setChooseView();
 				wbPromotionController.getStage().show();
