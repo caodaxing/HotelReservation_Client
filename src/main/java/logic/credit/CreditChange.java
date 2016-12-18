@@ -40,7 +40,10 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 			return ResultMessage.FAILURE;
 		}
 		
-		int nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+		int nowCredit = 0;
+		if(vo.action != CreditChangeType.INIT_CREDIT) {
+			nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+		}
 		
 		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, 
 				vo.action.ordinal(), vo.cerditChange, nowCredit);
