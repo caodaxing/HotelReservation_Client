@@ -56,8 +56,6 @@ public class PictureHelper {
             out.write(data);  
             out.flush();  
             out.close();
-            File file = new File(path);
-            System.out.println(file.exists());
             return path;
         } catch (Exception e) { 
         	return null;

@@ -17,7 +17,6 @@ import vo.CreditChangeVO;
 /**
  * 提供修改信用、获取信用记录的方法
  * @author bcy
- *
  */
 public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
@@ -44,6 +43,8 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		
 		if(vo.action != CreditChangeType.INIT_CREDIT) {
 			nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+		} else {
+			nowCredit = Credit.INIT_CREDIT_NUM;
 		}
 		
 		CreditHistoryPO po = new CreditHistoryPO(vo.userID, vo.time, vo.orderID, 
@@ -74,13 +75,13 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		
 		for(int i=0; i< low.length; ++i) {
 			if(nowCredit >= low[i] && nowCredit < high[i]) {
-				level = this.lev[i];
+				level = this.lev[i] + 1;
 				break;
 			}
 			
 			if(i == low.length -1) {
 				if(nowCredit >= low[i]) {
-					level = this.lev[i];
+					level = this.lev[i] + 1;
 				}
 			}
 		}
@@ -94,13 +95,15 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
 	
 	private void initTable() {
+		
 		int level1 = 0;
 		int level2 = 0;
 		int level3 = 0;
+		
 		try {
-			level1 = this.creditDao.getVIPCredit(1);
-			level2 = this.creditDao.getVIPCredit(2);
-			level3 = this.creditDao.getVIPCredit(3);
+			level1 = this.creditDao.getVIPCredit(2);
+			level2 = this.creditDao.getVIPCredit(3);
+			level3 = this.creditDao.getVIPCredit(4);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
