@@ -11,6 +11,7 @@ import logic.user.Client;
 import logic.user.UpdateClientVip;
 import logic.utility.CreditTransform;
 import logicService.credit.CreditChangeService;
+import main.rmi.RemoteHelper;
 import po.CreditHistoryPO;
 import vo.CreditChangeVO;
 
@@ -29,7 +30,8 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	
 	public CreditChange() {
 		this.updateVip = new Client();
-		creditDao = new CreditDao_Stub();
+		creditDao = RemoteHelper.getInstance().getCreditDao();
+//		creditDao = new CreditDao_Stub();
 	}
 
 	public ResultMessage changeCredit(CreditChangeVO vo){

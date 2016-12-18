@@ -3,10 +3,10 @@ package logic.user;
 import java.rmi.RemoteException;
 
 import Message.ResultMessage;
-import dataDao.stub.HotelManagerDao_Stub;
 import dataDao.user.HotelManagerDao;
 import logic.utility.HotelManagerTransform;
 import logicService.user.HotelManagerService;
+import main.rmi.RemoteHelper;
 import po.HotelManagerPO;
 import vo.HotelManagerVO;
 
@@ -18,7 +18,8 @@ public class HotelManager implements HotelManagerService{
 	public HotelManager() {
 		this.hotelManagerTrans = HotelManagerTransform.getInstance();
 		
-		this.hotelManagerDao = new HotelManagerDao_Stub();
+		this.hotelManagerDao = RemoteHelper.getInstance().getHotelManagerDao();
+//		this.hotelManagerDao = new HotelManagerDao_Stub();
 	}
 
 	@Override

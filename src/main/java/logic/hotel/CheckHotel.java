@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 import Message.RoomType;
 import dataDao.hotel.HotelDao;
-import dataDao.stub.HotelDao_Stub;
 import logic.order.Order;
 import logic.order.OrderHotelInfo;
 import logic.room.Room;
 import logic.room.RoomInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.CheckHotelService;
+import main.rmi.RemoteHelper;
 import po.HotelPO;
 import vo.EvaluationVO;
 import vo.HotelVO;
@@ -27,7 +27,8 @@ public class CheckHotel implements CheckHotelService, HotelInfo, HotelTradingAre
 	private OrderHotelInfo evaluationInfo;
 	
 	public CheckHotel(){
-		this.hotelDao = new HotelDao_Stub();
+		this.hotelDao = RemoteHelper.getInstance().getHotelDao();
+//		this.hotelDao = new HotelDao_Stub();
 	}
 
 	public HotelVO getHotelnfo(String hotelID) {

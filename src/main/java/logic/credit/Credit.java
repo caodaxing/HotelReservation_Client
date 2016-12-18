@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
-import dataDao.stub.CreditDao_Stub;
 import logicService.credit.CreditService;
+import main.rmi.RemoteHelper;
 
 /**
  * 提供获取信用、设置和获取vip信用等级
@@ -17,7 +17,8 @@ public class Credit implements CreditInfo, CreditService{
 	private CreditDao creditDao;
 	
 	public Credit() {
-		this.creditDao = new CreditDao_Stub();
+//		this.creditDao = new CreditDao_Stub();
+		this.creditDao = RemoteHelper.getInstance().getCreditDao();
 	}
 
 	public int getCredit(String userID){

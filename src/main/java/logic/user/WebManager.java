@@ -1,15 +1,12 @@
 package logic.user;
 
 import Message.ResultMessage;
-import logic.hotel.AddHotelInfo;
-import logic.hotel.UpdateHotel;
 import logic.utility.HotelManagerTransform;
 import logic.utility.WebBusinessTransform;
 import logicService.user.WebManagerService;
 import po.HotelManagerPO;
 import po.WebBusinessPO;
 import vo.HotelManagerVO;
-import vo.HotelVO;
 import vo.WebBusinessVO;
 
 /**
@@ -50,17 +47,6 @@ public class WebManager implements WebManagerService {
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO webBusinessInfo){
 		
 		return this.webBusiness.updateWebBusinessInfo(webBusinessInfo);
-	}
-	
-	public ResultMessage addHotel(HotelVO hotelVO){
-		AddHotelInfo addHotel = new UpdateHotel();
-		
-		if(hotelVO != null) {
-			if(addHotel.addHotel(hotelVO) == ResultMessage.SUCCESS) {
-				return ResultMessage.SUCCESS;
-			}
-		}
-		return ResultMessage.FAILURE;
 	}
 	
 	public ResultMessage addHotelManager(HotelManagerVO hotelManagerVO){

@@ -6,7 +6,6 @@ import Message.CreditChangeType;
 import Message.Identity;
 import Message.ResultMessage;
 import dataDao.account.AccountDao;
-import dataDao.stub.AccountDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;

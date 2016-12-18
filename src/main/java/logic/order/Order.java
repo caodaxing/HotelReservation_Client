@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
-import dataDao.stub.OrderDao_Stub;
 import logic.utility.EvaluationTransform;
 import logic.utility.OrderTransform;
 import logicService.order.OrderService;
+import main.rmi.RemoteHelper;
 import po.EvaluationPO;
 import po.OrderPO;
 import vo.EvaluationVO;
@@ -28,7 +28,9 @@ public class Order implements OrderService, OrderHotelInfo, OrderInfo{
 	public Order() {
 		this.evaluationTrans = new EvaluationTransform();
 		this.orderTrans = new OrderTransform();
-		this.orderDao = new OrderDao_Stub();
+		
+		this.orderDao = RemoteHelper.getInstance().getOrderDao();
+//		this.orderDao = new OrderDao_Stub();
 	}
 	
 

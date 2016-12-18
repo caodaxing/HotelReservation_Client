@@ -23,7 +23,6 @@ public class ManageOrder implements ManageOrderService{
 		this.orderList = new OrderList();
 	}
 
-
 	// 撤销异常订单 
 	@Override
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {

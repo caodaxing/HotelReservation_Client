@@ -12,8 +12,6 @@ import vo.WebBusinessVO;
  */
 public interface WebManagerService {
 	
-	public ResultMessage addHotel(HotelVO hotelVO);
-	
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID);
 	
 	public ResultMessage addHotelManager(HotelManagerVO hotelManager);

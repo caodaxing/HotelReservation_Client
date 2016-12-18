@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
 import dataDao.hotel.HotelDao;
-import dataDao.stub.HotelDao_Stub;
 import factories.HotelSortFactory;
 import logic.order.Order;
 import logic.order.OrderHotelInfo;
@@ -14,6 +13,7 @@ import logic.room.RoomInfo;
 import logic.utility.HotelTransform;
 import logic.utility.Time;
 import logicService.hotel.SearchHotelService;
+import main.rmi.RemoteHelper;
 import po.HotelPO;
 import vo.HotelSearchVO;
 import vo.HotelVO;
@@ -30,9 +30,10 @@ public class SearchHotel implements SearchHotelService {
 	private HotelSort hotelSort;
 
 	public SearchHotel() {
-		hotelDao = new HotelDao_Stub();
-		
 		orderHotelInfo = new Order();
+		
+		hotelDao = RemoteHelper.getInstance().getHotelDao();
+//		hotelDao = new HotelDao_Stub();
 	}
 
 	public ArrayList<String> getTradingArea(String city) {

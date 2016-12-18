@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import Message.OrderState;
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
-import dataDao.stub.OrderDao_Stub;
 import logic.credit.Credit;
 import logic.credit.CreditInfo;
 import logic.hotel.CheckHotel;
@@ -15,6 +14,7 @@ import logic.promotion.CalculationPromotionInfo;
 import logic.room.UpdateRoom;
 import logic.utility.OrderTransform;
 import logicService.order.CreateOrderService;
+import main.rmi.RemoteHelper;
 import po.OrderPO;
 import vo.OrderVO;
 
@@ -40,7 +40,8 @@ public class CreateOrder implements CreateOrderService{
 		this.info = new CheckHotel();
 		this.updateRoom = new UpdateRoom();
 		
-		this.orderDao = new OrderDao_Stub();
+		this.orderDao = RemoteHelper.getInstance().getOrderDao();
+//		this.orderDao = new OrderDao_Stub();
 	}
 
 	

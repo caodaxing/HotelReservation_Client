@@ -9,9 +9,9 @@ import java.util.Date;
 import Message.ResultMessage;
 import Message.RoomType;
 import dataDao.room.RoomDao;
-import dataDao.stub.RoomDao_Stub;
 import logic.utility.Time;
 import logicService.room.RoomService;
+import main.rmi.RemoteHelper;
 import po.RoomPO;
 import vo.RoomVO;
 
@@ -30,7 +30,8 @@ public class Room implements RoomService , RoomInfo{
 	}
 
 	public Room() {
-		roomDao = new RoomDao_Stub();
+		roomDao = RemoteHelper.getInstance().getRoomDao();
+//		roomDao = new RoomDao_Stub();
 	}
 	
 	@Override

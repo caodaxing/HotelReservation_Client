@@ -10,12 +10,12 @@ import Message.OrderState;
 import Message.ResultMessage;
 import Message.RoomType;
 import dataDao.order.OrderDao;
-import dataDao.stub.OrderDao_Stub;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
 import logic.room.UpdateRoom;
 import logic.utility.Time;
 import logicService.order.ExecuteOrderService;
+import main.rmi.RemoteHelper;
 import po.OrderPO;
 import vo.CreditChangeVO;
 
@@ -36,7 +36,8 @@ public class ExecuteOrder implements ExecuteOrderService{
 		this.creditChangeInfo = new CreditChange();
 		this.updateRoom = new UpdateRoom();
 		
-		this.orderDao = new OrderDao_Stub();
+		this.orderDao = RemoteHelper.getInstance().getOrderDao();
+//		this.orderDao = new OrderDao_Stub();
 	}
 
 	@Override

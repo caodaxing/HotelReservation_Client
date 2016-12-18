@@ -3,10 +3,10 @@ package logic.user;
 import java.rmi.RemoteException;
 
 import Message.ResultMessage;
-import dataDao.stub.WebBusinessDao_Stub;
 import dataDao.user.WebBusinessDao;
 import logic.utility.WebBusinessTransform;
 import logicService.user.WebBusinessService;
+import main.rmi.RemoteHelper;
 import po.WebBusinessPO;
 import vo.WebBusinessVO;
 
@@ -18,7 +18,8 @@ public class WebBusiness implements WebBusinessService{
 	public WebBusiness() {
 		this.webBusinessTrans = WebBusinessTransform.getInstance();
 		
-		webBusinessDao = new WebBusinessDao_Stub();
+		webBusinessDao = RemoteHelper.getInstance().getWebBusinessDao();
+//		webBusinessDao = new WebBusinessDao_Stub();
 	}
 
 	@Override

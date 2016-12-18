@@ -4,21 +4,22 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import dataDao.hotel.HotelDao;
-import dataDao.stub.HotelDao_Stub;
 import logic.utility.HotelTransform;
 import logicService.hotel.UpdateHotelService;
+import main.rmi.RemoteHelper;
 import vo.HotelVO;
 
 /**
  * 更新酒店信息
  * @author bcy
  */
-public class UpdateHotel implements UpdateHotelService,  AddHotelInfo{
+public class UpdateHotel implements UpdateHotelService{
 
 	private HotelDao hotelDao;
 
 	public UpdateHotel() {
-		this.hotelDao = new HotelDao_Stub();
+		this.hotelDao = RemoteHelper.getInstance().getHotelDao();
+//		this.hotelDao = new HotelDao_Stub();
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO) {

@@ -5,10 +5,10 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import Message.VipType;
-import dataDao.stub.ClientDao_Stub;
 import dataDao.user.ClientDao;
 import logic.utility.ClientTransform;
 import logicService.user.ClientService;
+import main.rmi.RemoteHelper;
 import po.ClientPO;
 import vo.ClientVO;
 import vo.VipVO;
@@ -24,7 +24,8 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 	private ClientDao clientDao;
 
 	public Client(){
-		this.clientDao = new ClientDao_Stub();
+		this.clientDao = RemoteHelper.getInstance().getClientDao();
+//		this.clientDao = new ClientDao_Stub();
 	}	
 	
 	/**

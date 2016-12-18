@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import Message.PromotionType;
 import Message.ResultMessage;
 import dataDao.promotion.PromotionDao;
-import dataDao.stub.PromotionDao_Stub;
 import logic.utility.PromotionTransform;
 import logicService.promotion.ManagePromotionService;
+import main.rmi.RemoteHelper;
 import po.PromotionPO;
 import vo.PromotionVO;
 
@@ -17,9 +17,10 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 	private PromotionTransform promotionTrans;
 	
 	public ManagePromotion() {
-		this.promotionDao = new PromotionDao_Stub();
-		
 		this.promotionTrans = new PromotionTransform();
+		
+		this.promotionDao = RemoteHelper.getInstance().getPromotionDao();
+//		this.promotionDao = new PromotionDao_Stub();
 	}
 
 	@Override

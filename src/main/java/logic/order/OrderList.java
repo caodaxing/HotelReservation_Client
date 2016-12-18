@@ -8,10 +8,10 @@ import java.util.Date;
 
 import Message.OrderListCondition;
 import dataDao.order.OrderListDao;
-import dataDao.stub.OrderListDao_Stub;
 import factories.OrderListFilterFactory;
 import logic.utility.OrderTransform;
 import logicService.order.OrderListService;
+import main.rmi.RemoteHelper;
 import po.OrderPO;
 import vo.OrderVO;
 
@@ -31,7 +31,8 @@ public class OrderList implements OrderListService{
 	public OrderList() {
 		this.orderTrans = new OrderTransform();
 		
-		this.orderListDao = new OrderListDao_Stub();
+		this.orderListDao = RemoteHelper.getInstance().getOrderListDao();
+//		this.orderListDao = new OrderListDao_Stub();
 	}
 
 	

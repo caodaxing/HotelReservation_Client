@@ -24,11 +24,6 @@ public class WebManagerService_Stub implements WebManagerService {
 	}
 
 	@Override
-	public ResultMessage addHotel(HotelVO hotelVO) {
-		return ResultMessage.SUCCESS;
-	}
-
-	@Override
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID) {
 		return new HotelManagerVO("123","456","789","1112");
 	}

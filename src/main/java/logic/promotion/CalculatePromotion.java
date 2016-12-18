@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import Message.PromotionType;
 import dataDao.promotion.PromotionDao;
-import dataDao.stub.PromotionDao_Stub;
 import factories.PromotionFactory;
+import main.rmi.RemoteHelper;
 import po.PromotionPO;
 import vo.OrderVO;
 /**
@@ -23,7 +23,8 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	public CalculatePromotion() {
 		this.promotionFactory = new PromotionFactory();
 		
-		this.promotionDao = new PromotionDao_Stub();
+		this.promotionDao = RemoteHelper.getInstance().getPromotionDao();
+//		this.promotionDao = new PromotionDao_Stub();
 	}
 
 	/**
