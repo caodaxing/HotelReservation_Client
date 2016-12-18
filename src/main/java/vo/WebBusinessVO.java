@@ -16,6 +16,26 @@ public class WebBusinessVO {
 	
 	public WebBusinessVO(String userID,String trueName,String phoneNumber,String numberOfIdentityCard) {
 		this.userID=userID;
+		
+		if(trueName == null) {
+			this.trueName = "";
+		} else {
+			this.trueName = trueName;
+		}
+		
+		if(phoneNumber == null) {
+			this.phoneNumber = "";
+		} else {
+			this.phoneNumber = phoneNumber;
+		}
+		
+		if(numberOfIdentityCard == null) {
+			this.numberOfIdentityCard = "";
+		} else {
+			this.numberOfIdentityCard = numberOfIdentityCard;
+		}
+		
+		
 		this.trueName=trueName;
 		this.phoneNumber=phoneNumber;
 		this.numberOfIdentityCard=numberOfIdentityCard;

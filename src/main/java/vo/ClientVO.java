@@ -27,9 +27,25 @@ public class ClientVO {
 	public ClientVO(String userID, String phoneNumber, String trueName, 
 			String identityID, int credit) {
 		this.userID = userID;
-		this.phoneNumber = phoneNumber;
-		this.trueName = trueName;
-		this.identityID = identityID;
+		
+		if(phoneNumber == null) {
+			this.phoneNumber = "";
+		} else {
+			this.phoneNumber = phoneNumber;
+		}
+		
+		if(trueName == null) {
+			this.trueName = "";
+		} else {
+			this.trueName = trueName;
+		}
+		
+		if(identityID == null) {
+			this.identityID = "";
+		} else {
+			this.identityID = identityID;
+		}
+		
 		this.credit = credit;
 	}
 	

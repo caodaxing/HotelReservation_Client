@@ -14,7 +14,12 @@ public class EvaluationVO {
 	public EvaluationVO(String orderID, double commentLevel, String evaluationContent) {
 		this.orderID = orderID;
 		this.commentLevel = commentLevel;
-		this.evaluationContent = evaluationContent;
+		
+		if(evaluationContent == null) {
+			this.evaluationContent = "";
+		} else {
+			this.evaluationContent = evaluationContent;
+		}
 	}
 	
 	

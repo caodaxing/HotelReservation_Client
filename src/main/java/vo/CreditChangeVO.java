@@ -62,7 +62,13 @@ public class CreditChangeVO {
 	public CreditChangeVO(String userID, String time, String orderID, CreditChangeType action, int cerditChange,
 			int nowCredit) {
 		this.userID = userID;
-		this.time = time;
+		
+		if(time == null) {
+			this.time = "";
+		} else {
+			this.time = time;
+		}
+		
 		this.orderID = orderID;
 		this.action = action;
 		this.cerditChange = cerditChange;

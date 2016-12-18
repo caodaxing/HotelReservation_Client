@@ -98,22 +98,62 @@ public class OrderVO {
 		this.roomType = roomType;
 		this.roomIDs = roomIDs;
 		this.roomNum = roomNum;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.hotelID = hotelID;
+
+		if(startTime == null) {
+			this.startTime = "";
+		} else {
+			this.startTime = startTime;
+		}
+		
+		if(endTime == null) {
+			this.endTime = "";
+		} else {
+			this.endTime = endTime;
+		}
+		
+		if(hotelID == null) {
+			this.hotelID = "";
+		} else {
+			this.hotelID = hotelID;
+		}
+		
 		this.orderState = orderState;
 		this.numOfPeople = numOfPeople;
 		this.hasChild = hasChild;
 		this.beforePrice = beforePrice;
 		this.afterPrice = afterPrice;
 		this.promotion = promotion;
-		this.checkInTime = checkInTime;
-		this.checkInTime = checkOutTime;
-		this.undoAbnormalTime = undoAbnormalTime;
-		this.abnormalTime = abnormalTime;
-		this.undoUnexecutedTime = undoUnexecutedTime;
+		
+		if(checkInTime == null) {
+			this.checkInTime = "";
+		} else {
+			this.checkInTime = checkInTime;
+		}
+		
+		if(checkOutTime == null) {
+			this.checkOutTime = "";
+		} else {
+			this.checkOutTime = checkOutTime;
+		}
+		
+		if(hotelID == null) {
+			this.undoAbnormalTime = "";
+		} else {
+			this.undoAbnormalTime = undoAbnormalTime;
+		}
+		
+		if(hotelID == null) {
+			this.abnormalTime = "";
+		} else {
+			this.abnormalTime = abnormalTime;
+		}
+		
+		if(hotelID == null) {
+			this.undoUnexecutedTime = "";
+		} else {
+			this.undoUnexecutedTime = undoUnexecutedTime;
+		}
+		
 	}
-	
-	
 	
 }

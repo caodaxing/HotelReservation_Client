@@ -49,12 +49,35 @@ public class HotelVO {
 		this.hotelName = hotelName;
 		this.city = city;
 		this.tradingArea = tradingArea;
-		this.locationOfHotel = locationOfHotel;
+		
+		
+		if(locationOfHotel == null) {
+			this.locationOfHotel = "";
+		} else {
+			this.locationOfHotel = locationOfHotel;
+		}
+		
 		this.evaluationGrades = evaluationGrades;
 		this.levelOfHotel = levelOfHotel;
-		this.introduction = introduction;
-		this.facilities = facilities;
-		this.bussiness = bussiness;
+		
+		if(bussiness == null) {
+			this.bussiness = "";
+		} else {
+			this.bussiness = bussiness;
+		}
+		
+		if(facilities == null) {
+			this.facilities = "";
+		} else {
+			this.facilities = facilities;
+		}
+		
+		if(introduction == null) {
+			this.introduction = "";
+		} else {
+			this.introduction = introduction;
+		}
+		
 	}
 
 
@@ -79,10 +102,30 @@ public class HotelVO {
 		this.hotelName = hotelName;
 		this.city = city;
 		this.tradingArea=tradingArea;
-		this.locationOfHotel=locationOfHotel;
 		this.levelOfHotel=levelOfHotel;
-		this.introduction=introduction;
-		this.facilities = facilities;
-		this.bussiness = bussiness;
+
+		if(locationOfHotel == null) {
+			this.locationOfHotel = "";
+		} else {
+			this.locationOfHotel = locationOfHotel;
+		}
+		
+		if(bussiness == null) {
+			this.bussiness = "";
+		} else {
+			this.bussiness = bussiness;
+		}
+		
+		if(facilities == null) {
+			this.facilities = "";
+		} else {
+			this.facilities = facilities;
+		}
+		
+		if(introduction == null) {
+			this.introduction = "";
+		} else {
+			this.introduction = introduction;
+		}
 	}
 }

@@ -21,6 +21,12 @@ public class VipVO {
 		this.userID = userID;
 		this.vipType = vipType;
 		this.level = level;
-		this.info = info;
+		
+		if(info == null) {
+			this.info = "";
+		} else {
+			this.info = info;
+		}
+		
 	}
 }

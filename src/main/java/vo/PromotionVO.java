@@ -45,12 +45,28 @@ public class PromotionVO {
 		this.promotionType = PromotionType.HOTEL_11_11;
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
-		this.promotionName = promotionName;
 		this.discount = discount;
-		this.startTime = startTime;
-		this.endTime = endTime;
 		
-		this.cooperateBusiness = null;
+		if(startTime == null) {
+			this.startTime = "";
+		} else {
+			this.startTime = startTime;
+		}
+		
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
+		
+		if(endTime == null) {
+			this.endTime = "";
+		} else {
+			this.endTime = endTime;
+		}
+		
+		
+		this.cooperateBusiness = "";
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -70,12 +86,22 @@ public class PromotionVO {
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
 		this.promotionType = PromotionType.HOTEL_COOPREATE_BUSINESS;
-		this.promotionName = promotionName;
 		this.discount = discount;
-		this.cooperateBusiness = cooperateBusiness;
 		
-		this.startTime = null;
-		this.endTime = null;
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
+		
+		if(cooperateBusiness == null) {
+			this.cooperateBusiness = "";
+		} else {
+			this.cooperateBusiness = cooperateBusiness;
+		}
+		
+		this.startTime = "";
+		this.endTime = "";
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -91,13 +117,18 @@ public class PromotionVO {
 	public PromotionVO(String promotionID, String hotelID, String promotionName, double discount) {
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
-		this.promotionName = promotionName;
 		this.discount = discount;
 		this.promotionType = PromotionType.HOTEL_BIRTHDAY;
 		
-		this.startTime = null;
-		this.endTime = null;
-		this.cooperateBusiness = null;
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}		
+		
+		this.startTime = "";
+		this.endTime = "";
+		this.cooperateBusiness = "";
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -114,13 +145,18 @@ public class PromotionVO {
 		this.promotionID = promotionID;
 		this.hotelID = hotelID;
 		this.promotionType = PromotionType.HOTEL_3_ROOMS_OR_MORE;
-		this.promotionName = promotionName;
 		this.roomsAndDiscount = roomsAndDiscount;
 		
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
+		
 		this.discount = 0;
-		this.startTime = null;
-		this.endTime = null;
-		this.cooperateBusiness = null;
+		this.startTime = "";
+		this.endTime = "";
+		this.cooperateBusiness = "";
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
 	}
@@ -138,13 +174,18 @@ public class PromotionVO {
 			String startTime, String endTime) {
 		this.promotionType = PromotionType.WEB_11_11;
 		this.promotionID = promotionID;
-		this.promotionName = promotionName;
 		this.discount = discount;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		
-		this.hotelID = null;
-		this.cooperateBusiness = null;
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
+		
+		this.hotelID = "";
+		this.cooperateBusiness = "";
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		this.vipLevelDiscount = null;
@@ -161,15 +202,21 @@ public class PromotionVO {
 			 HashMap<String, double[]> vipTradeAreaDiscount) {
 		this.promotionID = promotionID;
 		this.promotionType = PromotionType.WEB_VIP_TRADINGAREA;
-		this.promotionName = promotionName;
 		this.vipTradeAreaDiscount = vipTradeAreaDiscount;
 		
+
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
+		
 		this.discount = 0;
-		this.startTime = null;
-		this.endTime = null;
-		this.cooperateBusiness = null;
+		this.startTime = "";
+		this.endTime = "";
+		this.cooperateBusiness = "";
 		this.roomsAndDiscount = null;
-		this.hotelID = null;
+		this.hotelID = "";
 		this.vipLevelDiscount = null;
 	}
 	
@@ -182,14 +229,19 @@ public class PromotionVO {
 	public PromotionVO(String promotionID, String promotionName, double[] vipLevelDiscount) {
 		this.promotionID = promotionID;
 		this.promotionType = PromotionType.WEB_VIP_LEVEL;
-		this.promotionName = promotionName;
 		this.vipLevelDiscount = vipLevelDiscount;
+
+		if(promotionName == null) {
+			this.promotionName = "";
+		} else {
+			this.promotionName = promotionName;
+		}
 		
-		this.hotelID = null;
+		this.hotelID = "";
 		this.discount = 0;
-		this.startTime = null;
-		this.endTime = null;
-		this.cooperateBusiness = null;
+		this.startTime = "";
+		this.endTime = "";
+		this.cooperateBusiness = "";
 		this.roomsAndDiscount = null;
 		this.vipTradeAreaDiscount = null;
 		

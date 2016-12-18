@@ -15,10 +15,24 @@ public class HotelManagerVO {
 	public HotelManagerVO(String hotelID, String phoneNumber, 
 			String trueName, String numberOfIdentityCard) {
 		this.hotelID = hotelID;
-		this.phoneNumber = phoneNumber;
-		this.trueName = trueName;
-		this.numberOfIdentityCard = numberOfIdentityCard;
+		
+		if(phoneNumber == null) {
+			this.phoneNumber = "";
+		} else {
+			this.phoneNumber = phoneNumber;
+		}
+		
+		if(trueName == null) {
+			this.trueName = "";
+		} else {
+			this.trueName = trueName;
+		}
+		
+		if(numberOfIdentityCard == null) {
+			this.numberOfIdentityCard = "";
+		} else {
+			this.numberOfIdentityCard = numberOfIdentityCard;
+		}
 	}
-	
 	
 }
