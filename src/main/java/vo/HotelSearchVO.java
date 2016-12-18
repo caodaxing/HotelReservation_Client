@@ -5,7 +5,7 @@ import Message.RoomType;
 /**
  * 搜索酒店的VO类
  * @param city 酒店所在城市
- * @param tradingArea 酒店所属商圈
+ * @param tradingArea1 酒店所属商圈
  * @param hotelName 酒店名称(不填写则为null)
  * @param roomId 房间类型(默认标间)
  * @param startTime 计划入住的时间(默认为次日12时)

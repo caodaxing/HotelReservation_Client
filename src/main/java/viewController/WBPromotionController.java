@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import Message.PromotionType;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.hotel.SearchHotel;
 import logic.promotion.ManagePromotion;
+import logicService.hotel.SearchHotelService;
 import logicService.promotion.ManagePromotionService;
-import logicService.stub.PromotionService_Stub;
 import view.right.webBusiness.promotion.CheckSpecialTimeStrategy;
 import view.right.webBusiness.promotion.CheckVIPAreaStrategy;
 import view.right.webBusiness.promotion.CheckVIPStrategy;
@@ -22,6 +23,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	//逻辑层接口
 	private ManagePromotionService promotionService;
+	private SearchHotelService hotelSearchService;
 	
 	//控制界面
 	private CheckSpecialTimeStrategy checkSpecialTimeStrategyUI;
@@ -39,6 +41,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	public WBPromotionController(Stage stage, String userId){
 		
 		promotionService = new ManagePromotion();
+		hotelSearchService = new SearchHotel(); 
 		this.stage = stage;
 		this.userId = userId;
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
@@ -143,5 +146,13 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public void setDeletePromotion(){
 		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
+	}
+	
+	public ArrayList<String> getCityList(){
+		return hotelSearchService.getCities();
+	}
+	
+	public ArrayList<String> getTradingAreaList(String city){
+		return hotelSearchService.getTradingArea(city);
 	}
 }

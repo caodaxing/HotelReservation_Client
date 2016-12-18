@@ -1,10 +1,14 @@
 package view.right.webBusiness.promotion;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -12,6 +16,7 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
+import vo.PromotionVO;
 
 /**
  * 网站营销人员界面_促销策略_制定会员特定商圈促销策略
@@ -26,13 +31,20 @@ public class SetVIPAreaStrategy {
 	private AnchorPane rightPane;
 	private WebBusinessUI wbui;
 	
-	TextField lowestVIPLevel;
-	ChoiceBox tradingArea;
+	TextField VIPLevel1;
+	TextField VIPLevel2;
+	TextField VIPLevel3;
+	ComboBox city;
+	ComboBox tradingArea1;
+	
 	TextField discountRange;
 	TextField discountName;
 	
 	Button cancel;
 	Button ok;
+	
+	ArrayList<String> cityList;
+	ArrayList<String> tradingAreaList;
 	
 	private static final int 
 	TEXTFIELD_WIDTH = 200,//文本框的宽度
@@ -61,6 +73,9 @@ public class SetVIPAreaStrategy {
 		//添加文本框
 		setTextField();
 		
+		//设置城市对应商圈
+		setTradingArea();
+		
 		//添加按钮
 		setButton();
 				
@@ -78,37 +93,47 @@ public class SetVIPAreaStrategy {
 		//ArrayList<String> orderInfoList = controller.getInfoList();
 		
 		//初始化文本框
-		lowestVIPLevel = new TextField();
-		tradingArea = new ComboBox("");
+		VIPLevel1 = new TextField();
+		VIPLevel2 = new TextField();
+		VIPLevel3 = new TextField();
 		discountRange = new TextField();
 		discountName = new TextField();
 		
-		lowestVIPLevel.setId("SetVIPAreaStrategy");
-		tradingArea.setId("SetVIPAreaStrategy");
+		VIPLevel1.setId("SetVIPAreaStrategy");
+		VIPLevel2.setId("SetVIPAreaStrategy");
+		VIPLevel3.setId("SetVIPAreaStrategy");
+		tradingArea1.setId("SetVIPAreaStrategy");
 		discountRange.setId("SetVIPAreaStrategy");
 		discountName.setId("SetVIPAreaStrategy");
-		/*
-		//根据Controller设置textField文字
 		
-		*/
 		
 		//设置文本框内容不可更改
-		lowestVIPLevel.setEditable(true);
+		VIPLevel1.setEditable(true);
+		VIPLevel2.setEditable(true);
+		VIPLevel3.setEditable(true);
 		discountRange.setEditable(true);
 		discountName.setEditable(true);
 		
 		//设置文本框大小
-		lowestVIPLevel.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
-		tradingArea.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
+		VIPLevel1.setPrefSize(50, TEXTFIELD_HEIGHT);
+		VIPLevel2.setPrefSize(50, TEXTFIELD_HEIGHT);
+		VIPLevel3.setPrefSize(50, TEXTFIELD_HEIGHT);
+		tradingArea1.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		discountRange.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		discountName.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		
 		//设置文本框位置
-		lowestVIPLevel.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		lowestVIPLevel.setLayoutY(TEXTFIELD_START_VERTICAL);
+		VIPLevel1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
+		VIPLevel1.setLayoutY(TEXTFIELD_START_VERTICAL);
 		
-		tradingArea.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		tradingArea.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
+		VIPLevel2.setLayoutX(TEXTFIELD_START_HORIZONTAL+70);
+		VIPLevel2.setLayoutY(TEXTFIELD_START_VERTICAL);
+		
+		VIPLevel3.setLayoutX(TEXTFIELD_START_HORIZONTAL+140);
+		VIPLevel3.setLayoutY(TEXTFIELD_START_VERTICAL);
+		
+		tradingArea1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
+		tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
 		
 		discountRange.setLayoutX(TEXTFIELD_START_HORIZONTAL);
 		discountRange.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
@@ -118,22 +143,68 @@ public class SetVIPAreaStrategy {
 		
 		
 		//右侧pane添加组件
-		rightPane.getChildren().add(lowestVIPLevel);
-		rightPane.getChildren().add(tradingArea);
+		rightPane.getChildren().add(VIPLevel1);
+		rightPane.getChildren().add(VIPLevel2);
+		rightPane.getChildren().add(VIPLevel3);
 		rightPane.getChildren().add(discountRange);
 		rightPane.getChildren().add(discountName);
 		
 		//右侧Pane设置位置
-		AnchorPane.setLeftAnchor(lowestVIPLevel, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
-		AnchorPane.setLeftAnchor(tradingArea, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(VIPLevel1, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(VIPLevel2, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 70);
+		AnchorPane.setLeftAnchor(VIPLevel3, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 140);
 		AnchorPane.setLeftAnchor(discountRange, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setLeftAnchor(discountName, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 						
-		AnchorPane.setTopAnchor(lowestVIPLevel, (double)TEXTFIELD_START_VERTICAL);
-		AnchorPane.setTopAnchor(tradingArea, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
+		AnchorPane.setTopAnchor(VIPLevel1, (double)TEXTFIELD_START_VERTICAL);
+		AnchorPane.setTopAnchor(VIPLevel2, (double)TEXTFIELD_START_VERTICAL);
+		AnchorPane.setTopAnchor(VIPLevel3, (double)TEXTFIELD_START_VERTICAL);
 		AnchorPane.setTopAnchor(discountRange, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
 		AnchorPane.setTopAnchor(discountName, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*3));
 		
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void setTradingArea(){
+		city = new ComboBox();
+		tradingArea1 = new ComboBox();
+		
+		city.setVisibleRowCount(3);
+		tradingArea1.setVisibleRowCount(3);
+		
+		city.setPrefSize(60, 30);
+		tradingArea1.setPrefSize(60, 30);
+		
+		city.setLayoutX(400);
+		city.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
+		tradingArea1.setLayoutX(480);
+		tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
+		
+		rightPane.getChildren().add(city);
+		rightPane.getChildren().add(tradingArea1);
+		
+		AnchorPane.setLeftAnchor(city, 400 - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(tradingArea1, 480 - (double)DefaultNums.LEFT_WIDTH);
+		
+		AnchorPane.setTopAnchor(city, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
+		AnchorPane.setTopAnchor(tradingArea1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
+		
+		cityList = controller.getCityList();
+		for(int i=0;i<cityList.size();i++){
+			city.getItems().addAll(cityList.get(i));
+		}
+		city.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				int t = city.getSelectionModel().getSelectedIndex();
+				ArrayList<String> tradingAreaList = controller.getTradingAreaList(cityList.get(t));
+				for(int i=0;i<tradingAreaList.size();i++){
+					tradingArea1.getItems().addAll(tradingAreaList.get(i));
+				}
+			}
+			
+		});
 	}
 	
 	private void setButton(){
@@ -164,14 +235,35 @@ public class SetVIPAreaStrategy {
 				Prompt prompt = new Prompt("保存成功");
 				prompt.show();
 				//传输vo
-				String s1 = lowestVIPLevel.getText();
-				String s2 = tradingArea.getSelectionModel().getSelectedIndex();
-				String s3 = discountRange.getText();
-				String s4 = discountName.getText();
+				try{
+					double d1 = Double.parseDouble(VIPLevel1.getText());
+					double d2 = Double.parseDouble(VIPLevel2.getText());
+					double d3 = Double.parseDouble(VIPLevel2.getText());
+					double[] d = {d1,d2,d3};
+					int t1 = city.getSelectionModel().getSelectedIndex();
+					int t2 = tradingArea1.getSelectionModel().getSelectedIndex();
+					String s = discountName.getText();
+					if(cityList.get(t1) != null && tradingAreaList.get(t2) != null){
+						HashMap<String, double[]> hashmap = new HashMap<String, double[]>();
+						hashmap.put(tradingAreaList.get(t2), d);
+						PromotionVO promotionVO = new PromotionVO(null,s,hashmap);
+						if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+							controller.showDialog("添加成功");
+							controller.setChooseView();
+							controller.getStage().show();
+						}else{
+							controller.showDialog("添加失败");
+						}
+					}else{
+						controller.showDialog("请选择商圈");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("折扣输入错误");
+				}
 //				PromotionVO promotionVO = new PromotionVO(null,s4,)
 				//
-				controller.setChooseView();
-				controller.getStage().show();
+//				controller.setChooseView();
+//				controller.getStage().show();
 			}
 			
 		});
