@@ -125,15 +125,9 @@ public class RechargeCredit {
 				CreditChangeVO creditChangeVO = new CreditChangeVO(userId, rechargeCredit);
 				//
 				if(wbcontroller.getRechargeResult(creditChangeVO) == ResultMessage.SUCCESS){
-					userID.setText("");
-					rechargeAmount.setText("");
-					OneButtonDialog dialog = new OneButtonDialog("充值成功");
-					dialog.show();
+					controller.showDialog("充值成功");
 				}else{
-					userID.setText("");
-					rechargeAmount.setText("");
-					OneButtonDialog dialog = new OneButtonDialog("充值失败");
-					dialog.show();
+					controller.showDialog("充值失败");
 				}
 			}
 			

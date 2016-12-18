@@ -8,11 +8,17 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import logic.account.Account;
+import logic.hotel.CheckHotel;
+import logic.hotel.UpdateHotel;
 import logic.order.Order;
+import logic.picture.Picture;
 import logic.room.Room;
 import logicService.account.AccountService;
+import logicService.hotel.CheckHotelService;
+import logicService.hotel.UpdateHotelService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
+import logicService.picture.PictureService;
 import logicService.room.RoomService;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
@@ -22,6 +28,7 @@ import view.right.hotelManager.orderManagement.OrderList;
 import view.right.hotelManager.orderManagement.SetArriveInfo;
 import view.right.hotelManager.promotion.PromotionFirst;
 import view.right.hotelManager.roomInfo.First;
+import vo.HotelVO;
 import vo.OrderVO;
 import vo.RoomVO;
 
@@ -43,6 +50,9 @@ public class HotelManagerLeftController{
 	protected OrderListService orderListService;
 	private OrderService orderService;
 	private RoomService roomService;
+	private CheckHotelService checkHotelService;
+	private PictureService pictureService;
+	private UpdateHotelService updateHotelService;
 	
 	private AccountController accountController;
 	
@@ -58,6 +68,9 @@ public class HotelManagerLeftController{
 		orderService = new Order();
 		orderListService = new logic.order.OrderList();
 		roomService = new Room();
+		checkHotelService = new CheckHotel();
+		pictureService = new Picture();
+		updateHotelService = new UpdateHotel();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		setArriveInfoUI = new SetArriveInfo(this);
@@ -86,6 +99,7 @@ public class HotelManagerLeftController{
 	
 	public void setModifyHotelInfoVeiw(){
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
+		modifyHotelInfoUI.setHotelInfo();
 		stage.setScene(modifyHotelInfoUI.getScene());
 		stage.show();
 	}
@@ -240,6 +254,14 @@ public class HotelManagerLeftController{
 //		}
 //	}
 	
+	public HotelVO getHotelVO(String userId){
+		return checkHotelService.getHotelnfo(userId);
+	}
+	
+	public ArrayList<String> getPicture(String userId){
+		return pictureService.getHotelImage(userId);
+	}
+	
 	public OrderVO getOrderInfo(){
 		return orderService.getOrderInfo(orderId);
 	}
@@ -258,6 +280,14 @@ public class HotelManagerLeftController{
 	
 	public ResultMessage getUpdaterRoomResult(RoomVO roomVO){
 		return roomService.updateRoomInfo(roomVO);
+	}
+	
+	public ResultMessage getUpdateHotelResult(HotelVO hotelVO){
+		return updateHotelService.updateHotelInfo(hotelVO);
+	}
+	
+	public ResultMessage savePictureResult(String userId, String imagepath){
+		return pictureService.saveHotelImage(userId, imagepath);
 	}
 	
 }

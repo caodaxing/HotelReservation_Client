@@ -1,14 +1,15 @@
 package view.right.hotelManager.hotelInfo;
 
 import java.io.File;
+import java.util.ArrayList;
 
+import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -19,6 +20,7 @@ import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMHotelInfoController;
 import viewController.HotelManagerLeftController;
+import vo.HotelVO;
 
 /**
  * 酒店工作人员界面_酒店信息_维护酒店信息界面
@@ -75,20 +77,12 @@ public class ModifyHotelInfo {
 	
 	private void setTextContent(){
 		
-//		hmcontroller = new HMHotelInfoController(controller.getStage(),controller.getUserId());
-		
 		//设置酒店信息的文本信息
 		hotelStar = new TextField();
 		hotelLocation = new TextField();
 		hotelBriefing = new TextArea();
 		hotelFacility = new TextArea();
 		HotelImage = new TextArea();
-		
-//		hotelStar.setText(String.valueOf(hmcontroller.getHotelVO().levelOfHotel));
-//		hotelLocation.setText(hmcontroller.getHotelVO().locationOfHotel);
-//		hotelBriefing.setText(hmcontroller.getHotelVO().introduction);
-//		hotelFacility.setText(hmcontroller.getHotelVO().facilities);
-////		HotelImage.setText(hmcontroller.getHotelVO().picturesPath);
 		
 		//设置TextField不可更改
 		hotelStar.setEditable(true);
@@ -125,24 +119,24 @@ public class ModifyHotelInfo {
 		AnchorPane.setTopAnchor(HotelImage, 360.0);
 	}
 	
-//	private void openFileChooser(){
-//		
-//		fileChooser = new FileChooser();
-//		fileChooser.setTitle("选择头像");
-//		fileChooser.getExtensionFilters().addAll(
-//                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-//                new FileChooser.ExtensionFilter("PNG", "*.png")
-//        );
-//		Stage s = new Stage();
-//		File file = fileChooser.showOpenDialog(s);
-//		if(file==null){
-//			controller.showDialog("请选择图片");
-//			return;
-//		}
-//		String exportFilePath= file.getAbsolutePath();
-//		HotelImage.setText(exportFilePath);
-//		
-//	}
+	private void openFileChooser(){
+		
+		fileChooser = new FileChooser();
+		fileChooser.setTitle("选择头像");
+		fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+		Stage s = new Stage();
+		File file = fileChooser.showOpenDialog(s);
+		if(file==null){
+			controller.showDialog("请选择图片");
+			return;
+		}
+		String exportFilePath= file.getAbsolutePath();
+		HotelImage.setText(exportFilePath);
+		
+	}
 	
 	private void setButton(){
 		//添加按钮
@@ -173,21 +167,24 @@ public class ModifyHotelInfo {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输vo
-//				String star = hotelStar.getText();
-//				String hotelLocal = hotelLocation.getText();
-//				String hotelBrief = hotelBriefing.getText();
-//				String hoteltool = hotelFacility.getText();
-//				ImageView image = HotelImage.getText();
-				//
-				hotelStar.setText("");;
-				hotelLocation.setText("");;
-				hotelBriefing.setText("");;
-				hotelFacility.setText("");;
-				HotelImage.setText("");;
-				OneButtonDialog dialog = new OneButtonDialog("修改成功");	
-				dialog.show();
+				String star = hotelStar.getText();
+				String hotelLocal = hotelLocation.getText();
+				String hotelBrief = hotelBriefing.getText();
+				String hoteltool = hotelFacility.getText();
+				String ImagePath = HotelImage.getText();
+				try{
+					HotelVO vo = controller.getHotelVO(controller.getUserId());
+					int i = Integer.parseInt(star);
+					HotelVO hotelvo = new HotelVO(vo.hoteID,vo.hotelName,vo.city,vo.tradingArea,
+							hotelLocal,vo.evaluationGrades,i,hotelBrief,hoteltool,vo.bussiness);
+					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS &&
+							controller.savePictureResult(controller.getUserId(), ImagePath) == ResultMessage.SUCCESS){
+						controller.showDialog("修改成功");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("酒店星级输入错误");
+				}
 			}
 							
 		});
@@ -203,26 +200,43 @@ public class ModifyHotelInfo {
 							
 		});
 		
-//		choosePicture.setOnAction(new EventHandler<ActionEvent>(){
-//
-//			@Override
-//			public void handle(ActionEvent event) {
-//				// TODO Auto-generated method stub
-//				openFileChooser();
-//			}
-//							
-//		});
+		choosePicture.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				// TODO Auto-generated method stub
+				openFileChooser();
+			}
+							
+		});
 						
 		//右侧pane添加
 		rightPane.getChildren().add(cancel);
 		rightPane.getChildren().add(ok);
+		rightPane.getChildren().add(choosePicture);
 						
 		AnchorPane.setLeftAnchor(ok, 450.0);
 		AnchorPane.setLeftAnchor(cancel, 450.0);
+		AnchorPane.setLeftAnchor(choosePicture, 450.0);
 		
+		AnchorPane.setTopAnchor(choosePicture, 390.0);
 		AnchorPane.setTopAnchor(ok, 450.0);
 		AnchorPane.setTopAnchor(cancel, 510.0);
 		
+	}
+	
+	public void setHotelInfo(){
+		HotelVO vo= controller.getHotelVO(controller.getUserId());
+		ArrayList<String> pictureList = controller.getPicture(controller.getUserId());
+		String text = "";
+		for(int i=0;i<pictureList.size();i++){
+			text += pictureList.get(i)+"\n";
+		}
+		hotelStar.setText(String.valueOf(vo.levelOfHotel));
+		hotelLocation.setText(vo.locationOfHotel);
+		hotelBriefing.setText(vo.introduction);
+		hotelFacility.setText(vo.facilities);
+		HotelImage.setText(text);
 	}
 	
 }
