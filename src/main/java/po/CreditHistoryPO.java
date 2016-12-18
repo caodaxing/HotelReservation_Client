@@ -37,6 +37,54 @@ public class CreditHistoryPO implements Serializable{
 		this.creditChange = creditChange;
 		this.nowCredit = nowCredit;
 	}
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getOrderID() {
+		return orderID;
+	}
+
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
+	}
+
+	public int getAction() {
+		return action;
+	}
+
+	public void setAction(int action) {
+		this.action = action;
+	}
+
+	public int getCreditChange() {
+		return creditChange;
+	}
+
+	public void setCreditChange(int creditChange) {
+		this.creditChange = creditChange;
+	}
+
+	public int getNowCredit() {
+		return nowCredit;
+	}
+
+	public void setNowCredit(int nowCredit) {
+		this.nowCredit = nowCredit;
+	}
 	
 	
 	
