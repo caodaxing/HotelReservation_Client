@@ -91,19 +91,7 @@ public class UserLeftController {
 		hotelFirstUI = new HotelFirst(this);
 		modifyPasswordUI = new ModifyPassword(this);
 		checkMyInfoUI = new CheckMyInfo(this);
-<<<<<<< HEAD
 
-=======
-	}
-	
-	public UserLeftController(Stage stage ,String userID){
-
-		this();
-		
-//		System.out.println(userID);
-		this.stage = stage ;
-		this.userID = userID ;
->>>>>>> origin/master
 	}
 	
 	/*
@@ -284,21 +272,10 @@ public class UserLeftController {
 	 * 返回用户头像路径
 	 */
 	public String getHeadPath(){
-<<<<<<< HEAD
-System.out.println(userID);
-=======
-		
-//		System.out.println(userID);
-		
->>>>>>> origin/master
 		String headPath = pictureService.getUserImage(userID);
-
-//		System.out.println(headPath);
-		
-		if(headPath == null || headPath.equals("")){ 			//默认头像
+		if(headPath == null || headPath.equals("")){//默认头像
 			headPath = "/head/游客头像.png";
 		}
-		
 		return headPath;
 	}
 	
