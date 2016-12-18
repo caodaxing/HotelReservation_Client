@@ -40,7 +40,6 @@ public class UserUI{
 		Pane pane = new GridPane();
 		String imagePath = controller.getHeadPath();
 		Image image = new Image(imagePath, 200, 200, false, true);
-
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		

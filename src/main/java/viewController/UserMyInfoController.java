@@ -25,10 +25,9 @@ public class UserMyInfoController extends UserLeftController {
 	private ModifyMyInfo modifyMyInfoUI ;
 	
 	public UserMyInfoController(Stage stage , String userID){		
-		
-		this.stage = stage ;
-		this.userID = userID;
 
+		super(stage,userID);
+		
 		creditChangeService = new CreditChange();
 		
 		blankUI = new Blank(this);

@@ -56,8 +56,7 @@ public class UserCheckHotelController extends UserLeftController {
 	
 	public UserCheckHotelController(Stage stage , String userID){
 		
-		this.stage = stage ;
-		this.userID = userID;
+		super(stage,userID);
 		
 		createOrderService = new CreateOrder();
 		searchHotelService = new logic.hotel.SearchHotel();

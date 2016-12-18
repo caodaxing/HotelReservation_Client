@@ -32,8 +32,7 @@ public class UserMyOrderController extends UserLeftController {
 	
 	public UserMyOrderController(Stage stage , String userID){
 		
-		this.stage = stage;
-		this.userID = userID;
+		super(stage,userID);
 		
 		executeService = new logic.order.ExecuteOrder();
 		

@@ -70,8 +70,9 @@ public class UserLeftController {
 	
 	protected ArrayList<OrderVO> orderList;
 	
-	//构造函数
-	public UserLeftController(){
+	public UserLeftController(Stage stage ,String userID){		
+		this.stage = stage ;
+		this.userID = userID ;
 		
 		accountService = new Account();
 		clientService = new Client();
@@ -90,12 +91,7 @@ public class UserLeftController {
 		hotelFirstUI = new HotelFirst(this);
 		modifyPasswordUI = new ModifyPassword(this);
 		checkMyInfoUI = new CheckMyInfo(this);
-	}
-	
-	public UserLeftController(Stage stage ,String userID){
-		this();
-		this.stage = stage ;
-		this.userID = userID ;
+
 	}
 	
 	/*
@@ -276,6 +272,7 @@ public class UserLeftController {
 	 * 返回用户头像路径
 	 */
 	public String getHeadPath(){
+System.out.println(userID);
 		String headPath = pictureService.getUserImage(userID);
 		if(headPath == null || headPath.equals("")){//默认头像
 			headPath = "/head/游客头像.png";

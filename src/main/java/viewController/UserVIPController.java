@@ -17,8 +17,7 @@ public class UserVIPController extends UserLeftController {
 	
 	public UserVIPController(Stage stage , String userID){
 		
-		this.stage = stage ;
-		this.userID = userID ;
+		super(stage,userID);
 		
 		registerCompanyVIPUI = new RegisterCompanyVIP(this);
 		registerNormalVIPUI = new RegisterNormalVIP(this);
