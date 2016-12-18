@@ -296,9 +296,9 @@ public class UserLeftController {
 			return ;
 		}
 		
-		AccountVO temp = new AccountVO(userID,oldPassword,Identity.CLIENT);
-		ResultMessage result0 = accountService.login(Encryption.getInstance().encrypt(temp));
-		if(result0 == ResultMessage.UNMATCHED_PASSWORD){
+		AccountVO oldVO = new AccountVO(userID,oldPassword ,Identity.CLIENT);
+		Encryption.getInstance().encrypt(oldVO);
+		if(accountService.canModifyPassword(oldVO)  == ResultMessage.FAILURE){
 			//旧密码不正确,弹框清空
 			showDialog("原密码错误，请重新输入");
 			modifyPasswordUI.setBlank();
