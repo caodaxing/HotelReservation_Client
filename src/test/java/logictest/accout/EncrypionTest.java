@@ -23,7 +23,7 @@ public class EncrypionTest {
 		String pass2 = "abcdef";
 		assertEquals(encryption.encryptPassword(pass1), encryption.encryptPassword(pass2));
 		
-		System.out.println(encryption.encryptPassword("wx"));
+		System.out.println(encryption.encryptPassword("zdyzdy"));
 		
 		
 		pass1 = "123QWEASDZXC";

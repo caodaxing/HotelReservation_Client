@@ -2,7 +2,6 @@ package logicService.user;
 
 import Message.ResultMessage;
 import vo.HotelManagerVO;
-import vo.HotelVO;
 import vo.WebBusinessVO;
 
 /**

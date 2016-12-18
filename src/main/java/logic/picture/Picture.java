@@ -18,18 +18,21 @@ public class Picture implements PictureService {
 
 	@Override
 	public String getUserImage(String userID) {
-		String path = null;;
-		try {
-			byte[] bs = this.pictureDao.getUserImage(userID);
-			//图片名就是用户名
-			String temp = PictureHelper.bytesToImage(bs, userID);
-			if(temp != null) {
-				return temp;
-			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return null;
+//		String path = null;
+//		
+//		try {
+//			byte[] bs = this.pictureDao.getUserImage(userID);
+//			
+//			//图片名就是用户名
+//			String temp = PictureHelper.bytesToImage(bs, userID);
+//			if(temp != null) {
+//				return temp;
+//			}
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+		return "/head/游客头像.png";
 	}
 
 	@Override
