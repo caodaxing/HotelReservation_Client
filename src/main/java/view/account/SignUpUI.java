@@ -99,6 +99,7 @@ public class SignUpUI{
 			
 			public void handle(ActionEvent event){
 				controller.setFirstView();
+				setBlank();
 				showStage();
 			}
 			

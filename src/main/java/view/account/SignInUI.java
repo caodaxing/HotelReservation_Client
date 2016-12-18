@@ -95,6 +95,7 @@ public class SignInUI{
 			
 			public void handle(ActionEvent event){
 				controller.setFirstView();
+				setBlank();
 				showStage();
 			}
 			
