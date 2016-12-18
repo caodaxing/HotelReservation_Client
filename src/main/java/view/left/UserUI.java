@@ -45,8 +45,13 @@ public class UserUI{
 		}else{
 			image = new Image("/head/游客头像.png",200,200,false,true);
 		}
+		
+		try{
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
+		}catch(Exception e){
+			System.out.println("找不到指定图片");
+		}
 		grid.add(pane, 0, 0);
 		
 		Button vip = new Button("会 员");
