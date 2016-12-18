@@ -148,9 +148,9 @@ public class AbnormalOrderList {
 		
 	}
 	
-	public ObservableList<Person> getData(){
-		return data;
-	}
+//	public ObservableList<Person> getData(){
+//		return data;
+//	}
 	
 	/**
 	 * 异常订单列表的内部数据类

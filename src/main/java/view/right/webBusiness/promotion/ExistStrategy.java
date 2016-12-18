@@ -147,7 +147,7 @@ public class ExistStrategy {
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setPromotionId(row);
-//								promotionList = controller.getPromotionList();
+								promotionList = controller.getPromotionList();
 								if(promotionList != null){
 									if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
 //										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
