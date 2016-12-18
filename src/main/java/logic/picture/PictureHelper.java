@@ -1,5 +1,6 @@
 package logic.picture;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,27 +37,30 @@ public class PictureHelper {
 	 * 将从服务器端拿到的二进制流转换成image并保存与本地的download文件夹
 	 * @param data 从服务器端拿到的二进制流
 	 */
-	public static boolean bytesToImage(byte[] data, String pictureName) {
+	public static String bytesToImage(byte[] data, String pictureName) {
 		try {  
             for (int i = 0; i < data.length; ++i) {  
                 if (data[i] < 0) {     // 调整异常数据  
                     data[i] += 256;  
                 }  
             }  
-            String path = PictureHelper.class.getProtectionDomain().getCodeSource().getLocation().getFile();  
-            try{  
-                path = java.net.URLDecoder.decode(path, "UTF-8"); // 转换处理中文及空格  
-            }  
-            catch (java.io.UnsupportedEncodingException e){  
-            }  
-            path = path.substring(0, path.length()-4)+"download/"+pictureName+".jpg";
+//            String path = PictureHelper.class.getProtectionDomain().getCodeSource().getLocation().getFile();  
+//            try{  
+//                path = java.net.URLDecoder.decode(path, "UTF-8"); // 转换处理中文及空格  
+//            }  
+//            catch (java.io.UnsupportedEncodingException e){  
+//            }  l
+//            path = path.substring(0, path.length()-4)+"download/"+pictureName+".jpg";
+            String path = "/Users/Mark.W/"+pictureName+".jpg";
             OutputStream out = new FileOutputStream(path);  
             out.write(data);  
             out.flush();  
-            out.close();  
-            return true;
+            out.close();
+            File file = new File(path);
+            System.out.println(file.exists());
+            return path;
         } catch (Exception e) { 
-        	return false;
+        	return null;
         }
 	}
 	

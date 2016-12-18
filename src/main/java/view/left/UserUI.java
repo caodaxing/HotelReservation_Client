@@ -39,7 +39,21 @@ public class UserUI{
 		
 		Pane pane = new GridPane();
 		String imagePath = controller.getHeadPath();
+<<<<<<< HEAD
 		Image image = new Image(imagePath, 200, 200, false, true);
+=======
+		
+		System.out.println(imagePath);
+		
+		Image image;
+		if(!imagePath.equals("")){
+			image = new Image(imagePath, 200, 200, false, true);
+		}else{
+			image = new Image("/head/游客头像.png",200,200,false,true);
+		}
+		
+		try{
+>>>>>>> origin/master
 		ImageView headImage = new ImageView(image);
 		pane.getChildren().add(headImage);
 		
