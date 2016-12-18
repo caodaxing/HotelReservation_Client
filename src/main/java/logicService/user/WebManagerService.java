@@ -17,7 +17,7 @@ public interface WebManagerService {
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo);
 	
-//	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo);
+	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo);
 	
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID);
 	

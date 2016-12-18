@@ -15,10 +15,10 @@ public class PromotionService_Stub implements ManagePromotionService {
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public PromotionVO getPromotion(String promotionID) {
-		return null;
-	}
+//	@Override
+//	public PromotionVO getPromotion(String promotionID) {
+//		return null;
+//	}
 
 	@Override
 	public ArrayList<PromotionVO> getHotelPromotions(String hotelID, PromotionType promotionType) {
