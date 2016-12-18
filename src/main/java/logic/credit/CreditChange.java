@@ -41,6 +41,7 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		}
 		
 		int nowCredit = 0;
+		
 		if(vo.action != CreditChangeType.INIT_CREDIT) {
 			nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
 		}
@@ -50,8 +51,11 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		
 		try {
 			if(creditDao.changeCredit(po)) {
-				
-				this.judgeVipLevelChange(vo.userID, nowCredit);
+			
+				//如果是第一次更改那么就不用判断信用值
+				if(po.getAction() != CreditChangeType.INIT_CREDIT.ordinal()) {
+					this.judgeVipLevelChange(vo.userID, nowCredit);
+				}
 				
 				return ResultMessage.SUCCESS;
 			}

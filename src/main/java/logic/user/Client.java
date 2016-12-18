@@ -53,8 +53,6 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip, Ad
 	 */
 	public ClientVO getClientInfo(String clientID){
 		
-System.out.println(clientID);
-		
 		ClientPO po = null;
 		
 		try {
@@ -64,8 +62,6 @@ System.out.println(clientID);
 		}
 		
 		ClientVO vo = ClientTransform.getInstance().clientTransToVO(po);
-		
-System.out.println(vo == null);
 		
 		return vo;
 	}
