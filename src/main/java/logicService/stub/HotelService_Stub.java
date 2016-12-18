@@ -89,7 +89,7 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 	}
 
 	@Override
-	public ArrayList<String> getCitys() {
+	public ArrayList<String> getCities() {
 		return null;
 	}
 	
