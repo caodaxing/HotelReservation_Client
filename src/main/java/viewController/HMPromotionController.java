@@ -44,10 +44,9 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public HMPromotionController(Stage stage, String userId){
 		
-		promotionService = new ManagePromotion();
-		this.stage = stage;
-		this.userId = userId;
 		
+		super(stage,userId);
+		promotionService = new ManagePromotion();
 		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
 		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
 		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
@@ -69,6 +68,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public HMPromotionController(Stage stage, String userId, int row){
 		
+		super(stage,userId);
 		this.stage = stage;
 		this.userId = userId;
 		this.row = row;

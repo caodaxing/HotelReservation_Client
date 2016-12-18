@@ -19,8 +19,7 @@ public class WBVIPInfoController extends WebBusinessLeftController{
 	
 	public WBVIPInfoController(Stage stage, String userId){
 //		accountService = new Account();
-		this.stage = stage;
-		this.userId = userId;
+		super(stage,userId);
 		setVIPCreditUI = new SetVIPCredit(this);
 		blankUI = new Blank(this);
 		

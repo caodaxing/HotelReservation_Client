@@ -44,12 +44,13 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public HMOrderManagementController(Stage stage, String userId){
 		
-		orderService = new Order();
-		executeOrderService = new logic.order.ExecuteOrder();
+		super(stage,userId);
 		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;
 //		abnormalOrderUI = new AbnormalOrder(this);
+		orderService = new Order();
+		executeOrderService = new logic.order.ExecuteOrder();
 		checkArriveInfoUI = new CheckArriveInfo(this);
 		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evalutionInfoUI = new EvaluationInfo(this);

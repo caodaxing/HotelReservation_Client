@@ -22,8 +22,7 @@ public class HMHotelInfoController extends HotelManagerLeftController{
 		
 		//checkHotelService = new CheckHotel();
 		
-		this.stage = stage;
-		this.userId = userId;
+		super(stage,userId);
 		checkHotelService = new HotelService_Stub();
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		blankUI = new Blank(this);

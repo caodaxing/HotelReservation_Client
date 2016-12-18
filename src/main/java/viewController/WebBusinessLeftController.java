@@ -36,7 +36,10 @@ public class WebBusinessLeftController {
 	protected Stage stage;
 	protected String userId;
 	
-	public WebBusinessLeftController(){
+	
+	public WebBusinessLeftController(Stage stage, String userId){
+		this.userId = userId;
+		this.stage = stage;
 		
 		accountService = new Account();
 		creditService = new Credit();
@@ -47,11 +50,6 @@ public class WebBusinessLeftController {
 		tunexecuteOrderUI = new TodayUnexecuteOrder(this);
 		abnormalOrderListUI = new AbnormalOrderList(this);
 		blankUI = new Blank(this);
-	}
-	
-	public WebBusinessLeftController(Stage stage, String userId){
-		this.userId = userId;
-		this.stage = stage;
 	}
 	
 	public void setBlankView(){

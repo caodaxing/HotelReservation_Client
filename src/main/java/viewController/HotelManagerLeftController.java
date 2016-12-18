@@ -35,7 +35,7 @@ import vo.RoomVO;
 public class HotelManagerLeftController{
 	
 	protected ModifyHotelInfo modifyHotelInfoUI;
-	private SetArriveInfo setArriveInfoUI;
+	protected SetArriveInfo setArriveInfoUI;
 	protected OrderList allOrderListUI;
 	protected OrderList hasExecuteOrderListUI;
 	protected OrderList unExecuteOrderListUI;
@@ -62,8 +62,10 @@ public class HotelManagerLeftController{
 	protected ArrayList<OrderVO> orderlist;
 	protected String orderId;
 	
-	public HotelManagerLeftController(){
+	public HotelManagerLeftController(Stage stage, String userId){
 		
+		this.userId = userId;
+		this.stage = stage;
 		accountService = new Account();
 		orderService = new Order();
 		orderListService = new logic.order.OrderList();
@@ -74,21 +76,9 @@ public class HotelManagerLeftController{
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		setArriveInfoUI = new SetArriveInfo(this);
-//		allOrderListUI = new OrderList(this);
-//		hasExecuteOrderListUI = new OrderList(this);
-//		unExecuteOrderListUI = new OrderList(this);
-//		undoOrderListUI = new OrderList(this);
-//		abnormalOrderListUI = new OrderList(this);
 		roomFirstUI = new First(this);
 		promotionFirstUI = new PromotionFirst(this);
 		blankUI = new Blank(this);
-		
-	}
-	
-	public HotelManagerLeftController(Stage stage, String userId){
-		this();
-		this.userId = userId;
-		this.stage = stage;
 	}
 	
 	public void setBlankView(){

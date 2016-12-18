@@ -20,8 +20,7 @@ public class WBCreditController extends WebBusinessLeftController{
 	public WBCreditController(Stage stage, String userId){
 		
 //		accountService = new Account();
-		this.stage = stage;
-		this.userId = userId;
+		super(stage,userId);
 		creditChangeService = new CreditChange();
 		rechargeCreditUI = new RechargeCredit(this);
 		

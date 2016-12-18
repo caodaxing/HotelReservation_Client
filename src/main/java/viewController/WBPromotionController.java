@@ -40,10 +40,9 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public WBPromotionController(Stage stage, String userId){
 		
+		super(stage,userId);
 		promotionService = new ManagePromotion();
 		hotelSearchService = new SearchHotel(); 
-		this.stage = stage;
-		this.userId = userId;
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);
@@ -57,10 +56,9 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public WBPromotionController(Stage stage, String userId, int row){
 		
-		promotionService = new ManagePromotion();
-		this.stage = stage;
-		this.userId = userId;
+		super(stage,userId);
 		this.row = row;
+		promotionService = new ManagePromotion();
 		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);

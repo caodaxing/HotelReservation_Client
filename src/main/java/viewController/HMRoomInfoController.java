@@ -30,11 +30,13 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	public HMRoomInfoController(Stage stage, String userId){
 		
-		roomService = new Room();
+		
 //		checkHotelService = new CheckHotel();
 //		orderService = new Order();
-		this.stage = stage;
-		this.userId = userId;
+//		this.stage = stage;
+//		this.userId = userId;
+		super(stage,userId);
+		roomService = new Room();
 		setAvailableRoomsUI = new SetAvailableRooms(this);
 		firstUI = new First(this);
 		existRoomsUI = new ExistRooms(this);
