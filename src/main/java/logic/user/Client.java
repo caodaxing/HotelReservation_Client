@@ -52,6 +52,9 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip, Ad
 	 * @author Xue.W
 	 */
 	public ClientVO getClientInfo(String clientID){
+		
+System.out.println(clientID);
+		
 		ClientPO po = null;
 		
 		try {
@@ -60,7 +63,11 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip, Ad
 			e.printStackTrace();
 		}
 		
-		return ClientTransform.getInstance().clientTransToVO(po);
+		ClientVO vo = ClientTransform.getInstance().clientTransToVO(po);
+		
+System.out.println(vo == null);
+		
+		return vo;
 	}
 	
 	/**

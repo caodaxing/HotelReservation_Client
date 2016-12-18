@@ -21,63 +21,23 @@ public class CreditHistoryPO implements Serializable{
 	private int creditChange;
 	private int nowCredit;
 	
-	public CreditHistoryPO(String userID , String time , String orderID , 
-			int action , int cerditChange , int nowCredit) {
-		this.userID=userID;
-		this.time=time;
-		this.orderID=orderID;
-		this.action=action;
-		this.creditChange=cerditChange;
-		this.nowCredit=nowCredit;
-	}
-
-	public String getUserID() {
-		return userID;
-	}
-
-	public void setUserID(String userID) {
+	/**
+	 * @param userID
+	 * @param time
+	 * @param orderID
+	 * @param action
+	 * @param creditChange
+	 * @param nowCredit
+	 */
+	public CreditHistoryPO(String userID, String time, String orderID, int action, int creditChange, int nowCredit) {
 		this.userID = userID;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
 		this.time = time;
-	}
-
-	public String getOrderID() {
-		return orderID;
-	}
-
-	public void setOrderID(String orderID) {
 		this.orderID = orderID;
-	}
-
-	public int getAction() {
-		return action;
-	}
-
-	public void setAction(int action) {
 		this.action = action;
-	}
-
-	public int getCerditChange() {
-		return creditChange;
-	}
-
-	public void setCerditChange(int cerditChange) {
-		this.creditChange = cerditChange;
-	}
-
-	public int getNowCredit() {
-		return nowCredit;
-	}
-
-	public void setNowCredit(int nowCredit) {
+		this.creditChange = creditChange;
 		this.nowCredit = nowCredit;
 	}
+	
 	
 	
 }
