@@ -35,4 +35,9 @@ public class AccountService_Stub implements AccountService{
 		return true;
 	}
 
+	@Override
+	public ResultMessage canModifyPassword(AccountVO vo) {
+		return null;
+	}
+
 }
