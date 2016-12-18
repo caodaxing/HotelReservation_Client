@@ -51,7 +51,7 @@ public class PictureHelper {
 //            catch (java.io.UnsupportedEncodingException e){  
 //            }  l
 //            path = path.substring(0, path.length()-4)+"download/"+pictureName+".jpg";
-            String path = "/Users/Mark.W/"+pictureName+".jpg";
+            String path = "C:\\Users\\ZDY\\Desktop\\"+pictureName+".jpg";
             OutputStream out = new FileOutputStream(path);  
             out.write(data);  
             out.flush();  
