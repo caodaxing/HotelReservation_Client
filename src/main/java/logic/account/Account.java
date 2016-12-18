@@ -10,6 +10,7 @@ import logic.credit.Credit;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
 import logic.user.AddClientInfo;
+import logic.user.Client;
 import logic.utility.Time;
 import logicService.account.AccountService;
 import main.rmi.RemoteHelper;
@@ -30,6 +31,7 @@ public class Account implements AccountService{
 		
 	public Account(){
 		this.creditChange = new CreditChange();
+		this.clientInfo = new Client();
 		
 //		accountDao = new AccountDao_Stub();
 		accountDao = RemoteHelper.getInstance().getAccountDao();
