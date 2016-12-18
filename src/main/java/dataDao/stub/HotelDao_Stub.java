@@ -69,7 +69,7 @@ public class HotelDao_Stub implements HotelDao {
 	}
 
 	@Override
-	public ArrayList<String> getCitys() throws RemoteException {
+	public ArrayList<String> getCities() throws RemoteException {
 		return null;
 	}
 

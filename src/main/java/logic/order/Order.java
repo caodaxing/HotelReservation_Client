@@ -19,7 +19,7 @@ import vo.OrderVO;
  * @author Mark.W
  *
  */
-public class Order implements OrderService, OrderHotelInfo, OrderInfo{
+public class Order implements OrderService, OrderHotelInfo{
 	
 	private OrderDao orderDao;
 	private EvaluationTransform evaluationTrans;
@@ -45,23 +45,6 @@ public class Order implements OrderService, OrderHotelInfo, OrderInfo{
 		return this.orderTrans.orderTransToVO(po);
 		
 	}
-	
-	public ResultMessage updateOrder(OrderVO vo) {
-		if(vo != null) {
-			OrderPO po = this.orderTrans.orderTransToPO(vo);
-			
-			try {
-				if(this.orderDao.updateOrder(po)) {
-					return ResultMessage.SUCCESS;
-				}
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return ResultMessage.SUCCESS;
-	}
- 
 	
 	@Override
 	public EvaluationVO getEvaluationInfo(String orderID) {
@@ -119,6 +102,23 @@ public class Order implements OrderService, OrderHotelInfo, OrderInfo{
 		
 		return res;
 	}
+	
+	
+//	public ResultMessage updateOrder(OrderVO vo) {
+//		if(vo != null) {
+//			OrderPO po = this.orderTrans.orderTransToPO(vo);
+//			
+//			try {
+//				if(this.orderDao.updateOrder(po)) {
+//					return ResultMessage.SUCCESS;
+//				}
+//			} catch (RemoteException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		return ResultMessage.SUCCESS;
+//	}
 }
 
 

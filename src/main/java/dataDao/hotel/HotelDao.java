@@ -8,7 +8,7 @@ import po.HotelPO;
 
 public interface HotelDao extends Remote{
 	
-	public ArrayList<String> getCitys() throws RemoteException;
+	public ArrayList<String> getCities() throws RemoteException;
 	
 	public boolean hotelIDExist(String hotelID) throws RemoteException;
 	

@@ -41,7 +41,7 @@ public class SearchHotel implements SearchHotelService {
 		
 		ArrayList<String> res = null;
 		try {
-			res = this.hotelDao.getCitys();
+			res = this.hotelDao.getCities();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
