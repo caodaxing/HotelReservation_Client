@@ -189,19 +189,14 @@ public class HotelManagerLeftController{
 		}
 		userId = null;
 		showDialog("注销成功");
+		accountController.setFirstView();
 		newStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
 			 @Override
 	         public void handle(WindowEvent event) {
-				 ResultMessage result = accountService.logout(userId);
-					if(result == ResultMessage.FAILURE){
-						showDialog("注销失败");
-						return ;
-					}
-					userId = null;
-					showDialog("注销成功");
+				accountController.logout();
 	         }
 		});
-		accountController.setFirstView();
+		newStage.setResizable(false);
 		newStage.show();
 	}
 	

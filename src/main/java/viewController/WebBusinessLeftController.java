@@ -1,7 +1,9 @@
 package viewController;
 
 import Message.ResultMessage;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import logic.account.Account;
 import logic.credit.Credit;
 import logicService.account.AccountService;
@@ -103,6 +105,13 @@ public class WebBusinessLeftController {
 		}
 		showDialog("注销成功");
 		accountController.setFirstView();
+		newStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+			 @Override
+	         public void handle(WindowEvent event) {
+				accountController.logout();
+	         }
+		});
+		newStage.setResizable(false);
 		newStage.show();
 	}
 	
