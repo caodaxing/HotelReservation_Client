@@ -28,8 +28,7 @@ public class WMUserInfoController extends WebManagerLeftController{
 	
 	public WMUserInfoController(Stage stage ,String userID){
 		
-		this.stage = stage;
-		this.userID = userID;
+		super(stage,userID);
 		
 		clientService = new Client();
 		pictureService = new Picture();

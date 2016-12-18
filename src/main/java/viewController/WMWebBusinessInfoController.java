@@ -27,8 +27,7 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 	
 	public WMWebBusinessInfoController(Stage stage,String userID){
 		
-		this.stage = stage ;
-		this.userID = userID;
+		super(stage,userID);
 		
 		webBusinessService = new WebBusiness();
 		

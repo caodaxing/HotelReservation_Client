@@ -18,8 +18,7 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 
 	public WMHotelManagerInfoController(Stage stage ,String userID){
 		
-		this.stage = stage ;
-		this.userID = userID ;
+		super(stage,userID);
 		
 		checkHotelManagerUI = new CheckHotelManager(this);
 		modifyHotelManagerUI = new ModifyHotelManager(this);

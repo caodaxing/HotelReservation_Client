@@ -11,10 +11,6 @@ public class VistorLeftController {
 	
 	protected Stage stage;
 	
-	public VistorLeftController(){
-		
-	}
-	
 	public void setSignInView(){
 		stage.close();
 		Stage newStage = new Stage();

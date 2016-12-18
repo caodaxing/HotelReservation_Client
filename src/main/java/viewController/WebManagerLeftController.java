@@ -43,8 +43,9 @@ public class WebManagerLeftController {
 	
 	private AccountController accountController;
 	
-	public WebManagerLeftController(){
-		updateHotelService = new UpdateHotel();
+	public WebManagerLeftController(Stage stage , String userID){
+		this.stage = stage;
+		this.userID = userID;updateHotelService = new UpdateHotel();
 		webManagerService = new WebManager();
 		accountService = new Account();
 		
@@ -53,12 +54,7 @@ public class WebManagerLeftController {
 		searchHotelManagerUI = new SearchHotelManager(this);
 		searchUserUI = new SearchUser(this);
 		firstUI = new First(this);
-	}
-	
-	public WebManagerLeftController(Stage stage , String userID){
-		this();
-		this.stage = stage;
-		this.userID = userID;
+		
 	}
 	
 	public void setSearchClientView(){

@@ -304,6 +304,7 @@ public class UserLeftController {
 			modifyPasswordUI.setBlank();
 			return;
 		}
+		accountService.logout(userID);
 		
 		AccountVO vo = new AccountVO(userID, newPassword , Identity.CLIENT );
 		ResultMessage result = accountService.modifyPassword(Encryption.getInstance().encrypt(vo));
