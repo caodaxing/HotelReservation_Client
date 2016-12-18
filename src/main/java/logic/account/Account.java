@@ -57,14 +57,19 @@ public class Account implements AccountService{
 					
 					AccountPO po = transToPO(accountVO);
 					if(accountDao.addAccount(po)) {
-						
-						if(this.initCredit(po.getAccountID())) {
-							ClientPO clientPO = new ClientPO(accountVO.userId, "", "", "", Identity.CLIENT.ordinal(), 0, "");
-							if(ResultMessage.SUCCESS == this.clientInfo.addClient(clientPO)) {
-								return ResultMessage.SUCCESS;
+						if(accountVO.identity == Identity.CLIENT) {
+							//客户注册初始化信用值和clientpo
+							if(this.initCredit(po.getAccountID())) {
+								ClientPO clientPO = new ClientPO(accountVO.userId, "", "", "", Identity.CLIENT.ordinal(), 0, "");
+								if(ResultMessage.SUCCESS == this.clientInfo.addClient(clientPO)) {
+									return ResultMessage.SUCCESS;
+								}
+								
 							}
-							
+						} else {
+							return ResultMessage.SUCCESS;
 						}
+						
 					}
 				}
 			} catch (RemoteException e) {

@@ -58,7 +58,6 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 	}
 
 	
-	@Override
 	public PromotionVO getPromotion(String promotionID) {
 		PromotionPO po = null;
 		try {
@@ -66,6 +65,11 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+		if(po == null) {
+			return null;
+		}
+		
 		return this.promotionTrans.promotionTransToVO(po);
 	}
 

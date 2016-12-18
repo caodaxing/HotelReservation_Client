@@ -148,11 +148,12 @@ public class TodayUnexecuteOrder {
 	public void initialData(){
 		data = FXCollections.observableArrayList();
 		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-		for(int i=0;i<orderList.size();i++){
-			check = new Button("查看");
-			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, check));
+		if(orderList != null){
+			for(int i=0;i<orderList.size();i++){
+				check = new Button("查看");
+				data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, check));
+			}
 		}
-		
 	}
 	
 	

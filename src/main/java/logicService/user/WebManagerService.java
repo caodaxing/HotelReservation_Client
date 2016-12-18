@@ -2,7 +2,6 @@ package logicService.user;
 
 import Message.ResultMessage;
 import vo.HotelManagerVO;
-import vo.HotelVO;
 import vo.WebBusinessVO;
 
 /**
@@ -18,7 +17,7 @@ public interface WebManagerService {
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO hotelManagerInfo);
 	
-	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo);
+//	public ResultMessage addWebBusiness(WebBusinessVO webBusinessInfo);
 	
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID);
 	

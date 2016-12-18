@@ -67,7 +67,7 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip, Ad
 	}
 	
 	/**
-	 * 修改用户信息,如果有头像更新就更新头像
+	 * 修改用户信息
 	 * @param  clientInfo 传入的用户信息
 	 * @return 返回是否修改成功
 	 * @author Xue.W

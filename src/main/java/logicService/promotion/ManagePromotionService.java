@@ -14,7 +14,7 @@ public interface ManagePromotionService {
 	
 	public ResultMessage addPromotion(PromotionVO promotionVO);
 	
-	public PromotionVO getPromotion(String promotionID);
+//	public PromotionVO getPromotion(String promotionID);
 	
 	public ResultMessage deletePromotion(String promotionID);
 	
