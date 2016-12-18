@@ -22,4 +22,6 @@ public interface AccountService {
 	
 	public boolean userIDExists(String userID);
 	
+	public ResultMessage canModifyPassword(AccountVO vo);
+	
 }

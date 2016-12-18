@@ -37,7 +37,7 @@ public class Account implements AccountService{
 		accountDao = RemoteHelper.getInstance().getAccountDao();
 		
 	}
-
+	
 	/**
 	 * 注册账户
 	 * @param accountVO 传入的VO信息
@@ -182,8 +182,8 @@ public class Account implements AccountService{
 		
 		return ResultMessage.FAILURE;
 	}
+
 	
-	//////用户名的分类，暂定
 	public Identity getIdentity(String accountID){
 		AccountPO po = null;
 		try {
@@ -199,10 +199,6 @@ public class Account implements AccountService{
 		return null;
 	}
 	
-	public AccountPO transToPO(AccountVO accountVO) {
-		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.ordinal());
-	}
-
 	@Override
 	public boolean userIDExists(String userID) {
 	
@@ -217,6 +213,31 @@ public class Account implements AccountService{
 		return false;
 	}
 	
+	@Override
+	public ResultMessage canModifyPassword(AccountVO vo) {
+		if(vo == null || vo.userId == null || vo.userId == "") {
+			return ResultMessage.FAILURE;
+		}
+		
+		AccountPO po = null;
+		try {
+			po = this.accountDao.getAccountInfo(vo.userId);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(po != null) {
+			if(po.getPassword().equals(vo.password)) {
+				return ResultMessage.SUCCESS;
+			}
+		}
+		
+		return ResultMessage.FAILURE;
+	}
 	
+	private AccountPO transToPO(AccountVO accountVO) {
+		return new AccountPO(accountVO.userId, accountVO.password, accountVO.identity.ordinal());
+	}
+
 }
 
