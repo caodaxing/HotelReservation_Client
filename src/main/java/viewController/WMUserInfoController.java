@@ -3,8 +3,10 @@ package viewController;
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.stage.Stage;
+import logic.picture.Picture;
 import logic.user.Client;
 import logicService.account.AccountService;
+import logicService.picture.PictureService;
 import logicService.stub.AccountService_Stub;
 import logicService.stub.ClientService_Stub;
 import logicService.user.ClientService;
@@ -15,7 +17,8 @@ import vo.ClientVO;
 
 public class WMUserInfoController extends WebManagerLeftController{
 
-	ClientService clientService ;
+	private ClientService clientService ;
+	private PictureService pictureService;
 	
 	private Blank blankUI ;
 	private CheckUser checkUserUI ;
@@ -29,6 +32,7 @@ public class WMUserInfoController extends WebManagerLeftController{
 		this.userID = userID;
 		
 		clientService = new Client();
+		pictureService = new Picture();
 		
 		blankUI = new Blank(this);
 		checkUserUI = new CheckUser(this);
@@ -120,4 +124,13 @@ public class WMUserInfoController extends WebManagerLeftController{
 	public ClientVO getClientInfo(){
 		return clientService.getClientInfo(clientID);
 	}
+	
+	public String getHeadPath(){
+		String headPath = pictureService.getUserImage(clientID);
+		if(headPath == null || headPath.equals("")){//默认头像
+			headPath = "/head/游客头像.png";
+		}
+		return headPath;
+	}
+	
 }

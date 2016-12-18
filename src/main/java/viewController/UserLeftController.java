@@ -10,12 +10,14 @@ import javafx.stage.Stage;
 import logic.account.Account;
 import logic.hotel.CheckHotel;
 import logic.order.Order;
+import logic.picture.Picture;
 import logic.user.Client;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.hotel.CheckHotelService;
 import logicService.order.OrderListService;
 import logicService.order.OrderService;
+import logicService.picture.PictureService;
 import logicService.stub.AccountService_Stub;
 import logicService.stub.ClientService_Stub;
 import logicService.stub.OrderService_Stub;
@@ -44,7 +46,8 @@ public class UserLeftController {
 	protected AccountService accountService;
 	protected OrderService orderService;
 	protected OrderListService orderListService;
-	CheckHotelService checkHotelService;
+	protected CheckHotelService checkHotelService;
+	protected PictureService pictureService;
 	
 	private AccountController accountController;
 	
@@ -73,7 +76,7 @@ public class UserLeftController {
 		orderService = new Order();
 		orderListService = new logic.order.OrderList();
 		checkHotelService = new CheckHotel();
-		
+		pictureService = new Picture();
 
 		checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
@@ -265,7 +268,7 @@ public class UserLeftController {
 	 * 返回用户头像路径
 	 */
 	public String getHeadPath(){
-		String headPath = clientService.getClientInfo(userID).headImagePath;
+		String headPath = pictureService.getUserImage(userID);
 		if(headPath == null || headPath.equals("")){//默认头像
 			headPath = "/head/游客头像.png";
 		}

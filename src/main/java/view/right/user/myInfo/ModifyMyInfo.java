@@ -82,7 +82,7 @@ public class ModifyMyInfo {
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
 		id.setText(vo.identityID);
-		head.setText(vo.headImagePath);
+		head.setText(controller.getHeadPath());
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);

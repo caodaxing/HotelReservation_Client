@@ -166,6 +166,6 @@ public class ModifyUser {
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
 		id.setText(vo.identityID);
-		head.setText(vo.headImagePath);
+		head.setText(controller.getHeadPath());
 	}
 }
