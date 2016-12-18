@@ -8,10 +8,12 @@ import Message.RoomType;
 import javafx.stage.Stage;
 import logic.hotel.CheckHotel;
 import logic.order.CreateOrder;
+import logic.picture.Picture;
 import logic.room.Room;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
 import logicService.order.CreateOrderService;
+import logicService.picture.PictureService;
 import logicService.room.RoomService;
 import logicService.stub.HotelService_Stub;
 import logicService.stub.OrderService_Stub;
@@ -30,6 +32,7 @@ public class UserCheckHotelController extends UserLeftController {
 	CreateOrderService createOrderService;
 	SearchHotelService searchHotelService;
 	RoomService roomService;
+	PictureService picture ;
 	
 	//控制的界面
 	private EvaluationList evaluationListUI;
@@ -59,6 +62,7 @@ public class UserCheckHotelController extends UserLeftController {
 		createOrderService = new CreateOrder();
 		searchHotelService = new logic.hotel.SearchHotel();
 		roomService = new Room();
+		pictureService = new Picture();
 		
 		//evaluationListUI = new EvaluationList(this);
 		//historyOrderListUI = new HistoryOrderList(this);
@@ -116,6 +120,7 @@ public class UserCheckHotelController extends UserLeftController {
 		
 		hotelInfoUI = new HotelInfo(this);
 		hotelInfoUI.setText();
+		hotelInfoUI.setFirstImage();
 		stage.setScene(hotelInfoUI.getScene());
 	}
 	
@@ -335,6 +340,10 @@ public class UserCheckHotelController extends UserLeftController {
 	public void setHistoryHotelListView(){
 		hotelList = searchHotelService.getBookedHotelList(userID);
 		setSearchResultListView();
+	}
+	
+	public ArrayList<String> getHotelImage(){
+		return pictureService.getHotelImage(hotelID);
 	}
 	
 }

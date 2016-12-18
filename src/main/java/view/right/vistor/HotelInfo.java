@@ -1,5 +1,7 @@
 package view.right.vistor;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -41,6 +43,7 @@ public class HotelInfo {
 	ImageView hotelImage ;
 	
 	//游客没有其他所有按钮（省事
+	Button next;
 	Button back;
 	
 	public HotelInfo(VistorController controller){
@@ -137,13 +140,28 @@ public class HotelInfo {
 	}
 	
 	private void setImageView(){
-		
 		hotelImage = new ImageView();
 		
+		hotelImage.setFitHeight(250.0);
+		hotelImage.setFitHeight(200.0);
+
 		rightPane.getChildren().add(hotelImage);
-		
 		AnchorPane.setLeftAnchor(hotelImage, 150.0);
 		AnchorPane.setTopAnchor(hotelImage, 360.0);
+		
+		next = new Button("下一张");
+		next.setPrefSize(250, 30);
+		int i = 1;
+		next.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				setNextImage(i);
+			}
+			
+		});
+		rightPane.getChildren().add(next);
+		AnchorPane.setLeftAnchor(next, 150.0);
+		AnchorPane.setTopAnchor(next, 460.0);
 		
 	}
 	
@@ -155,8 +173,34 @@ public class HotelInfo {
 		facility.setText(vo.facilities);
 	}
 	
-	public void setImage(){
-		//待补充
+	public void setFirstImage(){
+		ArrayList<String> paths = controller.getHotelImage();
+		if(!paths.isEmpty()){
+			return;
+		}else {
+			try{
+				hotelImage.setImage(new Image(paths.get(0),250,200,false,true));
+			}catch(Exception e){
+				controller.showDialog("酒店图片路径无效");
+				return;
+			}
+		}
+	}
+	
+	private void setNextImage(int i){
+		ArrayList<String> paths = controller.getHotelImage();
+		if(paths.size()>i ){	
+			try{
+				hotelImage.setImage(new Image(paths.get(i),250,200,false,true));
+			}catch(Exception e){
+				controller.showDialog("酒店图片路径无效");
+				return;
+			}
+			i++;
+		}else{
+			i=1;
+			setFirstImage();
+		}
 	}
 	
 	public Scene getScene(){

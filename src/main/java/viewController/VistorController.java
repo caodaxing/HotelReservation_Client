@@ -6,8 +6,10 @@ import Message.HotelSearchCondition;
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.hotel.CheckHotel;
+import logic.picture.Picture;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
+import logicService.picture.PictureService;
 import logicService.stub.HotelService_Stub;
 import view.right.vistor.SearchHotel;
 import view.right.vistor.SearchResultList;
@@ -20,6 +22,7 @@ public class VistorController extends VistorLeftController{
 	
 	private SearchHotelService searchService;
 	private CheckHotelService checkService;
+	private PictureService pictureService;
 	
 	private HotelInfo hotelInfoUI ;
 	private SearchHotel searchHotelUI ;
@@ -34,6 +37,7 @@ public class VistorController extends VistorLeftController{
 		
 		searchService = new logic.hotel.SearchHotel();
 		checkService = new CheckHotel();
+		pictureService = new Picture();
 		
 		hotelInfoUI = new HotelInfo(this);
 		searchHotelUI = new SearchHotel(this);
@@ -61,9 +65,10 @@ public class VistorController extends VistorLeftController{
 	}
 	
 	public void setHotelInfoView(){
-		stage.setScene(hotelInfoUI.getScene());
+		hotelInfoUI = new HotelInfo(this);
 		hotelInfoUI.setText();
-		hotelInfoUI.setImage();
+		hotelInfoUI.setFirstImage();
+		stage.setScene(hotelInfoUI.getScene());
 	}
 	
 	//搜索酒店，设置界面，设置list
@@ -108,5 +113,9 @@ public class VistorController extends VistorLeftController{
 	public HotelVO getHotelInfo(){
 		return checkService.getHotelnfo(hotelID);
 	}
-
+	
+	public ArrayList<String> getHotelImage(){
+		return pictureService.getHotelImage(hotelID);
+	}
+	
 }
