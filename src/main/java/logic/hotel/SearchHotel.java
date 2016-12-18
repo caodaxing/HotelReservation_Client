@@ -36,6 +36,22 @@ public class SearchHotel implements SearchHotelService {
 //		hotelDao = new HotelDao_Stub();
 	}
 
+	@Override
+	public ArrayList<String> getCitys() {
+		
+		ArrayList<String> res = null;
+		try {
+			res = this.hotelDao.getCitys();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(res == null || res.size() == 0) {
+			return null;
+		}
+		return res;
+	}
+	
 	public ArrayList<String> getTradingArea(String city) {
 		ArrayList<String> res = null;
 		try {

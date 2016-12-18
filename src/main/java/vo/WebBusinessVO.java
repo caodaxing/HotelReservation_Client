@@ -35,10 +35,6 @@ public class WebBusinessVO {
 			this.numberOfIdentityCard = numberOfIdentityCard;
 		}
 		
-		
-		this.trueName=trueName;
-		this.phoneNumber=phoneNumber;
-		this.numberOfIdentityCard=numberOfIdentityCard;
 	}
 
 }

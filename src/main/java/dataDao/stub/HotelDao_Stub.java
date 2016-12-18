@@ -1,5 +1,6 @@
 package dataDao.stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -65,6 +66,11 @@ public class HotelDao_Stub implements HotelDao {
 	@Override
 	public boolean hotelIDExist(String hotelID) {
 		return false;
+	}
+
+	@Override
+	public ArrayList<String> getCitys() throws RemoteException {
+		return null;
 	}
 
 }

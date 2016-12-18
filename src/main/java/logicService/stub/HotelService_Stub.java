@@ -87,5 +87,10 @@ public class HotelService_Stub implements UpdateHotelService,SearchHotelService,
 //		return list;
 		return null;
 	}
+
+	@Override
+	public ArrayList<String> getCitys() {
+		return null;
+	}
 	
 }
