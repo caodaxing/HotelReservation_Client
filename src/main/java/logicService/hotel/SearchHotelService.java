@@ -23,8 +23,6 @@ public interface SearchHotelService {
 	
 	/**
 	 * 获取所有商圈
-	 * @param city 传入酒店城市
-	 * @return ArrayList<String> 返回商圈列表
 	 * @author all
 	 */
 	public ArrayList<String> getCities();

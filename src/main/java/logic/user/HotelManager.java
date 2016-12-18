@@ -10,7 +10,7 @@ import main.rmi.RemoteHelper;
 import po.HotelManagerPO;
 import vo.HotelManagerVO;
 
-public class HotelManager implements HotelManagerService{
+public class HotelManager implements HotelManagerService, HotelManagerInfo{
 
 	private HotelManagerDao hotelManagerDao; 
 	private HotelManagerTransform hotelManagerTrans;
@@ -61,6 +61,21 @@ public class HotelManager implements HotelManagerService{
 		}
 		
 		return res;
+	}
+
+	@Override
+	public ResultMessage hotelHasManager(String hotelID) {
+		HotelManagerPO po = null;
+		try {
+			po = this.hotelManagerDao.getHotelManagerInfo(hotelID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		if(po == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		return ResultMessage.SUCCESS;
 	}
 
 }

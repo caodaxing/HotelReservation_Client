@@ -4,6 +4,8 @@ import java.rmi.RemoteException;
 
 import Message.ResultMessage;
 import dataDao.hotel.HotelDao;
+import logic.user.HotelManager;
+import logic.user.HotelManagerInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.UpdateHotelService;
 import main.rmi.RemoteHelper;
@@ -60,7 +62,9 @@ public class UpdateHotel implements UpdateHotelService{
 	}
 	
 	public ResultMessage hotelHasManager(String hotelID) {
-		return ResultMessage.SUCCESS;
+		HotelManagerInfo info = new HotelManager();
+		return info.hotelHasManager(hotelID);
+
 	}
 
 }
