@@ -149,7 +149,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 	
 	public ArrayList<String> getCityList(){
-		return hotelSearchService.getCitys();
+		return hotelSearchService.getCities();
 	}
 	
 	public ArrayList<String> getTradingAreaList(String city){
