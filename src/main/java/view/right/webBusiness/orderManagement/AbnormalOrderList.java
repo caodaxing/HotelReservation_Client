@@ -20,6 +20,7 @@ import logic.order.ManageOrder;
 import logicService.order.ManageOrderService;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
+import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
 import vo.OrderVO;
@@ -33,7 +34,6 @@ public class AbnormalOrderList {
 	
 	private WebBusinessLeftController controller;
 	private WBOrderManagementController wbcontroller;
-	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -48,15 +48,15 @@ public class AbnormalOrderList {
 	TableColumn<Person, Button> operation;
 	
 	private ObservableList<Person> data;
-	private ArrayList<OrderVO> orderList;
+//	private ArrayList<OrderVO> orderList;
 	private Button check;
-	private int row;
+//	private int row;
 	
 	public AbnormalOrderList(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		manageOrderService = new ManageOrder();
+		wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -112,8 +112,8 @@ public class AbnormalOrderList {
 							Item = new Button("查看");
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
-								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(), row);
+								int row = this.getTableRow().getIndex();
+								controller.setOrderId(row);
 								wbcontroller.setabnormalOrderView();
 								wbcontroller.getStage().show();
 							});
@@ -125,7 +125,6 @@ public class AbnormalOrderList {
 		});
 		operation.setMinWidth(100);
 		
-		initialData();
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, userId, lastExecuteTime, operation);
 		
@@ -139,10 +138,12 @@ public class AbnormalOrderList {
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-		for(int i=0;i<orderList.size();i++){
-			check = new Button("查看");
-			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, check));
+		ArrayList<OrderVO> orderList = controller.getOrderList();
+		if(orderList == null){
+			return ;
+		}
+		for(OrderVO o :orderList){
+			data.add(new Person(o.orderId,o.hotelID,controller.getUserId(),o.endTime,check));
 		}
 		
 	}

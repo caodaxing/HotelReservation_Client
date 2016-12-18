@@ -141,13 +141,19 @@ public class SetVIPCredit {
 				String level2 = updateVIP2.getText();
 				String level3 = updateVIP3.getText();
 				//
-				if(controller.getSetVIPResult(1, Integer.parseInt(level1)) == ResultMessage.SUCCESS &&
-						controller.getSetVIPResult(2, Integer.parseInt(level2)) == ResultMessage.SUCCESS &&
-						controller.getSetVIPResult(3, Integer.parseInt(level3)) == ResultMessage.SUCCESS){
-					controller.showDialog("设置成功");
-				}else{
-					OneButtonDialog dialog = new OneButtonDialog("设置失败");
-					dialog.show();
+				try{
+					int num1 = Integer.parseInt(level1);
+					int num2 = Integer.parseInt(level2);
+					int num3 = Integer.parseInt(level3);
+					if(controller.getSetVIPResult(1, num1) == ResultMessage.SUCCESS &&
+							controller.getSetVIPResult(2, num2) == ResultMessage.SUCCESS &&
+							controller.getSetVIPResult(3, num3) == ResultMessage.SUCCESS){
+						controller.showDialog("设置成功");
+					}else{
+						controller.showDialog("设置失败");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("输入错误");
 				}
 			}
 					
@@ -158,9 +164,6 @@ public class SetVIPCredit {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				updateVIP1.setText("");
-				updateVIP2.setText("");
-				updateVIP3.setText("");
 				controller.setBlankView();
 				controller.getStage().show();
 			}

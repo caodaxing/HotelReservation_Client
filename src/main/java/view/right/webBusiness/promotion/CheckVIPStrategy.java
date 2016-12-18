@@ -65,23 +65,23 @@ public class CheckVIPStrategy {
 	
 	private void setTextField(){
 		
-		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		int num = controller.getRow();
+//		controller.setPromotoinList();
+//		promotionList = controller.getPromotionList();
+//		int num = controller.getRow();
 		//添加文本框
-		VIP1DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
+		VIP1DiscountRange = new TextField();
 		VIP1DiscountRange.setId("CheckVIPStrategy");
 		VIP1DiscountRange.setPrefSize(200, 30);
 				
-		VIP2DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
+		VIP2DiscountRange = new TextField();
 		VIP2DiscountRange.setId("CheckVIPStrategy");
 		VIP2DiscountRange.setPrefSize(200, 30);
 			
-		VIP3DiscountRange = new TextField(String.valueOf(promotionList.get(num).discount));
+		VIP3DiscountRange = new TextField();
 		VIP3DiscountRange.setId("CheckVIPStrategy");
 		VIP3DiscountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField(promotionList.get(num).promotionName);
+		discountName = new TextField();
 		discountName.setId("CheckVIPStrategy");
 		discountName.setPrefSize(200, 30);
 				
@@ -150,5 +150,13 @@ public class CheckVIPStrategy {
 				
 		AnchorPane.setLeftAnchor(revert, 425.0);
 		AnchorPane.setTopAnchor(revert, 525.0);
+	}
+	
+	public void setText(){
+		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
+		VIP1DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[0]));
+		VIP2DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[1]));
+		VIP3DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[2]));
+		discountName.setText(vo.promotionName);
 	}
 }

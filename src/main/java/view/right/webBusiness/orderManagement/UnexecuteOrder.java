@@ -25,7 +25,7 @@ import vo.OrderVO;
 public class UnexecuteOrder {
 	
 	private WBOrderManagementController controller;
-	private ManageOrderService manageOrderService;
+//	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -46,7 +46,7 @@ public class UnexecuteOrder {
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		manageOrderService = new ManageOrder();
+//		manageOrderService = new ManageOrder();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -72,17 +72,17 @@ public class UnexecuteOrder {
 	}
 	
 	private void setTextContent(){
-		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-		int num = controller.getRow();
+//		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
+//		int num = controller.getRow();
 	
 		//设置未执行订单的文本信息
-		orderID = new TextField(orderList.get(num).orderId);
-		hotelName = new TextField(orderList.get(num).hotelID);
-		roomType = new TextField(orderList.get(num).roomType.toString());
-		estimateInTime = new TextField(orderList.get(num).startTime);
-		estimateLeaveTime = new TextField(orderList.get(num).endTime);
-		primeCost = new TextField(String.valueOf(orderList.get(num).beforePrice));
-		realCost = new TextField(String.valueOf(orderList.get(num).afterPrice));
+		orderID = new TextField();
+		hotelName = new TextField();
+		roomType = new TextField();
+		estimateInTime = new TextField();
+		estimateLeaveTime = new TextField();
+		primeCost = new TextField();
+		realCost = new TextField();
 		
 		//设置TextField不可更改
 		orderID.setEditable(false);
@@ -145,13 +145,6 @@ public class UnexecuteOrder {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				orderID.setText("");
-				hotelName.setText("");
-				roomType.setText("");
-				estimateInTime.setText("");
-				estimateLeaveTime.setText("");
-				primeCost.setText("");
-				realCost.setText("");
 				controller.setTodayUnexecuteOrderView();
 				controller.getStage().show();
 			}
@@ -164,6 +157,17 @@ public class UnexecuteOrder {
 		AnchorPane.setLeftAnchor(revert, 425.0);
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderVOInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(vo.roomType.toString());
+		estimateInTime.setText(vo.startTime);
+		estimateLeaveTime.setText(vo.endTime);
+		primeCost.setText(String.valueOf(vo.beforePrice));
+		realCost.setText(String.valueOf(vo.afterPrice));
 	}
 	
 }

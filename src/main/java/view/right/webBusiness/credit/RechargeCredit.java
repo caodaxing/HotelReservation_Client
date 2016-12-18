@@ -120,15 +120,27 @@ public class RechargeCredit {
 				// TODO Auto-generated method stub
 				wbcontroller = new WBCreditController(controller.getStage(),controller.getUserId());
 				//传输vo
-				String userId = userID.getText();
-				int rechargeCredit = Integer.parseInt(rechargeAmount.getText());
-				CreditChangeVO creditChangeVO = new CreditChangeVO(userId, rechargeCredit);
-				//
-				if(wbcontroller.getRechargeResult(creditChangeVO) == ResultMessage.SUCCESS){
-					controller.showDialog("充值成功");
-				}else{
-					controller.showDialog("充值失败");
+				
+				try{
+					String userId = userID.getText();
+					int rechargeCredit = Integer.parseInt(rechargeAmount.getText());
+					if(userId != null){ 
+						CreditChangeVO creditChangeVO = new CreditChangeVO(userId, rechargeCredit);
+						if(wbcontroller.getRechargeResult(creditChangeVO) == ResultMessage.SUCCESS){
+							controller.showDialog("充值成功");
+						}else{
+							controller.showDialog("充值失败");
+						}
+					}else{
+						controller.showDialog("请输入用户名");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("信用金额输入错误");
 				}
+				
+				
+				//
+				
 			}
 			
 		});

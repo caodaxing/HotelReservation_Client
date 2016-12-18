@@ -35,8 +35,9 @@ public class WBPromotionController extends WebBusinessLeftController{
 	private SetVIPAreaStrategy setVIPAreaStrategyUI;
 	private SetVIPStrategy setVIPStrategyUI;
 	
+	private String promotionId;
 	private ArrayList<PromotionVO> promotionList;
-	private int row;
+//	private int row;
 	
 	public WBPromotionController(Stage stage, String userId){
 		
@@ -54,27 +55,29 @@ public class WBPromotionController extends WebBusinessLeftController{
 		
 	}
 	
-	public WBPromotionController(Stage stage, String userId, int row){
-		
-		super(stage,userId);
-		this.row = row;
-		promotionService = new ManagePromotion();
-		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
-		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
-		checkVIPStrategyUI  = new CheckVIPStrategy(this);
-		chooseUI = new Choose(this);
-		existStrategyUI = new ExistStrategy(this);
-		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
-		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
-		setVIPStrategyUI = new SetVIPStrategy(this);
-		
-	}
+//	public WBPromotionController(Stage stage, String userId, int row){
+//		
+//		super(stage,userId);
+//		this.row = row;
+//		promotionService = new ManagePromotion();
+//		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+//		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
+//		checkVIPStrategyUI  = new CheckVIPStrategy(this);
+//		chooseUI = new Choose(this);
+//		existStrategyUI = new ExistStrategy(this);
+//		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
+//		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
+//		setVIPStrategyUI = new SetVIPStrategy(this);
+//		
+//	}
 	
 	public Stage getStage(){
 		return stage;
 	}
 	
 	public void setCheckSpecialTimeStrategyView(){
+		checkSpecialTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+		checkSpecialTimeStrategyUI.setText();
 		stage.setScene(checkSpecialTimeStrategyUI.getScene());
 	}
 	
@@ -83,6 +86,8 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 
 	public void setCheckVIPStrategyView(){
+		checkVIPStrategyUI  = new CheckVIPStrategy(this);
+		checkVIPStrategyUI.setText();
 		stage.setScene(checkVIPStrategyUI.getScene());
 	}
 
@@ -91,6 +96,9 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 	
 	public void setExistStrategyView(){
+		promotionId = null;
+		existStrategyUI = new ExistStrategy(this);
+		existStrategyUI.initialData();
 		stage.setScene(existStrategyUI.getScene());
 	}
 
@@ -107,6 +115,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 	
 	public void setPromotoinList(){
+		
 		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
 	}
 	
@@ -126,13 +135,13 @@ public class WBPromotionController extends WebBusinessLeftController{
 		return promotionList;
 	}
 	
-	public void setRow(){
-		row = existStrategyUI.getRow();
-	}
-	
-	public int getRow(){
-		return row;
-	}
+//	public void setRow(){
+//		row = existStrategyUI.getRow();
+//	}
+//	
+//	public int getRow(){
+//		return row;
+//	}
 	
 	public ResultMessage getAddPromotionResult(PromotionVO promotionVO){
 		return promotionService.addPromotion(promotionVO);
@@ -152,5 +161,29 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public ArrayList<String> getTradingAreaList(String city){
 		return hotelSearchService.getTradingArea(city);
+	}
+	
+//	public ArrayList<PromotionVO> setPromotion(){
+//		return promotionService.
+//	}
+	
+//	public void setAllPromotion(){
+//		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
+//	}
+	
+//	public ArrayList<PromotionVO> getAllPromotion(){
+//		return promotionList;
+//	}
+	
+	public void setPromotionId(int row){
+		promotionId = promotionList.get(row).promotionID;
+	}
+	
+	public String getPromotionId(){
+		return promotionId;
+	}
+	
+	public PromotionVO getPromotionVO(String promotionId){
+		return promotionService.getPromotion(promotionId);
 	}
 }

@@ -27,7 +27,6 @@ import vo.OrderVO;
 public class AbnormalOrder{
 	
 	private WBOrderManagementController controller;
-	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -47,8 +46,6 @@ public class AbnormalOrder{
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		
-		manageOrderService = new ManageOrder();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -74,24 +71,24 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
-		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-		int num = controller.getRow();
+//		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
+//		int num = controller.getRow();
 		
 		
 		//添加文本框
-		orderID = new TextField(orderList.get(num).orderId);
+		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
 		orderID.setPrefSize(200, 30);
 		
-		hotelName = new TextField(orderList.get(num).hotelID);
+		hotelName = new TextField();
 		hotelName.setId("AbnormalOrder");
 		hotelName.setPrefSize(200, 30);
 		
-		roomType = new TextField(orderList.get(num).roomType.toString());
+		roomType = new TextField();
 		roomType.setId("AbnormalOrder");
 		roomType.setPrefSize(200, 30);
 		
-		lastExecuteTime = new TextField(orderList.get(num).endTime);
+		lastExecuteTime = new TextField();
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
 		
@@ -168,16 +165,10 @@ public class AbnormalOrder{
 				String orderId = orderID.getText();
 				boolean bool = false;
 				//
-				if(manageOrderService.undoAbnormalOrder(orderId, bool) == ResultMessage.SUCCESS){
-					OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
-					dialog.show();
-					controller.setAbnormalOrderListView();
-					controller.getStage().show();
+				if(controller.getHalfCreditResult(orderId, bool) == ResultMessage.SUCCESS){
+					controller.showDialog("信用修改成功");
 				}else{
-					OneButtonDialog dialog = new OneButtonDialog("信用修改失败");
-					dialog.show();
-					controller.setAbnormalOrderListView();
-					controller.getStage().show();
+					controller.showDialog("信用修改失败");
 				}
 			}
 			
@@ -191,16 +182,10 @@ public class AbnormalOrder{
 				String orderId = orderID.getText();
 				boolean bool = true;
 				//
-				if(manageOrderService.undoAbnormalOrder(orderId, bool) == ResultMessage.SUCCESS){
-					OneButtonDialog dialog = new OneButtonDialog("信用修改成功");
-					dialog.show();
-					controller.setAbnormalOrderListView();
-					controller.getStage().show();
+				if(controller.getHalfCreditResult(orderId, bool) == ResultMessage.SUCCESS){
+					controller.showDialog("信用修改成功");
 				}else{
-					OneButtonDialog dialog = new OneButtonDialog("信用修改失败");
-					dialog.show();
-					controller.setAbnormalOrderListView();
-					controller.getStage().show();
+					controller.showDialog("信用修改失败");
 				}
 			}
 			
@@ -210,7 +195,7 @@ public class AbnormalOrder{
 
 			@Override
 			public void handle(ActionEvent event) {
-				controller.setAbnormalOrderListView();
+				controller.setAbnormalOrderView();
 				controller.getStage().show();
 			}
 			
@@ -229,6 +214,14 @@ public class AbnormalOrder{
 		AnchorPane.setTopAnchor(allCredit, 525.0);
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderVOInfo();
+		orderID.setText(vo.orderId);
+		hotelName.setText(vo.hotelID);
+		roomType.setText(vo.roomType.toString());
+		lastExecuteTime.setText(vo.endTime);
 	}
 	
 }

@@ -22,7 +22,9 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
+import view.right.webBusiness.orderManagement.TodayUnexecuteOrder.Person;
 import viewController.WBPromotionController;
+import vo.OrderVO;
 import vo.PromotionVO;
 
 
@@ -143,19 +145,23 @@ public class ExistStrategy {
 							Item = new Button("查看");
 							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
-								if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
-									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
-									controller.setCheckSpecialTimeStrategyView();
-									controller.getStage().show();
-								}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_LEVEL){
-									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
-									controller.setCheckVIPStrategyView();
-									controller.getStage().show();
-								}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_TRADINGAREA){
-									controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
-									controller.setCheckVIPAreaStrategyView();
-									controller.getStage().show();
+								int row = this.getTableRow().getIndex();
+								controller.setPromotionId(row);
+//								promotionList = controller.getPromotionList();
+								if(promotionList != null){
+									if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
+//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+										controller.setCheckSpecialTimeStrategyView();
+										controller.getStage().show();
+									}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_LEVEL){
+//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+										controller.setCheckVIPStrategyView();
+										controller.getStage().show();
+									}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_TRADINGAREA){
+//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
+										controller.setCheckVIPAreaStrategyView();
+										controller.getStage().show();
+									}
 								}
 							});
 						}
@@ -177,12 +183,14 @@ public class ExistStrategy {
 							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
-								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
-									controller.showDialog("删除成功");
-									controller.setDeletePromotion();
-									controller.getStage().show();
-								}else{
-									controller.showDialog("删除失败");
+								if(promotionList != null){
+									if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
+										controller.showDialog("删除成功");
+										controller.setDeletePromotion();
+										controller.getStage().show();
+									}else{
+										controller.showDialog("删除失败");
+									}
 								}
 							});
 						}
@@ -211,9 +219,12 @@ public class ExistStrategy {
 	public void initialData(){
 		data = FXCollections.observableArrayList();
 		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		for(int i=0;i<promotionList.size();i++){
-			data.add(new Person(promotionList.get(i).promotionType.toString(), promotionList.get(i).promotionName.toString(), check, delete));
+		ArrayList<PromotionVO> promotionVOList = controller.getPromotionList();
+		if(promotionVOList == null){
+			return ;
+		}
+		for(PromotionVO o :promotionVOList){
+			data.add(new Person(o.promotionType.toString(),o.promotionName,check,delete));
 		}
 	}
 	/**

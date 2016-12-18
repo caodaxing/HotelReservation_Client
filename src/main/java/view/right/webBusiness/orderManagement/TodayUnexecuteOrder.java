@@ -19,7 +19,9 @@ import javafx.util.Callback;
 import logic.order.ManageOrder;
 import logicService.order.ManageOrderService;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.WebBusinessUI;
+import view.right.user.myOrder.OrderList.Person;
 import viewController.WBOrderManagementController;
 import viewController.WebBusinessLeftController;
 import vo.OrderVO;
@@ -33,7 +35,6 @@ public class TodayUnexecuteOrder {
 	
 	private WebBusinessLeftController controller;
 	private WBOrderManagementController wbcontroller;
-	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -49,15 +50,14 @@ public class TodayUnexecuteOrder {
 	
 	private ObservableList<Person> data;
 	private Button check;
-	private int row;
-	ArrayList<OrderVO> orderList;
+//	private int row;
+//	ArrayList<OrderVO> orderList;
 	
 	public TodayUnexecuteOrder(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-		
-		manageOrderService = new ManageOrder();
+		wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -116,8 +116,9 @@ public class TodayUnexecuteOrder {
 							Item = new Button("查看");
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
-								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId(),row);
+								int row = this.getTableRow().getIndex();
+								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
+								controller.setOrderId(row);
 								wbcontroller.setUnexecuteOrderView();
 								wbcontroller.getStage().show();
 							});
@@ -129,7 +130,6 @@ public class TodayUnexecuteOrder {
 		});
 		operation.setMinWidth(100);
 		
-		initialData();
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, userId, lastExecuteTime, operation);
 		
@@ -141,16 +141,18 @@ public class TodayUnexecuteOrder {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
-	public int getRow(){
-		return row;
-	}
+//	public int getRow(){
+//		return row;
+//	}
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-		for(int i=0;i<orderList.size();i++){
-			check = new Button("查看");
-			data.add(new Person(orderList.get(i).orderId, orderList.get(i).hotelID, orderList.get(i).userID, orderList.get(i).endTime, check));
+		ArrayList<OrderVO> orderList = controller.getOrderList();
+		if(orderList == null){
+			return ;
+		}
+		for(OrderVO o :orderList){
+			data.add(new Person(o.orderId,o.hotelID,controller.getUserId(),o.endTime,check));
 		}
 		
 	}

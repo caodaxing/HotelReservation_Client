@@ -78,15 +78,15 @@ public class CheckVIPAreaStrategy {
 	
 	private void setTextField(){
 		
-		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		int num = controller.getRow();
+//		controller.setPromotoinList();
+//		promotionList = controller.getPromotionList();
+//		int num = controller.getRow();
 		
 		//初始化文本框
 		lowestVIPLevel = new TextField();
-		tradingArea = new TextField(promotionList.get(num).promotionID);
-		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
-		discountName = new TextField(promotionList.get(num).promotionName);
+		tradingArea = new TextField();
+		discountRange = new TextField();
+		discountName = new TextField();
 		
 		lowestVIPLevel.setId("CheckVIPAreaStrategy");
 		tradingArea.setId("CheckVIPAreaStrategy");
@@ -170,4 +170,12 @@ public class CheckVIPAreaStrategy {
 		AnchorPane.setLeftAnchor(revert, BUTTON_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setTopAnchor(revert, (double)BUTTON_START_VERTICAL);
 	}
+	
+//	public void setText(){
+//		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
+//		lowestVIPLevel.setText(vo.vipTradeAreaDiscount.get(vo.));
+//		tradingArea;
+//		discountRange;
+//		discountName;
+//	}
 }

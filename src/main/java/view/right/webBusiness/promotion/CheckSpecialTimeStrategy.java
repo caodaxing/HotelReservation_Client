@@ -66,24 +66,25 @@ public class CheckSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		int num = controller.getRow();
+//		controller.setPromotoinList();
+//		promotionList = controller.getPromotionList();
+//		int num = controller.getRow();
 		
 		//添加文本框
-		startDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
+		
+		startDiscount = new TextField();
 		startDiscount.setId("CheckSpecialTimeStrategy");
 		startDiscount.setPrefSize(200, 30);
 				
-		endDiscount = new TextField(String.valueOf(promotionList.get(num).discount));
+		endDiscount = new TextField();
 		endDiscount.setId("CheckSpecialTimeStrategy");
 		endDiscount.setPrefSize(200, 30);
 			
-		discountRange = new TextField(String.valueOf(promotionList.get(num).vipLevelDiscount));
+		discountRange = new TextField();
 		discountRange.setId("CheckSpecialTimeStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField(promotionList.get(num).promotionName);
+		discountName = new TextField();
 		discountName.setId("CheckSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
 				
@@ -153,5 +154,12 @@ public class CheckSpecialTimeStrategy {
 				
 		AnchorPane.setLeftAnchor(revert, 425.0);
 		AnchorPane.setTopAnchor(revert, 525.0);
+	}
+	public void setText(){
+		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
+		startDiscount.setText(String.valueOf(vo.discount));
+		endDiscount.setText(String.valueOf(vo.discount));
+		discountRange.setText("0");
+		discountName.setText(vo.promotionName);
 	}
 }
