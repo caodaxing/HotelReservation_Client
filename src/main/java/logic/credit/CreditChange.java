@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import Message.CreditChangeType;
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
-import dataDao.stub.CreditDao_Stub;
 import logic.user.Client;
 import logic.user.UpdateClientVip;
 import logic.utility.CreditTransform;

@@ -135,7 +135,9 @@ public class Account implements AccountService{
 	public ResultMessage logout(String userID) {
 		try {
 			if(this.accountDao.setLogout(userID)) {
-				return ResultMessage.SUCCESS;
+				if(this.accountDao.setLogout(userID)) {
+					return ResultMessage.SUCCESS;
+				}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -176,7 +178,11 @@ public class Account implements AccountService{
 			e.printStackTrace();
 		}
 		
-		return Identity.values()[po.getIdentity()];
+		if(po != null && po.getIdentity() <4) {
+			return Identity.values()[po.getIdentity()];
+		}
+		
+		return null;
 	}
 	
 	public AccountPO transToPO(AccountVO accountVO) {
