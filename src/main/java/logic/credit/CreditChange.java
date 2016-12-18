@@ -2,6 +2,8 @@ package logic.credit;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+
+import Message.CreditChangeType;
 import Message.ResultMessage;
 import dataDao.credit.CreditDao;
 import dataDao.stub.CreditDao_Stub;
@@ -137,6 +139,7 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 	}
 	
 	public ResultMessage rechargeCredit(CreditChangeVO vo){
+		vo.action = CreditChangeType.RECHARGE_CREDIT;
 		return this.changeCredit(vo);
 	}
 }
