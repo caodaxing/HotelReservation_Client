@@ -8,12 +8,12 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
-import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
 import vo.RoomVO;
@@ -31,7 +31,7 @@ public class SetAvailableRooms {
 	private AnchorPane rightPane;
 	private HotelManagerUI hmui;
 	
-	ChoiceBox roomType;
+	ComboBox roomType;
 	TextField roomNum;
 	TextField initialPrice;
 	
@@ -113,7 +113,8 @@ public class SetAvailableRooms {
 	private void setChoiceBox(){
 		
 		//待修改，根据controller
-		roomType = new ChoiceBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType = new ComboBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
+		roomType.setVisibleRowCount(3);
 		roomType.setId("SetAvailableRooms");
 		roomType.setPrefSize(200, 30);
 		

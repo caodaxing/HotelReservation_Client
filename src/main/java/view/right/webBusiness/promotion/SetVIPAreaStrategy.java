@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -11,7 +12,6 @@ import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
-import viewController.WebBusinessLeftController;
 
 /**
  * 网站营销人员界面_促销策略_制定会员特定商圈促销策略
@@ -27,7 +27,7 @@ public class SetVIPAreaStrategy {
 	private WebBusinessUI wbui;
 	
 	TextField lowestVIPLevel;
-	TextField tradingArea;
+	ChoiceBox tradingArea;
 	TextField discountRange;
 	TextField discountName;
 	
@@ -79,7 +79,7 @@ public class SetVIPAreaStrategy {
 		
 		//初始化文本框
 		lowestVIPLevel = new TextField();
-		tradingArea = new TextField();
+		tradingArea = new ComboBox("");
 		discountRange = new TextField();
 		discountName = new TextField();
 		
@@ -94,7 +94,6 @@ public class SetVIPAreaStrategy {
 		
 		//设置文本框内容不可更改
 		lowestVIPLevel.setEditable(true);
-		tradingArea.setEditable(true);
 		discountRange.setEditable(true);
 		discountName.setEditable(true);
 		
@@ -166,16 +165,11 @@ public class SetVIPAreaStrategy {
 				prompt.show();
 				//传输vo
 				String s1 = lowestVIPLevel.getText();
-				String s2 = tradingArea.getText();
+				String s2 = tradingArea.getSelectionModel().getSelectedIndex();
 				String s3 = discountRange.getText();
 				String s4 = discountName.getText();
 //				PromotionVO promotionVO = new PromotionVO(null,s4,)
 				//
-				lowestVIPLevel.setText("");
-				tradingArea.setText("");
-				discountRange.setText("");
-				discountName.setText("");
-				
 				controller.setChooseView();
 				controller.getStage().show();
 			}

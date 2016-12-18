@@ -144,26 +144,26 @@ public class SetVIPStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				//传输vo
-				double d1 = Double.parseDouble(VIP1DiscountRange.getText());
-				double d2 = Double.parseDouble(VIP2DiscountRange.getText());
-				double d3 = Double.parseDouble(VIP3DiscountRange.getText());
-				double[] d = {d1,d2,d3};
-				String s = discountName.getText();
-				PromotionVO promotionVO = new PromotionVO(null, s, d);
-				//
-				if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-					VIP1DiscountRange.setText("");
-					VIP2DiscountRange.setText("");
-					VIP3DiscountRange.setText("");
-					discountName.setText("");
-					Prompt prompt = new Prompt("保存成功");
-					prompt.show();
-					controller.setChooseView();
-					controller.getStage().show();
-				}else{
-					Prompt prompt = new Prompt("输入错误");
-					prompt.show();
+				try{
+					double d1 = Double.parseDouble(VIP1DiscountRange.getText());
+					double d2 = Double.parseDouble(VIP2DiscountRange.getText());
+					double d3 = Double.parseDouble(VIP3DiscountRange.getText());
+					double[] d = {d1,d2,d3};
+					String s = discountName.getText();
+					PromotionVO promotionVO = new PromotionVO(null, s, d);
+					if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+						Prompt prompt = new Prompt("添加成功");
+						prompt.show();
+						controller.setChooseView();
+						controller.getStage().show();
+					}else{
+						Prompt prompt = new Prompt("添加失败");
+						prompt.show();
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("折扣输入错误");
 				}
+				
 			}
 					
 		});

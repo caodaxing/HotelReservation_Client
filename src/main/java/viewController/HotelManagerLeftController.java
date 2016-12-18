@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import Message.OrderListCondition;
 import Message.ResultMessage;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import logic.account.Account;
 import logic.order.Order;
 import logic.room.Room;
@@ -173,6 +175,18 @@ public class HotelManagerLeftController{
 		}
 		userId = null;
 		showDialog("注销成功");
+		newStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+			 @Override
+	         public void handle(WindowEvent event) {
+				 ResultMessage result = accountService.logout(userId);
+					if(result == ResultMessage.FAILURE){
+						showDialog("注销失败");
+						return ;
+					}
+					userId = null;
+					showDialog("注销成功");
+	         }
+		});
 		accountController.setFirstView();
 		newStage.show();
 	}

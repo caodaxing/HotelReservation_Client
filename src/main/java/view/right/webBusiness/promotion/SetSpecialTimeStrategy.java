@@ -1,10 +1,13 @@
 package view.right.webBusiness.promotion;
 
+import java.time.LocalDate;
+
 import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -27,8 +30,8 @@ public class SetSpecialTimeStrategy {
 	private AnchorPane rightPane;
 	private WebBusinessUI wbui;
 	
-	TextField startDiscountTime;
-	TextField endDiscountTime;
+	DatePicker startDiscountTime;
+	DatePicker endDiscountTime;
 	TextField discountRange;
 	TextField discountName;
 	
@@ -65,11 +68,13 @@ public class SetSpecialTimeStrategy {
 	private void setTextField(){
 		
 		//添加文本框
-		startDiscountTime = new TextField();
+		startDiscountTime = new DatePicker();
+		startDiscountTime.setValue(LocalDate.now());
 		startDiscountTime.setId("SetSpecialTimeStrategy");
 		startDiscountTime.setPrefSize(200, 30);
 				
-		endDiscountTime = new TextField();
+		endDiscountTime = new DatePicker();
+		endDiscountTime.setValue(LocalDate.now());
 		endDiscountTime.setId("SetSpecialTimeStrategy");
 		endDiscountTime.setPrefSize(200, 30);
 			
@@ -143,25 +148,31 @@ public class SetSpecialTimeStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				//传输vo
-				String s1 = startDiscountTime.getText();
-				String s2 = endDiscountTime.getText();
+				String s1 = startDiscountTime.getValue().toString();
+				String s2 = endDiscountTime.getValue().toString();
 				String s3 = discountRange.getText();
 				String s4 = discountName.getText();
 				//
-				PromotionVO promotionVO = new PromotionVO(null, s4,Double.parseDouble(s3), s1, s2);
-				if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-					startDiscountTime.setText("");
-					endDiscountTime.setText("");
-					discountRange.setText("");
-					discountName.setText("");
-					Prompt prompt = new Prompt("保存成功");
-					prompt.show();
-					controller.setChooseView();
-					controller.getStage().show();
+				if(s1 == null || s2 == null){
+					controller.showDialog("请输入日期");
 				}else{
-					Prompt prompt = new Prompt("输入错误");
-					prompt.show();
+					try{
+						double d = Double.parseDouble(s3);
+						PromotionVO promotionVO = new PromotionVO(null, s4, d, s1, s2);
+						if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+							Prompt prompt = new Prompt("添加成功");
+							prompt.show();
+							controller.setChooseView();
+							controller.getStage().show();
+						}else{
+							Prompt prompt = new Prompt("添加失败");
+							prompt.show();
+						}
+					}catch(NumberFormatException e){
+						controller.showDialog("折扣输入错误");
+					}
 				}
+				
 			}
 					
 		});
