@@ -22,8 +22,9 @@ public class Picture implements PictureService {
 		try {
 			byte[] bs = this.pictureDao.getUserImage(userID);
 			//图片名就是用户名
-			if(PictureHelper.bytesToImage(bs, userID)) {
-				return userID;
+			String temp = PictureHelper.bytesToImage(bs, userID);
+			if(temp != null) {
+				return temp;
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -48,9 +49,7 @@ public class Picture implements PictureService {
 		
 		for(int i=0; i<imageByte.size(); ++i) {
 			String path = hotelID+String.valueOf(i);
-			if(PictureHelper.bytesToImage(imageByte.get(i), path)) {
-				imagePaths.add(path);
-			}
+			imagePaths.add(PictureHelper.bytesToImage(imageByte.get(i), path));
 		}
 		
 		if(imagePaths.size() == 0) {

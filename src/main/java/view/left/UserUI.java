@@ -39,6 +39,9 @@ public class UserUI{
 		
 		Pane pane = new GridPane();
 		String imagePath = controller.getHeadPath();
+		
+		System.out.println(imagePath);
+		
 		Image image;
 		if(!imagePath.equals("")){
 			image = new Image(imagePath, 200, 200, false, true);

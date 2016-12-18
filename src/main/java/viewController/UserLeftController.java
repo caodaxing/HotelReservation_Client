@@ -93,7 +93,10 @@ public class UserLeftController {
 	}
 	
 	public UserLeftController(Stage stage ,String userID){
+
 		this();
+		
+//		System.out.println(userID);
 		this.stage = stage ;
 		this.userID = userID ;
 	}
@@ -276,10 +279,17 @@ public class UserLeftController {
 	 * 返回用户头像路径
 	 */
 	public String getHeadPath(){
+		
+//		System.out.println(userID);
+		
 		String headPath = pictureService.getUserImage(userID);
-		if(headPath == null || headPath.equals("")){//默认头像
+
+//		System.out.println(headPath);
+		
+		if(headPath == null || headPath.equals("")){ 			//默认头像
 			headPath = "/head/游客头像.png";
 		}
+		
 		return headPath;
 	}
 	
