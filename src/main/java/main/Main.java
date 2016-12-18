@@ -27,11 +27,11 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) {
+		new ClientRunner();
+		
 		launch(args);
 		
-//		new ClientRunner();
-//	
-////		AccountDao ad = RemoteHelper.getInstance().getAccountDao();
+//		AccountDao ad = RemoteHelper.getInstance().getAccountDao();
 //		
 //		PictureDao pictureDao = RemoteHelper.getInstance().getPictureDao();
 //		
