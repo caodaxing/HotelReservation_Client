@@ -9,6 +9,7 @@ import logic.user.HotelManagerInfo;
 import logic.utility.HotelTransform;
 import logicService.hotel.UpdateHotelService;
 import main.rmi.RemoteHelper;
+import po.HotelPO;
 import vo.HotelVO;
 
 /**
@@ -25,7 +26,22 @@ public class UpdateHotel implements UpdateHotelService{
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO) {
-		return this.updateHotelInfo(hotelVO);
+		
+		if(hotelVO == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		HotelPO po = HotelTransform.hotelTransToPO(hotelVO);
+		
+		try {
+			if(this.hotelDao.addHotel(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.FAILURE;
 	}
 
 	public ResultMessage updateHotelInfo(HotelVO hotelVO) {

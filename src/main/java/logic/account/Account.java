@@ -9,10 +9,12 @@ import dataDao.account.AccountDao;
 import logic.credit.Credit;
 import logic.credit.CreditChange;
 import logic.credit.CreditChangeInfo;
+import logic.user.AddClientInfo;
 import logic.utility.Time;
 import logicService.account.AccountService;
 import main.rmi.RemoteHelper;
 import po.AccountPO;
+import po.ClientPO;
 import vo.AccountVO;
 import vo.CreditChangeVO;
 
@@ -24,6 +26,7 @@ import vo.CreditChangeVO;
 public class Account implements AccountService{
 	private AccountDao accountDao;
 	private CreditChangeInfo creditChange;
+	private AddClientInfo clientInfo;
 		
 	public Account(){
 		this.creditChange = new CreditChange();
@@ -54,7 +57,11 @@ public class Account implements AccountService{
 					if(accountDao.addAccount(po)) {
 						
 						if(this.initCredit(po.getAccountID())) {
-							return ResultMessage.SUCCESS;
+							ClientPO clientPO = new ClientPO(accountVO.userId, "", "", "", Identity.CLIENT.ordinal(), 0, "");
+							if(ResultMessage.SUCCESS == this.clientInfo.addClient(clientPO)) {
+								return ResultMessage.SUCCESS;
+							}
+							
 						}
 					}
 				}

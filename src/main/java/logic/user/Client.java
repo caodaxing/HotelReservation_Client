@@ -19,7 +19,7 @@ import vo.VipVO;
  * po中没有保存credit，以防止credit被更改
  * @author Xue.W
  */
-public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
+public class Client implements ClientService, ClientVipInfo, UpdateClientVip, AddClientInfo{
 	
 	private ClientDao clientDao;
 
@@ -27,6 +27,23 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		this.clientDao = RemoteHelper.getInstance().getClientDao();
 //		this.clientDao = new ClientDao_Stub();
 	}	
+	
+	@Override
+	public ResultMessage addClient(ClientPO po) {
+		if(po == null) {
+			return ResultMessage.FAILURE;
+		}
+		
+		try {
+			if(this.clientDao.addClient(po)) {
+				return ResultMessage.SUCCESS;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return ResultMessage.FAILURE;
+	}
 	
 	/**
 	 * 获得用户（会员）信息,包括信用值
@@ -182,5 +199,5 @@ public class Client implements ClientService, ClientVipInfo, UpdateClientVip{
 		
 		return false;
 	}
-	
+
 }
