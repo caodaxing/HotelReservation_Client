@@ -9,7 +9,9 @@ import java.rmi.RemoteException;
 import dataDao.account.AccountDao;
 import dataDao.picture.PictureDao;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import main.rmi.ClientRunner;
 import main.rmi.RemoteHelper;
 import viewController.AccountController;
@@ -22,6 +24,12 @@ public class Main extends Application{
 		AccountController accountController = new AccountController(stage);
 		accountController.setFirstView();
 		stage.setResizable(false);
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                accountController.logout();
+            }
+        });
 		stage.show();
 		
 	}

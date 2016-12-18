@@ -33,6 +33,8 @@ public class AccountController {
 	private SignInUI signInUI ;
 	private SignUpUI signUpUI ;
 	
+	private String userID;
+	
 	public AccountController(Stage stage){
 		
 		this.stage = stage;
@@ -157,6 +159,7 @@ public class AccountController {
 			//弹出"登陆成功"，清空textfield，跳入对应用户界面
 			showDialog("登陆成功");
 			signInUI.setBlank();
+			this.userID = ID;
 			showFirstView(ID,identity);
 		}
 		
@@ -187,6 +190,10 @@ public class AccountController {
 		
 		return ;
 	
+	}
+	
+	public void logout(){
+		accountService.logout(userID);
 	}
 	
 }

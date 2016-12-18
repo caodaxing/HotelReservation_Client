@@ -6,7 +6,9 @@ import Message.Identity;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import Message.VipType;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import logic.account.Account;
 import logic.hotel.CheckHotel;
 import logic.order.Order;
@@ -231,6 +233,12 @@ public class UserLeftController {
 		userID = null;
 		showDialog("注销成功");
 		accountController.setFirstView();
+		newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                accountController.logout();
+            }
+        });
 		newStage.setResizable(false);
 		newStage.show();
 		

@@ -2,7 +2,9 @@ package viewController;
 
 import Message.Identity;
 import Message.ResultMessage;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import logic.account.Account;
 import logic.hotel.UpdateHotel;
 import logic.user.WebManager;
@@ -108,6 +110,12 @@ public class WebManagerLeftController {
 		userID = null;
 		showDialog("注销成功");
 		accountController.setFirstView();
+		newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                accountController.logout();
+            }
+        });
 		newStage.setResizable(false);
 		newStage.show();
 		
