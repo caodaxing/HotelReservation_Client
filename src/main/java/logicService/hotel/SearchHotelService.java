@@ -27,7 +27,7 @@ public interface SearchHotelService {
 	 * @return ArrayList<String> 返回商圈列表
 	 * @author all
 	 */
-	public ArrayList<String> getCitys();
+	public ArrayList<String> getCities();
 	
 	/**
 	 * 将搜索到的酒店按一定方式排列

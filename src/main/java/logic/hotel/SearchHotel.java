@@ -37,7 +37,7 @@ public class SearchHotel implements SearchHotelService {
 	}
 
 	@Override
-	public ArrayList<String> getCitys() {
+	public ArrayList<String> getCities() {
 		
 		ArrayList<String> res = null;
 		try {
