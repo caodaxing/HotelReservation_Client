@@ -165,6 +165,6 @@ public class ModifyWebBusiness {
 		WebBusinessVO vo = controller.getWebBusinessInfo();
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
-		id.setText(vo.numberOfIdentityCard);
+		id.setText(vo.userID);
 	}
 }

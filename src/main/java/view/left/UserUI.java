@@ -150,7 +150,7 @@ public class UserUI{
 		grid.add(abnormalOrder, 0, 8);
 		
 		Button orderedHotel = new Button("查看酒店");
-		orderedHotel.setId("dark-button");
+		orderedHotel.setId("light-button");
 		orderedHotel.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){

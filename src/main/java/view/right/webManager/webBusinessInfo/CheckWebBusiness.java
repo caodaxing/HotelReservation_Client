@@ -59,7 +59,7 @@ public class CheckWebBusiness {
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 
 		rightPane.getStylesheets().add("/CSS/right.css");
-		root.setStyle("-fx-background-image:url(\"/infoManagement/用户管理_添加网站营销人员背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/infoManagement/用户管理_管理网站营销人员背景.jpg\")");
 	}
 	
 	private void setTextField (){
@@ -145,7 +145,7 @@ public class CheckWebBusiness {
 		WebBusinessVO vo = controller.getWebBusinessInfo();
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
-		id.setText(vo.numberOfIdentityCard);
+		id.setText(vo.userID);
 		password.setText("123456");
 	}
 }
