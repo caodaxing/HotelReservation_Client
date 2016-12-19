@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @param numberOfRooms  房间数量
  * @param hasChild  是否有小孩
  * @param numberOfPeople  入住人数
- * @param state 0:未执行 1:已执行 2:异常 3:撤销
+ * @param state 0:未执行  1:已经执行 2:异常状态 3:撤销(异常)状态 4.撤销(未执行)订单
  * @param beforePromotionPrice 促销前价格
  * @param afterPromotionPrice 促销后价格
  * @param promotionNum 使用的促销策略的数量
