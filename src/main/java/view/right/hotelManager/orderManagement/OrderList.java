@@ -37,7 +37,7 @@ import vo.OrderVO;
 public class OrderList {
 	
 	private HotelManagerLeftController controller;
-	private HMOrderManagementController hmcontroller;
+//	private HMOrderManagementController hmcontroller;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -62,7 +62,7 @@ public class OrderList {
 	public OrderList(HotelManagerLeftController controller){
 		
 		this.controller = controller;
-		hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+		
 		hmui = new HotelManagerUI(controller);
 		data = FXCollections.observableArrayList();
 		
@@ -113,6 +113,7 @@ public class OrderList {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
+				HMOrderManagementController hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 				hmcontroller.setSearchOrderView();
 				hmcontroller.getStage().show();
 			}
@@ -179,10 +180,12 @@ public class OrderList {
 								int row = this.getTableRow().getIndex();
 //								HMOrderManagementController HMcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
 //								HMcontroller.setOrderList(controller.getlist());
-								controller.setOrderId(row);
-								String orderID = controller.getOrderId();
-//								System.out.println(orderID);
-								hmcontroller.setOrderView(orderID);
+								HMOrderManagementController hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
+								hmcontroller.setOrderList(controller.getlist());
+								hmcontroller.setOrderId(row);
+//								String orderID = controller.getOrderId();
+System.out.println();
+								hmcontroller.setOrderView();
 								hmcontroller.getStage().show();
 							});
 						}

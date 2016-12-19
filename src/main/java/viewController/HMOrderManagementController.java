@@ -70,6 +70,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public void setAbnormalOrderView(){
 		abnormalOrderUI = new AbnormalOrder(this);
+		abnormalOrderUI.setText();
 		stage.setScene(abnormalOrderUI.getScene());
 		abnormalOrderUI.setText();
 	}
@@ -87,12 +88,15 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	}
 	
 	public void setEvaluationInfoView(){
+		evalutionInfoUI = new EvaluationInfo(this);
+		evalutionInfoUI.setText();
 		stage.setScene(evalutionInfoUI.getScene());
 		
 	}
 	
 	public void setExecuteOrderView(){
 		executeOrderUI = new ExecuteOrder(this);
+		executeOrderUI.setText();
 		stage.setScene(executeOrderUI.getScene());
 		executeOrderUI.setText();
 	}
@@ -113,12 +117,14 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public void setUndoOrderView(){
 		undoOrderUI = new UndoOrder(this);
+		undoOrderUI.setText();
 		stage.setScene(undoOrderUI.getScene());
 		undoOrderUI.setText();
 	}
 	
 	public void setUnexecuteOrderView(){
 		unexecuteOrderUI = new UnexecuteOrder(this);
+		unexecuteOrderUI.setText();
 		stage.setScene(unexecuteOrderUI.getScene());
 		unexecuteOrderUI.setText();
 	}
@@ -156,9 +162,10 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 //		orderlist = orderList;
 //	}
 	
-	public void setOrderView(String orderId) {
+	public void setOrderView() {
+System.out.println(orderId);
 		OrderState state = orderService.getOrderInfo(orderId).orderState;
-//		System.out.println(state);
+System.out.println(state);
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){
@@ -199,4 +206,25 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		return orderService.getOrderInfo(orderID);
 	}
 	
+	public OrderVO getOrderInfo(){
+		System.out.println(orderId);
+		return orderService.getOrderInfo(orderId);
+	}
+			
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
+	}
+			
+	public void setOrderId(int row){
+		orderId = orderlist.get(row).orderId;
+		System.out.println(orderId);
+	}
+	
+	public void setOrderList(ArrayList<OrderVO> orderList){
+		orderlist = orderList;
+	}
+	
+	public String getOrderId(){
+		return orderId;
+	}
 }

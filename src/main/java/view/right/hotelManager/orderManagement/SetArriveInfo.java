@@ -197,7 +197,6 @@ public class SetArriveInfo {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setBlankView();
-				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			

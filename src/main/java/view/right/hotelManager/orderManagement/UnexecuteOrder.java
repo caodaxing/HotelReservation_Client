@@ -40,7 +40,6 @@ public class UnexecuteOrder {
 	
 	Button doOrder;
 	Button revert;
-	OrderVO orderVO;
 	
 	public UnexecuteOrder(HMOrderManagementController controller){
 		
@@ -207,7 +206,9 @@ public class UnexecuteOrder {
 	}
 	
 	public void setText(){
+System.out.println(controller.getOrderId());
 		OrderVO vo = controller.getOrderInfo();
+System.out.println(vo);
 		orderID.setText(vo.orderId);
 		hotelName.setText(vo.hotelID);
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));

@@ -82,6 +82,7 @@ public class HotelManagerLeftController{
 	}
 	
 	public void setBlankView(){
+		orderId = null;
 		blankUI = new Blank(this);
 		stage.setScene(blankUI.getScene());
 		stage.show();
@@ -210,9 +211,9 @@ public class HotelManagerLeftController{
 		return stage;
 	}
 	
-	public String getOrderId(){
-		return orderId;
-	}
+//	public String getOrderId(){
+//		return orderId;
+//	}
 	
 	
 	
@@ -247,17 +248,20 @@ public class HotelManagerLeftController{
 		return pictureService.getHotelImage(userId);
 	}
 	
-	public OrderVO getOrderInfo(){
-		return orderService.getOrderInfo(orderId);
-	}
-	
-	public void setOrderId(String orderId){
-		this.orderId = orderId;
-	}
-	
-	public void setOrderId(int row){
-		orderId = orderlist.get(row).orderId;
-	}
+//	public OrderVO getOrderInfo(){
+//System.out.println(orderId);
+//		return orderService.getOrderInfo(orderId);
+//	}
+//	
+//	public void setOrderId(String orderId){
+//		this.orderId = orderId;
+//	}
+//	
+//	public void setOrderId(int row){
+//
+//		orderId = orderlist.get(row).orderId;
+//System.out.println(orderId);
+//	}
 	
 	public void setOrderList(ArrayList<OrderVO> orderList){
 		orderlist = orderList;

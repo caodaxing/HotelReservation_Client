@@ -87,7 +87,7 @@ public class SearchOrder{
 				//传输vo
 				if(controller.getOrder(orderID.getText()) != null){
 					controller.setOrderId(orderID.getText());
-					controller.setOrderView(orderID.getText());
+					controller.setOrderView();
 					controller.setExecuteOrderView();
 					controller.getStage().show();
 				}else{
