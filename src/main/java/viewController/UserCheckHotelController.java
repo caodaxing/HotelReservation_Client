@@ -281,7 +281,7 @@ public class UserCheckHotelController extends UserLeftController {
 		String s = "否";
 		ArrayList<HotelVO> list = searchHotelService.getBookedHotelList(userID);
 		for(HotelVO h :list){
-			if(hotelID == h.hoteID){
+			if(hotelID.equals( h.hoteID ) ){
 				s = "是";
 				break;
 			}

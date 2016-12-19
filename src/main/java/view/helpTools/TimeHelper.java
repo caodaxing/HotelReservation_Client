@@ -49,7 +49,8 @@ public class TimeHelper {
 	 */
 	public static String getInstanceTimeString(){
 		//String s = Calendar.getInstance().HOUR_OF_DAY + ":" + Calendar.getInstance().MINUTE+":" + Calendar.getInstance().SECOND;
-		return Time.getCurrentTime().substring(11);
+		String s = Time.getCurrentTime().substring(11);
+		return s;
 	}
 
 }

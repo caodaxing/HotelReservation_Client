@@ -28,14 +28,14 @@ public class OneButtonDialog {
 		stage.setResizable(false);
 		
 		AnchorPane pane = new AnchorPane();
-		pane.setPrefSize(300.0, 150.0);
+		pane.setPrefSize(320.0, 150.0);
 		
 		label = new Label();
 		label.setText(labelText);
-		label.setPrefSize(200.0, 30);
+		label.setPrefSize(240.0, 30);
 		label.setAlignment(Pos.CENTER);
 		pane.getChildren().add(label);
-		AnchorPane.setLeftAnchor(label, 50.0);
+		AnchorPane.setLeftAnchor(label, 40.0);
 		AnchorPane.setTopAnchor(label, 40.0);
 		
 		button = new Button();
@@ -47,10 +47,10 @@ public class OneButtonDialog {
 			}
 		});
 		pane.getChildren().add(button);
-		AnchorPane.setLeftAnchor(button, 120.0);
+		AnchorPane.setLeftAnchor(button, 130.0);
 		AnchorPane.setTopAnchor(button, 100.0);
 		
-		Scene scene = new Scene(pane,300,150);
+		Scene scene = new Scene(pane,320,150);
 		scene.getStylesheets().add("/CSS/right.css");
 		stage.setScene(scene);
 		
