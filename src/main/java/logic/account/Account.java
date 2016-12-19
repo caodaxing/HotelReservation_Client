@@ -98,8 +98,12 @@ public class Account implements AccountService{
 	 */
 	public ResultMessage login(AccountVO accountVO) {
 		
-		if(accountVO == null || accountVO.userId == null ||
-				accountVO.identity == null || accountVO.password == null) {
+		if(accountVO.identity == null) {
+			return ResultMessage.USERNAME_NOT_EXIST;
+		}
+		
+		if(accountVO == null || accountVO.userId == null || accountVO.password == null) {
+			
 			return ResultMessage.FAILURE;
 		}
 		
