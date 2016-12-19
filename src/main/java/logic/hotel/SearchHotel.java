@@ -194,7 +194,6 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 				
 				while(!t1.getTime().equals(t2.getTime())) {
 					num = roomInfo.getSpcificTimeRemainingRoomNums(vo.hoteID, search.roomType, t1.getTime());
-			
 					
 					if(num < search.roomNum) {
 						empty = false;

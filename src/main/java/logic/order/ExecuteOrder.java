@@ -169,8 +169,6 @@ public class ExecuteOrder implements ExecuteOrderService{
 	// 撤销异常订单
 	public ResultMessage undoAbnormalOrder(String orderID, boolean recoverAllDeletedCredit) {
 		
-System.out.println(orderID + recoverAllDeletedCredit);
-		
 		try {
 			po = this.orderDao.getOrderByOrderID(orderID);
 		} catch (RemoteException e) {
