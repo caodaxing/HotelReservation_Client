@@ -14,6 +14,7 @@ public class TimeTest {
 	@Before
 	public void setUp() {
 		this.time = new Time("2016-11-11");
+		System.out.println(Time.getCurrentTime());
 	}
 	
 	@Test

@@ -42,6 +42,8 @@ public class Time {
 			this.time = time;
 			this.initTime();
 		}
+		
+		
 	}
 	
 	public int calculateDay(String t) {
@@ -64,6 +66,8 @@ public class Time {
 	public String calculateLastestExecutedTime() {
 		Calendar c = Calendar.getInstance();
 		Date d = null;
+
+//		System.out.println("time:" + this.time);
 		
 		try {
 			d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.time);

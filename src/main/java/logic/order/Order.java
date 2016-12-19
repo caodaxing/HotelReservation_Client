@@ -42,7 +42,10 @@ public class Order implements OrderService, OrderHotelInfo{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return this.orderTrans.orderTransToVO(po);
+		
+		OrderVO vo = this.orderTrans.orderTransToVO(po);
+		
+		return vo;
 		
 	}
 	
@@ -98,13 +101,6 @@ public class Order implements OrderService, OrderHotelInfo{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
-//		if(res != null) {
-//			System.out.println(res.size());
-//		} else {
-//			System.out.println(111);
-//		}
-
 		
 		return res;
 	}

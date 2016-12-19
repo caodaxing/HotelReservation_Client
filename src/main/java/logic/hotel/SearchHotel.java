@@ -151,18 +151,11 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
-System.out.println("search Hotel1");
-		
 		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
-		
-System.out.println("search Hotel2");
-if(initList != null) {
-	System.out.println(initList.size());
-}
-		
+			
 		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();	
 		//酒店名称的筛选
 		if (search.hotelName != null && !search.hotelName.equals("")) {
@@ -178,6 +171,7 @@ if(initList != null) {
 		} else {
 			hotelList = initList;
 		}
+
 		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;
@@ -195,6 +189,7 @@ if(initList != null) {
 			for(int i=0; i<hotelList.size(); ++i) {
 				HotelVO vo  = hotelList.get(i);
 				boolean empty = true;
+				
 				Time t1 = new Time(search.startTime);
 				Time t2 = new Time(search.endTime);
 				
@@ -216,8 +211,6 @@ if(initList != null) {
 			
 			hotelList = hotelList2;
 		}
-		
-		
 		
 		if(hotelList == null || hotelList.size() == 0) {
 			return null;

@@ -43,15 +43,17 @@ public class OrderList implements OrderListService{
 		if(userID == null || condition == null) {
 			System.out.println("logic.order.OrderList.filterUserOrderList参数异常");
 			return null;
-		}
-		
+		}	
+	
 		try {
 			this.orders = this.orderListDao.getOrderListByUserId(userID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		
-		return this.filterList(condition);
+		ArrayList<OrderVO> vos = this.filterList(condition);
+		
+		return vos;
 	}
 
 	

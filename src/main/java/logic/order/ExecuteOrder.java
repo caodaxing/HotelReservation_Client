@@ -234,6 +234,8 @@ public class ExecuteOrder implements ExecuteOrderService{
 			
 			
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
+				
+System.out.println();
 	
 				if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
 						RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
@@ -303,8 +305,13 @@ System.out.println("logic.order.ExecuteOrder.afterLastestExecutedTime参数错�
 		
 		try {
 			
+//System.out.println("o:" + orderStartTime);
+			
 			//最晚订单执行时间为计划入住时间之后四小时
 			String lastestExecutedTime = new Time(orderStartTime).calculateLastestExecutedTime();
+			
+//System.out.println("l:" + lastestExecutedTime);
+			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 			Date d1 = format.parse(time);
