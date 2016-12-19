@@ -1,6 +1,10 @@
 package view.helpTools;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import logic.utility.Time;
 
 /**
  * 管理所需的时间信息
@@ -44,10 +48,8 @@ public class TimeHelper {
 	 * @return String 当前时间字符串 格式为“hh:mm:ss”,用时注意在前面加一个空格
 	 */
 	public static String getInstanceTimeString(){
-		String s = Integer.toString(Calendar.HOUR_OF_DAY) + ":" ;
-		s += Integer.toString(Calendar.MINUTE)+":";
-		s += Integer.toString(Calendar.SECOND);
-		return s;
+		//String s = Calendar.getInstance().HOUR_OF_DAY + ":" + Calendar.getInstance().MINUTE+":" + Calendar.getInstance().SECOND;
+		return Time.getCurrentTime().substring(11);
 	}
 
 }

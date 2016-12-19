@@ -239,7 +239,7 @@ public class HotelInfo{
 	
 	public void setFirstImage(){
 		ArrayList<String> paths = controller.getHotelImage();
-		if(!paths.isEmpty()){
+		if(paths.isEmpty()){
 			return;
 		}else {
 			try{

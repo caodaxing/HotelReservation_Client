@@ -190,7 +190,7 @@ public class SearchResultList{
 
 			@Override
 			public void handle(ActionEvent event) {
-				controller.setSearchHotelView();
+				controller.setHotelFirstView();
 				controller.getStage().show();
 			}
 			

@@ -236,7 +236,6 @@ public class MakeOrder{
 			arrive="x";
 		}
 		String leave = leaveTime.getValue().toString()+" "+time;
-		String latest = latestTime.getValue().toString()+" "+time;
 		
 		int t2 = haveChild.getSelectionModel().getSelectedIndex();
 		boolean child = false;

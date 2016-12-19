@@ -144,7 +144,7 @@ public class HotelInfo {
 	private void setImageView(){
 		hotelImage = new ImageView();
 		
-		hotelImage.setFitHeight(250.0);
+		hotelImage.setFitWidth(250.0);
 		hotelImage.setFitHeight(200.0);
 
 		rightPane.getChildren().add(hotelImage);
@@ -176,7 +176,7 @@ public class HotelInfo {
 		});
 		rightPane.getChildren().add(next);
 		AnchorPane.setLeftAnchor(next, 150.0);
-		AnchorPane.setTopAnchor(next, 460.0);
+		AnchorPane.setTopAnchor(next, 560.0);
 		
 	}
 	
@@ -190,7 +190,7 @@ public class HotelInfo {
 	
 	public void setFirstImage(){
 		ArrayList<String> paths = controller.getHotelImage();
-		if(!paths.isEmpty()){
+		if(paths.isEmpty()){
 			return;
 		}else {
 			try{

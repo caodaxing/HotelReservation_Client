@@ -96,7 +96,10 @@ public class SuccessOrder {
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 		roomNums.setText(Integer.toString(vo.roomNum));
 		arriveTime.setText(vo.startTime);
-		promotion.setText(vo.promotion.promotionName+": "+vo.promotion.discount);
+		if(vo.promotion == null){
+			promotion.setText("无");
+		}else
+			promotion.setText(vo.promotion.promotionName+": "+vo.promotion.discount);
 		originalPrice.setText(Double.toString(vo.beforePrice));
 		actualPrice.setText(Double.toString(vo.afterPrice));
 		peopleNums.setText(Integer.toString(vo.numOfPeople));
