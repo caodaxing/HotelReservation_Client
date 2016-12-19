@@ -277,7 +277,7 @@ public class UserCheckHotelController extends UserLeftController {
 	 * @param hotelID
 	 * @return string"是"、"否"
 	 */
-	public String checkWeitherReserved(String hoteID) {
+	public String checkWeitherReserved(String hotelID) {
 		String s = "否";
 		ArrayList<HotelVO> list = searchHotelService.getBookedHotelList(userID);
 		for(HotelVO h :list){

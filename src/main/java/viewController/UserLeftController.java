@@ -81,7 +81,7 @@ public class UserLeftController {
 		checkHotelService = new CheckHotel();
 		pictureService = new Picture();
 
-		checkMyInfoUI = new CheckMyInfo(this);
+		//checkMyInfoUI = new CheckMyInfo(this);
 		orderFirstUI = new First(this);
 		//allOrderList = new OrderList(this);
 		//executeOrderList = new OrderList(this);
@@ -90,7 +90,6 @@ public class UserLeftController {
 		//abnormalOrderList = new OrderList(this);
 		hotelFirstUI = new HotelFirst(this);
 		modifyPasswordUI = new ModifyPassword(this);
-		checkMyInfoUI = new CheckMyInfo(this);
 
 	}
 	
