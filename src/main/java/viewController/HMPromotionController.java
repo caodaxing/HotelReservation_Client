@@ -39,8 +39,9 @@ public class HMPromotionController extends HotelManagerLeftController{
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetThreeRoomsStrategy setThreeRoomsStrategyUI;
 	
-	private int row;
-	private ArrayList<PromotionVO> promotionList;
+//	private int row;
+	protected String promotionId;
+	protected ArrayList<PromotionVO> promotionList;
 	
 	public HMPromotionController(Stage stage, String userId){
 		
@@ -52,7 +53,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
 		chooseUI = new Choose(this);
-		existStrategyUI = new ExistStrategy(this);
+//		existStrategyUI = new ExistStrategy(this);
 		firstUI = new PromotionFirst(this);
 		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
 		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
@@ -66,50 +67,58 @@ public class HMPromotionController extends HotelManagerLeftController{
 		
 	}
 	
-	public HMPromotionController(Stage stage, String userId, int row){
-		
-		super(stage,userId);
-		this.stage = stage;
-		this.userId = userId;
-		this.row = row;
-		
-		promotionService = new ManagePromotion();
-		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
-		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
-		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
-		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
-		chooseUI = new Choose(this);
-		existStrategyUI = new ExistStrategy(this);
-		firstUI = new PromotionFirst(this);
-		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
-		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
-		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
-		setThreeRoomsStrategyUI = new SetThreeRoomsStrategy(this);
-//		promotionService = new Promotion();
-//		orderService = new Order();
-//		roomService = new Room();
-//		accountService = new Account();
-		
-		
-	}
+//	public HMPromotionController(Stage stage, String userId, int row){
+//		
+//		super(stage,userId);
+//		this.stage = stage;
+//		this.userId = userId;
+////		this.row = row;
+//		
+//		promotionService = new ManagePromotion();
+//		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
+//		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
+//		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+//		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
+//		chooseUI = new Choose(this);
+//		existStrategyUI = new ExistStrategy(this);
+//		firstUI = new PromotionFirst(this);
+//		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
+//		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
+//		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
+//		setThreeRoomsStrategyUI = new SetThreeRoomsStrategy(this);
+////		promotionService = new Promotion();
+////		orderService = new Order();
+////		roomService = new Room();
+////		accountService = new Account();
+//		
+//		
+//	}
 	
 	public Stage getStage(){
 		return stage;
 	}
 	
 	public void setCheckBirthdayStrategyView(){
+		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
+		checkBirthdayStrategyUI.setText();
 		stage.setScene(checkBirthdayStrategyUI.getScene());
 	}
 	
 	public void setCheckCooperateCompanyStrategyView(){
+		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
+		checkCooperateCompanyStrategyUI.setText();
 		stage.setScene(checkCooperateCompanyStrategyUI.getScene());
 	}
 	
 	public void setCheckSpecialTimeStrategyView(){
+		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
+		checkSpecailTimeStrategyUI.setText();
 		stage.setScene(checkSpecailTimeStrategyUI.getScene());
 	}
 	
 	public void setCheckThreeRoomsStrategyView(){
+		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
+		checkThreeRoomsStrategyUI.setText();
 		stage.setScene(checkThreeRoomsStrategyUI.getScene());
 	}
 	public void setChooseView(){
@@ -117,6 +126,10 @@ public class HMPromotionController extends HotelManagerLeftController{
 	}
 	
 	public void setExistStrategy(){
+		promotionId = null;
+		setPromotionList();
+		ExistStrategy existStrategyUI = new ExistStrategy(this);
+		existStrategyUI.initialData();
 		stage.setScene(existStrategyUI.getScene());
 	}
 	
@@ -140,7 +153,7 @@ public class HMPromotionController extends HotelManagerLeftController{
 		stage.setScene(setThreeRoomsStrategyUI.getScene());
 	}
 	
-	public void setPromotoinList(){
+	public void setPromotionList(){
 		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
 	}
 	
@@ -148,13 +161,13 @@ public class HMPromotionController extends HotelManagerLeftController{
 		return promotionList;
 	}
 	
-	public void setRow(){
-		row = existStrategyUI.getRow();
-	}
-	
-	public int getRow(){
-		return row;
-	}
+//	public void setRow(){
+//		row = existStrategyUI.getRow();
+//	}
+//	
+//	public int getRow(){
+//		return row;
+//	}
 	
 	public ResultMessage getPromotionResult(PromotionVO promotionVO){
 		return promotionService.addPromotion(promotionVO);
@@ -166,5 +179,13 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public void setDeletePromotion(){
 		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
+	}
+	
+	public void setPromotionId(int row){
+		promotionId = promotionList.get(row).promotionID;
+	}
+	
+	public PromotionVO getPromotionVO(){
+		return promotionService.getPromotion(promotionId);
 	}
 }

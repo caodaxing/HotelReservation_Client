@@ -53,8 +53,8 @@ public class ExistStrategy {
 	private ObservableList<Person> data;
 	private Button check;
 	private Button delete;
-	private int row;
-	ArrayList<PromotionVO> promotionList;
+//	private int row;
+//	ArrayList<PromotionVO> promotionList;
 	
 	public ExistStrategy(HMPromotionController controller){
 		
@@ -121,7 +121,7 @@ public class ExistStrategy {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-		tableView.setPrefSize(455, 400);
+		tableView.setPrefSize(495, 400);
 		initialData();
 		
 		//添加列表内容
@@ -145,21 +145,19 @@ public class ExistStrategy {
 							Item = new Button("查看");
 							Item.setPrefWidth(50);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
-								if(promotionList.get(row).promotionType == PromotionType.HOTEL_11_11){
-									controller = new HMPromotionController(controller.getStage(),controller.getUserId(),row);
+								int row = this.getTableRow().getIndex();
+								controller.setPromotionId(row);
+								PromotionVO promotionVO = controller.getPromotionVO();
+								if(promotionVO.promotionType == PromotionType.HOTEL_11_11){
 									controller.setCheckSpecialTimeStrategyView();
 									controller.getStage().show();
-								}else if(promotionList.get(row).promotionType == PromotionType.HOTEL_3_ROOMS_OR_MORE){
-									controller = new HMPromotionController(controller.getStage(),controller.getUserId(),row);
+								}else if(promotionVO.promotionType == PromotionType.HOTEL_3_ROOMS_OR_MORE){
 									controller.setCheckThreeRoomsStrategyView();
 									controller.getStage().show();
-								}else if(promotionList.get(row).promotionType == PromotionType.HOTEL_BIRTHDAY){
-									controller = new HMPromotionController(controller.getStage(),controller.getUserId(),row);
+								}else if(promotionVO.promotionType == PromotionType.HOTEL_BIRTHDAY){
 									controller.setCheckBirthdayStrategyView();
 									controller.getStage().show();
 								}else{
-									controller = new HMPromotionController(controller.getStage(),controller.getUserId(),row);
 									controller.setCheckCooperateCompanyStrategyView();
 									controller.getStage().show();
 								}
@@ -183,6 +181,7 @@ public class ExistStrategy {
 							Item.setPrefWidth(50);
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
+								controller.setPromotionId(num);
 								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
 									controller.showDialog("删除成功");
 									controller.setDeletePromotion();
@@ -212,15 +211,13 @@ public class ExistStrategy {
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		for(int i=0;i<promotionList.size();i++){
-			data.add(new Person(promotionList.get(i).promotionType.toString(), promotionList.get(i).promotionName.toString(), check, delete));
+		ArrayList<PromotionVO> promotionList = controller.getPromotionList();
+		if(promotionList == null){
+			return ;
 		}
-	}
-	
-	public int getRow(){
-		return row;
+		for(PromotionVO o :promotionList){
+			data.add(new Person(o.promotionType.toString(),o.promotionName,check,delete));
+		}
 	}
 	
 	

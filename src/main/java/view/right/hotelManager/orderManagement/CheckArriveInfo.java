@@ -72,18 +72,18 @@ public class CheckArriveInfo {
 	
 	private void setTextField(){
 		
-		OrderVO vo = controller.getOrderInfo();
+//		OrderVO vo = controller.getOrderInfo();
 		
 		//添加文本框
-		arriveTime = new TextField(vo.checkInTime);
+		arriveTime = new TextField();
 		arriveTime.setId("CheckArriveInfo");
 		arriveTime.setPrefSize(200, 30);
 		
-		estimateLeaveTime = new TextField(vo.endTime);
+		estimateLeaveTime = new TextField();
 		estimateLeaveTime.setId("CheckArriveInfo");
 		estimateLeaveTime.setPrefSize(200, 30);
 		
-		roomType = new TextField(MessageHelper.roomTypeToString(vo.roomType));
+		roomType = new TextField();
 		roomType.setId("CheckArriveInfo");
 		roomType.setPrefSize(200, 30);
 		
@@ -153,5 +153,12 @@ public class CheckArriveInfo {
 		
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderInfo();
+		arriveTime.setText(vo.checkInTime);
+		estimateLeaveTime.setText(vo.endTime);
+		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 	}
 }

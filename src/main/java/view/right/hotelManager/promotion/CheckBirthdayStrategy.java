@@ -64,16 +64,13 @@ public class CheckBirthdayStrategy {
 	
 	private void setTextField(){
 		
-		controller.setPromotoinList();
-		promotionList = controller.getPromotionList();
-		int num = controller.getRow();
 		
 		//添加文本框
-		discountRange = new TextField(String.valueOf(promotionList.get(num).discount));
+		discountRange = new TextField();
 		discountRange.setId("CheckBirthdayStrategy");
 		discountRange.setPrefSize(200, 30);
 				
-		discountName = new TextField(promotionList.get(num).promotionName);
+		discountName = new TextField();
 		discountName.setId("CheckBirthdayStrategy");
 		discountName.setPrefSize(200, 30);
 			
@@ -130,5 +127,11 @@ public class CheckBirthdayStrategy {
 		AnchorPane.setLeftAnchor(revert, 425.0);
 		
 		AnchorPane.setTopAnchor(revert, 525.0);
+	}
+	
+	public void setText(){
+		PromotionVO vo = controller.getPromotionVO();
+		discountRange.setText(String.valueOf(vo.discount));
+		discountName.setText(vo.promotionName);
 	}
 }

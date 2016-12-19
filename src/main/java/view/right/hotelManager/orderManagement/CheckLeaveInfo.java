@@ -71,14 +71,14 @@ public class CheckLeaveInfo {
 	
 	private void setTextField(){
 		
-		OrderVO vo = controller.getOrderInfo();
+//		OrderVO vo = controller.getOrderInfo();
 		//添加文本框
 		
-		roomType = new TextField(MessageHelper.roomTypeToString(vo.roomType));
+		roomType = new TextField();
 		roomType.setId("CheckLeaveInfo");
 		roomType.setPrefSize(200, 30);
 		
-		actualLeaveTime = new TextField(vo.checkOutTime);
+		actualLeaveTime = new TextField();
 		actualLeaveTime.setId("CheckLeaveInfo");
 		actualLeaveTime.setPrefSize(200, 30);
 		/*
@@ -143,5 +143,11 @@ public class CheckLeaveInfo {
 		
 		AnchorPane.setTopAnchor(revert, 525.0);
 		
+	}
+	
+	public void setText(){
+		OrderVO vo = controller.getOrderInfo();
+		roomType .setText(MessageHelper.roomTypeToString(vo.roomType));
+		actualLeaveTime.setText(vo.checkOutTime);
 	}
 }

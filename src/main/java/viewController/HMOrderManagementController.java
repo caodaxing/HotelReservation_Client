@@ -75,10 +75,14 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	}
 	
 	public void setCheckArriveInfoView(){
+		checkArriveInfoUI = new CheckArriveInfo(this);
+		checkArriveInfoUI.setText();
 		stage.setScene(checkArriveInfoUI.getScene());
 	}
 	
 	public void setCheckLeaveInfoView(){
+		checkLeaveInfoUI = new CheckLeaveInfo(this);
+		checkLeaveInfoUI.setText();
 		stage.setScene(checkLeaveInfoUI.getScene());
 	}
 	

@@ -88,13 +88,13 @@ public class SearchOrder{
 				if(controller.getOrder(orderID.getText()) != null){
 					controller.setOrderId(orderID.getText());
 					controller.setOrderView(orderID.getText());
+					controller.setExecuteOrderView();
+					controller.getStage().show();
 				}else{
 					controller.showDialog("订单不存在");
 				}
 				//
-				orderID.setText("");
-				controller.setExecuteOrderView();
-				controller.getStage().show();
+				
 			}
 			
 		});
