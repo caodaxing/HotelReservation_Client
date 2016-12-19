@@ -302,6 +302,9 @@ public class SearchResultList{
 	
 	public void setListValue(){
 		ArrayList<HotelVO> hotelList = controller.getHotelList();
+		if(hotelList == null){
+			return;
+		}
 		for(HotelVO vo:hotelList){
 			check = new Button("查看");
 			String isReserved = controller.checkWeitherReserved(vo.hoteID);

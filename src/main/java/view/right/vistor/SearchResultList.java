@@ -279,6 +279,9 @@ public class SearchResultList {
 	
 	public void setListValue(){
 		ArrayList<HotelVO> hotelList = controller.getHotelList();
+		if (hotelList== null){
+			return;
+		}
 		for(int i=0;i<hotelList.size();i++){
 			check = new Button("查看");
 			data.add(new Person(hotelList.get(i).hotelName,"请先登录", Integer.toString(hotelList.get(i).levelOfHotel), Double.toString(hotelList.get(i).evaluationGrades), check));
