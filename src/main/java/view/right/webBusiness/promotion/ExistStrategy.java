@@ -54,7 +54,7 @@ public class ExistStrategy {
 	private ObservableList<Person> data;
 	private Button check;
 	private Button delete;
-	private int row;
+//	private int row;
 	ArrayList<PromotionVO> promotionList;
 	
 	public ExistStrategy(WBPromotionController controller){
@@ -148,21 +148,20 @@ public class ExistStrategy {
 								int row = this.getTableRow().getIndex();
 								controller.setPromotionId(row);
 								promotionList = controller.getPromotionList();
-								if(promotionList != null){
-									if(promotionList.get(row).promotionType == PromotionType.WEB_11_11){
+								PromotionVO promotionVO = controller.getPromotionVO();
+									if(promotionVO.promotionType == PromotionType.WEB_11_11){
 //										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckSpecialTimeStrategyView();
 										controller.getStage().show();
-									}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_LEVEL){
+									}else if(promotionVO.promotionType == PromotionType.WEB_VIP_LEVEL){
 //										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckVIPStrategyView();
 										controller.getStage().show();
-									}else if(promotionList.get(row).promotionType == PromotionType.WEB_VIP_TRADINGAREA){
+									}else if(promotionVO.promotionType == PromotionType.WEB_VIP_TRADINGAREA){
 //										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckVIPAreaStrategyView();
 										controller.getStage().show();
 									}
-								}
 							});
 						}
 						setGraphic(Item);
@@ -183,15 +182,17 @@ public class ExistStrategy {
 							Item.setPrefWidth(70);
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
-								if(promotionList != null){
+								controller.setPromotionId(num);
+//								if(promotionList != null){
 									if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
 										controller.showDialog("删除成功");
-										controller.setDeletePromotion();
+//										controller.setDeletePromotion();
+										controller.setExistStrategyView();
 										controller.getStage().show();
 									}else{
 										controller.showDialog("删除失败");
 									}
-								}
+//								}
 							});
 						}
 						setGraphic(Item);
@@ -212,13 +213,12 @@ public class ExistStrategy {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 
-	public int getRow(){
-		return row;
-	}
+//	public int getRow(){
+//		return row;
+//	}
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();
-		controller.setPromotoinList();
 		ArrayList<PromotionVO> promotionVOList = controller.getPromotionList();
 		if(promotionVOList == null){
 			return ;

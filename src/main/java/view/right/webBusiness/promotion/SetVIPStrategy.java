@@ -150,15 +150,19 @@ public class SetVIPStrategy {
 					double d3 = Double.parseDouble(VIP3DiscountRange.getText());
 					double[] d = {d1,d2,d3};
 					String s = discountName.getText();
-					PromotionVO promotionVO = new PromotionVO(null, s, d);
-					if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-						Prompt prompt = new Prompt("添加成功");
-						prompt.show();
-						controller.setChooseView();
-						controller.getStage().show();
+					if(s != null){
+						PromotionVO promotionVO = new PromotionVO(null, s, d);
+						if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+							Prompt prompt = new Prompt("添加成功");
+							prompt.show();
+							controller.setChooseView();
+							controller.getStage().show();
+						}else{
+							Prompt prompt = new Prompt("添加失败");
+							prompt.show();
+						}
 					}else{
-						Prompt prompt = new Prompt("添加失败");
-						prompt.show();
+						controller.showDialog("请输入策略名称");
 					}
 				}catch(NumberFormatException e){
 					controller.showDialog("折扣输入错误");

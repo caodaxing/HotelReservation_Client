@@ -97,6 +97,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	
 	public void setExistStrategyView(){
 		promotionId = null;
+		setPromotoinList();
 		existStrategyUI = new ExistStrategy(this);
 		existStrategyUI.initialData();
 		stage.setScene(existStrategyUI.getScene());
@@ -151,9 +152,9 @@ public class WBPromotionController extends WebBusinessLeftController{
 		return promotionService.deletePromotion(promotionList.get(num).promotionID);
 	}
 	
-	public void setDeletePromotion(){
-		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
-	}
+//	public void setDeletePromotion(){
+//		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
+//	}
 	
 	public ArrayList<String> getCityList(){
 		return hotelSearchService.getCities();
@@ -183,7 +184,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 		return promotionId;
 	}
 	
-	public PromotionVO getPromotionVO(String promotionId){
+	public PromotionVO getPromotionVO(){
 		return promotionService.getPromotion(promotionId);
 	}
 }

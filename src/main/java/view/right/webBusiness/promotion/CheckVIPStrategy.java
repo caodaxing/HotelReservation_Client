@@ -153,7 +153,7 @@ public class CheckVIPStrategy {
 	}
 	
 	public void setText(){
-		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
+		PromotionVO vo = controller.getPromotionVO();
 		VIP1DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[0]));
 		VIP2DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[1]));
 		VIP3DiscountRange.setText(String.valueOf(vo.vipLevelDiscount[2]));

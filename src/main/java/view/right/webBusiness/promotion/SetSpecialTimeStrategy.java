@@ -158,15 +158,17 @@ public class SetSpecialTimeStrategy {
 				}else{
 					try{
 						double d = Double.parseDouble(s3);
-						PromotionVO promotionVO = new PromotionVO(null, s4, d, s1, s2);
-						if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-							Prompt prompt = new Prompt("添加成功");
-							prompt.show();
-							controller.setChooseView();
-							controller.getStage().show();
+						if(s4 != null){
+							PromotionVO promotionVO = new PromotionVO(null, s4, d, s1, s2);
+							if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+								controller.showDialog("添加成功");
+								controller.setChooseView();
+								controller.getStage().show();
+							}else{
+								controller.showDialog("添加失败");
+							}
 						}else{
-							Prompt prompt = new Prompt("添加失败");
-							prompt.show();
+							controller.showDialog("请输入策略名称");
 						}
 					}catch(NumberFormatException e){
 						controller.showDialog("折扣输入错误");

@@ -172,26 +172,30 @@ public class SetVIPAreaStrategy {
 		city.setVisibleRowCount(3);
 		tradingArea1.setVisibleRowCount(3);
 		
-		city.setPrefSize(60, 30);
-		tradingArea1.setPrefSize(60, 30);
+		city.setPrefSize(100, 30);
+		tradingArea1.setPrefSize(100, 30);
 		
 		city.setLayoutX(400);
 		city.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
-		tradingArea1.setLayoutX(480);
+		tradingArea1.setLayoutX(520);
 		tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
 		
 		rightPane.getChildren().add(city);
 		rightPane.getChildren().add(tradingArea1);
 		
 		AnchorPane.setLeftAnchor(city, 400 - (double)DefaultNums.LEFT_WIDTH);
-		AnchorPane.setLeftAnchor(tradingArea1, 480 - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(tradingArea1, 520 - (double)DefaultNums.LEFT_WIDTH);
 		
 		AnchorPane.setTopAnchor(city, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
 		AnchorPane.setTopAnchor(tradingArea1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
 		
 		cityList = controller.getCityList();
-		for(int i=0;i<cityList.size();i++){
-			city.getItems().addAll(cityList.get(i));
+		if(cityList != null){
+			for(int i=0;i<cityList.size();i++){
+				city.getItems().addAll(cityList.get(i));
+			}
+		}else{
+			controller.showDialog("系统错误，请重试");
 		}
 		city.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -199,8 +203,12 @@ public class SetVIPAreaStrategy {
 			public void handle(ActionEvent event) {
 				int t = city.getSelectionModel().getSelectedIndex();
 				ArrayList<String> tradingAreaList = controller.getTradingAreaList(cityList.get(t));
-				for(int i=0;i<tradingAreaList.size();i++){
-					tradingArea1.getItems().addAll(tradingAreaList.get(i));
+				if(tradingAreaList != null){
+					for(int i=0;i<tradingAreaList.size();i++){
+						tradingArea1.getItems().addAll(tradingAreaList.get(i));
+					}
+				}else{
+					controller.showDialog("系统错误，请重试");
 				}
 			}
 			
@@ -232,8 +240,8 @@ public class SetVIPAreaStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Prompt prompt = new Prompt("保存成功");
-				prompt.show();
+//				Prompt prompt = new Prompt("保存成功");
+//				prompt.show();
 				//传输vo
 				try{
 					double d1 = Double.parseDouble(VIPLevel1.getText());
@@ -246,16 +254,20 @@ public class SetVIPAreaStrategy {
 					if(cityList.get(t1) != null && tradingAreaList.get(t2) != null){
 						HashMap<String, double[]> hashmap = new HashMap<String, double[]>();
 						hashmap.put(tradingAreaList.get(t2), d);
-						PromotionVO promotionVO = new PromotionVO(null,s,hashmap);
-						if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
-							controller.showDialog("添加成功");
-							controller.setChooseView();
-							controller.getStage().show();
+						if(s != null){
+							PromotionVO promotionVO = new PromotionVO(null,s,hashmap);
+							if(controller.getAddPromotionResult(promotionVO) == ResultMessage.SUCCESS){
+								controller.showDialog("添加成功");
+								controller.setChooseView();
+								controller.getStage().show();
+							}else{
+								controller.showDialog("添加失败");
+							}
 						}else{
-							controller.showDialog("添加失败");
+							controller.showDialog("请输入策略名称");
 						}
 					}else{
-						controller.showDialog("请选择商圈");
+						controller.showDialog("请选择城市和商圈");
 					}
 				}catch(NumberFormatException e){
 					controller.showDialog("折扣输入错误");

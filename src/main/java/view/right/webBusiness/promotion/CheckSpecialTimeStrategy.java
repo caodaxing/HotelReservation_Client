@@ -156,7 +156,7 @@ public class CheckSpecialTimeStrategy {
 		AnchorPane.setTopAnchor(revert, 525.0);
 	}
 	public void setText(){
-		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
+		PromotionVO vo = controller.getPromotionVO();
 		startDiscount.setText(String.valueOf(vo.discount));
 		endDiscount.setText(String.valueOf(vo.discount));
 		discountRange.setText("0");
