@@ -39,25 +39,32 @@ public class Picture implements PictureService {
 	public ArrayList<String> getHotelImage(String hotelID) {
 		ArrayList<String> imagePaths = new ArrayList<String>();
 		
-		ArrayList<byte[]> imageByte = null;
-		try {
-			imageByte = this.pictureDao.getHotelImage(hotelID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+//		ArrayList<byte[]> imageByte = null;
+//		try {
+//			imageByte = this.pictureDao.getHotelImage(hotelID);
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		if(imageByte == null) {
+//			return null;
+//		}
+//		
+//		for(int i=0; i<imageByte.size(); ++i) {
+//			String path = hotelID+String.valueOf(i);
+//			imagePaths.add(PictureHelper.bytesToImage(imageByte.get(i), path));
+//		}
+//		
+//		if(imagePaths.size() == 0) {
+//			return null;
+//		}
+//		
+//		return imagePaths;
 		
-		if(imageByte == null) {
-			return null;
-		}
-		
-		for(int i=0; i<imageByte.size(); ++i) {
-			String path = hotelID+String.valueOf(i);
-			imagePaths.add(PictureHelper.bytesToImage(imageByte.get(i), path));
-		}
-		
-		if(imagePaths.size() == 0) {
-			return null;
-		}
+		imagePaths.add("/hotelImage/index.jpg");
+		imagePaths.add("/hotelImage/index1.jpg");
+		imagePaths.add("/hotelImage/index2.jpg");
+		imagePaths.add("/hotelImage/index3.jpg");
 		
 		return imagePaths;
 	}
