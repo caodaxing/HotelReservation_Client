@@ -102,7 +102,6 @@ public class SetVIPAreaStrategy {
 		VIPLevel1.setId("SetVIPAreaStrategy");
 		VIPLevel2.setId("SetVIPAreaStrategy");
 		VIPLevel3.setId("SetVIPAreaStrategy");
-		tradingArea1.setId("SetVIPAreaStrategy");
 		discountRange.setId("SetVIPAreaStrategy");
 		discountName.setId("SetVIPAreaStrategy");
 		
@@ -118,7 +117,6 @@ public class SetVIPAreaStrategy {
 		VIPLevel1.setPrefSize(50, TEXTFIELD_HEIGHT);
 		VIPLevel2.setPrefSize(50, TEXTFIELD_HEIGHT);
 		VIPLevel3.setPrefSize(50, TEXTFIELD_HEIGHT);
-		tradingArea1.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		discountRange.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		discountName.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		
@@ -131,9 +129,6 @@ public class SetVIPAreaStrategy {
 		
 		VIPLevel3.setLayoutX(TEXTFIELD_START_HORIZONTAL+140);
 		VIPLevel3.setLayoutY(TEXTFIELD_START_VERTICAL);
-		
-		tradingArea1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
 		
 		discountRange.setLayoutX(TEXTFIELD_START_HORIZONTAL);
 		discountRange.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);

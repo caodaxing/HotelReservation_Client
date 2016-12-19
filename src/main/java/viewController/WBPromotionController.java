@@ -48,7 +48,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
 		checkVIPStrategyUI  = new CheckVIPStrategy(this);
 		chooseUI = new Choose(this);
-		existStrategyUI = new ExistStrategy(this);
+//		existStrategyUI = new ExistStrategy(this);
 		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
 		setVIPAreaStrategyUI = new SetVIPAreaStrategy(this);
 		setVIPStrategyUI = new SetVIPStrategy(this);

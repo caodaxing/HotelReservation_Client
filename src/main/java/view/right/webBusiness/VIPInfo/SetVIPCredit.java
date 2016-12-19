@@ -145,9 +145,9 @@ public class SetVIPCredit {
 					int num1 = Integer.parseInt(level1);
 					int num2 = Integer.parseInt(level2);
 					int num3 = Integer.parseInt(level3);
-					if(controller.getSetVIPResult(1, num1) == ResultMessage.SUCCESS &&
-							controller.getSetVIPResult(2, num2) == ResultMessage.SUCCESS &&
-							controller.getSetVIPResult(3, num3) == ResultMessage.SUCCESS){
+					if(controller.getSetVIPResult(2, num1) == ResultMessage.SUCCESS &&
+							controller.getSetVIPResult(3, num2) == ResultMessage.SUCCESS &&
+							controller.getSetVIPResult(4, num3) == ResultMessage.SUCCESS){
 						controller.showDialog("设置成功");
 					}else{
 						controller.showDialog("设置失败");
