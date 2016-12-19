@@ -149,8 +149,6 @@ public class Room implements RoomService , RoomInfo{
 		
 		if(po != null && po.getSpecificTimeRoomNum() != null) {
 			
-			System.out.println("hhh");
-			
 			int remainingRoomNums = po.getSpecificTimeRoomNum()[dayNum];
 			return remainingRoomNums;
 		}

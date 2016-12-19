@@ -58,6 +58,7 @@ public class Account implements AccountService{
 					AccountPO po = transToPO(accountVO);
 					if(accountDao.addAccount(po)) {
 						if(accountVO.identity == Identity.CLIENT) {
+							
 							//客户注册初始化信用值和clientpo
 							if(this.initCredit(po.getAccountID())) {
 								ClientPO clientPO = new ClientPO(accountVO.userId, "", "", "", Identity.CLIENT.ordinal(), 0, "");
@@ -153,11 +154,9 @@ public class Account implements AccountService{
 	public ResultMessage logout(String userID) {
 		try {
 			if(this.accountDao.setLogout(userID)) {
-				if(this.accountDao.setLogout(userID)) {
-					return ResultMessage.SUCCESS;
-				}
+				return ResultMessage.SUCCESS;
 			}
-		} catch (RemoteException e) {
+		} catch (RemoteException e) { 
 			e.printStackTrace();
 		}
 		

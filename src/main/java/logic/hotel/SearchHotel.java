@@ -125,7 +125,8 @@ public class SearchHotel implements SearchHotelService {
 		
 		for (String hotelId : hotelIds) {
 			try {
-				bookedHotelList.add(HotelTransform.hotelTransToVO(hotelDao.getHotelInfoByHotelID(hotelId)));
+				HotelPO po = hotelDao.getHotelInfoByHotelID(hotelId);
+				bookedHotelList.add(HotelTransform.hotelTransToVO(po));
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -150,12 +151,17 @@ System.out.println("logic.hotel.SearchHotel.search参数错误");
 			return null;
 		}
 		
+System.out.println("search Hotel1");
 		
 		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
-
+		
+System.out.println("search Hotel2");
+if(initList != null) {
+	System.out.println(initList.size());
+}
 		
 		ArrayList<HotelVO> hotelList  = new ArrayList<HotelVO>();	
 		//酒店名称的筛选

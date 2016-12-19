@@ -93,12 +93,18 @@ public class Order implements OrderService, OrderHotelInfo{
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {
 		ArrayList<String> res = null;
-		
 		try {
 			res =  this.orderDao.getBookedHotelList(userID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
+//		if(res != null) {
+//			System.out.println(res.size());
+//		} else {
+//			System.out.println(111);
+//		}
+
 		
 		return res;
 	}
