@@ -48,6 +48,8 @@ public class HotelInfo{
 	
 	Button next;
 	
+	private int index = 1;
+	
 	public HotelInfo(UserCheckHotelController controller){
 		
 		this.controller = controller;
@@ -192,8 +194,8 @@ public class HotelInfo{
 	private void setImageView(){
 		hotelImage = new ImageView();
 		
-		hotelImage.setFitHeight(250.0);
 		hotelImage.setFitHeight(200.0);
+		hotelImage.setFitWidth(250.0);
 
 		rightPane.getChildren().add(hotelImage);
 		AnchorPane.setLeftAnchor(hotelImage, 150.0);
@@ -201,17 +203,29 @@ public class HotelInfo{
 		
 		next = new Button("下一张");
 		next.setPrefSize(250, 30);
-		int i = 1;
+	
 		next.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				setNextImage(i);
+				ArrayList<String> paths = controller.getHotelImage();
+				if(paths.size()>index ){	
+					try{
+						hotelImage.setImage(new Image(paths.get(index),250,200,false,true));
+					}catch(Exception e){
+						controller.showDialog("酒店图片路径无效");
+						return;
+					}
+					index++;
+				}else{
+					index=1;
+					setFirstImage();
+				}
 			}
 			
 		});
 		rightPane.getChildren().add(next);
 		AnchorPane.setLeftAnchor(next, 150.0);
-		AnchorPane.setTopAnchor(next, 460.0);
+		AnchorPane.setTopAnchor(next, 560.0);
 		
 	}
 	
@@ -234,22 +248,6 @@ public class HotelInfo{
 				controller.showDialog("酒店图片路径无效");
 				return;
 			}
-		}
-	}
-	
-	private void setNextImage(int i){
-		ArrayList<String> paths = controller.getHotelImage();
-		if(paths.size()>i ){	
-			try{
-				hotelImage.setImage(new Image(paths.get(i),250,200,false,true));
-			}catch(Exception e){
-				controller.showDialog("酒店图片路径无效");
-				return;
-			}
-			i++;
-		}else{
-			i=1;
-			setFirstImage();
 		}
 	}
 	

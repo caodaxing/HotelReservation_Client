@@ -42,6 +42,8 @@ public class HotelInfo {
 	
 	ImageView hotelImage ;
 	
+	private int index = 1;
+	
 	//游客没有其他所有按钮（省事
 	Button next;
 	Button back;
@@ -151,11 +153,24 @@ public class HotelInfo {
 		
 		next = new Button("下一张");
 		next.setPrefSize(250, 30);
-		int i = 1;
+
 		next.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				setNextImage(i);
+
+				ArrayList<String> paths = controller.getHotelImage();
+				if(paths.size()>index ){	
+					try{
+						hotelImage.setImage(new Image(paths.get(index),250,200,false,true));
+					}catch(Exception e){
+						controller.showDialog("酒店图片路径无效");
+						return;
+					}
+					index++;
+				}else{
+					index=1;
+					setFirstImage();
+				}
 			}
 			
 		});
@@ -186,23 +201,7 @@ public class HotelInfo {
 			}
 		}
 	}
-	
-	private void setNextImage(int i){
-		ArrayList<String> paths = controller.getHotelImage();
-		if(paths.size()>i ){	
-			try{
-				hotelImage.setImage(new Image(paths.get(i),250,200,false,true));
-			}catch(Exception e){
-				controller.showDialog("酒店图片路径无效");
-				return;
-			}
-			i++;
-		}else{
-			i=1;
-			setFirstImage();
-		}
-	}
-	
+
 	public Scene getScene(){
 		
 		return scene;
