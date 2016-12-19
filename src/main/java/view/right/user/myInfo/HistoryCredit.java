@@ -155,7 +155,7 @@ public class HistoryCredit {
 	
 	public void setListValue(){
 		ArrayList<CreditChangeVO> creditList = controller.getCreditList();
-		if(creditList == null){
+		if(creditList == null || creditList.isEmpty() || creditList.size() == 0){
 			return;
 		}
 		for(CreditChangeVO c:creditList){
