@@ -57,15 +57,6 @@ public class UserCheckHotelController extends UserLeftController {
 		roomService = new Room();
 		pictureService = new Picture();
 		
-		//evaluationListUI = new EvaluationList(this);
-		//historyOrderListUI = new HistoryOrderList(this);
-		//hotelInfoUI = new HotelInfo(this);
-		//makeOrderUI = new MakeOrder(this);
-		//roomListUI = new RoomList(this);
-		searchHotelUI = new SearchHotel(this);
-		//searchResultListUI = new SearchResultList(this);
-		//successOrderUI = new SuccessOrder(this);
-		
 		orderController = new UserMyOrderController(stage,userID);
 	
 	}

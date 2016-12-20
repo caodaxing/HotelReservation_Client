@@ -54,11 +54,6 @@ public class UserLeftController {
 	protected CheckNormalVIP checkNormalVIPUI; 
 	protected CheckCompanyVIP checkCompanyVIPUI;
 	protected First orderFirstUI;
-	//protected OrderList allOrderList;
-	//protected OrderList executeOrderList;
-	//protected OrderList unexecuteOrderList;
-	//protected OrderList undoOrderList;
-	//protected OrderList abnormalOrderList;
 	protected HotelFirst hotelFirstUI;
 	protected ModifyPassword modifyPasswordUI;
 	protected CheckMyInfo checkMyInfoUI;
@@ -77,17 +72,7 @@ public class UserLeftController {
 		orderListService = new logic.order.OrderList();
 		checkHotelService = new CheckHotel();
 		pictureService = new Picture();
-
-		//checkMyInfoUI = new CheckMyInfo(this);
-		orderFirstUI = new First(this);
-		//allOrderList = new OrderList(this);
-		//executeOrderList = new OrderList(this);
-		//unexecuteOrderList = new OrderList(this);
-		//undoOrderList = new OrderList(this);
-		//abnormalOrderList = new OrderList(this);
-		hotelFirstUI = new HotelFirst(this);
-		modifyPasswordUI = new ModifyPassword(this);
-
+		
 	}
 	
 	/*
@@ -136,6 +121,7 @@ public class UserLeftController {
 	 * 选择我的订单 显示搜索订单页面
 	 */
 	public void setOrderFirstView(){
+		orderFirstUI = new First(this);
 		stage.setScene(orderFirstUI.getScene());
 		stage.show();
 	}
@@ -144,6 +130,7 @@ public class UserLeftController {
 	 * 选择查看酒店，显示选择查看预定过的酒店还是搜索酒店
 	 */
 	public void setHotelFirstView(){
+		hotelFirstUI = new HotelFirst(this);
 		stage.setScene(hotelFirstUI.getScene());
 		stage.show();
 	}
@@ -202,6 +189,7 @@ public class UserLeftController {
 	 * 修改密码
 	 */
 	public void setModifyPasswordView(){
+		modifyPasswordUI = new ModifyPassword(this);
 		stage.setScene(modifyPasswordUI.getScene());
 		stage.show();
 	}

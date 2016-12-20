@@ -32,15 +32,6 @@ public class UserMyOrderController extends UserLeftController {
 		
 		executeService = new logic.order.ExecuteOrder();
 		
-		//abnormalOrderUI = new AbnormalOrder(this);
-		//checkArriveInfoUI = new CheckArriveInfo(this);
-		//checkLeaveInfoUI = new CheckLeaveInfo(this);
-		evaluateUI = new Evaluate(this);
-		//evaluationInfoUI = new EvaluationInfo(this);
-		//executeOrderUI = new ExecuteOrder(this);
-		//undoOrderUI = new UndoOrder(this);
-		//unexecuteOrderUI = new UnexecuteOrder(this);
-	
 	}
 	
 	public Stage getStage(){
@@ -56,7 +47,10 @@ public class UserMyOrderController extends UserLeftController {
 	}
 	
 	public void setEvaluateView(){
+		
+			evaluateUI =  new Evaluate(this);
 			stage.setScene(evaluateUI.getScene());
+			
 	}
 	
 	public void setEvaluationInfoView(){

@@ -28,22 +28,21 @@ public class UserMyInfoController extends UserLeftController {
 		
 		creditChangeService = new CreditChange();
 		
-		blankUI = new Blank(this);
-		historyCreditUI = new HistoryCredit(this);
-		modifyMyInfoUI = new ModifyMyInfo(this);
-		
 	}
 
 	public void setBlankView(){
+		blankUI = new Blank(this);
 		stage.setScene(blankUI.getScene());
 	}
 	
 	public void setHistoryCreditView(){
+		historyCreditUI = new HistoryCredit(this);
 		historyCreditUI.setListValue();
 		stage.setScene(historyCreditUI.getScene());
 	}
 	
 	public void setModifyMyInfoView(){
+		modifyMyInfoUI = new ModifyMyInfo(this);
 		stage.setScene(modifyMyInfoUI.getScene());
 	}
 	

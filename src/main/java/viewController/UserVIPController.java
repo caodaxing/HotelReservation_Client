@@ -16,13 +16,11 @@ public class UserVIPController extends UserLeftController {
 		
 		super(stage,userID);
 		
-		registerCompanyVIPUI = new RegisterCompanyVIP(this);
-		registerNormalVIPUI = new RegisterNormalVIP(this);
-		
 	}
 	
 	public void setRegisterCompanyVIPView(){
-		
+
+		registerCompanyVIPUI = new RegisterCompanyVIP(this);
 		stage.setScene(registerCompanyVIPUI.getScene());
 	
 	}
@@ -30,7 +28,8 @@ public class UserVIPController extends UserLeftController {
 	public void setRegisterNormalVIPView(){
 		
 		stage.setScene(registerNormalVIPUI.getScene());
-	
+		registerNormalVIPUI = new RegisterNormalVIP(this);
+		
 	}
 	
 	public void registerVIP(VipType type){
