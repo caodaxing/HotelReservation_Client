@@ -47,6 +47,7 @@ public class HotelInfo{
 	Button makeOrder ;
 	
 	Button next;
+	Button back;
 	
 	private int index = 1;
 	
@@ -181,14 +182,33 @@ public class HotelInfo{
 		
 		//设置Button位置
 		AnchorPane.setLeftAnchor(historyOrderList, 450.0);
-		AnchorPane.setTopAnchor(historyOrderList, 360.0);
+		AnchorPane.setTopAnchor(historyOrderList, 350.0);
 		AnchorPane.setLeftAnchor(roomList, 450.0);
-		AnchorPane.setTopAnchor(roomList, 410.0);
+		AnchorPane.setTopAnchor(roomList, 400.0);
 		AnchorPane.setLeftAnchor(evaluationList, 450.0);
-		AnchorPane.setTopAnchor(evaluationList, 460.0);
+		AnchorPane.setTopAnchor(evaluationList, 450.0);
 		AnchorPane.setLeftAnchor(makeOrder, 450.0);
-		AnchorPane.setTopAnchor(makeOrder, 510.0);
-				
+		AnchorPane.setTopAnchor(makeOrder, 500.0);
+		back = new Button();
+		
+		back.setText("返回");
+		
+		back.setPrefSize(100, 40);
+		
+		back.setOnAction(new EventHandler<ActionEvent>(){
+			
+			public void handle(ActionEvent event){
+				//返回酒店列表界面
+				controller.setSearchResultListView();
+				controller.getStage().show();
+			}
+			
+		});
+		
+		rightPane.getChildren().add(back);
+		
+		AnchorPane.setLeftAnchor(back, 450.0);
+		AnchorPane.setTopAnchor(back, 550.0);
 	}
 	
 	private void setImageView(){

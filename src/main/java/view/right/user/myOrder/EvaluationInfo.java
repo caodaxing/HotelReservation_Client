@@ -107,8 +107,8 @@ public class EvaluationInfo {
 		back.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				//返回首页
-				controller.setOrderFirstView();
+			
+				controller.setExecuteOrderView();
 				controller.getStage().show();
 			}
 			

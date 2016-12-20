@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import logic.picture.Picture;
 import view.helpTools.DefaultNums;
 import viewController.UserLeftController;
 
@@ -37,9 +38,12 @@ public class UserUI{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		String imagePath = controller.getHeadPath();
-		Image image = new Image(imagePath, 200, 200, false, true);
+		String userID = controller.getUserID();
+		Picture picture = new Picture();
+		Image image = picture.getHeadImage(userID);
 		ImageView headImage = new ImageView(image);
+		headImage.setFitHeight(200.0);
+		headImage.setFitHeight(200.0);
 		pane.getChildren().add(headImage);
 		
 		grid.add(pane, 0, 0);

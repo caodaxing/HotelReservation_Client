@@ -264,17 +264,6 @@ public class UserLeftController {
 		return orderList;
 	}
 	
-	/*
-	 * 返回用户头像路径
-	 */
-	public String getHeadPath(){
-		//String headPath = pictureService.getUserImage(userID);
-		//if(headPath == null || headPath.equals("")){//默认头像
-			String headPath = "/head/游客头像.png";
-		//}
-		return headPath;
-	}
-	
 	public void modifyPassword(){
 		
 		String oldPassword = modifyPasswordUI.getOldPassword();

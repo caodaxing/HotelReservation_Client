@@ -137,7 +137,7 @@ public class HotelInfo {
 		rightPane.getChildren().add(back);
 		
 		AnchorPane.setLeftAnchor(back, 450.0);
-		AnchorPane.setTopAnchor(back, 510.0);
+		AnchorPane.setTopAnchor(back, 550.0);
 		
 	}
 	

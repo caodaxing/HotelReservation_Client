@@ -323,7 +323,7 @@ public class SearchHotel {
 		try{
 		DecimalFormat df=new DecimalFormat("#.00");
 		//若为空则置为默认值
-		double priceLow = -1.00;
+		double priceLow = 0.00;
 		if(!priceLeft.getText().equals(""))
 			priceLow = Double.valueOf(df.format(Double.valueOf(priceLeft.getText())));
 		
