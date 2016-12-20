@@ -129,7 +129,7 @@ public class EvaluationList {
 				
 		//添加列
 		orderId = new TableColumn<>("订单号");
-		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
+		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderId"));
 		orderId.setMinWidth(200);
 
 		score = new TableColumn<>("评分");
@@ -174,7 +174,7 @@ public class EvaluationList {
 	
 	public void setListValue(){
 		ArrayList<EvaluationVO> evaluationList = controller.getEvaluationList();
-		if(evaluationList == null){
+		if(evaluationList == null || evaluationList.size() == 0 || evaluationList.isEmpty()){
 			return;
 		}
 		for(EvaluationVO vo : evaluationList){

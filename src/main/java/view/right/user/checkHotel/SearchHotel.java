@@ -310,7 +310,7 @@ public class SearchHotel {
 		if(!evaluationRight.getText().equals(""))
 			commentHigh = Double.valueOf(evaluationRight.getText());
 		
-		int starLow = 0;
+		int starLow = 1;
 		if(!starLeft.getText().equals(""))
 			starLow = Integer.valueOf(starLeft.getText());
 		
