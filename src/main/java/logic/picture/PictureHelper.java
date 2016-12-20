@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import javafx.scene.image.Image;
+
 public class PictureHelper {
 
 	/**
@@ -43,15 +45,8 @@ public class PictureHelper {
                 if (data[i] < 0) {     // 调整异常数据  
                     data[i] += 256;  
                 }  
-            }  
-//            String path = PictureHelper.class.getProtectionDomain().getCodeSource().getLocation().getFile();  
-//            try{  
-//                path = java.net.URLDecoder.decode(path, "UTF-8"); // 转换处理中文及空格  
-//            }  
-//            catch (java.io.UnsupportedEncodingException e){  
-//            }  l
-//            path = path.substring(0, path.length()-4)+"download/"+pictureName+".jpg";
-            String path = "C:\\Users\\ZDY\\Desktop\\"+pictureName+".jpg";
+            }
+            String path = "C:/Users/ZDY/Desktop/"+pictureName+".jpg";
             OutputStream out = new FileOutputStream(path);  
             out.write(data);  
             out.flush();  
@@ -62,6 +57,10 @@ public class PictureHelper {
         }
 	}
 	
+	public static Image imageToByte() {
+		return null;
+		
+	}
 //	/**
 //	 * 直接获得file对象
 //	 * @param data
