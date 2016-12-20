@@ -1,13 +1,20 @@
 package logic.picture;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.rmi.RemoteException;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 
 public class PictureHelper {
 
@@ -36,9 +43,22 @@ public class PictureHelper {
 	}
 	
 	
-	public static Image imageToByte(byte[]data,String pictureName) {
-		if (data==null||pictureName==null||pictureName.equals("")) {
-			return null
+	public static Image byteToImage(byte[]data) {
+		if (data==null) {
+			return null;
+		}
+		Image image = null;
+		try {
+			ByteArrayInputStream stream = new ByteArrayInputStream(data);
+			BufferedImage bufferedImage = ImageIO.read(stream);
+			image = SwingFXUtils.toFXImage(bufferedImage, new WritableImage(10, 10));
+			return image;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;
 	}

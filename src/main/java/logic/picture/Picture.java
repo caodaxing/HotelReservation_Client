@@ -28,8 +28,22 @@ public class Picture implements PictureService {
 	@Override
 	public ArrayList<Image> getHotelImage(String hotelID) {
 		ArrayList<Image> hotelImages = new ArrayList<Image>();
+		try {
+			ArrayList<byte[]> datas = pictureDao.getHotelImage(hotelID);
+			if (datas==null) {
+				return null;
+			}
+			for (byte[] bs : datas) {
+				Image image = PictureHelper.byteToImage(bs);
+				hotelImages.add(image);
+			}
+			return hotelImages;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return hotelImages;
+		return null;
 	}
 
 	@Override
@@ -64,17 +78,11 @@ public class Picture implements PictureService {
 
 	@Override
 	public Image getHeadImage(String userID) {
-		Image image = null;
+		byte[] bs;
 		try {
-			byte[] bs = pictureDao.getUserImage(userID);
-			ByteArrayInputStream stream = new ByteArrayInputStream(bs);
-			BufferedImage image2 = ImageIO.read(stream);
-			image = SwingFXUtils.toFXImage(image2, new WritableImage(10, 10));
-			return image;
+			bs = pictureDao.getUserImage(userID);
+			return PictureHelper.byteToImage(bs);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
