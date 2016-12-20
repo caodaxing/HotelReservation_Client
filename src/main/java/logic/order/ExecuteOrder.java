@@ -50,7 +50,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 			e.printStackTrace();
 		}
 		if(po == null || po.getCheckOutTime() == null) {
-			return ResultMessage.FAILURE;
+			return ResultMessage.SUCCESS;
 		}
 		
 		return ResultMessage.FAILURE;
