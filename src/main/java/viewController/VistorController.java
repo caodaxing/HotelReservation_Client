@@ -118,4 +118,13 @@ public class VistorController extends VistorLeftController{
 		return pictureService.getHotelImage(hotelID);
 	}
 	
+
+	public ArrayList<String> getCityList() {
+		return searchService.getCities();
+	}
+
+	public ArrayList<String> getTradingAreaList(String city) {
+	   return searchService.getTradingArea(city);
+	}
+	
 }

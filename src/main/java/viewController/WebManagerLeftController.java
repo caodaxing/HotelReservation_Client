@@ -1,15 +1,19 @@
 package viewController;
 
+import java.util.ArrayList;
+
 import Message.Identity;
 import Message.ResultMessage;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import logic.account.Account;
+import logic.hotel.SearchHotel;
 import logic.hotel.UpdateHotel;
 import logic.user.WebManager;
 import logic.utility.Encryption;
 import logicService.account.AccountService;
+import logicService.hotel.SearchHotelService;
 import logicService.hotel.UpdateHotelService;
 import logicService.stub.AccountService_Stub;
 import logicService.stub.HotelService_Stub;
@@ -32,6 +36,7 @@ public class WebManagerLeftController {
 	protected String userID;
 	
 	protected UpdateHotelService updateHotelService ;
+	protected SearchHotelService searchHotelService;
 	protected WebManagerService webManagerService ;
 	protected AccountService accountService ;
 	
@@ -45,7 +50,10 @@ public class WebManagerLeftController {
 	
 	public WebManagerLeftController(Stage stage , String userID){
 		this.stage = stage;
-		this.userID = userID;updateHotelService = new UpdateHotel();
+		this.userID = userID;
+		
+		updateHotelService = new UpdateHotel();
+		searchHotelService = new SearchHotel();
 		webManagerService = new WebManager();
 		accountService = new Account();
 		
@@ -133,7 +141,7 @@ public class WebManagerLeftController {
 			return ;
 		}
 		
-		HotelVO vo = new HotelVO(hotelID, hotelName, city, area, null, 0,  null, null,  null);
+		HotelVO vo = new HotelVO(hotelID, hotelName, city, area, null, 1,  null, null,  null);
 		
 		ResultMessage result = updateHotelService.addHotel(vo);
 		if(result == ResultMessage.SUCCESS){
@@ -205,10 +213,18 @@ public class WebManagerLeftController {
 		return stage;
 	}
 
-	//弹出对话框，文字为传入的str
+	//弹出对话框，文字为传入的str 
 	public void showDialog(String str){
 		OneButtonDialog dialog = new OneButtonDialog(str);
 		dialog.show();
+	}
+
+	public ArrayList<String> getCityList() {
+		return searchHotelService.getCities();
+	}
+
+	public ArrayList<String> getTradingAreaList(String city) {
+	   return searchHotelService.getTradingArea(city);
 	}
 	
 }

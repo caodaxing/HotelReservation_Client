@@ -351,4 +351,13 @@ public class UserCheckHotelController extends UserLeftController {
 		return pictureService.getHotelImage(hotelID);
 	}
 	
+
+	public ArrayList<String> getCityList() {
+		return searchHotelService.getCities();
+	}
+
+	public ArrayList<String> getTradingAreaList(String city) {
+	   return searchHotelService.getTradingArea(city);
+	}
+	
 }

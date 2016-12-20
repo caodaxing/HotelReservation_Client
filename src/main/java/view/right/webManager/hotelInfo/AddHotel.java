@@ -1,9 +1,12 @@
 package view.right.webManager.hotelInfo;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -31,8 +34,11 @@ public class AddHotel {
 	
 	TextField hotelID;
 	TextField hotelName;
-	TextField city;
-	TextField area;
+	ComboBox city;
+	ComboBox area;
+	
+	ArrayList<String> cityList;
+	ArrayList<String> tradingAreaList;
 	
 	Button confirm;
 	Button cancel;
@@ -51,6 +57,8 @@ public class AddHotel {
 		
 		setTextField() ;
 		
+		setTradingArea();
+		
 		setButton() ;
 		
 		HBox root = new HBox(leftPane, rightPane);
@@ -61,37 +69,71 @@ public class AddHotel {
 		
 	}
 	
+	public void setTradingArea(){
+		city = new ComboBox();
+		
+		city.setVisibleRowCount(3);
+		
+		city.setPrefSize(200, 30);
+		
+		rightPane.getChildren().add(city);
+		
+		AnchorPane.setLeftAnchor(city, 200.0);
+		
+		AnchorPane.setTopAnchor(city,  300.0);
+		
+		cityList = controller.getCityList();
+		if(cityList != null){
+			for(int i=0;i<cityList.size();i++){
+				city.getItems().addAll(cityList.get(i));
+			}
+		}else{
+			controller.showDialog("系统错误，请重试");
+		}
+		city.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				int t = city.getSelectionModel().getSelectedIndex();
+				tradingAreaList = controller.getTradingAreaList(cityList.get(t));
+				area = new ComboBox();
+				if(tradingAreaList != null){
+					for(int i=0;i<tradingAreaList.size();i++){
+						area.getItems().addAll(tradingAreaList.get(i));
+					}
+				}else{
+					controller.showDialog("系统错误，请重试");
+				}
+				area.setVisibleRowCount(3);
+				area.setPrefSize(200, 30);
+				
+				rightPane.getChildren().add(area);
+				AnchorPane.setLeftAnchor(area,200.0);
+				AnchorPane.setTopAnchor(area, 375.0);
+			}
+			
+		});
+	}
+	
 	private void setTextField (){
 		
 		hotelID = new TextField();
 		hotelName = new TextField();
-		city = new TextField();
-		area = new TextField();
 		
 		hotelID.setPrefSize(200, 30);
 		hotelName.setPrefSize(200, 30);
-		city.setPrefSize(200, 30);
-		area.setPrefSize(200, 30);
 		
 		hotelID.setEditable(true);
 		hotelName.setEditable(true);
-		city.setEditable(true);
-		area.setEditable(true);
 		
 		rightPane.getChildren().add(hotelID);
 		rightPane.getChildren().add(hotelName);
-		rightPane.getChildren().add(city);
-		rightPane.getChildren().add(area);
 		
 		AnchorPane.setLeftAnchor(hotelID, 200.0);
 		AnchorPane.setLeftAnchor(hotelName, 200.0);
-		AnchorPane.setLeftAnchor(city, 200.0);
-		AnchorPane.setLeftAnchor(area, 200.0);
 		
 		AnchorPane.setTopAnchor(hotelID, 150.0);
 		AnchorPane.setTopAnchor(hotelName, 225.0);
-		AnchorPane.setTopAnchor(city, 300.0);
-		AnchorPane.setTopAnchor(area, 375.0);
 		
 	}
 	
@@ -150,17 +192,17 @@ public class AddHotel {
 	}
 	
 	public String getCity(){
-		return city.getText();
+		int i = city.getSelectionModel().getSelectedIndex();
+		return cityList.get(i);
 	}
 	
 	public String getArea(){
-		return area.getText();
+		int i = area.getSelectionModel().getSelectedIndex();
+		return tradingAreaList.get(i);
 	}
 	
 	public void setBlank(){
 		hotelID.setText("");
 		hotelName.setText("");
-		city.setText("");
-		area.setText("");
 	}
 }

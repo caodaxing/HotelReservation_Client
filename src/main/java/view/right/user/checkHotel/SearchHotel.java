@@ -2,6 +2,7 @@ package view.right.user.checkHotel;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import Message.RoomType;
 import javafx.collections.FXCollections;
@@ -10,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -36,8 +38,12 @@ public class SearchHotel {
 	
 	private AnchorPane rightPane;
 	
-	TextField city ;
-	TextField area ; 
+	ComboBox city ;
+	ComboBox area ; 
+	
+	ArrayList<String> cityList;
+	ArrayList<String> tradingAreaList;
+	
 	TextField hotelName ;
 
 	ChoiceBox roomType ;
@@ -75,6 +81,8 @@ public class SearchHotel {
 		//设置Button
 		setButton();
 		
+		setTradingArea();
+		
 		//设置ChoiceBox
 		setChoiceBox();
 		
@@ -87,11 +95,55 @@ public class SearchHotel {
 		root.setStyle("-fx-background-image:url(\"/hotelAndOrder/查看酒店_搜索酒店背景.jpg\")");
 	}
 	
+	public void setTradingArea(){
+		city = new ComboBox();
+		
+		city.setVisibleRowCount(3);
+		
+		city.setPrefSize(200, 30);
+		
+		rightPane.getChildren().add(city);
+		
+		AnchorPane.setLeftAnchor(city, 200.0);
+		
+		AnchorPane.setTopAnchor(city,  150.0);
+		
+		cityList = controller.getCityList();
+		if(cityList != null){
+			for(int i=0;i<cityList.size();i++){
+				city.getItems().addAll(cityList.get(i));
+			}
+		}else{
+			controller.showDialog("系统错误，请重试");
+		}
+		city.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				int t = city.getSelectionModel().getSelectedIndex();
+				tradingAreaList = controller.getTradingAreaList(cityList.get(t));
+				area = new ComboBox();
+				if(tradingAreaList != null){
+					for(int i=0;i<tradingAreaList.size();i++){
+						area.getItems().addAll(tradingAreaList.get(i));
+					}
+				}else{
+					controller.showDialog("系统错误，请重试");
+				}
+				area.setVisibleRowCount(3);
+				area.setPrefSize(200, 30);
+				
+				rightPane.getChildren().add(area);
+				AnchorPane.setLeftAnchor(area,200.0);
+				AnchorPane.setTopAnchor(area, 200.0);
+			}
+			
+		});
+	}
+	
 	private void setTextField(){
 		
 		//初始化textField
-		city = new TextField();
-		area = new TextField();
 		hotelName = new TextField();
 
 		priceLeft = new TextField();
@@ -102,8 +154,6 @@ public class SearchHotel {
 		starRight = new TextField();
 		
 		//设置textField可操作性
-		city.setEditable(true);
-		area.setEditable(true);
 		hotelName.setEditable(true);
 
 		priceLeft.setEditable(true);
@@ -115,8 +165,6 @@ public class SearchHotel {
 		
 		
 		//设置textField大小
-		city.setPrefSize(200, 30);
-		area.setPrefSize(200, 30);
 		hotelName.setPrefSize(200, 30);
 
 		priceLeft.setPrefSize(75, 30);
@@ -127,8 +175,6 @@ public class SearchHotel {
 		starRight.setPrefSize(75, 30);
 		
 		//右侧pane添加组件
-		rightPane.getChildren().add(city);
-		rightPane.getChildren().add(area);
 		rightPane.getChildren().add(hotelName);
 
 		rightPane.getChildren().add(priceLeft);
@@ -139,8 +185,6 @@ public class SearchHotel {
 		rightPane.getChildren().add(starRight);
 		
 		//右侧Pane设置位置
-		AnchorPane.setLeftAnchor(city, 200.0);
-		AnchorPane.setLeftAnchor(area, 200.0);
 		AnchorPane.setLeftAnchor(hotelName, 200.0);
 		
 		AnchorPane.setLeftAnchor(priceLeft, 200.0);
@@ -151,8 +195,6 @@ public class SearchHotel {
 		AnchorPane.setLeftAnchor(evaluationRight, 325.0);
 		AnchorPane.setLeftAnchor(starRight, 325.0);
 		
-		AnchorPane.setTopAnchor(city, 150.0);
-		AnchorPane.setTopAnchor(area, 200.0);
 		AnchorPane.setTopAnchor(hotelName, 250.0);
 		
 		AnchorPane.setTopAnchor(priceLeft, 400.0);
@@ -256,8 +298,8 @@ public class SearchHotel {
 	}
 
 	public HotelSearchVO getSearchVO(){
-		String c = city.getText();
-		String tradingArea = area.getText();
+		String c = cityList.get(city.getSelectionModel().getSelectedIndex());
+		String tradingArea = tradingAreaList.get(area.getSelectionModel().getSelectedIndex());
 		String name = hotelName.getText();
 		int t = roomType.getSelectionModel().getSelectedIndex();
 		RoomType type = null;

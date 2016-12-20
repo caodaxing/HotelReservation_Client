@@ -147,7 +147,7 @@ public class ExecuteOrder {
 		checkEvaluation.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				controller.setEvaluateView();
+				controller.whetherEvaluateAndSetView();
 				controller.getStage().show();
 			}
 			
