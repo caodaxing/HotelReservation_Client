@@ -115,12 +115,4 @@ public class WMUserInfoController extends WebManagerLeftController{
 		return clientService.getClientInfo(clientID);
 	}
 	
-	public String getHeadPath(){
-		String headPath = pictureService.getUserImage(clientID);
-		if(headPath == null || headPath.equals("")){//默认头像
-			headPath = "/head/游客头像.png";
-		}
-		return headPath;
-	}
-	
 }
