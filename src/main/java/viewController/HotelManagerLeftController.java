@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import logic.account.Account;
@@ -244,7 +245,7 @@ public class HotelManagerLeftController{
 		return checkHotelService.getHotelnfo(userId);
 	}
 	
-	public ArrayList<String> getPicture(String userId){
+	public ArrayList<Image> getPicture(String userId){
 		return pictureService.getHotelImage(userId);
 	}
 	

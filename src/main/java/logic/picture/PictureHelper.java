@@ -35,31 +35,12 @@ public class PictureHelper {
 			return data;
 	}
 	
-	/**
-	 * 将从服务器端拿到的二进制流转换成image并保存与本地的download文件夹
-	 * @param data 从服务器端拿到的二进制流
-	 */
-	public static String bytesToImage(byte[] data, String pictureName) {
-		try {  
-            for (int i = 0; i < data.length; ++i) {  
-                if (data[i] < 0) {     // 调整异常数据  
-                    data[i] += 256;  
-                }  
-            }
-            String path = "C:/Users/ZDY/Desktop/"+pictureName+".jpg";
-            OutputStream out = new FileOutputStream(path);  
-            out.write(data);  
-            out.flush();  
-            out.close();
-            return path;
-        } catch (Exception e) { 
-        	return null;
-        }
-	}
 	
-	public static Image imageToByte() {
+	public static Image imageToByte(byte[]data,String pictureName) {
+		if (data==null||pictureName==null||pictureName.equals("")) {
+			return null
+		}
 		return null;
-		
 	}
 //	/**
 //	 * 直接获得file对象

@@ -227,10 +227,10 @@ public class HotelInfo{
 		next.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){
-				ArrayList<String> paths = controller.getHotelImage();
+				ArrayList<Image> paths = controller.getHotelImage();
 				if(paths.size()>index ){	
 					try{
-						hotelImage.setImage(new Image(paths.get(index),250,200,false,true));
+//						hotelImage.setImage(new Image(paths.get(index),250,200,false,true));
 					}catch(Exception e){
 						controller.showDialog("酒店图片路径无效");
 						return;
@@ -258,12 +258,12 @@ public class HotelInfo{
 	}
 	
 	public void setFirstImage(){
-		ArrayList<String> paths = controller.getHotelImage();
+		ArrayList<Image> paths = controller.getHotelImage();
 		if(paths.isEmpty()){
 			return;
 		}else {
 			try{
-				hotelImage.setImage(new Image(paths.get(0),250,200,false,true));
+//				hotelImage.setImage(new Image(paths.get(0),250,200,false,true));
 			}catch(Exception e){
 				controller.showDialog("酒店图片路径无效");
 				return;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
 import Message.RoomType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import logic.order.CreateOrder;
 import logic.picture.Picture;
@@ -332,7 +333,7 @@ public class UserCheckHotelController extends UserLeftController {
 		setSearchResultListView();
 	}
 	
-	public ArrayList<String> getHotelImage(){
+	public ArrayList<Image> getHotelImage(){
 		return pictureService.getHotelImage(hotelID);
 	}
 	

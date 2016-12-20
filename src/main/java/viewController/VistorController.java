@@ -3,6 +3,7 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import logic.hotel.CheckHotel;
 import logic.picture.Picture;
@@ -105,7 +106,7 @@ public class VistorController extends VistorLeftController{
 		return checkService.getHotelnfo(hotelID);
 	}
 	
-	public ArrayList<String> getHotelImage(){
+	public ArrayList<Image> getHotelImage(){
 		return pictureService.getHotelImage(hotelID);
 	}
 	
