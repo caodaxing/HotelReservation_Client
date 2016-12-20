@@ -61,7 +61,7 @@ public class CreateOrder implements CreateOrderService{
 			e1.printStackTrace();
 		}
 		
-		String orderID = o.startTime.substring(0, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%06d", num);
+		String orderID = o.startTime.substring(2, 4) + o.startTime.substring(5, 7) + o.startTime.substring(8,10) + String.format("%05d", num);
 		o.orderId = orderID;
 		
 		//获取价格
