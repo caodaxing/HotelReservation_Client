@@ -100,7 +100,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 					if(this.orderDao.updateOrder(po)) {
 						//更新信用记录和信用值
 						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), checkInTime, 
-								po.getUesrID(), CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE, 
+								po.getOrderID(), CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE, 
 								(int)po.getAfterPromotionPrice());
 						
 						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
@@ -144,7 +144,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 					if(this.orderDao.updateOrder(po)) {
 						//更新信用记录和信用值
 						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), checkInTime, 
-								po.getUesrID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
+								po.getOrderID(), CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER, (int)po.getAfterPromotionPrice());
 						
 						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
 							return ResultMessage.SUCCESS;
@@ -196,7 +196,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 						
 						//更新信用记录和信用值
 						CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), undoAbnormalTime, 
-								po.getUesrID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, recoverCreditNum);
+								po.getOrderID(), CreditChangeType.SET_ABNORMAL_ORDER_DECREASE, recoverCreditNum);
 						
 						if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS){
 							return ResultMessage.SUCCESS;
@@ -235,8 +235,6 @@ public class ExecuteOrder implements ExecuteOrderService{
 			
 			if(this.lessThanSixHourLastestExecutedTime(time, po.getStartTime())) {
 				
-System.out.println();
-	
 				if(ResultMessage.SUCCESS == this.updateRoom.updateRoomInSpecificTime(po.getHotelId(), 
 						RoomType.values()[po.getRoomType()], po.getRoomNum(), po.getStartTime())) {
 					try {
@@ -244,7 +242,7 @@ System.out.println();
 							
 							//更新信用记录和信用值
 							CreditChangeVO creditChangeVO = new CreditChangeVO(po.getUesrID(), time, 
-									po.getUesrID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
+									po.getOrderID(), CreditChangeType.UNDO_UNEXECUTED_ORDER_DECREASE, -(int)po.getAfterPromotionPrice()/2);
 							
 							if(this.creditChangeInfo.changeCredit(creditChangeVO) == ResultMessage.SUCCESS) {
 								

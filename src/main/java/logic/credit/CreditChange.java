@@ -42,7 +42,12 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		int nowCredit = 0;
 		
 		if(vo.action != CreditChangeType.INIT_CREDIT) {
-			nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+			if(vo.action == CreditChangeType.RECHARGE_CREDIT) {
+				vo.cerditChange = vo.cerditChange * 100;
+				nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+			} else {
+				nowCredit = credit.getCredit(vo.userID)+vo.cerditChange;
+			}
 		} else {
 			nowCredit = Credit.INIT_CREDIT_NUM;
 		}

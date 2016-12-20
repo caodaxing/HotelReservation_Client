@@ -27,8 +27,7 @@ public class CreditChangeVO {
 	 * @param time
 	 * @param orderID
 	 * @param action
-	 * @param cerditChange
-	 *            （包含正负号）
+	 * @param cerditChange（包含正负号）
 	 */
 	public CreditChangeVO(String userID, String time, String orderID, CreditChangeType action, int cerditChange) {
 		this.userID = userID;
