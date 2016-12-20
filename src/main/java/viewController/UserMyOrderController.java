@@ -61,7 +61,11 @@ public class UserMyOrderController extends UserLeftController {
 	
 	public void setEvaluateView(){
 		
-		stage.setScene(evaluateUI.getScene());
+		if(orderService.getEvaluationInfo(orderID) == null){
+			setEvaluationInfoView();
+		}else{
+			stage.setScene(evaluateUI.getScene());
+		}
 		
 	}
 	

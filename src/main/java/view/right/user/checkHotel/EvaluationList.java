@@ -50,17 +50,16 @@ public class EvaluationList {
 	TableView<Person> tableView;
 	
 	TableColumn<Person, String> orderId;
-	TableColumn<Person, String> roomType;
-	TableColumn<Person, String> arriveTime;
 	TableColumn<Person, String> score;
 	TableColumn<Person, Button> operation;
 	
-	private final ObservableList<Person> data = FXCollections.observableArrayList();
+	private final ObservableList<Person> data ;
 	private Button check;
 	
 	public EvaluationList(UserCheckHotelController controller){
 		
 		this.controller = controller;
+		data = FXCollections.observableArrayList();
 		
 		leftUI = new UserUI(controller);
 		
