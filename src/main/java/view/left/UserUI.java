@@ -42,8 +42,8 @@ public class UserUI{
 		Picture picture = new Picture();
 		Image image = picture.getHeadImage(userID);
 		ImageView headImage = new ImageView(image);
-		headImage.setFitHeight(200.0);
-		headImage.setFitHeight(200.0);
+		headImage.setFitHeight(200);
+		headImage.setFitHeight(200);
 		pane.getChildren().add(headImage);
 		
 		grid.add(pane, 0, 0);
