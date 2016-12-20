@@ -54,27 +54,25 @@ public class WebManagerLeftController {
 		webManagerService = new WebManager();
 		accountService = new Account();
 		
-		addHotelUI = new AddHotel(this);
-		addHotelManagerUI = new AddHotelManager(this);
-		searchHotelManagerUI = new SearchHotelManager(this);
-		searchUserUI = new SearchUser(this);
-		firstUI = new First(this);
-		
 	}
 	
 	public void setSearchClientView(){
+		searchUserUI = new SearchUser(this);
 		stage.setScene(searchUserUI.getScene());
 	}
 	
 	public void setSearchHotelManagerView(){
+		searchHotelManagerUI = new SearchHotelManager(this);
 		stage.setScene(searchHotelManagerUI.getScene());
 	}
 	
 	public void setAddHotelView(){
+		addHotelUI = new AddHotel(this);
 		stage.setScene(addHotelUI.getScene());
 	}
 	
 	public void setAddHotelManagerView(){
+		addHotelManagerUI = new AddHotelManager(this);
 		stage.setScene(addHotelManagerUI.getScene());
 	}
 	//设置酒店工作人员界面
@@ -88,6 +86,7 @@ public class WebManagerLeftController {
 	}
 	
 	public void setWMWBFirstView(){
+		firstUI = new First(this);
 		stage.setScene(firstUI.getScene());
 	}
 	

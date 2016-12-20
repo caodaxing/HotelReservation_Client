@@ -20,8 +20,8 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 		
 		super(stage,userID);
 		
-		checkHotelManagerUI = new CheckHotelManager(this);
-		modifyHotelManagerUI = new ModifyHotelManager(this);
+		
+		
 		
 	}
 	
@@ -73,16 +73,16 @@ public class WMHotelManagerInfoController extends WebManagerLeftController{
 		}
 		
 		//若一切正常
+		checkHotelManagerUI = new CheckHotelManager(this);
 		stage.setScene(checkHotelManagerUI.getScene());
 		checkHotelManagerUI.setText();
 		
 	}
 	
 	public void setModifyHotelManagerView(){
-		
+		modifyHotelManagerUI = new ModifyHotelManager(this);
 		stage.setScene(modifyHotelManagerUI.getScene());
 		modifyHotelManagerUI.setText();
-		
 	}
 	
 	public HotelManagerVO getHotelMangerInfo(){

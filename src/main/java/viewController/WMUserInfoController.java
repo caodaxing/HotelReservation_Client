@@ -30,10 +30,6 @@ public class WMUserInfoController extends WebManagerLeftController{
 		clientService = new Client();
 		pictureService = new Picture();
 		
-		blankUI = new Blank(this);
-		checkUserUI = new CheckUser(this);
-		modifyUserUI = new ModifyUser(this);
-		
 	}
 	
 	public void setClientID(String clientID){
@@ -45,9 +41,8 @@ public class WMUserInfoController extends WebManagerLeftController{
 	}
 	
 	public void setBlankView(){
-		
+		blankUI = new Blank(this);
 		stage.setScene(blankUI.getScene());
-		
 	}
 	
 	public void setCheckUserView(){
@@ -80,17 +75,16 @@ public class WMUserInfoController extends WebManagerLeftController{
 			clientID = null;
 			return ;
 		}
-		
+		checkUserUI = new CheckUser(this);
 		stage.setScene(checkUserUI.getScene());
 		checkUserUI.setText();
 		
 	}
 	
 	public void setModifyUserUI(){
-		
+		modifyUserUI = new ModifyUser(this);
 		stage.setScene(modifyUserUI.getScene());
 		modifyUserUI.setText();
-	
 	}
 	
 	public void modifyUserInfo(){

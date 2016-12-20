@@ -35,11 +35,7 @@ public class VistorController extends VistorLeftController{
 		searchService = new logic.hotel.SearchHotel();
 		checkService = new CheckHotel();
 		pictureService = new Picture();
-		
-		hotelInfoUI = new HotelInfo(this);
-		searchHotelUI = new SearchHotel(this);
-		searchResultListUI = new SearchResultList(this);
-		
+
 	}
 	
 	public Stage getStage(){
@@ -53,8 +49,6 @@ public class VistorController extends VistorLeftController{
 	public void setSearchHotelView(){
 		//生成新的searchHotelView，searchResultList，hotelInfo
 		searchHotelUI = new SearchHotel(this);
-		searchResultListUI = new SearchResultList(this);
-		hotelInfoUI = new HotelInfo(this);
 		stage.setScene(searchHotelUI.getScene());
 		//清空hotelList和hotelID
 		hotelList = null;

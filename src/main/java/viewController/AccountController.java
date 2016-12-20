@@ -41,10 +41,6 @@ public class AccountController {
 		
 		accountService = new Account();
 		
-		firstUI = new FirstUI(this);
-		signInUI = new SignInUI(this);
-		signUpUI = new SignUpUI(this);
-		
 	}
 	
 	public Stage getStage(){
@@ -54,19 +50,22 @@ public class AccountController {
 	}
 	
 	public void setFirstView(){
-		
+
+		firstUI = new FirstUI(this);
 		stage.setScene(firstUI.getScene());
 	
 	}
 	
 	public void setSignInView(){
-		
+
+		signInUI = new SignInUI(this);
 		stage.setScene(signInUI.getScene());
 	
 	}
 	
 	public void setSignUpView(){
 		
+		signUpUI = new SignUpUI(this);
 		stage.setScene(signUpUI.getScene());
 	
 	}

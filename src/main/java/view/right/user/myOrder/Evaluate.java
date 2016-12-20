@@ -165,6 +165,7 @@ public class Evaluate {
 			}
 		}catch(Exception e){
 			controller.showDialog("请输入有效值");
+			 grd = -1;
 		}
 		return grd;
 	}

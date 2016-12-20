@@ -29,11 +29,7 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 		super(stage,userID);
 		
 		webBusinessService = new WebBusiness();
-		
-		addWebBusinessUI = new AddWebBusiness(this);
-		checkWebBusinessUI = new CheckWebBusiness(this);
-		modifyWebBusinessUI = new ModifyWebBusiness(this);
-		searchWebBusinessUI = new SearchWebBusiness(this);
+	
 	}
 	
 	public Stage getStage(){
@@ -45,9 +41,8 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 	}
 	
 	public void setAddWebBusinessView(){
-		
+		addWebBusinessUI = new AddWebBusiness(this);
 		stage.setScene(addWebBusinessUI.getScene());
-		
 	}
 	
 	public void setCheckWebBusinessView(){
@@ -77,22 +72,21 @@ public class WMWebBusinessInfoController extends WebManagerLeftController {
 			webBusinessID = null;
 			return ;
 		}
-		
+		checkWebBusinessUI = new CheckWebBusiness(this);
 		stage.setScene(checkWebBusinessUI.getScene());
 		checkWebBusinessUI.setText();
 	}
 	
 	public void setModifyWebBusinessView(){
-		
+		modifyWebBusinessUI = new ModifyWebBusiness(this);
 		stage.setScene(modifyWebBusinessUI.getScene());
 		modifyWebBusinessUI.setText();
 		
 	}
 	
 	public void setSearchWebBusinessView(){
-		
+		searchWebBusinessUI = new SearchWebBusiness(this);
 		stage.setScene(searchWebBusinessUI.getScene());
-		
 	}
 	
 	public WebBusinessVO getWebBusinessInfo(){
