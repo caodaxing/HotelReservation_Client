@@ -24,7 +24,6 @@ public class RoomVO {
 	 * @param specificTimeRoomNum
 	 */
 	public RoomVO(String hotelId, RoomType roomType, int roomNum, double price) {
-		super();
 		this.hotelId = hotelId;
 		this.roomType = roomType;
 		this.roomNum = roomNum;

@@ -84,7 +84,6 @@ public class OrderList implements OrderListService{
 			return null;
 		}
 		
-		
 		try {
 			this.orders = this.orderListDao.getOrderListByUserId(userID);
 		} catch (RemoteException e) {
@@ -97,7 +96,7 @@ public class OrderList implements OrderListService{
 		for(int i=0; i<orders.size(); ++i) {
 			po = orders.get(i);
 			
-			if(po.getHotelId() == hotelID) {
+			if(po.getHotelId().equals(hotelID)) {
 				res.add(po);
 			}
 		}
