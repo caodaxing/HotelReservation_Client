@@ -162,27 +162,19 @@ public class SetVIPAreaStrategy {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setTradingArea(){
 		city = new ComboBox();
-		tradingArea1 = new ComboBox();
 		
 		city.setVisibleRowCount(3);
-		tradingArea1.setVisibleRowCount(3);
 		
 		city.setPrefSize(100, 30);
-		tradingArea1.setPrefSize(100, 30);
 		
 		city.setLayoutX(400);
 		city.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
-		tradingArea1.setLayoutX(520);
-		tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
 		
 		rightPane.getChildren().add(city);
-		rightPane.getChildren().add(tradingArea1);
 		
 		AnchorPane.setLeftAnchor(city, 400 - (double)DefaultNums.LEFT_WIDTH);
-		AnchorPane.setLeftAnchor(tradingArea1, 520 - (double)DefaultNums.LEFT_WIDTH);
 		
 		AnchorPane.setTopAnchor(city, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
-		AnchorPane.setTopAnchor(tradingArea1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
 		
 		cityList = controller.getCityList();
 		if(cityList != null){
@@ -197,7 +189,8 @@ public class SetVIPAreaStrategy {
 			@Override
 			public void handle(ActionEvent event) {
 				int t = city.getSelectionModel().getSelectedIndex();
-				ArrayList<String> tradingAreaList = controller.getTradingAreaList(cityList.get(t));
+				tradingAreaList = controller.getTradingAreaList(cityList.get(t));
+				tradingArea1 = new ComboBox();
 				if(tradingAreaList != null){
 					for(int i=0;i<tradingAreaList.size();i++){
 						tradingArea1.getItems().addAll(tradingAreaList.get(i));
@@ -205,6 +198,13 @@ public class SetVIPAreaStrategy {
 				}else{
 					controller.showDialog("系统错误，请重试");
 				}
+				tradingArea1.setVisibleRowCount(3);
+				tradingArea1.setPrefSize(100, 30);
+				tradingArea1.setLayoutX(520);
+				tradingArea1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
+				rightPane.getChildren().add(tradingArea1);
+				AnchorPane.setLeftAnchor(tradingArea1, 520 - (double)DefaultNums.LEFT_WIDTH);
+				AnchorPane.setTopAnchor(tradingArea1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
 			}
 			
 		});

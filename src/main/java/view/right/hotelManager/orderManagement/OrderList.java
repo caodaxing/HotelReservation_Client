@@ -184,7 +184,7 @@ public class OrderList {
 								hmcontroller.setOrderList(controller.getlist());
 								hmcontroller.setOrderId(row);
 //								String orderID = controller.getOrderId();
-System.out.println();
+//System.out.println();
 								hmcontroller.setOrderView();
 								hmcontroller.getStage().show();
 							});

@@ -31,12 +31,11 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 			//确定vo的id
 			int num = 0;
 			try {
-				num = this.promotionDao.getPromotinoNum();
+				num = this.promotionDao.getPromotinoNum()+1;
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
-			
-			if(vo.hotelID == null) {
+			if(vo.hotelID == null||vo.hotelID.equals("")) {
 				vo.promotionID = "00000" +  String.format("%04d", num);
 			} else {
 				vo.promotionID = vo.hotelID +  String.format("%04d", num);
