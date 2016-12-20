@@ -53,6 +53,7 @@ public class UserCheckHotelController extends UserLeftController {
 	private String evaluationID;
 	private ArrayList<EvaluationVO> evaluationList;
 	private ArrayList<RoomVO> roomList;
+	private ArrayList<OrderVO> historyOrderList;
 	
 	public UserCheckHotelController(Stage stage , String userID){
 		
@@ -120,6 +121,7 @@ public class UserCheckHotelController extends UserLeftController {
 		hotelInfoUI = new HotelInfo(this);
 		hotelInfoUI.setText();
 		hotelInfoUI.setFirstImage();
+		
 		stage.setScene(hotelInfoUI.getScene());
 	}
 	
@@ -321,7 +323,11 @@ public class UserCheckHotelController extends UserLeftController {
 
 	//order
 	private void setHistoryOrderList(){
-		orderList = orderListService.filterSpecificUserHotelOrderList(userID, hotelID);
+		historyOrderList = orderListService.filterSpecificUserHotelOrderList(userID, hotelID);
+	}
+	
+	public ArrayList<OrderVO> getHistoryOrderList(){
+		return historyOrderList;
 	}
 	
 	public void setOrderID(int row){

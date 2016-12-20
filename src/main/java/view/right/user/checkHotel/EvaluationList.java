@@ -174,7 +174,7 @@ public class EvaluationList {
 	
 	public void setListValue(){
 		ArrayList<EvaluationVO> evaluationList = controller.getEvaluationList();
-		if(evaluationList == null || evaluationList.size() == 0 || evaluationList.isEmpty()){
+		if(evaluationList == null){
 			return;
 		}
 		for(EvaluationVO vo : evaluationList){
