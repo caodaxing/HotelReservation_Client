@@ -346,11 +346,24 @@ public class SearchHotel {
 		int starHigh = 5;
 		if(!starRight.getText().equals(""))
 			starHigh = Integer.valueOf(starRight.getText());
+
+		if(priceHigh<priceLow || priceHigh < 0 || priceLow<0){
+			controller.showDialog("请输入有效价格");
+			return null;
+		}
+		if(starHigh<starLow || starHigh < 1 || starLow < 1 ||  starHigh> 5 || starLow>5){
+			controller.showDialog("请输入有效星级区间");
+			return null;
+		}
+		if(commentHigh<commentLow || commentHigh < 0 || commentLow<0 || commentHigh>5 || commentLow>5){
+			controller.showDialog("请输入有效评价区间");
+			return null;
+		}
 		
 		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
 		return vo;
 		}catch(Exception e){
-			controller.showDialog("请输入正确的值");
+			controller.showDialog("请输入有效值");
 		}
 		
 		return null;
