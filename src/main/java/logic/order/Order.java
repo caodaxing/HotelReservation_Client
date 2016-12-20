@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import Message.ResultMessage;
 import dataDao.order.OrderDao;
+import logic.hotel.CheckHotel;
+import logic.hotel.HotelInfo;
 import logic.utility.EvaluationTransform;
 import logic.utility.OrderTransform;
 import logicService.order.OrderService;
@@ -69,9 +71,10 @@ public class Order implements OrderService, OrderHotelInfo{
 			try {
 				if(this.orderDao.addEvaluation(po)) {
 					
-					
-					
-					return ResultMessage.SUCCESS;
+					if(this.updateHotelGrade(evaluation)) {
+						return ResultMessage.SUCCESS;
+					}
+			
 				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -81,7 +84,32 @@ public class Order implements OrderService, OrderHotelInfo{
 		return ResultMessage.FAILURE;
 	}
 
-	
+	//更新酒店评分信息
+	private boolean updateHotelGrade(EvaluationVO evaluation) {
+		OrderPO po = null;
+		try {
+			po = this.orderDao.getOrderByOrderID(evaluation.orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		ArrayList<EvaluationVO> evaluationVOs = this.getHotelEvaluations(po.getHotelId());
+		
+		double grade = 0;
+		for(int i=0; i<evaluationVOs.size(); ++i) {
+			grade += evaluationVOs.get(i).commentLevel;
+		}
+		
+		grade /= evaluationVOs.size();
+		
+		HotelInfo hotelInfo = new CheckHotel();
+		if(hotelInfo.updateHotelGrade(po.getHotelId(), grade)) {
+			return true;
+		}
+		
+		return false;
+	}
+
+
 	@Override
 	public ArrayList<EvaluationVO> getHotelEvaluations(String hotelID) {
 		

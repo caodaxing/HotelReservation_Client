@@ -3,6 +3,8 @@ package logic.hotel;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 import Message.RoomType;
 import dataDao.hotel.HotelDao;
 import logic.order.Order;
@@ -69,6 +71,25 @@ public class CheckHotel implements CheckHotelService, HotelInfo, HotelTradingAre
 		RoomInfo info = new Room();
 		
 		return info.getRoomPrice(hotelID, roomType);
+	}
+
+	@Override
+	public boolean updateHotelGrade(String hotelID, double grade) {
+		
+		try {
+			HotelPO hotelPO = this.hotelDao.getHotelInfoByHotelID(hotelID);
+			
+			hotelPO.setEvaluationGrades(grade);
+			
+			if(this.hotelDao.updateHotel(hotelPO)) {
+				return true;
+			}
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 }
