@@ -3,23 +3,16 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
-import Message.ResultMessage;
 import Message.RoomType;
 import javafx.stage.Stage;
-import logic.hotel.CheckHotel;
 import logic.order.CreateOrder;
 import logic.picture.Picture;
 import logic.room.Room;
-import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
 import logicService.order.CreateOrderService;
 import logicService.picture.PictureService;
 import logicService.room.RoomService;
-import logicService.stub.HotelService_Stub;
-import logicService.stub.OrderService_Stub;
-import logicService.stub.RoomService_Stub;
 import view.right.user.checkHotel.*;
-import view.right.user.myOrder.OrderList;
 import vo.EvaluationVO;
 import vo.HotelSearchVO;
 import vo.HotelVO;
@@ -100,13 +93,14 @@ public class UserCheckHotelController extends UserLeftController {
 	}
 	
 	/*
+
 	 * 用户历史订单界面
 	 */
 	public void setHistoryOrderListView(){
 		setHistoryOrderList();
-		HistoryOrderList hotelOrderList = new HistoryOrderList(this);
-		hotelOrderList.setListValue();
-		stage.setScene(hotelOrderList.getScene());
+		historyOrderListUI = new HistoryOrderList(this);
+		historyOrderListUI.setListValue();
+		stage.setScene(historyOrderListUI.getScene());
 		stage.show();
 	}
 	

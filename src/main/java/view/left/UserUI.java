@@ -10,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import view.helpTools.DefaultNums;
 import viewController.UserLeftController;
-import viewController.UserMyInfoController;
 
 /**
  * 客户的左侧导航栏

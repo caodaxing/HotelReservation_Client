@@ -6,8 +6,6 @@ import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.credit.CreditChange;
 import logicService.credit.CreditChangeService;
-import logicService.stub.ClientService_Stub;
-import logicService.stub.CreditChangeService_Stub;
 import view.right.user.myInfo.Blank;
 import view.right.user.myInfo.HistoryCredit;
 import view.right.user.myInfo.ModifyMyInfo;

@@ -3,19 +3,16 @@ package viewController;
 import java.util.ArrayList;
 
 import Message.HotelSearchCondition;
-import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.hotel.CheckHotel;
 import logic.picture.Picture;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.SearchHotelService;
 import logicService.picture.PictureService;
-import logicService.stub.HotelService_Stub;
 import view.right.vistor.SearchHotel;
 import view.right.vistor.SearchResultList;
 import vo.HotelSearchVO;
 import vo.HotelVO;
-import view.right.vistor.Blank;
 import view.right.vistor.HotelInfo;
 
 public class VistorController extends VistorLeftController{

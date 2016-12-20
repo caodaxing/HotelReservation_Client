@@ -10,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
-import viewController.WMHotelManagerInfoController;
 import viewController.WMUserInfoController;
 import viewController.WebManagerLeftController;
 

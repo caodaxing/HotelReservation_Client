@@ -5,7 +5,6 @@ import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.user.WebBusiness;
 import logic.utility.Encryption;
-import logicService.stub.WebBusinessService_Stub;
 import logicService.user.WebBusinessService;
 import view.right.webManager.webBusinessInfo.AddWebBusiness;
 import view.right.webManager.webBusinessInfo.CheckWebBusiness;

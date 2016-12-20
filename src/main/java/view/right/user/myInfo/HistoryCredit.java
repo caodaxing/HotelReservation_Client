@@ -2,7 +2,6 @@ package view.right.user.myInfo;
 
 import java.util.ArrayList;
 
-import Message.CreditChangeType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
