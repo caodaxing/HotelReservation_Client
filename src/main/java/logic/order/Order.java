@@ -68,6 +68,9 @@ public class Order implements OrderService, OrderHotelInfo{
 			EvaluationPO po = this.evaluationTrans.evalutionTransToPO(evaluation);
 			try {
 				if(this.orderDao.addEvaluation(po)) {
+					
+					
+					
 					return ResultMessage.SUCCESS;
 				}
 			} catch (RemoteException e) {

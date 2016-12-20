@@ -62,6 +62,7 @@ public class WebVipLevelPromotion  implements Promotion{
 			if(temp < vo.afterPrice) {
 				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
 				vo.promotion = this.changeToVO();
+				vo.promotion.discount = discount;
 			}
 		}
 		

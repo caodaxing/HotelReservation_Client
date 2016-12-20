@@ -54,8 +54,7 @@ public class OrderTransform {
 		return new OrderVO(order.getUesrID(), order.getOrderID(),RoomType.values()[order.getRoomType()], order.getRoomIDs(), order.getRoomNum(),
 				order.getStartTime(), order.getEndTime(), order.getHotelId(), OrderState.values()[order.getState()],
 				order.getNumberOfPeople(), order.isHasChild(), order.getBeforePromotionPrice(),
-				order.getAfterPromotionPrice(),provo ,
-				order.getCheckInTime(), order.getCheckOutTime(), order.getAbnormalTime(), order.getUndoAbnormalTime(), order.getUndoUnexecutedTime());
+				order.getAfterPromotionPrice(),provo, order.getCheckInTime(), order.getCheckOutTime(), order.getAbnormalTime(), order.getUndoAbnormalTime(), order.getUndoUnexecutedTime());
 		
 	}
 	
