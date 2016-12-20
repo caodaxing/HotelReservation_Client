@@ -51,13 +51,14 @@ public class TodayUnexecuteOrder {
 	private ObservableList<Person> data;
 	private Button check;
 //	private int row;
-//	ArrayList<OrderVO> orderList;
+	ArrayList<OrderVO> orderList;
 	
 	public TodayUnexecuteOrder(WebBusinessLeftController controller){
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
 		wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
+		data = FXCollections.observableArrayList();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -118,7 +119,8 @@ public class TodayUnexecuteOrder {
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
-								controller.setOrderId(row);
+								wbcontroller.setOrderList(controller.getOrderList());
+								wbcontroller.setOrderId(row);
 								wbcontroller.setUnexecuteOrderView();
 								wbcontroller.getStage().show();
 							});
@@ -141,18 +143,13 @@ public class TodayUnexecuteOrder {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
-//	public int getRow(){
-//		return row;
-//	}
-	
 	public void initialData(){
-		data = FXCollections.observableArrayList();
-		ArrayList<OrderVO> orderList = controller.getOrderList();
+		orderList = controller.getOrderList();
 		if(orderList == null){
 			return ;
 		}
 		for(OrderVO o :orderList){
-			data.add(new Person(o.orderId,o.hotelID,controller.getUserId(),o.endTime,check));
+			data.add(new Person(o.orderId,o.hotelID,o.userID,o.endTime,check));
 		}
 		
 	}

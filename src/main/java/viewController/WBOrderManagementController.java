@@ -1,16 +1,22 @@
 package viewController;
 
+import java.util.ArrayList;
+
 import Message.ResultMessage;
 import javafx.stage.Stage;
 import logic.order.ManageOrder;
+import logic.order.Order;
 import logicService.order.ManageOrderService;
+import logicService.order.OrderService;
 import view.right.webBusiness.orderManagement.AbnormalOrder;
 import view.right.webBusiness.orderManagement.UnexecuteOrder;
+import vo.OrderVO;
 
 public class WBOrderManagementController extends WebBusinessLeftController{
 	
 	//逻辑层接口
 	private ManageOrderService manageOrderService;
+	private OrderService orderService;
 	//控制界面
 	private AbnormalOrder abnormalOrderUI;
 	protected UnexecuteOrder unexecuteeOrderUI;
@@ -21,6 +27,7 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 		
 		super(stage,userId);
 		manageOrderService = new ManageOrder();
+		orderService = new Order();
 		abnormalOrderUI = new AbnormalOrder(this);
 		unexecuteeOrderUI = new UnexecuteOrder(this);
 	}
@@ -70,6 +77,19 @@ public class WBOrderManagementController extends WebBusinessLeftController{
 		return manageOrderService.undoAbnormalOrder(orderId, bool);
 	}
 	
+	public OrderVO getOrderVOInfo(){
+		return orderService.getOrderInfo(orderId);
+	}
 	
+	public void setOrderId(String orderId){
+		this.orderId = orderId;
+	}
 	
+	public void setOrderId(int row){
+		orderId = orderList.get(row).orderId;
+	}
+	
+	public void setOrderList(ArrayList<OrderVO> orderlist){
+		orderList = orderlist;
+	}
 }

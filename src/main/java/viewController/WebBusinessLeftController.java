@@ -94,6 +94,7 @@ public class WebBusinessLeftController {
 	
 	public void setVIPLevelView(){
 		setVIPCreditUI = new SetVIPCredit(this);
+		setVIPCreditUI.setText();
 		stage.setScene(setVIPCreditUI.getScene());
 		stage.show();
 	}
@@ -106,6 +107,7 @@ public class WebBusinessLeftController {
 	//设置异常列表内容
 	public void setFilterAbnormalOrderList(){
 		orderList = manageOrderService.getWebDailyAbnormalOrderList();
+System.out.println(orderList.size());
 	}
 	
 	public void setTodayUnexecuteOrderView(){
@@ -172,20 +174,28 @@ public class WebBusinessLeftController {
 		return orderList;
 	}
 	
-	public String getOrderID(){
-		return orderId;
+	public boolean getUserIdExistResult(String userId){
+		return accountService.userIDExists(userId);
 	}
 	
-	public OrderVO getOrderVOInfo(){
-		return orderService.getOrderInfo(orderId);
-	}
+//	public String getOrderID(){
+//		return orderId;
+//	}
 	
-	public void setOrderId(String orderId){
-		this.orderId = orderId;
-	}
+//	public OrderVO getOrderVOInfo(){
+//		return orderService.getOrderInfo(orderId);
+//	}
+//	
+//	public void setOrderId(String orderId){
+//		this.orderId = orderId;
+//	}
+//	
+//	public void setOrderId(int row){
+//		orderId = orderList.get(row).orderId;
+//	}
 	
-	public void setOrderId(int row){
-		orderId = orderList.get(row).orderId;
+	public int getLevelCredit(int level){
+		return creditService.getVIPCredit(level);
 	}
 	
 //	public void setAllPromotion(){
@@ -203,6 +213,8 @@ public class WebBusinessLeftController {
 //	public String getPromotionId(){
 //		return promotionId;
 //	}
+	
+	
 	
 	
 }

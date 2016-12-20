@@ -146,7 +146,6 @@ public class UndoOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setUndoOrderListView();
-				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 			

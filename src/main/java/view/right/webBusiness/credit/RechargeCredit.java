@@ -124,15 +124,17 @@ public class RechargeCredit {
 				try{
 					String userId = userID.getText();
 					int rechargeCredit = Integer.parseInt(rechargeAmount.getText());
-					if(userId != null){ 
+					if(userId != null && controller.getUserIdExistResult(userId)){ 
 						CreditChangeVO creditChangeVO = new CreditChangeVO(userId, rechargeCredit);
 						if(wbcontroller.getRechargeResult(creditChangeVO) == ResultMessage.SUCCESS){
 							controller.showDialog("充值成功");
 						}else{
 							controller.showDialog("充值失败");
 						}
-					}else{
+					}else if(userId == null){
 						controller.showDialog("请输入用户名");
+					}else{
+						controller.showDialog("用户名不存在");
 					}
 				}catch(NumberFormatException e){
 					controller.showDialog("信用金额输入错误");

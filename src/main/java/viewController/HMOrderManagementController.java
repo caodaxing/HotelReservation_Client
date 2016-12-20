@@ -54,7 +54,7 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		checkArriveInfoUI = new CheckArriveInfo(this);
 		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evalutionInfoUI = new EvaluationInfo(this);
-//		executeOrderUI = new ExecuteOrder(this);
+		executeOrderUI = new ExecuteOrder(this);
 //		orderListUI = new OrderList(this);
 		searchOrderUI = new SearchOrder(this);
 //		setArriveInfoUI = new SetArriveInfo(this);
@@ -72,11 +72,11 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		abnormalOrderUI = new AbnormalOrder(this);
 		abnormalOrderUI.setText();
 		stage.setScene(abnormalOrderUI.getScene());
-		abnormalOrderUI.setText();
 	}
 	
 	public void setCheckArriveInfoView(){
 		checkArriveInfoUI = new CheckArriveInfo(this);
+System.out.println("     "+ orderId);
 		checkArriveInfoUI.setText();
 		stage.setScene(checkArriveInfoUI.getScene());
 	}
@@ -95,10 +95,9 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	}
 	
 	public void setExecuteOrderView(){
-		executeOrderUI = new ExecuteOrder(this);
+//		executeOrderUI = new ExecuteOrder(this);
 		executeOrderUI.setText();
 		stage.setScene(executeOrderUI.getScene());
-		executeOrderUI.setText();
 	}
 	
 	
@@ -119,14 +118,12 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 		undoOrderUI = new UndoOrder(this);
 		undoOrderUI.setText();
 		stage.setScene(undoOrderUI.getScene());
-		undoOrderUI.setText();
 	}
 	
 	public void setUnexecuteOrderView(){
 		unexecuteOrderUI = new UnexecuteOrder(this);
 		unexecuteOrderUI.setText();
 		stage.setScene(unexecuteOrderUI.getScene());
-		unexecuteOrderUI.setText();
 	}
 	
 //	public void setRow(){
@@ -182,11 +179,11 @@ System.out.println(state);
 	
 	
 	
-	public ResultMessage getLeaveResult(String orderID){
-		return executeOrderService.hasCheckOut(orderID);
+	public ResultMessage getLeaveResult(){
+		return executeOrderService.hasCheckOut(orderId);
 	}
 	
-	public ResultMessage setLeaveResult(String orderId){
+	public ResultMessage setLeaveResult(){
 		return executeOrderService.checkOut(orderId);
 	}
 	
@@ -210,7 +207,7 @@ System.out.println(state);
 		System.out.println(orderId);
 		return orderService.getOrderInfo(orderId);
 	}
-			
+	
 	public void setOrderId(String orderId){
 		this.orderId = orderId;
 	}
@@ -226,5 +223,10 @@ System.out.println(state);
 	
 	public String getOrderId(){
 		return orderId;
+	}
+	
+	public void setReturnExecuteOrderView(){
+//		executeOrderUI = new ExecuteOrder(this);
+		stage.setScene(executeOrderUI.getScene());
 	}
 }

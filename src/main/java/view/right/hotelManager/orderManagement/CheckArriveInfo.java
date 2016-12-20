@@ -140,7 +140,7 @@ public class CheckArriveInfo {
 			@Override
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
-				controller.setExecuteOrderView();
+				controller.setReturnExecuteOrderView();
 				controller.getStage().show();
 			}
 			

@@ -81,10 +81,6 @@ public class CheckLeaveInfo {
 		actualLeaveTime = new TextField();
 		actualLeaveTime.setId("CheckLeaveInfo");
 		actualLeaveTime.setPrefSize(200, 30);
-		/*
-		 * //设置文本框内容
-		 * 
-		 */
 		
 		//设置文本框内容不可更改
 		roomType.setEditable(false);

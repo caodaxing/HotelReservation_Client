@@ -48,7 +48,7 @@ public class AbnormalOrderList {
 	TableColumn<Person, Button> operation;
 	
 	private ObservableList<Person> data;
-//	private ArrayList<OrderVO> orderList;
+	private ArrayList<OrderVO> orderList;
 	private Button check;
 //	private int row;
 	
@@ -57,6 +57,7 @@ public class AbnormalOrderList {
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
 		wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
+		data = FXCollections.observableArrayList();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -87,19 +88,19 @@ public class AbnormalOrderList {
 				
 		//添加列
 		orderId = new TableColumn<>("订单号");
-		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
+		orderId.setCellValueFactory(new PropertyValueFactory<>("orderid"));
 		orderId.setMinWidth(100);
 		
 		hotel = new TableColumn<>("酒店");
-		hotel.setCellValueFactory(new PropertyValueFactory<Person, String>("hotel"));
+		hotel.setCellValueFactory(new PropertyValueFactory<>("hotel"));
 		hotel.setMinWidth(100);
 		
 		userId = new TableColumn<>("用户ID");
-		userId.setCellValueFactory(new PropertyValueFactory<Person, String>("userid"));
+		userId.setCellValueFactory(new PropertyValueFactory<>("userid"));
 		userId.setMinWidth(100);
 		
 		lastExecuteTime = new TableColumn<>("最晚执行时间");
-		lastExecuteTime.setCellValueFactory(new PropertyValueFactory<Person, String>("lastexecutetime"));
+		lastExecuteTime.setCellValueFactory(new PropertyValueFactory<>("lastexecutetime"));
 		lastExecuteTime.setMinWidth(100);
 		
 		operation= new TableColumn<>("操作");
@@ -113,7 +114,9 @@ public class AbnormalOrderList {
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
-								controller.setOrderId(row);
+								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
+								wbcontroller.setOrderList(controller.getOrderList());
+								wbcontroller.setOrderId(row);
 								wbcontroller.setabnormalOrderView();
 								wbcontroller.getStage().show();
 							});
@@ -137,13 +140,12 @@ public class AbnormalOrderList {
 	}
 	
 	public void initialData(){
-		data = FXCollections.observableArrayList();
-		ArrayList<OrderVO> orderList = controller.getOrderList();
+		orderList = controller.getOrderList();
 		if(orderList == null){
 			return ;
 		}
 		for(OrderVO o :orderList){
-			data.add(new Person(o.orderId,o.hotelID,controller.getUserId(),o.endTime,check));
+			data.add(new Person(o.orderId,o.hotelID,o.userID,o.endTime,check));
 		}
 		
 	}

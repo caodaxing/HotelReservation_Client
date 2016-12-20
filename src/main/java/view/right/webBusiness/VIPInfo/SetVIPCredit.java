@@ -180,4 +180,10 @@ public class SetVIPCredit {
 		AnchorPane.setTopAnchor(ok, 475.0);
 		AnchorPane.setTopAnchor(cancel, 475.0);
 	}
+	
+	public void setText(){
+		updateVIP1.setText(String.valueOf(controller.getLevelCredit(2)));
+		updateVIP2.setText(String.valueOf(controller.getLevelCredit(3)));
+		updateVIP3.setText(String.valueOf(controller.getLevelCredit(4)));
+	}
 }

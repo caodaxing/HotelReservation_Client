@@ -187,7 +187,6 @@ public class ExecuteOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				controller.setCheckArriveInfoView();
-				controller.setOrderId(null);
 				controller.getStage().show();
 			}
 									
@@ -199,10 +198,10 @@ public class ExecuteOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				
-				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.FAILURE){
+				if(controller.getLeaveResult() == ResultMessage.FAILURE){
 //					controller.setSetLeaveInfoView();
 //					controller.getStage().show();
-					if(controller.setLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
+					if(controller.setLeaveResult() == ResultMessage.SUCCESS){
 						controller.showDialog("退房成功");
 					}else{
 						controller.showDialog("退房失败");
@@ -221,7 +220,7 @@ public class ExecuteOrder {
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				orderVO = controller.getOrderInfo();
-				if(controller.getLeaveResult(orderVO.orderId) == ResultMessage.SUCCESS){
+				if(controller.getLeaveResult() == ResultMessage.SUCCESS){
 					controller.setEvaluationInfoView();
 					controller.getStage().show();
 				}else{

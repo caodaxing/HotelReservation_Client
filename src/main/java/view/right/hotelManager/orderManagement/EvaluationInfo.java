@@ -79,10 +79,6 @@ public class EvaluationInfo {
 		evaluation = new TextField();
 		evaluation.setId("CheckLeaveInfo");
 		evaluation.setPrefSize(250, 100);
-		/*
-		 * //设置文本框内容
-		 * 
-		 */
 		
 		//设置文本框内容不可更改
 		evaluationGrade.setEditable(false);

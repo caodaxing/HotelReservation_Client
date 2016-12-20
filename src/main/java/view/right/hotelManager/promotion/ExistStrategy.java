@@ -53,6 +53,7 @@ public class ExistStrategy {
 	private ObservableList<Person> data;
 	private Button check;
 	private Button delete;
+	ArrayList<PromotionVO> promotionList;
 //	private int row;
 //	ArrayList<PromotionVO> promotionList;
 	
@@ -60,6 +61,7 @@ public class ExistStrategy {
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		data = FXCollections.observableArrayList();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -122,7 +124,6 @@ public class ExistStrategy {
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
 		tableView.setPrefSize(495, 400);
-		initialData();
 		
 		//添加列表内容
 				
@@ -182,6 +183,8 @@ public class ExistStrategy {
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
 								controller.setPromotionId(num);
+								promotionList = controller.getPromotionList();
+								PromotionVO promotionVO = controller.getPromotionVO();
 								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
 									controller.showDialog("删除成功");
 									controller.setDeletePromotion();
@@ -210,8 +213,9 @@ public class ExistStrategy {
 	}
 	
 	public void initialData(){
-		data = FXCollections.observableArrayList();
+		
 		ArrayList<PromotionVO> promotionList = controller.getPromotionList();
+		
 		if(promotionList == null){
 			return ;
 		}

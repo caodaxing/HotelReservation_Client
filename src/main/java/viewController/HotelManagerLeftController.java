@@ -263,9 +263,9 @@ public class HotelManagerLeftController{
 //System.out.println(orderId);
 //	}
 	
-	public void setOrderList(ArrayList<OrderVO> orderList){
-		orderlist = orderList;
-	}
+//	public void setOrderList(ArrayList<OrderVO> orderList){
+//		orderlist = orderList;
+//	}
 	
 	public ResultMessage getUpdaterRoomResult(RoomVO roomVO){
 		return roomService.updateRoomInfo(roomVO);
