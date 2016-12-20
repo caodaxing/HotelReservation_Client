@@ -33,7 +33,7 @@ public class ModifyUser {
 	TextField name;
 	TextField phone;
 	TextField id;
-	TextField credit;
+	TextField head;
 	
 	Button confirm;
 	Button cancel;
@@ -66,32 +66,32 @@ public class ModifyUser {
 		name = new TextField();
 		phone = new TextField();
 		id = new TextField();
-		credit = new TextField();
+		head = new TextField();
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);
-		credit.setPrefSize(200, 30);
+		head.setPrefSize(200, 30);
 		
 		name.setEditable(true);
 		phone.setEditable(true);
 		id.setEditable(true);
-		credit.setEditable(false);
+		head.setEditable(false);
 		
 		rightPane.getChildren().add(name);
 		rightPane.getChildren().add(phone);
 		rightPane.getChildren().add(id);
-		rightPane.getChildren().add(credit);
+		rightPane.getChildren().add(head);
 		
 		AnchorPane.setLeftAnchor(name, 200.0);
 		AnchorPane.setLeftAnchor(phone, 200.0);
 		AnchorPane.setLeftAnchor(id, 200.0);
-		AnchorPane.setLeftAnchor(credit, 200.0);
+		AnchorPane.setLeftAnchor(head, 200.0);
 		
 		AnchorPane.setTopAnchor(name, 150.0);
 		AnchorPane.setTopAnchor(phone, 225.0);
 		AnchorPane.setTopAnchor(id, 300.0);
-		AnchorPane.setTopAnchor(credit, 375.0);
+		AnchorPane.setTopAnchor(head, 375.0);
 		
 	}
 	
@@ -166,6 +166,6 @@ public class ModifyUser {
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);
 		id.setText(vo.identityID);
-		credit.setText(Double.toString(vo.credit));
+		head.setText(controller.getHeadPath());
 	}
 }
