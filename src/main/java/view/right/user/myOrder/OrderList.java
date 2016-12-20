@@ -151,7 +151,7 @@ public class OrderList {
 	 */
 	public void setTextValue(){
 		ArrayList<OrderVO> orderList = controller.getOrderList();
-		if(orderList == null){
+		if(orderList == null || orderList.isEmpty() || orderList.size() == 0){
 			return ;
 		}
 		for(OrderVO o :orderList){

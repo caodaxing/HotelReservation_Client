@@ -177,7 +177,7 @@ public class RoomList{
 	
 	public void setListValue(){
 		ArrayList<RoomVO> roomList = controller.getRoomList();
-		if(roomList == null){
+		if(roomList == null || roomList.isEmpty() || roomList.size() == 0){
 			return;
 		}
 		for(RoomVO r:roomList){

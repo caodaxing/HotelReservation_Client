@@ -179,7 +179,7 @@ public class EvaluationList {
 		}
 		for(EvaluationVO vo : evaluationList){
 			check = new Button("查看");
-			data.add(new Person(vo.orderID , Double.toString(vo.commentLevel),check));
+			data.add(new Person(vo.orderID, Double.toString(vo.commentLevel),check));
 		}
 	}
 	

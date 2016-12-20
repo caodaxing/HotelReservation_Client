@@ -135,7 +135,7 @@ public class ExecuteOrder {
 		back = new Button();
 		
 		//设置Button文字
-		checkEvaluation.setText("评价");
+		checkEvaluation.setText("查看评价");
 		back.setText("返回");
 				
 		//设置Button大小

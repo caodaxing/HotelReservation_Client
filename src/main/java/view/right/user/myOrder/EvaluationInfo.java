@@ -98,7 +98,7 @@ public class EvaluationInfo {
 		back = new Button();
 		
 		//设置Button文字
-		back.setText("取消");
+		back.setText("返回");
 				
 		//设置Button大小
 		back.setPrefSize(100, 40);

@@ -302,7 +302,7 @@ public class SearchResultList{
 	
 	public void setListValue(){
 		ArrayList<HotelVO> hotelList = controller.getHotelList();
-		if(hotelList == null){
+		if(hotelList == null || hotelList.isEmpty() || hotelList.size() == 0){
 			return;
 		}
 		for(HotelVO vo:hotelList){

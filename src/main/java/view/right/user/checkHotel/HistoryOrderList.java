@@ -177,7 +177,7 @@ public class HistoryOrderList{
 	
 	public void setListValue(){
 		ArrayList<OrderVO> historyList = controller.getHistoryOrderList();
-		if(historyList == null){
+		if(historyList == null || historyList.isEmpty() || historyList.size() == 0){
 			return;
 		}
 		for(OrderVO o : historyList){
