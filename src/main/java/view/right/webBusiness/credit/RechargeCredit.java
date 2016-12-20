@@ -117,7 +117,6 @@ public class RechargeCredit {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				wbcontroller = new WBCreditController(controller.getStage(),controller.getUserId());
 				//传输vo
 				
@@ -151,7 +150,6 @@ public class RechargeCredit {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setBlankView();
 				controller.getStage().show();
 			}

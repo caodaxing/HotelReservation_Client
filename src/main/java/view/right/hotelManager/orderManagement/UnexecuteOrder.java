@@ -71,9 +71,6 @@ public class UnexecuteOrder {
 	
 	private void setTextContent(){
 		
-//		controller.setFilterOrderList(OrderListCondition.UNEXECUTED);
-//		orderVO = controller.getlist().get(controller.getRow());
-		
 		//设置未执行订单的文本信息
 		orderID = new TextField();
 		hotelName = new TextField();
@@ -159,14 +156,8 @@ public class UnexecuteOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
-				OrderVO vo = controller.getOrderInfo();
-				if(controller.getRoomInfoUpdateResult(vo.orderId, vo.roomIDs) == ResultMessage.SUCCESS){
-					controller.showDialog("订单执行成功");
-				}else{
-					controller.showDialog("订单执行失败");
-				}				
-//				controller.getStage().show();
+				controller.setSetArriveInfoView();
+				controller.getStage().show();
 			}
 							
 		});
@@ -175,7 +166,6 @@ public class UnexecuteOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setunExecuteOrderListView();
 				controller.setOrderId(null);
 				controller.getStage().show();

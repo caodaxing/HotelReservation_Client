@@ -76,7 +76,6 @@ public class HotelManagerLeftController{
 		updateHotelService = new UpdateHotel();
 		
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
-		setArriveInfoUI = new SetArriveInfo(this);
 		roomFirstUI = new First(this);
 		promotionFirstUI = new PromotionFirst(this);
 		blankUI = new Blank(this);
@@ -95,14 +94,6 @@ public class HotelManagerLeftController{
 		stage.setScene(modifyHotelInfoUI.getScene());
 		stage.show();
 	}
-	
-	public void setSetArriveInfoView(){
-		setArriveInfoUI = new SetArriveInfo(this);
-		stage.setScene(setArriveInfoUI.getScene());
-		stage.show();
-	}
-	
-	
 	
 	//设置列表筛选
 	public void setFilterOrderList(OrderListCondition condition){
@@ -212,34 +203,9 @@ public class HotelManagerLeftController{
 		return stage;
 	}
 	
-//	public String getOrderId(){
-//		return orderId;
-//	}
-	
-	
-	
 	public OrderList getabnormalList(){
 		return abnormalOrderListUI;
 	}
-//	
-//	public OrderVO getOrder(){
-//		return orderlist.get(row);
-//	}
-//	
-//	public void setRow(OrderListCondition condition){
-//		if(condition == OrderListCondition.ABNORMALED){
-//			OrderList abnormalOrderListUI = new OrderList(this);
-//			row = abnormalOrderListUI.getRow();
-//		}else if(condition == OrderListCondition.EXECUTED){
-//			
-//		}else if(condition == OrderListCondition.UNEXECUTED){
-//			
-//		}else if(condition == OrderListCondition.UNDO_UNEXECUTED){
-//			
-//		}else{
-//			
-//		}
-//	}
 	
 	public HotelVO getHotelVO(String userId){
 		return checkHotelService.getHotelnfo(userId);
@@ -248,25 +214,6 @@ public class HotelManagerLeftController{
 	public ArrayList<Image> getPicture(String userId){
 		return pictureService.getHotelImage(userId);
 	}
-	
-//	public OrderVO getOrderInfo(){
-//System.out.println(orderId);
-//		return orderService.getOrderInfo(orderId);
-//	}
-//	
-//	public void setOrderId(String orderId){
-//		this.orderId = orderId;
-//	}
-//	
-//	public void setOrderId(int row){
-//
-//		orderId = orderlist.get(row).orderId;
-//System.out.println(orderId);
-//	}
-	
-//	public void setOrderList(ArrayList<OrderVO> orderList){
-//		orderlist = orderList;
-//	}
 	
 	public ResultMessage getUpdaterRoomResult(RoomVO roomVO){
 		return roomService.updateRoomInfo(roomVO);

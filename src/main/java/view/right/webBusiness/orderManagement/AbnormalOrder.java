@@ -71,10 +71,6 @@ public class AbnormalOrder{
 	
 	private void setTextField(){
 		
-//		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-//		int num = controller.getRow();
-		
-		
 		//添加文本框
 		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
@@ -91,8 +87,6 @@ public class AbnormalOrder{
 		lastExecuteTime = new TextField();
 		lastExecuteTime.setId("AbnormalOrder");
 		lastExecuteTime.setPrefSize(200, 30);
-		
-		//设置文本框内容
 		
 		//设置文本框内容不可更改
 		orderID.setEditable(false);

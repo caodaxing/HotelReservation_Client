@@ -78,10 +78,6 @@ public class CheckVIPAreaStrategy {
 	
 	private void setTextField(){
 		
-//		controller.setPromotoinList();
-//		promotionList = controller.getPromotionList();
-//		int num = controller.getRow();
-		
 		//初始化文本框
 		lowestVIPLevel = new TextField();
 		tradingArea = new TextField();
@@ -92,10 +88,6 @@ public class CheckVIPAreaStrategy {
 		tradingArea.setId("CheckVIPAreaStrategy");
 		discountRange.setId("CheckVIPAreaStrategy");
 		discountName.setId("CheckVIPAreaStrategy");
-		/*
-		//根据Controller设置textField文字
-		
-		*/
 		
 		//设置文本框内容不可更改
 		lowestVIPLevel.setEditable(false);

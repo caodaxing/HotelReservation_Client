@@ -80,9 +80,6 @@ public class ExecuteOrder {
 	
 	private void setTextContent(){
 		
-//		controller.setFilterOrderList(OrderListCondition.EXECUTED);
-//		orderVO = controller.getlist().get(controller.getRow());
-		
 		//设置未执行订单的文本信息
 		orderID = new TextField();
 		hotelName = new TextField();
@@ -196,11 +193,8 @@ public class ExecuteOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				
 				if(controller.getLeaveResult() == ResultMessage.FAILURE){
-//					controller.setSetLeaveInfoView();
-//					controller.getStage().show();
 					if(controller.setLeaveResult() == ResultMessage.SUCCESS){
 						controller.showDialog("退房成功");
 					}else{
@@ -218,7 +212,6 @@ public class ExecuteOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				orderVO = controller.getOrderInfo();
 				if(controller.getLeaveResult() == ResultMessage.SUCCESS){
 					controller.setEvaluationInfoView();
@@ -235,7 +228,6 @@ public class ExecuteOrder {
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setHasExecuteOrderListView();
 				controller.getStage().show();
 			}

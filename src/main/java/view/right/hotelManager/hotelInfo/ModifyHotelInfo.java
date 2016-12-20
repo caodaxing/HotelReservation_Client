@@ -178,9 +178,10 @@ public class ModifyHotelInfo {
 					int i = Integer.parseInt(star);
 					HotelVO hotelvo = new HotelVO(vo.hoteID,vo.hotelName,vo.city,vo.tradingArea,
 							hotelLocal,vo.evaluationGrades,i,hotelBrief,hoteltool,vo.bussiness);
-					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS &&
-							controller.savePictureResult(controller.getUserId(), ImagePath) == ResultMessage.SUCCESS){
+					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS){
 						controller.showDialog("修改成功");
+					}else{
+						controller.showDialog("修改失败");
 					}
 				}catch(NumberFormatException e){
 					controller.showDialog("酒店星级输入错误");

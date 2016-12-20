@@ -25,7 +25,6 @@ import vo.OrderVO;
 public class UnexecuteOrder {
 	
 	private WBOrderManagementController controller;
-//	private ManageOrderService manageOrderService;
 	private Scene scene;
 	private GridPane leftPane;
 	private AnchorPane rightPane;
@@ -46,7 +45,6 @@ public class UnexecuteOrder {
 		
 		this.controller = controller;
 		wbui = new WebBusinessUI(controller);
-//		manageOrderService = new ManageOrder();
 		
 		leftPane = wbui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -72,8 +70,6 @@ public class UnexecuteOrder {
 	}
 	
 	private void setTextContent(){
-//		orderList = manageOrderService.getWebDailyUnexecutedOrderList();
-//		int num = controller.getRow();
 	
 		//设置未执行订单的文本信息
 		orderID = new TextField();
@@ -144,7 +140,6 @@ public class UnexecuteOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setTodayUnexecuteOrderView();
 				controller.getStage().show();
 			}

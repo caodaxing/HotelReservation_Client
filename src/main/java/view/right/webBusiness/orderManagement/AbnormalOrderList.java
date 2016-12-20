@@ -50,7 +50,6 @@ public class AbnormalOrderList {
 	private ObservableList<Person> data;
 	private ArrayList<OrderVO> orderList;
 	private Button check;
-//	private int row;
 	
 	public AbnormalOrderList(WebBusinessLeftController controller){
 		
@@ -84,8 +83,6 @@ public class AbnormalOrderList {
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
 		
-		//添加列表内容
-				
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<>("orderid"));
@@ -149,10 +146,6 @@ public class AbnormalOrderList {
 		}
 		
 	}
-	
-//	public ObservableList<Person> getData(){
-//		return data;
-//	}
 	
 	/**
 	 * 异常订单列表的内部数据类

@@ -39,7 +39,6 @@ public class HMPromotionController extends HotelManagerLeftController{
 	private SetSpecialTimeStrategy setSpecialTimeStrategyUI;
 	private SetThreeRoomsStrategy setThreeRoomsStrategyUI;
 	
-//	private int row;
 	protected String promotionId;
 	protected ArrayList<PromotionVO> promotionList;
 	
@@ -53,46 +52,14 @@ public class HMPromotionController extends HotelManagerLeftController{
 		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
 		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
 		chooseUI = new Choose(this);
-//		existStrategyUI = new ExistStrategy(this);
 		firstUI = new PromotionFirst(this);
 		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
 		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
 		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
 		setThreeRoomsStrategyUI = new SetThreeRoomsStrategy(this);
-//		promotionService = new Promotion();
-//		orderService = new Order();
-//		roomService = new Room();
-//		accountService = new Account();
 		
 		
 	}
-	
-//	public HMPromotionController(Stage stage, String userId, int row){
-//		
-//		super(stage,userId);
-//		this.stage = stage;
-//		this.userId = userId;
-////		this.row = row;
-//		
-//		promotionService = new ManagePromotion();
-//		checkBirthdayStrategyUI = new CheckBirthdayStrategy(this);
-//		checkCooperateCompanyStrategyUI = new CheckCooperateCompanyStrategy(this);
-//		checkSpecailTimeStrategyUI = new CheckSpecialTimeStrategy(this);
-//		checkThreeRoomsStrategyUI = new CheckThreeRoomsStrategy(this);
-//		chooseUI = new Choose(this);
-//		existStrategyUI = new ExistStrategy(this);
-//		firstUI = new PromotionFirst(this);
-//		setBirthdayStrategyUI = new SetBirthdayStrategy(this);
-//		setCooperateCompanyStrategyUI = new SetCooperateCompanyStrategy(this);
-//		setSpecialTimeStrategyUI = new SetSpecialTimeStrategy(this);
-//		setThreeRoomsStrategyUI = new SetThreeRoomsStrategy(this);
-////		promotionService = new Promotion();
-////		orderService = new Order();
-////		roomService = new Room();
-////		accountService = new Account();
-//		
-//		
-//	}
 	
 	public Stage getStage(){
 		return stage;
@@ -162,14 +129,6 @@ System.out.println(promotionList.size());
 	public ArrayList<PromotionVO> getPromotionList(){
 		return promotionList;
 	}
-	
-//	public void setRow(){
-//		row = existStrategyUI.getRow();
-//	}
-//	
-//	public int getRow(){
-//		return row;
-//	}
 	
 	public ResultMessage getPromotionResult(PromotionVO promotionVO){
 		return promotionService.addPromotion(promotionVO);

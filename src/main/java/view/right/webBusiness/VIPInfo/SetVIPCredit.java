@@ -65,7 +65,6 @@ public class SetVIPCredit {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> infoList = controller.getInfoList();
 		//添加文本框
 		updateVIP1 = new TextField();
 		updateVIP1.setId("SetVIPCredit");
@@ -78,8 +77,6 @@ public class SetVIPCredit {
 		updateVIP3 = new TextField();
 		updateVIP3.setId("SetVIPCredit");
 		updateVIP3.setPrefSize(200, 30);
-				
-		//设置文本框内容
 				
 		//设置文本框内容不可更改
 		updateVIP1.setEditable(true);
@@ -135,7 +132,6 @@ public class SetVIPCredit {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				//传输vo
 				String level1 = updateVIP1.getText();
 				String level2 = updateVIP2.getText();
@@ -163,7 +159,6 @@ public class SetVIPCredit {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setBlankView();
 				controller.getStage().show();
 			}

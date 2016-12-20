@@ -22,22 +22,20 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	//控制界面
 	private First firstUI;
 	private SetAvailableRooms setAvailableRoomsUI;
+	private SetAvailableRooms setModifyRoomsUI;
 	private ExistRooms existRoomsUI;
 	
 	
 	private ArrayList<RoomVO> roomList;
 	private int remainedNum;
+	private RoomType roomType;
 	
 	public HMRoomInfoController(Stage stage, String userId){
 		
-		
-//		checkHotelService = new CheckHotel();
-//		orderService = new Order();
-//		this.stage = stage;
-//		this.userId = userId;
 		super(stage,userId);
 		roomService = new Room();
 		setAvailableRoomsUI = new SetAvailableRooms(this);
+		setModifyRoomsUI = new SetAvailableRooms(this);
 		firstUI = new First(this);
 		existRoomsUI = new ExistRooms(this);
 		
@@ -52,11 +50,20 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	}
 	
 	public void setExistRoomsView(){
+		setRoomList();
+		existRoomsUI = new ExistRooms(this);
+		existRoomsUI.initialData();
 		stage.setScene(existRoomsUI.getScene());
 	}
 	
 	public void setSetAvailableRoomsView(){
 		stage.setScene(setAvailableRoomsUI.getScene());
+	}
+	
+	public void setModifyRoomsView(){
+		setModifyRoomsUI = new SetAvailableRooms(this);
+		setModifyRoomsUI.setText();
+		stage.setScene(setModifyRoomsUI.getScene());
 	}
 	
 	public void setRoomList(){
@@ -81,6 +88,18 @@ public class HMRoomInfoController extends HotelManagerLeftController{
 	
 	public ResultMessage getAddRoomResult(RoomVO roomVO){
 		return roomService.addRoomInfo(roomVO);
+	}
+	
+	public void setRoomType(int row){
+		roomType = roomList.get(row).roomType;
+	}
+	
+	public RoomType getRoomType(){
+		return roomType;
+	}
+	
+	public ResultMessage getModifyRoomResult(RoomVO roomVO){
+		return roomService.updateRoomInfo(roomVO);
 	}
 	
 }

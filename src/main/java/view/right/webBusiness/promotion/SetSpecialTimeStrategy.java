@@ -86,8 +86,6 @@ public class SetSpecialTimeStrategy {
 		discountName.setId("SetSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
 				
-		//设置文本框内容
-				
 		//设置文本框内容可更改
 		startDiscountTime.setEditable(true);
 		endDiscountTime.setEditable(true);

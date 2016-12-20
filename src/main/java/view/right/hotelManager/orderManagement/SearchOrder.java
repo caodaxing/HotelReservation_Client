@@ -103,7 +103,6 @@ public class SearchOrder{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setAllOrderListView();
 				controller.setOrderId(null);
 				controller.getStage().show();

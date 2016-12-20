@@ -66,10 +66,6 @@ public class CheckSpecialTimeStrategy {
 	
 	private void setTextField(){
 		
-//		controller.setPromotoinList();
-//		promotionList = controller.getPromotionList();
-//		int num = controller.getRow();
-		
 		//添加文本框
 		
 		startDiscount = new TextField();
@@ -87,8 +83,6 @@ public class CheckSpecialTimeStrategy {
 		discountName = new TextField();
 		discountName.setId("CheckSpecialTimeStrategy");
 		discountName.setPrefSize(200, 30);
-				
-		//设置文本框内容
 				
 		//设置文本框内容不可更改
 		startDiscount.setEditable(false);

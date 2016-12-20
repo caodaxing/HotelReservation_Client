@@ -20,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
@@ -54,13 +55,13 @@ public class ExistRooms {
 	private ObservableList<Person> data;
 	private ArrayList<RoomVO> roomList;
 	private int remainNum;
-	private int row;
 	private Button change;
 	
 	public ExistRooms(HMRoomInfoController controller){
 		
 		this.controller = controller;
 		hmui = new HotelManagerUI(controller);
+		data = FXCollections.observableArrayList();
 		
 		leftPane = hmui.getPane();
 		leftPane.setPrefSize(DefaultNums.LEFT_WIDTH, DefaultNums.HEIGHT);
@@ -102,7 +103,6 @@ public class ExistRooms {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setFirstView();
 				controller.getStage().show();
 			}
@@ -123,8 +123,6 @@ public class ExistRooms {
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
 		
-		//添加列表内容
-				
 		//添加列
 		roomType = new TableColumn<>("房间类型");
 		roomType.setCellValueFactory(new PropertyValueFactory<Person, String>("roomType"));
@@ -148,20 +146,11 @@ public class ExistRooms {
 							Item = new Button("修改");
 							Item.setPrefWidth(100);
 							Item.setOnAction(event->{
-								row = this.getTableRow().getIndex();
+								int row = this.getTableRow().getIndex();
 								controller.setRoomList();
-								roomList = controller.getRoomList();
-								if(controller.getUpdateRoomResult(roomList.get(row)) == ResultMessage.SUCCESS){
-									OneButtonDialog dialog = new OneButtonDialog("更新成功");
-									dialog.show();
-									controller.setExistRoomsView();
-									controller.getStage().show();
-								}else{
-									OneButtonDialog dialog = new OneButtonDialog("更新失败");
-									dialog.show();
-									controller.setExistRoomsView();
-									controller.getStage().show();
-								}
+								controller.setRoomType(row);
+								controller.setModifyRoomsView();
+								controller.getStage().show();
 							});
 						}
 						setGraphic(Item);
@@ -171,7 +160,6 @@ public class ExistRooms {
 		});
 		operation.setMinWidth(100);
 		
-		initialData();
 		tableView.setItems(data);
 		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
 		
@@ -183,19 +171,18 @@ public class ExistRooms {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
-	public int getRow(){
-		return row;
-	}
-	
-	private void initialData(){
-		data = FXCollections.observableArrayList();
-		controller.setRoomList();
+	public void initialData(){
+		
 		roomList = controller.getRoomList();
-		for(int i=0;i<roomList.size();i++){
-			controller.setRemainedNum(roomList.get(i).roomType);
-			remainNum = controller.getRemainedNum();
-			data.add(new Person(roomList.get(i).roomType.toString(), String.valueOf(roomList.get(i).price),
-					String.valueOf(remainNum), change));
+		if(roomList == null){
+			return;
+		}else{
+			for(int i=0;i<roomList.size();i++){
+				controller.setRemainedNum(roomList.get(i).roomType);
+				remainNum = controller.getRemainedNum();
+				data.add(new Person(MessageHelper.roomTypeToString(roomList.get(i).roomType), String.valueOf(roomList.get(i).price),
+						String.valueOf(remainNum), change));
+			}
 		}
 	}
 	

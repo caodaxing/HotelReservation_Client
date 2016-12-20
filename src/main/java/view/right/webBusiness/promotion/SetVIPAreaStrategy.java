@@ -90,8 +90,6 @@ public class SetVIPAreaStrategy {
 	
 	private void setTextField(){
 		
-		//ArrayList<String> orderInfoList = controller.getInfoList();
-		
 		//初始化文本框
 		VIPLevel1 = new TextField();
 		VIPLevel2 = new TextField();
@@ -235,8 +233,6 @@ public class SetVIPAreaStrategy {
 
 			@Override
 			public void handle(ActionEvent event) {
-//				Prompt prompt = new Prompt("保存成功");
-//				prompt.show();
 				//传输vo
 				try{
 					double d1 = Double.parseDouble(VIPLevel1.getText());
@@ -267,10 +263,6 @@ public class SetVIPAreaStrategy {
 				}catch(NumberFormatException e){
 					controller.showDialog("折扣输入错误");
 				}
-//				PromotionVO promotionVO = new PromotionVO(null,s4,)
-				//
-//				controller.setChooseView();
-//				controller.getStage().show();
 			}
 			
 		});

@@ -65,9 +65,6 @@ public class CheckVIPStrategy {
 	
 	private void setTextField(){
 		
-//		controller.setPromotoinList();
-//		promotionList = controller.getPromotionList();
-//		int num = controller.getRow();
 		//添加文本框
 		VIP1DiscountRange = new TextField();
 		VIP1DiscountRange.setId("CheckVIPStrategy");
@@ -84,8 +81,6 @@ public class CheckVIPStrategy {
 		discountName = new TextField();
 		discountName.setId("CheckVIPStrategy");
 		discountName.setPrefSize(200, 30);
-				
-		//设置文本框内容
 				
 		//设置文本框内容不可更改
 		VIP1DiscountRange.setEditable(false);

@@ -66,9 +66,6 @@ public class UndoOrder {
 	
 	private void setTextField(){
 		
-//		controller.setFilterOrderList(OrderListCondition.UNDO_UNEXECUTED);
-//		orderVO = controller.getlist().get(controller.getRow());
-		
 		//添加文本框
 		orderID = new TextField();
 		orderID.setId("AbnormalOrder");
@@ -85,8 +82,6 @@ public class UndoOrder {
 		cancelTime = new TextField();
 		cancelTime.setId("AbnormalOrder");
 		cancelTime.setPrefSize(200, 30);
-		
-		//设置文本框内容
 		
 		//设置文本框内容不可更改
 		orderID.setEditable(false);
@@ -144,7 +139,6 @@ public class UndoOrder {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setUndoOrderListView();
 				controller.getStage().show();
 			}

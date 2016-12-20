@@ -50,7 +50,6 @@ public class TodayUnexecuteOrder {
 	
 	private ObservableList<Person> data;
 	private Button check;
-//	private int row;
 	ArrayList<OrderVO> orderList;
 	
 	public TodayUnexecuteOrder(WebBusinessLeftController controller){
@@ -70,9 +69,6 @@ public class TodayUnexecuteOrder {
 		//添加文本框
 		setList();
 		
-		//添加按钮
-//		setButton();
-		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
 		root.setStyle("-fx-background-image:url(\"/orderManagement/订单管理_今日未执行订单背景.jpg\")");
@@ -87,8 +83,6 @@ public class TodayUnexecuteOrder {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-
-		//添加列表内容
 				
 		//添加列
 		orderId = new TableColumn<>("订单号");

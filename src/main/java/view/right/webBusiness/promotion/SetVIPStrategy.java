@@ -82,8 +82,6 @@ public class SetVIPStrategy {
 		discountName.setId("SetVIPStrategy");
 		discountName.setPrefSize(200, 30);
 				
-		//设置文本框内容
-				
 		//设置文本框内容不可更改
 		VIP1DiscountRange.setEditable(true);
 		VIP2DiscountRange.setEditable(true);

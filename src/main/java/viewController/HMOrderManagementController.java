@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 import Message.OrderState;
 import Message.ResultMessage;
+import Message.RoomType;
 import javafx.stage.Stage;
 import logic.order.Order;
+import logic.room.Room;
 import logicService.order.ExecuteOrderService;
 import logicService.order.OrderService;
+import logicService.room.RoomService;
 import view.right.hotelManager.orderManagement.AbnormalOrder;
 import view.right.hotelManager.orderManagement.CheckArriveInfo;
 import view.right.hotelManager.orderManagement.CheckLeaveInfo;
@@ -21,12 +24,14 @@ import view.right.hotelManager.orderManagement.UndoOrder;
 import view.right.hotelManager.orderManagement.UnexecuteOrder;
 import vo.EvaluationVO;
 import vo.OrderVO;
+import vo.RoomVO;
 
 public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	//逻辑层接口
 	private OrderService orderService;
 	private ExecuteOrderService executeOrderService;
+	private RoomService roomService;
 	
 	//控制的界面
 	private AbnormalOrder abnormalOrderUI;
@@ -35,32 +40,26 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	private EvaluationInfo evalutionInfoUI;
 	private ExecuteOrder executeOrderUI;
 	private SearchOrder searchOrderUI;
-//	private SetArriveInfo setArriveInfoUI;
+	private SetArriveInfo setArriveInfoUI;
 	private SetLeaveInfo setLeaveInfoUI;
 	private UndoOrder undoOrderUI;
 	private UnexecuteOrder unexecuteOrderUI;
 	
-//	private ArrayList<OrderVO> orderList;
-	
 	public HMOrderManagementController(Stage stage, String userId){
 		
 		super(stage,userId);
-		//manageOrdreService = new ManageOrder();
 		this.stage = stage;
 		this.userId = userId;
-//		abnormalOrderUI = new AbnormalOrder(this);
 		orderService = new Order();
 		executeOrderService = new logic.order.ExecuteOrder();
+		roomService = new Room();
 		checkArriveInfoUI = new CheckArriveInfo(this);
 		checkLeaveInfoUI = new CheckLeaveInfo(this);
 		evalutionInfoUI = new EvaluationInfo(this);
 		executeOrderUI = new ExecuteOrder(this);
-//		orderListUI = new OrderList(this);
 		searchOrderUI = new SearchOrder(this);
-//		setArriveInfoUI = new SetArriveInfo(this);
+		setArriveInfoUI = new SetArriveInfo(this);
 		setLeaveInfoUI = new SetLeaveInfo(this);
-//		undoOrderUI = new UndoOrder(this);
-//		unexecuteOrderUI = new UnexecuteOrder(this);
 		
 	}
 	
@@ -76,7 +75,6 @@ public class HMOrderManagementController extends HotelManagerLeftController{
 	
 	public void setCheckArriveInfoView(){
 		checkArriveInfoUI = new CheckArriveInfo(this);
-System.out.println("     "+ orderId);
 		checkArriveInfoUI.setText();
 		stage.setScene(checkArriveInfoUI.getScene());
 	}
@@ -95,7 +93,6 @@ System.out.println("     "+ orderId);
 	}
 	
 	public void setExecuteOrderView(){
-//		executeOrderUI = new ExecuteOrder(this);
 		executeOrderUI.setText();
 		stage.setScene(executeOrderUI.getScene());
 	}
@@ -106,9 +103,10 @@ System.out.println("     "+ orderId);
 		stage.setScene(searchOrderUI.getScene());
 	}
 	
-//	public void setSetArriveInfoView(){
-//		stage.setScene(setArriveInfoUI.getScene());
-//	}
+	public void setSetArriveInfoView(){
+		setArriveInfoUI.setText();
+		stage.setScene(setArriveInfoUI.getScene());
+	}
 	
 	public void setSetLeaveInfoView(){
 		stage.setScene(setLeaveInfoUI.getScene());
@@ -126,43 +124,8 @@ System.out.println("     "+ orderId);
 		stage.setScene(unexecuteOrderUI.getScene());
 	}
 	
-//	public void setRow(){
-//		row = orderListUI.getRow();
-//	}
-//	
-//	public int getRow(){
-//		return row;
-//	}
-	
-	
-//	public ArrayList<OrderVO> getOrderList(){
-//		return orderList;
-//	}
-	
-//	public void setfilterOrderList(OrderListCondition condition){
-//		orderList = orderListService.filterHotelOrderList(userId, condition);
-//	}
-	
-//	public OrderVO getOrderInfo(){
-//		return orderService.getOrderInfo(orderId);
-//	}
-//	
-//	public void setOrderId(String orderId){
-//		this.orderId = orderId;
-//	}
-//	
-//	public void setOrderId(int row){
-//		this.orderId = orderlist.get(row).orderId;
-//	}
-//	
-//	public void setOrderList(ArrayList<OrderVO> orderList){
-//		orderlist = orderList;
-//	}
-	
 	public void setOrderView() {
-System.out.println(orderId);
 		OrderState state = orderService.getOrderInfo(orderId).orderState;
-System.out.println(state);
 		if(state == OrderState.ABNORMAL){
 			setAbnormalOrderView();
 		}else if(state == OrderState.EXECUTED){
@@ -191,7 +154,7 @@ System.out.println(state);
 		return orderService.getEvaluationInfo(orderId);
 	}
 	
-	public ResultMessage getRoomInfoUpdateResult(String orderId, String[] roomID){
+	public ResultMessage getRoomInfoUpdateResult(String[] roomID){
 		return executeOrderService.normalExecute(orderId, roomID);
 	}
 	
@@ -204,7 +167,6 @@ System.out.println(state);
 	}
 	
 	public OrderVO getOrderInfo(){
-		System.out.println(orderId);
 		return orderService.getOrderInfo(orderId);
 	}
 	
@@ -214,7 +176,6 @@ System.out.println(state);
 			
 	public void setOrderId(int row){
 		orderId = orderlist.get(row).orderId;
-		System.out.println(orderId);
 	}
 	
 	public void setOrderList(ArrayList<OrderVO> orderList){
@@ -226,7 +187,10 @@ System.out.println(state);
 	}
 	
 	public void setReturnExecuteOrderView(){
-//		executeOrderUI = new ExecuteOrder(this);
 		stage.setScene(executeOrderUI.getScene());
+	}
+	
+	public RoomVO getRoomVO(String hotelId, RoomType roomType){
+		return roomService.getRoomInfo(hotelId, roomType);
 	}
 }

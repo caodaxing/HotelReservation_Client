@@ -54,7 +54,6 @@ public class ExistStrategy {
 	private ObservableList<Person> data;
 	private Button check;
 	private Button delete;
-//	private int row;
 	ArrayList<PromotionVO> promotionList;
 	
 	public ExistStrategy(WBPromotionController controller){
@@ -123,8 +122,6 @@ public class ExistStrategy {
 		tableView.setPrefSize(505, 400);
 		tableView.setEditable(false);
 		initialData();
-		
-		//添加列表内容
 				
 		//添加列
 		promotionType = new TableColumn<>("策略类型");
@@ -150,15 +147,12 @@ public class ExistStrategy {
 								promotionList = controller.getPromotionList();
 								PromotionVO promotionVO = controller.getPromotionVO();
 									if(promotionVO.promotionType == PromotionType.WEB_11_11){
-//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckSpecialTimeStrategyView();
 										controller.getStage().show();
 									}else if(promotionVO.promotionType == PromotionType.WEB_VIP_LEVEL){
-//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckVIPStrategyView();
 										controller.getStage().show();
 									}else if(promotionVO.promotionType == PromotionType.WEB_VIP_TRADINGAREA){
-//										controller = new WBPromotionController(controller.getStage(),controller.getUserId(),row);
 										controller.setCheckVIPAreaStrategyView();
 										controller.getStage().show();
 									}
@@ -183,16 +177,13 @@ public class ExistStrategy {
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
 								controller.setPromotionId(num);
-//								if(promotionList != null){
 									if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
 										controller.showDialog("删除成功");
-//										controller.setDeletePromotion();
 										controller.setExistStrategyView();
 										controller.getStage().show();
 									}else{
 										controller.showDialog("删除失败");
 									}
-//								}
 							});
 						}
 						setGraphic(Item);
@@ -213,9 +204,6 @@ public class ExistStrategy {
 		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 
-//	public int getRow(){
-//		return row;
-//	}
 	
 	public void initialData(){
 		data = FXCollections.observableArrayList();

@@ -76,7 +76,6 @@ public class First {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
 				hmcontroller.setExistRoomsView();
 				hmcontroller.getStage().show();
@@ -88,7 +87,6 @@ public class First {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				hmcontroller = new HMRoomInfoController(controller.getStage(),controller.getUserId());
 				hmcontroller.setSetAvailableRoomsView();
 				hmcontroller.getStage().show();	

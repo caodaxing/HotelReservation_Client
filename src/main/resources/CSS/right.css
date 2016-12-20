@@ -16,3 +16,6 @@
     -fx-table-header-border-color: #ffffff;
     -fx-padding: 5;
 }
+.label{
+	-fx-font-size:14px;
+}

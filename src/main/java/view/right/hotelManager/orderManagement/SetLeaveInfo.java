@@ -123,7 +123,6 @@ public class SetLeaveInfo {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				if(controller.setLeaveResult() == ResultMessage.SUCCESS){
 					OneButtonDialog dialog = new OneButtonDialog("退房成功");
 					dialog.show();
@@ -141,7 +140,6 @@ public class SetLeaveInfo {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				controller.setHasExecuteOrderListView();
 				controller.setOrderId(null);
 				controller.getStage().show();

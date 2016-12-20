@@ -3,17 +3,18 @@ package view.right.hotelManager.roomInfo;
 import Message.ResultMessage;
 import Message.RoomType;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import viewController.HMRoomInfoController;
 import vo.RoomVO;
@@ -35,7 +36,8 @@ public class SetAvailableRooms {
 	TextField roomNum;
 	TextField initialPrice;
 	
-	Button ok;
+	Button modify;
+	Button add;
 	Button cancel;
 	
 	public SetAvailableRooms(HMRoomInfoController controller){
@@ -80,8 +82,6 @@ public class SetAvailableRooms {
 		initialPrice.setId("SetAvailableRooms");
 		initialPrice.setPrefSize(200, 30);
 				
-		//设置文本框内容
-				
 		//设置文本框内容可更改
 		roomNum.setEditable(true);
 		initialPrice.setEditable(true);
@@ -112,7 +112,6 @@ public class SetAvailableRooms {
 	
 	private void setChoiceBox(){
 		
-		//待修改，根据controller
 		roomType = new ComboBox(FXCollections.observableArrayList("单人房","标准房","三人房","大床房","套房"));
 		roomType.setVisibleRowCount(3);
 		roomType.setId("SetAvailableRooms");
@@ -123,27 +122,58 @@ public class SetAvailableRooms {
 	private void setButton(){
 		
 		//添加按钮
-		ok = new Button("确认");
-		ok.setId("SetAvailableRooms");
-		ok.setPrefSize(100, 40);
+		modify = new Button("修改");
+		modify.setId("SetAvailableRooms");
+		modify.setPrefSize(100, 40);
+		
+		add = new Button("添加");
+		add.setId("SetAvailableRooms");
+		add.setPrefSize(100, 40);
 		
 		cancel = new Button("取消");
 		cancel.setId("SetAvailableRooms");
 		cancel.setPrefSize(100, 40);
 		
 		//设置按钮位置
-		ok.setLayoutX(450);
-		ok.setLayoutY(525);
+		modify.setLayoutX(275);
+		modify.setLayoutY(525);
+		
+		add.setLayoutX(450);
+		add.setLayoutY(525);
 		
 		cancel.setLayoutX(625);
 		cancel.setLayoutY(525);
 		
 		//添加按钮监听
-		ok.setOnAction(new EventHandler<ActionEvent>(){
+		modify.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				RoomType type = controller.getRoomType();
+				String num = roomNum.getText();
+				String price = initialPrice.getText();
+				try{
+					int number = Integer.parseInt(num);
+					double initialPrice = Double.parseDouble(price);
+					RoomVO roomVO = new RoomVO(controller.getUserId(),type,number,initialPrice);
+					if(controller.getModifyRoomResult(roomVO) == ResultMessage.SUCCESS){
+						controller.showDialog("修改成功");
+						controller.setExistRoomsView();
+						controller.getStage().show();
+					}else{
+						controller.showDialog("修改失败");
+					}
+				}catch(NumberFormatException e){
+					controller.showDialog("输入错误");
+				}
+			}
+					
+		});
+		
+		add.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
 				//传输vo
 				int t = roomType.getSelectionModel().getSelectedIndex();
 				RoomType type = null;
@@ -177,7 +207,6 @@ public class SetAvailableRooms {
 				}catch(NumberFormatException e){
 					result = false;
 				}
-//				double price = Double.parseDouble(initialPrice.getText());
 				if(result && type != null){
 					double price = Double.parseDouble(cost);
 					RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), price);
@@ -190,8 +219,6 @@ public class SetAvailableRooms {
 					controller.showDialog("输入错误");
 				}
 				//
-//				roomNum.setText("");
-//				initialPrice.setText("");
 			}
 					
 		});
@@ -200,7 +227,6 @@ public class SetAvailableRooms {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				roomNum.setText("");
 				initialPrice.setText("");
 				controller.setFirstView();
@@ -210,13 +236,24 @@ public class SetAvailableRooms {
 		});
 		
 		//添加组件
-		rightPane.getChildren().add(ok);
+		rightPane.getChildren().add(modify);
+		rightPane.getChildren().add(add);
 		rightPane.getChildren().add(cancel);
 		
-		AnchorPane.setLeftAnchor(ok, 250.0);
+		AnchorPane.setLeftAnchor(modify, 75.0);
+		AnchorPane.setLeftAnchor(add, 250.0);
 		AnchorPane.setLeftAnchor(cancel, 425.0);
 		
-		AnchorPane.setTopAnchor(ok, 525.0);
+		AnchorPane.setTopAnchor(modify, 525.0);
+		AnchorPane.setTopAnchor(add, 525.0);
 		AnchorPane.setTopAnchor(cancel, 525.0);
+	}
+	
+	public void setText(){
+		RoomType type = controller.getRoomType();
+		roomType.setValue(MessageHelper.roomTypeToString(type));
+		roomType.setEditable(false);
+		
+		
 	}
 }

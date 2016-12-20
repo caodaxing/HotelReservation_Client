@@ -214,7 +214,7 @@ public class ExistStrategy {
 	
 	public void initialData(){
 		
-		ArrayList<PromotionVO> promotionList = controller.getPromotionList();
+		promotionList = controller.getPromotionList();
 		
 		if(promotionList == null){
 			return ;
