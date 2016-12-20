@@ -1,10 +1,18 @@
 package logic.picture;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+
 import Message.ResultMessage;
 import dataDao.picture.PictureDao;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import logicService.picture.PictureService;
 import main.rmi.RemoteHelper;
 
@@ -97,6 +105,25 @@ public class Picture implements PictureService {
 		}
 		
 		return ResultMessage.FAILURE;
+	}
+
+	@Override
+	public Image getHeadImage(String userID) {
+		Image image = null;
+		try {
+			byte[] bs = pictureDao.getUserImage(userID);
+			ByteArrayInputStream stream = new ByteArrayInputStream(bs);
+			BufferedImage image2 = ImageIO.read(stream);
+			image = SwingFXUtils.toFXImage(image2, new WritableImage(10, 10));
+			return image;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
