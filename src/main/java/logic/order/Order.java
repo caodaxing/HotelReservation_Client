@@ -7,6 +7,7 @@ import Message.ResultMessage;
 import dataDao.order.OrderDao;
 import logic.hotel.CheckHotel;
 import logic.hotel.HotelInfo;
+import logic.utility.DataFormat;
 import logic.utility.EvaluationTransform;
 import logic.utility.OrderTransform;
 import logicService.order.OrderService;
@@ -74,7 +75,7 @@ public class Order implements OrderService, OrderHotelInfo{
 					if(this.updateHotelGrade(evaluation)) {
 						return ResultMessage.SUCCESS;
 					}
-			
+					
 				}
 			} catch (RemoteException e) {
 				e.printStackTrace();
@@ -92,14 +93,19 @@ public class Order implements OrderService, OrderHotelInfo{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 		ArrayList<EvaluationVO> evaluationVOs = this.getHotelEvaluations(po.getHotelId());
 		
 		double grade = 0;
 		for(int i=0; i<evaluationVOs.size(); ++i) {
-			grade += evaluationVOs.get(i).commentLevel;
+
+			double temp = evaluationVOs.get(i).commentLevel;
+
+			grade += temp; 
 		}
 		
 		grade /= evaluationVOs.size();
+		grade = DataFormat.getInstance().formatDouble(grade);
 		
 		HotelInfo hotelInfo = new CheckHotel();
 		if(hotelInfo.updateHotelGrade(po.getHotelId(), grade)) {
@@ -122,7 +128,6 @@ public class Order implements OrderService, OrderHotelInfo{
 		
 		return this.evaluationTrans.evalutionListTransToVO(res);
 	}
-
 	
 	@Override
 	public ArrayList<String> getBookedHotelList(String userID) {

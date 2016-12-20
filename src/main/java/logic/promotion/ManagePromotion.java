@@ -35,6 +35,7 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
+			
 			if(vo.hotelID == null||vo.hotelID.equals("")) {
 				vo.promotionID = "00000" +  String.format("%04d", num);
 			} else {

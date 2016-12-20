@@ -177,7 +177,14 @@ public class EvaluationList {
 		if(evaluationList == null || evaluationList.size() == 0 || evaluationList.isEmpty()){
 			return;
 		}
+		
 		for(EvaluationVO vo : evaluationList){
+			
+//			System.out.println(vo == null);
+//			System.out.println(vo.commentLevel);
+//			System.out.println(vo.orderID);
+//			System.out.println(vo.evaluationContent);
+			
 			check = new Button("查看");
 			data.add(new Person(vo.orderID, Double.toString(vo.commentLevel),check));
 		}
