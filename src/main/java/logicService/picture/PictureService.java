@@ -41,6 +41,6 @@ public interface PictureService {
 	 * @param imagePath
 	 * @return
 	 */
-	public ResultMessage saveHotelImage(String hotelID, String imagePath);
+	public ResultMessage saveHotelImage(String hotelID, String imagePath, String pictureName);
 	
 }

@@ -67,11 +67,13 @@ public class Picture implements PictureService {
 	}
 
 	@Override
-	public ResultMessage saveHotelImage(String hotelID, String imagePath) {
+	public ResultMessage saveHotelImage(String hotelID, String imagePath, String pictureName) {
 		byte[] bs = PictureHelper.imageToBytes(imagePath);
 		
+		pictureName = pictureName.substring(0, pictureName.length()-4);
+		
 		try {
-			if(this.pictureDao.saveHotelImage(bs, hotelID, imagePath)) {
+			if(this.pictureDao.saveHotelImage(bs, hotelID, pictureName)) {
 				return ResultMessage.SUCCESS;
 			}
 		} catch (RemoteException e) {
