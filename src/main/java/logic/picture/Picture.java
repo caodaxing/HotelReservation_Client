@@ -16,6 +16,11 @@ import javafx.scene.image.WritableImage;
 import logicService.picture.PictureService;
 import main.rmi.RemoteHelper;
 
+/**
+ * 处理与数据库传输图片的接口，与其他逻辑分开。
+ * @author Mark.W
+ *
+ */
 public class Picture implements PictureService {
 
 	private PictureDao pictureDao;

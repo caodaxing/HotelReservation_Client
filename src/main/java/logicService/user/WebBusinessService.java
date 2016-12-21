@@ -9,6 +9,11 @@ import vo.WebBusinessVO;
  */
 public interface WebBusinessService {
 
+	/**
+	 * 获取网站管理人员的信息
+	 * @param webBusiness_ID
+	 * @return
+	 */
 	public WebBusinessVO getWebBusinessInfo(String webBusiness_ID);
 	
 }

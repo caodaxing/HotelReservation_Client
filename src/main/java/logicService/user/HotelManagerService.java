@@ -9,6 +9,11 @@ import vo.HotelManagerVO;
  */
 public interface HotelManagerService {
 
+	/**
+	 * 获取酒店管理人员信息
+	 * @param hotel_ID
+	 * @return
+	 */
 	public HotelManagerVO getHotelManagerInfo(String hotel_ID);
 	
 }

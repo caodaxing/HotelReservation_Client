@@ -9,7 +9,7 @@ import po.RoomPO;
 import vo.RoomVO;
 
 /**
- * 给order调用的 生成/完成订单更改房间数量信息
+ * 给order调用的 生成/完成订单更改房间数量信息的类
  * @author Mark.W
  *
  */

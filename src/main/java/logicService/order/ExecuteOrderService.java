@@ -10,14 +10,34 @@ import Message.ResultMessage;
  */
 public interface ExecuteOrderService {
 
+	/**
+	 * 某个订单是否一个已经退房
+	 * @param orderID
+	 * @return
+	 */
 	public ResultMessage hasCheckOut(String orderID);
 	
+	/**
+	 * 酒店退房，为了解决双向依赖。将其作为执行单的一部分
+	 * @param orderID
+	 * @return
+	 */
 	public ResultMessage checkOut(String orderID);
 	
-	// 客户入住，正常执行订单 需要传入分配的房间id
+	/**
+	 * 客户入住，正常执行订单 需要传入分配的房间id
+	 * @param orderID
+	 * @param roomID
+	 * @return ResultMessage
+	 */
 	public ResultMessage normalExecute(String orderID, String[] roomID) ;
 	
-	//客户在最晚执行订单时间后入住，补登记订单 需要传入分配的房间id
+	/**
+	 * 客户在最晚执行订单时间后入住，补登记订单 需要传入分配的房间id
+	 * @param orderID
+	 * @param roomID
+	 * @return ResultMessage
+	 */
 	public ResultMessage supplyOrder(String orderID,  String[] roomID);
 	
 	/**
@@ -27,7 +47,11 @@ public interface ExecuteOrderService {
 	 * @return
 	 */
 	
-	//用户撤销未执行订单
+	/**
+	 * 用户撤销未执行订单
+	 * @param orderID
+	 * @return ResultMessage
+	 */
 	public ResultMessage undoUnexecutedOrder(String orderID);
 	
 }
