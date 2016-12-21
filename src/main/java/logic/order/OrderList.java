@@ -40,10 +40,7 @@ public class OrderList implements OrderListService{
 	@Override
 	public ArrayList<OrderVO> filterUserOrderList(String userID, OrderListCondition condition) {
 		
-		if(userID == null || condition == null) {
-			System.out.println("logic.order.OrderList.filterUserOrderList参数异常");
-			return null;
-		}	
+		assert (userID == null || condition == null) : "logic.order.OrderList.filterUserOrderList参数异常";
 	
 		try {
 			this.orders = this.orderListDao.getOrderListByUserId(userID);
@@ -61,10 +58,7 @@ public class OrderList implements OrderListService{
 	@Override
 	public ArrayList<OrderVO> filterHotelOrderList(String hotelID, OrderListCondition condition) {
 		
-		if(hotelID == null || condition == null) {
-			System.out.println("logic.order.OrderList.filterHotelOrderList参数异常");
-			return null;
-		}
+		assert (hotelID == null || condition == null) : "logic.order.OrderList.filterHotelOrderList参数异常";
 		
 		try {
 			this.orders = this.orderListDao.getOrderListByHotelID(hotelID);
@@ -79,10 +73,7 @@ public class OrderList implements OrderListService{
 	@Override
 	public ArrayList<OrderVO> filterSpecificUserHotelOrderList(String userID, String hotelID) {
 		
-		if(hotelID == null || userID == null) {
-			System.out.println("logic.order.OrderList.filterSpecificUserHotelOrderList参数异常");
-			return null;
-		}
+		assert (hotelID == null || userID == null) :"logic.order.OrderList.filterSpecificUserHotelOrderList参数异常";
 		
 		try {
 			this.orders = this.orderListDao.getOrderListByUserId(userID);

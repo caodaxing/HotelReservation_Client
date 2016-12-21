@@ -29,10 +29,7 @@ public class GradeSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null || hotels.size() == 0) {
-			System.out.println("logic.hotel.GradeSort.getSortedList参数异常");
-			return null;
-		}
+		assert (hotels == null || hotels.size() == 0) : "logic.hotel.GradeSort.getSortedList参数异常";
 		
 		if(hotels.size() == 1) {
 			return hotels;
@@ -72,9 +69,7 @@ public class GradeSort implements HotelSort{
 	 * @author all
 	 */
 	public ArrayList<HotelVO> getSpecificSectionHotelList(double startGrade, double endGrade, ArrayList<HotelVO> hotels) {
-		if (hotels == null || startGrade > endGrade) {
-			return null;
-		}
+		assert (hotels == null || startGrade > endGrade) : "logic.hotel.GradeSort.getSpecificSectionHotelList参数异常";
 		
 		// 获取符合条件的酒店列表
 		ArrayList<HotelVO> hotelList = new ArrayList<HotelVO>();

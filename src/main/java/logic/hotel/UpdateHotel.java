@@ -27,9 +27,7 @@ public class UpdateHotel implements UpdateHotelService{
 
 	public ResultMessage addHotel(HotelVO hotelVO) {
 		
-		if(hotelVO == null) {
-			return ResultMessage.FAILURE;
-		}
+		assert (hotelVO == null) : "logic.hotel.updateHotel.addHotel参数错误";
 		
 		HotelPO po = HotelTransform.hotelTransToPO(hotelVO);
 		
@@ -45,9 +43,7 @@ public class UpdateHotel implements UpdateHotelService{
 	}
 
 	public ResultMessage updateHotelInfo(HotelVO hotelVO) {
-		if (hotelVO == null || hotelVO.hoteID == null || hotelVO.hoteID == "") {
-			return null;
-		}
+		assert (hotelVO == null || hotelVO.hoteID == null || hotelVO.hoteID == "") : "logic.hotel.updateHotel.updateHotelInfo参数错误";
 		
 		try {
 			

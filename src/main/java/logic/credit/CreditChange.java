@@ -93,9 +93,7 @@ public class CreditChange implements CreditChangeService, CreditChangeInfo {
 		
 		boolean updateSuccess = this.updateVip.updateClientVip(userID, level);
 		
-		if(!updateSuccess) {
-			System.out.println("logic.credit.creditchange.judgeVipLevelChange更新vip等级失败");
-		} 
+		assert !updateSuccess : "logic.credit.creditchange.judgeVipLevelChange更新vip等级失败";
 	}
 	
 	

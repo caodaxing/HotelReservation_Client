@@ -25,10 +25,7 @@ public class OrderTransform {
 	 * @return orders vo
 	 */
 	public ArrayList<OrderVO> orderListTransToVO(ArrayList<OrderPO> orders) {
-		if(orders == null) {
-			System.out.println("logic.order.OrderList.orderTransToVO参数异常");
-			return null;
-		}
+		assert orders == null :"logic.order.OrderList.orderTransToVO参数异常";
 		
 		ArrayList<OrderVO> result = new ArrayList<OrderVO>();
 		
@@ -65,28 +62,6 @@ public class OrderTransform {
 	 * @return orderpo
 	 */
 	public OrderPO orderTransToPO(OrderVO vo) {
-//		int roomNum = 0;
-//		ArrayList<String> roomIDs = new ArrayList<String>();
-//		if(vo.rooms == null) { 
-//			roomIDs = null;
-//		} else {
-//			for(int i=0; i<vo.rooms.size(); ++i) {
-//				roomIDs.add(vo.rooms.get(i).roomId);
-//			}
-//			roomNum = roomIDs.size();
-//		}
-//		
-//		int promotionNum = 0;
-//		ArrayList<String> promotionIDs = new ArrayList<String>();
-//		if(vo.promotions == null) {
-//			promotionIDs = null;
-//		} else {
-//			for(int i=0; i<vo.promotions.size(); ++i) {
-//				promotionIDs.add(vo.promotions.get(i).promotionID);
-//			}
-//			promotionNum = promotionIDs.size();
-//		}
-		
 		String promotionID = null;
 		
 		if(vo.promotion != null){

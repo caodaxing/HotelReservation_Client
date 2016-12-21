@@ -73,10 +73,7 @@ public class Room implements RoomService , RoomInfo{
 	
 	//更新酒店房间信息
 	public ResultMessage updateRoomInfo(RoomVO roomVO){
-		if (roomVO==null) {
-			System.out.println("logic.room.Room.updateRoomInfo参数异常");
-			return null;
-		}
+		assert (roomVO==null) :"logic.room.Room.updateRoomInfo参数异常";
 		
 		try {
 			RoomPO po = this.roomDao.getRoomInfo(roomVO.hotelId,  roomVO.roomType.ordinal());
@@ -99,10 +96,7 @@ public class Room implements RoomService , RoomInfo{
 	
 	// 增加酒店房间信息
 	public ResultMessage addRoomInfo(RoomVO roomVO){
-		if (roomVO == null) {
-			System.out.println("logic.room.Room.addRoomInfo参数异常");
-			return null;
-		}
+		assert (roomVO == null) :"logic.room.Room.addRoomInfo参数异常";
 		
 		int[] timeAfterRoomNum = new int[this.BOOK_ADVANCE_DAY];
 		for(int i=0; i<this.BOOK_ADVANCE_DAY; ++i) {
@@ -162,10 +156,7 @@ public class Room implements RoomService , RoomInfo{
 		
 		double LowestPrice = 0;
 		
-		if(roomList == null || roomList.size() == 0) {
-			System.out.println("logic.room.getHotelLowestPrice参数报错");
-			return 0;
-		} 
+		assert (roomList == null || roomList.size() == 0) : "logic.room.getHotelLowestPrice参数报错";
 		
 		LowestPrice = roomList.get(0).price;
 		

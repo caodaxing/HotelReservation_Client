@@ -22,6 +22,11 @@ public interface AccountService {
 	
 	public boolean userIDExists(String userID);
 	
+	/**
+	 * 判断用户输入的原密码是否正确。
+	 * @param vo
+	 * @return
+	 */
 	public ResultMessage canModifyPassword(AccountVO vo);
 	
 }

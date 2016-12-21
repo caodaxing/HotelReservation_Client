@@ -16,13 +16,11 @@ import vo.PromotionVO;
  */
 public class WebDoubleElevenPromotion implements Promotion{
 
-
 	private String promotionID;
 	private String promotionName;
 	private double discount;
 	private Time startTime;
 	private Time endTime;
-	
 	
 	/**
 	 * @param promotionID

@@ -294,10 +294,7 @@ public class ExecuteOrder implements ExecuteOrderService{
 	
 	private boolean lessThanSixHourLastestExecutedTime(String time, String orderStartTime) {
 		
-		if(time == null || orderStartTime == null) {
-System.out.println("logic.order.ExecuteOrder.afterLastestExecutedTime参数错误");
-			return false;
-		}
+		assert (time == null || orderStartTime == null) : "logic.order.ExecuteOrder.afterLastestExecutedTime参数错误";
 		
 		long l1 = 0, l2 =0;
 		

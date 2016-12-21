@@ -46,8 +46,7 @@ public class Account implements AccountService{
 	 */
 	public ResultMessage register(AccountVO accountVO){
 		
-		if(accountVO == null) 
-			return ResultMessage.FAILURE;
+		assert (accountVO == null) : "logic.account.register参数错误";
 		
 		if(accountVO.password != null && accountVO.userId != null 
 				 && accountVO.identity != null) {
@@ -170,10 +169,8 @@ public class Account implements AccountService{
 	 * @author bcy
 	 */
 	public ResultMessage modifyPassword(AccountVO accountVO){
-		if(accountVO == null || accountVO.userId == null || 
-				accountVO.identity == null || accountVO.password == null) {
-			return ResultMessage.FAILURE;
-		}
+		assert (accountVO == null || accountVO.userId == null || 
+				accountVO.identity == null || accountVO.password == null) : "logic.account.modifyPassword参数错误";
 		
 		try {
 			if(accountDao.modifyPassword(transToPO(accountVO))) {

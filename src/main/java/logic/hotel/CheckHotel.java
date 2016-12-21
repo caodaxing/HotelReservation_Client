@@ -52,6 +52,7 @@ public class CheckHotel implements CheckHotelService, HotelInfo, HotelTradingAre
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 		if(po == null) {
 			return null;
 		}

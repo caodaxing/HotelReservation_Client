@@ -98,10 +98,8 @@ public class SearchHotel implements SearchHotelService {
 	 */
 	public ArrayList<HotelVO> getSortedList(HotelSearchCondition condition, ArrayList<HotelVO> hotels) {
 		
-		if (condition == null || hotels == null) {
-			System.out.println("logic.hotel.SearchHotel.getSortedList参数错误");
-			return null;
-		}
+		assert (condition == null || hotels == null) :"logic.hotel.SearchHotel.getSortedList参数错误";
+		
 		
 		if (hotels.size() == 1) {
 			return hotels;
@@ -142,14 +140,12 @@ public class SearchHotel implements SearchHotelService {
 	 */
 	@Override
 	public ArrayList<HotelVO> search(HotelSearchVO search) {
-		
 
-		if (search == null || search.city == null || search.city.equals("") || search.tradingArea == null 
+		assert (search == null || search.city == null || search.city.equals("") || search.tradingArea == null 
 				|| search.tradingArea.equals("")||search.starLow > search.starHigh
-				|| search.commentLow > search.commentHigh || search.roomPriceLow > search.roomPriceHigh) {
-System.out.println("logic.hotel.SearchHotel.search参数错误");
-			return null;
-		}
+				|| search.commentLow > search.commentHigh 
+				|| search.roomPriceLow > search.roomPriceHigh) :"logic.hotel.SearchHotel.search参数错误";
+	
 		
 		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
 		if (initList == null || initList.size() == 0) {

@@ -29,10 +29,8 @@ public class StarSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null || hotels.size() == 0) {
-System.out.println("logic.hotel.starSort.getSortedList参数异常");
-			return null;
-		}
+		assert (hotels == null || hotels.size() == 0) :"logic.hotel.starSort.getSortedList参数异常";
+		
 		
 		if(hotels.size() == 1) {
 			return hotels;
@@ -72,10 +70,7 @@ System.out.println("logic.hotel.starSort.getSortedList参数异常");
 	 */
 	public ArrayList<HotelVO> getSpecificSectionHotelList(double startStar, double endStar, ArrayList<HotelVO> hotels) {
 		
-		if (hotels == null || startStar > endStar ) {
-System.out.println("logic.hotel.starSort.getSpecificSectionHotelList参数异常");
-			return null;
-		}
+		assert (hotels == null || startStar > endStar ) : "logic.hotel.starSort.getSpecificSectionHotelList参数异常";
 		
 		// 获取符合排序条件的酒店列表
 		ArrayList<HotelVO> hotelList = new ArrayList<HotelVO>();

@@ -33,10 +33,8 @@ public class PriceSort implements HotelSort{
 	 * @return
 	 */
 	public ArrayList<HotelVO> getSortedList(ArrayList<HotelVO> hotels) {
-		if (hotels == null || hotels.size() == 0) {
-System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
-			return null;
-		}
+		assert (hotels == null || hotels.size() == 0) :"logic.hotel.PriceSort.getSortedList参数异常";
+		
 		
 		if(hotels.size() == 1) {
 			return hotels;
@@ -77,10 +75,7 @@ System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
 	 */
 	public ArrayList<HotelVO> getSpecificSectionHotelList(double startPrice, double endPrice, ArrayList<HotelVO> hotels) {
 		
-		if (hotels == null || startPrice >= endPrice){
-System.out.println("logic.hotel.PriceSort.getSortedList参数异常");
-			return null;
-		}
+		assert (hotels == null || startPrice >= endPrice) :"logic.hotel.PriceSort.getSortedList参数异常";
 		
 		ArrayList<HotelVO> sortedHotels = new ArrayList<HotelVO>();
 		// 获取酒店的最低价格的列表

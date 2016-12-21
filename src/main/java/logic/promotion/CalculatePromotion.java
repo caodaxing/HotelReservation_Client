@@ -34,9 +34,7 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 	 * @author Rukawa
 	 */
 	public OrderVO calculatePromotion(OrderVO order){
-		if(order == null) {
-			return null;
-		}
+		assert (order == null) : "logic.promotion.calculatePromotion参数异常";
 
 		this.promotions.clear();
 		//清除原先的promotion,以防止promotion有添加或者改动不一致的现象
