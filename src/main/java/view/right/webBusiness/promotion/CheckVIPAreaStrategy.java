@@ -1,16 +1,18 @@
 package view.right.webBusiness.promotion;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import logicService.promotion.ManagePromotionService;
 import view.helpTools.DefaultNums;
 import view.left.WebBusinessUI;
 import viewController.WBPromotionController;
@@ -29,9 +31,14 @@ public class CheckVIPAreaStrategy {
 	private AnchorPane rightPane;
 	private WebBusinessUI wbui;
 	
-	TextField lowestVIPLevel;
-	TextField tradingArea;
-	TextField discountRange;
+	TextField lowestVIPLevel1;
+	TextField lowestVIPLevel2;
+	TextField lowestVIPLevel3;
+	
+	ChoiceBox tradingArea;
+	TextField discountRange1;
+	TextField discountRange2;
+	TextField discountRange3;
 	TextField discountName;
 	
 	Button revert;
@@ -79,57 +86,96 @@ public class CheckVIPAreaStrategy {
 	private void setTextField(){
 		
 		//初始化文本框
-		lowestVIPLevel = new TextField();
-		tradingArea = new TextField();
-		discountRange = new TextField();
+		lowestVIPLevel1 = new TextField();
+		lowestVIPLevel2 = new TextField();
+		lowestVIPLevel3 = new TextField();
+		tradingArea = new ChoiceBox();
+		discountRange1 = new TextField();
+		discountRange2 = new TextField();
+		discountRange3 = new TextField();
 		discountName = new TextField();
 		
-		lowestVIPLevel.setId("CheckVIPAreaStrategy");
+		lowestVIPLevel1.setId("CheckVIPAreaStrategy");
+		lowestVIPLevel2.setId("CheckVIPAreaStrategy");
+		lowestVIPLevel3.setId("CheckVIPAreaStrategy");
 		tradingArea.setId("CheckVIPAreaStrategy");
-		discountRange.setId("CheckVIPAreaStrategy");
+		discountRange1.setId("CheckVIPAreaStrategy");
+		discountRange2.setId("CheckVIPAreaStrategy");
+		discountRange3.setId("CheckVIPAreaStrategy");
 		discountName.setId("CheckVIPAreaStrategy");
 		
 		//设置文本框内容不可更改
-		lowestVIPLevel.setEditable(false);
-		tradingArea.setEditable(false);
-		discountRange.setEditable(false);
+		lowestVIPLevel1.setEditable(false);
+		lowestVIPLevel2.setEditable(false);
+		lowestVIPLevel3.setEditable(false);
+		discountRange1.setEditable(false);
+		discountRange2.setEditable(false);
+		discountRange3.setEditable(false);
 		discountName.setEditable(false);
 		
 		//设置文本框大小
-		lowestVIPLevel.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
+		lowestVIPLevel1.setPrefSize(60, TEXTFIELD_HEIGHT);
+		lowestVIPLevel2.setPrefSize(60, TEXTFIELD_HEIGHT);
+		lowestVIPLevel3.setPrefSize(60, TEXTFIELD_HEIGHT);
 		tradingArea.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
-		discountRange.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
+		discountRange1.setPrefSize(60, TEXTFIELD_HEIGHT);
+		discountRange2.setPrefSize(60, TEXTFIELD_HEIGHT);
+		discountRange3.setPrefSize(60, TEXTFIELD_HEIGHT);
 		discountName.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		
 		//设置文本框位置
-		lowestVIPLevel.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		lowestVIPLevel.setLayoutY(TEXTFIELD_START_VERTICAL);
+		lowestVIPLevel1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
+		lowestVIPLevel1.setLayoutY(TEXTFIELD_START_VERTICAL);
+		
+		lowestVIPLevel2.setLayoutX(TEXTFIELD_START_HORIZONTAL + 70);
+		lowestVIPLevel2.setLayoutY(TEXTFIELD_START_VERTICAL);
+		
+		lowestVIPLevel3.setLayoutX(TEXTFIELD_START_HORIZONTAL + 140);
+		lowestVIPLevel3.setLayoutY(TEXTFIELD_START_VERTICAL);
 		
 		tradingArea.setLayoutX(TEXTFIELD_START_HORIZONTAL);
 		tradingArea.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP);
 		
-		discountRange.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		discountRange.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		discountRange1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
+		discountRange1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		
+		discountRange2.setLayoutX(TEXTFIELD_START_HORIZONTAL + 70);
+		discountRange2.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		
+		discountRange3.setLayoutX(TEXTFIELD_START_HORIZONTAL + 140);
+		discountRange3.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
 		
 		discountName.setLayoutX(TEXTFIELD_START_HORIZONTAL);
 		discountName.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*3);
 		
 		
 		//右侧pane添加组件
-		rightPane.getChildren().add(lowestVIPLevel);
+		rightPane.getChildren().add(lowestVIPLevel1);
+		rightPane.getChildren().add(lowestVIPLevel2);
+		rightPane.getChildren().add(lowestVIPLevel3);
 		rightPane.getChildren().add(tradingArea);
-		rightPane.getChildren().add(discountRange);
+		rightPane.getChildren().add(discountRange1);
+		rightPane.getChildren().add(discountRange2);
+		rightPane.getChildren().add(discountRange3);
 		rightPane.getChildren().add(discountName);
 		
 		//右侧Pane设置位置
-		AnchorPane.setLeftAnchor(lowestVIPLevel, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(lowestVIPLevel1, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(lowestVIPLevel2, TEXTFIELD_START_HORIZONTAL + 70 - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(lowestVIPLevel3, TEXTFIELD_START_HORIZONTAL + 140 - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setLeftAnchor(tradingArea, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
-		AnchorPane.setLeftAnchor(discountRange, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(discountRange1, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(discountRange2, TEXTFIELD_START_HORIZONTAL + 70 - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(discountRange3, TEXTFIELD_START_HORIZONTAL + 140 - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setLeftAnchor(discountName, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 						
-		AnchorPane.setTopAnchor(lowestVIPLevel, (double)TEXTFIELD_START_VERTICAL);
+		AnchorPane.setTopAnchor(lowestVIPLevel1, (double)TEXTFIELD_START_VERTICAL);
+		AnchorPane.setTopAnchor(lowestVIPLevel2, (double)TEXTFIELD_START_VERTICAL);
+		AnchorPane.setTopAnchor(lowestVIPLevel3, (double)TEXTFIELD_START_VERTICAL);
 		AnchorPane.setTopAnchor(tradingArea, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP));
-		AnchorPane.setTopAnchor(discountRange, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange2, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange3, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
 		AnchorPane.setTopAnchor(discountName, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*3));
 		
 	}
@@ -163,11 +209,45 @@ public class CheckVIPAreaStrategy {
 		AnchorPane.setTopAnchor(revert, (double)BUTTON_START_VERTICAL);
 	}
 	
-//	public void setText(){
-//		PromotionVO vo = controller.getPromotionVO(controller.getPromotionId());
-//		lowestVIPLevel.setText(vo.vipTradeAreaDiscount.get(vo.));
-//		tradingArea;
-//		discountRange;
-//		discountName;
-//	}
+	@SuppressWarnings("unchecked")
+	public void setText(){
+		PromotionVO vo = controller.getPromotionVO();
+		ArrayList<String> areaList = new ArrayList<String>();
+		@SuppressWarnings("rawtypes")
+		Iterator iter = vo.vipTradeAreaDiscount.entrySet().iterator();
+		while (iter.hasNext()) {
+			@SuppressWarnings("rawtypes")
+			Map.Entry entry = (Map.Entry) iter.next();
+			Object key = entry.getKey();
+			tradingArea.getItems().add(key);
+			areaList.add(key.toString());
+		}
+		tradingArea.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				int num = tradingArea.getSelectionModel().getSelectedIndex();
+				double[] d = vo.vipTradeAreaDiscount.get((Object)areaList.get(num));
+				if(d.length == 2){
+					discountRange1.setText(String.valueOf(d[1]));
+					lowestVIPLevel1.setText("1");
+				}else if(d.length == 3){
+					discountRange1.setText(String.valueOf(d[1]));
+					discountRange2.setText(String.valueOf(d[2]));
+					lowestVIPLevel1.setText("1");
+					lowestVIPLevel2.setText("2");
+				}else if(d.length == 4){
+					discountRange1.setText(String.valueOf(d[1]));
+					discountRange2.setText(String.valueOf(d[2]));
+					discountRange3.setText(String.valueOf(d[3]));
+					lowestVIPLevel1.setText("1");
+					lowestVIPLevel1.setText("2");
+					lowestVIPLevel1.setText("3");
+				}
+				
+			}
+			
+		});
+		
+	}
 }

@@ -82,6 +82,8 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 	
 	public void setCheckVIPAreaStrategyView(){
+		checkVIPAreaStrategyUI = new CheckVIPAreaStrategy(this);
+		checkVIPAreaStrategyUI.setText();
 		stage.setScene(checkVIPAreaStrategyUI.getScene());
 	}
 
@@ -116,10 +118,7 @@ public class WBPromotionController extends WebBusinessLeftController{
 	}
 	
 	public void setPromotoinList(){
-		
 		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
-System.out.println(promotionList == null);
-System.out.println(promotionList.size());
 	}
 	
 	public void setSpecialTimePromotion(){
