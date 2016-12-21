@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -47,6 +48,7 @@ public class SearchHotel {
 	TextField hotelName ;
 
 	ChoiceBox roomType ;
+	ChoiceBox reserved;
 	
 	DatePicker startTime ;
 	DatePicker endTime ;
@@ -267,6 +269,22 @@ public class SearchHotel {
 		AnchorPane.setLeftAnchor(roomType, 200.0);
 		AnchorPane.setTopAnchor(roomType, 300.0);
 		
+		reserved = new ChoiceBox(FXCollections.observableArrayList("是","否"));
+		reserved.setValue("否");
+		
+		reserved.setPrefSize(200, 30);
+		
+		rightPane.getChildren().add(reserved);
+		AnchorPane.setLeftAnchor(reserved, 200.0);
+		AnchorPane.setTopAnchor(reserved, 550.0);
+		
+		//添加label
+		Label label = new Label("只搜索住过的酒店");
+		label.setPrefSize(80, 30);
+		rightPane.getChildren().add(label);
+		AnchorPane.setLeftAnchor(label, 120.0);
+		AnchorPane.setTopAnchor(label, 550.0);
+		
 	}
 	
 	private void setDatePicker(){
@@ -334,6 +352,12 @@ public class SearchHotel {
 			start="x";
 		}
 		String end = endTime.getValue().toString();
+		
+		int t2 = reserved.getSelectionModel().getSelectedIndex();
+		boolean haveReserved = false;
+		if(t2 == 0){
+			haveReserved = true;
+		}
 		
 		try{
 		DecimalFormat df=new DecimalFormat("#.00");

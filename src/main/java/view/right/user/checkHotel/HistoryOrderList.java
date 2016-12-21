@@ -54,12 +54,14 @@ public class HistoryOrderList{
 	TableColumn<Person, String> orderState;
 	TableColumn<Person,Button> operation;
 	
-	private final ObservableList<Person> data = FXCollections.observableArrayList();
+	private final ObservableList<Person> data;
 	private Button check;
 	
 	public HistoryOrderList(UserCheckHotelController controller){
 		
 		this.controller = controller;
+
+		data = FXCollections.observableArrayList();
 		
 		userUI = new UserUI(controller);
 		

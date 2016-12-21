@@ -198,20 +198,20 @@ public class EvaluationList {
 		private final SimpleStringProperty score;
 		private final SimpleObjectProperty<Object> operation;
 		
-		private Person(String ORDERID, String score, Button operation){
+		private Person(String orderId, String score, Button operation){
 			
-			this.orderId = new SimpleStringProperty(ORDERID);
+			this.orderId = new SimpleStringProperty(orderId);
 			this.score =  new SimpleStringProperty(score);
 			this.operation =  new SimpleObjectProperty<Object>(operation);
 			
 		}
 		
-		public String getOrderid(){
+		public String getOrderId(){
 			return orderId.get();
 		}
 		
-		public void setOrderId(String Orderid){
-			orderId.set(Orderid);
+		public void setOrderId(String orderID){
+			orderId.set(orderID);
 		}
 		
 		public String getScore(){
