@@ -1,9 +1,11 @@
 package view.right.user.myOrder;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -30,7 +32,8 @@ public class Evaluate {
 	
 	private AnchorPane rightPane;
 	
-	TextField grade ;
+	private ChoiceBox grade;
+	
 	TextArea info ;
 	
 	Button confirm;
@@ -66,11 +69,11 @@ public class Evaluate {
 	private void setText(){
 		
 		//初始化textField
-		grade = new TextField();
+		grade = new ChoiceBox(FXCollections.observableArrayList("1","2","3","4","5"));
 		info = new TextArea();
 
 		//设置textField可操作性
-		grade.setEditable(true);
+		grade.setValue("5");
 		info.setEditable(true);
 		
 		//设置textField大小
@@ -118,7 +121,6 @@ public class Evaluate {
 			
 			public void handle(ActionEvent event){
 				//返回首页并清空
-				setBlank();
 				controller.setExecuteOrderView();
 				controller.getStage().show();
 			}
@@ -144,29 +146,8 @@ public class Evaluate {
 	
 	}
 	
-	public void setBlank(){
-		
-		grade.setText("");
-		info.setText("");
-		
-	}
-	
 	public double getGrade(){
-		String g = grade.getText();
-		double grd = -1;
-		if(g.equals("")){
-			controller.showDialog("请输入评价等级");
-		}
-		try{
-			grd = Double.valueOf(g);
-			if(grd>5 || grd<0){
-				grd = -1;
-				controller.showDialog("评分请在0-5之间");
-			}
-		}catch(Exception e){
-			controller.showDialog("请输入有效值");
-			 grd = -1;
-		}
+		double grd = grade.getSelectionModel().getSelectedIndex()+1.0;
 		return grd;
 	}
 	

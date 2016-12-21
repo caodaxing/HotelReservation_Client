@@ -99,7 +99,7 @@ public class SuccessOrder {
 		if(vo.promotion == null){
 			promotion.setText("无");
 		}else
-			promotion.setText(vo.promotion.promotionName+": "+vo.promotion.discount);
+			promotion.setText(vo.promotion.promotionName+":  "+vo.promotion.discount+" 折");
 		originalPrice.setText(Double.toString(vo.beforePrice));
 		actualPrice.setText(Double.toString(vo.afterPrice));
 		peopleNums.setText(Integer.toString(vo.numOfPeople));
