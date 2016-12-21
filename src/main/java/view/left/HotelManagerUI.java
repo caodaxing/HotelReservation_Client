@@ -50,7 +50,7 @@ public class HotelManagerUI{
 		
 		Button hotelInfo = new Button("酒店信息");
 		hotelInfo.setId("light-button");
-		hotelInfo.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		hotelInfo.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(hotelInfo, 0, 1);
 		hotelInfo.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -64,7 +64,7 @@ public class HotelManagerUI{
 		
 		Button allOrder = new Button("全部订单");
 		allOrder.setId("dark-button");
-		allOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		allOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(allOrder, 0, 2);
 		allOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -78,7 +78,7 @@ public class HotelManagerUI{
 		
 		Button hasExecuteOrder = new Button("已执行订单");
 		hasExecuteOrder.setId("dark-button");
-		hasExecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		hasExecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(hasExecuteOrder, 0, 3);
 		hasExecuteOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -92,7 +92,7 @@ public class HotelManagerUI{
 		
 		Button unexecuteOrder = new Button("未执行订单");
 		unexecuteOrder.setId("dark-button");
-		unexecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		unexecuteOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(unexecuteOrder, 0, 4);
 		unexecuteOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -106,7 +106,7 @@ public class HotelManagerUI{
 		
 		Button undoOrder = new Button("已撤销订单");
 		undoOrder.setId("dark-button");
-		undoOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		undoOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(undoOrder, 0, 5);
 		undoOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -120,7 +120,7 @@ public class HotelManagerUI{
 		
 		Button abnormalOrder = new Button("异常订单");
 		abnormalOrder.setId("dark-button");
-		abnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		abnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(abnormalOrder, 0, 6);
 		abnormalOrder.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -134,7 +134,7 @@ public class HotelManagerUI{
 		
 		Button orderedHotel = new Button("客房信息");
 		orderedHotel.setId("light-button");
-		orderedHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		orderedHotel.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(orderedHotel, 0, 7);
 		orderedHotel.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -148,7 +148,7 @@ public class HotelManagerUI{
 		
 		Button promotion = new Button("促销策略");
 		promotion.setId("light-button");
-		promotion.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		promotion.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(promotion, 0, 8);
 		promotion.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -160,10 +160,23 @@ public class HotelManagerUI{
 			
 		});
 		
+		Button changePassword = new Button("修改密码");
+		changePassword.setId("light-button");
+		changePassword.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(changePassword, 0, 9);
+		changePassword.setOnAction(new EventHandler<ActionEvent>(){
+			
+			@Override
+			public void handle(ActionEvent event) {
+				controller.setModifyPasswordView();
+			}
+			
+		});
+		
 		Button signOut = new Button("注 销");
 		signOut.setId("light-button");
-		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(signOut, 0, 9);
+		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH - 5, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(signOut, 0, 10);
 		signOut.setOnAction(new EventHandler<ActionEvent>(){
 			
 			@Override

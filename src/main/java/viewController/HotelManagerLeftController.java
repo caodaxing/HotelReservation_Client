@@ -2,6 +2,7 @@ package viewController;
 
 import java.util.ArrayList;
 
+import Message.Identity;
 import Message.OrderListCondition;
 import Message.ResultMessage;
 import javafx.event.EventHandler;
@@ -14,6 +15,7 @@ import logic.hotel.UpdateHotel;
 import logic.order.Order;
 import logic.picture.Picture;
 import logic.room.Room;
+import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.hotel.CheckHotelService;
 import logicService.hotel.UpdateHotelService;
@@ -25,10 +27,12 @@ import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.hotelManager.hotelInfo.Blank;
 import view.right.hotelManager.hotelInfo.ModifyHotelInfo;
+import view.right.hotelManager.hotelInfo.ModifyPassword;
 import view.right.hotelManager.orderManagement.OrderList;
 import view.right.hotelManager.orderManagement.SetArriveInfo;
 import view.right.hotelManager.promotion.PromotionFirst;
 import view.right.hotelManager.roomInfo.First;
+import vo.AccountVO;
 import vo.HotelVO;
 import vo.OrderVO;
 import vo.RoomVO;
@@ -44,6 +48,7 @@ public class HotelManagerLeftController{
 	protected OrderList abnormalOrderListUI;
 	protected First roomFirstUI;
 	protected PromotionFirst promotionFirstUI;
+	protected ModifyPassword modifyPasswordUI;
 	protected Blank blankUI;
 	protected FirstUI firstUI;
 	
@@ -78,6 +83,7 @@ public class HotelManagerLeftController{
 		modifyHotelInfoUI = new ModifyHotelInfo(this);
 		roomFirstUI = new First(this);
 		promotionFirstUI = new PromotionFirst(this);
+		modifyPasswordUI = new ModifyPassword(this);
 		blankUI = new Blank(this);
 	}
 	
@@ -158,6 +164,12 @@ public class HotelManagerLeftController{
 		stage.show();
 	}
 	
+	public void setModifyPasswordView(){
+		modifyPasswordUI = new ModifyPassword(this);
+		stage.setScene(modifyPasswordUI.getScene());
+		stage.show();
+	}
+	
 	public void setFirstUIView(){
 		stage.close();
 		Stage newStage = new Stage();
@@ -182,6 +194,56 @@ public class HotelManagerLeftController{
 		newStage.setResizable(false);
 		newStage.show();
 	}
+	
+	public void modifyPassword(){
+		
+		String oldPassword = modifyPasswordUI.getOldPassword();
+		String newPassword = modifyPasswordUI.getNewPassword();
+		String rePassword = modifyPasswordUI.getRepeatPassword();
+		
+		if(newPassword.equals("") || rePassword.equals("") || oldPassword.equals("")){
+			//有未输入项
+			showDialog("请填写完整");
+			return ;
+		}
+		if(!newPassword.equals(rePassword)){
+			//两次输入密码不一致
+			showDialog("两次输入密码不一致");
+			return ;
+		}
+		
+		AccountVO oldVO = new AccountVO(userId,oldPassword ,Identity.CLIENT);
+		Encryption.getInstance().encrypt(oldVO);
+		if(accountService.canModifyPassword(oldVO)  == ResultMessage.FAILURE){
+			//旧密码不正确,弹框清空
+			showDialog("原密码错误，请重新输入");
+			modifyPasswordUI.setBlank();
+			return;
+		}
+		accountService.logout(userId);
+		
+		AccountVO vo = new AccountVO(userId, newPassword , Identity.CLIENT );
+		ResultMessage result = accountService.modifyPassword(Encryption.getInstance().encrypt(vo));
+		 if(result == ResultMessage.FAILURE){
+			//未知错误
+			showDialog("系统错误，请重试");
+		}else if(result == ResultMessage.SUCCESS){
+			//修改成功，弹框清空
+			showDialog("修改成功");
+			modifyPasswordUI.setBlank();
+		}
+		
+	}
+
+//	public Stage getStage(){
+//		return stage;
+//	}
+//
+//	//弹出对话框，文字为传入的str
+//	public void showDialog(String str){
+//		OneButtonDialog dialog = new OneButtonDialog(str);
+//		dialog.show();
+//	}
 	
 	//返回提示框
 	public void showDialog(String str){

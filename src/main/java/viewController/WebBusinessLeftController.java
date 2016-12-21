@@ -2,7 +2,7 @@ package viewController;
 
 import java.util.ArrayList;
 
-import Message.PromotionType;
+import Message.Identity;
 import Message.ResultMessage;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -11,12 +11,11 @@ import logic.account.Account;
 import logic.credit.Credit;
 import logic.order.ManageOrder;
 import logic.order.Order;
-import logic.promotion.ManagePromotion;
+import logic.utility.Encryption;
 import logicService.account.AccountService;
 import logicService.credit.CreditService;
 import logicService.order.ManageOrderService;
 import logicService.order.OrderService;
-import logicService.promotion.ManagePromotionService;
 import view.account.FirstUI;
 import view.helpTools.OneButtonDialog;
 import view.right.webBusiness.VIPInfo.Blank;
@@ -24,9 +23,10 @@ import view.right.webBusiness.VIPInfo.SetVIPCredit;
 import view.right.webBusiness.credit.RechargeCredit;
 import view.right.webBusiness.orderManagement.AbnormalOrderList;
 import view.right.webBusiness.orderManagement.TodayUnexecuteOrder;
+import view.right.webBusiness.password.ModifyPassword;
 import view.right.webBusiness.promotion.First;
+import vo.AccountVO;
 import vo.OrderVO;
-import vo.PromotionVO;
 
 public class WebBusinessLeftController {
 	
@@ -35,6 +35,7 @@ public class WebBusinessLeftController {
 	protected SetVIPCredit setVIPCreditUI;
 	protected TodayUnexecuteOrder tunexecuteOrderUI;
 	protected AbnormalOrderList abnormalOrderListUI;
+	protected ModifyPassword modifyPasswordUI;
 	protected Blank blankUI;
 	protected FirstUI first;
 	
@@ -127,6 +128,12 @@ public class WebBusinessLeftController {
 		stage.show();
 	}
 	
+	public void setModifyPasswordView(){
+		modifyPasswordUI = new ModifyPassword(this);
+		stage.setScene(modifyPasswordUI.getScene());
+		stage.show();
+	}
+	
 	public void setFirstUIView(){
 		stage.close();
 		Stage newStage = new Stage();
@@ -150,6 +157,45 @@ public class WebBusinessLeftController {
 		});
 		newStage.setResizable(false);
 		newStage.show();
+	}
+	
+	public void modifyPassword(){
+		
+		String oldPassword = modifyPasswordUI.getOldPassword();
+		String newPassword = modifyPasswordUI.getNewPassword();
+		String rePassword = modifyPasswordUI.getRepeatPassword();
+		
+		if(newPassword.equals("") || rePassword.equals("") || oldPassword.equals("")){
+			//有未输入项
+			showDialog("请填写完整");
+			return ;
+		}
+		if(!newPassword.equals(rePassword)){
+			//两次输入密码不一致
+			showDialog("两次输入密码不一致");
+			return ;
+		}
+		
+		AccountVO oldVO = new AccountVO(userId,oldPassword ,Identity.CLIENT);
+		Encryption.getInstance().encrypt(oldVO);
+		if(accountService.canModifyPassword(oldVO)  == ResultMessage.FAILURE){
+			//旧密码不正确,弹框清空
+			showDialog("原密码错误，请重新输入");
+			modifyPasswordUI.setBlank();
+			return;
+		}
+		accountService.logout(userId);
+		
+		AccountVO vo = new AccountVO(userId, newPassword , Identity.CLIENT );
+		ResultMessage result = accountService.modifyPassword(Encryption.getInstance().encrypt(vo));
+		 if(result == ResultMessage.FAILURE){
+			//未知错误
+			showDialog("系统错误，请重试");
+		}else if(result == ResultMessage.SUCCESS){
+			//修改成功，弹框清空
+			showDialog("修改成功");
+			modifyPasswordUI.setBlank();
+		}
 	}
 	
 	public void showDialog(String str){

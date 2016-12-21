@@ -74,10 +74,15 @@ public class WebBusinessUI{
 		manageAbnormalOrder.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
 		grid.add(manageAbnormalOrder, 0, 5);
 		
+		Button changePassword = new Button("修改密码");
+		changePassword.setId("light-button");
+		changePassword.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
+		grid.add(changePassword, 0, 6);
+		
 		Button signOut = new Button("注 销");
 		signOut.setId("light-button");
 		signOut.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-		grid.add(signOut, 0, 6);
+		grid.add(signOut, 0, 7);
 		
 		webPromotion.setOnAction(new EventHandler<ActionEvent>(){
 			
@@ -125,6 +130,15 @@ public class WebBusinessUI{
 			public void handle(ActionEvent event) {
 				leftcontroller.setAbnormalOrderView();
 				leftcontroller.getStage().show();
+			}
+			
+		});
+		
+		changePassword.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				leftcontroller.setModifyPasswordView();
 			}
 			
 		});
