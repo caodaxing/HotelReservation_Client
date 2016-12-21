@@ -51,6 +51,7 @@ public class ModifyHotelInfo {
 	Button ok;
 	Button choosePicture;
 	String imagePath;
+	String imageName;
 	
 	public ModifyHotelInfo(HotelManagerLeftController controller){
 		
@@ -141,6 +142,7 @@ public class ModifyHotelInfo {
 			return;
 		}
 		imagePath = file.getAbsolutePath();
+		imageName = file.getName();
 //		HotelImage.setText(exportFilePath);
 		
 	}
@@ -186,7 +188,7 @@ public class ModifyHotelInfo {
 					HotelVO hotelvo = new HotelVO(vo.hoteID,vo.hotelName,vo.city,vo.tradingArea,
 							hotelLocal,vo.evaluationGrades,i,hotelBrief,hoteltool,vo.bussiness);
 					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS &&
-							controller.savePictureResult(controller.getUserId(), imagePath) == ResultMessage.SUCCESS){
+							controller.savePictureResult(controller.getUserId(), imagePath, imageName) == ResultMessage.SUCCESS){
 						controller.showDialog("修改成功");
 					}else{
 						controller.showDialog("修改失败");

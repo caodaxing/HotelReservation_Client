@@ -285,8 +285,8 @@ public class HotelManagerLeftController{
 		return updateHotelService.updateHotelInfo(hotelVO);
 	}
 	
-	public ResultMessage savePictureResult(String userId, String imagepath){
-		return pictureService.saveHotelImage(userId, imagepath);
+	public ResultMessage savePictureResult(String userId, String imagepath, String imageName){
+		return pictureService.saveHotelImage(userId, imagepath, imageName);
 	}
 	
 }
