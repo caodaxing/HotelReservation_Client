@@ -403,7 +403,7 @@ public class SearchHotel {
 			return null;
 		}
 		
-		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh,controller.getUserID(),haveReserved);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh,haveReserved,controller.getUserID());
 		return vo;
 		}catch(Exception e){
 			controller.showDialog("请输入有效值");

@@ -234,6 +234,10 @@ public class MakeOrder{
 			controller.showDialog("预计入住时间应晚于当前时间");
 			arrive="x";
 		}
+		if(arriveTime.getValue().isAfter(LocalDate.now().plusMonths(1))){
+			controller.showDialog("预计入住时间不应晚于一个月后");
+			arrive = "x";
+		}
 		String leave = leaveTime.getValue().toString()+" "+time;
 		
 		int t2 = haveChild.getSelectionModel().getSelectedIndex();
