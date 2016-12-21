@@ -10,13 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import view.helpTools.DefaultNums;
-import view.helpTools.OneButtonDialog;
 import view.left.HotelManagerUI;
 import viewController.HMHotelInfoController;
 import viewController.HotelManagerLeftController;
@@ -228,7 +228,7 @@ public class ModifyHotelInfo {
 	
 	public void setHotelInfo(){
 		HotelVO vo= controller.getHotelVO(controller.getUserId());
-		ArrayList<String> pictureList = controller.getPicture(controller.getUserId());
+		ArrayList<Image> pictureList = controller.getPicture(controller.getUserId());
 		String text = "";
 		for(int i=0;i<pictureList.size();i++){
 			text += pictureList.get(i)+"\n";

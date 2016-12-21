@@ -107,7 +107,6 @@ public class WebBusinessLeftController {
 	//设置异常列表内容
 	public void setFilterAbnormalOrderList(){
 		orderList = manageOrderService.getWebDailyAbnormalOrderList();
-System.out.println(orderList.size());
 	}
 	
 	public void setTodayUnexecuteOrderView(){
@@ -178,43 +177,8 @@ System.out.println(orderList.size());
 		return accountService.userIDExists(userId);
 	}
 	
-//	public String getOrderID(){
-//		return orderId;
-//	}
-	
-//	public OrderVO getOrderVOInfo(){
-//		return orderService.getOrderInfo(orderId);
-//	}
-//	
-//	public void setOrderId(String orderId){
-//		this.orderId = orderId;
-//	}
-//	
-//	public void setOrderId(int row){
-//		orderId = orderList.get(row).orderId;
-//	}
-	
 	public int getLevelCredit(int level){
 		return creditService.getVIPCredit(level);
 	}
-	
-//	public void setAllPromotion(){
-//		promotionList = promotionService.getWebPromotions(PromotionType.ALL);
-//	}
-//	
-//	public ArrayList<PromotionVO> getAllPromotion(){
-//		return promotionList;
-//	}
-//	
-//	public void setPromotionId(int row){
-//		promotionId = promotionList.get(row).promotionID;
-//	}
-//	
-//	public String getPromotionId(){
-//		return promotionId;
-//	}
-	
-	
-	
 	
 }

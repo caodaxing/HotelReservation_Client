@@ -188,6 +188,7 @@ public class ExistStrategy {
 								if(controller.getDeletePromotionResult(num) == ResultMessage.SUCCESS){
 									controller.showDialog("删除成功");
 									controller.setDeletePromotion();
+									controller.setExistStrategy();
 									controller.getStage().show();
 								}else{
 									controller.showDialog("删除失败");

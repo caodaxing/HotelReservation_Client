@@ -55,7 +55,7 @@ public class CheckCooperateCompanyStrategy {
 		
 		HBox root = new HBox(leftPane, rightPane);
 		scene = new Scene(root, DefaultNums.WIDTH, DefaultNums.HEIGHT);
-		root.setStyle("-fx-background-image:url(\"/hotelPromotion/酒店促销策略_合作企业优惠_查看背景.jpg\")");
+		root.setStyle("-fx-background-image:url(\"/hotelPromotion/酒店促销策略_合作企业优惠_查看.jpg\")");
 	}
 	
 	public Scene getScene(){
