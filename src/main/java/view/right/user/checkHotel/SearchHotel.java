@@ -115,7 +115,6 @@ public class SearchHotel {
 			for(int i=0;i<cityList.size();i++){
 				city.getItems().addAll(cityList.get(i));
 			}
-			city.setValue(cityList.get(0));
 		}else{
 			controller.showDialog("系统错误，请重试");
 		}
@@ -131,7 +130,6 @@ public class SearchHotel {
 					for(int i=0;i<tradingAreaList.size();i++){
 						area.getItems().addAll(tradingAreaList.get(i));
 					}
-					area.setValue(cityList.get(0));
 				}else{
 					controller.showDialog("系统错误，请重试");
 				}
@@ -320,9 +318,16 @@ public class SearchHotel {
 	}
 
 	public HotelSearchVO getSearchVO(){
-		String c = cityList.get(city.getSelectionModel().getSelectedIndex());
-		String tradingArea = tradingAreaList.get(area.getSelectionModel().getSelectedIndex());
-	
+		int ci = city.getSelectionModel().getSelectedIndex();
+		String c = "";
+		if(ci != -1)
+		c = cityList.get(ci);
+		String tradingArea = "";
+		if(ci!=-1){
+			int ti =  area.getSelectionModel().getSelectedIndex();
+			if(ti != -1)
+				tradingArea = tradingAreaList.get(ti);
+		}
 		String name = hotelName.getText();
 		int t = roomType.getSelectionModel().getSelectedIndex();
 		RoomType type = null;

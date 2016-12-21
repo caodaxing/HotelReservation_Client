@@ -92,7 +92,7 @@ public class OrderList {
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
-		orderId.setMinWidth(120);
+		orderId.setMinWidth(150);
 		
 		hotel = new TableColumn<>("酒店");
 		hotel.setCellValueFactory(new PropertyValueFactory<Person, String>("hotel"));
@@ -100,7 +100,7 @@ public class OrderList {
 		
 		orderState = new TableColumn<>("订单状态");
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderstate"));
-		orderState.setMinWidth(90);
+		orderState.setMinWidth(100);
 		
 		price = new TableColumn<>("价格");
 		price.setCellValueFactory(new PropertyValueFactory<Person, String>("price"));
@@ -133,16 +133,16 @@ public class OrderList {
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(520);
+		tableView.setPrefHeight(450);
+		tableView.setPrefWidth(555);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 	/*

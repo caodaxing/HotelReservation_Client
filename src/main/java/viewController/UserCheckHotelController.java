@@ -174,8 +174,8 @@ public class UserCheckHotelController extends UserLeftController {
 		if(vo.startTime.equals("x")){
 			return ;
 		}
-		if(vo.city.equals("") || vo.tradingArea.equals("")){
-			showDialog("请输入酒店城市和商圈");
+		if(vo.city.equals("") || vo.tradingArea.equals("")|| vo.city == null || vo.tradingArea == null){
+			showDialog("请选择城市和商圈");
 			return ;
 		}
 		hotelList = searchHotelService.search(vo);

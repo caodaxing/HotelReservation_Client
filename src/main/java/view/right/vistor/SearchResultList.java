@@ -231,15 +231,15 @@ public class SearchResultList {
 		
 		whetherReserve = new TableColumn<>("是否预定过");
 		whetherReserve.setCellValueFactory(new PropertyValueFactory<Person, String>("whetherReserve"));
-		whetherReserve.setMinWidth(80);
+		whetherReserve.setMinWidth(100);
 		
 		starlevel = new TableColumn<>("星级");
 		starlevel.setCellValueFactory(new PropertyValueFactory<Person, String>("starlevel"));
-		starlevel.setMinWidth(50);
+		starlevel.setMinWidth(70);
 		
 		evalaution = new TableColumn<>("评价");
 		evalaution.setCellValueFactory(new PropertyValueFactory<Person, String>("evaluation"));
-		evalaution.setMinWidth(50);
+		evalaution.setMinWidth(70);
 		
 		operation1= new TableColumn<>("操作");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
@@ -262,18 +262,18 @@ public class SearchResultList {
 				};
 			}
 		});
-		operation1.setMinWidth(110);
+		operation1.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefHeight(400);
+		tableView.setPrefWidth(550);
 		tableView.getColumns().addAll(hotelName, whetherReserve, starlevel, evalaution, operation1);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
-		AnchorPane.setTopAnchor(tableView, 150.0);
+		AnchorPane.setLeftAnchor(tableView, 25.0);
+		AnchorPane.setTopAnchor(tableView, 140.0);
 	
 	}
 	

@@ -57,6 +57,7 @@ public class UserMyInfoController extends UserLeftController {
 		ClientVO vo = clientService.getClientInfo(userID);
 		vo.trueName = name;
 		vo.phoneNumber = phone ;
+		if(head!=null  && head.equals(""))
 		pictureService.saveUserImage(userID, head)  ;
 		vo.identityID = id;
 		

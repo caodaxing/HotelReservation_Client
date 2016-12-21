@@ -160,6 +160,9 @@ public class CheckMyInfo {
 	public void setText(){
 		
 		ClientVO vo = controller.getMyInfo();
+		if(vo == null ){
+			return;
+		}
 		//根据controller设置text
 		name.setText(vo.trueName);
 		phone.setText(vo.phoneNumber);

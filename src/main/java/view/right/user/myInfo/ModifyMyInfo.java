@@ -77,11 +77,12 @@ public class ModifyMyInfo {
 		id = new TextField();
 		head = new TextField();
 		
+		if(vo!=null){
 		//根据controller设置text
-		name.setText(vo.trueName);
-		phone.setText(vo.phoneNumber);
-		id.setText(vo.identityID);
-		
+			name.setText(vo.trueName);
+			phone.setText(vo.phoneNumber);
+			id.setText(vo.identityID);
+		}
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);
 		id.setPrefSize(200, 30);

@@ -126,7 +126,7 @@ public class WebManagerLeftController {
 		String hotelName = addHotelUI.getHotelName();
 		String city = addHotelUI.getCity();
 		String area = addHotelUI.getArea();
-		if(hotelID.equals("") || hotelName.equals("") || city.equals("") || area.equals("")){
+		if(hotelID.equals("") || hotelName.equals("") || city.equals("") || area.equals("") || city == null || area == null){
 			//信息不完整
 			showDialog("请完整填写");
 			return ;
@@ -181,7 +181,7 @@ public class WebManagerLeftController {
 		//查看工作人员是否存在
 		if(accountService.userIDExists(hotelID)){
 			//已有工作人员
-			showDialog("该酒店已有工作人员，请勿重复添加");
+			showDialog("该酒店已有工作人员");
 			return ;
 		}
 		//添加工作人员，清空输入框

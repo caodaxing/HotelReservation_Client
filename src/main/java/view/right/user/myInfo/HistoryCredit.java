@@ -132,23 +132,23 @@ public class HistoryCredit {
 		
 		change = new TableColumn<>("信用值变化");
 		change.setCellValueFactory(new PropertyValueFactory<Person, String>("change"));
-		change.setMinWidth(80);
+		change.setMinWidth(100);
 		
 		result= new TableColumn<>("信用值结果");
 		result.setCellValueFactory(new PropertyValueFactory<Person, String>("result"));
-		result.setMinWidth(80);
+		result.setMinWidth(100);
 		
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(520);
+		tableView.setPrefHeight(430);
+		tableView.setPrefWidth(555);
 		tableView.getColumns().addAll(time, orderID, action, change, result);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	
 	}
 	

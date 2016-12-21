@@ -139,7 +139,7 @@ public class HistoryOrderList{
 		
 		orderState = new TableColumn<>("订单状态");
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderState"));
-		orderState.setMinWidth(100);
+		orderState.setMinWidth(150);
 	
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
@@ -165,16 +165,15 @@ public class HistoryOrderList{
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(520);
+		tableView.setPrefHeight(430);
+		tableView.setPrefWidth(555);
 		tableView.getColumns().addAll(orderId, roomType, orderState);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
+		AnchorPane.setTopAnchor(tableView, 100.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
-		
-		AnchorPane.setTopAnchor(tableView, 125.0);
 	}
 	
 	public void setListValue(){

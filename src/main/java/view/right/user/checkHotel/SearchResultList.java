@@ -231,15 +231,15 @@ public class SearchResultList{
 		
 		whetherReserve = new TableColumn<>("是否预定过");
 		whetherReserve.setCellValueFactory(new PropertyValueFactory<Person, String>("whetherReserve"));
-		whetherReserve.setMinWidth(80);
+		whetherReserve.setMinWidth(100);
 		
 		starlevel = new TableColumn<>("星级");
 		starlevel.setCellValueFactory(new PropertyValueFactory<Person, String>("starlevel"));
-		starlevel.setMinWidth(40);
+		starlevel.setMinWidth(50);
 		
 		evalaution = new TableColumn<>("评价");
 		evalaution.setCellValueFactory(new PropertyValueFactory<Person, String>("evaluation"));
-		evalaution.setMinWidth(40);
+		evalaution.setMinWidth(50);
 		
 		operation1= new TableColumn<>("操作1");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
@@ -249,7 +249,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(70);
+							Item.setPrefWidth(95);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -262,7 +262,7 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation1.setMinWidth(70);
+		operation1.setMinWidth(95);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -272,7 +272,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("预订");
-							Item.setPrefWidth(70);
+							Item.setPrefWidth(95);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -285,18 +285,18 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation2.setMinWidth(70);
+		operation2.setMinWidth(95);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(500);
+		tableView.setPrefHeight(400);
+		tableView.setPrefWidth(550);
 		tableView.getColumns().addAll(hotelName, whetherReserve, starlevel, evalaution, operation1, operation2);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
-		AnchorPane.setTopAnchor(tableView, 160.0);
+		AnchorPane.setLeftAnchor(tableView, 25.0);
+		AnchorPane.setTopAnchor(tableView, 140.0);
 	
 	}
 	

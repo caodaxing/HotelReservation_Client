@@ -129,15 +129,15 @@ public class RoomList{
 		//添加列
 		roomType = new TableColumn<>("房间类型");
 		roomType.setCellValueFactory(new PropertyValueFactory<Person, String>("roomType"));
-		roomType.setMinWidth(125);
+		roomType.setMinWidth(150);
 		
 		initialPrice = new TableColumn<>("原始价格");
 		initialPrice.setCellValueFactory(new PropertyValueFactory<Person, String>("initialPrice"));
-		initialPrice.setMinWidth(125);
+		initialPrice.setMinWidth(150);
 		
 		remainedNum = new TableColumn<>("剩余数量");
 		remainedNum.setCellValueFactory(new PropertyValueFactory<Person, String>("remainedNum"));
-		remainedNum.setMinWidth(125);
+		remainedNum.setMinWidth(150);
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
@@ -160,19 +160,19 @@ public class RoomList{
 				};
 			}
 		});
-		operation.setMinWidth(125);
+		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(520);
+		tableView.setPrefHeight(430);
+		tableView.setPrefWidth(555);
 		tableView.getColumns().addAll(roomType, initialPrice, remainedNum, operation);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 	public void setListValue(){

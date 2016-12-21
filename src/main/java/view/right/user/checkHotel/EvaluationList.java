@@ -130,7 +130,7 @@ public class EvaluationList {
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderId"));
-		orderId.setMinWidth(200);
+		orderId.setMinWidth(250);
 
 		score = new TableColumn<>("评分");
 		score.setCellValueFactory(new PropertyValueFactory<Person, String>("score"));
@@ -160,16 +160,16 @@ public class EvaluationList {
 		operation.setMinWidth(100);
 		
 		tableView.setItems(data);
-		tableView.setPrefHeight(380);
-		tableView.setPrefWidth(520);
+		tableView.setPrefHeight(430);
+		tableView.setPrefWidth(555);
 		tableView.getColumns().addAll(orderId, score, operation);
 		
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView,30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 	public void setListValue(){
@@ -177,14 +177,7 @@ public class EvaluationList {
 		if(evaluationList == null || evaluationList.size() == 0 || evaluationList.isEmpty()){
 			return;
 		}
-		
 		for(EvaluationVO vo : evaluationList){
-			
-//			System.out.println(vo == null);
-//			System.out.println(vo.commentLevel);
-//			System.out.println(vo.orderID);
-//			System.out.println(vo.evaluationContent);
-			
 			check = new Button("查看");
 			data.add(new Person(vo.orderID, Double.toString(vo.commentLevel),check));
 		}
