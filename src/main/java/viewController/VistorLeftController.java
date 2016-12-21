@@ -32,9 +32,9 @@ public class VistorLeftController {
 		stage.close();
 		Stage newStage = new Stage();
 		newStage.centerOnScreen();
-		newStage.setTitle("酒店预订系统");
 		accountController = new AccountController(newStage);
 		accountController.setSignUpView();
+		newStage.setTitle("步客酒店预订系统");
 		newStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

@@ -15,6 +15,7 @@ public class Main extends Application{
 		AccountController accountController = new AccountController(stage);
 		accountController.setFirstView();
 		stage.setResizable(false);
+		stage.setTitle("步客酒店预订系统");
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

@@ -98,7 +98,7 @@ public class WebManagerLeftController {
 		stage.close();
 		Stage newStage = new Stage();
 		newStage.centerOnScreen();
-		newStage.setTitle("酒店预订系统");
+		newStage.setTitle("步客酒店预订系统");
 		accountController = new AccountController(newStage);
 		
 		ResultMessage result = accountService.logout(userID);
