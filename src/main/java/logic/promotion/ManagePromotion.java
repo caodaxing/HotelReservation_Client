@@ -90,11 +90,23 @@ public class ManagePromotion implements ManagePromotionService, PromotionInfo{
 	
 	@Override
 	public ArrayList<PromotionVO> getWebPromotions(PromotionType promotionType) {
+		
 		ArrayList<PromotionPO> pos = null;
-		try {
-			pos = this.promotionDao.getWebPromotions(promotionType.ordinal());
-		} catch (RemoteException e) {
-			e.printStackTrace();
+		
+		if(promotionType == PromotionType.ALL) {
+			try {
+				pos = this.promotionDao.getWebPromotions(promotionType.WEB_11_11.ordinal());
+				pos.addAll(this.promotionDao.getWebPromotions(promotionType.WEB_VIP_LEVEL.ordinal()));
+				pos.addAll(this.promotionDao.getWebPromotions(promotionType.WEB_VIP_TRADINGAREA.ordinal()));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				pos = this.promotionDao.getWebPromotions(promotionType.ordinal());
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return this.promotionTrans.promotionListTransToVO(pos);

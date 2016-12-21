@@ -28,6 +28,11 @@ public class PictureHelper {
 			return null;
 		}
 		
+		File file = new File(fileName);
+		if(!file.exists()) {
+			return null;
+		}
+		
 		 InputStream in = null;  
 	        byte[] data = null;
 	        try {  

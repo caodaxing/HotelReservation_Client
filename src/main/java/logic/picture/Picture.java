@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import com.sun.webkit.BackForwardList;
 
 import Message.ResultMessage;
 import dataDao.picture.PictureDao;
@@ -33,6 +34,7 @@ public class Picture implements PictureService {
 	@Override
 	public ArrayList<Image> getHotelImage(String hotelID) {
 		ArrayList<Image> hotelImages = new ArrayList<Image>();
+		
 		try {
 			ArrayList<byte[]> datas = pictureDao.getHotelImage(hotelID);
 			if (datas==null) {
@@ -44,7 +46,6 @@ public class Picture implements PictureService {
 			}
 			return hotelImages;
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -55,12 +56,14 @@ public class Picture implements PictureService {
 	public ResultMessage saveUserImage(String userID, String imagePath) {
 		byte[] bs = PictureHelper.imageToBytes(imagePath);
 
-		try {
-			if(this.pictureDao.saveUserImage(bs, userID)) {
-				return ResultMessage.SUCCESS;
+		if(bs != null) {
+			try {
+				if(this.pictureDao.saveUserImage(bs, userID)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
@@ -70,19 +73,22 @@ public class Picture implements PictureService {
 	public ResultMessage saveHotelImage(String hotelID, String imagePath, String pictureName) {
 		byte[] bs = PictureHelper.imageToBytes(imagePath);
 		
-		pictureName = pictureName.substring(0, pictureName.length()-4);
-		
-		try {
-			if(this.pictureDao.saveHotelImage(bs, hotelID, pictureName)) {
-				return ResultMessage.SUCCESS;
+		if(bs != null) {
+			pictureName = pictureName.substring(0, pictureName.length()-4);
+			
+			try {
+				if(this.pictureDao.saveHotelImage(bs, hotelID, pictureName)) {
+					return ResultMessage.SUCCESS;
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
 			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
 		
 		return ResultMessage.FAILURE;
 	}
 
+	
 	@Override
 	public Image getHeadImage(String userID) {
 		byte[] bs;
@@ -90,7 +96,6 @@ public class Picture implements PictureService {
 			bs = pictureDao.getUserImage(userID);
 			return PictureHelper.byteToImage(bs);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
