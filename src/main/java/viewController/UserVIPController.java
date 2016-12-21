@@ -26,9 +26,9 @@ public class UserVIPController extends UserLeftController {
 	}
 	
 	public void setRegisterNormalVIPView(){
-		
-		stage.setScene(registerNormalVIPUI.getScene());
+
 		registerNormalVIPUI = new RegisterNormalVIP(this);
+		stage.setScene(registerNormalVIPUI.getScene());
 		
 	}
 	

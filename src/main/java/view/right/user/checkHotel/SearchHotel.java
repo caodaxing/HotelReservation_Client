@@ -115,9 +115,11 @@ public class SearchHotel {
 			for(int i=0;i<cityList.size();i++){
 				city.getItems().addAll(cityList.get(i));
 			}
+			city.setValue(cityList.get(0));
 		}else{
 			controller.showDialog("系统错误，请重试");
 		}
+	
 		city.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
@@ -129,6 +131,7 @@ public class SearchHotel {
 					for(int i=0;i<tradingAreaList.size();i++){
 						area.getItems().addAll(tradingAreaList.get(i));
 					}
+					area.setValue(cityList.get(0));
 				}else{
 					controller.showDialog("系统错误，请重试");
 				}
@@ -280,9 +283,10 @@ public class SearchHotel {
 		
 		//添加label
 		Label label = new Label("只搜索住过的酒店");
-		label.setPrefSize(80, 30);
+		label.setPrefSize(150, 30);
+		label.setId("label");
 		rightPane.getChildren().add(label);
-		AnchorPane.setLeftAnchor(label, 120.0);
+		AnchorPane.setLeftAnchor(label, 50.0);
 		AnchorPane.setTopAnchor(label, 550.0);
 		
 	}
@@ -399,7 +403,7 @@ public class SearchHotel {
 			return null;
 		}
 		
-		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh);
+		HotelSearchVO vo = new HotelSearchVO(c,tradingArea,name,type,1,start,end,priceLow,priceHigh,commentLow,commentHigh,starLow,starHigh,controller.getUserID(),haveReserved);
 		return vo;
 		}catch(Exception e){
 			controller.showDialog("请输入有效值");

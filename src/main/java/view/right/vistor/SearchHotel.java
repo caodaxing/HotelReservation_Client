@@ -114,6 +114,7 @@ public class SearchHotel {
 			for(int i=0;i<cityList.size();i++){
 				city.getItems().addAll(cityList.get(i));
 			}
+			city.setValue(cityList.get(0));
 		}else{
 			controller.showDialog("系统错误，请重试");
 		}
@@ -128,6 +129,7 @@ public class SearchHotel {
 					for(int i=0;i<tradingAreaList.size();i++){
 						area.getItems().addAll(tradingAreaList.get(i));
 					}
+					area.setValue(cityList.get(0));
 				}else{
 					controller.showDialog("系统错误，请重试");
 				}
