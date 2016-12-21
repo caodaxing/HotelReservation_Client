@@ -41,7 +41,7 @@ public class HotelSortFactory {
 			sort = new StarSort(new Up());
 			break;
 		default:
-			System.out.println("logic.factory.HotelSortFactory.createHotelSort参数错误");
+//			System.out.println("logic.factory.HotelSortFactory.createHotelSort参数错误");
 			break;
 		}
 		
