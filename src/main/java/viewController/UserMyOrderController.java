@@ -115,7 +115,6 @@ public class UserMyOrderController extends UserLeftController {
 		ResultMessage result = orderService.evaluate(vo);
 		if(result == ResultMessage.SUCCESS){
 			showDialog("评价成功");
-			evaluateUI.setBlank();
 			setExecuteOrderView();
 		}else{
 			showDialog("评价失败，请重试");
