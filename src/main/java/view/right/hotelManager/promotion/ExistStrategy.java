@@ -21,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import view.helpTools.DefaultNums;
+import view.helpTools.MessageHelper;
 import view.left.HotelManagerUI;
 import view.right.webBusiness.promotion.ExistStrategy.Person;
 import viewController.HMPromotionController;
@@ -123,18 +124,18 @@ public class ExistStrategy {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-		tableView.setPrefSize(495, 400);
+		tableView.setPrefSize(560, 430);
 		
 		//添加列表内容
 				
 		//添加列
 		promotionType = new TableColumn<>("策略类型");
 		promotionType.setCellValueFactory(new PropertyValueFactory<Person, String>("promotiontype"));
-		promotionType.setMinWidth(160);
+		promotionType.setMinWidth(185);
 		
 		promotionName = new TableColumn<>("策略名称");
 		promotionName.setCellValueFactory(new PropertyValueFactory<Person, String>("promotionname"));
-		promotionName.setMinWidth(160);
+		promotionName.setMinWidth(185);
 		
 		operation1 = new TableColumn<>("操作1");
 		operation1.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation1"));
@@ -144,7 +145,7 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(90);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setPromotionId(row);
@@ -169,7 +170,7 @@ public class ExistStrategy {
 				};
 			}
 		});
-		operation1.setMinWidth(50);
+		operation1.setMinWidth(90);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -179,7 +180,7 @@ public class ExistStrategy {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("删除");
-							Item.setPrefWidth(50);
+							Item.setPrefWidth(90);
 							Item.setOnAction(event->{
 								int num = this.getTableRow().getIndex();
 								controller.setPromotionId(num);
@@ -200,7 +201,7 @@ public class ExistStrategy {
 				};
 			}
 		});
-		operation2.setMinWidth(50);
+		operation2.setMinWidth(90);
 		
 		tableView.setItems(data);
 		tableView.getColumns().addAll(promotionType, promotionName, operation1, operation2);
@@ -208,9 +209,9 @@ public class ExistStrategy {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 	public void initialData(){
@@ -221,7 +222,7 @@ public class ExistStrategy {
 			return ;
 		}
 		for(PromotionVO o :promotionList){
-			data.add(new Person(o.promotionType.toString(),o.promotionName,check,delete));
+			data.add(new Person(MessageHelper.promotionTypeToString(o.promotionType),o.promotionName,check,delete));
 		}
 	}
 	

@@ -122,8 +122,6 @@ public class HMPromotionController extends HotelManagerLeftController{
 	
 	public void setPromotionList(){
 		promotionList = promotionService.getHotelPromotions(userId, PromotionType.ALL);
-System.out.println(promotionList == null);
-System.out.println(promotionList.size());
 	}
 	
 	public ArrayList<PromotionVO> getPromotionList(){

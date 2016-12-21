@@ -2,6 +2,7 @@ package view.helpTools;
 
 import Message.CreditChangeType;
 import Message.OrderState;
+import Message.PromotionType;
 import Message.RoomType;
 
 public class MessageHelper {
@@ -65,5 +66,27 @@ public class MessageHelper {
 		return type;
 		
 	}
+	
+	public static String promotionTypeToString(PromotionType type){
+		String Type = "错误";
+		if(type == PromotionType.HOTEL_11_11){
+			Type = "酒店特殊期间促销策略";
+		}else if(type == PromotionType.HOTEL_3_ROOMS_OR_MORE){
+			Type = "酒店三间及以上促销策略";
+		}else if(type == PromotionType.HOTEL_BIRTHDAY){
+			Type = "酒店生日特惠";
+		}else if(type == PromotionType.HOTEL_COOPREATE_BUSINESS){
+			Type = "酒店合作企业促销策略";
+		}else if(type == PromotionType.WEB_11_11){
+			Type = "网站特殊期间促销策略";
+		}else if(type == PromotionType.WEB_VIP_LEVEL){
+			Type = "网站会员等级促销策略";
+		}else if(type == PromotionType.WEB_VIP_TRADINGAREA){
+			Type = "网站会员对应特定商圈促销策略";
+		}
+		
+		return Type;
+	}
+	
 	
 }

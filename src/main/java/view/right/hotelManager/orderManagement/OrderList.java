@@ -147,24 +147,24 @@ public class OrderList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
-		tableView.setPrefHeight(370);
+		tableView.setPrefSize(560, 430);
 		
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<Person, String>("orderid"));
-		orderId.setMinWidth(100);
+		orderId.setMinWidth(110);
 		
 		hotel = new TableColumn<>("酒店");
 		hotel.setCellValueFactory(new PropertyValueFactory<Person, String>("hotel"));
-		hotel.setMinWidth(100);
+		hotel.setMinWidth(110);
 		
 		orderState = new TableColumn<>("订单状态");
 		orderState.setCellValueFactory(new PropertyValueFactory<Person, String>("orderstate"));
-		orderState.setMinWidth(100);
+		orderState.setMinWidth(110);
 		
 		price = new TableColumn<>("价格");
 		price.setCellValueFactory(new PropertyValueFactory<Person, String>("price"));
-		price.setMinWidth(100);
+		price.setMinWidth(110);
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
@@ -174,7 +174,7 @@ public class OrderList {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(100);
+							Item.setPrefWidth(110);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								HMOrderManagementController hmcontroller = new HMOrderManagementController(controller.getStage(),controller.getUserId());
@@ -189,7 +189,7 @@ public class OrderList {
 				};
 			}
 		});
-		operation.setMinWidth(100);
+		operation.setMinWidth(110);
 		
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, orderState, price, operation);
@@ -197,9 +197,9 @@ public class OrderList {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 60.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 //	public int getRow(){

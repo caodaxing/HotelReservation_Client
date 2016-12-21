@@ -82,23 +82,24 @@ public class AbnormalOrderList {
 		//创建列表对象
 		tableView = new TableView<Person>();
 		tableView.setEditable(false);
+		tableView.setPrefSize(560, 430);
 		
 		//添加列
 		orderId = new TableColumn<>("订单号");
 		orderId.setCellValueFactory(new PropertyValueFactory<>("orderid"));
-		orderId.setMinWidth(100);
+		orderId.setMinWidth(110);
 		
 		hotel = new TableColumn<>("酒店");
 		hotel.setCellValueFactory(new PropertyValueFactory<>("hotel"));
-		hotel.setMinWidth(100);
+		hotel.setMinWidth(110);
 		
 		userId = new TableColumn<>("用户ID");
 		userId.setCellValueFactory(new PropertyValueFactory<>("userid"));
-		userId.setMinWidth(100);
+		userId.setMinWidth(110);
 		
 		lastExecuteTime = new TableColumn<>("最晚执行时间");
 		lastExecuteTime.setCellValueFactory(new PropertyValueFactory<>("lastexecutetime"));
-		lastExecuteTime.setMinWidth(100);
+		lastExecuteTime.setMinWidth(110);
 		
 		operation= new TableColumn<>("操作");
 		operation.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation"));
@@ -108,7 +109,7 @@ public class AbnormalOrderList {
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(100);
+							Item.setPrefWidth(110);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								wbcontroller = new WBOrderManagementController(controller.getStage(), controller.getUserId());
@@ -123,7 +124,7 @@ public class AbnormalOrderList {
 				};
 			}
 		});
-		operation.setMinWidth(100);
+		operation.setMinWidth(110);
 		
 		tableView.setItems(data);
 		tableView.getColumns().addAll(orderId, hotel, userId, lastExecuteTime, operation);
@@ -131,9 +132,9 @@ public class AbnormalOrderList {
 		//设置列表位置
 		rightPane.getChildren().add(tableView);
 		
-		AnchorPane.setLeftAnchor(tableView, 50.0);
+		AnchorPane.setLeftAnchor(tableView, 30.0);
 		
-		AnchorPane.setTopAnchor(tableView, 125.0);
+		AnchorPane.setTopAnchor(tableView, 100.0);
 	}
 	
 	public void initialData(){

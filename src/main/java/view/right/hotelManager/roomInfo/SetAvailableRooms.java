@@ -212,6 +212,8 @@ public class SetAvailableRooms {
 					RoomVO roomvo = new RoomVO(controller.getUserId(), type, Integer.parseInt(num), price);
 					if(controller.getAddRoomResult(roomvo) == ResultMessage.SUCCESS){
 						controller.showDialog("添加房间成功");
+						setBlank();
+						
 					}else{
 						controller.showDialog("添加房间失败");
 					}
@@ -253,7 +255,11 @@ public class SetAvailableRooms {
 		RoomType type = controller.getRoomType();
 		roomType.setValue(MessageHelper.roomTypeToString(type));
 		roomType.setEditable(false);
-		
-		
+	}
+	
+	public void setBlank(){
+		roomType.setValue("");
+		roomNum.setText("");
+		initialPrice.setText("");
 	}
 }
