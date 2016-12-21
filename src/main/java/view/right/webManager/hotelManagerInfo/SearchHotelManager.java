@@ -5,12 +5,15 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import view.helpTools.DefaultNums;
 import view.left.WebManagerUI;
 import viewController.WMHotelManagerInfoController;
+import viewController.WMUserInfoController;
 import viewController.WebManagerLeftController;
 
 /**
@@ -84,6 +87,19 @@ public class SearchHotelManager {
 				newController.getStage().show();
 			}
 			
+		});
+		//enter搜索
+		inquiry.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent event){
+				if(event.getCode() == KeyCode.ENTER){
+					//跳至对应查看界面，直接清空搜索框
+					WMHotelManagerInfoController newController = new WMHotelManagerInfoController(controller.getStage(),controller.getUserID());
+					newController.setHotelID(hotelManagerID.getText());
+					hotelManagerID.setText("");
+					newController.setCheckHotelManagerView();
+					newController.getStage().show();
+				}
+			}
 		});
 
 		//添加组件

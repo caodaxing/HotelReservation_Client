@@ -1,11 +1,15 @@
 package view.account;
 
+import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardDownRightHandler;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import view.helpTools.DefaultNums;
 import viewController.AccountController;
@@ -95,6 +99,15 @@ public class SignUpUI{
 			}
 			
 		});
+		//enter注册
+		yes.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent event){
+				if(event.getCode() == KeyCode.ENTER){
+					controller.register();
+				}
+			}
+		});
+		
 		no.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){

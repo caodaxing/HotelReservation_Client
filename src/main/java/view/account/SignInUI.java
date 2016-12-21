@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import view.helpTools.DefaultNums;
 import viewController.AccountController;
@@ -91,6 +93,17 @@ public class SignInUI{
 			}
 			
 		});
+		
+		//enter登录
+		yes.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent event){
+				if(event.getCode() == KeyCode.ENTER){
+					controller.login();
+					showStage();
+				}
+			}
+		});
+		
 		no.setOnAction(new EventHandler<ActionEvent>(){
 			
 			public void handle(ActionEvent event){

@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -79,7 +81,20 @@ public class First {
 			}
 			
 		});
+		//enter搜索
+		inquiry.setOnKeyPressed(new EventHandler<KeyEvent>(){
+			public void handle(KeyEvent event){
+				if(event.getCode() == KeyCode.ENTER){
+					//同上
+					UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
+					right.searchOrder();
+					setBlank();
+					right.getStage().show();
+				}
+			}
+		});
 
+		
 		//添加组件
 		rightPane.getChildren().add(inquiry);
 		
