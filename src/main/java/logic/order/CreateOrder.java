@@ -13,6 +13,7 @@ import logic.promotion.CalculatePromotion;
 import logic.promotion.CalculationPromotionInfo;
 import logic.room.UpdateRoom;
 import logic.utility.OrderTransform;
+import logic.utility.Time;
 import logicService.order.CreateOrderService;
 import main.rmi.RemoteHelper;
 import po.OrderPO;
@@ -48,10 +49,14 @@ public class CreateOrder implements CreateOrderService{
 	@Override
 	public OrderVO createOrder(OrderVO o) {
 		
-		if(o == null) {
-			System.out.println("logic.order.CreateOrder.createOrder参数异常");
-			return null;
-		} 
+		assert(o == null) :"logic.order.CreateOrder.createOrder参数异常";
+
+		//不接受超过一个月的预订
+		if(o.startTime != null && o.startTime != "") {
+			if(new Time(o.startTime).calculateDay(Time.getCurrentTime()) > 30) {
+				return null;
+			}
+		}
 		
 		//生成订单的id
 		int num = 0;
