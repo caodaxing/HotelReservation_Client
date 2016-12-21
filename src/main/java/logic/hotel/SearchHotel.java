@@ -163,11 +163,7 @@ public class SearchHotel implements SearchHotelService {
 				}
 			}
 			
-			if(temp.size() == 0) {
-				return null;
-			} else {
-				initList = temp;
-			}
+			initList = temp;
 			
 		} else {
 			initList = getInitialHotelList(search.city, search.tradingArea);
