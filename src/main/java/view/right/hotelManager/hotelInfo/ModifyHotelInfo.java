@@ -3,6 +3,8 @@ package view.right.hotelManager.hotelInfo;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.controlsfx.control.spreadsheet.Grid;
+
 import Message.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -40,12 +43,14 @@ public class ModifyHotelInfo {
 	TextField hotelLocation;
 	TextArea hotelBriefing;
 	TextArea hotelFacility;
-	TextArea HotelImage;
+//	TextArea HotelImage;
+	GridPane imageHotel;
 	FileChooser fileChooser;
 	
 	Button cancel;
 	Button ok;
 	Button choosePicture;
+	String imagePath;
 	
 	public ModifyHotelInfo(HotelManagerLeftController controller){
 		
@@ -82,41 +87,43 @@ public class ModifyHotelInfo {
 		hotelLocation = new TextField();
 		hotelBriefing = new TextArea();
 		hotelFacility = new TextArea();
-		HotelImage = new TextArea();
+//		HotelImage = new TextArea();
+		imageHotel = new GridPane();
 		
 		//设置TextField不可更改
 		hotelStar.setEditable(true);
 		hotelLocation.setEditable(true);
 		hotelBriefing.setEditable(true);
 		hotelFacility.setEditable(true);
-		HotelImage.setEditable(true);
+//		HotelImage.setEditable(true);
 		
 		//设置textField大小
 		hotelStar.setPrefSize(250, 30);
 		hotelLocation.setPrefSize(400, 30);
 		hotelBriefing.setPrefSize(300, 60);
 		hotelFacility.setPrefSize(300, 60);
-		HotelImage.setPrefSize(200, 200);
+//		HotelImage.setPrefSize(200, 200);
+		imageHotel.setPrefSize(200, 200);
 		
 		//右侧pane添加组件
 		rightPane.getChildren().add(hotelStar);
 		rightPane.getChildren().add(hotelLocation);
 		rightPane.getChildren().add(hotelBriefing);
 		rightPane.getChildren().add(hotelFacility);
-		rightPane.getChildren().add(HotelImage);
+		rightPane.getChildren().add(imageHotel);
 		
 		//右侧Pane设置位置
 		AnchorPane.setLeftAnchor(hotelStar, 150.0);
 		AnchorPane.setLeftAnchor(hotelLocation, 150.0);
 		AnchorPane.setLeftAnchor(hotelBriefing, 150.0);
 		AnchorPane.setLeftAnchor(hotelFacility, 150.0);
-		AnchorPane.setLeftAnchor(HotelImage, 150.0);
+		AnchorPane.setLeftAnchor(imageHotel, 150.0);
 						
 		AnchorPane.setTopAnchor(hotelStar, 100.0);
 		AnchorPane.setTopAnchor(hotelLocation, 150.0);
 		AnchorPane.setTopAnchor(hotelBriefing, 200.0);
 		AnchorPane.setTopAnchor(hotelFacility, 280.0);
-		AnchorPane.setTopAnchor(HotelImage, 360.0);
+		AnchorPane.setTopAnchor(imageHotel, 360.0);
 	}
 	
 	private void openFileChooser(){
@@ -133,8 +140,8 @@ public class ModifyHotelInfo {
 			controller.showDialog("请选择图片");
 			return;
 		}
-		String exportFilePath= file.getAbsolutePath();
-		HotelImage.setText(exportFilePath);
+		imagePath = file.getAbsolutePath();
+//		HotelImage.setText(exportFilePath);
 		
 	}
 	
@@ -172,13 +179,14 @@ public class ModifyHotelInfo {
 				String hotelLocal = hotelLocation.getText();
 				String hotelBrief = hotelBriefing.getText();
 				String hoteltool = hotelFacility.getText();
-				String ImagePath = HotelImage.getText();
+//				String ImagePath = HotelImage.getText();
 				try{
 					HotelVO vo = controller.getHotelVO(controller.getUserId());
 					int i = Integer.parseInt(star);
 					HotelVO hotelvo = new HotelVO(vo.hoteID,vo.hotelName,vo.city,vo.tradingArea,
 							hotelLocal,vo.evaluationGrades,i,hotelBrief,hoteltool,vo.bussiness);
-					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS){
+					if(controller.getUpdateHotelResult(hotelvo) == ResultMessage.SUCCESS &&
+							controller.savePictureResult(controller.getUserId(), imagePath) == ResultMessage.SUCCESS){
 						controller.showDialog("修改成功");
 					}else{
 						controller.showDialog("修改失败");
@@ -229,15 +237,22 @@ public class ModifyHotelInfo {
 	public void setHotelInfo(){
 		HotelVO vo= controller.getHotelVO(controller.getUserId());
 		ArrayList<Image> pictureList = controller.getPicture(controller.getUserId());
-		String text = "";
-		for(int i=0;i<pictureList.size();i++){
-			text += pictureList.get(i)+"\n";
-		}
 		hotelStar.setText(String.valueOf(vo.levelOfHotel));
 		hotelLocation.setText(vo.locationOfHotel);
 		hotelBriefing.setText(vo.introduction);
 		hotelFacility.setText(vo.facilities);
-		HotelImage.setText(text);
+		if(pictureList == null){
+			return;
+		}
+		int row = 0;
+		for(Image image: pictureList){
+			ImageView imageView = new ImageView(image);
+			imageView.setFitHeight(200);
+			imageView.setFitWidth(200);
+			imageHotel.add(imageView, row, 0);
+		}
+		
+//		HotelImage.seti
 	}
 	
 }

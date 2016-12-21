@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import logic.picture.Picture;
 import view.helpTools.DefaultNums;
 import viewController.HotelManagerLeftController;
 
@@ -38,8 +39,12 @@ public class HotelManagerUI{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("/head/游客头像.png", 200, 180, false, true);
+		String userId = controller.getUserId();
+		Picture picture = new Picture();
+		Image image = picture.getHeadImage(userId);
 		ImageView headImage = new ImageView(image);
+		headImage.setFitHeight(200);
+		headImage.setFitWidth(200);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);
 		
@@ -56,20 +61,6 @@ public class HotelManagerUI{
 			}
 			
 		});
-		
-//		Button setArriveInfo = new Button("线下入住");
-//		setArriveInfo.setId("light-button");
-//		setArriveInfo.setPrefSize(DefaultNums.LEFT_BUTTON_WIDTH, DefaultNums.LEFT_BIG_BUTTON_HEIGHT);
-//		grid.add(setArriveInfo, 0, 2);
-//		setArriveInfo.setOnAction(new EventHandler<ActionEvent>(){
-//			
-//			@Override
-//			public void handle(ActionEvent event) {
-//				controller.setSetArriveInfoView();
-//				controller.getStage().show();
-//			}
-//			
-//		});
 		
 		Button allOrder = new Button("全部订单");
 		allOrder.setId("dark-button");

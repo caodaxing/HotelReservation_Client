@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import logic.picture.Picture;
 import view.helpTools.DefaultNums;
 import viewController.WebBusinessLeftController;
 
@@ -39,8 +40,12 @@ public class WebBusinessUI{
 		grid.setVgap(DefaultNums.GAP_HEIGHT);
 		
 		Pane pane = new GridPane();
-		Image image = new Image("/head/游客头像.png", 200, 200, false, true);
+		String userId = leftcontroller.getUserId();
+		Picture picture = new Picture();
+		Image image = picture.getHeadImage(userId);
 		ImageView headImage = new ImageView(image);
+		headImage.setFitHeight(200);
+		headImage.setFitWidth(200);
 		pane.getChildren().add(headImage);
 		grid.add(pane, 0, 0);
 		
@@ -88,7 +93,6 @@ public class WebBusinessUI{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				leftcontroller.setRechargeCreditView();
 				leftcontroller.getStage().show();
 			}
@@ -99,7 +103,6 @@ public class WebBusinessUI{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				leftcontroller.setVIPLevelView();
 				leftcontroller.getStage().show();
 			}
@@ -110,7 +113,6 @@ public class WebBusinessUI{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				leftcontroller.setTodayUnexecuteOrderView();
 				leftcontroller.getStage().show();
 			}
@@ -121,7 +123,6 @@ public class WebBusinessUI{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				leftcontroller.setAbnormalOrderView();
 				leftcontroller.getStage().show();
 			}
@@ -132,7 +133,6 @@ public class WebBusinessUI{
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				leftcontroller.setFirstUIView();
 			}
 			
