@@ -145,9 +145,34 @@ public class SearchHotel implements SearchHotelService {
 				|| search.tradingArea.equals("")||search.starLow > search.starHigh
 				|| search.commentLow > search.commentHigh 
 				|| search.roomPriceLow > search.roomPriceHigh) :"logic.hotel.SearchHotel.search参数错误";
-	
 		
-		ArrayList<HotelVO> initList = getInitialHotelList(search.city, search.tradingArea);
+				
+		ArrayList<HotelVO> initList = null;
+		//判断是否预订过
+		if(search.booked) {
+			initList = this.getBookedHotelList(search.userID);
+			if(initList.size() == 0 || initList == null) {
+				return null;
+			}
+			
+			ArrayList<HotelVO> temp = new ArrayList<HotelVO>();
+			
+			for(HotelVO hotelVO : initList) {
+				if(hotelVO.city.equals(search.city) && hotelVO.tradingArea.equals(search.tradingArea)) {
+					temp.add(hotelVO);
+				}
+			}
+			
+			if(temp.size() == 0) {
+				return null;
+			} else {
+				initList = temp;
+			}
+			
+		} else {
+			initList = getInitialHotelList(search.city, search.tradingArea);
+		}
+		
 		if (initList == null || initList.size() == 0) {
 			return null;
 		}
