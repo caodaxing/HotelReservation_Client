@@ -248,6 +248,7 @@ public class CheckVIPAreaStrategy {
 			}
 			
 		});
+		discountName.setText(vo.promotionName);
 		
 	}
 }
