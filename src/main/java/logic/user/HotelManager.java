@@ -13,11 +13,8 @@ import vo.HotelManagerVO;
 public class HotelManager implements HotelManagerService, HotelManagerInfo{
 
 	private HotelManagerDao hotelManagerDao; 
-	private HotelManagerTransform hotelManagerTrans;
 	
 	public HotelManager() {
-		this.hotelManagerTrans = HotelManagerTransform.getInstance();
-		
 		this.hotelManagerDao = RemoteHelper.getInstance().getHotelManagerDao();
 //		this.hotelManagerDao = new HotelManagerDao_Stub();
 	}
@@ -31,11 +28,11 @@ public class HotelManager implements HotelManagerService, HotelManagerInfo{
 			e.printStackTrace();
 		}
 		
-		return this.hotelManagerTrans.hotelManagerTransToVO(po);
+		return HotelManagerTransform.hotelManagerTransToVO(po);
 	}
 	
 	public ResultMessage updateHotelManagerInfo(HotelManagerVO vo){
-		HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(vo);
+		HotelManagerPO po = HotelManagerTransform.hotelManagerTransToPO(vo);
 		
 		try {
 			if(hotelManagerDao.updateHotelManagerInfo(po)) {

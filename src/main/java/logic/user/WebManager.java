@@ -17,16 +17,10 @@ public class WebManager implements WebManagerService {
 	
 	private HotelManager hotelManager;
 	private WebBusiness webBusiness;
-	private HotelManagerTransform hotelManagerTrans;
-	private WebBusinessTransform webBusinessTrans;
 	
 	public WebManager(){
-		
 		this.hotelManager = new HotelManager();
 		this.webBusiness = new WebBusiness();
-		
-		this.hotelManagerTrans = HotelManagerTransform.getInstance();
-		this.webBusinessTrans = WebBusinessTransform.getInstance();
 	}
 	
 	public HotelManagerVO getHotelManagerInfo(String hotelManager_ID) {
@@ -53,7 +47,7 @@ public class WebManager implements WebManagerService {
 		
 		
 		if(hotelManagerVO != null) {
-			HotelManagerPO po = this.hotelManagerTrans.hotelManagerTransToPO(hotelManagerVO);
+			HotelManagerPO po = HotelManagerTransform.hotelManagerTransToPO(hotelManagerVO);
 			if(this.hotelManager.addHotelManager(po)) {
 				return ResultMessage.SUCCESS;
 			}
@@ -64,7 +58,7 @@ public class WebManager implements WebManagerService {
 	
 	public ResultMessage addWebBusiness(WebBusinessVO  webBusinessVO){
 		if(webBusinessVO != null){
-			WebBusinessPO po = this.webBusinessTrans.webBusinessTransToPO(webBusinessVO);
+			WebBusinessPO po = WebBusinessTransform.webBusinessTransToPO(webBusinessVO);
 			if(this.webBusiness.addWebBusiness(po)) {
 				return ResultMessage.SUCCESS;
 			}

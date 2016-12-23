@@ -74,7 +74,7 @@ public class WebVipTradingAreaPromotion implements Promotion {
 			double temp = vo.beforePrice * discount;
 			
 			if(temp < vo.afterPrice) {
-				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.afterPrice = DataFormat.formatDouble(temp);
 				vo.promotion = this.changeToVO();
 				vo.promotion.discount = discount;
 			}

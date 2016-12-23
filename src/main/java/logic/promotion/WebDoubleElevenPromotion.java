@@ -55,7 +55,7 @@ public class WebDoubleElevenPromotion implements Promotion{
 			double temp = vo.beforePrice * this.discount;
 			
 			if(temp < vo.afterPrice) {
-				vo.afterPrice = DataFormat.getInstance().formatDouble(temp);
+				vo.afterPrice = DataFormat.formatDouble(temp);
 				vo.promotion = this.changeToVO();
 			}
 		}

@@ -5,17 +5,8 @@ import vo.HotelManagerVO;
 
 public class HotelManagerTransform {
 	
-	private static HotelManagerTransform hotelManagerTransform;
-	
-	public static HotelManagerTransform getInstance() {
-		if(hotelManagerTransform == null) {
-			hotelManagerTransform = new HotelManagerTransform();
-		}
-		return hotelManagerTransform;
-	}
-	
 	//将hotelmanagervo转化为po
-	public HotelManagerPO hotelManagerTransToPO(HotelManagerVO vo){
+	public static HotelManagerPO hotelManagerTransToPO(HotelManagerVO vo){
 		if(vo == null) {
 			return null;
 		}
@@ -25,7 +16,7 @@ public class HotelManagerTransform {
 	}
 	
 	//将hotelmanagerpo转化为vo
-	public HotelManagerVO hotelManagerTransToVO(HotelManagerPO po){
+	public static HotelManagerVO hotelManagerTransToVO(HotelManagerPO po){
 		if(po == null) {
 			return null;
 		}

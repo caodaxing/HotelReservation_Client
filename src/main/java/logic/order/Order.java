@@ -105,7 +105,7 @@ public class Order implements OrderService, OrderHotelInfo{
 		}
 		
 		grade /= evaluationVOs.size();
-		grade = DataFormat.getInstance().formatDouble(grade);
+		grade = DataFormat.formatDouble(grade);
 		
 		HotelInfo hotelInfo = new CheckHotel();
 		if(hotelInfo.updateHotelGrade(po.getHotelId(), grade)) {

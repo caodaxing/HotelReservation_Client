@@ -75,39 +75,4 @@ public class OrderTransform {
 				vo.abnormalTime, vo.undoAbnormalTime, vo.undoUnexecutedTime);
 		return po;
 	}
-	
-
-	
-//	/**
-//	 * 根据orderpo中的promotionID，获得promotionvo信息
-//	 * @param ArrayList<String> promotionIDs
-//	 * @return ArrayList<PromotionVO>
-//	 */
-//	private ArrayList<PromotionVO> getPromotions(ArrayList<String> promotionIDs) {
-//		
-//		if(promotionIDs == null) {
-//			return null;
-//		}
-//		
-//		ArrayList<PromotionVO> result = new ArrayList<PromotionVO>();
-//		
-//		for(int i=0; i<promotionIDs.size(); ++i) {
-//			result.add(promotionInfo.getPromotion(promotionIDs.get(i)));
-//		}
-//		
-//		return result;
-//	}
-//	
-//	private ArrayList<RoomVO> getRooms(String hotelID, ArrayList<String> roomIDs) {
-//	ArrayList<RoomVO> rooms = new ArrayList<RoomVO>();
-//	if(roomIDs == null) {
-//		return null;
-//	}
-//	
-//	for(int i=0; i<roomIDs.size(); ++i) {
-//		rooms.add(this.roomInfo.getRoomInfo(hotelID, roomIDs.get(i)));
-//	}
-//	
-//	return rooms;
-//}
 }

@@ -13,11 +13,8 @@ import vo.WebBusinessVO;
 public class WebBusiness implements WebBusinessService{
 
 	private WebBusinessDao webBusinessDao;
-	private WebBusinessTransform webBusinessTrans;
 	
 	public WebBusiness() {
-		this.webBusinessTrans = WebBusinessTransform.getInstance();
-		
 		webBusinessDao = RemoteHelper.getInstance().getWebBusinessDao();
 //		webBusinessDao = new WebBusinessDao_Stub();
 	}
@@ -32,12 +29,12 @@ public class WebBusiness implements WebBusinessService{
 			e.printStackTrace();
 		}
 		
-		return this.webBusinessTrans.webBusinessTransToVO(po);
+		return WebBusinessTransform.webBusinessTransToVO(po);
 	}
 	
 	
 	public ResultMessage updateWebBusinessInfo(WebBusinessVO vo){
-		WebBusinessPO po = this.webBusinessTrans.webBusinessTransToPO(vo);
+		WebBusinessPO po = WebBusinessTransform.webBusinessTransToPO(vo);
 		
 		try {
 			if(this.webBusinessDao.updateWebBusinessInfo(po)) {
