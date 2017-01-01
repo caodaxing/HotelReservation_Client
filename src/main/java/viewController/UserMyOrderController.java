@@ -10,6 +10,7 @@ import view.right.user.myOrder.AbnormalOrder;
 import view.right.user.myOrder.Evaluate;
 import view.right.user.myOrder.EvaluationInfo;
 import view.right.user.myOrder.ExecuteOrder;
+import view.right.user.myOrder.First;
 import view.right.user.myOrder.UndoOrder;
 import view.right.user.myOrder.UnexecuteOrder;
 import vo.EvaluationVO;
@@ -122,8 +123,12 @@ public class UserMyOrderController extends UserLeftController {
 		}
 	}
 
-	public void searchOrder() {
-		orderID = orderFirstUI.getOrderID();
+	public void searchOrder(String orderID) {
+		this.orderID = orderID;
+		if(orderID == null || orderID.equals("")){
+			showDialog("请输入订单号");
+			return ;
+		}
 		OrderVO vo = orderService.getOrderInfo(orderID);
 		if(vo == null){
 			//若订单不存在，对话框，清空textfield，清空orderID

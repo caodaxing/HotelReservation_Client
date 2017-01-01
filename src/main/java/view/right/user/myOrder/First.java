@@ -75,7 +75,7 @@ public class First {
 			public void handle(ActionEvent event) {
 				// 搜索，controller内部实现跳转，若有则清空跳转（工厂模式）,若没有则清空提示
 				UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
-				right.searchOrder();
+				right.searchOrder(orderID.getText());
 				setBlank();
 				right.getStage().show();
 			}
@@ -87,7 +87,7 @@ public class First {
 				if(event.getCode() == KeyCode.ENTER){
 					//同上
 					UserMyOrderController right = new UserMyOrderController(controller.getStage(),controller.getUserID());
-					right.searchOrder();
+					right.searchOrder(orderID.getText());
 					setBlank();
 					right.getStage().show();
 				}
@@ -131,12 +131,6 @@ public class First {
 	public void setBlank(){
 		
 		orderID.setText("");
-		
-	}
-	
-	public String getOrderID(){
-		
-		return orderID.getText();
 		
 	}
 	

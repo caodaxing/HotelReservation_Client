@@ -249,7 +249,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("查看");
-							Item.setPrefWidth(95);
+							Item.setPrefWidth(50);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -262,7 +262,7 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation1.setMinWidth(95);
+		operation1.setMinWidth(50);
 		
 		operation2= new TableColumn<>("操作2");
 		operation2.setCellValueFactory(new PropertyValueFactory<Person, Button>("operation2"));
@@ -272,7 +272,7 @@ public class SearchResultList{
 					protected void updateItem(Button Item, boolean empty){
 						if(!empty){
 							Item = new Button("预订");
-							Item.setPrefWidth(95);
+							Item.setPrefWidth(50);
 							Item.setOnAction(event->{
 								int row = this.getTableRow().getIndex();
 								controller.setHotelID(row);
@@ -285,7 +285,7 @@ public class SearchResultList{
 				};
 			}
 		});
-		operation2.setMinWidth(95);
+		operation2.setMinWidth(50);
 		
 		tableView.setItems(data);
 		tableView.setPrefHeight(400);
