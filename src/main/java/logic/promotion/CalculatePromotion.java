@@ -45,6 +45,7 @@ public class CalculatePromotion implements CalculationPromotionInfo{
 		for(int i=0; i<this.promotions.size(); ++i) {
 			Promotion p = this.promotions.get(i);
 			if(p.judgePromotion(order)) {
+
 				order = p.calculate(order);
 			}
 		}

@@ -37,7 +37,7 @@ public class HotelThreeRoomsPromotion implements Promotion{
 
 	@Override
 	public boolean judgePromotion(OrderVO vo) {
-		if(this.hotelID == vo.hotelID) {
+		if(this.hotelID.equals(vo.hotelID)) {
 			if(vo.roomNum >= 3) {
 				return true;
 			}
@@ -74,7 +74,7 @@ public class HotelThreeRoomsPromotion implements Promotion{
 	
 	@Override
 	public PromotionVO changeToVO() {
-		return new PromotionVO(this.promotionID, this.hotelID, this.promotionID, this.roomsAndDiscount);
+		return new PromotionVO(this.promotionID, this.hotelID, this.promotionName, this.roomsAndDiscount);
 	}
 
 	public String getPromotionID() {

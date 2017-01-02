@@ -45,7 +45,7 @@ public class HotelBusinessPromotion implements Promotion {
 
 	@Override
 	public boolean judgePromotion(OrderVO vo) {
-		if(vo.hotelID == this.hotelID) {
+		if(vo.hotelID.equals(this.hotelID)) {
 			if(this.clientVip.isVIP(vo.userID)) {
 				VipVO v = this.clientVip.getVipInfo(vo.userID);
 				

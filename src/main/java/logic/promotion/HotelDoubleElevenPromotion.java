@@ -45,7 +45,7 @@ public class HotelDoubleElevenPromotion  implements Promotion{
 
 	@Override
 	public boolean judgePromotion(OrderVO vo) {
-		if(vo.hotelID == this.hotelID) {
+		if(vo.hotelID.equals(this.hotelID)) {
 			Time t = new Time(vo.startTime);
 			if(this.startTime.before(t) && this.endTime.after(t)) {
 				return true;
