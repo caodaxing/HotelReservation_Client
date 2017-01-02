@@ -196,7 +196,7 @@ public class UnexecuteOrder {
 
 		OrderVO vo = controller.getOrderInfo();
 		orderID.setText(vo.orderId);
-		hotelName.setText(vo.hotelID);
+		hotelName.setText(MessageHelper.hotelIdToHotelName(vo.hotelID));
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 		arriveTime.setText(vo.startTime);
 		leaveTime.setText(vo.endTime);

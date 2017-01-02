@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -32,7 +33,7 @@ public class AddWebBusiness {
 	TextField name;
 	TextField phone;
 	TextField id;
-	TextField password;
+	PasswordField password;
 	
 	Button confirm;
 	Button cancel;
@@ -65,7 +66,7 @@ public class AddWebBusiness {
 		name = new TextField();
 		phone = new TextField();
 		id = new TextField();
-		password = new TextField();
+		password = new PasswordField();
 		
 		name.setPrefSize(200, 30);
 		phone.setPrefSize(200, 30);

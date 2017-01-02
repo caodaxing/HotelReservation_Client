@@ -181,7 +181,7 @@ public class SearchHotel implements SearchHotelService {
 			
 			for (int i=0; i<initList.size(); ++i) {
 				HotelVO hotelVO = initList.get(i); 
-				if (hotelVO.hotelName == search.hotelName) {
+				if (hotelVO.hotelName.equals(search.hotelName)) {
 					hotelList.add(hotelVO);
 				}
 			}

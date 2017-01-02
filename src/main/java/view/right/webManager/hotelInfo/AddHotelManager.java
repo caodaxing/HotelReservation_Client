@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -33,7 +34,7 @@ public class AddHotelManager {
 	TextField name ;
 	TextField id ;
 	TextField phone ;
-	TextField password ;
+	PasswordField password ;
 	
 	Button confirm;
 	Button cancel;
@@ -68,7 +69,7 @@ public class AddHotelManager {
 		name = new TextField();
 		id = new TextField();
 		phone = new TextField();
-		password = new TextField();
+		password = new PasswordField();
 		
 		hotelID.setPrefSize(200, 30);
 		name.setPrefSize(200, 30);

@@ -37,7 +37,9 @@ public class SetVIPAreaStrategy {
 	ComboBox city;
 	ComboBox tradingArea1;
 	
-	TextField discountRange;
+	TextField discountRange1;
+	TextField discountRange2;
+	TextField discountRange3;
 	TextField discountName;
 	
 	Button cancel;
@@ -94,13 +96,17 @@ public class SetVIPAreaStrategy {
 		VIPLevel1 = new TextField();
 		VIPLevel2 = new TextField();
 		VIPLevel3 = new TextField();
-		discountRange = new TextField();
+		discountRange1 = new TextField();
+		discountRange2 = new TextField();
+		discountRange3 = new TextField();
 		discountName = new TextField();
 		
 		VIPLevel1.setId("SetVIPAreaStrategy");
 		VIPLevel2.setId("SetVIPAreaStrategy");
 		VIPLevel3.setId("SetVIPAreaStrategy");
-		discountRange.setId("SetVIPAreaStrategy");
+		discountRange1.setId("SetVIPAreaStrategy");
+		discountRange2.setId("SetVIPAreaStrategy");
+		discountRange3.setId("SetVIPAreaStrategy");
 		discountName.setId("SetVIPAreaStrategy");
 		
 		
@@ -108,14 +114,18 @@ public class SetVIPAreaStrategy {
 		VIPLevel1.setEditable(true);
 		VIPLevel2.setEditable(true);
 		VIPLevel3.setEditable(true);
-		discountRange.setEditable(true);
+		discountRange1.setEditable(true);
+		discountRange2.setEditable(true);
+		discountRange3.setEditable(true);
 		discountName.setEditable(true);
 		
 		//设置文本框大小
 		VIPLevel1.setPrefSize(50, TEXTFIELD_HEIGHT);
 		VIPLevel2.setPrefSize(50, TEXTFIELD_HEIGHT);
 		VIPLevel3.setPrefSize(50, TEXTFIELD_HEIGHT);
-		discountRange.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
+		discountRange1.setPrefSize(50, TEXTFIELD_HEIGHT);
+		discountRange2.setPrefSize(50, TEXTFIELD_HEIGHT);
+		discountRange3.setPrefSize(50, TEXTFIELD_HEIGHT);
 		discountName.setPrefSize(TEXTFIELD_WIDTH, TEXTFIELD_HEIGHT);
 		
 		//设置文本框位置
@@ -128,8 +138,14 @@ public class SetVIPAreaStrategy {
 		VIPLevel3.setLayoutX(TEXTFIELD_START_HORIZONTAL+140);
 		VIPLevel3.setLayoutY(TEXTFIELD_START_VERTICAL);
 		
-		discountRange.setLayoutX(TEXTFIELD_START_HORIZONTAL);
-		discountRange.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		discountRange1.setLayoutX(TEXTFIELD_START_HORIZONTAL);
+		discountRange1.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		
+		discountRange2.setLayoutX(TEXTFIELD_START_HORIZONTAL+70);
+		discountRange2.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
+		
+		discountRange3.setLayoutX(TEXTFIELD_START_HORIZONTAL+140);
+		discountRange3.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2);
 		
 		discountName.setLayoutX(TEXTFIELD_START_HORIZONTAL);
 		discountName.setLayoutY(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*3);
@@ -139,20 +155,26 @@ public class SetVIPAreaStrategy {
 		rightPane.getChildren().add(VIPLevel1);
 		rightPane.getChildren().add(VIPLevel2);
 		rightPane.getChildren().add(VIPLevel3);
-		rightPane.getChildren().add(discountRange);
+		rightPane.getChildren().add(discountRange1);
+		rightPane.getChildren().add(discountRange2);
+		rightPane.getChildren().add(discountRange3);
 		rightPane.getChildren().add(discountName);
 		
 		//右侧Pane设置位置
 		AnchorPane.setLeftAnchor(VIPLevel1, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 		AnchorPane.setLeftAnchor(VIPLevel2, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 70);
 		AnchorPane.setLeftAnchor(VIPLevel3, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 140);
-		AnchorPane.setLeftAnchor(discountRange, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(discountRange1, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
+		AnchorPane.setLeftAnchor(discountRange2, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 70);
+		AnchorPane.setLeftAnchor(discountRange3, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH + 140);
 		AnchorPane.setLeftAnchor(discountName, TEXTFIELD_START_HORIZONTAL - (double)DefaultNums.LEFT_WIDTH);
 						
 		AnchorPane.setTopAnchor(VIPLevel1, (double)TEXTFIELD_START_VERTICAL);
 		AnchorPane.setTopAnchor(VIPLevel2, (double)TEXTFIELD_START_VERTICAL);
 		AnchorPane.setTopAnchor(VIPLevel3, (double)TEXTFIELD_START_VERTICAL);
-		AnchorPane.setTopAnchor(discountRange, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange1, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange2, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
+		AnchorPane.setTopAnchor(discountRange3, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*2));
 		AnchorPane.setTopAnchor(discountName, (double)(TEXTFIELD_START_VERTICAL + TEXTFIELD_GAP*3));
 		
 	}
@@ -235,9 +257,9 @@ public class SetVIPAreaStrategy {
 			public void handle(ActionEvent event) {
 				//传输vo
 				try{
-					double d1 = Double.parseDouble(VIPLevel1.getText());
-					double d2 = Double.parseDouble(VIPLevel2.getText());
-					double d3 = Double.parseDouble(VIPLevel2.getText());
+					double d1 = Double.parseDouble(discountRange1.getText());
+					double d2 = Double.parseDouble(discountRange2.getText());
+					double d3 = Double.parseDouble(discountRange3.getText());
 					double[] d = {d1,d2,d3};
 					int t1 = city.getSelectionModel().getSelectedIndex();
 					int t2 = tradingArea1.getSelectionModel().getSelectedIndex();

@@ -134,7 +134,11 @@ public class CheckThreeRoomsStrategy {
 	
 	public void setText(){
 		PromotionVO vo = controller.getPromotionVO();
-		discountRange.setText(String.valueOf(vo.roomsAndDiscount));
+		String s = "";
+		for(int i=0;i<vo.roomsAndDiscount.length;i++){
+			s += String.valueOf(vo.roomsAndDiscount[i] + " ");
+		}
+		discountRange.setText(s);
 		discountName.setText(vo.promotionName);
 	}
 }

@@ -47,7 +47,6 @@ public class Order implements OrderService, OrderHotelInfo{
 		}
 		
 		OrderVO vo = this.orderTrans.orderTransToVO(po);
-		
 		return vo;
 		
 	}

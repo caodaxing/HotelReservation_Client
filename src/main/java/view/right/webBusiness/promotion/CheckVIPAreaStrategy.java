@@ -212,6 +212,7 @@ public class CheckVIPAreaStrategy {
 	@SuppressWarnings("unchecked")
 	public void setText(){
 		PromotionVO vo = controller.getPromotionVO();
+System.out.println(vo.vipTradeAreaDiscount);
 		ArrayList<String> areaList = new ArrayList<String>();
 		@SuppressWarnings("rawtypes")
 		Iterator iter = vo.vipTradeAreaDiscount.entrySet().iterator();
@@ -222,27 +223,28 @@ public class CheckVIPAreaStrategy {
 			tradingArea.getItems().add(key);
 			areaList.add(key.toString());
 		}
+		
 		tradingArea.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent event) {
 				int num = tradingArea.getSelectionModel().getSelectedIndex();
 				double[] d = vo.vipTradeAreaDiscount.get((Object)areaList.get(num));
-				if(d.length == 2){
-					discountRange1.setText(String.valueOf(d[1]));
+				if(d.length == 1){
+					discountRange1.setText(String.valueOf(d[0]));
 					lowestVIPLevel1.setText("1");
-				}else if(d.length == 3){
-					discountRange1.setText(String.valueOf(d[1]));
-					discountRange2.setText(String.valueOf(d[2]));
+				}else if(d.length == 2){
+					discountRange1.setText(String.valueOf(d[0]));
+					discountRange2.setText(String.valueOf(d[1]));
 					lowestVIPLevel1.setText("1");
 					lowestVIPLevel2.setText("2");
-				}else if(d.length == 4){
-					discountRange1.setText(String.valueOf(d[1]));
-					discountRange2.setText(String.valueOf(d[2]));
-					discountRange3.setText(String.valueOf(d[3]));
+				}else if(d.length == 3){
+					discountRange1.setText(String.valueOf(d[0]));
+					discountRange2.setText(String.valueOf(d[1]));
+					discountRange3.setText(String.valueOf(d[2]));
 					lowestVIPLevel1.setText("1");
-					lowestVIPLevel1.setText("2");
-					lowestVIPLevel1.setText("3");
+					lowestVIPLevel2.setText("2");
+					lowestVIPLevel3.setText("3");
 				}
 				
 			}

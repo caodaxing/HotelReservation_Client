@@ -92,13 +92,13 @@ public class SetArriveInfo {
 		//设置文本框位置
 		
 		roomIds.setLayoutX(400);
-		roomIds.setLayoutY(150);
+		roomIds.setLayoutY(200);
 		
 		label.setLayoutX(600);
 		label.setLayoutY(160);
 		
 		roomType.setLayoutX(400);
-		roomType.setLayoutY(200.0);
+		roomType.setLayoutY(150);
 		
 		leaveTime.setLayoutX(400);
 		leaveTime.setLayoutY(250);
@@ -114,9 +114,9 @@ public class SetArriveInfo {
 		AnchorPane.setLeftAnchor(roomType, 200.0);
 		AnchorPane.setLeftAnchor(leaveTime, 200.0);
 		
-		AnchorPane.setTopAnchor(roomIds, 150.0);
+		AnchorPane.setTopAnchor(roomIds, 200.0);
 		AnchorPane.setTopAnchor(label, 160.0);
-		AnchorPane.setTopAnchor(roomType, 200.0);
+		AnchorPane.setTopAnchor(roomType, 150.0);
 		AnchorPane.setTopAnchor(leaveTime, 250.0);
 		
 	}
@@ -182,7 +182,7 @@ public class SetArriveInfo {
 	
 	public void setText(){
 		OrderVO vo = controller.getOrderInfo();
-		label.setText("预定"+String.valueOf(vo.roomNum)+"间房");
+		label.setText("  预定"+String.valueOf(vo.roomNum)+"间房");
 		roomType.setText(MessageHelper.roomTypeToString(vo.roomType));
 		leaveTime.setText(vo.endTime);
 	}

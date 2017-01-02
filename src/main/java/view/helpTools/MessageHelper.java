@@ -4,6 +4,9 @@ import Message.CreditChangeType;
 import Message.OrderState;
 import Message.PromotionType;
 import Message.RoomType;
+import logic.hotel.CheckHotel;
+import logicService.hotel.CheckHotelService;
+import vo.HotelVO;
 
 public class MessageHelper {
 
@@ -11,7 +14,7 @@ public class MessageHelper {
 		
 		String type = "错误";
 		if(t == CreditChangeType.NORMAL_EXECUTE_ORDER_INCRESE){
-			type = "生成订单增加";
+			type = "订单执行增加";
 		}else if(t == CreditChangeType.SET_ABNORMAL_ORDER_DECREASE){
 			type = "订单异常扣除";
 		}else if(t == CreditChangeType.SUPPLY_ABNORAML_ORDER_RECOVER){
@@ -88,5 +91,10 @@ public class MessageHelper {
 		return Type;
 	}
 	
+	public static String hotelIdToHotelName(String hotelID){
+		CheckHotelService hotelInfo = new CheckHotel();
+		HotelVO vo = hotelInfo.getHotelnfo(hotelID);
+		return vo.hotelName;
+	}
 	
 }

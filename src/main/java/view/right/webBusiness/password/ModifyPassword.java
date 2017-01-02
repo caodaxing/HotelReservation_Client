@@ -26,7 +26,7 @@ public class ModifyPassword {
 	
 	private AnchorPane rightPane ;
 	
-	TextField oldPassword;
+	PasswordField oldPassword;
 	PasswordField newPassword;
 	PasswordField repeatPassword;
 	
@@ -58,7 +58,7 @@ public class ModifyPassword {
 
 	private void setTextField (){
 		
-		oldPassword = new TextField();
+		oldPassword = new PasswordField();
 		newPassword = new PasswordField();
 		repeatPassword = new PasswordField();
 		
