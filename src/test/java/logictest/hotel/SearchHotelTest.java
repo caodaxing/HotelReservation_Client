@@ -119,14 +119,14 @@ public class SearchHotelTest {
 	}
 	
 
-//	@Test
-//	public void testSearch1(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", "如家", RoomType.STANDARD_ROOM, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4, 5, 2, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		assertEquals(1, vos.size());
-//		assertEquals("00001", vos.get(0).hoteID);
-//	}
+	@Test
+	public void testSearch1(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", "如家", RoomType.STANDARD_ROOM, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4, 5, 2, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		assertEquals(1, vos.size());
+		assertEquals("00001", vos.get(0).hoteID);
+	}
 	
 	@Test
 	public void testSearch2(){
@@ -136,53 +136,53 @@ public class SearchHotelTest {
 		
 		assertEquals(3, vos.size());
 	}
-//	
-//	//测试评分和不设置房间类型作用
-//	@Test
-//	public void testSearch3(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1,"2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4.7, 5, 2, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		assertEquals(2, vos.size());
-//		assertEquals("00002", vos.get(0).hoteID);
-//		assertEquals("00001", vos.get(1).hoteID);
-//	}
-//	
-//	//测试酒店星级搜索作用
-//	@Test
-//	public void testSearch4(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null,1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4.7, 5, 3, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		
-//		assertEquals(1, vos.size());
-//	}
-//	
-//	//测试价格和评分搜索作用
-//	@Test
-//	public void testSearch5(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1,"2016-11-07 12:00:00", "2016-11-08 12:00:00", 260, 600, 4.7, 5, 2, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		assertEquals(null, vos);
-//	}
-//	
-//	//测试空房时间和价格搜索作用
-//	@Test
-//	public void testSearch6(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 260, 600, 4, 5, 2, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		assertEquals(1, vos.size());
-//	}
-//	
-//	//测试酒店名称作用
-//	@Test
-//	public void testSearch7(){
-//		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", "green", RoomType.STANDARD_ROOM, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4, 5, 2, 5);
-//		
-//		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
-//		assertEquals(1, vos.size());
-//		assertEquals("00002", vos.get(0).hoteID);
-//	}
+	
+	//测试评分和不设置房间类型作用
+	@Test
+	public void testSearch3(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1,"2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4.7, 5, 2, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		assertEquals(2, vos.size());
+		assertEquals("00002", vos.get(0).hoteID);
+		assertEquals("00001", vos.get(1).hoteID);
+	}
+	
+	//测试酒店星级搜索作用
+	@Test
+	public void testSearch4(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null,1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4.7, 5, 3, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		
+		assertEquals(1, vos.size());
+	}
+	
+	//测试价格和评分搜索作用
+	@Test
+	public void testSearch5(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1,"2016-11-07 12:00:00", "2016-11-08 12:00:00", 260, 600, 4.7, 5, 2, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		assertEquals(null, vos);
+	}
+	
+	//测试空房时间和价格搜索作用
+	@Test
+	public void testSearch6(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", null, null, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 260, 600, 4, 5, 2, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		assertEquals(1, vos.size());
+	}
+	
+	//测试酒店名称作用
+	@Test
+	public void testSearch7(){
+		HotelSearchVO vo = new HotelSearchVO("南京", "仙林中心", "green", RoomType.STANDARD_ROOM, 1, "2017-01-07 12:00:00", "2017-01-08 12:00:00", 0, 600, 4, 5, 2, 5);
+		
+		ArrayList<HotelVO> vos = this.searchHotel.search(vo);
+		assertEquals(1, vos.size());
+		assertEquals("00002", vos.get(0).hoteID);
+	}
 }
